@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VetrinaFacile.it – Vendi il tuo immobile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rosso: #d42b2b;
+      --rosso-scuro: #b01f1f;
+      --blu: #1a2a4a;
+      --blu-chiaro: #243660;
+      --grigio-bg: #f5f6f8;
+      --grigio-testo: #6b7280;
+      --bianco: #ffffff;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.09);
+    }
+
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: var(--bianco); }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--blu);
+      color: #cbd5e1;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .topbar .inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .topbar a { color: #cbd5e1; text-decoration: none; }
+    .topbar a:hover { color: white; }
+    .topbar .contacts { display: flex; gap: 20px; }
+    .topbar .social { display: flex; gap: 12px; }
+    .topbar .social a {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; transition: background .2s;
+    }
+    .topbar .social a:hover { background: var(--rosso); }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--bianco);
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 32px; height: 68px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 42px; height: 42px; background: var(--rosso);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: 18px;
+    }
+    .logo-text { font-weight: 800; font-size: 20px; color: var(--blu); }
+    .logo-text span { color: var(--rosso); }
+    .nav-links { display: flex; gap: 4px; flex: 1; }
+    .nav-links a {
+      padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500;
+      color: #374151; text-decoration: none; transition: all .2s;
+    }
+    .nav-links a:hover { background: var(--grigio-bg); color: var(--blu); }
+    .nav-links a.active { background: #fef2f2; color: var(--rosso); }
+    .nav-cta {
+      margin-left: auto; display: flex; gap: 10px;
+    }
+    .btn {
+      padding: 10px 20px; border-radius: 8px; font-size: 14px;
+      font-weight: 600; cursor: pointer; border: none; transition: all .2s; text-decoration: none;
+    }
+    .btn-outline {
+      border: 2px solid var(--blu); color: var(--blu); background: transparent;
+    }
+    .btn-outline:hover { background: var(--blu); color: white; }
+    .btn-primary { background: var(--rosso); color: white; }
+    .btn-primary:hover { background: var(--rosso-scuro); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blu) 0%, var(--blu-chiaro) 60%, #2d4a8a 100%);
+      color: white; padding: 80px 24px 90px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .hero-badge::before { content: '🏠'; }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 800;
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    .hero h1 span { color: #f87171; }
+    .hero p {
+      font-size: 18px; color: rgba(255,255,255,0.8);
+      line-height: 1.7; margin-bottom: 36px; max-width: 500px;
+    }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: var(--rosso); color: white; padding: 14px 28px;
+      border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: all .2s;
+      box-shadow: 0 4px 16px rgba(212,43,43,0.4);
+    }
+    .btn-hero-primary:hover { background: var(--rosso-scuro); transform: translateY(-2px); }
+    .btn-hero-outline {
+      background: rgba(255,255,255,0.1); color: white; padding: 14px 28px;
+      border-radius: 10px; font-weight: 600; font-size: 16px;
+      border: 2px solid rgba(255,255,255,0.3); text-decoration: none; transition: all .2s;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.2); }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 28px; font-weight: 800; color: white; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+    /* Search card nell'hero */
+    .hero-search-card {
+      background: white; border-radius: 20px; padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3); color: #1a1a2e;
+    }
+    .hero-search-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--blu); }
+    .search-tabs {
+      display: flex; gap: 4px; margin-bottom: 20px;
+      background: var(--grigio-bg); padding: 4px; border-radius: 8px;
+    }
+    .search-tab {
+      flex: 1; padding: 8px; text-align: center; font-size: 13px;
+      font-weight: 600; border-radius: 6px; cursor: pointer; border: none;
+      background: transparent; color: var(--grigio-testo); transition: all .2s;
+    }
+    .search-tab.active { background: white; color: var(--blu); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--grigio-testo); margin-bottom: 6px; }
+    .form-group select, .form-group input {
+      width: 100%; padding: 11px 14px; border: 1.5px solid #e5e7eb;
+      border-radius: 8px; font-size: 14px; color: #374151;
+      background: white; outline: none; transition: border .2s;
+    }
+    .form-group select:focus, .form-group input:focus { border-color: var(--rosso); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn-search {
+      width: 100%; padding: 13px; background: var(--rosso); color: white;
+      border: none; border-radius: 8px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all .2s; margin-top: 4px;
+    }
+    .btn-search:hover { background: var(--rosso-scuro); }
+
+    /* ── SEZIONE COME FUNZIONA ── */
+    .come-funziona {
+      background: var(--grigio-bg); padding: 80px 24px;
+    }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag {
+      display: inline-block; background: #fef2f2; color: var(--rosso);
+      font-size: 13px; font-weight: 600; padding: 5px 14px;
+      border-radius: 20px; margin-bottom: 12px;
+    }
+    .section-header h2 { font-size: 36px; font-weight: 800; color: var(--blu); margin-bottom: 12px; }
+    .section-header p { font-size: 17px; color: var(--grigio-testo); max-width: 520px; margin: 0 auto; }
+    .steps-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .step-card {
+      background: white; border-radius: var(--radius); padding: 32px 28px;
+      box-shadow: var(--shadow); text-align: center;
+      border-top: 4px solid transparent; transition: all .3s;
+    }
+    .step-card:hover { transform: translateY(-6px); border-top-color: var(--rosso); }
+    .step-number {
+      width: 52px; height: 52px; background: #fef2f2; color: var(--rosso);
+      border-radius: 50%; font-size: 22px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step-card h3 { font-size: 19px; font-weight: 700; color: var(--blu); margin-bottom: 10px; }
+    .step-card p { font-size: 15px; color: var(--grigio-testo); line-height: 1.6; }
+    .step-icon { font-size: 36px; margin-bottom: 16px; }
+
+    /* ── ANNUNCI IN EVIDENZA ── */
+    .annunci { padding: 80px 24px; }
+    .annunci .inner { max-width: 1200px; margin: 0 auto; }
+    .annunci-header {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px;
+    }
+    .annunci-header a { font-size: 14px; color: var(--rosso); font-weight: 600; text-decoration: none; }
+    .annunci-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .card {
+      background: white; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: all .3s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.14); }
+    .card-img {
+      width: 100%; height: 200px; object-fit: cover;
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; position: relative;
+    }
+    .card-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--rosso); color: white; font-size: 11px;
+      font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: .5px;
+    }
+    .card-badge.premium { background: #f59e0b; }
+    .card-badge.gratis { background: #10b981; }
+    .card-body { padding: 20px; }
+    .card-price { font-size: 22px; font-weight: 800; color: var(--blu); margin-bottom: 6px; }
+    .card-title { font-size: 15px; font-weight: 600; color: #374151; margin-bottom: 10px; line-height: 1.4; }
+    .card-location { font-size: 13px; color: var(--grigio-testo); display: flex; align-items: center; gap: 4px; margin-bottom: 14px; }
+    .card-features {
+      display: flex; gap: 14px; padding-top: 14px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .feature { font-size: 13px; color: var(--grigio-testo); display: flex; align-items: center; gap: 5px; }
+
+    /* ── SERVIZI ── */
+    .servizi { background: var(--blu); color: white; padding: 80px 24px; }
+    .servizi .inner { max-width: 1200px; margin: 0 auto; }
+    .servizi .section-header h2 { color: white; }
+    .servizi .section-header p { color: rgba(255,255,255,0.7); }
+    .servizi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .servizio-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: 32px 28px; text-align: center; transition: all .3s;
+    }
+    .servizio-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-4px); }
+    .servizio-icon { font-size: 44px; margin-bottom: 18px; }
+    .servizio-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .servizio-card p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 22px; }
+    .servizio-tag {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    }
+    .servizio-tag.free { background: rgba(16,185,129,0.3); color: #6ee7b7; }
+
+    /* ── PARTNER ── */
+    .partner { padding: 60px 24px; background: var(--grigio-bg); }
+    .partner .inner { max-width: 1200px; margin: 0 auto; }
+    .partner-title { text-align: center; font-size: 14px; font-weight: 600; color: var(--grigio-testo); margin-bottom: 32px; letter-spacing: 1px; text-transform: uppercase; }
+    .partner-logos {
+      display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;
+    }
+    .partner-chip {
+      background: white; border: 1.5px solid #e5e7eb; border-radius: 8px;
+      padding: 10px 20px; font-size: 14px; font-weight: 600; color: #374151;
+      transition: all .2s;
+    }
+    .partner-chip:hover { border-color: var(--rosso); color: var(--rosso); }
+
+    /* ── CTA FINALE ── */
+    .cta-finale {
+      background: linear-gradient(135deg, var(--rosso) 0%, #9b1c1c 100%);
+      padding: 80px 24px; text-align: center; color: white;
+    }
+    .cta-finale h2 { font-size: 38px; font-weight: 800; margin-bottom: 16px; }
+    .cta-finale p { font-size: 18px; opacity: .85; margin-bottom: 36px; }
+    .cta-finale .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: white; color: var(--rosso); padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; transition: all .2s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .btn-ghost-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; transition: all .2s; }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── FOOTER ── */
+    footer { background: #0f172a; color: #94a3b8; padding: 56px 24px 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .logo-text { font-size: 22px; color: white; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 14px; color: #64748b; }
+    .footer-col h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; display: flex; justify-content: space-between; font-size: 13px; color: #475569; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner">
+    <div class="contacts">
+      <a href="tel:388.24.61.203">📞 388.24.61.203</a>
+      <a href="mailto:info@vetrinafacile.it">✉️ info@vetrinafacile.it</a>
+    </div>
+    <div class="social">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Twitter">t</a>
+      <a href="#" title="YouTube">▶</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">V</div>
+      <div class="logo-text">Vetrina<span>Facile</span>.it</div>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Vendi Attività</a>
+      <a href="#">Vendi Immobile</a>
+      <a href="#">Guide & Blog</a>
+      <a href="#">Professionisti</a>
+      <a href="#">Chi Siamo</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-outline">Accedi</a>
+      <a href="#" class="btn btn-primary">Pubblica Gratis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Il portale immobiliare che ti fa vendere davvero</div>
+      <h1>Vendi il tuo immobile<br /><span>senza stress</span>, online</h1>
+      <p>Pubblica il tuo annuncio gratuitamente, raggiungi migliaia di acquirenti e chiudi la vendita in tempi record. Semplice, veloce, efficace.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-hero-primary">🏠 Pubblica Annuncio Gratis</a>
+        <a href="#" class="btn-hero-outline">Valuta il tuo immobile →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">12.000+</div>
+          <div class="stat-label">Annunci attivi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Clienti soddisfatti</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Gratis</div>
+          <div class="stat-label">Pubblicazione base</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEARCH CARD -->
+    <div class="hero-search-card">
+      <h3>🔍 Cerca il tuo immobile</h3>
+      <div class="search-tabs">
+        <button class="search-tab active">Acquisto</button>
+        <button class="search-tab">Affitto</button>
+        <button class="search-tab">Attività</button>
+      </div>
+      <div class="form-group">
+        <label>Tipologia</label>
+        <select>
+          <option>Appartamento</option>
+          <option>Villa / Casa</option>
+          <option>Locale commerciale</option>
+          <option>Ufficio</option>
+          <option>Terreno</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Città o zona</label>
+        <input type="text" placeholder="Es. Roma, Milano, Napoli..." />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prezzo min</label>
+          <select>
+            <option>Qualsiasi</option>
+            <option>€ 50.000</option>
+            <option>€ 100.000</option>
+            <option>€ 200.000</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Prezzo max</label>
+          <select>
+            <option>Qualsiasi</option>
+            <option>€ 200.000</option>
+            <option>€ 500.000</option>
+            <option>€ 1.000.000</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-search">Cerca immobili</button>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="come-funziona">
+  <div class="section-header">
+    <div class="section-tag">Come funziona</div>
+    <h2>Vendi in 3 passi</h2>
+    <p>Il processo più semplice del mercato immobiliare italiano. Zero commissioni, zero stress.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-icon">📝</div>
+      <div class="step-number">1</div>
+      <h3>Pubblica l'annuncio</h3>
+      <p>Inserisci foto, descrizione e prezzo in pochi minuti. La pubblicazione base è completamente gratuita.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">📣</div>
+      <div class="step-number">2</div>
+      <h3>Raggiungi i compratori</h3>
+      <p>Il tuo annuncio viene visto da migliaia di acquirenti in tutta Italia grazie al nostro circuito partner.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">🤝</div>
+      <div class="step-number">3</div>
+      <h3>Chiudi la vendita</h3>
+      <p>Ricevi richieste dirette, gestisci le trattative e vendi al miglior prezzo. Ti supportiamo in ogni fase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANNUNCI IN EVIDENZA -->
+<section class="annunci">
+  <div class="inner">
+    <div class="annunci-header">
+      <div>
+        <div class="section-tag">Annunci recenti</div>
+        <h2 style="font-size:30px; font-weight:800; color:var(--blu); margin-top:8px;">Immobili in evidenza</h2>
+      </div>
+      <a href="#">Vedi tutti gli annunci →</a>
+    </div>
+    <div class="annunci-grid">
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#fde8e8,#fca5a5)">
+          🏠
+          <div class="card-badge premium">PREMIUM</div>
+        </div>
+        <div class="card-body">
+          <div class="card-price">€ 285.000</div>
+          <div class="card-title">Appartamento con terrazza, zona Prati</div>
+          <div class="card-location">📍 Roma (RM)</div>
+          <div class="card-features">
+            <div class="feature">🛏 3 camere</div>
+            <div class="feature">🚿 2 bagni</div>
+            <div class="feature">📐 110 mq</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#e0f2fe,#7dd3fc)">
+          🏢
+          <div class="card-badge">VENDITA</div>
+        </div>
+        <div class="card-body">
+          <div class="card-price">€ 490.000</div>
+          <div class="card-title">Ristorante con dehor coperto, 500 mq</div>
+          <div class="card-location">📍 Roma Laurentina (RM)</div>
+          <div class="card-features">
+            <div class="feature">🍽 Ristrutturato</div>
+            <div class="feature">🅿️ Parcheggio</div>
+            <div class="feature">📐 500 mq</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7)">
+          🏡
+          <div class="card-badge gratis">GRATIS</div>
+        </div>
+        <div class="card-body">
+          <div class="card-price">€ 165.000</div>
+          <div class="card-title">Bilocale ristrutturato con garage</div>
+          <div class="card-location">📍 Milano, Loreto (MI)</div>
+          <div class="card-features">
+            <div class="feature">🛏 2 camere</div>
+            <div class="feature">🚿 1 bagno</div>
+            <div class="feature">📐 62 mq</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="servizi">
+  <div class="inner">
+    <div class="section-header">
+      <div class="section-tag" style="background:rgba(255,255,255,0.15); color:white;">I nostri servizi</div>
+      <h2>Tutto quello che ti serve per vendere</h2>
+      <p>Strumenti professionali a disposizione di privati e agenzie.</p>
+    </div>
+    <div class="servizi-grid">
+      <div class="servizio-card">
+        <div class="servizio-icon">🏠</div>
+        <h3>Pubblica Annuncio</h3>
+        <p>Inserisci il tuo immobile online in pochi minuti. Foto, descrizione, prezzo: raggiungi subito migliaia di potenziali acquirenti.</p>
+        <span class="servizio-tag free">✓ GRATIS</span>
+      </div>
+      <div class="servizio-card">
+        <div class="servizio-icon">📊</div>
+        <h3>Valutazione Immobiliare</h3>
+        <p>Scopri il valore reale del tuo immobile con la nostra stima online gratuita. Vendi al prezzo giusto, più velocemente.</p>
+        <span class="servizio-tag free">✓ GRATIS</span>
+      </div>
+      <div class="servizio-card">
+        <div class="servizio-icon">🔗</div>
+        <h3>Circuito Partner</h3>
+        <p>Entra nel network di agenzie e professionisti del settore. Massima visibilità su tutti i portali immobiliari italiani.</p>
+        <span class="servizio-tag">PREMIUM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section class="partner">
+  <div class="inner">
+    <div class="partner-title">Portali partner dove appaiono i tuoi annunci</div>
+    <div class="partner-logos">
+      <div class="partner-chip">Tecnocasa</div>
+      <div class="partner-chip">Gabetti</div>
+      <div class="partner-chip">RE/MAX</div>
+      <div class="partner-chip">Idealista</div>
+      <div class="partner-chip">Immobiliare.it</div>
+      <div class="partner-chip">Casa.it</div>
+      <div class="partner-chip">Subito.it</div>
+      <div class="partner-chip">Toscano</div>
+      <div class="partner-chip">Frimm</div>
+      <div class="partner-chip">Engel & Völkers</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section class="cta-finale">
+  <h2>Pronto a vendere il tuo immobile?</h2>
+  <p>Unisciti a migliaia di italiani che hanno venduto con VetrinaFacile.it</p>
+  <div class="buttons">
+    <a href="#" class="btn-white">🚀 Pubblica Gratis Ora</a>
+    <a href="#" class="btn-ghost-white">Chatta su WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">Vetrina<span style="color:var(--rosso)">Facile</span>.it</div>
+        <p>Il portale immobiliare italiano per vendere e acquistare case, attività commerciali e immobili in tutta Italia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Vendi</h4>
+        <a href="#">Pubblica annuncio</a>
+        <a href="#">Valuta immobile</a>
+        <a href="#">Circuito agenzie</a>
+        <a href="#">Prezzi e piani</a>
+      </div>
+      <div class="footer-col">
+        <h4>Scopri</h4>
+        <a href="#">Guide e Blog</a>
+        <a href="#">Professionisti</a>
+        <a href="#">Chi siamo</a>
+        <a href="#">Contatti</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legale</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Termini di servizio</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VetrinaFacile.it – Tutti i diritti riservati</span>
+      <span>P.IVA: IT00000000000</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.search-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
