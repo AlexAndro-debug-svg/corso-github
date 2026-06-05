@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alessandro Simone – Docente di Informatica</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blu: #1a3a5c;
+      --azzurro: #2e86de;
+      --accento: #f0a500;
+      --chiaro: #f5f7fa;
+      --testo: #333;
+    }
+
+    body { font-family: 'Segoe UI', sans-serif; color: var(--testo); background: white; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--blu);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .logo { color: white; font-size: 1.3rem; font-weight: 700; letter-spacing: .5px; }
+    .logo span { color: var(--accento); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .95rem; transition: color .2s; }
+    nav a:hover { color: var(--accento); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blu) 0%, #2563a8 100%);
+      color: white;
+      padding: 5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .hero-text h1 { font-size: 2.6rem; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-text h1 span { color: var(--accento); }
+    .hero-text p { font-size: 1.15rem; opacity: .9; max-width: 480px; margin: 0 auto 2rem; }
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: .8rem 1.8rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
+    .btn-primary { background: var(--accento); color: #1a1a1a; }
+    .btn-outline { background: transparent; color: white; border: 2px solid white; }
+
+    .avatar {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--accento);
+      background: linear-gradient(135deg, #4a90d9, #2563a8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; flex-shrink: 0;
+    }
+
+    /* ── SEZIONI CARD ── */
+    .section { padding: 4rem 2rem; }
+    .section.gray { background: var(--chiaro); }
+    .section h2 { text-align: center; font-size: 1.9rem; color: var(--blu); margin-bottom: .5rem; }
+    .section .subtitle { text-align: center; color: #666; margin-bottom: 2.5rem; font-size: 1rem; }
+
+    .cards { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      width: 280px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      border-top: 4px solid var(--azzurro);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .card-icon { font-size: 2.2rem; margin-bottom: .8rem; }
+    .card h3 { color: var(--blu); margin-bottom: .5rem; font-size: 1.1rem; }
+    .card p { color: #555; font-size: .92rem; line-height: 1.6; }
+
+    /* ── PRENOTAZIONE ── */
+    .booking {
+      background: linear-gradient(135deg, var(--azzurro), var(--blu));
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .booking h2 { font-size: 2rem; margin-bottom: .8rem; }
+    .booking p { opacity: .9; max-width: 500px; margin: 0 auto 2rem; font-size: 1.05rem; }
+    .booking-steps { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .step { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+    .step-num {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--accento);
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step span { font-size: .88rem; opacity: .9; }
+
+    /* ── ESERCIZI ── */
+    .tags { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
+    .tag {
+      background: var(--blu);
+      color: white;
+      padding: .4rem 1rem;
+      border-radius: 20px;
+      font-size: .85rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .tag:hover, .tag.active { background: var(--azzurro); }
+
+    .exercise-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+    .exercise-item {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 6px rgba(0,0,0,.07);
+      border-left: 4px solid var(--azzurro);
+    }
+    .exercise-item span { font-size: .9rem; color: var(--testo); }
+    .badge {
+      background: var(--chiaro);
+      color: var(--blu);
+      padding: .2rem .7rem;
+      border-radius: 12px;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+    .badge.medio { background: #fff3cd; color: #856404; }
+    .badge.avanzato { background: #f8d7da; color: #721c24; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blu);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 2rem;
+      font-size: .88rem;
+    }
+    footer strong { color: white; }
+
+    /* ── BANNER MOCKUP ── */
+    .mockup-banner {
+      background: #fff3cd;
+      border: 2px dashed #f0a500;
+      text-align: center;
+      padding: .6rem;
+      font-size: .85rem;
+      color: #856404;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-banner">🎨 MOCKUP – Anteprima del sito. Apri questo file nel browser per vederlo!</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Alessandro<span>Simone</span>.it</div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Ripetizioni</a></li>
+    <li><a href="#">Prenota</a></li>
+    <li><a href="#">Esercizi</a></li>
+    <li><a href="#">Contatti</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="avatar">👨‍💻</div>
+  <div class="hero-text">
+    <h1>Ciao, sono <span>Alessandro</span><br>Docente di Informatica</h1>
+    <p>Scuola secondaria di II grado · Ripetizioni online · Materiale didattico gratuito</p>
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary">📅 Prenota una lezione</a>
+      <a href="#" class="btn btn-outline">📚 Guarda gli esercizi</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="section gray">
+  <h2>Cosa trovi qui</h2>
+  <p class="subtitle">Tutto quello che ti serve, in un unico posto</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>Ripetizioni private</h3>
+      <p>Lezioni individuali online su misura per te. Informatica, programmazione, reti e molto altro.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <h3>Esercizi & materiale</h3>
+      <p>Raccolta di esercizi pratici divisi per argomento e livello, aggiornati durante l'anno scolastico.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>Prenotazione online</h3>
+      <p>Scegli giorno e orario direttamente dal sito. Nessun messaggio su WhatsApp, nessuna attesa.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Supporto studenti</h3>
+      <p>Hai una domanda veloce? Scrivimi direttamente dal sito. Rispondo entro 24 ore.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRENOTAZIONE -->
+<section class="booking">
+  <h2>Prenota una ripetizione</h2>
+  <p>Tre semplici passi per iniziare. Prima lezione di prova disponibile.</p>
+  <div class="booking-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <span>Scegli la materia</span>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <span>Seleziona data e ora</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <span>Conferma la lezione</span>
+    </div>
+  </div>
+  <a href="#" class="btn btn-primary">Vai al calendario →</a>
+</section>
+
+<!-- ESERCIZI -->
+<section class="section">
+  <h2>Esercizi recenti</h2>
+  <p class="subtitle">Filtrati per argomento</p>
+  <div class="tags">
+    <span class="tag active">Tutti</span>
+    <span class="tag">Python</span>
+    <span class="tag">HTML/CSS</span>
+    <span class="tag">Database</span>
+    <span class="tag">Algoritmi</span>
+    <span class="tag">Reti</span>
+  </div>
+  <div class="exercise-list">
+    <div class="exercise-item">
+      <span>🐍 Esercizi sulle liste in Python – Classe 4°</span>
+      <span class="badge">Base</span>
+    </div>
+    <div class="exercise-item">
+      <span>🌐 Creare una pagina HTML con form</span>
+      <span class="badge medio">Medio</span>
+    </div>
+    <div class="exercise-item">
+      <span>🗃️ Query SQL con JOIN multipli</span>
+      <span class="badge avanzato">Avanzato</span>
+    </div>
+    <div class="exercise-item">
+      <span>🔁 Ricorsione: Fibonacci e Fattoriale</span>
+      <span class="badge medio">Medio</span>
+    </div>
+    <div class="exercise-item">
+      <span>📡 Modello OSI – domande e risposte</span>
+      <span class="badge">Base</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Alessandro Simone</strong> · Docente di Informatica · alessandrosimone.it</p>
+  <p style="margin-top:.4rem">📧 info@alessandrosimone.it &nbsp;|&nbsp; 💼 LinkedIn &nbsp;|&nbsp; 🐙 GitHub</p>
+</footer>
+
+</body>
+</html>
