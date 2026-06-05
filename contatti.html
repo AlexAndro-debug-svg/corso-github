@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti & FAQ — Alessandro Simone</title>
+  <meta name="description" content="Contatta Alessandro Simone per ripetizioni di informatica. Modulo contatti, email e domande frequenti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container center mb-3">
+    <span class="eyebrow">Contatti</span>
+    <h1 class="section-title">Scrivimi</h1>
+    <p class="section-sub" style="margin-inline:auto">Hai una domanda o vuoi organizzare una ripetizione? Compila il modulo o scrivimi direttamente. Rispondo entro 24 ore.</p>
+  </div>
+
+  <div class="container">
+    <!-- ============================================================
+         MODULO CONTATTI
+         Per renderlo funzionante (senza backend) usa un servizio
+         gratuito come Formspree: crea un form e incolla qui l'URL
+         nell'attributo action. Istruzioni nel README.
+         ============================================================ -->
+    <form class="form" action="https://formspree.io/f/IL_TUO_ID" method="POST">
+      <div class="field">
+        <label for="nome">Nome e cognome</label>
+        <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="mario@email.it" required>
+      </div>
+      <div class="field">
+        <label for="motivo">Di cosa hai bisogno?</label>
+        <select id="motivo" name="motivo">
+          <option>Ripetizione singola</option>
+          <option>Pacchetto mensile</option>
+          <option>Preparazione esame/maturità</option>
+          <option>Altra domanda</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="msg">Messaggio</label>
+        <textarea id="msg" name="messaggio" rows="5" placeholder="Raccontami cosa ti serve..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">📨 Invia messaggio</button>
+    </form>
+
+    <p class="center mt-4" style="color:var(--muted)">
+      Oppure scrivimi direttamente a <a href="mailto:info@alessandrosimone.it" style="color:var(--primary);font-weight:600">info@alessandrosimone.it</a>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section soft">
+  <div class="container">
+    <div class="center mb-3">
+      <span class="eyebrow">Dubbi?</span>
+      <h2 class="section-title">Domande frequenti</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Le lezioni sono solo online?</summary>
+        <p>Sì, le ripetizioni si svolgono online in videochiamata. Questo permette flessibilità di orari e niente spostamenti per nessuno dei due.</p>
+      </details>
+      <details>
+        <summary>La prima lezione è davvero gratuita?</summary>
+        <p>Esatto! La prima lezione di prova è gratuita e senza impegno: serve a conoscerci e a capire come posso aiutarti.</p>
+      </details>
+      <details>
+        <summary>Che strumenti servono per seguire?</summary>
+        <p>Bastano un computer con connessione internet, microfono e webcam. Useremo una lavagna condivisa online per scrivere codice insieme.</p>
+      </details>
+      <details>
+        <summary>Posso disdire o spostare una lezione?</summary>
+        <p>Certo, basta avvisarmi con almeno 24 ore di anticipo e riprogrammiamo senza problemi.</p>
+      </details>
+      <details>
+        <summary>Seguite anche studenti universitari?</summary>
+        <p>Il focus è sulla scuola secondaria di II grado, ma per esami universitari di base (programmazione, basi di dati) possiamo valutare insieme.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:info@alessandrosimone.it">info@alessandrosimone.it</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone · alessandrosimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

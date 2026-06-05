@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è un ciclo for e come usarlo — Alessandro Simone</title>
+  <meta name="description" content="Guida semplice al ciclo for in Python con esempi pratici, spiegato da un docente di informatica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 5 min di lettura</span>
+    <h1>Cos'è un ciclo for e come usarlo</h1>
+    <p style="color:var(--muted)">📅 5 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Il <strong>ciclo for</strong> è uno degli strumenti più usati in programmazione, eppure all'inizio confonde quasi tutti. In questo articolo lo spieghiamo nel modo più semplice possibile, con esempi che puoi provare subito.</p>
+
+    <h2>A cosa serve un ciclo?</h2>
+    <p>Immagina di dover stampare i numeri da 1 a 5. Potresti scrivere cinque righe di codice... ma se fossero 1000? Il ciclo serve proprio a <strong>ripetere un'istruzione</strong> tante volte senza riscriverla ogni volta.</p>
+
+    <h2>La sintassi di base</h2>
+    <p>In Python un ciclo for si scrive così:</p>
+    <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+    <p>Questo codice stampa i numeri 1, 2, 3, 4 e 5. La variabile <code>i</code> assume di volta in volta ogni valore prodotto da <code>range()</code>.</p>
+
+    <h2>Attenzione a range()</h2>
+    <p>Un punto che inganna sempre gli studenti: <code>range(1, 6)</code> arriva fino a <strong>5</strong>, non a 6. L'estremo finale è sempre <em>escluso</em>. Ricordatelo bene nelle verifiche!</p>
+
+    <h2>Scorrere una lista</h2>
+    <p>Il for è perfetto anche per scorrere gli elementi di una lista:</p>
+    <pre><code>materie = ["Python", "SQL", "Reti"]
+for materia in materie:
+    print("Studio:", materia)</code></pre>
+
+    <h2>In sintesi</h2>
+    <ul>
+      <li>Il for ripete istruzioni un numero definito di volte.</li>
+      <li>Con <code>range(a, b)</code> il valore <code>b</code> è escluso.</li>
+      <li>Puoi usarlo per scorrere liste, stringhe e altri insiemi di dati.</li>
+    </ul>
+
+    <div class="cta-banner mt-4">
+      <h2>Vuoi esercitarti?</h2>
+      <p>Trovi diversi esercizi sui cicli nella sezione dedicata, con soluzioni spiegate.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:info@alessandrosimone.it">info@alessandrosimone.it</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone · alessandrosimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
