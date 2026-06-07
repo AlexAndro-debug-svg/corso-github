@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le funzioni in Python: come definirle e usarle — AlessandroSimone.it</title>
+  <meta name="description" content="Cosa sono le funzioni in Python, come definirle con def, parametri e return. Guida semplice con esempi pratici per studenti che imparano a programmare.">
+  <meta name="keywords" content="funzioni python, def python, parametri return python, come creare funzione python, programmazione scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 6 min di lettura</span>
+    <h1>Le funzioni in Python: definirle e usarle</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Quando i programmi crescono, scrivere tutto il codice di fila diventa un caos. Le <strong>funzioni</strong> sono la soluzione: ci permettono di organizzare il codice in blocchi riutilizzabili, dando ordine e chiarezza. In questa guida vediamo cosa sono le funzioni in Python, come crearle e perché sono così importanti.</p>
+
+    <h2>Cos'è una funzione?</h2>
+    <p>Una funzione è un <strong>blocco di codice con un nome</strong>, che svolge un compito preciso e può essere richiamato ogni volta che serve. Hai già usato funzioni senza saperlo: <code>print()</code>, <code>input()</code> e <code>len()</code> sono funzioni predefinite di Python. La novità è che ora imparerai a crearne di tue.</p>
+    <p>Il vantaggio è enorme: scrivi il codice una volta sola e lo riusi quante volte vuoi, evitando di ripeterti. In programmazione c'è un principio chiamato DRY ("Don't Repeat Yourself", non ripeterti) e le funzioni sono il modo principale per rispettarlo.</p>
+
+    <h2>Definire una funzione con def</h2>
+    <p>In Python una funzione si crea con la parola chiave <code>def</code>:</p>
+    <pre><code>def saluta():
+    print("Ciao, benvenuto!")
+
+saluta()   # chiamata: stampa "Ciao, benvenuto!"</code></pre>
+    <p>Definire la funzione non la esegue: il codice dentro <code>def</code> viene eseguito solo quando la <strong>chiami</strong> scrivendone il nome seguito dalle parentesi. È un errore comune dimenticare le parentesi nella chiamata.</p>
+
+    <h2>I parametri: dare informazioni alla funzione</h2>
+    <p>Le funzioni diventano potenti quando ricevono dei dati in ingresso, chiamati <strong>parametri</strong>:</p>
+    <pre><code>def saluta(nome):
+    print("Ciao", nome)
+
+saluta("Marco")    # Ciao Marco
+saluta("Giulia")   # Ciao Giulia</code></pre>
+    <p>Lo stesso codice produce risultati diversi a seconda del valore che passiamo. Puoi avere più parametri separati da virgole, ad esempio <code>def somma(a, b)</code>.</p>
+
+    <h2>Il valore di ritorno: return</h2>
+    <p>Spesso vogliamo che una funzione <strong>restituisca</strong> un risultato, per poterlo usare altrove. Si fa con <code>return</code>:</p>
+    <pre><code>def somma(a, b):
+    return a + b
+
+risultato = somma(3, 5)
+print(risultato)   # 8</code></pre>
+    <p>La differenza tra <code>print</code> e <code>return</code> confonde molti: <code>print</code> mostra solo un valore a schermo, mentre <code>return</code> lo "consegna" al programma per riutilizzarlo. Una funzione che restituisce un valore è molto più flessibile.</p>
+
+    <h2>Variabili locali e globali</h2>
+    <p>Le variabili create dentro una funzione sono <strong>locali</strong>: esistono solo lì dentro e "spariscono" quando la funzione finisce. Questo è un bene, perché evita interferenze tra le diverse parti del programma:</p>
+    <pre><code>def calcola():
+    x = 10        # variabile locale
+    return x
+
+calcola()
+print(x)   # ERRORE: x non esiste qui fuori</code></pre>
+    <p>Pensare alle funzioni come a "scatole chiuse" che comunicano solo tramite parametri e return ti aiuterà a scrivere codice pulito.</p>
+
+    <h2>Perché usare le funzioni?</h2>
+    <ul>
+      <li><strong>Riutilizzo</strong>: scrivi una volta, usa ovunque;</li>
+      <li><strong>Leggibilità</strong>: un nome ben scelto rende il codice autoesplicativo;</li>
+      <li><strong>Manutenzione</strong>: se devi correggere qualcosa, lo fai in un punto solo;</li>
+      <li><strong>Organizzazione</strong>: dividi un problema grande in tanti piccoli compiti.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Le funzioni sono blocchi di codice riutilizzabili che si definiscono con <code>def</code>, ricevono dati tramite i parametri e restituiscono risultati con <code>return</code>. Sono lo strumento che trasforma un principiante in un programmatore ordinato. Inizia a creare piccole funzioni per ogni compito: il tuo codice diventerà subito più chiaro e professionale.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Esercitati con le funzioni</h2>
+      <p>Nella sezione esercizi trovi problemi su funzioni, parametri e return, con soluzioni spiegate.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

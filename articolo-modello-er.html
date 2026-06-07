@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il modello Entità-Relazione (E-R) spiegato semplice — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è il modello Entità-Relazione (E-R): entità, attributi, relazioni e cardinalità. Come progettare un database, spiegato con esempi per la scuola.">
+  <meta name="keywords" content="modello entità relazione, modello e-r, schema er, database progettazione, entità attributi relazioni scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Database · 7 min di lettura</span>
+    <h1>Il modello Entità-Relazione (E-R)</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Prima di creare un database con le tabelle, ogni bravo informatico lo <strong>progetta</strong> su carta. Lo strumento che si usa per farlo è il <strong>modello Entità-Relazione</strong> (o modello E-R). È un argomento centrale del programma di informatica, e una volta capiti i suoi tre concetti chiave diventa sorprendentemente intuitivo. Vediamoli insieme.</p>
+
+    <h2>A cosa serve il modello E-R?</h2>
+    <p>Il modello E-R serve a rappresentare in modo grafico la realtà che vogliamo memorizzare in un database, prima ancora di scrivere una riga di SQL. È una sorta di "progetto dell'architetto": disegniamo lo schema concettuale, e solo dopo lo trasformiamo in tabelle vere. Questo evita errori costosi e rende il database ben organizzato.</p>
+
+    <h2>Le entità</h2>
+    <p>Un'<strong>entità</strong> è un oggetto o concetto della realtà di cui vogliamo conservare informazioni. In una scuola, esempi di entità sono <em>Studente</em>, <em>Professore</em> e <em>Corso</em>. Nello schema E-R le entità si disegnano come <strong>rettangoli</strong>. Pensa alle entità come ai "nomi" del nostro mondo: tipicamente diventeranno le tabelle del database.</p>
+
+    <h2>Gli attributi</h2>
+    <p>Ogni entità ha degli <strong>attributi</strong>, cioè le caratteristiche che vogliamo memorizzare. L'entità <em>Studente</em>, ad esempio, può avere gli attributi nome, cognome, data di nascita e matricola. Gli attributi si rappresentano con delle <strong>ellissi</strong> collegate all'entità.</p>
+    <p>Tra gli attributi ce n'è uno speciale, la <strong>chiave primaria</strong>: un attributo (o un insieme di attributi) che identifica in modo univoco ogni occorrenza dell'entità. Per lo studente, la matricola è una chiave perfetta, perché due studenti non possono averla uguale.</p>
+
+    <h2>Le relazioni</h2>
+    <p>Una <strong>relazione</strong> (o associazione) collega due o più entità, descrivendo come sono legate tra loro. Ad esempio, uno <em>Studente</em> "frequenta" un <em>Corso</em>, oppure un <em>Professore</em> "insegna" un <em>Corso</em>. Le relazioni si disegnano come <strong>rombi</strong> tra le entità. Spesso sono espresse da un verbo: frequenta, insegna, possiede.</p>
+
+    <h2>Le cardinalità</h2>
+    <p>Il concetto che mette più in difficoltà gli studenti è la <strong>cardinalità</strong>, cioè quante volte un'entità può essere coinvolta in una relazione. Le tre cardinalità fondamentali sono:</p>
+    <ul>
+      <li><strong>Uno a uno (1:1)</strong>: a un elemento corrisponde un solo elemento. Es. una persona ha una sola carta d'identità.</li>
+      <li><strong>Uno a molti (1:N)</strong>: a un elemento ne corrispondono molti. Es. un professore insegna a molte classi, ma una classe ha (in quella materia) un solo professore.</li>
+      <li><strong>Molti a molti (N:M)</strong>: molti elementi si associano a molti. Es. uno studente frequenta più corsi e ogni corso ha più studenti.</li>
+    </ul>
+    <p>Capire la cardinalità è fondamentale perché determina come tradurremo lo schema in tabelle.</p>
+
+    <h2>Un esempio completo</h2>
+    <p>Immaginiamo di modellare una biblioteca scolastica. Avremo:</p>
+    <ul>
+      <li>entità <em>Libro</em> (attributi: codice ISBN, titolo, autore);</li>
+      <li>entità <em>Studente</em> (attributi: matricola, nome, classe);</li>
+      <li>relazione <em>"prende in prestito"</em> tra Studente e Libro, con cardinalità molti a molti, perché uno studente può prendere più libri nel tempo e ogni libro può essere prestato a più studenti.</li>
+    </ul>
+    <p>Questo semplice schema descrive perfettamente il funzionamento della biblioteca, ancora prima di pensare alle tabelle SQL.</p>
+
+    <h2>Dallo schema E-R alle tabelle</h2>
+    <p>Una volta disegnato lo schema, lo si traduce in tabelle seguendo regole precise: ogni entità diventa una tabella, gli attributi diventano colonne e le relazioni vengono gestite con le chiavi esterne (o con una tabella apposita nel caso del molti a molti). Ma questo è il passo successivo: prima viene sempre il progetto concettuale.</p>
+
+    <h2>In sintesi</h2>
+    <p>Il modello E-R rappresenta la realtà con tre elementi: entità (rettangoli), attributi (ellissi) e relazioni (rombi), specificando le cardinalità. È il progetto su carta che precede la creazione del database. Allenarti a disegnare schemi E-R ti renderà molto più sicuro quando affronterai SQL e le interrogazioni.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Approfondisci i database</h2>
+      <p>Possiamo progettare insieme schemi E-R e trasformarli in tabelle SQL in una ripetizione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

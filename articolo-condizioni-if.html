@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le condizioni if, elif ed else in Python — AlessandroSimone.it</title>
+  <meta name="description" content="Come usare le strutture condizionali if, elif ed else in Python per far prendere decisioni ai tuoi programmi. Guida con esempi semplici per la scuola.">
+  <meta name="keywords" content="if python, elif else python, condizioni python, strutture condizionali, if else informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 5 min di lettura</span>
+    <h1>Le condizioni if, elif ed else in Python</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Un programma diventa davvero utile quando sa <strong>prendere decisioni</strong>: "se l'utente è maggiorenne fai questo, altrimenti fai quest'altro". In Python questo si fa con le <strong>strutture condizionali</strong> <code>if</code>, <code>elif</code> ed <code>else</code>. In questa guida le vediamo passo passo, con esempi che puoi provare subito.</p>
+
+    <h2>L'istruzione if</h2>
+    <p>La parola <code>if</code> (in inglese "se") esegue un blocco di codice solo se una condizione è vera:</p>
+    <pre><code>eta = 20
+if eta &gt;= 18:
+    print("Sei maggiorenne")</code></pre>
+    <p>Se la condizione <code>eta &gt;= 18</code> è vera, viene stampato il messaggio. Se è falsa, Python salta semplicemente il blocco. Come per i cicli, l'indentazione (gli spazi a inizio riga) indica quali istruzioni dipendono dall'if.</p>
+
+    <h2>L'istruzione else</h2>
+    <p>Con <code>else</code> (in inglese "altrimenti") diciamo a Python cosa fare quando la condizione è falsa:</p>
+    <pre><code>eta = 15
+if eta &gt;= 18:
+    print("Sei maggiorenne")
+else:
+    print("Sei minorenne")</code></pre>
+    <p>Ora il programma copre entrambi i casi: o si esegue il blocco dell'if, o quello dell'else. Mai tutti e due insieme.</p>
+
+    <h2>L'istruzione elif</h2>
+    <p>E se i casi sono più di due? Entra in gioco <code>elif</code> (contrazione di "else if"), che permette di controllare più condizioni in sequenza:</p>
+    <pre><code>voto = 7
+if voto &gt;= 8:
+    print("Ottimo!")
+elif voto &gt;= 6:
+    print("Sufficiente")
+else:
+    print("Insufficiente")</code></pre>
+    <p>Python controlla le condizioni dall'alto verso il basso e si ferma alla prima vera. Con <code>voto = 7</code>, salta il primo if, entra nell'elif e stampa "Sufficiente". Puoi mettere quanti <code>elif</code> vuoi.</p>
+
+    <h2>Gli operatori di confronto</h2>
+    <p>Le condizioni si costruiscono con gli operatori di confronto, che restituiscono sempre <code>True</code> o <code>False</code>:</p>
+    <ul>
+      <li><code>==</code> uguale a (attenzione: due segni uguale!)</li>
+      <li><code>!=</code> diverso da</li>
+      <li><code>&gt;</code> e <code>&lt;</code> maggiore e minore</li>
+      <li><code>&gt;=</code> e <code>&lt;=</code> maggiore o uguale, minore o uguale</li>
+    </ul>
+    <p>L'errore più frequente è usare un solo <code>=</code> (che serve ad assegnare un valore) al posto di <code>==</code> (che serve a confrontare). Ricordalo bene!</p>
+
+    <h2>Combinare le condizioni: and, or, not</h2>
+    <p>Possiamo unire più condizioni con gli operatori logici:</p>
+    <pre><code>eta = 20
+patente = True
+if eta &gt;= 18 and patente:
+    print("Puoi guidare")</code></pre>
+    <ul>
+      <li><strong>and</strong>: vero solo se entrambe le condizioni sono vere;</li>
+      <li><strong>or</strong>: vero se almeno una è vera;</li>
+      <li><strong>not</strong>: inverte il valore (vero diventa falso e viceversa).</li>
+    </ul>
+
+    <h2>Un esempio completo</h2>
+    <pre><code>numero = int(input("Inserisci un numero: "))
+if numero &gt; 0:
+    print("Il numero è positivo")
+elif numero &lt; 0:
+    print("Il numero è negativo")
+else:
+    print("Il numero è zero")</code></pre>
+    <p>Questo piccolo programma classifica un numero in positivo, negativo o zero: un classico esercizio da prima lezione che usa tutte e tre le strutture.</p>
+
+    <h2>In sintesi</h2>
+    <p>Con <code>if</code> esegui codice se una condizione è vera, con <code>else</code> gestisci il caso contrario e con <code>elif</code> controlli più alternative. Ricorda di usare <code>==</code> per confrontare e di curare l'indentazione. Le condizioni, insieme ai cicli, sono il cuore di ogni programma: padroneggiarle ti apre le porte a qualsiasi progetto.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Esercitati sulle condizioni</h2>
+      <p>Nella sezione esercizi trovi problemi su if/else e operatori logici, con soluzioni spiegate.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

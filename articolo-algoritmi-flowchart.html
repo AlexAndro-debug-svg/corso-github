@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è un algoritmo e come si usano i diagrammi di flusso — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è un algoritmo, le sue proprietà e come rappresentarlo con i diagrammi di flusso (flowchart). Guida semplice con simboli ed esempi per la scuola.">
+  <meta name="keywords" content="cos'è un algoritmo, diagramma di flusso, flowchart, pseudocodice, algoritmi informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Algoritmi · 6 min di lettura</span>
+    <h1>Cos'è un algoritmo e i diagrammi di flusso</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>La parola <strong>algoritmo</strong> spaventa, ma in realtà descrive qualcosa che fai ogni giorno senza accorgertene. Capire cos'è un algoritmo e come rappresentarlo con un <strong>diagramma di flusso</strong> è il primo, vero passo per imparare a programmare. In questa guida partiamo da zero, con esempi presi dalla vita quotidiana.</p>
+
+    <h2>Cos'è un algoritmo?</h2>
+    <p>Un algoritmo è una <strong>sequenza ordinata e finita di istruzioni</strong> che permette di risolvere un problema o di portare a termine un compito. Una ricetta di cucina è un algoritmo: passo dopo passo ti dice cosa fare per ottenere un piatto. Anche le istruzioni per montare un mobile lo sono. In informatica, l'algoritmo è il "ragionamento" che poi traduciamo in codice.</p>
+
+    <h2>Le proprietà di un algoritmo</h2>
+    <p>Perché una sequenza di istruzioni sia un vero algoritmo deve avere alcune caratteristiche:</p>
+    <ul>
+      <li><strong>Finito</strong>: deve terminare dopo un numero finito di passi;</li>
+      <li><strong>Non ambiguo</strong>: ogni istruzione deve essere chiara e interpretabile in un solo modo;</li>
+      <li><strong>Eseguibile</strong>: ogni passo deve essere realmente realizzabile;</li>
+      <li><strong>Generale</strong>: dovrebbe risolvere tutti i problemi dello stesso tipo, non solo un caso specifico.</li>
+    </ul>
+    <p>Queste proprietà spiegano perché "pensa a un numero fortunato" non è un'istruzione valida: è ambigua e non eseguibile da un computer.</p>
+
+    <h2>Come si rappresenta un algoritmo</h2>
+    <p>Prima di scrivere il codice vero e proprio, l'algoritmo si può rappresentare in due modi principali: con il <strong>diagramma di flusso</strong> (grafico) o con lo <strong>pseudocodice</strong> (testo simile al linguaggio naturale). A scuola si parte quasi sempre dai diagrammi di flusso, perché sono visivi e intuitivi.</p>
+
+    <h2>I simboli del diagramma di flusso</h2>
+    <p>Un diagramma di flusso (in inglese "flowchart") usa forme geometriche standard, ognuna con un significato preciso:</p>
+    <ul>
+      <li><strong>Ovale</strong>: inizio e fine dell'algoritmo;</li>
+      <li><strong>Parallelogramma</strong>: input e output (leggere o scrivere dati);</li>
+      <li><strong>Rettangolo</strong>: un'operazione o un calcolo (es. una somma);</li>
+      <li><strong>Rombo</strong>: una decisione, cioè una domanda con risposta sì/no;</li>
+      <li><strong>Frecce</strong>: indicano l'ordine in cui si seguono i passi.</li>
+    </ul>
+    <p>Imparare questi cinque simboli ti permette di leggere e disegnare qualsiasi diagramma di flusso.</p>
+
+    <h2>Un esempio: il numero pari o dispari</h2>
+    <p>Proviamo a descrivere l'algoritmo che stabilisce se un numero è pari o dispari. In pseudocodice:</p>
+    <pre><code>INIZIO
+  leggi numero
+  se (numero diviso 2 ha resto 0)
+      scrivi "Pari"
+  altrimenti
+      scrivi "Dispari"
+FINE</code></pre>
+    <p>Nel diagramma di flusso corrispondente, partiremmo da un ovale "Inizio", poi un parallelogramma per leggere il numero, un rombo con la domanda "resto = 0?", e due percorsi (sì/no) che portano a due output diversi, prima di arrivare all'ovale "Fine".</p>
+
+    <h2>Le tre strutture fondamentali</h2>
+    <p>Qualsiasi algoritmo, per quanto complesso, si costruisce con sole tre strutture di base (lo dimostra il teorema di Böhm-Jacopini):</p>
+    <ul>
+      <li><strong>Sequenza</strong>: istruzioni eseguite una dopo l'altra;</li>
+      <li><strong>Selezione</strong>: una scelta tra due strade (il rombo, l'if);</li>
+      <li><strong>Iterazione</strong>: la ripetizione di istruzioni (il ciclo).</li>
+    </ul>
+    <p>È sorprendente: con questi tre "mattoncini" si può scrivere qualunque programma esistente.</p>
+
+    <h2>In sintesi</h2>
+    <p>Un algoritmo è una sequenza finita e non ambigua di passi per risolvere un problema. Il diagramma di flusso lo rappresenta graficamente con ovali, parallelogrammi, rettangoli e rombi. Allenarti a progettare l'algoritmo <em>prima</em> di scrivere il codice è l'abitudine più importante che puoi sviluppare: ti farà programmare in modo ordinato e senza confusione.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Impara a ragionare da informatico</h2>
+      <p>Possiamo allenarci insieme a costruire algoritmi e diagrammi di flusso in una ripetizione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
