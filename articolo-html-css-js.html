@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML, CSS e JavaScript: a cosa servono e differenze — AlessandroSimone.it</title>
+  <meta name="description" content="Qual è la differenza tra HTML, CSS e JavaScript? Una metafora semplice e il ruolo di ognuno nello sviluppo web, spiegato per studenti che partono da zero.">
+  <meta name="keywords" content="differenza html css javascript, html css js, linguaggi del web, sviluppo web scuola, cosa serve html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Web · 5 min di lettura</span>
+    <h1>HTML, CSS e JavaScript: a cosa servono</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Chi inizia a studiare lo <strong>sviluppo web</strong> si trova subito davanti a tre nomi: <strong>HTML</strong>, <strong>CSS</strong> e <strong>JavaScript</strong>. Sembrano simili ma fanno cose molto diverse, e capire il ruolo di ognuno è il primo passo per costruire un sito. In questa guida usiamo una metafora semplice che ai miei studenti rimane sempre impressa.</p>
+
+    <h2>La metafora della casa</h2>
+    <p>Immagina di costruire una casa. Servono tre cose distinte:</p>
+    <ul>
+      <li><strong>HTML</strong> è la <em>struttura</em>: i muri, le porte, le stanze. Definisce cosa c'è nella pagina.</li>
+      <li><strong>CSS</strong> è l'<em>arredamento</em>: i colori delle pareti, i mobili, lo stile. Definisce come appare la pagina.</li>
+      <li><strong>JavaScript</strong> è l'<em>impianto elettrico e domotico</em>: le luci che si accendono, la porta che si apre. Definisce cosa succede quando interagisci.</li>
+    </ul>
+    <p>Una casa con soli muri è abitabile ma triste; con l'arredamento diventa bella; con l'impianto diventa funzionale. Allo stesso modo, un sito completo usa tutti e tre i linguaggi insieme.</p>
+
+    <h2>HTML: la struttura</h2>
+    <p>HTML (HyperText Markup Language) usa delle "etichette", chiamate tag, per definire gli elementi della pagina: titoli, paragrafi, immagini, link.</p>
+    <pre><code>&lt;h1&gt;Benvenuto nel mio sito&lt;/h1&gt;
+&lt;p&gt;Questo è un paragrafo di testo.&lt;/p&gt;
+&lt;a href="pagina.html"&gt;Vai alla pagina&lt;/a&gt;</code></pre>
+    <p>Da solo, l'HTML produce una pagina funzionante ma molto spartana: testo nero su sfondo bianco, senza stile. È lo scheletro su cui costruire tutto il resto.</p>
+
+    <h2>CSS: l'aspetto</h2>
+    <p>CSS (Cascading Style Sheets) serve a dare stile: colori, dimensioni, posizioni, caratteri. Si scrive separatamente e si collega all'HTML.</p>
+    <pre><code>h1 {
+  color: blue;
+  text-align: center;
+}
+p {
+  font-size: 18px;
+  color: gray;
+}</code></pre>
+    <p>Con poche righe di CSS la stessa pagina HTML cambia completamente aspetto. Il bello è che, modificando un solo file CSS, puoi cambiare lo stile di un intero sito in un colpo solo.</p>
+
+    <h2>JavaScript: l'interattività</h2>
+    <p>JavaScript è un vero e proprio linguaggio di programmazione che gira nel browser. Permette alla pagina di reagire alle azioni dell'utente: cliccare un pulsante, mostrare un messaggio, validare un modulo.</p>
+    <pre><code>function saluta() {
+  alert("Ciao! Benvenuto sul sito.");
+}</code></pre>
+    <p>Quando l'utente clicca un pulsante collegato a questa funzione, compare un messaggio. Senza JavaScript, le pagine sarebbero statiche; con JavaScript diventano applicazioni vive.</p>
+
+    <h2>Come lavorano insieme</h2>
+    <p>I tre linguaggi non sono in competizione: collaborano. Una tipica pagina web funziona così: l'HTML costruisce gli elementi, il CSS li abbellisce e li dispone, JavaScript aggiunge il comportamento dinamico. Questo sito che stai leggendo è fatto esattamente così!</p>
+
+    <h2>Da quale iniziare?</h2>
+    <p>Il consiglio è sempre lo stesso: parti dall'<strong>HTML</strong>, perché è la base. Quando sai creare la struttura di una pagina, aggiungi il <strong>CSS</strong> per renderla bella. Solo alla fine, quando questi due ti sono chiari, passa a <strong>JavaScript</strong>, che richiede una mentalità più "da programmatore". Bruciare le tappe è l'errore più comune.</p>
+
+    <h2>In sintesi</h2>
+    <p>HTML è la struttura, CSS è lo stile, JavaScript è l'interattività: muri, arredamento e impianti della tua casa digitale. Ricorda la metafora e non li confonderai mai più. Una volta che li padroneggi tutti e tre, sarai in grado di costruire qualsiasi sito web da zero.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Vuoi imparare a creare siti?</h2>
+      <p>Nella sezione esercizi trovi esercizi pratici su HTML e CSS, e possiamo approfondire insieme.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

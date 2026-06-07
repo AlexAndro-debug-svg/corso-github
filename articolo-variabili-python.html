@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variabili e tipi di dato in Python: la guida base — AlessandroSimone.it</title>
+  <meta name="description" content="Cosa sono le variabili e i tipi di dato in Python: int, float, str, bool. Come dichiararle e convertirle, con esempi semplici per chi inizia a programmare.">
+  <meta name="keywords" content="variabili python, tipi di dato python, int float str bool, input python, programmazione python scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 6 min di lettura</span>
+    <h1>Variabili e tipi di dato in Python</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Prima di scrivere qualsiasi programma serio, bisogna capire due concetti di base: le <strong>variabili</strong> e i <strong>tipi di dato</strong>. Sono il vero punto di partenza della programmazione in Python, e capirli bene fin dall'inizio ti eviterà tanti errori più avanti. Vediamoli insieme con esempi semplici e concreti.</p>
+
+    <h2>Cos'è una variabile?</h2>
+    <p>Una variabile è come una <strong>scatola con un'etichetta</strong> in cui mettiamo un valore. L'etichetta è il nome della variabile, e il contenuto è il dato che vogliamo conservare. In Python si crea semplicemente assegnando un valore con il segno <code>=</code>:</p>
+    <pre><code>nome = "Alessandro"
+eta = 35
+altezza = 1.78</code></pre>
+    <p>Da quel momento, ogni volta che scrivi <code>nome</code>, Python sa che ti riferisci al valore "Alessandro". Puoi anche cambiarne il contenuto in qualsiasi momento: ecco perché si chiamano "variabili".</p>
+
+    <h2>I tipi di dato fondamentali</h2>
+    <p>Ogni valore ha un "tipo", che dice a Python di che natura è il dato. I quattro tipi base da conoscere sono:</p>
+    <ul>
+      <li><strong>int</strong> (intero): numeri senza virgola, come <code>35</code> o <code>-7</code>;</li>
+      <li><strong>float</strong> (decimale): numeri con la virgola, come <code>1.78</code> o <code>3.14</code>;</li>
+      <li><strong>str</strong> (stringa): testo, sempre tra virgolette, come <code>"ciao"</code>;</li>
+      <li><strong>bool</strong> (booleano): può valere solo <code>True</code> o <code>False</code>.</li>
+    </ul>
+    <p>Puoi sempre scoprire il tipo di una variabile con la funzione <code>type()</code>:</p>
+    <pre><code>print(type(eta))       # &lt;class 'int'&gt;
+print(type(altezza))   # &lt;class 'float'&gt;
+print(type(nome))      # &lt;class 'str'&gt;</code></pre>
+
+    <h2>Python "indovina" il tipo da solo</h2>
+    <p>A differenza di altri linguaggi come C o Java, in Python <strong>non devi dichiarare il tipo</strong> della variabile: lo capisce automaticamente dal valore che assegni. Se scrivi <code>x = 5</code>, Python sa che è un intero; se scrivi <code>x = "5"</code>, è una stringa. Questa comodità si chiama "tipizzazione dinamica" ed è uno dei motivi per cui Python è perfetto per chi inizia.</p>
+
+    <h2>Attenzione: numero o testo?</h2>
+    <p>Un errore classico riguarda la differenza tra il numero <code>5</code> e la stringa <code>"5"</code>. Sembrano uguali, ma si comportano in modo diverso:</p>
+    <pre><code>print(5 + 3)       # 8  (somma tra numeri)
+print("5" + "3")   # 53 (unione di due testi!)</code></pre>
+    <p>Con i numeri il <code>+</code> somma, con le stringhe il <code>+</code> "incolla" (concatena). Capire questa differenza ti salverà da tanti errori.</p>
+
+    <h2>Convertire i tipi (casting)</h2>
+    <p>Spesso serve trasformare un dato da un tipo a un altro. È utilissimo soprattutto con <code>input()</code>, che restituisce sempre una stringa:</p>
+    <pre><code>eta_testo = input("Quanti anni hai? ")   # restituisce una stringa
+eta = int(eta_testo)                      # la convertiamo in numero
+print("Tra 10 anni avrai", eta + 10, "anni")</code></pre>
+    <p>Le funzioni di conversione principali sono <code>int()</code>, <code>float()</code> e <code>str()</code>. Dimenticare di convertire l'input è probabilmente l'errore numero uno dei principianti: senza <code>int()</code>, <code>eta + 10</code> darebbe errore.</p>
+
+    <h2>Come dare un nome alle variabili</h2>
+    <p>Scegliere buoni nomi rende il codice leggibile. Alcune regole e consigli:</p>
+    <ul>
+      <li>usa nomi che descrivono il contenuto: <code>media_voti</code> è meglio di <code>m</code>;</li>
+      <li>niente spazi: usa l'underscore, come <code>nome_studente</code>;</li>
+      <li>non possono iniziare con un numero;</li>
+      <li>Python distingue maiuscole e minuscole: <code>Nome</code> e <code>nome</code> sono due variabili diverse.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Le variabili sono scatole etichettate che conservano i dati, e ogni dato ha un tipo: int, float, str o bool. Ricorda che Python intuisce il tipo da solo, che il numero <code>5</code> è diverso dalla stringa <code>"5"</code> e che l'input va spesso convertito con <code>int()</code> o <code>float()</code>. Con queste basi solide, sei pronto per affrontare cicli, condizioni e tutto il resto.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Inizia a programmare in Python</h2>
+      <p>Nella sezione esercizi trovi tanti problemi su variabili, input e operazioni, con soluzioni.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

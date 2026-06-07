@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La ricorsione spiegata senza paura (con esempi Python) — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è la ricorsione in programmazione: caso base, caso ricorsivo, esempi con fattoriale e Fibonacci in Python. Guida semplice per studenti di informatica.">
+  <meta name="keywords" content="ricorsione python, funzione ricorsiva, fattoriale ricorsivo, fibonacci python, ricorsione informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Algoritmi · 6 min di lettura</span>
+    <h1>La ricorsione spiegata senza paura</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>La <strong>ricorsione</strong> è uno di quegli argomenti che mettono ansia agli studenti. "Una funzione che chiama se stessa? Ma come è possibile?" In realtà, una volta capito il meccanismo, la ricorsione diventa uno strumento elegante e affascinante. In questa guida la spieghiamo senza formule complicate, con esempi in Python che puoi provare subito.</p>
+
+    <h2>Cos'è la ricorsione?</h2>
+    <p>Si parla di ricorsione quando una funzione, per risolvere un problema, <strong>richiama se stessa</strong> su una versione più piccola dello stesso problema. È un po' come le bambole russe (le matrioske): dentro ogni bambola ce n'è una più piccola, fino ad arrivare alla più piccola di tutte, che non si apre più.</p>
+
+    <h2>I due ingredienti fondamentali</h2>
+    <p>Ogni funzione ricorsiva, per funzionare correttamente, ha bisogno di due elementi:</p>
+    <ul>
+      <li>il <strong>caso base</strong>: la condizione che ferma la ricorsione (la matrioska più piccola). Senza di esso, la funzione si chiamerebbe all'infinito;</li>
+      <li>il <strong>caso ricorsivo</strong>: la parte in cui la funzione richiama se stessa su un problema più piccolo, avvicinandosi al caso base.</li>
+    </ul>
+    <p>Tieni a mente questa coppia: caso base e caso ricorsivo. È la chiave di tutto.</p>
+
+    <h2>Esempio classico: il fattoriale</h2>
+    <p>Il fattoriale di un numero n (scritto n!) è il prodotto di tutti i numeri da 1 a n. Ad esempio 5! = 5 × 4 × 3 × 2 × 1 = 120. La definizione è naturalmente ricorsiva, perché n! = n × (n-1)!:</p>
+    <pre><code>def fattoriale(n):
+    if n &lt;= 1:          # caso base
+        return 1
+    return n * fattoriale(n - 1)   # caso ricorsivo
+
+print(fattoriale(5))   # 120</code></pre>
+    <p>Quando chiamiamo <code>fattoriale(5)</code>, la funzione calcola 5 × fattoriale(4), che a sua volta calcola 4 × fattoriale(3), e così via, fino a fattoriale(1) che restituisce 1 e ferma la catena. Poi i risultati "risalgono" e si moltiplicano tra loro.</p>
+
+    <h2>Come "ragiona" il computer</h2>
+    <p>Ogni chiamata ricorsiva viene messa in attesa su una pila (lo "stack"), in attesa che la chiamata successiva restituisca un valore. Quando si raggiunge il caso base, la pila si svuota a ritroso. Visualizzarlo aiuta a non avere paura:</p>
+    <pre><code>fattoriale(3)
+= 3 * fattoriale(2)
+= 3 * (2 * fattoriale(1))
+= 3 * (2 * 1)
+= 6</code></pre>
+
+    <h2>Un secondo esempio: Fibonacci</h2>
+    <p>La serie di Fibonacci è un altro esempio perfetto: ogni numero è la somma dei due precedenti (0, 1, 1, 2, 3, 5, 8...). Anche qui la definizione è ricorsiva:</p>
+    <pre><code>def fibonacci(n):
+    if n &lt;= 1:           # casi base: F(0)=0, F(1)=1
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(7))   # 13</code></pre>
+    <p>Nota che qui ci sono <em>due</em> casi base e <em>due</em> chiamate ricorsive. La ricorsione è flessibile e si adatta alla struttura del problema.</p>
+
+    <h2>Ricorsione o ciclo?</h2>
+    <p>Quasi tutti i problemi ricorsivi si possono risolvere anche con un ciclo (iterazione). Allora perché usare la ricorsione? Perché per alcuni problemi — come scorrere un albero o risolvere il gioco della Torre di Hanoi — la soluzione ricorsiva è molto più semplice ed elegante. Per altri, come Fibonacci, il ciclo è più efficiente perché evita di ricalcolare gli stessi valori più volte.</p>
+
+    <h2>Gli errori più comuni</h2>
+    <ul>
+      <li><strong>Dimenticare il caso base</strong>: la funzione si chiama all'infinito e Python segnala "RecursionError".</li>
+      <li><strong>Non avvicinarsi al caso base</strong>: se il problema non diventa più piccolo a ogni chiamata, la ricorsione non finisce mai.</li>
+      <li><strong>Confondere return e print</strong>: nelle funzioni ricorsive serve restituire il valore con <code>return</code> per poterlo riutilizzare.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>La ricorsione è una funzione che chiama se stessa fino a raggiungere un caso base che la ferma. Ricorda i due ingredienti — caso base e caso ricorsivo — e parti sempre da esempi semplici come il fattoriale. Con un po' di pratica, quello che oggi sembra magia diventerà uno strumento naturale del tuo modo di programmare.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Allenati con la ricorsione</h2>
+      <p>Nella sezione esercizi trovi problemi su fattoriale, Fibonacci e altri classici, con soluzioni.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

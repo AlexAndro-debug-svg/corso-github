@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il modello OSI spiegato: i 7 livelli con esempi — AlessandroSimone.it</title>
+  <meta name="description" content="Il modello OSI e i suoi 7 livelli spiegati in modo semplice, con esempi e una frase per ricordarli. Guida alle reti per studenti di informatica.">
+  <meta name="keywords" content="modello osi, 7 livelli osi, livelli osi spiegati, modello osi esempi, reti informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Reti · 6 min di lettura</span>
+    <h1>Il modello OSI spiegato: i 7 livelli</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Il <strong>modello OSI</strong> è uno degli argomenti più temuti delle reti di calcolatori: sette livelli con nomi strani da imparare a memoria. Ma dietro questa apparente complessità c'è un'idea molto semplice e geniale. In questa guida ti spiego a cosa serve il modello OSI, cosa fa ogni livello e come ricordarli facilmente per la verifica.</p>
+
+    <h2>A cosa serve il modello OSI?</h2>
+    <p>OSI sta per <em>Open Systems Interconnection</em>. È un modello teorico, creato per descrivere come due computer comunicano in rete, dividendo il lavoro in <strong>7 livelli</strong>. L'idea di fondo è "divide et impera": invece di affrontare la comunicazione come un unico problema enorme, la si spezza in sette problemi più piccoli e gestibili, ognuno con un compito preciso.</p>
+    <p>Ogni livello parla solo con quello immediatamente sopra e sotto di sé, e offre dei servizi al livello superiore. Questo rende le reti modulari: si può migliorare un livello senza toccare gli altri.</p>
+
+    <h2>I 7 livelli, dall'alto verso il basso</h2>
+    <pre><code>7. Applicazione
+6. Presentazione
+5. Sessione
+4. Trasporto
+3. Rete
+2. Collegamento (Data Link)
+1. Fisico</code></pre>
+
+    <h2>Cosa fa ogni livello</h2>
+    <ul>
+      <li><strong>7 - Applicazione</strong>: è il livello più vicino all'utente. Qui lavorano i programmi che usi (browser, email). Protocolli tipici: HTTP, FTP, SMTP.</li>
+      <li><strong>6 - Presentazione</strong>: traduce i dati in un formato comprensibile, si occupa di codifica, compressione e cifratura.</li>
+      <li><strong>5 - Sessione</strong>: apre, gestisce e chiude le "sessioni" di comunicazione tra due dispositivi.</li>
+      <li><strong>4 - Trasporto</strong>: garantisce che i dati arrivino completi e nell'ordine giusto. Qui vivono i protocolli TCP e UDP.</li>
+      <li><strong>3 - Rete</strong>: si occupa dell'instradamento dei pacchetti, cioè di scegliere il percorso. È il livello degli indirizzi IP e dei router.</li>
+      <li><strong>2 - Collegamento</strong>: gestisce la comunicazione tra dispositivi vicini, usando gli indirizzi MAC. Qui lavorano gli switch.</li>
+      <li><strong>1 - Fisico</strong>: è l'hardware vero e proprio: cavi, segnali elettrici, onde radio. Trasmette i bit grezzi.</li>
+    </ul>
+
+    <h2>Una metafora: la spedizione di una lettera</h2>
+    <p>Immagina di spedire una lettera. Tu scrivi il messaggio (Applicazione), lo metti in una busta con un formato standard (Presentazione), inizi una corrispondenza (Sessione), le poste garantiscono la consegna affidabile (Trasporto), scelgono il percorso tra le città (Rete), il furgone va da un ufficio postale al successivo (Collegamento) e infine le strade fisiche permettono lo spostamento (Fisico). Ogni livello fa la sua parte senza preoccuparsi degli altri.</p>
+
+    <h2>Come ricordare i 7 livelli</h2>
+    <p>Per memorizzarli dal basso verso l'alto, molti studenti usano frasi mnemoniche. Una in italiano, prendendo le iniziali (Fisico, Collegamento, Rete, Trasporto, Sessione, Presentazione, Applicazione): <em>"Federico Compra Rose Tutte Sere Per Anna"</em>. Inventane una tua: più è buffa, più ti resterà impressa!</p>
+
+    <h2>OSI e TCP/IP: che differenza c'è?</h2>
+    <p>Nella pratica, internet usa il modello <strong>TCP/IP</strong>, che ha solo 4 livelli ed è una semplificazione dell'OSI. Il modello OSI resta però fondamentale a scuola perché è più dettagliato e aiuta a capire <em>concettualmente</em> come funziona una rete. Spesso le verifiche chiedono proprio di confrontare i due modelli.</p>
+
+    <h2>In sintesi</h2>
+    <p>Il modello OSI divide la comunicazione di rete in 7 livelli, dal Fisico (cavi e segnali) all'Applicazione (i programmi che usi). Ogni livello ha un compito preciso e dialoga solo con i vicini. Impara i nomi con una frase mnemonica e collega ogni livello a un esempio concreto: così l'argomento diventa molto più semplice di quanto sembri.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Ripassa le reti</h2>
+      <p>Nella sezione esercizi trovi domande su modello OSI e indirizzi IP, perfette per la verifica.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
