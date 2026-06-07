@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come funziona Internet: il protocollo TCP/IP spiegato — AlessandroSimone.it</title>
+  <meta name="description" content="Come funziona internet: i protocolli TCP e IP, i pacchetti, il DNS e il modello a 4 livelli. Guida semplice alle reti per studenti di informatica.">
+  <meta name="keywords" content="tcp/ip, come funziona internet, protocollo tcp ip, pacchetti dns, reti informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Reti · 6 min di lettura</span>
+    <h1>Come funziona Internet: il protocollo TCP/IP</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Usiamo <strong>internet</strong> ogni giorno, ma cosa succede davvero quando apri una pagina web? Dietro le quinte lavora il <strong>protocollo TCP/IP</strong>, l'insieme di regole che fa funzionare l'intera rete mondiale. In questa guida ti spiego in modo semplice come i dati viaggiano da un computer all'altro, un argomento chiave delle reti.</p>
+
+    <h2>Cos'è un protocollo?</h2>
+    <p>Un <strong>protocollo</strong> è semplicemente un insieme di regole condivise che permettono a due dispositivi di comunicare. È come una lingua comune: se tu parli italiano e io parlo italiano, possiamo capirci. Internet funziona perché tutti i dispositivi del mondo "parlano" lo stesso protocollo: il TCP/IP.</p>
+
+    <h2>I pacchetti: dati a pezzettini</h2>
+    <p>Quando invii qualcosa su internet — una foto, un messaggio, una pagina — i dati non viaggiano tutti insieme, ma vengono divisi in tanti piccoli <strong>pacchetti</strong>. Ogni pacchetto viaggia per conto suo e può prendere strade diverse, per poi essere ricomposto a destinazione. È come spedire un libro pagina per pagina in tante buste separate, riordinandole all'arrivo.</p>
+
+    <h2>IP: l'indirizzo e l'instradamento</h2>
+    <p>Il protocollo <strong>IP</strong> (Internet Protocol) si occupa di due cose: dare un <strong>indirizzo</strong> a ogni dispositivo (l'indirizzo IP) e <strong>instradare</strong> i pacchetti, cioè scegliere il percorso giusto attraverso i router fino alla destinazione. IP però non garantisce che i pacchetti arrivino tutti e nell'ordine giusto: di questo si occupa il suo compagno, TCP.</p>
+
+    <h2>TCP: la consegna affidabile</h2>
+    <p>Il protocollo <strong>TCP</strong> (Transmission Control Protocol) garantisce che i dati arrivino <strong>completi e in ordine</strong>. Numera i pacchetti, verifica che siano arrivati tutti e, se qualcuno si perde per strada, ne richiede l'invio. È come un servizio postale che ti avvisa se una busta non è arrivata e te la rispedisce. Insieme, IP e TCP formano una squadra perfetta: uno trova la strada, l'altro garantisce la consegna.</p>
+
+    <h2>Il modello TCP/IP a 4 livelli</h2>
+    <p>Diversamente dal modello OSI con i suoi 7 livelli, il modello TCP/IP usato nella realtà ne ha solo 4:</p>
+    <ul>
+      <li><strong>Applicazione</strong>: i programmi e i loro protocolli (HTTP per il web, SMTP per le email);</li>
+      <li><strong>Trasporto</strong>: TCP e UDP, che gestiscono la consegna;</li>
+      <li><strong>Internet (Rete)</strong>: il protocollo IP e l'instradamento;</li>
+      <li><strong>Accesso alla rete</strong>: l'hardware e i collegamenti fisici.</li>
+    </ul>
+
+    <h2>Il DNS: la rubrica di internet</h2>
+    <p>Quando scrivi <code>alessandrosimone.it</code> nel browser, in realtà il computer ha bisogno dell'indirizzo IP corrispondente. A fare la "traduzione" da nome a numero ci pensa il <strong>DNS</strong> (Domain Name System), una sorta di gigantesca rubrica telefonica di internet. Tu ricordi il nome, il DNS trova il numero. Senza il DNS dovremmo memorizzare lunghe sequenze di cifre per ogni sito!</p>
+
+    <h2>Cosa succede quando apri un sito</h2>
+    <p>Mettiamo tutto insieme. Quando apri una pagina web:</p>
+    <ul>
+      <li>il browser chiede al DNS l'indirizzo IP del sito;</li>
+      <li>stabilisce una connessione TCP con il server;</li>
+      <li>invia una richiesta HTTP per la pagina;</li>
+      <li>il server risponde inviando i dati, divisi in pacchetti IP;</li>
+      <li>il tuo computer li ricompone e il browser mostra la pagina.</li>
+    </ul>
+    <p>Tutto questo avviene in una frazione di secondo, ogni volta che clicchi un link.</p>
+
+    <h2>In sintesi</h2>
+    <p>Internet funziona grazie al protocollo TCP/IP: i dati vengono divisi in pacchetti, IP li indirizza e li instrada, TCP ne garantisce la consegna ordinata, e il DNS traduce i nomi dei siti in indirizzi. Capire questi meccanismi ti fa vedere internet con occhi nuovi e ti dà basi solide per le verifiche di reti.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Approfondisci le reti</h2>
+      <p>Reti, protocolli e modello OSI: possiamo chiarire ogni dubbio in una ripetizione dedicata.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le JOIN in SQL spiegate con esempi (INNER, LEFT, RIGHT) — AlessandroSimone.it</title>
+  <meta name="description" content="Cosa sono le JOIN in SQL e come collegare più tabelle: INNER JOIN, LEFT JOIN e RIGHT JOIN spiegate con esempi pratici per studenti di informatica.">
+  <meta name="keywords" content="join sql, inner join, left join, right join, collegare tabelle sql, database informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Database · 7 min di lettura</span>
+    <h1>Le JOIN in SQL spiegate con esempi</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Quando i dati sono divisi in più tabelle, le <strong>JOIN</strong> sono lo strumento SQL che ci permette di rimetterli insieme. Sono uno degli argomenti più importanti (e temuti) dei database. In questa guida le spieghiamo con calma, partendo da un esempio concreto, così che INNER, LEFT e RIGHT JOIN non abbiano più segreti.</p>
+
+    <h2>Perché servono le JOIN?</h2>
+    <p>In un database ben progettato, le informazioni sono divise in tabelle separate per evitare ripetizioni. Ad esempio, gli <em>studenti</em> in una tabella e i <em>corsi</em> in un'altra. Ma quando vogliamo sapere "a quale corso è iscritto ogni studente", dobbiamo collegare le due tabelle: è qui che entrano in gioco le JOIN.</p>
+
+    <h2>Le nostre tabelle di esempio</h2>
+    <p>Immaginiamo due tabelle. La tabella <code>studenti</code> ha le colonne <code>id</code>, <code>nome</code> e <code>id_corso</code>. La tabella <code>corsi</code> ha <code>id</code> e <code>descrizione</code>. Il campo <code>id_corso</code> dello studente fa da "ponte": è una <strong>chiave esterna</strong> che punta all'id del corso.</p>
+
+    <h2>INNER JOIN: solo le corrispondenze</h2>
+    <p>La <strong>INNER JOIN</strong> (o semplicemente JOIN) restituisce solo le righe che hanno una corrispondenza in entrambe le tabelle:</p>
+    <pre><code>SELECT studenti.nome, corsi.descrizione
+FROM studenti
+INNER JOIN corsi ON studenti.id_corso = corsi.id;</code></pre>
+    <p>La parte chiave è <code>ON</code>, che indica la condizione di collegamento: "unisci le righe dove l'id_corso dello studente è uguale all'id del corso". Il risultato mostra ogni studente accanto al suo corso. Se uno studente non ha un corso (id_corso vuoto), con la INNER JOIN non comparirà.</p>
+
+    <h2>LEFT JOIN: tutti quelli di sinistra</h2>
+    <p>La <strong>LEFT JOIN</strong> restituisce <em>tutte</em> le righe della tabella di sinistra (la prima), anche quelle senza corrispondenza nella tabella di destra:</p>
+    <pre><code>SELECT studenti.nome, corsi.descrizione
+FROM studenti
+LEFT JOIN corsi ON studenti.id_corso = corsi.id;</code></pre>
+    <p>Con questa query vediamo tutti gli studenti, compresi quelli non ancora iscritti a nessun corso: per loro, la colonna descrizione sarà vuota (NULL). È utilissima quando vuoi essere sicuro di non perdere nessun elemento della tabella principale.</p>
+
+    <h2>RIGHT JOIN: tutti quelli di destra</h2>
+    <p>La <strong>RIGHT JOIN</strong> è l'opposto: restituisce tutte le righe della tabella di destra, anche se non hanno corrispondenze a sinistra:</p>
+    <pre><code>SELECT studenti.nome, corsi.descrizione
+FROM studenti
+RIGHT JOIN corsi ON studenti.id_corso = corsi.id;</code></pre>
+    <p>Qui vedremo tutti i corsi, compresi quelli senza studenti iscritti. Nella pratica la RIGHT JOIN si usa meno della LEFT, perché spesso basta invertire l'ordine delle tabelle.</p>
+
+    <h2>Una metafora per ricordarle</h2>
+    <p>Immagina due cerchi che si sovrappongono (i diagrammi di Venn):</p>
+    <ul>
+      <li><strong>INNER JOIN</strong> = solo la parte in comune dei due cerchi;</li>
+      <li><strong>LEFT JOIN</strong> = tutto il cerchio di sinistra più la parte in comune;</li>
+      <li><strong>RIGHT JOIN</strong> = tutto il cerchio di destra più la parte in comune.</li>
+    </ul>
+    <p>Questa immagine mentale è il modo più efficace per non confonderle mai più.</p>
+
+    <h2>Usare gli alias per scrivere meno</h2>
+    <p>Per rendere le query più leggibili, si usano gli alias, cioè soprannomi brevi per le tabelle:</p>
+    <pre><code>SELECT s.nome, c.descrizione
+FROM studenti s
+JOIN corsi c ON s.id_corso = c.id;</code></pre>
+    <p>Qui <code>s</code> sta per studenti e <code>c</code> per corsi. Con tabelle dai nomi lunghi, gli alias fanno risparmiare tanto tempo.</p>
+
+    <h2>In sintesi</h2>
+    <p>Le JOIN collegano tabelle diverse tramite una condizione ON. La INNER JOIN mostra solo le corrispondenze, la LEFT JOIN tutte le righe di sinistra e la RIGHT JOIN tutte quelle di destra. Pensa ai diagrammi di Venn e ricordati degli alias: con un po' di pratica, le JOIN diventeranno il tuo strumento preferito per interrogare i database.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Allenati con le JOIN</h2>
+      <p>Nella sezione esercizi trovi query con JOIN da risolvere, con soluzioni passo passo.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

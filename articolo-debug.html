@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come trovare e correggere i bug nel codice (debug) — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è il debug e come trovare gli errori nel codice: tipi di bug, uso del print, lettura degli errori e strategie pratiche. Guida per studenti di programmazione.">
+  <meta name="keywords" content="debug, correggere bug, errori python, debugging programmazione, come trovare errori codice scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 6 min di lettura</span>
+    <h1>Come trovare e correggere i bug</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Nessun programmatore, nemmeno il più esperto, scrive codice perfetto al primo colpo. Gli errori — chiamati <strong>bug</strong> — fanno parte del gioco. La differenza tra chi si blocca e chi va avanti sta nel saperli trovare e correggere: questa attività si chiama <strong>debug</strong>. In questa guida ti insegno un metodo per non andare più nel panico quando il codice non funziona.</p>
+
+    <h2>Perché si chiamano "bug"?</h2>
+    <p>Curiosità: il termine bug ("insetto" in inglese) nasce nel 1947, quando una falena rimase incastrata in un computer causando un malfunzionamento. Da allora "bug" indica un errore nel software e "debug" l'attività di rimuoverlo. Conoscere la storia rende l'argomento un po' più simpatico!</p>
+
+    <h2>I tre tipi di errore</h2>
+    <p>Per affrontare un bug, prima bisogna capire di che tipo è. Ne esistono tre famiglie:</p>
+    <ul>
+      <li><strong>Errori di sintassi</strong>: hai scritto qualcosa che il linguaggio non capisce, ad esempio dimenticando i due punti. Il programma non parte nemmeno.</li>
+      <li><strong>Errori di runtime</strong>: il programma parte ma si blocca durante l'esecuzione, ad esempio dividendo per zero o accedendo a un elemento inesistente di una lista.</li>
+      <li><strong>Errori logici</strong>: il programma funziona e non dà errori, ma il risultato è sbagliato. Sono i più insidiosi perché non vengono segnalati.</li>
+    </ul>
+
+    <h2>Leggi il messaggio di errore (davvero!)</h2>
+    <p>Il primo consiglio, banale ma fondamentale: <strong>leggi il messaggio di errore</strong>. Tanti studenti vanno subito nel panico senza leggerlo, eppure Python ti dice quasi sempre dov'è il problema e di che tipo è. Ad esempio:</p>
+    <pre><code>Traceback (most recent call last):
+  File "prog.py", line 5, in &lt;module&gt;
+    print(numeri[10])
+IndexError: list index out of range</code></pre>
+    <p>Questo errore ti dice tre cose preziose: il file, la riga (5) e il tipo di problema (stai accedendo a un indice che non esiste). Metà del debug è già fatto solo leggendo.</p>
+
+    <h2>La tecnica del print()</h2>
+    <p>La strategia più semplice e potente per i principianti è inserire dei <code>print()</code> nel codice per "spiare" cosa succede. Vuoi sapere quanto vale una variabile a un certo punto? Stampala:</p>
+    <pre><code>for i in range(5):
+    print("i vale:", i)   # controllo il valore a ogni giro
+    risultato = i * 2
+    print("risultato:", risultato)</code></pre>
+    <p>Vedendo i valori stampati passo passo, capisci esattamente dove il programma si comporta in modo diverso da quello che ti aspettavi. È come accendere una luce in una stanza buia.</p>
+
+    <h2>Il metodo del "divide et impera"</h2>
+    <p>Se il programma è lungo, non cercare il bug ovunque: dividilo a metà. Verifica se la prima parte funziona; se sì, il problema è nella seconda. Continua a dimezzare finché non isoli la riga incriminata. Questa strategia ti fa trovare l'errore molto più in fretta che leggendo tutto a caso.</p>
+
+    <h2>Consigli pratici per non impazzire</h2>
+    <ul>
+      <li><strong>Fai una pausa</strong>: spesso il bug si trova dopo cinque minuti lontano dallo schermo;</li>
+      <li><strong>Spiega il codice ad alta voce</strong>, anche a un oggetto: la "tecnica della paperella di gomma" funziona davvero;</li>
+      <li><strong>Cambia una cosa alla volta</strong>: se modifichi tutto insieme, non saprai cosa ha risolto;</li>
+      <li><strong>Non incolpare subito il computer</strong>: nel 99% dei casi il bug è nel nostro codice, non in Python.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Il debug è l'arte di trovare e correggere gli errori, e si impara con il metodo: riconosci il tipo di bug, leggi sempre il messaggio di errore, usa i print per spiare le variabili e procedi dividendo il problema. Sbagliare non è un fallimento, è il modo in cui ogni programmatore impara. Più fai debug, più diventi bravo.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Il tuo codice non funziona?</h2>
+      <p>Possiamo correggere insieme i tuoi errori e imparare a fare debug in una ripetizione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
