@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso HTML in italiano — AlessandroSimone.it</title>
+  <meta name="description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Lezioni passo passo con esempi e un editor 'Provalo tu' per scrivere codice e vedere subito il risultato.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Layout corso ---- */
+    .course-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; }
+    .course-side {
+      position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto;
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.2rem; font-size: .92rem;
+    }
+    .course-side h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: .6rem; }
+    .course-side a { display: block; padding: .4rem .6rem; border-radius: 8px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 84px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.6rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.15rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .9rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .95rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .9rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .95rem; }
+    /* ---- Esempi ---- */
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: .55rem .9rem; }
+    .codehead span { color: #94a3b8; font-size: .78rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .82rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    pre.codeview { margin: 0; background: #1e293b; color: #e2e8f0; padding: 1rem 1.1rem; overflow-x: auto; font-family: 'Consolas','Monaco',monospace; font-size: .88rem; line-height: 1.6; white-space: pre; }
+    /* ---- Editor modale ---- */
+    .editor-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.6); z-index: 2000; padding: 2rem; }
+    .editor-overlay.open { display: flex; align-items: center; justify-content: center; }
+    .editor-box { background: #fff; border-radius: var(--radius); width: min(1000px, 100%); height: min(85vh, 700px); display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .8rem 1.2rem; background: #0f172a; color: #fff; }
+    .editor-top strong { font-family: var(--font-head); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; border-radius: 6px; padding: .45rem 1rem; font-weight: 700; font-size: .85rem; cursor: pointer; font-family: var(--font); }
+    .ed-run { background: var(--edu); color: #fff; }
+    .ed-close { background: #475569; color: #fff; }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes textarea { border: none; resize: none; padding: 1rem; font-family: 'Consolas','Monaco',monospace; font-size: .9rem; line-height: 1.6; outline: none; background: #1e293b; color: #e2e8f0; }
+    .editor-panes .preview-wrap { display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { background: var(--bg-soft); padding: .35rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    @media (max-width: 900px){
+      .course-wrap { grid-template-columns: 1fr; }
+      .course-side { position: static; max-height: none; }
+      .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .editor-overlay { padding: .6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:3rem 0 2rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
+    <h1>Corso di HTML in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara a creare pagine web da zero, passo dopo passo. Ogni lezione ha un esempio che puoi modificare con il pulsante <strong>“Provalo tu”</strong> e vedere subito il risultato.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="course-side">
+      <h4>Indice del corso</h4>
+      <a href="#intro">1. Introduzione</a>
+      <a href="#struttura">2. Struttura di una pagina</a>
+      <a href="#elementi">3. Elementi e tag</a>
+      <a href="#attributi">4. Attributi</a>
+      <a href="#titoli">5. Titoli</a>
+      <a href="#paragrafi">6. Paragrafi</a>
+      <a href="#formattazione">7. Formattazione testo</a>
+      <a href="#link">8. Link</a>
+      <a href="#immagini">9. Immagini</a>
+      <a href="#liste">10. Liste</a>
+      <a href="#tabelle">11. Tabelle</a>
+      <a href="#div">12. Div e contenitori</a>
+      <a href="#form">13. Moduli (form)</a>
+      <a href="#commenti">14. Commenti</a>
+      <a href="#stile">15. Un po' di stile (CSS)</a>
+      <a href="#fine">16. E ora?</a>
+    </aside>
+
+    <!-- CONTENUTO -->
+    <main>
+
+      <!-- 1 -->
+      <article class="lesson" id="intro">
+        <h2>1. Introduzione a HTML</h2>
+        <p><strong>HTML</strong> (HyperText Markup Language) è il linguaggio con cui sono costruite tutte le pagine web. Non è un linguaggio di programmazione: è un <em>linguaggio di marcatura</em>, cioè serve a “etichettare” le parti di un documento per dire al browser cosa è un titolo, cosa un paragrafo, cosa un'immagine.</p>
+        <p>Ogni pagina che vedi su internet — compresa questa — è scritta in HTML. Imparare l'HTML è il primo passo per diventare sviluppatori web.</p>
+        <div class="note-box">💡 <strong>In breve:</strong> l'HTML descrive la <em>struttura</em> di una pagina (titoli, testo, immagini, link), il CSS si occupa dell'<em>aspetto</em> (colori, posizioni) e JavaScript del <em>comportamento</em> (interattività).</div>
+      </article>
+
+      <!-- 2 -->
+      <article class="lesson" id="struttura">
+        <h2>2. La struttura di una pagina HTML</h2>
+        <p>Ogni pagina HTML segue sempre lo stesso schema di base. Ecco lo scheletro minimo:</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>La mia prima pagina</title>
+</head>
+<body>
+  <h1>Ciao mondo!</h1>
+  <p>Questa è la mia prima pagina web.</p>
+</body>
+</html></script>
+        </div>
+        <p>Vediamo i pezzi:</p>
+        <ul>
+          <li><code class="inline">&lt;!DOCTYPE html&gt;</code> — dice al browser che è una pagina HTML moderna.</li>
+          <li><code class="inline">&lt;html&gt;</code> — il contenitore di tutta la pagina.</li>
+          <li><code class="inline">&lt;head&gt;</code> — informazioni “invisibili” (titolo, impostazioni).</li>
+          <li><code class="inline">&lt;body&gt;</code> — tutto ciò che si vede nella pagina.</li>
+        </ul>
+      </article>
+
+      <!-- 3 -->
+      <article class="lesson" id="elementi">
+        <h2>3. Elementi e tag</h2>
+        <p>Un <strong>elemento</strong> HTML è composto quasi sempre da un <em>tag di apertura</em>, un contenuto e un <em>tag di chiusura</em>:</p>
+        <p style="text-align:center"><code class="inline">&lt;p&gt;</code> contenuto <code class="inline">&lt;/p&gt;</code></p>
+        <p>Il tag di chiusura ha la barra <code class="inline">/</code>. Alcuni elementi non hanno contenuto e si chiudono da soli, come <code class="inline">&lt;br&gt;</code> (a capo) o <code class="inline">&lt;hr&gt;</code> (linea orizzontale).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><p>Prima riga</p>
+<hr>
+<p>Seconda riga<br>con un a capo dentro</p></script>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="lesson" id="attributi">
+        <h2>4. Gli attributi</h2>
+        <p>Gli <strong>attributi</strong> aggiungono informazioni a un elemento e si scrivono dentro il tag di apertura, nella forma <code class="inline">nome="valore"</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><a href="https://alessandrosimone.it" title="Vai al sito">Visita il mio sito</a></script>
+        </div>
+        <p>Qui <code class="inline">href</code> e <code class="inline">title</code> sono attributi del link. Ogni elemento ha i suoi attributi possibili.</p>
+      </article>
+
+      <!-- 5 -->
+      <article class="lesson" id="titoli">
+        <h2>5. I titoli</h2>
+        <p>I titoli vanno da <code class="inline">&lt;h1&gt;</code> (il più importante) a <code class="inline">&lt;h6&gt;</code> (il meno importante). Usa <code class="inline">&lt;h1&gt;</code> una sola volta per pagina, per il titolo principale.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><h1>Titolo principale</h1>
+<h2>Sottotitolo</h2>
+<h3>Titolo di terzo livello</h3>
+<h4>E così via...</h4></script>
+        </div>
+        <div class="tip-box">⭐ <strong>Suggerimento:</strong> i titoli aiutano anche Google a capire di cosa parla la pagina. Usali in ordine logico, non per fare il testo più grande!</div>
+      </article>
+
+      <!-- 6 -->
+      <article class="lesson" id="paragrafi">
+        <h2>6. I paragrafi</h2>
+        <p>Il testo normale va dentro l'elemento <code class="inline">&lt;p&gt;</code> (paragraph = paragrafo). Il browser ignora spazi e a capo extra nel codice: per andare a capo serve <code class="inline">&lt;br&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><p>Questo è un paragrafo di testo. Anche se nel codice
+scrivo su più righe, il browser lo mostra di seguito.</p>
+<p>Questo è un secondo paragrafo, separato dal primo.</p></script>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="lesson" id="formattazione">
+        <h2>7. Formattare il testo</h2>
+        <p>Esistono tag per dare enfasi al testo:</p>
+        <ul>
+          <li><code class="inline">&lt;strong&gt;</code> — <strong>grassetto</strong> (importante)</li>
+          <li><code class="inline">&lt;em&gt;</code> — <em>corsivo</em> (enfasi)</li>
+          <li><code class="inline">&lt;mark&gt;</code> — <mark>evidenziato</mark></li>
+          <li><code class="inline">&lt;small&gt;</code> — <small>testo piccolo</small></li>
+        </ul>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><p>Questo è <strong>molto importante</strong>.</p>
+<p>Questo invece è <em>in corsivo</em>.</p>
+<p>E qui <mark>evidenzio</mark> una parola.</p></script>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="lesson" id="link">
+        <h2>8. I link</h2>
+        <p>I link (collegamenti) si fanno con il tag <code class="inline">&lt;a&gt;</code> e l'attributo <code class="inline">href</code>, che indica la destinazione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><a href="https://www.google.it">Vai a Google</a>
+<br><br>
+<a href="https://alessandrosimone.it" target="_blank">Apri il mio sito in una nuova scheda</a></script>
+        </div>
+        <p>L'attributo <code class="inline">target="_blank"</code> apre il link in una nuova scheda.</p>
+      </article>
+
+      <!-- 9 -->
+      <article class="lesson" id="immagini">
+        <h2>9. Le immagini</h2>
+        <p>Le immagini si inseriscono con <code class="inline">&lt;img&gt;</code>. È un tag che si chiude da solo e usa due attributi importanti: <code class="inline">src</code> (l'indirizzo dell'immagine) e <code class="inline">alt</code> (testo alternativo, fondamentale per l'accessibilità).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><img src="https://picsum.photos/300/180" alt="Immagine di esempio" width="300"></script>
+        </div>
+        <div class="note-box">♿ <strong>Accessibilità:</strong> l'attributo <code class="inline">alt</code> viene letto dai software per non vedenti e mostrato se l'immagine non carica. Mettilo sempre!</div>
+      </article>
+
+      <!-- 10 -->
+      <article class="lesson" id="liste">
+        <h2>10. Le liste</h2>
+        <p>Ci sono liste <strong>non ordinate</strong> (puntini) con <code class="inline">&lt;ul&gt;</code> e liste <strong>ordinate</strong> (numeri) con <code class="inline">&lt;ol&gt;</code>. Ogni voce è un <code class="inline">&lt;li&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><h3>La spesa</h3>
+<ul>
+  <li>Pane</li>
+  <li>Latte</li>
+  <li>Mele</li>
+</ul>
+
+<h3>Le istruzioni</h3>
+<ol>
+  <li>Apri l'editor</li>
+  <li>Scrivi il codice</li>
+  <li>Guarda il risultato</li>
+</ol></script>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="lesson" id="tabelle">
+        <h2>11. Le tabelle</h2>
+        <p>Le tabelle si costruiscono con <code class="inline">&lt;table&gt;</code>. Ogni riga è <code class="inline">&lt;tr&gt;</code>, le intestazioni sono <code class="inline">&lt;th&gt;</code> e le celle <code class="inline">&lt;td&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><table border="1" cellpadding="6">
+  <tr>
+    <th>Nome</th>
+    <th>Voto</th>
+  </tr>
+  <tr>
+    <td>Marco</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>Giulia</td>
+    <td>9</td>
+  </tr>
+</table></script>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="lesson" id="div">
+        <h2>12. Div e contenitori</h2>
+        <p>Il <code class="inline">&lt;div&gt;</code> è un contenitore generico: serve a raggruppare elementi, soprattutto per dargli uno stile con il CSS. Da solo non si vede.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><div style="background:#eef2ff; padding:20px; border-radius:10px">
+  <h2>Sono dentro un riquadro</h2>
+  <p>Il div mi raggruppa e mi dà uno sfondo colorato.</p>
+</div></script>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="lesson" id="form">
+        <h2>13. I moduli (form)</h2>
+        <p>I <strong>form</strong> servono a raccogliere dati dall'utente: caselle di testo, pulsanti, menu a tendina. Si usa <code class="inline">&lt;form&gt;</code> e dentro vari <code class="inline">&lt;input&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><form>
+  <label>Nome:</label><br>
+  <input type="text" placeholder="Scrivi qui"><br><br>
+  <label>Email:</label><br>
+  <input type="email" placeholder="nome@email.it"><br><br>
+  <button type="button">Invia</button>
+</form></script>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="lesson" id="commenti">
+        <h2>14. I commenti</h2>
+        <p>I commenti sono note nel codice che il browser ignora. Servono a spiegare cosa fa una parte di codice. Si scrivono tra <code class="inline">&lt;!--</code> e <code class="inline">--&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><!-- Questo è un commento: non si vede nella pagina -->
+<p>Questo invece si vede.</p></script>
+        </div>
+      </article>
+
+      <!-- 15 -->
+      <article class="lesson" id="stile">
+        <h2>15. Un po' di stile con il CSS</h2>
+        <p>Con l'attributo <code class="inline">style</code> puoi dare colore e dimensioni agli elementi. È un primo assaggio di CSS.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"></pre>
+          <script type="text/plain" class="code"><h1 style="color: indigo">Titolo colorato</h1>
+<p style="color: gray; font-size: 20px">
+  Un paragrafo grigio e un po' più grande.
+</p>
+<p style="background: gold; padding: 10px">
+  Un paragrafo con sfondo dorato.
+</p></script>
+        </div>
+        <div class="tip-box">⭐ Quando sarai pronto, il CSS si scrive in modo più ordinato in un file separato — ma lo vedremo nel corso CSS!</div>
+      </article>
+
+      <!-- 16 -->
+      <article class="lesson" id="fine">
+        <h2>16. Complimenti! E ora?</h2>
+        <p>Hai visto i mattoni fondamentali dell'HTML. Il modo migliore per imparare è <strong>fare pratica</strong>: apri un esempio, modificalo, sbaglia, riprova.</p>
+        <p>Vuoi mettere alla prova quello che hai imparato o avere una mano su un argomento difficile?</p>
+        <div class="hero-actions">
+          <a href="esercizi.html" class="btn btn-primary">📝 Vai agli esercizi</a>
+          <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<!-- EDITOR MODALE -->
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <textarea id="ed-code" spellcheck="false"></textarea>
+      <div class="preview-wrap">
+        <div class="preview-label">Risultato</div>
+        <iframe id="ed-preview" title="Anteprima del codice"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Editor "Provalo tu"
+  (function(){
+    var overlay = document.getElementById('editor');
+    var codeArea = document.getElementById('ed-code');
+    var preview = document.getElementById('ed-preview');
+
+    function run(){ preview.srcdoc = codeArea.value; }
+    function openEditor(code){
+      codeArea.value = code;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      run();
+    }
+    function closeEditor(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('ed-run').addEventListener('click', run);
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    codeArea.addEventListener('input', run);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) closeEditor(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
+
+    // Riempie ogni esempio: mostra il codice e collega il pulsante
+    document.querySelectorAll('.example').forEach(function(ex){
+      var raw = ex.querySelector('.code').textContent.replace(/^\n/, '').replace(/\s+$/, '');
+      ex.querySelector('.codeview').textContent = raw;
+      ex.querySelector('.btn-try').addEventListener('click', function(){ openEditor(raw); });
+    });
+  })();
+</script>
+</body>
+</html>
