@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è la crittografia e a cosa serve (spiegata semplice) — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è la crittografia: chiave simmetrica e asimmetrica, cifratura e password sicure. Guida semplice alla sicurezza informatica per studenti.">
+  <meta name="keywords" content="crittografia, cifratura, chiave simmetrica asimmetrica, sicurezza informatica scuola, password sicure">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Sicurezza · 6 min di lettura</span>
+    <h1>Cos'è la crittografia e a cosa serve</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Ogni volta che invii un messaggio su WhatsApp o fai un acquisto online, la <strong>crittografia</strong> protegge i tuoi dati senza che tu te ne accorga. È una delle tecnologie più importanti e affascinanti dell'informatica moderna. In questa guida la spieghiamo in modo semplice, con esempi che chiariscono come fa a tenere al sicuro le nostre informazioni.</p>
+
+    <h2>Cos'è la crittografia?</h2>
+    <p>La crittografia è la scienza che permette di <strong>trasformare un messaggio leggibile in uno illeggibile</strong>, in modo che solo chi è autorizzato possa decifrarlo. Il messaggio originale si chiama "testo in chiaro", quello trasformato "testo cifrato". L'idea è antichissima: già Giulio Cesare usava un cifrario per proteggere i suoi messaggi militari.</p>
+
+    <h2>Il cifrario di Cesare</h2>
+    <p>Il cifrario di Cesare è l'esempio più semplice e si studia sempre a scuola. Consiste nello spostare ogni lettera di un numero fisso di posizioni nell'alfabeto. Con uno spostamento di 3:</p>
+    <pre><code>Testo in chiaro:  C I A O
+Testo cifrato:    F L D R</code></pre>
+    <p>Per decifrare basta tornare indietro di 3 posizioni. Il numero di spostamento (in questo caso 3) è la <strong>chiave</strong>: senza conoscerla, il messaggio resta incomprensibile. Ovviamente oggi questo metodo è troppo debole, ma rende perfettamente l'idea.</p>
+
+    <h2>La chiave: il cuore della crittografia</h2>
+    <p>In crittografia, la <strong>chiave</strong> è l'informazione segreta che permette di cifrare e decifrare. La sicurezza non dipende dal tenere segreto il metodo (che spesso è pubblico e noto a tutti), ma dal tenere segreta la chiave. Più la chiave è lunga e complessa, più è difficile da indovinare.</p>
+
+    <h2>Crittografia simmetrica</h2>
+    <p>Nella <strong>crittografia simmetrica</strong> si usa la <em>stessa chiave</em> per cifrare e decifrare. È veloce ed efficiente, ma ha un problema: come faccio a far avere la chiave al destinatario in modo sicuro? Se la invio su internet, qualcuno potrebbe intercettarla. È come spedire un lucchetto chiuso insieme alla sua chiave: poco sicuro.</p>
+
+    <h2>Crittografia asimmetrica</h2>
+    <p>La soluzione geniale è la <strong>crittografia asimmetrica</strong>, che usa <em>due chiavi diverse</em> ma collegate tra loro:</p>
+    <ul>
+      <li>una <strong>chiave pubblica</strong>, che puoi dare a chiunque e serve per cifrare;</li>
+      <li>una <strong>chiave privata</strong>, che tieni segreta e serve per decifrare.</li>
+    </ul>
+    <p>Funziona come una cassetta delle lettere: tutti possono imbucare un messaggio (chiave pubblica), ma solo tu, con la tua chiave privata, puoi aprire la cassetta e leggerlo. Questo sistema è alla base della sicurezza di internet, dal protocollo HTTPS alle firme digitali.</p>
+
+    <h2>A cosa serve nella vita di tutti i giorni</h2>
+    <ul>
+      <li><strong>Messaggistica</strong>: app come WhatsApp usano la crittografia "end-to-end", così solo mittente e destinatario leggono i messaggi;</li>
+      <li><strong>Acquisti online</strong>: il lucchetto nella barra del browser (HTTPS) indica che i dati della carta viaggiano cifrati;</li>
+      <li><strong>Password</strong>: i siti seri non salvano le password in chiaro, ma una loro versione "hashata" e irreversibile.</li>
+    </ul>
+
+    <h2>Bonus: come creare una password sicura</h2>
+    <p>La crittografia migliore è inutile se la tua password è "1234". Alcuni consigli pratici: usa almeno 12 caratteri, mescola lettere maiuscole, minuscole, numeri e simboli, evita parole comuni e date di nascita, e non usare la stessa password ovunque. Una buona idea è usare una "passphrase", cioè una frase facile da ricordare ma lunga.</p>
+
+    <h2>In sintesi</h2>
+    <p>La crittografia trasforma i messaggi in modo che solo chi ha la chiave giusta possa leggerli. Esistono due famiglie: simmetrica (una sola chiave) e asimmetrica (chiave pubblica e privata). È la tecnologia invisibile che rende sicuro il mondo digitale in cui viviamo ogni giorno.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Approfondisci la sicurezza informatica</h2>
+      <p>Vuoi capire meglio crittografia e reti? Possiamo affrontarle insieme in una ripetizione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

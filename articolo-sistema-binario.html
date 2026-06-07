@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il sistema binario spiegato semplice (con conversioni) — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è il sistema binario, perché i computer lo usano e come convertire da binario a decimale e viceversa. Guida con esempi per studenti di informatica.">
+  <meta name="keywords" content="sistema binario, conversione binario decimale, bit e byte, numerazione binaria, informatica scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Fondamenti · 6 min di lettura</span>
+    <h1>Il sistema binario spiegato semplice</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Tutto ciò che un computer fa — testi, immagini, video, musica — alla fine è fatto di <strong>zeri e uno</strong>. Questo è il <strong>sistema binario</strong>, il linguaggio nativo delle macchine. Capirlo è uno dei primi passi dell'informatica e, una volta afferrato il trucco, è più semplice di quanto sembri. Vediamolo insieme.</p>
+
+    <h2>Perché i computer usano il binario?</h2>
+    <p>Un computer è fatto di miliardi di minuscoli interruttori elettronici (i transistor), che possono avere solo due stati: acceso o spento. È naturale rappresentarli con due cifre: <strong>1</strong> (acceso) e <strong>0</strong> (spento). Per questo i computer "pensano" in binario: è il modo più semplice e affidabile di gestire l'elettricità.</p>
+
+    <h2>Decimale vs binario</h2>
+    <p>Noi usiamo il sistema <strong>decimale</strong>, che ha 10 cifre (da 0 a 9). Si chiama "base 10". Il sistema binario invece ha solo 2 cifre (0 e 1) e si chiama "base 2". La differenza sta in quante cifre abbiamo a disposizione prima di dover "riportare".</p>
+
+    <h2>Il valore posizionale</h2>
+    <p>Il segreto per capire il binario è il <strong>valore posizionale</strong>. Nel sistema decimale, ogni posizione vale dieci volte la precedente (unità, decine, centinaia...). Nel binario, ogni posizione vale <em>il doppio</em> della precedente: 1, 2, 4, 8, 16, 32, 64, 128...</p>
+    <pre><code>Posizioni:  128  64  32  16   8   4   2   1
+Potenze:    2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0</code></pre>
+
+    <h2>Da binario a decimale</h2>
+    <p>Per convertire un numero binario in decimale, basta sommare i valori delle posizioni dove c'è un 1. Convertiamo <code>1011</code>:</p>
+    <pre><code>1    0    1    1
+8    4    2    1
+8  + 0  + 2  + 1  = 11</code></pre>
+    <p>Quindi <code>1011</code> in binario è <strong>11</strong> in decimale. Semplice: identifica le posizioni con 1 e somma i loro valori.</p>
+
+    <h2>Da decimale a binario</h2>
+    <p>Per fare il percorso inverso si usa il metodo delle <strong>divisioni successive per 2</strong>, leggendo i resti dal basso verso l'alto. Convertiamo il numero 13:</p>
+    <pre><code>13 : 2 = 6  resto 1
+ 6 : 2 = 3  resto 0
+ 3 : 2 = 1  resto 1
+ 1 : 2 = 0  resto 1
+
+Leggendo i resti dal basso: 1101</code></pre>
+    <p>Quindi 13 in decimale diventa <code>1101</code> in binario. Con un po' di pratica questa procedura diventa automatica.</p>
+
+    <h2>Bit e byte</h2>
+    <p>Ogni cifra binaria (0 o 1) si chiama <strong>bit</strong>, dall'inglese "binary digit". Otto bit insieme formano un <strong>byte</strong>, che è l'unità base con cui si misura la memoria. Con un byte (8 bit) si possono rappresentare 256 valori diversi, da 0 a 255 — ecco perché questo numero ritorna spesso, ad esempio negli indirizzi IP!</p>
+    <p>Da qui derivano le unità che conosci: kilobyte, megabyte, gigabyte. Tutto parte dal semplice bit.</p>
+
+    <h2>Come si rappresentano testi e immagini</h2>
+    <p>Ti starai chiedendo: se i computer usano solo 0 e 1, come fanno a mostrare lettere e foto? La risposta è che tutto viene <strong>codificato</strong> in numeri. Le lettere, ad esempio, seguono la tabella ASCII (la "A" è il numero 65). Le immagini sono griglie di pixel, ognuno con un valore numerico per il colore. In definitiva, ogni informazione diventa una sequenza di bit.</p>
+
+    <h2>In sintesi</h2>
+    <p>Il sistema binario usa solo 0 e 1 perché rispecchia gli interruttori elettronici del computer. Ogni posizione vale il doppio della precedente, e con questo principio puoi convertire avanti e indietro tra binario e decimale. Capire i bit e i byte ti darà una base solida per tutto il resto dell'informatica.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Esercitati con le conversioni</h2>
+      <p>Vuoi allenarti a convertire numeri binari e decimali? Possiamo farlo insieme in una lezione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
