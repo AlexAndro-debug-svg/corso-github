@@ -96,6 +96,14 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .nav-menu a.btn { color: #1a1a1a; }
 .nav-menu a.active:not(.btn) { color: var(--primary); }
 
+/* ---------- Barra corsi (secondo menu) ---------- */
+.course-nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 999; }
+.course-nav-inner { display: flex; align-items: center; gap: .3rem; height: 46px; overflow-x: auto; }
+.course-nav .cn-label { font-size: .72rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); margin-right: .6rem; }
+.course-nav a { font-size: .85rem; font-weight: 700; letter-spacing: .5px; color: var(--ink); padding: .45rem .9rem; border-radius: 7px; transition: var(--transition); white-space: nowrap; }
+.course-nav a:hover { background: var(--bg-soft); color: var(--primary); }
+.course-nav a.active { color: var(--primary); background: var(--primary-light); }
+
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: .4rem; }
 .nav-toggle span { width: 26px; height: 3px; background: var(--ink); border-radius: 3px; transition: var(--transition); }
 
