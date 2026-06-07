@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso CSS in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Impara a dare stile alle tue pagine: colori, testi, layout e animazioni. Ogni esempio si prova subito con “Provalo tu”.">
+  <title>Corso CSS completo in italiano: guida da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso CSS completo e gratuito in italiano: sintassi, selettori, box model, colori, testo, Flexbox, posizionamento, pseudo-classi, media query, unità, specificità e layout. Tutti gli argomenti spiegati in modo approfondito con esempi ed editor Provalo tu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -116,8 +116,8 @@
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
-    <h1>Corso di CSS in italiano</h1>
-    <p class="lead" style="margin-inline:auto">Impara a dare stile alle tue pagine: colori, testi, layout e animazioni. Ogni esempio si prova subito con “Provalo tu”.</p>
+    <h1>Corso di CSS completo in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara il CSS da zero con la guida più completa in italiano: <strong>tutti gli argomenti</strong> dai selettori al box model, da Flexbox al posizionamento, fino a pseudo-classi, unità, specificità e layout responsive. Ogni capitolo ha esempi col codice colorato e l'editor “Provalo tu”.</p>
   </div>
 </section>
 
@@ -125,181 +125,831 @@
   <div class="container course-wrap">
     <aside class="course-side">
       <h4>Corso CSS</h4>
-      <a href="#intro">Introduzione</a>
-      <a href="#sintassi">Sintassi</a>
-      <a href="#selettori">Selettori</a>
-      <a href="#colori">Colori e sfondi</a>
-      <a href="#testo">Testo</a>
-      <a href="#box">Box model</a>
-      <a href="#display">Display</a>
-      <a href="#flexbox">Flexbox</a>
-      <a href="#colori-bordi">Bordi e angoli</a>
-      <a href="#hover">Hover e transizioni</a>
-      <a href="#responsive">Responsive</a>
-      <a href="#fine">E ora?</a>
+      <a href="#home">CSS HOME</a>
+      <a href="#introduzione">CSS Introduction</a>
+      <a href="#sintassi">CSS Syntax</a>
+      <a href="#selettori">CSS Selectors</a>
+      <a href="#howto">CSS How To</a>
+      <a href="#commenti">CSS Comments</a>
+      <a href="#errori">CSS Errors</a>
+      <a href="#colori">CSS Colors</a>
+      <a href="#backgrounds">CSS Backgrounds</a>
+      <a href="#borders">CSS Borders</a>
+      <a href="#margins">CSS Margins</a>
+      <a href="#padding">CSS Padding</a>
+      <a href="#height-width">CSS Height / Width</a>
+      <a href="#box-model">CSS Box Model</a>
+      <a href="#outline">CSS Outline</a>
+      <a href="#text">CSS Text</a>
+      <a href="#fonts">CSS Fonts</a>
+      <a href="#icons">CSS Icons</a>
+      <a href="#links">CSS Links</a>
+      <a href="#lists">CSS Lists</a>
+      <a href="#tables">CSS Tables</a>
+      <a href="#display">CSS Display</a>
+      <a href="#max-width">CSS Max-width</a>
+      <a href="#position">CSS Position</a>
+      <a href="#position-offsets">CSS Position Offsets</a>
+      <a href="#zindex">CSS Z-index</a>
+      <a href="#overflow">CSS Overflow</a>
+      <a href="#float">CSS Float</a>
+      <a href="#inline-block">CSS Inline-block</a>
+      <a href="#align">CSS Align</a>
+      <a href="#combinators">CSS Combinators</a>
+      <a href="#pseudo-classes">CSS Pseudo-classes</a>
+      <a href="#pseudo-elements">CSS Pseudo-elements</a>
+      <a href="#opacity">CSS Opacity</a>
+      <a href="#navbar">CSS Navigation Bars</a>
+      <a href="#dropdowns">CSS Dropdowns</a>
+      <a href="#gallery">CSS Image Gallery</a>
+      <a href="#sprites">CSS Image Sprites</a>
+      <a href="#attr-selectors">CSS Attribute Selectors</a>
+      <a href="#forms">CSS Forms</a>
+      <a href="#counters">CSS Counters</a>
+      <a href="#units">CSS Units</a>
+      <a href="#inheritance">CSS Inheritance</a>
+      <a href="#specificity">CSS Specificity</a>
+      <a href="#important">CSS !important</a>
+      <a href="#math">CSS Math Functions</a>
+      <a href="#optimization">CSS Optimization</a>
+      <a href="#accessibility">CSS Accessibility</a>
+      <a href="#layout">CSS Website Layout</a>
     </aside>
     <main>
-      <article class="lesson" id="intro">
-        <h2>Introduzione al CSS</h2>
-        <p><strong>CSS</strong> (Cascading Style Sheets) serve a dare l'aspetto alle pagine HTML: colori, font, dimensioni, posizioni. L'HTML è la struttura, il CSS è il vestito.</p>
+      <article class="lesson" id="home">
+        <h2>Corso di CSS completo in italiano</h2>
+        <p>Benvenuto nel <strong>corso di CSS</strong> più completo in italiano. CSS (<em>Cascading Style Sheets</em>, fogli di stile a cascata) è il linguaggio che definisce l'aspetto delle pagine web: colori, font, spaziature, posizionamento, animazioni e layout responsive.</p><p>In questo corso trovi <strong>tutti gli argomenti del CSS</strong> spiegati passo passo, dalle basi fino alle tecniche avanzate come Flexbox, le pseudo-classi e le funzioni matematiche. Ogni capitolo ha esempi reali col codice colorato e un editor <strong>“Provalo tu”</strong> per scrivere e vedere subito il risultato nel browser.</p><div class='note-box'>💡 <strong>HTML, CSS e JavaScript:</strong> l'HTML è la struttura, il CSS è l'aspetto e JavaScript è il comportamento. Padroneggiare il CSS è indispensabile per chiunque voglia creare siti web professionali.</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><!DOCTYPE html>
-        <html><head><style>
-          body { font-family: sans-serif; }
-          h1 { color: indigo; }
-        </style></head>
-        <body>
-          <h1>Ciao CSS!</h1>
-          <p>Questa pagina ha uno stile.</p>
-        </body></html></script>
+<html><head><style>
+  body { font-family: sans-serif; background: #f8fafc; }
+  h1 { color: #4f46e5; }
+  .box { background: #0d9488; color: white; padding: 20px; border-radius: 10px; }
+</style></head>
+<body>
+  <h1>Ciao CSS!</h1>
+  <div class="box">Il mio primo stile.</div>
+</body></html></script>
         </div>
+      </article>
+
+      <article class="lesson" id="introduzione">
+        <h2>Introduzione al CSS</h2>
+        <p>Il CSS nasce nel 1996 per separare il <strong>contenuto</strong> (HTML) dalla <strong>presentazione</strong> (stile). Prima del CSS, l'aspetto veniva definito direttamente nell'HTML, rendendo le pagine difficili da mantenere.</p><p>Con il CSS puoi controllare <strong>colori, dimensioni, font, spaziature, posizioni e animazioni</strong> di tutti gli elementi, e modificare l'intero sito cambiando un solo file. È uno standard del W3C supportato da tutti i browser.</p><ul><li><strong>Manutenzione facile:</strong> un foglio di stile per tutto il sito.</li><li><strong>Pagine più leggere e veloci.</strong></li><li><strong>Design responsive:</strong> stili diversi per telefono, tablet e desktop.</li></ul>
       </article>
 
       <article class="lesson" id="sintassi">
         <h2>La sintassi del CSS</h2>
-        <p>Una regola CSS ha un <strong>selettore</strong> e un blocco di <strong>dichiarazioni</strong> <code class='inline'>proprietà: valore;</code>.</p>
+        <p>Una regola CSS è composta da un <strong>selettore</strong> e da un blocco di <strong>dichiarazioni</strong> racchiuse tra parentesi graffe. Ogni dichiarazione è una coppia <code class='inline'>proprietà: valore;</code> e termina con il punto e virgola.</p><p>Esempio: <code class='inline'>h1 { color: blue; font-size: 32px; }</code> applica a tutti gli <code class='inline'>&lt;h1&gt;</code> il colore blu e la dimensione 32px.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          p {
-            color: teal;
-            font-size: 20px;
-          }
-        </style>
-        <p>Testo verde acqua e grande.</p></script>
+  p {
+    color: teal;
+    font-size: 20px;
+    text-align: center;
+  }
+</style>
+<p>Paragrafo con selettore, proprietà e valori.</p></script>
         </div>
       </article>
 
       <article class="lesson" id="selettori">
-        <h2>I selettori</h2>
-        <p>Puoi selezionare per <strong>elemento</strong> (<code class='inline'>p</code>), per <strong>classe</strong> (<code class='inline'>.nome</code>) o per <strong>id</strong> (<code class='inline'>#nome</code>).</p>
+        <h2>I selettori CSS</h2>
+        <p>I <strong>selettori</strong> indicano <em>a quali elementi</em> applicare lo stile. I principali:</p><ul><li><strong>Selettore di elemento:</strong> <code class='inline'>p</code> (tutti i paragrafi)</li><li><strong>Selettore di classe:</strong> <code class='inline'>.nome</code> (elementi con <code class='inline'>class="nome"</code>)</li><li><strong>Selettore di id:</strong> <code class='inline'>#nome</code> (l'unico elemento con quell'id)</li><li><strong>Selettore universale:</strong> <code class='inline'>*</code> (tutti gli elementi)</li><li><strong>Selettore di gruppo:</strong> <code class='inline'>h1, h2, p</code> (più selettori insieme)</li></ul>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .rosso { color: red; }
-          #grande { font-size: 28px; }
-        </style>
-        <p class="rosso">Sono rosso</p>
-        <p id="grande">Sono grande</p></script>
+  * { font-family: sans-serif; }
+  .rosso { color: red; }
+  #titolo { font-size: 28px; }
+  h2, p { margin: 6px; }
+</style>
+<h2 id="titolo">Titolo</h2>
+<p class="rosso">Paragrafo rosso</p></script>
         </div>
+      </article>
+
+      <article class="lesson" id="howto">
+        <h2>Come inserire il CSS</h2>
+        <p>Esistono tre modi per applicare il CSS a una pagina:</p><ul><li><strong>CSS inline:</strong> con l'attributo <code class='inline'>style</code> nel singolo tag (da usare poco).</li><li><strong>CSS interno:</strong> dentro <code class='inline'>&lt;style&gt;</code> nell'<code class='inline'>&lt;head&gt;</code>, vale per quella pagina.</li><li><strong>CSS esterno:</strong> in un file <code class='inline'>.css</code> collegato con <code class='inline'>&lt;link&gt;</code> — è il metodo migliore, perché vale per tutto il sito.</li></ul><p>Se più stili sono in conflitto vince quello più specifico e, a parità, l'ultimo dichiarato (la “cascata”).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html><head>
+  <style> p { color: green; } </style>
+</head><body>
+  <p style="color: red;">Inline vince sull'interno</p>
+  <p>Questo usa il CSS interno (verde)</p>
+</body></html></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>I commenti CSS</h2>
+        <p>I commenti spiegano il codice e vengono ignorati dal browser. In CSS si scrivono tra <code class='inline'>/*</code> e <code class='inline'>*/</code> e possono occupare più righe. Sono utili per organizzare fogli di stile lunghi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  /* Stile del titolo principale */
+  h1 { color: indigo; }
+  /* questo blocco
+     occupa più righe */
+  p { font-size: 18px; }
+</style>
+<h1>Titolo</h1>
+<p>Paragrafo.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="errori">
+        <h2>Errori comuni nel CSS</h2>
+        <p>Conoscere gli errori più frequenti fa risparmiare ore di debug:</p><ul><li><strong>Punto e virgola mancante</strong> dopo una dichiarazione.</li><li><strong>Parentesi graffa non chiusa.</strong></li><li><strong>Nome di proprietà o valore errato</strong> (es. <code class='inline'>colour</code> invece di <code class='inline'>color</code>).</li><li><strong>Unità di misura dimenticata</strong> (es. <code class='inline'>width: 100</code> invece di <code class='inline'>100px</code>).</li><li><strong>Selettore sbagliato</strong> (punto per le classi, cancelletto per gli id).</li></ul><div class='tip-box'>⭐ Usa gli strumenti per sviluppatori del browser (tasto F12) per individuare le regole CSS non applicate.</div>
       </article>
 
       <article class="lesson" id="colori">
-        <h2>Colori e sfondi</h2>
-        <p>Con <code class='inline'>color</code> imposti il colore del testo e con <code class='inline'>background</code> lo sfondo.</p>
+        <h2>I colori in CSS</h2>
+        <p>I colori si indicano in diversi formati: per <strong>nome</strong> (<code class='inline'>red</code>), in <strong>esadecimale</strong> (<code class='inline'>#ff0000</code>), in <strong>RGB</strong> (<code class='inline'>rgb(255,0,0)</code>), in <strong>RGBA</strong> con trasparenza, o in <strong>HSL</strong> (tonalità, saturazione, luminosità).</p><p>Si applicano con <code class='inline'>color</code> (testo) e <code class='inline'>background-color</code> (sfondo).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .box { background: #4f46e5; color: white; padding: 20px; }
-        </style>
-        <div class="box">Sfondo indaco, testo bianco</div></script>
+  .a { color: tomato; }
+  .b { color: #4f46e5; }
+  .c { background: rgb(13,148,136); color: white; }
+  .d { background: rgba(245,158,11,.4); }
+  .e { background: hsl(280, 60%, 50%); color: white; }
+</style>
+<p class="a">Nome</p><p class="b">Esadecimale</p>
+<p class="c">RGB</p><p class="d">RGBA</p><p class="e">HSL</p></script>
         </div>
       </article>
 
-      <article class="lesson" id="testo">
-        <h2>Formattare il testo</h2>
-        <p>Proprietà utili: <code class='inline'>font-size</code>, <code class='inline'>font-weight</code>, <code class='inline'>text-align</code>, <code class='inline'>line-height</code>.</p>
+      <article class="lesson" id="backgrounds">
+        <h2>Gli sfondi (background)</h2>
+        <p>Le proprietà dello sfondo: <code class='inline'>background-color</code> (colore), <code class='inline'>background-image</code> (immagine), <code class='inline'>background-repeat</code> (ripetizione), <code class='inline'>background-position</code> (posizione), <code class='inline'>background-size</code> (dimensione, es. <code class='inline'>cover</code>). Si possono riassumere nella scorciatoia <code class='inline'>background</code>.</p><p>Si possono usare anche <strong>gradienti</strong> con <code class='inline'>linear-gradient()</code> o <code class='inline'>radial-gradient()</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          p { font-size: 18px; font-weight: bold; text-align: center; }
-        </style>
-        <p>Testo in grassetto e centrato.</p></script>
+  .grad {
+    height: 120px; color: white; padding: 20px;
+    background: linear-gradient(135deg, #4f46e5, #0d9488);
+    border-radius: 12px;
+  }
+</style>
+<div class="grad">Sfondo con gradiente</div></script>
         </div>
       </article>
 
-      <article class="lesson" id="box">
+      <article class="lesson" id="borders">
+        <h2>I bordi (border)</h2>
+        <p>Il bordo si definisce con <code class='inline'>border</code> indicando spessore, stile e colore: <code class='inline'>border: 2px solid #333;</code>. Stili comuni: <code class='inline'>solid</code>, <code class='inline'>dashed</code>, <code class='inline'>dotted</code>. Con <code class='inline'>border-radius</code> si arrotondano gli angoli; con valori alti si ottengono cerchi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { border: 3px solid #4f46e5; padding: 16px; border-radius: 12px; margin-bottom:10px; }
+  .cerchio { width: 80px; height: 80px; background: #0d9488; border-radius: 50%; }
+</style>
+<div class="box">Bordo arrotondato</div>
+<div class="cerchio"></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="margins">
+        <h2>I margini (margin)</h2>
+        <p>Il <strong>margine</strong> è lo spazio <em>esterno</em> all'elemento, che lo distanzia dagli altri. Si imposta con <code class='inline'>margin</code> (tutti i lati) o per singolo lato (<code class='inline'>margin-top</code>, <code class='inline'>-right</code>, <code class='inline'>-bottom</code>, <code class='inline'>-left</code>). Con <code class='inline'>margin: 0 auto;</code> si centra orizzontalmente un blocco di larghezza definita.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .a { background: #eef2ff; margin: 30px; padding: 10px; }
+  .centro { width: 200px; background: gold; margin: 0 auto; text-align:center; }
+</style>
+<div class="a">Margine su tutti i lati</div>
+<div class="centro">Centrato con margin auto</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="padding">
+        <h2>Il padding</h2>
+        <p>Il <strong>padding</strong> è lo spazio <em>interno</em> tra il bordo e il contenuto. Si imposta come il margine: <code class='inline'>padding: 20px;</code> o per singolo lato. Più padding rende un elemento più “arioso” e leggibile.</p><div class='note-box'>💡 <strong>Margin vs Padding:</strong> il margin spinge <em>fuori</em> (verso gli altri), il padding spinge <em>dentro</em> (allarga la scatola attorno al contenuto).</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .poco { background: #0d9488; color:white; padding: 5px; margin-bottom:8px; }
+  .tanto { background: #4f46e5; color:white; padding: 30px; }
+</style>
+<div class="poco">Padding piccolo</div>
+<div class="tanto">Padding grande</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="height-width">
+        <h2>Altezza e larghezza</h2>
+        <p>Le proprietà <code class='inline'>width</code> e <code class='inline'>height</code> impostano dimensioni. Si possono usare pixel (<code class='inline'>px</code>), percentuali (<code class='inline'>%</code>) o unità relative alla finestra (<code class='inline'>vw</code>, <code class='inline'>vh</code>). Con <code class='inline'>min-width</code>/<code class='inline'>max-width</code> e <code class='inline'>min-height</code>/<code class='inline'>max-height</code> si impostano limiti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .fissa { width: 200px; height: 60px; background: #4f46e5; color:white; }
+  .perc  { width: 50%; height: 60px; background: #0d9488; color:white; margin-top:8px; }
+</style>
+<div class="fissa">200 x 60 px</div>
+<div class="perc">Larghezza 50%</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="box-model">
         <h2>Il box model</h2>
-        <p>Ogni elemento è una scatola con <strong>content</strong>, <strong>padding</strong> (spazio interno), <strong>border</strong> (bordo) e <strong>margin</strong> (spazio esterno).</p>
+        <p>Ogni elemento HTML è una <strong>scatola</strong> formata da quattro strati, dall'interno verso l'esterno: <strong>content</strong> (contenuto), <strong>padding</strong> (spazio interno), <strong>border</strong> (bordo) e <strong>margin</strong> (spazio esterno). Capire il box model è fondamentale per controllare gli spazi.</p><p>Con <code class='inline'>box-sizing: border-box;</code> la larghezza include padding e bordo, rendendo i calcoli più semplici (è una pratica molto diffusa).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .card { padding: 20px; border: 2px solid #4f46e5; margin: 15px; border-radius: 10px; }
-        </style>
-        <div class="card">Una scatola con padding, bordo e margine.</div></script>
+  .box {
+    box-sizing: border-box;
+    width: 250px; padding: 20px;
+    border: 4px solid #4f46e5; margin: 15px;
+    background: #eef2ff;
+  }
+</style>
+<div class="box">Content + padding + border + margin</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="outline">
+        <h2>Il contorno (outline)</h2>
+        <p>L'<code class='inline'>outline</code> è una linea tracciata <em>fuori</em> dal bordo, che <strong>non occupa spazio</strong> e non sposta gli altri elementi. È molto usato per evidenziare l'elemento attivo (focus), importante per l'accessibilità da tastiera.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  input { padding: 8px; }
+  input:focus { outline: 3px solid #f59e0b; }
+</style>
+<input placeholder="Cliccami: appare l'outline"></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="text">
+        <h2>Formattare il testo</h2>
+        <p>Proprietà principali del testo: <code class='inline'>color</code>, <code class='inline'>text-align</code> (allineamento), <code class='inline'>text-decoration</code> (sottolineatura), <code class='inline'>text-transform</code> (maiuscole/minuscole), <code class='inline'>line-height</code> (interlinea), <code class='inline'>letter-spacing</code> (spaziatura tra lettere), <code class='inline'>text-indent</code> (rientro).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  h2 { text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+  p  { line-height: 1.8; text-align: justify; }
+  a  { text-decoration: none; color: #4f46e5; }
+</style>
+<h2>titolo maiuscolo</h2>
+<p>Testo giustificato con interlinea ampia per migliorare la leggibilità del paragrafo.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="fonts">
+        <h2>I font</h2>
+        <p>Con <code class='inline'>font-family</code> scegli il carattere (sempre con alternative di riserva), con <code class='inline'>font-size</code> la dimensione, con <code class='inline'>font-weight</code> lo spessore (es. <code class='inline'>bold</code>), con <code class='inline'>font-style</code> il corsivo. Puoi importare font esterni come Google Fonts.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .titolo { font-family: Georgia, serif; font-size: 30px; font-weight: bold; }
+  .corpo  { font-family: Arial, sans-serif; font-style: italic; }
+</style>
+<p class="titolo">Font con grazie</p>
+<p class="corpo">Font senza grazie, corsivo</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="icons">
+        <h2>Le icone</h2>
+        <p>Le icone si aggiungono con librerie come <strong>Font Awesome</strong> o <strong>Google Material Icons</strong> (richiamate via <code class='inline'>&lt;link&gt;</code>), oppure usando direttamente le <strong>emoji</strong> Unicode, che non richiedono librerie esterne e si stilizzano come testo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .icona { font-size: 40px; }
+</style>
+<span class="icona">📚</span>
+<span class="icona">🚀</span>
+<span class="icona" style="color:#f59e0b">⭐</span></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="links">
+        <h2>Lo stile dei link</h2>
+        <p>I link possono cambiare aspetto nei loro <strong>stati</strong>: <code class='inline'>:link</code> (non visitato), <code class='inline'>:visited</code> (visitato), <code class='inline'>:hover</code> (mouse sopra), <code class='inline'>:active</code> (mentre si clicca). Spesso si tolgono la sottolineatura con <code class='inline'>text-decoration: none</code> e si aggiunge un effetto al passaggio del mouse.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  a { color: #4f46e5; text-decoration: none; font-weight: bold; }
+  a:hover { color: #f59e0b; text-decoration: underline; }
+</style>
+<a href="#">Passaci sopra con il mouse</a></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="lists">
+        <h2>Le liste</h2>
+        <p>Con il CSS controlli l'aspetto delle liste: <code class='inline'>list-style-type</code> cambia il segno (disco, cerchio, quadrato, numeri), <code class='inline'>list-style: none</code> li rimuove (utile per i menu di navigazione), <code class='inline'>list-style-position</code> ne imposta la posizione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  ul.menu { list-style: none; padding: 0; }
+  ul.menu li { background: #eef2ff; margin: 4px; padding: 8px; border-radius: 6px; }
+  ul.quadrati { list-style-type: square; }
+</style>
+<ul class="menu"><li>Home</li><li>Corsi</li><li>Contatti</li></ul>
+<ul class="quadrati"><li>Uno</li><li>Due</li></ul></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tables">
+        <h2>Le tabelle</h2>
+        <p>Le tabelle si rendono leggibili con <code class='inline'>border-collapse: collapse</code> (unisce i bordi), padding nelle celle, colori alternati per le righe (<code class='inline'>:nth-child(even)</code>) e uno sfondo per l'intestazione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+  th { background: #4f46e5; color: white; }
+  tr:nth-child(even) { background: #f8fafc; }
+</style>
+<table>
+  <tr><th>Nome</th><th>Voto</th></tr>
+  <tr><td>Marco</td><td>8</td></tr>
+  <tr><td>Giulia</td><td>9</td></tr>
+</table></script>
         </div>
       </article>
 
       <article class="lesson" id="display">
-        <h2>Display e visibilità</h2>
-        <p><code class='inline'>display</code> controlla come si comporta un elemento: <code class='inline'>block</code>, <code class='inline'>inline</code>, <code class='inline'>none</code> (nasconde).</p>
+        <h2>La proprietà display</h2>
+        <p><code class='inline'>display</code> determina come un elemento viene reso. Valori principali: <code class='inline'>block</code> (occupa tutta la riga), <code class='inline'>inline</code> (resta in riga), <code class='inline'>inline-block</code> (in riga ma con dimensioni), <code class='inline'>none</code> (nasconde l'elemento), <code class='inline'>flex</code> e <code class='inline'>grid</code> (per i layout).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          span.b { display: block; background: gold; }
-        </style>
-        <span class="b">Ora sono un blocco</span>
-        <span class="b">e vado a capo</span></script>
+  span.b { display: block; background: gold; margin: 4px; }
+  .nascosto { display: none; }
+</style>
+<span class="b">Ora sono un blocco</span>
+<span class="b">e vado a capo</span>
+<p class="nascosto">Non mi vedi</p>
+<p>Questo invece sì.</p></script>
         </div>
       </article>
 
-      <article class="lesson" id="flexbox">
-        <h2>Layout con Flexbox</h2>
-        <p><strong>Flexbox</strong> dispone gli elementi in riga o colonna in modo flessibile. Si attiva con <code class='inline'>display: flex</code>.</p>
+      <article class="lesson" id="max-width">
+        <h2>Max-width</h2>
+        <p><code class='inline'>max-width</code> imposta la larghezza <strong>massima</strong> di un elemento: può restringersi su schermi piccoli ma non supera il valore indicato. Combinato con <code class='inline'>margin: 0 auto</code> è il modo classico per creare un contenitore centrato e responsive.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .riga { display: flex; gap: 10px; }
-          .riga div { background: #0d9488; color: white; padding: 20px; flex: 1; }
-        </style>
-        <div class="riga"><div>1</div><div>2</div><div>3</div></div></script>
+  .container {
+    max-width: 400px; margin: 0 auto;
+    background: #0d9488; color: white; padding: 20px; text-align:center;
+  }
+</style>
+<div class="container">Largo al massimo 400px, centrato. Restringi la finestra!</div></script>
         </div>
       </article>
 
-      <article class="lesson" id="colori-bordi">
-        <h2>Bordi, angoli e ombre</h2>
-        <p>Con <code class='inline'>border-radius</code> arrotondi gli angoli e con <code class='inline'>box-shadow</code> aggiungi un'ombra.</p>
+      <article class="lesson" id="position">
+        <h2>Il posizionamento (position)</h2>
+        <p>La proprietà <code class='inline'>position</code> controlla come un elemento viene posizionato:</p><ul><li><code class='inline'>static</code>: predefinito, nel flusso normale.</li><li><code class='inline'>relative</code>: spostato rispetto alla sua posizione originale.</li><li><code class='inline'>absolute</code>: posizionato rispetto al primo antenato posizionato.</li><li><code class='inline'>fixed</code>: fisso rispetto alla finestra (resta visibile allo scroll).</li><li><code class='inline'>sticky</code>: si “incolla” quando raggiunge un bordo durante lo scroll.</li></ul>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .b { padding: 20px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.2); background:#fff; }
-        </style>
-        <div class="b">Angoli arrotondati e ombra.</div></script>
+  .rel { position: relative; height: 100px; background: #eef2ff; }
+  .abs { position: absolute; top: 20px; right: 20px;
+         background: #4f46e5; color: white; padding: 10px; }
+</style>
+<div class="rel">
+  Contenitore relative
+  <div class="abs">absolute in alto a destra</div>
+</div></script>
         </div>
       </article>
 
-      <article class="lesson" id="hover">
-        <h2>Hover e transizioni</h2>
-        <p>Con <code class='inline'>:hover</code> cambi lo stile al passaggio del mouse, e con <code class='inline'>transition</code> rendi il cambiamento fluido.</p>
+      <article class="lesson" id="position-offsets">
+        <h2>Gli offset di posizione</h2>
+        <p>Insieme a <code class='inline'>position</code> si usano le proprietà di offset <code class='inline'>top</code>, <code class='inline'>right</code>, <code class='inline'>bottom</code> e <code class='inline'>left</code> per spostare l'elemento dai rispettivi bordi. Con <code class='inline'>position: relative</code> spostano rispetto alla posizione originale; con <code class='inline'>absolute</code>/<code class='inline'>fixed</code> rispetto al riferimento.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          button { padding: 12px 24px; background: #4f46e5; color: white; border: none;
-                   border-radius: 8px; transition: background .3s; }
-          button:hover { background: #f59e0b; }
-        </style>
-        <button>Passaci sopra</button></script>
+  .a { position: relative; left: 40px; top: 10px;
+       background: gold; padding: 10px; width: 200px; }
+</style>
+<div class="a">Spostato di 40px a destra e 10px in basso</div></script>
         </div>
       </article>
 
-      <article class="lesson" id="responsive">
-        <h2>Design responsive</h2>
-        <p>Le <strong>media query</strong> applicano stili diversi in base alla larghezza dello schermo.</p>
+      <article class="lesson" id="zindex">
+        <h2>Z-index (sovrapposizione)</h2>
+        <p>Quando gli elementi si sovrappongono, <code class='inline'>z-index</code> decide quale sta davanti: valori più alti stanno sopra. Funziona solo su elementi posizionati (relative, absolute, fixed, sticky).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><style>
-          .box { background: teal; color: white; padding: 30px; }
-          @media (max-width: 600px) { .box { background: tomato; } }
-        </style>
-        <div class="box">Restringi la finestra: cambio colore!</div></script>
+  .box { position: absolute; width: 100px; height: 100px; color:white; padding:8px; }
+  .uno  { background: #4f46e5; z-index: 1; }
+  .due  { background: #f59e0b; left: 50px; top: 40px; z-index: 2; }
+</style>
+<div class="box uno">z-index 1</div>
+<div class="box due">z-index 2 (sopra)</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="overflow">
+        <h2>Overflow (contenuto in eccesso)</h2>
+        <p><code class='inline'>overflow</code> gestisce il contenuto che esce da un elemento di dimensioni fisse: <code class='inline'>visible</code> (predefinito, esce), <code class='inline'>hidden</code> (taglia), <code class='inline'>scroll</code> (sempre barre di scorrimento), <code class='inline'>auto</code> (barre solo se servono).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { width: 220px; height: 80px; border: 2px solid #4f46e5;
+         overflow: auto; padding: 8px; }
+</style>
+<div class="box">Testo molto lungo che supera l'altezza del riquadro e quindi genera una barra di scorrimento verticale automatica per leggere tutto il contenuto.</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="float">
+        <h2>Float (testo attorno)</h2>
+        <p><code class='inline'>float</code> fa “galleggiare” un elemento a sinistra o a destra, con il testo che gli scorre attorno (storicamente usato per i layout). Con <code class='inline'>clear</code> si impedisce ad altri elementi di affiancarsi.</p><div class='note-box'>💡 Per i layout moderni oggi si preferiscono <strong>Flexbox</strong> e <strong>Grid</strong>; il float resta utile per far scorrere il testo attorno a un'immagine.</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  img { float: left; margin-right: 12px; }
+</style>
+<img src="https://picsum.photos/80" alt="esempio">
+<p>Questo testo scorre attorno all'immagine che galleggia a sinistra grazie alla proprietà float. È la tecnica classica per affiancare immagine e testo.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="inline-block">
+        <h2>Inline-block</h2>
+        <p><code class='inline'>display: inline-block</code> unisce i vantaggi di inline (gli elementi stanno in riga) e block (si possono impostare larghezza, altezza, padding e margini). Utile per creare pulsanti o caselle affiancate.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .card { display: inline-block; width: 120px; height: 80px;
+          background: #0d9488; color: white; margin: 5px; padding: 10px;
+          border-radius: 8px; }
+</style>
+<div class="card">1</div>
+<div class="card">2</div>
+<div class="card">3</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="align">
+        <h2>Allineare gli elementi</h2>
+        <p>Per centrare: il testo con <code class='inline'>text-align: center</code>; un blocco con <code class='inline'>margin: 0 auto</code>; in verticale e orizzontale con <strong>Flexbox</strong> usando <code class='inline'>justify-content</code> e <code class='inline'>align-items</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .centro {
+    display: flex; justify-content: center; align-items: center;
+    height: 140px; background: #eef2ff;
+  }
+  .centro div { background: #4f46e5; color: white; padding: 16px; border-radius:8px; }
+</style>
+<div class="centro"><div>Perfettamente centrato</div></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="combinators">
+        <h2>I combinatori</h2>
+        <p>I <strong>combinatori</strong> selezionano elementi in base alla loro relazione:</p><ul><li><strong>Discendente</strong> <code class='inline'>div p</code>: tutti i <code class='inline'>p</code> dentro un <code class='inline'>div</code>.</li><li><strong>Figlio</strong> <code class='inline'>div &gt; p</code>: solo i figli diretti.</li><li><strong>Fratello adiacente</strong> <code class='inline'>h2 + p</code>: il <code class='inline'>p</code> subito dopo un <code class='inline'>h2</code>.</li><li><strong>Fratelli generici</strong> <code class='inline'>h2 ~ p</code>: tutti i <code class='inline'>p</code> fratelli successivi.</li></ul>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  div > p { color: #4f46e5; font-weight: bold; }
+  h2 + p { background: gold; }
+</style>
+<h2>Titolo</h2>
+<p>Sono subito dopo l'h2 (sfondo oro).</p>
+<div><p>Figlio diretto del div (blu).</p></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="pseudo-classes">
+        <h2>Le pseudo-classi</h2>
+        <p>Le <strong>pseudo-classi</strong> applicano stili in base allo stato o alla posizione di un elemento, usando i due punti: <code class='inline'>:hover</code> (mouse sopra), <code class='inline'>:focus</code> (in focus), <code class='inline'>:first-child</code>, <code class='inline'>:last-child</code>, <code class='inline'>:nth-child(n)</code> (ennesimo figlio), <code class='inline'>:checked</code> (per checkbox/radio).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  li:first-child { color: #4f46e5; font-weight: bold; }
+  li:nth-child(even) { background: #eef2ff; }
+  li:hover { color: #f59e0b; }
+</style>
+<ul><li>Uno</li><li>Due</li><li>Tre</li><li>Quattro</li></ul></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="pseudo-elements">
+        <h2>Gli pseudo-elementi</h2>
+        <p>Gli <strong>pseudo-elementi</strong> (con doppio due punti) stilizzano una parte specifica: <code class='inline'>::first-line</code> (prima riga), <code class='inline'>::first-letter</code> (prima lettera), <code class='inline'>::before</code> e <code class='inline'>::after</code> (inseriscono contenuto prima/dopo), <code class='inline'>::selection</code> (testo selezionato).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  p::first-letter { font-size: 40px; color: #4f46e5; font-weight: bold; }
+  .nota::before { content: "→ "; color: #0d9488; }
+</style>
+<p>La prima lettera di questo paragrafo è grande e colorata.</p>
+<p class="nota">Voce con freccia generata dal CSS.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="opacity">
+        <h2>Opacità e trasparenza</h2>
+        <p><code class='inline'>opacity</code> imposta la trasparenza da <code class='inline'>0</code> (invisibile) a <code class='inline'>1</code> (opaco). In alternativa, per rendere trasparente solo lo sfondo (e non il testo) si usa un colore <code class='inline'>rgba()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { background: #4f46e5; color: white; padding: 16px; margin: 6px; }
+  .meta { opacity: 0.5; }
+</style>
+<div class="box">Opacità 1 (pieno)</div>
+<div class="box meta">Opacità 0.5 (semitrasparente)</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="navbar">
+        <h2>Le barre di navigazione</h2>
+        <p>Una barra di navigazione si costruisce da una lista (<code class='inline'>&lt;ul&gt;</code>) togliendo i puntini e mettendo le voci in orizzontale con Flexbox o <code class='inline'>inline-block</code>. È il menu tipico di ogni sito.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .nav { list-style: none; margin: 0; padding: 0; display: flex; background: #1e293b; }
+  .nav li a { display: block; color: white; padding: 14px 18px; text-decoration: none; }
+  .nav li a:hover { background: #4f46e5; }
+</style>
+<ul class="nav">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Corsi</a></li>
+  <li><a href="#">Contatti</a></li>
+</ul></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dropdowns">
+        <h2>I menu a tendina</h2>
+        <p>Un menu a tendina mostra altre voci al passaggio del mouse, usando un contenitore con <code class='inline'>position: relative</code> e un sottomenu <code class='inline'>position: absolute</code> nascosto con <code class='inline'>display: none</code> e mostrato con <code class='inline'>:hover</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .menu { position: relative; display: inline-block; }
+  .menu > button { padding: 10px 16px; }
+  .tendina { display: none; position: absolute; background: white;
+             box-shadow: 0 4px 12px rgba(0,0,0,.2); min-width: 140px; }
+  .tendina a { display: block; padding: 10px; text-decoration: none; color: #333; }
+  .tendina a:hover { background: #eef2ff; }
+  .menu:hover .tendina { display: block; }
+</style>
+<div class="menu">
+  <button>Corsi ▾</button>
+  <div class="tendina"><a href="#">HTML</a><a href="#">CSS</a><a href="#">Python</a></div>
+</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="gallery">
+        <h2>Galleria di immagini</h2>
+        <p>Una galleria si crea disponendo più immagini in griglia con Flexbox o Grid, aggiungendo bordo, padding e un effetto al passaggio del mouse. È perfetta per portfolio e cataloghi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .galleria { display: flex; flex-wrap: wrap; gap: 10px; }
+  .galleria img { width: 120px; border: 3px solid #ddd; border-radius: 8px; transition: transform .2s; }
+  .galleria img:hover { transform: scale(1.08); border-color: #4f46e5; }
+</style>
+<div class="galleria">
+  <img src="https://picsum.photos/120?1" alt="1">
+  <img src="https://picsum.photos/120?2" alt="2">
+  <img src="https://picsum.photos/120?3" alt="3">
+</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="sprites">
+        <h2>Gli image sprites</h2>
+        <p>Uno <strong>sprite</strong> è un'unica immagine che contiene più icone. Con <code class='inline'>background-position</code> si mostra solo la porzione desiderata. Vantaggio: una sola richiesta al server invece di tante, quindi pagine più veloci.</p><div class='note-box'>💡 Tecnica storica molto usata per le icone; oggi spesso sostituita da font di icone o SVG, ma ancora utile da conoscere.</div>
+      </article>
+
+      <article class="lesson" id="attr-selectors">
+        <h2>Selettori di attributo</h2>
+        <p>Si possono selezionare elementi in base ai loro attributi: <code class='inline'>[type="text"]</code> (valore esatto), <code class='inline'>[href^="https"]</code> (inizia con), <code class='inline'>[href$=".pdf"]</code> (finisce con), <code class='inline'>[class*="col"]</code> (contiene). Molto utili per i form e i link.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  input[type="text"] { border: 2px solid #4f46e5; padding: 6px; }
+  a[href$=".pdf"]::after { content: " 📄"; }
+</style>
+<input type="text" placeholder="testo">
+<input type="password" placeholder="password"><br><br>
+<a href="file.pdf">Scarica il PDF</a></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="forms">
+        <h2>Lo stile dei form</h2>
+        <p>Con il CSS si rendono eleganti caselle, aree di testo e pulsanti: padding, bordi arrotondati, colore al focus. Form curati aumentano l'usabilità e la fiducia degli utenti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  input, textarea { width: 100%; padding: 10px; margin: 6px 0;
+    border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+  input:focus { border-color: #4f46e5; outline: none; }
+  button { background: #4f46e5; color: white; border: none;
+    padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+</style>
+<form>
+  <input type="text" placeholder="Nome">
+  <input type="email" placeholder="Email">
+  <button>Invia</button>
+</form></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="counters">
+        <h2>I contatori</h2>
+        <p>I <strong>contatori</strong> numerano automaticamente gli elementi con <code class='inline'>counter-reset</code> (inizializza), <code class='inline'>counter-increment</code> (incrementa) e <code class='inline'>content: counter(nome)</code>. Utili per numerare sezioni o capitoli in modo dinamico.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  body { counter-reset: cap; }
+  h3::before {
+    counter-increment: cap;
+    content: "Capitolo " counter(cap) ": ";
+    color: #4f46e5;
+  }
+</style>
+<h3>Introduzione</h3>
+<h3>Sviluppo</h3>
+<h3>Conclusione</h3></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="units">
+        <h2>Le unità di misura</h2>
+        <p>Le unità si dividono in <strong>assolute</strong> (<code class='inline'>px</code>) e <strong>relative</strong>:</p><ul><li><code class='inline'>px</code>: pixel, misura fissa.</li><li><code class='inline'>%</code>: percentuale rispetto al genitore.</li><li><code class='inline'>em</code>: relativo al font dell'elemento.</li><li><code class='inline'>rem</code>: relativo al font radice (<code class='inline'>html</code>).</li><li><code class='inline'>vw</code>/<code class='inline'>vh</code>: percentuale della larghezza/altezza della finestra.</li></ul><div class='tip-box'>⭐ Usa <code class='inline'>rem</code> per i font e le spaziature: rende il sito più coerente e accessibile.</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .a { font-size: 16px; }
+  .b { font-size: 1.5rem; }
+  .c { width: 50vw; background: #eef2ff; }
+</style>
+<p class="a">16 pixel</p>
+<p class="b">1.5 rem</p>
+<p class="c">Larga metà finestra (50vw)</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="inheritance">
+        <h2>L'ereditarietà</h2>
+        <p>Alcune proprietà (come <code class='inline'>color</code>, <code class='inline'>font-family</code>, <code class='inline'>font-size</code>) si <strong>ereditano</strong>: impostandole sul genitore, valgono anche per i figli. Altre (come <code class='inline'>border</code> o <code class='inline'>margin</code>) no. Con il valore <code class='inline'>inherit</code> puoi forzare l'ereditarietà.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .genitore { color: #4f46e5; font-family: Georgia, serif; }
+</style>
+<div class="genitore">
+  Testo del genitore
+  <p>Anche io eredito colore e font!</p>
+</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="specificity">
+        <h2>La specificità</h2>
+        <p>Quando più regole colpiscono lo stesso elemento, vince quella con <strong>specificità</strong> maggiore. In ordine crescente: selettore di elemento &lt; classe &lt; id &lt; stile inline. A parità di specificità vince l'ultima regola scritta.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  p { color: gray; }        /* specificità bassa */
+  .testo { color: green; }  /* classe, più forte */
+  #unico { color: red; }    /* id, ancora più forte */
+</style>
+<p id="unico" class="testo">Sono rosso: vince l'id.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="important">
+        <h2>La regola !important</h2>
+        <p><code class='inline'>!important</code> forza una dichiarazione a prevalere su tutte le altre, ignorando la specificità. È potente ma va usato con parsimonia: ne abusa rende il CSS difficile da gestire e da correggere.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  p { color: blue !important; }
+  #x { color: red; }
+</style>
+<p id="x">Resto blu grazie a !important, nonostante l'id.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="math">
+        <h2>Le funzioni matematiche</h2>
+        <p>Il CSS include funzioni matematiche: <code class='inline'>calc()</code> esegue calcoli mescolando unità diverse (es. <code class='inline'>calc(100% - 40px)</code>); <code class='inline'>min()</code> e <code class='inline'>max()</code> scelgono il valore minimo/massimo; <code class='inline'>clamp()</code> imposta un valore fluido tra un minimo e un massimo (ideale per font responsive).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .a { width: calc(100% - 60px); background: #0d9488; color:white; padding:10px; }
+  .b { width: min(300px, 100%); background: #4f46e5; color:white; padding:10px; margin-top:8px; }
+  .c { font-size: clamp(16px, 4vw, 32px); }
+</style>
+<div class="a">Larghezza = 100% meno 60px</div>
+<div class="b">Larga al massimo 300px</div>
+<p class="c">Testo fluido con clamp()</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="optimization">
+        <h2>Ottimizzazione del CSS</h2>
+        <p>Un CSS ottimizzato rende il sito più veloce e facile da mantenere:</p><ul><li>Usa un <strong>file esterno</strong> unico e <strong>minificato</strong> (senza spazi e commenti) in produzione.</li><li>Sfrutta le <strong>variabili CSS</strong> (<code class='inline'>--colore</code>) per non ripetere i valori.</li><li>Evita selettori troppo complessi e regole duplicate.</li><li>Raggruppa le regole simili e riusa le classi.</li></ul>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  :root { --primario: #4f46e5; --raggio: 10px; }
+  .btn { background: var(--primario); color: white;
+         padding: 10px 18px; border-radius: var(--raggio); }
+</style>
+<button class="btn">Pulsante con variabili</button></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="accessibility">
+        <h2>L'accessibilità</h2>
+        <p>Un sito <strong>accessibile</strong> è usabile da tutti, comprese le persone con disabilità. Buone pratiche CSS:</p><ul><li>Garantisci un <strong>contrasto</strong> sufficiente tra testo e sfondo.</li><li>Non rimuovere l'<code class='inline'>outline</code> dal focus senza un'alternativa visibile.</li><li>Usa unità relative (<code class='inline'>rem</code>) per rispettare le impostazioni dell'utente.</li><li>Non comunicare informazioni <strong>solo</strong> con il colore.</li></ul><div class='note-box'>♿ L'accessibilità è una competenza fondamentale e sempre più richiesta: rende il web migliore per tutti.</div>
+      </article>
+
+      <article class="lesson" id="layout" style="border-bottom:none">
+        <h2>Il layout di un sito web</h2>
+        <p>Un sito tipico ha: <strong>header</strong> (testata), <strong>nav</strong> (menu), <strong>main</strong> con eventuale <strong>aside</strong> (barra laterale) e <strong>footer</strong>. Oggi questi blocchi si dispongono con <strong>Flexbox</strong> e <strong>CSS Grid</strong>, che gestiscono righe e colonne in modo semplice e responsive.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html><head><style>
+  * { box-sizing: border-box; font-family: sans-serif; }
+  header { background: #4f46e5; color: white; padding: 16px; }
+  .layout { display: flex; gap: 10px; }
+  nav { background: #eef2ff; padding: 16px; width: 140px; }
+  main { background: #f8fafc; padding: 16px; flex: 1; }
+  footer { background: #1e293b; color: white; padding: 12px; text-align: center; }
+</style></head><body>
+  <header><h1>Il mio sito</h1></header>
+  <div class="layout">
+    <nav>Menu</nav>
+    <main>Contenuto principale</main>
+  </div>
+  <footer>© 2026</footer>
+</body></html></script>
         </div>
       </article>
 
       <article class="lesson" id="fine" style="border-bottom:none">
         <h2>Complimenti! 🎉</h2>
-        <p>Hai imparato le basi del CSS. Continua a sperimentare con l'editor!</p><div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota</a></div>
+        <p>Hai completato il corso di CSS più completo in italiano. Continua a fare pratica con l'editor e, se ti serve una mano, prenota una lezione.</p>
+        <div class="hero-actions"><a href="esercizi.html" class="btn btn-primary">📝 Vai agli esercizi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
     </main>
   </div>
