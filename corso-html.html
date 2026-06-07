@@ -3,46 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso HTML in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Lezioni passo passo con esempi e un editor 'Provalo tu' per scrivere codice e vedere subito il risultato.">
+  <title>Corso HTML completo in italiano — AlessandroSimone.it</title>
+  <meta name="description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Tutti gli argomenti, esempi con codice colorato e un editor 'Provalo tu' per scrivere e vedere subito il risultato.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    /* ---- Barra linguaggi (stile W3Schools) ---- */
+    .lang-bar { background: #0f172a; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lang-bar-inner { display: flex; white-space: nowrap; min-width: max-content; }
+    .lang-bar a { color: #cbd5e1; font-weight: 700; font-size: .8rem; letter-spacing: .5px; padding: .85rem 1.1rem; transition: var(--transition); }
+    .lang-bar a:hover { background: #1e293b; color: #fff; }
+    .lang-bar a.active { background: #fff; color: #0f172a; }
+    .lang-bar a.soon { opacity: .55; cursor: default; }
+    .lang-bar a.soon:hover { background: transparent; color: #cbd5e1; }
+
     /* ---- Layout corso ---- */
-    .course-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; }
+    .course-wrap { display: grid; grid-template-columns: 250px 1fr; gap: 2.5rem; align-items: start; }
     .course-side {
-      position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto;
+      position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto;
       background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.2rem; font-size: .92rem;
+      padding: 1.1rem; font-size: .9rem;
     }
-    .course-side h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: .6rem; }
-    .course-side a { display: block; padding: .4rem .6rem; border-radius: 8px; color: var(--ink); transition: var(--transition); }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .32rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
     .course-side a:hover { background: var(--primary-light); color: var(--primary); }
-    .lesson { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 84px; }
+
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 16px; }
     .lesson:last-child { border-bottom: none; }
-    .lesson h2 { font-size: 1.6rem; color: var(--ink); margin-bottom: .8rem; }
-    .lesson h3 { font-size: 1.15rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.1rem; margin: 1.3rem 0 .5rem; color: var(--primary); }
     .lesson p { margin-bottom: .9rem; color: #334155; }
     .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
     .lesson li { margin-bottom: .35rem; }
     .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
-    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .9rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .95rem; }
-    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .9rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .95rem; }
-    /* ---- Esempi ---- */
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .lesson table.demo { border-collapse: collapse; margin: .5rem 0 1rem; }
+    .lesson table.demo th, .lesson table.demo td { border: 1px solid var(--border); padding: .4rem .8rem; }
+
+    /* ---- Esempi con codice colorato ---- */
     .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
-    .codehead { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: .55rem .9rem; }
-    .codehead span { color: #94a3b8; font-size: .78rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
-    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .82rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
     .btn-try:hover { background: #0b7c71; }
-    pre.codeview { margin: 0; background: #1e293b; color: #e2e8f0; padding: 1rem 1.1rem; overflow-x: auto; font-family: 'Consolas','Monaco',monospace; font-size: .88rem; line-height: 1.6; white-space: pre; }
+    pre.codeview { margin: 0; background: #fff; border-left: 4px solid var(--edu); padding: 1rem 1.1rem; overflow-x: auto; }
+    pre.codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .87rem; line-height: 1.6; color: #1e293b; background: none; white-space: pre; }
+    /* colori token (stile W3Schools) */
+    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; }
+    .codeview .token.tag { color: #a3185d; }
+    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.attr-name { color: #0d9488; }
+    .codeview .token.attr-value { color: #2563eb; }
+    .codeview .token.attr-value .token.punctuation { color: #2563eb; }
+    .codeview .token.entity { color: #d97706; }
+
     /* ---- Editor modale ---- */
     .editor-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.6); z-index: 2000; padding: 2rem; }
     .editor-overlay.open { display: flex; align-items: center; justify-content: center; }
-    .editor-box { background: #fff; border-radius: var(--radius); width: min(1000px, 100%); height: min(85vh, 700px); display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .editor-box { background: #fff; border-radius: var(--radius); width: min(1050px, 100%); height: min(85vh, 720px); display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg); }
     .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .8rem 1.2rem; background: #0f172a; color: #fff; }
-    .editor-top strong { font-family: var(--font-head); }
+    .editor-top strong { font-family: var(--font-head); font-size: .98rem; }
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: none; border-radius: 6px; padding: .45rem 1rem; font-weight: 700; font-size: .85rem; cursor: pointer; font-family: var(--font); }
     .ed-run { background: var(--edu); color: #fff; }
@@ -52,6 +77,7 @@
     .editor-panes .preview-wrap { display: flex; flex-direction: column; border-left: 1px solid var(--border); }
     .preview-label { background: var(--bg-soft); padding: .35rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
     .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
@@ -78,11 +104,30 @@
   </div>
 </header>
 
-<section class="hero" style="padding:3rem 0 2rem">
+<!-- BARRA LINGUAGGI -->
+<div class="lang-bar">
+  <div class="lang-bar-inner">
+    <a href="corso-html.html" class="active">HTML</a>
+    <a href="#" class="soon" title="In arrivo">CSS</a>
+    <a href="#" class="soon" title="In arrivo">JAVASCRIPT</a>
+    <a href="#" class="soon" title="In arrivo">SQL</a>
+    <a href="#" class="soon" title="In arrivo">PYTHON</a>
+    <a href="#" class="soon" title="In arrivo">JAVA</a>
+    <a href="#" class="soon" title="In arrivo">PHP</a>
+    <a href="#" class="soon" title="In arrivo">C</a>
+    <a href="#" class="soon" title="In arrivo">C++</a>
+    <a href="#" class="soon" title="In arrivo">C#</a>
+    <a href="#" class="soon" title="In arrivo">REACT</a>
+    <a href="#" class="soon" title="In arrivo">MYSQL</a>
+    <a href="#" class="soon" title="In arrivo">BOOTSTRAP</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
     <h1>Corso di HTML in italiano</h1>
-    <p class="lead" style="margin-inline:auto">Impara a creare pagine web da zero, passo dopo passo. Ogni lezione ha un esempio che puoi modificare con il pulsante <strong>“Provalo tu”</strong> e vedere subito il risultato.</p>
+    <p class="lead" style="margin-inline:auto">Tutti gli argomenti, dal primo tag alle API avanzate. Ogni esempio ha il codice colorato e il pulsante <strong>“Provalo tu”</strong> per scriverlo e vedere subito il risultato.</p>
   </div>
 </section>
 
@@ -91,43 +136,73 @@
 
     <!-- SIDEBAR -->
     <aside class="course-side">
-      <h4>Indice del corso</h4>
-      <a href="#intro">1. Introduzione</a>
-      <a href="#struttura">2. Struttura di una pagina</a>
-      <a href="#elementi">3. Elementi e tag</a>
-      <a href="#attributi">4. Attributi</a>
-      <a href="#titoli">5. Titoli</a>
-      <a href="#paragrafi">6. Paragrafi</a>
-      <a href="#formattazione">7. Formattazione testo</a>
-      <a href="#link">8. Link</a>
-      <a href="#immagini">9. Immagini</a>
-      <a href="#liste">10. Liste</a>
-      <a href="#tabelle">11. Tabelle</a>
-      <a href="#div">12. Div e contenitori</a>
-      <a href="#form">13. Moduli (form)</a>
-      <a href="#commenti">14. Commenti</a>
-      <a href="#stile">15. Un po' di stile (CSS)</a>
-      <a href="#fine">16. E ora?</a>
+      <h4>Corso HTML</h4>
+      <a href="#intro">Introduzione</a>
+      <a href="#editors">Editor</a>
+      <a href="#basic">HTML di base</a>
+      <a href="#elementi">Elementi</a>
+      <a href="#attributi">Attributi</a>
+      <a href="#titoli">Titoli</a>
+      <a href="#paragrafi">Paragrafi</a>
+      <a href="#stili">Stili</a>
+      <a href="#formattazione">Formattazione</a>
+      <a href="#citazioni">Citazioni</a>
+      <a href="#commenti">Commenti</a>
+      <a href="#colori">Colori</a>
+      <a href="#css">CSS</a>
+      <a href="#link">Link</a>
+      <a href="#immagini">Immagini</a>
+      <a href="#favicon">Favicon</a>
+      <a href="#title">Titolo pagina</a>
+      <a href="#tabelle">Tabelle</a>
+      <a href="#liste">Liste</a>
+      <a href="#block-inline">Block & Inline</a>
+      <a href="#div">Div</a>
+      <a href="#classi">Classi</a>
+      <a href="#id">Id</a>
+      <a href="#iframe">Iframe</a>
+      <a href="#javascript">JavaScript</a>
+      <a href="#file-paths">Percorsi file</a>
+      <a href="#head">Head</a>
+      <a href="#layout">Layout</a>
+      <a href="#responsive">Responsive</a>
+      <a href="#code">Codice nel testo</a>
+      <a href="#semantica">Semantica</a>
+      <a href="#entita">Entità</a>
+      <a href="#simboli">Simboli</a>
+      <a href="#emoji">Emoji</a>
+      <a href="#charset">Charset</a>
+      <a href="#url-encode">URL Encode</a>
+      <h4>Form HTML</h4>
+      <a href="#form">Form</a>
+      <a href="#form-attr">Attributi del form</a>
+      <a href="#form-elements">Elementi del form</a>
+      <a href="#input-types">Tipi di input</a>
+      <a href="#input-attr">Attributi input</a>
+      <h4>Grafica HTML</h4>
+      <a href="#canvas">Canvas</a>
+      <a href="#svg">SVG</a>
+      <h4>Media HTML</h4>
+      <a href="#media">Media</a>
+      <a href="#video">Video</a>
+      <a href="#audio">Audio</a>
+      <a href="#youtube">YouTube</a>
+      <h4>API HTML</h4>
+      <a href="#geolocation">Geolocalizzazione</a>
+      <a href="#web-storage">Web Storage</a>
+      <a href="#drag-drop">Drag and Drop</a>
     </aside>
 
     <!-- CONTENUTO -->
     <main>
 
-      <!-- 1 -->
       <article class="lesson" id="intro">
-        <h2>1. Introduzione a HTML</h2>
-        <p><strong>HTML</strong> (HyperText Markup Language) è il linguaggio con cui sono costruite tutte le pagine web. Non è un linguaggio di programmazione: è un <em>linguaggio di marcatura</em>, cioè serve a “etichettare” le parti di un documento per dire al browser cosa è un titolo, cosa un paragrafo, cosa un'immagine.</p>
-        <p>Ogni pagina che vedi su internet — compresa questa — è scritta in HTML. Imparare l'HTML è il primo passo per diventare sviluppatori web.</p>
-        <div class="note-box">💡 <strong>In breve:</strong> l'HTML descrive la <em>struttura</em> di una pagina (titoli, testo, immagini, link), il CSS si occupa dell'<em>aspetto</em> (colori, posizioni) e JavaScript del <em>comportamento</em> (interattività).</div>
-      </article>
-
-      <!-- 2 -->
-      <article class="lesson" id="struttura">
-        <h2>2. La struttura di una pagina HTML</h2>
-        <p>Ogni pagina HTML segue sempre lo stesso schema di base. Ecco lo scheletro minimo:</p>
+        <h2>Introduzione a HTML</h2>
+        <p><strong>HTML</strong> (HyperText Markup Language) è il linguaggio con cui sono costruite tutte le pagine web. Non è un linguaggio di programmazione: è un <em>linguaggio di marcatura</em>, cioè serve a “etichettare” le parti di un documento dicendo al browser cosa è un titolo, cosa un paragrafo, cosa un'immagine.</p>
+        <div class="note-box">💡 <strong>In breve:</strong> l'HTML descrive la <em>struttura</em>, il CSS l'<em>aspetto</em> (colori, posizioni) e JavaScript il <em>comportamento</em> (interattività).</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -139,228 +214,672 @@
 </body>
 </html></script>
         </div>
-        <p>Vediamo i pezzi:</p>
-        <ul>
-          <li><code class="inline">&lt;!DOCTYPE html&gt;</code> — dice al browser che è una pagina HTML moderna.</li>
-          <li><code class="inline">&lt;html&gt;</code> — il contenitore di tutta la pagina.</li>
-          <li><code class="inline">&lt;head&gt;</code> — informazioni “invisibili” (titolo, impostazioni).</li>
-          <li><code class="inline">&lt;body&gt;</code> — tutto ciò che si vede nella pagina.</li>
-        </ul>
       </article>
 
-      <!-- 3 -->
-      <article class="lesson" id="elementi">
-        <h2>3. Elementi e tag</h2>
-        <p>Un <strong>elemento</strong> HTML è composto quasi sempre da un <em>tag di apertura</em>, un contenuto e un <em>tag di chiusura</em>:</p>
-        <p style="text-align:center"><code class="inline">&lt;p&gt;</code> contenuto <code class="inline">&lt;/p&gt;</code></p>
-        <p>Il tag di chiusura ha la barra <code class="inline">/</code>. Alcuni elementi non hanno contenuto e si chiudono da soli, come <code class="inline">&lt;br&gt;</code> (a capo) o <code class="inline">&lt;hr&gt;</code> (linea orizzontale).</p>
+      <article class="lesson" id="editors">
+        <h2>Editor HTML</h2>
+        <p>Per scrivere HTML basta un editor di testo. I più usati sono <strong>Visual Studio Code</strong> (gratuito), Notepad++ o Sublime Text. Puoi anche usare l'editor “Provalo tu” qui sul sito senza installare nulla.</p>
+        <p>Un file HTML si salva con estensione <code class="inline">.html</code> e si apre con un qualsiasi browser (Chrome, Firefox, Edge).</p>
+        <div class="tip-box">⭐ Inizia subito: clicca “Provalo tu” su un esempio, modifica il codice e guarda il risultato a destra.</div>
+      </article>
+
+      <article class="lesson" id="basic">
+        <h2>HTML di base</h2>
+        <p>Ogni pagina segue sempre lo stesso schema: dichiarazione del tipo di documento, elemento <code class="inline">&lt;html&gt;</code>, una parte <code class="inline">&lt;head&gt;</code> (informazioni nascoste) e una parte <code class="inline">&lt;body&gt;</code> (il contenuto visibile).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html>
+<body>
+  <h1>Il mio primo titolo</h1>
+  <p>Il mio primo paragrafo.</p>
+</body>
+</html></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="elementi">
+        <h2>Elementi e tag</h2>
+        <p>Un <strong>elemento</strong> è composto da un tag di apertura, un contenuto e un tag di chiusura: <code class="inline">&lt;p&gt;</code> contenuto <code class="inline">&lt;/p&gt;</code>. Alcuni elementi sono “vuoti” e si chiudono da soli, come <code class="inline">&lt;br&gt;</code> e <code class="inline">&lt;hr&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p>Prima riga</p>
 <hr>
 <p>Seconda riga<br>con un a capo dentro</p></script>
         </div>
       </article>
 
-      <!-- 4 -->
       <article class="lesson" id="attributi">
-        <h2>4. Gli attributi</h2>
-        <p>Gli <strong>attributi</strong> aggiungono informazioni a un elemento e si scrivono dentro il tag di apertura, nella forma <code class="inline">nome="valore"</code>.</p>
+        <h2>Gli attributi</h2>
+        <p>Gli <strong>attributi</strong> aggiungono informazioni a un elemento e si scrivono nel tag di apertura, nella forma <code class="inline">nome="valore"</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><a href="https://alessandrosimone.it" title="Vai al sito">Visita il mio sito</a></script>
         </div>
-        <p>Qui <code class="inline">href</code> e <code class="inline">title</code> sono attributi del link. Ogni elemento ha i suoi attributi possibili.</p>
       </article>
 
-      <!-- 5 -->
       <article class="lesson" id="titoli">
-        <h2>5. I titoli</h2>
-        <p>I titoli vanno da <code class="inline">&lt;h1&gt;</code> (il più importante) a <code class="inline">&lt;h6&gt;</code> (il meno importante). Usa <code class="inline">&lt;h1&gt;</code> una sola volta per pagina, per il titolo principale.</p>
+        <h2>I titoli</h2>
+        <p>I titoli vanno da <code class="inline">&lt;h1&gt;</code> (il più importante) a <code class="inline">&lt;h6&gt;</code>. Usa <code class="inline">&lt;h1&gt;</code> una sola volta per pagina.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><h1>Titolo principale</h1>
-<h2>Sottotitolo</h2>
-<h3>Titolo di terzo livello</h3>
-<h4>E così via...</h4></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><h1>Titolo 1</h1>
+<h2>Titolo 2</h2>
+<h3>Titolo 3</h3>
+<h4>Titolo 4</h4></script>
         </div>
-        <div class="tip-box">⭐ <strong>Suggerimento:</strong> i titoli aiutano anche Google a capire di cosa parla la pagina. Usali in ordine logico, non per fare il testo più grande!</div>
+        <div class="tip-box">⭐ I titoli aiutano anche Google a capire di cosa parla la pagina: usali in ordine logico.</div>
       </article>
 
-      <!-- 6 -->
       <article class="lesson" id="paragrafi">
-        <h2>6. I paragrafi</h2>
-        <p>Il testo normale va dentro l'elemento <code class="inline">&lt;p&gt;</code> (paragraph = paragrafo). Il browser ignora spazi e a capo extra nel codice: per andare a capo serve <code class="inline">&lt;br&gt;</code>.</p>
+        <h2>I paragrafi</h2>
+        <p>Il testo normale va dentro <code class="inline">&lt;p&gt;</code>. Il browser ignora spazi e a capo extra: per andare a capo serve <code class="inline">&lt;br&gt;</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><p>Questo è un paragrafo di testo. Anche se nel codice
-scrivo su più righe, il browser lo mostra di seguito.</p>
-<p>Questo è un secondo paragrafo, separato dal primo.</p></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Questo è un paragrafo. Anche se nel codice
+vado a capo, il browser lo mostra di seguito.</p>
+<p>Questo è un secondo paragrafo.</p></script>
         </div>
       </article>
 
-      <!-- 7 -->
+      <article class="lesson" id="stili">
+        <h2>Gli stili (attributo style)</h2>
+        <p>L'attributo <code class="inline">style</code> permette di dare un aspetto a un elemento: colore, sfondo, dimensione del testo, allineamento.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p style="color: indigo; font-size: 22px;">Testo viola e grande</p>
+<p style="background-color: gold; text-align: center;">Centrato con sfondo</p></script>
+        </div>
+      </article>
+
       <article class="lesson" id="formattazione">
-        <h2>7. Formattare il testo</h2>
-        <p>Esistono tag per dare enfasi al testo:</p>
+        <h2>Formattare il testo</h2>
+        <p>Tag utili per dare significato al testo:</p>
         <ul>
-          <li><code class="inline">&lt;strong&gt;</code> — <strong>grassetto</strong> (importante)</li>
-          <li><code class="inline">&lt;em&gt;</code> — <em>corsivo</em> (enfasi)</li>
-          <li><code class="inline">&lt;mark&gt;</code> — <mark>evidenziato</mark></li>
-          <li><code class="inline">&lt;small&gt;</code> — <small>testo piccolo</small></li>
+          <li><code class="inline">&lt;strong&gt;</code> importante (grassetto), <code class="inline">&lt;b&gt;</code> solo grassetto</li>
+          <li><code class="inline">&lt;em&gt;</code> enfasi (corsivo), <code class="inline">&lt;i&gt;</code> solo corsivo</li>
+          <li><code class="inline">&lt;mark&gt;</code> evidenziato, <code class="inline">&lt;small&gt;</code> piccolo, <code class="inline">&lt;del&gt;</code> cancellato, <code class="inline">&lt;ins&gt;</code> inserito</li>
+          <li><code class="inline">&lt;sub&gt;</code> pedice, <code class="inline">&lt;sup&gt;</code> apice</li>
         </ul>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><p>Questo è <strong>molto importante</strong>.</p>
-<p>Questo invece è <em>in corsivo</em>.</p>
-<p>E qui <mark>evidenzio</mark> una parola.</p></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Testo <strong>importante</strong> e <em>in corsivo</em>.</p>
+<p>Acqua: H<sub>2</sub>O — Potenza: 2<sup>3</sup> = 8</p>
+<p><del>Prezzo vecchio</del> <ins>Prezzo nuovo</ins></p></script>
         </div>
       </article>
 
-      <!-- 8 -->
+      <article class="lesson" id="citazioni">
+        <h2>Citazioni</h2>
+        <p><code class="inline">&lt;blockquote&gt;</code> per citazioni lunghe, <code class="inline">&lt;q&gt;</code> per citazioni brevi in linea, <code class="inline">&lt;abbr&gt;</code> per le abbreviazioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><blockquote>L'informatica non riguarda i computer più di quanto
+l'astronomia riguardi i telescopi.</blockquote>
+<p>Come si dice: <q>imparare facendo</q>.</p>
+<p><abbr title="HyperText Markup Language">HTML</abbr> è facile!</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>I commenti</h2>
+        <p>I commenti sono note che il browser ignora. Si scrivono tra <code class="inline">&lt;!--</code> e <code class="inline">--&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!-- Questo è un commento: non si vede -->
+<p>Questo invece si vede.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="colori">
+        <h2>I colori</h2>
+        <p>I colori si indicano per <strong>nome</strong> (<code class="inline">red</code>), in <strong>esadecimale</strong> (<code class="inline">#ff0000</code>), in <strong>RGB</strong> (<code class="inline">rgb(255,0,0)</code>) o RGBA (con trasparenza).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p style="color: tomato;">Nome colore</p>
+<p style="color: #4f46e5;">Esadecimale</p>
+<p style="background: rgb(13,148,136); color:white;">RGB</p>
+<p style="background: rgba(245,158,11,0.4);">RGBA (trasparente)</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="css">
+        <h2>HTML e CSS</h2>
+        <p>Il CSS definisce l'aspetto. Si può scrivere in tre modi: <em>inline</em> (attributo style), <em>interno</em> (dentro <code class="inline">&lt;style&gt;</code> nell'head) o <em>esterno</em> (file <code class="inline">.css</code> collegato).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio — CSS interno</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html>
+<head>
+<style>
+  h1 { color: indigo; }
+  p  { color: gray; font-size: 18px; }
+</style>
+</head>
+<body>
+  <h1>Titolo con stile</h1>
+  <p>Paragrafo con stile.</p>
+</body>
+</html></script>
+        </div>
+      </article>
+
       <article class="lesson" id="link">
-        <h2>8. I link</h2>
-        <p>I link (collegamenti) si fanno con il tag <code class="inline">&lt;a&gt;</code> e l'attributo <code class="inline">href</code>, che indica la destinazione.</p>
+        <h2>I link</h2>
+        <p>I link si fanno con <code class="inline">&lt;a&gt;</code> e l'attributo <code class="inline">href</code>. Con <code class="inline">target="_blank"</code> il link si apre in una nuova scheda.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><a href="https://www.google.it">Vai a Google</a>
-<br><br>
-<a href="https://alessandrosimone.it" target="_blank">Apri il mio sito in una nuova scheda</a></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><a href="https://www.google.it">Vai a Google</a><br><br>
+<a href="https://alessandrosimone.it" target="_blank">Apri in nuova scheda</a></script>
         </div>
-        <p>L'attributo <code class="inline">target="_blank"</code> apre il link in una nuova scheda.</p>
       </article>
 
-      <!-- 9 -->
       <article class="lesson" id="immagini">
-        <h2>9. Le immagini</h2>
-        <p>Le immagini si inseriscono con <code class="inline">&lt;img&gt;</code>. È un tag che si chiude da solo e usa due attributi importanti: <code class="inline">src</code> (l'indirizzo dell'immagine) e <code class="inline">alt</code> (testo alternativo, fondamentale per l'accessibilità).</p>
+        <h2>Le immagini</h2>
+        <p>Si inseriscono con <code class="inline">&lt;img&gt;</code>: l'attributo <code class="inline">src</code> indica l'indirizzo e <code class="inline">alt</code> il testo alternativo.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><img src="https://picsum.photos/300/180" alt="Immagine di esempio" width="300"></script>
         </div>
         <div class="note-box">♿ <strong>Accessibilità:</strong> l'attributo <code class="inline">alt</code> viene letto dai software per non vedenti e mostrato se l'immagine non carica. Mettilo sempre!</div>
       </article>
 
-      <!-- 10 -->
-      <article class="lesson" id="liste">
-        <h2>10. Le liste</h2>
-        <p>Ci sono liste <strong>non ordinate</strong> (puntini) con <code class="inline">&lt;ul&gt;</code> e liste <strong>ordinate</strong> (numeri) con <code class="inline">&lt;ol&gt;</code>. Ogni voce è un <code class="inline">&lt;li&gt;</code>.</p>
+      <article class="lesson" id="favicon">
+        <h2>La favicon</h2>
+        <p>La <strong>favicon</strong> è la piccola icona che appare nella scheda del browser. Si aggiunge nell'<code class="inline">&lt;head&gt;</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><h3>La spesa</h3>
-<ul>
-  <li>Pane</li>
-  <li>Latte</li>
-  <li>Mele</li>
-</ul>
-
-<h3>Le istruzioni</h3>
-<ol>
-  <li>Apri l'editor</li>
-  <li>Scrivi il codice</li>
-  <li>Guarda il risultato</li>
-</ol></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><head>
+  <title>La mia pagina</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head></script>
         </div>
       </article>
 
-      <!-- 11 -->
-      <article class="lesson" id="tabelle">
-        <h2>11. Le tabelle</h2>
-        <p>Le tabelle si costruiscono con <code class="inline">&lt;table&gt;</code>. Ogni riga è <code class="inline">&lt;tr&gt;</code>, le intestazioni sono <code class="inline">&lt;th&gt;</code> e le celle <code class="inline">&lt;td&gt;</code>.</p>
+      <article class="lesson" id="title">
+        <h2>Il titolo della pagina</h2>
+        <p>L'elemento <code class="inline">&lt;title&gt;</code> nell'head definisce il titolo mostrato nella scheda del browser e nei risultati di Google. È importante per la SEO.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><head>
+  <title>Corso HTML — AlessandroSimone.it</title>
+</head></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tabelle">
+        <h2>Le tabelle</h2>
+        <p>Si costruiscono con <code class="inline">&lt;table&gt;</code>. Ogni riga è <code class="inline">&lt;tr&gt;</code>, le intestazioni <code class="inline">&lt;th&gt;</code> e le celle <code class="inline">&lt;td&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><table border="1" cellpadding="6">
-  <tr>
-    <th>Nome</th>
-    <th>Voto</th>
-  </tr>
-  <tr>
-    <td>Marco</td>
-    <td>8</td>
-  </tr>
-  <tr>
-    <td>Giulia</td>
-    <td>9</td>
-  </tr>
+  <tr><th>Nome</th><th>Voto</th></tr>
+  <tr><td>Marco</td><td>8</td></tr>
+  <tr><td>Giulia</td><td>9</td></tr>
 </table></script>
         </div>
       </article>
 
-      <!-- 12 -->
-      <article class="lesson" id="div">
-        <h2>12. Div e contenitori</h2>
-        <p>Il <code class="inline">&lt;div&gt;</code> è un contenitore generico: serve a raggruppare elementi, soprattutto per dargli uno stile con il CSS. Da solo non si vede.</p>
+      <article class="lesson" id="liste">
+        <h2>Le liste</h2>
+        <p>Liste <strong>non ordinate</strong> con <code class="inline">&lt;ul&gt;</code> (puntini), <strong>ordinate</strong> con <code class="inline">&lt;ol&gt;</code> (numeri). Ogni voce è <code class="inline">&lt;li&gt;</code>. Esistono anche le liste di definizione con <code class="inline">&lt;dl&gt;</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><ul>
+  <li>Pane</li>
+  <li>Latte</li>
+</ul>
+<ol>
+  <li>Apri l'editor</li>
+  <li>Scrivi il codice</li>
+</ol></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="block-inline">
+        <h2>Elementi block e inline</h2>
+        <p>Gli elementi <strong>block</strong> (come <code class="inline">&lt;div&gt;</code>, <code class="inline">&lt;p&gt;</code>, <code class="inline">&lt;h1&gt;</code>) occupano tutta la larghezza e vanno a capo. Gli elementi <strong>inline</strong> (come <code class="inline">&lt;span&gt;</code>, <code class="inline">&lt;a&gt;</code>, <code class="inline">&lt;strong&gt;</code>) occupano solo lo spazio necessario e restano nella riga.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><div style="background:#eef2ff">Sono un blocco (tutta la larghezza)</div>
+<span style="background:gold">Sono inline</span>
+<span style="background:lightgreen">resto nella stessa riga</span></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="div">
+        <h2>Div e contenitori</h2>
+        <p>Il <code class="inline">&lt;div&gt;</code> è un contenitore generico per raggruppare elementi, soprattutto per dargli uno stile. Lo <code class="inline">&lt;span&gt;</code> fa lo stesso ma in linea.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><div style="background:#eef2ff; padding:20px; border-radius:10px">
   <h2>Sono dentro un riquadro</h2>
-  <p>Il div mi raggruppa e mi dà uno sfondo colorato.</p>
+  <p>Il div mi raggruppa e mi dà uno sfondo.</p>
 </div></script>
         </div>
       </article>
 
-      <!-- 13 -->
-      <article class="lesson" id="form">
-        <h2>13. I moduli (form)</h2>
-        <p>I <strong>form</strong> servono a raccogliere dati dall'utente: caselle di testo, pulsanti, menu a tendina. Si usa <code class="inline">&lt;form&gt;</code> e dentro vari <code class="inline">&lt;input&gt;</code>.</p>
+      <article class="lesson" id="classi">
+        <h2>Le classi</h2>
+        <p>L'attributo <code class="inline">class</code> assegna un nome a uno o più elementi, per applicargli lo stesso stile con il CSS. Più elementi possono avere la stessa classe.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html><head><style>
+  .evidenzia { background: gold; padding: 8px; }
+</style></head><body>
+  <p class="evidenzia">Primo</p>
+  <p>Normale</p>
+  <p class="evidenzia">Terzo</p>
+</body></html></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="id">
+        <h2>L'attributo id</h2>
+        <p>L'<code class="inline">id</code> dà un nome <strong>unico</strong> a un elemento (uno solo per pagina). Si usa per il CSS, per i link interni e per JavaScript. Nel CSS si seleziona con il cancelletto <code class="inline">#</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!DOCTYPE html>
+<html><head><style>
+  #titolo { color: indigo; }
+</style></head><body>
+  <h1 id="titolo">Titolo unico</h1>
+  <a href="#titolo">Vai al titolo</a>
+</body></html></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="iframe">
+        <h2>Gli iframe</h2>
+        <p>Un <code class="inline">&lt;iframe&gt;</code> incorpora un'altra pagina dentro la tua (es. una mappa o un video).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><iframe src="https://www.example.com" width="100%" height="200" title="Pagina incorporata"></iframe></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="javascript">
+        <h2>HTML e JavaScript</h2>
+        <p>JavaScript rende la pagina interattiva. Il codice va dentro l'elemento <code class="inline">&lt;script&gt;</code>. Qui un pulsante che cambia un testo quando lo clicchi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="demo">Testo iniziale</p>
+<button onclick="document.getElementById('demo').innerHTML = 'Hai cliccato!'">
+  Cliccami
+</button></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="file-paths">
+        <h2>I percorsi dei file</h2>
+        <p>Il percorso indica dove si trova un file. Può essere <strong>relativo</strong> (rispetto alla pagina) o <strong>assoluto</strong> (indirizzo completo).</p>
+        <ul>
+          <li><code class="inline">img/foto.jpg</code> → cartella img nella stessa posizione</li>
+          <li><code class="inline">../foto.jpg</code> → cartella superiore</li>
+          <li><code class="inline">https://sito.it/foto.jpg</code> → percorso assoluto</li>
+        </ul>
+      </article>
+
+      <article class="lesson" id="head">
+        <h2>L'elemento head</h2>
+        <p>L'<code class="inline">&lt;head&gt;</code> contiene informazioni sulla pagina non visibili: titolo, charset, descrizione (meta), collegamenti a CSS e icone.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descrizione della pagina">
+  <title>Titolo della pagina</title>
+  <link rel="stylesheet" href="style.css">
+</head></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="layout">
+        <h2>Il layout della pagina</h2>
+        <p>Una pagina si organizza con elementi semantici: <code class="inline">&lt;header&gt;</code> (testata), <code class="inline">&lt;nav&gt;</code> (menu), <code class="inline">&lt;main&gt;</code> (contenuto), <code class="inline">&lt;aside&gt;</code> (barra laterale), <code class="inline">&lt;footer&gt;</code> (piè di pagina).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><header style="background:#eef2ff;padding:10px">Testata</header>
+<nav style="background:#f0fdfa;padding:10px">Menu</nav>
+<main style="padding:10px">Contenuto principale</main>
+<footer style="background:#1e293b;color:white;padding:10px">Footer</footer></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="responsive">
+        <h2>HTML responsive</h2>
+        <p>Una pagina <strong>responsive</strong> si adatta a schermi di ogni dimensione. La regola base è inserire il meta viewport nell'head.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><meta name="viewport" content="width=device-width, initial-scale=1.0"></script>
+        </div>
+        <div class="tip-box">⭐ Usa misure flessibili (percentuali, <code class="inline">max-width</code>) invece di larghezze fisse in pixel.</div>
+      </article>
+
+      <article class="lesson" id="code">
+        <h2>Codice nel testo</h2>
+        <p>Per mostrare codice nel testo: <code class="inline">&lt;code&gt;</code> (codice in linea), <code class="inline">&lt;pre&gt;</code> (testo preformattato, mantiene spazi e a capo), <code class="inline">&lt;kbd&gt;</code> (tasti), <code class="inline">&lt;samp&gt;</code> (output).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Usa la funzione <code>print()</code> in Python.</p>
+<pre>
+def saluta():
+    print("Ciao")
+</pre>
+<p>Premi <kbd>Ctrl</kbd> + <kbd>S</kbd> per salvare.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="semantica">
+        <h2>HTML semantico</h2>
+        <p>Gli elementi <strong>semantici</strong> descrivono il significato del contenuto, non solo l'aspetto. Aiutano accessibilità e SEO: <code class="inline">&lt;article&gt;</code>, <code class="inline">&lt;section&gt;</code>, <code class="inline">&lt;figure&gt;</code>, <code class="inline">&lt;figcaption&gt;</code>, <code class="inline">&lt;time&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><article>
+  <h2>Titolo dell'articolo</h2>
+  <p>Pubblicato il <time datetime="2026-06-07">7 giugno 2026</time>.</p>
+  <section>
+    <p>Una sezione di contenuto.</p>
+  </section>
+</article></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="entita">
+        <h2>Le entità HTML</h2>
+        <p>Alcuni caratteri sono riservati (come <code class="inline">&lt;</code> e <code class="inline">&gt;</code>) e si scrivono con le <strong>entità</strong>: <code class="inline">&amp;lt;</code> = &lt;, <code class="inline">&amp;gt;</code> = &gt;, <code class="inline">&amp;amp;</code> = &amp;, <code class="inline">&amp;nbsp;</code> = spazio unito, <code class="inline">&amp;copy;</code> = ©.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Il tag &lt;p&gt; serve per i paragrafi.</p>
+<p>Pippo &amp; Pluto &copy; 2026</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="simboli">
+        <h2>I simboli</h2>
+        <p>Con le entità puoi mostrare simboli matematici, valute, frecce: <code class="inline">&amp;euro;</code> = €, <code class="inline">&amp;deg;</code> = °, <code class="inline">&amp;rarr;</code> = →, <code class="inline">&amp;hearts;</code> = ♥.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Prezzo: 35&euro; — Temperatura: 20&deg;C</p>
+<p>Avanti &rarr; Indietro &larr; Ti voglio bene &hearts;</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="emoji">
+        <h2>Le emoji</h2>
+        <p>Le emoji sono caratteri Unicode: basta che la pagina usi <code class="inline">charset="UTF-8"</code> e puoi scriverle direttamente nel testo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p>Buono studio! 📚💻🎓</p>
+<p style="font-size:40px">😀 🚀 ✅</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="charset">
+        <h2>Il set di caratteri (charset)</h2>
+        <p>Il <code class="inline">charset</code> dice al browser come interpretare i caratteri. Lo standard è <strong>UTF-8</strong>, che supporta tutte le lingue, le lettere accentate e le emoji. Va sempre messo all'inizio dell'head.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><meta charset="UTF-8"></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="url-encode">
+        <h2>La codifica degli URL</h2>
+        <p>Gli URL non possono contenere spazi o caratteri speciali: vengono <strong>codificati</strong>. Lo spazio diventa <code class="inline">%20</code> (o <code class="inline">+</code>), la lettera à diventa <code class="inline">%C3%A0</code>.</p>
+        <div class="note-box">💡 Per questo nei link delle email scriviamo <code class="inline">?subject=Richiesta%20info</code>: <code class="inline">%20</code> è lo spazio codificato.</div>
+      </article>
+
+      <!-- ===== FORM ===== -->
+      <article class="lesson" id="form">
+        <h2>I moduli (form)</h2>
+        <p>I <strong>form</strong> raccolgono dati dall'utente. L'elemento <code class="inline">&lt;form&gt;</code> contiene i campi; <code class="inline">action</code> indica dove inviare i dati e <code class="inline">method</code> come (GET o POST).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><form>
   <label>Nome:</label><br>
-  <input type="text" placeholder="Scrivi qui"><br><br>
+  <input type="text" name="nome"><br><br>
   <label>Email:</label><br>
-  <input type="email" placeholder="nome@email.it"><br><br>
-  <button type="button">Invia</button>
+  <input type="email" name="email"><br><br>
+  <button type="submit">Invia</button>
 </form></script>
         </div>
       </article>
 
-      <!-- 14 -->
-      <article class="lesson" id="commenti">
-        <h2>14. I commenti</h2>
-        <p>I commenti sono note nel codice che il browser ignora. Servono a spiegare cosa fa una parte di codice. Si scrivono tra <code class="inline">&lt;!--</code> e <code class="inline">--&gt;</code>.</p>
+      <article class="lesson" id="form-attr">
+        <h2>Attributi del form</h2>
+        <p>Principali attributi: <code class="inline">action</code> (URL di destinazione), <code class="inline">method</code> (get/post), <code class="inline">target</code> (dove aprire la risposta), <code class="inline">autocomplete</code> (on/off).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><!-- Questo è un commento: non si vede nella pagina -->
-<p>Questo invece si vede.</p></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><form action="/invia" method="post" autocomplete="on">
+  <input type="text" name="citta" placeholder="Città">
+  <button type="submit">Cerca</button>
+</form></script>
         </div>
       </article>
 
-      <!-- 15 -->
-      <article class="lesson" id="stile">
-        <h2>15. Un po' di stile con il CSS</h2>
-        <p>Con l'attributo <code class="inline">style</code> puoi dare colore e dimensioni agli elementi. È un primo assaggio di CSS.</p>
+      <article class="lesson" id="form-elements">
+        <h2>Gli elementi del form</h2>
+        <p>Oltre a <code class="inline">&lt;input&gt;</code> ci sono: <code class="inline">&lt;textarea&gt;</code> (testo lungo), <code class="inline">&lt;select&gt;</code> con <code class="inline">&lt;option&gt;</code> (menu a tendina), <code class="inline">&lt;label&gt;</code> (etichetta), <code class="inline">&lt;fieldset&gt;</code> (gruppo).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"></pre>
-          <script type="text/plain" class="code"><h1 style="color: indigo">Titolo colorato</h1>
-<p style="color: gray; font-size: 20px">
-  Un paragrafo grigio e un po' più grande.
-</p>
-<p style="background: gold; padding: 10px">
-  Un paragrafo con sfondo dorato.
-</p></script>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><form>
+  <label>Materia:</label>
+  <select name="materia">
+    <option>Python</option>
+    <option>HTML</option>
+    <option>Database</option>
+  </select>
+  <br><br>
+  <label>Messaggio:</label><br>
+  <textarea rows="4" cols="30"></textarea>
+</form></script>
         </div>
-        <div class="tip-box">⭐ Quando sarai pronto, il CSS si scrive in modo più ordinato in un file separato — ma lo vedremo nel corso CSS!</div>
       </article>
 
-      <!-- 16 -->
-      <article class="lesson" id="fine">
-        <h2>16. Complimenti! E ora?</h2>
-        <p>Hai visto i mattoni fondamentali dell'HTML. Il modo migliore per imparare è <strong>fare pratica</strong>: apri un esempio, modificalo, sbaglia, riprova.</p>
-        <p>Vuoi mettere alla prova quello che hai imparato o avere una mano su un argomento difficile?</p>
+      <article class="lesson" id="input-types">
+        <h2>I tipi di input</h2>
+        <p>L'attributo <code class="inline">type</code> cambia il tipo di campo: <code class="inline">text</code>, <code class="inline">email</code>, <code class="inline">password</code>, <code class="inline">number</code>, <code class="inline">date</code>, <code class="inline">checkbox</code>, <code class="inline">radio</code>, <code class="inline">color</code>, <code class="inline">range</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><form>
+  Data: <input type="date"><br><br>
+  Colore: <input type="color"><br><br>
+  Numero: <input type="number" min="0" max="10"><br><br>
+  Volume: <input type="range" min="0" max="100"><br><br>
+  <input type="checkbox"> Accetto<br>
+  <input type="radio" name="g"> Sì
+  <input type="radio" name="g"> No
+</form></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="input-attr">
+        <h2>Attributi degli input</h2>
+        <p>Utili per guidare e validare l'inserimento: <code class="inline">placeholder</code> (testo guida), <code class="inline">required</code> (obbligatorio), <code class="inline">value</code> (valore iniziale), <code class="inline">readonly</code>, <code class="inline">disabled</code>, <code class="inline">maxlength</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><form>
+  <input type="text" placeholder="Obbligatorio" required><br><br>
+  <input type="text" value="Non modificabile" readonly><br><br>
+  <input type="text" maxlength="5" placeholder="Max 5 caratteri">
+</form></script>
+        </div>
+      </article>
+
+      <!-- ===== GRAFICA ===== -->
+      <article class="lesson" id="canvas">
+        <h2>Canvas (disegnare con il codice)</h2>
+        <p>L'elemento <code class="inline">&lt;canvas&gt;</code> è un'area dove disegnare con JavaScript: linee, forme, colori.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><canvas id="tela" width="200" height="120" style="border:1px solid #ccc"></canvas>
+<script>
+  var ctx = document.getElementById('tela').getContext('2d');
+  ctx.fillStyle = '#4f46e5';
+  ctx.fillRect(20, 20, 80, 80);
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.arc(150, 60, 40, 0, 2 * Math.PI);
+  ctx.fill();
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="svg">
+        <h2>SVG (grafica vettoriale)</h2>
+        <p>L'<code class="inline">&lt;svg&gt;</code> disegna forme vettoriali direttamente in HTML, senza JavaScript. Restano nitide a ogni dimensione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><svg width="220" height="120">
+  <rect x="10" y="10" width="80" height="80" fill="#0d9488"/>
+  <circle cx="160" cy="50" r="40" fill="#f59e0b"/>
+  <line x1="10" y1="110" x2="210" y2="110" stroke="indigo" stroke-width="4"/>
+</svg></script>
+        </div>
+      </article>
+
+      <!-- ===== MEDIA ===== -->
+      <article class="lesson" id="media">
+        <h2>I media in HTML</h2>
+        <p>HTML può mostrare audio e video senza programmi esterni, grazie agli elementi <code class="inline">&lt;video&gt;</code> e <code class="inline">&lt;audio&gt;</code>. I formati più usati sono MP4 (video) e MP3 (audio).</p>
+      </article>
+
+      <article class="lesson" id="video">
+        <h2>I video</h2>
+        <p>L'elemento <code class="inline">&lt;video&gt;</code> con l'attributo <code class="inline">controls</code> mostra i comandi di riproduzione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><video width="320" controls>
+  <source src="filmato.mp4" type="video/mp4">
+  Il tuo browser non supporta il video.
+</video></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="audio">
+        <h2>L'audio</h2>
+        <p>L'elemento <code class="inline">&lt;audio&gt;</code> funziona come il video: con <code class="inline">controls</code> appaiono i comandi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><audio controls>
+  <source src="canzone.mp3" type="audio/mpeg">
+  Il tuo browser non supporta l'audio.
+</audio></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="youtube">
+        <h2>Incorporare YouTube</h2>
+        <p>Per inserire un video di YouTube si usa un <code class="inline">&lt;iframe&gt;</code> con l'indirizzo “embed” del video.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><iframe width="320" height="180"
+  src="https://www.youtube.com/embed/tgbNymZ7vqY"
+  title="Video YouTube" allowfullscreen></iframe></script>
+        </div>
+      </article>
+
+      <!-- ===== API ===== -->
+      <article class="lesson" id="geolocation">
+        <h2>Geolocalizzazione</h2>
+        <p>L'API di geolocalizzazione (JavaScript) permette di chiedere la posizione dell'utente — sempre con il suo permesso.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><button onclick="trova()">Dove sono?</button>
+<p id="out"></p>
+<script>
+  function trova(){
+    navigator.geolocation.getCurrentPosition(function(pos){
+      document.getElementById('out').innerHTML =
+        'Lat: ' + pos.coords.latitude + ' Lon: ' + pos.coords.longitude;
+    });
+  }
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="web-storage">
+        <h2>Web Storage (memoria del browser)</h2>
+        <p>Con <code class="inline">localStorage</code> il browser può salvare dati (come testo) anche dopo aver chiuso la pagina. Utile per ricordare preferenze.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><button onclick="salva()">Salva nome</button>
+<button onclick="leggi()">Leggi nome</button>
+<p id="out"></p>
+<script>
+  function salva(){ localStorage.setItem('nome', 'Alessandro'); }
+  function leggi(){ document.getElementById('out').innerHTML = localStorage.getItem('nome'); }
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="drag-drop">
+        <h2>Drag and Drop (trascinare)</h2>
+        <p>L'API Drag and Drop permette di trascinare elementi nella pagina. Si attiva con l'attributo <code class="inline">draggable="true"</code> e alcuni eventi JavaScript.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><div id="box" ondrop="drop(event)" ondragover="event.preventDefault()"
+     style="width:200px;height:80px;border:2px dashed #999">Trascina qui</div>
+<p id="item" draggable="true" ondragstart="event.dataTransfer.setData('t', event.target.id)"
+   style="background:gold;width:120px">Trascinami</p>
+<script>
+  function drop(e){ e.preventDefault(); e.target.appendChild(document.getElementById('item')); }
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="fine" style="border-bottom:none">
+        <h2>Complimenti! 🎉</h2>
+        <p>Hai esplorato tutti i mattoni dell'HTML. Il modo migliore per imparare è <strong>fare pratica</strong>: apri gli esempi, modificali, sbaglia e riprova.</p>
+        <p>Vuoi mettere alla prova quello che hai imparato o una mano su un argomento difficile?</p>
         <div class="hero-actions">
           <a href="esercizi.html" class="btn btn-primary">📝 Vai agli esercizi</a>
           <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
@@ -403,9 +922,11 @@ scrivo su più righe, il browser lo mostra di seguito.</p>
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
+<!-- Evidenziazione sintassi -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-  // Editor "Provalo tu"
   (function(){
     var overlay = document.getElementById('editor');
     var codeArea = document.getElementById('ed-code');
@@ -429,10 +950,13 @@ scrivo su più righe, il browser lo mostra di seguito.</p>
     overlay.addEventListener('click', function(e){ if(e.target === overlay) closeEditor(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
 
-    // Riempie ogni esempio: mostra il codice e collega il pulsante
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent.replace(/^\n/, '').replace(/\s+$/, '');
-      ex.querySelector('.codeview').textContent = raw;
+      var raw = ex.querySelector('.code').textContent
+                  .replace(/^\n/, '').replace(/\s+$/, '')
+                  .replace(/<\\\/script>/g, '<\/script>');
+      var codeEl = ex.querySelector('.codeview code');
+      codeEl.textContent = raw;
+      if (window.Prism) { Prism.highlightElement(codeEl); }
       ex.querySelector('.btn-try').addEventListener('click', function(){ openEditor(raw); });
     });
   })();
