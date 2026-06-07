@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso PYTHON in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Il linguaggio più amato per iniziare a programmare: semplice, potente e leggibile.">
+  <title>Corso Python in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Python in italiano completo, gratuito e interattivo: sintassi, variabili, tipi di dato, stringhe, liste, tuple, set, dizionari, cicli, funzioni, moduli, file, JSON, RegEx, gestione errori e programmazione a oggetti (OOP). Scrivi ed esegui Python direttamente nel browser.">
+  <meta name="keywords" content="corso python italiano, imparare python, tutorial python gratis, python da zero, programmazione python, esercizi python, python online, OOP python, classi python">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Python in italiano completo e gratuito — AlessandroSimone.it">
+  <meta property="og:description" content="Impara Python da zero in italiano: tutorial completo, approfondito e interattivo. Esegui il codice direttamente nel browser.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -12,26 +17,29 @@
   <link rel="stylesheet" href="css/style.css?v=3">
   <style>
     /* ---- Layout corso ---- */
-    .course-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
     .course-side {
       position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto;
       background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 1.1rem; font-size: .9rem;
     }
-    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1rem 0 .4rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
     .course-side h4:first-child { margin-top: 0; }
-    .course-side a { display: block; padding: .32rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
     .course-side a:hover { background: var(--primary-light); color: var(--primary); }
 
-    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 16px; }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
     .lesson:last-child { border-bottom: none; }
     .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
-    .lesson h3 { font-size: 1.1rem; margin: 1.3rem 0 .5rem; color: var(--primary); }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
     .lesson p { margin-bottom: .9rem; color: #334155; }
     .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
     .lesson li { margin-bottom: .35rem; }
     .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
     .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
     .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
 
@@ -43,18 +51,15 @@
     .btn-try:hover { background: #0b7c71; }
     pre.codeview { margin: 0; background: #fff; border-left: 4px solid var(--edu); padding: 1rem 1.1rem; overflow-x: auto; }
     pre.codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .87rem; line-height: 1.6; color: #1e293b; background: none; white-space: pre; }
-    /* colori token (stile W3Schools) */
     .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
-    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #a3185d; }
-    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.keyword, .codeview .token.selector { color: #a3185d; }
     .codeview .token.punctuation, .codeview .token.operator { color: #64748b; }
-    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #0d9488; }
-    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #2563eb; }
-    .codeview .token.attr-value .token.punctuation { color: #2563eb; }
-    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #d97706; }
+    .codeview .token.function, .codeview .token.property { color: #0d9488; }
+    .codeview .token.string, .codeview .token.char { color: #2563eb; }
+    .codeview .token.number, .codeview .token.boolean { color: #d97706; }
     .codeview .token.class-name, .codeview .token.builtin { color: #7c3aed; }
 
-    /* ---- Editor a tutto schermo (stile W3Schools) ---- */
+    /* ---- Editor a tutto schermo ---- */
     .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
     .editor-overlay.open { display: flex; }
     .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
@@ -74,16 +79,13 @@
     .preview-label { background: var(--bg-soft); padding: .4rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
     .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
 
-    /* colori del codice nell'editor (come W3Schools) */
-    .cm-s-default .cm-tag       { color: #a11; }
-    .cm-s-default .cm-bracket   { color: #999; }
-    .cm-s-default .cm-attribute { color: #905; }
-    .cm-s-default .cm-string    { color: #07a; }
     .cm-s-default .cm-keyword   { color: #a11; }
+    .cm-s-default .cm-string    { color: #07a; }
     .cm-s-default .cm-def       { color: #0d9488; }
     .cm-s-default .cm-variable-2 { color: #2563eb; }
     .cm-s-default .cm-number    { color: #d97706; }
     .cm-s-default .cm-comment   { color: #999; font-style: italic; }
+    .cm-s-default .cm-builtin   { color: #7c3aed; }
     .cm-s-default .cm-meta      { color: #999; }
 
     @media (max-width: 900px){
@@ -131,183 +133,1007 @@
   </div>
 </div>
 
-
-
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
     <h1>Corso di Python in italiano</h1>
-    <p class="lead" style="margin-inline:auto">Il linguaggio più amato per iniziare a programmare: semplice, potente e leggibile.</p>
+    <p class="lead" style="margin-inline:auto">Il tutorial completo per imparare Python da zero: dalla sintassi di base alla programmazione a oggetti. Ogni argomento ha esempi che puoi <strong>eseguire direttamente nel browser</strong> con il pulsante “Provalo tu”.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:1rem">
   <div class="container course-wrap">
     <aside class="course-side">
-      <h4>Corso PYTHON</h4>
+      <h4>Tutorial Python</h4>
       <a href="#intro">Introduzione</a>
+      <a href="#installazione">Installazione</a>
+      <a href="#sintassi">Sintassi</a>
+      <a href="#output">Output: print()</a>
+      <a href="#commenti">Commenti</a>
       <a href="#variabili">Variabili</a>
-      <a href="#input">Input/Output</a>
-      <a href="#operatori">Operatori</a>
-      <a href="#condizioni">Condizioni</a>
-      <a href="#cicli-for">Ciclo for</a>
-      <a href="#cicli-while">Ciclo while</a>
-      <a href="#liste">Liste</a>
-      <a href="#funzioni">Funzioni</a>
-      <a href="#dizionari">Dizionari</a>
+      <a href="#tipi">Tipi di dato</a>
+      <a href="#numeri">Numeri</a>
+      <a href="#casting">Casting</a>
       <a href="#stringhe">Stringhe</a>
+      <a href="#booleani">Booleani</a>
+      <a href="#operatori">Operatori</a>
+      <a href="#liste">Liste</a>
+      <a href="#tuple">Tuple</a>
+      <a href="#set">Set</a>
+      <a href="#dizionari">Dizionari</a>
+      <a href="#ifelse">If...Else</a>
+      <a href="#match">Match</a>
+      <a href="#while">Ciclo while</a>
+      <a href="#for">Ciclo for</a>
+      <a href="#funzioni">Funzioni</a>
+      <a href="#range">Range</a>
+      <a href="#array">Array</a>
+      <a href="#iteratori">Iteratori</a>
+      <a href="#moduli">Moduli</a>
+      <a href="#date">Date</a>
+      <a href="#math">Math</a>
+      <a href="#json">JSON</a>
+      <a href="#regex">RegEx</a>
+      <a href="#pip">PIP</a>
+      <a href="#try">Try...Except</a>
+      <a href="#formattazione">Formattazione stringhe</a>
+      <a href="#none">None</a>
+      <a href="#input">Input utente</a>
+      <a href="#virtualenv">Ambienti virtuali</a>
+      <h4>Python e gli oggetti (OOP)</h4>
+      <a href="#oop">OOP: introduzione</a>
+      <a href="#classi">Classi e oggetti</a>
+      <a href="#init">Metodo __init__</a>
+      <a href="#self">Parametro self</a>
+      <a href="#proprieta">Proprietà di classe</a>
+      <a href="#metodi">Metodi di classe</a>
+      <a href="#ereditarieta">Ereditarietà</a>
+      <a href="#polimorfismo">Polimorfismo</a>
+      <a href="#incapsulamento">Incapsulamento</a>
+      <a href="#inner">Classi annidate</a>
+      <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
     <main>
+
       <article class="lesson" id="intro">
         <h2>Introduzione a Python</h2>
-        <p><strong>Python</strong> è un linguaggio semplice e potente, perfetto per imparare a programmare. Si usa per web, dati, intelligenza artificiale e automazione.</p>
+        <p><strong>Python</strong> è un linguaggio di programmazione ad alto livello, interpretato e general-purpose, creato da Guido van Rossum e rilasciato nel 1991. È oggi uno dei linguaggi più usati e amati al mondo grazie a una sintassi pulita, leggibile e vicina all'inglese, che lo rende perfetto per chi inizia a programmare da zero.</p>
+        <p>Con Python puoi fare praticamente di tutto: sviluppo web (Django, Flask), analisi dei dati e data science (pandas, NumPy), intelligenza artificiale e machine learning (TensorFlow, PyTorch), automazione di compiti ripetitivi, scripting di sistema, scraping, videogiochi e molto altro. È un linguaggio <strong>multi-paradigma</strong>: supporta la programmazione procedurale, a oggetti e funzionale.</p>
+        <h3>Perché imparare Python?</h3>
+        <ul>
+          <li><strong>Facile da leggere e scrivere</strong>: usa l'indentazione al posto delle parentesi graffe.</li>
+          <li><strong>Versatile</strong>: dallo script di poche righe al software complesso.</li>
+          <li><strong>Ricco di librerie</strong>: una vastissima libreria standard più migliaia di pacchetti esterni.</li>
+          <li><strong>Richiestissimo nel mondo del lavoro</strong>: uno dei linguaggi più ricercati dalle aziende.</li>
+        </ul>
+        <div class="note-box">💡 In questo corso puoi <strong>eseguire Python reale direttamente nel browser</strong>: clicca su <em>Provalo tu ▶</em> in ogni esempio, poi premi <em>▶ Esegui</em>. Non devi installare nulla.</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">print("Ciao mondo!")</script>
+          <script type="text/plain" class="code">print("Ciao mondo!")
+print("Benvenuto nel corso di Python in italiano")</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="installazione">
+        <h2>Installare Python (Get Started)</h2>
+        <p>Per eseguire Python sul tuo computer devi installare l'interprete, scaricabile gratuitamente dal sito ufficiale <code class="inline">python.org</code>. Molti sistemi Linux e macOS hanno già Python preinstallato. Per verificare se è presente, apri il terminale e digita:</p>
+        <div class="example">
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code"># Nel terminale del tuo computer scriveresti:
+# python --version
+# Qui simuliamo l'output con Python stesso:
+import sys
+print("Versione di Python:", sys.version.split()[0])</script>
+        </div>
+        <h3>Come si esegue un programma Python?</h3>
+        <p>Un programma Python si salva in un file con estensione <code class="inline">.py</code> (ad esempio <code class="inline">programma.py</code>) e si esegue dal terminale con il comando <code class="inline">python programma.py</code>. In alternativa puoi usare un editor come <strong>VS Code</strong>, <strong>PyCharm</strong> o l'interprete interattivo (la “shell” di Python). In questo corso usiamo direttamente il browser.</p>
+      </article>
+
+      <article class="lesson" id="sintassi">
+        <h2>La sintassi di Python</h2>
+        <p>La caratteristica più distintiva di Python è l'<strong>indentazione</strong>: invece di usare parentesi graffe <code class="inline">{ }</code> per delimitare i blocchi di codice, Python usa gli spazi (la convenzione è di <strong>4 spazi</strong>). Un'indentazione sbagliata genera un errore <code class="inline">IndentationError</code>.</p>
+        <h3>Blocchi e indentazione</h3>
+        <p>Tutto ciò che “appartiene” a un'istruzione (un <code class="inline">if</code>, un ciclo, una funzione) deve essere indentato allo stesso livello.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">if 5 > 2:
+    print("Cinque è maggiore di due")
+    print("Queste righe sono nel blocco if")
+print("Questa riga è fuori dal blocco")</script>
+        </div>
+        <div class="tip-box">⚠️ Mantieni sempre coerente l'indentazione: non mischiare spazi e tabulazioni. La convenzione ufficiale (PEP 8) raccomanda 4 spazi.</div>
+      </article>
+
+      <article class="lesson" id="output">
+        <h2>Output: la funzione print()</h2>
+        <p>La funzione <code class="inline">print()</code> è il modo principale per mostrare informazioni a schermo. Può stampare testo, numeri, variabili e più valori separati da virgola (che vengono uniti da uno spazio).</p>
+        <h3>Parametri utili: sep ed end</h3>
+        <ul>
+          <li><code class="inline">sep</code> definisce il separatore fra i valori (default: spazio).</li>
+          <li><code class="inline">end</code> definisce cosa stampare alla fine (default: a capo <code class="inline">\n</code>).</li>
+        </ul>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">print("Ciao", "mondo")
+print("2025", "06", "07", sep="-")
+print("Senza", end=" ")
+print("a capo")</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>I commenti</h2>
+        <p>I commenti servono a spiegare il codice e vengono ignorati dall'interprete. In Python un commento su singola riga inizia con il cancelletto <code class="inline">#</code>. Per i commenti su più righe si usano spesso le stringhe su tripli apici, anche se tecnicamente sono stringhe (docstring).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code"># Questo è un commento su una riga
+print("I commenti non vengono eseguiti")  # commento a fine riga
+
+"""
+Questo è un commento
+su più righe (docstring)
+"""
+print("Fine")</script>
         </div>
       </article>
 
       <article class="lesson" id="variabili">
-        <h2>Variabili e tipi</h2>
-        <p>Le variabili memorizzano valori. In Python non serve dichiarare il tipo.</p>
+        <h2>Le variabili</h2>
+        <p>Una <strong>variabile</strong> è un contenitore con un nome a cui associamo un valore. In Python non serve dichiarare il tipo: viene dedotto automaticamente dal valore assegnato (tipizzazione dinamica). L'assegnazione si fa con il simbolo <code class="inline">=</code>.</p>
+        <h3>Regole per i nomi delle variabili</h3>
+        <ul>
+          <li>Possono contenere lettere, numeri e underscore <code class="inline">_</code>.</li>
+          <li>Non possono iniziare con un numero.</li>
+          <li>Sono <strong>case-sensitive</strong>: <code class="inline">nome</code> e <code class="inline">Nome</code> sono diverse.</li>
+        </ul>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
           <script type="text/plain" class="code">nome = "Alessandro"
-        eta = 30
-        altezza = 1.80
-        print(nome, "ha", eta, "anni")</script>
+eta = 30
+altezza = 1.80
+
+# Assegnazione multipla
+x, y, z = 1, 2, 3
+
+print(nome, "ha", eta, "anni")
+print("Somma:", x + y + z)</script>
         </div>
       </article>
 
-      <article class="lesson" id="input">
-        <h2>Input e output</h2>
-        <p><code class='inline'>print()</code> mostra a schermo, <code class='inline'>input()</code> chiede dati all'utente.</p>
+      <article class="lesson" id="tipi">
+        <h2>I tipi di dato</h2>
+        <p>Ogni valore in Python ha un <strong>tipo</strong>. La funzione <code class="inline">type()</code> permette di scoprirlo. I tipi fondamentali sono:</p>
+        <table class="ref">
+          <tr><th>Categoria</th><th>Tipo</th><th>Esempio</th></tr>
+          <tr><td>Testo</td><td><code class="inline">str</code></td><td>"ciao"</td></tr>
+          <tr><td>Numeri</td><td><code class="inline">int</code>, <code class="inline">float</code>, <code class="inline">complex</code></td><td>10, 3.14, 2j</td></tr>
+          <tr><td>Sequenze</td><td><code class="inline">list</code>, <code class="inline">tuple</code>, <code class="inline">range</code></td><td>[1,2], (1,2)</td></tr>
+          <tr><td>Mappe</td><td><code class="inline">dict</code></td><td>{"a": 1}</td></tr>
+          <tr><td>Insiemi</td><td><code class="inline">set</code>, <code class="inline">frozenset</code></td><td>{1, 2, 3}</td></tr>
+          <tr><td>Booleani</td><td><code class="inline">bool</code></td><td>True, False</td></tr>
+          <tr><td>Nullo</td><td><code class="inline">NoneType</code></td><td>None</td></tr>
+        </table>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">nome = input("Come ti chiami? ")
-        print("Ciao", nome)</script>
+          <script type="text/plain" class="code">print(type("ciao"))
+print(type(10))
+print(type(3.14))
+print(type([1, 2, 3]))
+print(type({"a": 1}))
+print(type(True))</script>
         </div>
       </article>
 
-      <article class="lesson" id="operatori">
-        <h2>Operatori</h2>
-        <p>Aritmetici (<code class='inline'>+ - * / // % **</code>) e di confronto (<code class='inline'>== &gt; &lt;</code>).</p>
+      <article class="lesson" id="numeri">
+        <h2>I numeri</h2>
+        <p>Python distingue tre tipi numerici: <code class="inline">int</code> (interi), <code class="inline">float</code> (numeri con la virgola) e <code class="inline">complex</code> (numeri complessi). Le operazioni aritmetiche di base funzionano come ci si aspetta.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">a = 7
-        b = 3
-        print("Somma:", a + b)
-        print("Divisione intera:", a // b)
-        print("Resto:", a % b)
-        print("Potenza:", a ** b)</script>
+          <script type="text/plain" class="code">intero = 10
+decimale = 3.14
+complesso = 2 + 3j
+
+print("Intero:", intero, type(intero))
+print("Decimale:", decimale, type(decimale))
+print("Complesso:", complesso, type(complesso))
+
+# Operazioni
+print(7 / 2)    # divisione: 3.5
+print(7 // 2)   # divisione intera: 3
+print(7 % 2)    # resto: 1
+print(2 ** 10)  # potenza: 1024
+print(round(3.14159, 2))  # arrotondamento</script>
         </div>
       </article>
 
-      <article class="lesson" id="condizioni">
-        <h2>Condizioni: if/elif/else</h2>
-        <p>Le condizioni eseguono codice diverso in base a un test. L'indentazione è obbligatoria!</p>
+      <article class="lesson" id="casting">
+        <h2>Il casting (conversione di tipo)</h2>
+        <p>Il <strong>casting</strong> converte un valore da un tipo a un altro usando le funzioni costruttrici <code class="inline">int()</code>, <code class="inline">float()</code> e <code class="inline">str()</code>. È fondamentale, ad esempio, quando leggiamo input dall'utente (sempre testo) e dobbiamo trasformarlo in numero.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">voto = int(input("Voto: "))
-        if voto >= 8:
-            print("Ottimo!")
-        elif voto >= 6:
-            print("Sufficiente")
-        else:
-            print("Da recuperare")</script>
-        </div>
-      </article>
+          <script type="text/plain" class="code">x = int("10")      # str -> int
+y = float("3.14")  # str -> float
+z = str(42)        # int -> str
 
-      <article class="lesson" id="cicli-for">
-        <h2>Il ciclo for</h2>
-        <p>Il <code class='inline'>for</code> ripete un'azione per ogni elemento di una sequenza. <code class='inline'>range()</code> genera numeri.</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">for i in range(1, 6):
-            print("Numero", i)</script>
-        </div>
-      </article>
+print(x + 5)
+print(y * 2)
+print("Il numero è " + z)
 
-      <article class="lesson" id="cicli-while">
-        <h2>Il ciclo while</h2>
-        <p>Il <code class='inline'>while</code> ripete finché una condizione è vera.</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">n = 5
-        while n > 0:
-            print(n)
-            n = n - 1
-        print("Via!")</script>
-        </div>
-      </article>
-
-      <article class="lesson" id="liste">
-        <h2>Le liste</h2>
-        <p>Le <strong>liste</strong> contengono più valori. Si accede con l'indice (parte da 0).</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">frutta = ["mela", "pera", "kiwi"]
-        frutta.append("uva")
-        print(frutta[0])
-        print("Totale:", len(frutta))
-        for f in frutta:
-            print(f)</script>
-        </div>
-      </article>
-
-      <article class="lesson" id="funzioni">
-        <h2>Le funzioni</h2>
-        <p>Una <strong>funzione</strong> raggruppa codice riutilizzabile. Si definisce con <code class='inline'>def</code>.</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">def saluta(nome):
-            return "Ciao " + nome
-        
-        print(saluta("Marco"))
-        print(saluta("Giulia"))</script>
-        </div>
-      </article>
-
-      <article class="lesson" id="dizionari">
-        <h2>I dizionari</h2>
-        <p>I <strong>dizionari</strong> associano una chiave a un valore: <code class='inline'>{chiave: valore}</code>.</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">studente = {"nome": "Luca", "voto": 8}
-        print(studente["nome"])
-        studente["voto"] = 9
-        print(studente)</script>
+# int() tronca i decimali
+print(int(3.99))   # 3</script>
         </div>
       </article>
 
       <article class="lesson" id="stringhe">
         <h2>Le stringhe</h2>
-        <p>Le stringhe hanno metodi utili: <code class='inline'>upper()</code>, <code class='inline'>lower()</code>, <code class='inline'>len()</code>, lo slicing <code class='inline'>[::-1]</code>.</p>
+        <p>Le <strong>stringhe</strong> sono sequenze di caratteri racchiuse tra apici singoli <code class="inline">'...'</code> o doppi <code class="inline">"..."</code>. Sono <strong>immutabili</strong>: non possono essere modificate dopo la creazione, ma puoi crearne di nuove.</p>
+        <h3>Slicing e indici</h3>
+        <p>Puoi accedere ai caratteri con l'indice (parte da 0) e ottenere “fette” con lo slicing <code class="inline">[inizio:fine]</code>.</p>
+        <h3>Metodi utili</h3>
+        <table class="ref">
+          <tr><th>Metodo</th><th>Cosa fa</th></tr>
+          <tr><td><code class="inline">upper()</code> / <code class="inline">lower()</code></td><td>Maiuscolo / minuscolo</td></tr>
+          <tr><td><code class="inline">strip()</code></td><td>Rimuove spazi ai lati</td></tr>
+          <tr><td><code class="inline">replace(a, b)</code></td><td>Sostituisce a con b</td></tr>
+          <tr><td><code class="inline">split(sep)</code></td><td>Divide in una lista</td></tr>
+          <tr><td><code class="inline">len()</code></td><td>Lunghezza della stringa</td></tr>
+        </table>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-python"></code></pre>
-          <script type="text/plain" class="code">parola = "Python"
-        print(parola.upper())
-        print(len(parola))
-        print(parola[::-1])</script>
+          <script type="text/plain" class="code">testo = "Python è fantastico"
+
+print(testo.upper())
+print(testo.lower())
+print(len(testo))
+print(testo[0:6])        # slicing: "Python"
+print(testo[-10:])       # ultimi caratteri
+print(testo.replace("fantastico", "potente"))
+print(testo.split(" "))  # lista di parole
+print("è" in testo)      # ricerca: True</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="booleani">
+        <h2>I booleani</h2>
+        <p>Un valore <strong>booleano</strong> può essere solo <code class="inline">True</code> (vero) o <code class="inline">False</code> (falso). I booleani nascono spesso dal confronto fra valori e sono alla base delle decisioni nel codice.</p>
+        <p>In Python molti valori sono considerati “falsi” in un contesto booleano: <code class="inline">0</code>, <code class="inline">""</code> (stringa vuota), <code class="inline">[]</code> (lista vuota), <code class="inline">None</code>. Tutto il resto è “vero”.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">print(10 > 9)         # True
+print(10 == 9)        # False
+print(bool(0))        # False
+print(bool(""))       # False
+print(bool("ciao"))   # True
+print(bool([]))       # False</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="operatori">
+        <h2>Gli operatori</h2>
+        <p>Gli operatori eseguono operazioni su valori e variabili. Python offre diverse categorie:</p>
+        <ul>
+          <li><strong>Aritmetici</strong>: <code class="inline">+ - * / // % **</code></li>
+          <li><strong>Di confronto</strong>: <code class="inline">== != &gt; &lt; &gt;= &lt;=</code></li>
+          <li><strong>Logici</strong>: <code class="inline">and</code>, <code class="inline">or</code>, <code class="inline">not</code></li>
+          <li><strong>Di assegnazione</strong>: <code class="inline">= += -= *= /=</code></li>
+          <li><strong>Di appartenenza</strong>: <code class="inline">in</code>, <code class="inline">not in</code></li>
+        </ul>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">a = 10
+b = 3
+
+print(a + b, a - b, a * b)
+print(a > b and b > 0)   # logico AND
+print(a > b or b > 100)  # logico OR
+print(not (a > b))       # logico NOT
+
+a += 5   # equivale ad a = a + 5
+print("a ora vale", a)
+print("ll" in "giallo")  # appartenenza</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="liste">
+        <h2>Le liste</h2>
+        <p>Una <strong>lista</strong> è una collezione ordinata e <strong>modificabile</strong> di elementi, racchiusa tra parentesi quadre <code class="inline">[ ]</code>. Può contenere valori di tipo diverso e ammette duplicati.</p>
+        <h3>Metodi principali</h3>
+        <table class="ref">
+          <tr><th>Metodo</th><th>Cosa fa</th></tr>
+          <tr><td><code class="inline">append(x)</code></td><td>Aggiunge x in fondo</td></tr>
+          <tr><td><code class="inline">insert(i, x)</code></td><td>Inserisce x in posizione i</td></tr>
+          <tr><td><code class="inline">remove(x)</code></td><td>Rimuove il primo x</td></tr>
+          <tr><td><code class="inline">pop(i)</code></td><td>Estrae l'elemento in posizione i</td></tr>
+          <tr><td><code class="inline">sort()</code></td><td>Ordina la lista</td></tr>
+        </table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">frutta = ["mela", "pera", "kiwi"]
+frutta.append("uva")
+frutta.insert(0, "banana")
+
+print(frutta)
+print("Primo:", frutta[0])
+print("Quanti:", len(frutta))
+
+frutta.sort()
+print("Ordinata:", frutta)
+
+# Ciclo sulla lista
+for f in frutta:
+    print("-", f)
+
+# List comprehension: i quadrati da 1 a 5
+quadrati = [n ** 2 for n in range(1, 6)]
+print(quadrati)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tuple">
+        <h2>Le tuple</h2>
+        <p>Una <strong>tupla</strong> è come una lista ma <strong>immutabile</strong>: una volta creata non può essere modificata. Si scrive con le parentesi tonde <code class="inline">( )</code>. Si usa per dati che non devono cambiare, come coordinate o costanti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">coordinate = (45.46, 9.19)
+print("Latitudine:", coordinate[0])
+print("Longitudine:", coordinate[1])
+
+# Unpacking: assegna gli elementi a più variabili
+lat, lon = coordinate
+print(lat, lon)
+
+# Le tuple sono immutabili:
+# coordinate[0] = 0  ->  genera un errore!
+print("Lunghezza:", len(coordinate))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="set">
+        <h2>I set (insiemi)</h2>
+        <p>Un <strong>set</strong> è una collezione <strong>non ordinata</strong> e <strong>senza duplicati</strong>, scritta tra parentesi graffe <code class="inline">{ }</code>. È utile per eliminare i doppioni e per le operazioni insiemistiche (unione, intersezione, differenza).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">numeri = {1, 2, 2, 3, 3, 3}
+print(numeri)   # i duplicati spariscono: {1, 2, 3}
+
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+print("Unione:", a | b)
+print("Intersezione:", a & b)
+print("Differenza:", a - b)
+
+a.add(10)
+print(a)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dizionari">
+        <h2>I dizionari</h2>
+        <p>Un <strong>dizionario</strong> associa una <strong>chiave</strong> a un <strong>valore</strong>: <code class="inline">{chiave: valore}</code>. È ordinato (da Python 3.7), modificabile e non ammette chiavi duplicate. È la struttura ideale per rappresentare “oggetti” con proprietà.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">studente = {
+    "nome": "Luca",
+    "eta": 17,
+    "voti": [8, 9, 7]
+}
+
+print(studente["nome"])
+print("Media voti:", sum(studente["voti"]) / len(studente["voti"]))
+
+# Aggiungere/modificare
+studente["classe"] = "3A"
+studente["eta"] = 18
+
+# Scorrere chiavi e valori
+for chiave, valore in studente.items():
+    print(chiave, "->", valore)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ifelse">
+        <h2>Le condizioni: if, elif, else</h2>
+        <p>Le istruzioni condizionali eseguono codice diverso a seconda che una condizione sia vera o falsa. Si usano <code class="inline">if</code> (se), <code class="inline">elif</code> (altrimenti se) ed <code class="inline">else</code> (altrimenti). Ricorda l'indentazione!</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">voto = 7
+
+if voto >= 8:
+    print("Ottimo!")
+elif voto >= 6:
+    print("Sufficiente")
+else:
+    print("Da recuperare")
+
+# Operatore ternario (su una riga)
+esito = "promosso" if voto >= 6 else "bocciato"
+print(esito)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="match">
+        <h2>Il costrutto match (switch)</h2>
+        <p>Da Python 3.10 esiste <code class="inline">match ... case</code>, simile allo <em>switch</em> di altri linguaggi: confronta un valore con più “casi” ed esegue il blocco corrispondente. Il caso <code class="inline">_</code> fa da default.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">giorno = 3
+
+match giorno:
+    case 1:
+        print("Lunedì")
+    case 6 | 7:
+        print("Weekend")
+    case _:
+        print("Giorno feriale numero " + str(giorno))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="while">
+        <h2>Il ciclo while</h2>
+        <p>Il ciclo <code class="inline">while</code> ripete un blocco di codice <strong>finché</strong> una condizione resta vera. Attenzione a modificare la condizione all'interno, altrimenti rischi un ciclo infinito. Le parole chiave <code class="inline">break</code> (esci) e <code class="inline">continue</code> (salta al prossimo giro) controllano il flusso.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">n = 5
+while n > 0:
+    print("Conto:", n)
+    n = n - 1
+print("Via!")
+
+# break e continue
+i = 0
+while True:
+    i += 1
+    if i == 3:
+        continue   # salta il 3
+    if i > 5:
+        break      # esce dal ciclo
+    print("i =", i)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="for">
+        <h2>Il ciclo for</h2>
+        <p>Il ciclo <code class="inline">for</code> scorre gli elementi di una sequenza (lista, stringa, range, dizionario...). Combinato con <code class="inline">range()</code> permette di ripetere un'azione un numero preciso di volte.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code"># Sugli elementi di una lista
+for animale in ["cane", "gatto", "pesce"]:
+    print(animale)
+
+# Con range
+for i in range(1, 6):
+    print("Numero", i)
+
+# Con enumerate (indice + valore)
+for indice, lettera in enumerate("ciao"):
+    print(indice, lettera)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="funzioni">
+        <h2>Le funzioni</h2>
+        <p>Una <strong>funzione</strong> è un blocco di codice riutilizzabile che svolge un compito. Si definisce con <code class="inline">def</code>, può ricevere <strong>parametri</strong> e restituire un valore con <code class="inline">return</code>. Le funzioni rendono il codice ordinato e DRY (Don't Repeat Yourself).</p>
+        <h3>Parametri di default e *args</h3>
+        <p>Puoi assegnare valori predefiniti ai parametri e accettare un numero variabile di argomenti con <code class="inline">*args</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">def saluta(nome, saluto="Ciao"):
+    return saluto + " " + nome + "!"
+
+print(saluta("Marco"))
+print(saluta("Giulia", "Buongiorno"))
+
+# Numero variabile di argomenti
+def somma(*numeri):
+    return sum(numeri)
+
+print("Somma:", somma(1, 2, 3, 4, 5))
+
+# Funzione lambda (anonima)
+doppio = lambda x: x * 2
+print(doppio(8))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="range">
+        <h2>La funzione range()</h2>
+        <p><code class="inline">range()</code> genera una sequenza di numeri, molto usata nei cicli. Accetta fino a tre argomenti: <code class="inline">range(stop)</code>, <code class="inline">range(start, stop)</code> e <code class="inline">range(start, stop, step)</code>. Il valore <code class="inline">stop</code> è escluso.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">print(list(range(5)))         # 0..4
+print(list(range(2, 8)))      # 2..7
+print(list(range(0, 11, 2)))  # numeri pari
+print(list(range(10, 0, -1))) # conto alla rovescia</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="array">
+        <h2>Gli array</h2>
+        <p>In Python le <strong>liste</strong> svolgono il ruolo che in altri linguaggi hanno gli array. Esiste anche un modulo <code class="inline">array</code> per array tipizzati ed efficienti, e per il calcolo numerico si usa la libreria esterna <strong>NumPy</strong>. Per la maggior parte dei casi le liste sono più che sufficienti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">voti = [6, 7, 8, 9, 10]
+
+print("Quanti:", len(voti))
+print("Massimo:", max(voti))
+print("Minimo:", min(voti))
+print("Media:", sum(voti) / len(voti))
+
+# Aggiungere e rimuovere
+voti.append(5)
+voti.remove(5)
+print(voti)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="iteratori">
+        <h2>Gli iteratori</h2>
+        <p>Un <strong>iteratore</strong> è un oggetto che si può percorrere un elemento alla volta. Tutte le sequenze (liste, tuple, stringhe) sono <em>iterabili</em>: con <code class="inline">iter()</code> ottieni un iteratore e con <code class="inline">next()</code> avanzi al prossimo elemento.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">colori = ["rosso", "verde", "blu"]
+it = iter(colori)
+
+print(next(it))
+print(next(it))
+print(next(it))
+
+# Un generatore (iteratore creato con yield)
+def conta_fino(n):
+    i = 1
+    while i <= n:
+        yield i
+        i += 1
+
+for numero in conta_fino(3):
+    print("Generato:", numero)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="moduli">
+        <h2>I moduli</h2>
+        <p>Un <strong>modulo</strong> è un file Python che contiene funzioni e variabili riutilizzabili. Si importa con <code class="inline">import</code>. La <strong>libreria standard</strong> di Python include centinaia di moduli pronti all'uso (math, random, datetime, os...).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import random
+from math import sqrt
+
+print("Numero casuale:", random.randint(1, 100))
+print("Scelta casuale:", random.choice(["A", "B", "C"]))
+print("Radice di 144:", sqrt(144))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="date">
+        <h2>Le date</h2>
+        <p>Il modulo <code class="inline">datetime</code> gestisce date e orari. Puoi ottenere la data attuale, formattarla e fare calcoli sul tempo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">from datetime import datetime, timedelta
+
+oggi = datetime.now()
+print("Adesso:", oggi)
+print("Anno:", oggi.year)
+print("Formattata:", oggi.strftime("%d/%m/%Y"))
+
+# Calcolo: fra 7 giorni
+prossima = oggi + timedelta(days=7)
+print("Fra una settimana:", prossima.strftime("%d/%m/%Y"))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="math">
+        <h2>Il modulo math</h2>
+        <p>Il modulo <code class="inline">math</code> offre funzioni matematiche avanzate: radici, potenze, funzioni trigonometriche, costanti come <code class="inline">pi</code> ed <code class="inline">e</code>, arrotondamenti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import math
+
+print("Pi greco:", math.pi)
+print("Radice quadrata:", math.sqrt(81))
+print("Arrotonda per eccesso:", math.ceil(4.1))
+print("Arrotonda per difetto:", math.floor(4.9))
+print("Fattoriale di 5:", math.factorial(5))
+print("Potenza:", math.pow(2, 8))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="json">
+        <h2>Il formato JSON</h2>
+        <p><strong>JSON</strong> (JavaScript Object Notation) è il formato standard per scambiare dati tra applicazioni e sul web. Il modulo <code class="inline">json</code> converte tra stringhe JSON e oggetti Python: <code class="inline">loads</code> (da JSON a dict) e <code class="inline">dumps</code> (da dict a JSON).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import json
+
+# Da stringa JSON a dizionario Python
+testo = '{"nome": "Luca", "eta": 17, "promosso": true}'
+dati = json.loads(testo)
+print(dati["nome"], "ha", dati["eta"], "anni")
+
+# Da dizionario Python a stringa JSON
+persona = {"citta": "Roma", "cap": 100}
+print(json.dumps(persona, indent=2))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="regex">
+        <h2>Le espressioni regolari (RegEx)</h2>
+        <p>Le <strong>espressioni regolari</strong> permettono di cercare e manipolare testo secondo schemi (pattern). Si usano tramite il modulo <code class="inline">re</code>. Sono potentissime per validare email, numeri di telefono, codici fiscali e altro.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import re
+
+testo = "Contattami a mario@example.com oppure 06-1234567"
+
+# Trova un'email
+email = re.search(r"[\w.]+@[\w.]+", testo)
+print("Email:", email.group())
+
+# Trova tutti i numeri
+numeri = re.findall(r"\d+", testo)
+print("Numeri:", numeri)
+
+# Verifica un CAP (5 cifre)
+print(bool(re.fullmatch(r"\d{5}", "00100")))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="pip">
+        <h2>PIP: il gestore di pacchetti</h2>
+        <p><strong>PIP</strong> è lo strumento ufficiale per installare librerie esterne (pacchetti) da PyPI, il repository di Python. Si usa dal terminale, non dentro al codice.</p>
+        <div class="example">
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code"># Comandi da eseguire nel TERMINALE:
+# pip install requests      -> installa il pacchetto "requests"
+# pip uninstall requests    -> lo disinstalla
+# pip list                  -> mostra i pacchetti installati
+# pip install pandas numpy  -> installa più pacchetti insieme
+
+print("PIP si usa dal terminale per installare le librerie.")
+print("Esempio: pip install requests")</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="try">
+        <h2>Gestione degli errori: try...except</h2>
+        <p>Quando il codice può generare un errore (eccezione), lo gestiamo con <code class="inline">try ... except</code> per evitare che il programma si interrompa. Si possono aggiungere <code class="inline">else</code> (se non ci sono errori) e <code class="inline">finally</code> (eseguito sempre).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">try:
+    numero = int("non_e_un_numero")
+except ValueError:
+    print("Errore: non è un numero valido!")
+
+try:
+    risultato = 10 / 0
+except ZeroDivisionError:
+    print("Non si può dividere per zero")
+finally:
+    print("Questo blocco viene eseguito sempre")</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="formattazione">
+        <h2>La formattazione delle stringhe</h2>
+        <p>Per costruire stringhe con valori variabili, il modo moderno e consigliato sono le <strong>f-string</strong> (da Python 3.6): basta anteporre <code class="inline">f</code> alla stringa e inserire le variabili tra parentesi graffe.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">nome = "Sara"
+eta = 16
+media = 7.5555
+
+# f-string
+print(f"{nome} ha {eta} anni")
+print(f"Media: {media:.2f}")        # 2 decimali
+print(f"In percentuale: {0.85:.0%}") # 85%
+
+# Metodo .format()
+print("{} + {} = {}".format(2, 3, 2 + 3))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="none">
+        <h2>Il valore None</h2>
+        <p><code class="inline">None</code> rappresenta l'<strong>assenza di valore</strong> ed è di tipo <code class="inline">NoneType</code>. Si usa per indicare “niente”, valori non ancora assegnati o il ritorno di funzioni che non restituiscono nulla. Per confrontarlo si usa <code class="inline">is</code>, non <code class="inline">==</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">risultato = None
+
+if risultato is None:
+    print("Nessun valore assegnato")
+
+def funzione_senza_return():
+    pass
+
+print(funzione_senza_return())  # stampa None</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="input">
+        <h2>L'input dell'utente</h2>
+        <p>La funzione <code class="inline">input()</code> chiede un dato all'utente e restituisce sempre una <strong>stringa</strong>: per usarla come numero serve il casting con <code class="inline">int()</code> o <code class="inline">float()</code>.</p>
+        <div class="note-box">💡 Nell'editor del corso, <code class="inline">input()</code> apre una finestrella del browser dove inserire il valore.</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">nome = input("Come ti chiami? ")
+print("Ciao", nome)
+
+eta = int(input("Quanti anni hai? "))
+print(f"Fra 10 anni ne avrai {eta + 10}")</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="virtualenv">
+        <h2>Gli ambienti virtuali (VirtualEnv)</h2>
+        <p>Un <strong>ambiente virtuale</strong> è una “sandbox” isolata dove installare i pacchetti di un singolo progetto, senza interferire con gli altri o con il Python di sistema. È una buona pratica fondamentale. Si crea col modulo <code class="inline">venv</code> dal terminale.</p>
+        <div class="example">
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code"># Comandi da eseguire nel TERMINALE:
+# python -m venv mioenv        -> crea l'ambiente "mioenv"
+# source mioenv/bin/activate   -> lo attiva (Linux/macOS)
+# mioenv\Scripts\activate      -> lo attiva (Windows)
+# pip install ...              -> installa i pacchetti SOLO qui
+# deactivate                   -> esce dall'ambiente
+
+print("Un ambiente virtuale isola i pacchetti di ogni progetto.")</script>
+        </div>
+      </article>
+
+      <!-- ================= OOP ================= -->
+
+      <article class="lesson" id="oop">
+        <h2>Programmazione a oggetti (OOP): introduzione</h2>
+        <p>La <strong>programmazione orientata agli oggetti</strong> (OOP, Object-Oriented Programming) è un paradigma che organizza il codice attorno a <strong>oggetti</strong>: entità che uniscono <em>dati</em> (attributi) e <em>comportamenti</em> (metodi). Python è completamente orientato agli oggetti.</p>
+        <p>I quattro pilastri della OOP sono: <strong>incapsulamento</strong>, <strong>ereditarietà</strong>, <strong>polimorfismo</strong> e <strong>astrazione</strong>. Padroneggiarli ti permette di scrivere programmi grandi, ordinati e facili da mantenere.</p>
+        <div class="note-box">📦 Pensa a una classe come allo “stampo” e agli oggetti come ai biscotti creati con quello stampo.</div>
+      </article>
+
+      <article class="lesson" id="classi">
+        <h2>Classi e oggetti</h2>
+        <p>Una <strong>classe</strong> è il modello (lo “stampo”) da cui si creano gli <strong>oggetti</strong> (le istanze). Si definisce con la parola chiave <code class="inline">class</code>. Creare un oggetto significa “istanziare” la classe.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Cane:
+    specie = "Canis familiaris"   # attributo di classe
+
+# Creiamo due oggetti (istanze)
+fido = Cane()
+rex = Cane()
+
+print(fido.specie)
+print(rex.specie)
+print(type(fido))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="init">
+        <h2>Il metodo __init__ (costruttore)</h2>
+        <p>Il metodo speciale <code class="inline">__init__</code> è il <strong>costruttore</strong>: viene chiamato automaticamente quando si crea un oggetto e serve a inizializzarne gli attributi. È il punto in cui passiamo i dati iniziali.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Studente:
+    def __init__(self, nome, eta):
+        self.nome = nome
+        self.eta = eta
+
+# I valori passati finiscono in __init__
+s1 = Studente("Marco", 17)
+s2 = Studente("Giulia", 18)
+
+print(s1.nome, s1.eta)
+print(s2.nome, s2.eta)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="self">
+        <h2>Il parametro self</h2>
+        <p><code class="inline">self</code> rappresenta l'<strong>oggetto stesso</strong> e deve essere il primo parametro di ogni metodo di istanza. Serve ad accedere agli attributi e ai metodi dell'oggetto su cui il metodo è chiamato. Non lo passi tu: ci pensa Python.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Persona:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def saluta(self):
+        return f"Ciao, sono {self.nome}"
+
+p = Persona("Alessandro")
+print(p.saluta())</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="proprieta">
+        <h2>Le proprietà (attributi) di classe</h2>
+        <p>Gli <strong>attributi di istanza</strong> appartengono al singolo oggetto (definiti con <code class="inline">self.</code>), mentre gli <strong>attributi di classe</strong> sono condivisi da tutte le istanze. Si possono leggere, modificare e aggiungere dinamicamente.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Auto:
+    ruote = 4   # attributo di classe (condiviso)
+
+    def __init__(self, marca):
+        self.marca = marca   # attributo di istanza
+
+a1 = Auto("Fiat")
+a2 = Auto("Tesla")
+
+print(a1.marca, "- ruote:", a1.ruote)
+print(a2.marca, "- ruote:", a2.ruote)
+
+# Modifico un attributo di istanza
+a1.marca = "Ferrari"
+print(a1.marca)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="metodi">
+        <h2>I metodi di classe</h2>
+        <p>I <strong>metodi</strong> sono funzioni definite dentro una classe che descrivono il comportamento degli oggetti. Oltre ai metodi di istanza esistono i <em>metodi di classe</em> (<code class="inline">@classmethod</code>, ricevono <code class="inline">cls</code>) e i <em>metodi statici</em> (<code class="inline">@staticmethod</code>, non ricevono né <code class="inline">self</code> né <code class="inline">cls</code>).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Calcolatrice:
+    def __init__(self, valore):
+        self.valore = valore
+
+    def aggiungi(self, n):      # metodo di istanza
+        self.valore += n
+        return self.valore
+
+    @staticmethod
+    def quadrato(x):            # metodo statico
+        return x * x
+
+c = Calcolatrice(10)
+print(c.aggiungi(5))            # 15
+print(Calcolatrice.quadrato(7)) # 49</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ereditarieta">
+        <h2>L'ereditarietà</h2>
+        <p>L'<strong>ereditarietà</strong> permette a una classe (figlia) di ereditare attributi e metodi da un'altra (genitore), riutilizzando il codice ed estendendolo. La funzione <code class="inline">super()</code> richiama il costruttore o i metodi della classe genitore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Animale:
+    def __init__(self, nome):
+        self.nome = nome
+    def verso(self):
+        return "..."
+
+class Gatto(Animale):           # Gatto eredita da Animale
+    def verso(self):            # override del metodo
+        return "Miao"
+
+class Cane(Animale):
+    def verso(self):
+        return "Bau"
+
+g = Gatto("Felix")
+c = Cane("Rex")
+print(g.nome, "fa", g.verso())
+print(c.nome, "fa", c.verso())</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="polimorfismo">
+        <h2>Il polimorfismo</h2>
+        <p>Il <strong>polimorfismo</strong> (“molte forme”) consente di usare lo stesso metodo su oggetti di classi diverse, ottenendo comportamenti specifici per ciascuna. È ciò che rende il codice flessibile: scrivi una logica generale che funziona con tipi diversi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Cerchio:
+    def __init__(self, r):
+        self.r = r
+    def area(self):
+        return 3.14 * self.r ** 2
+
+class Rettangolo:
+    def __init__(self, b, h):
+        self.b = b
+        self.h = h
+    def area(self):
+        return self.b * self.h
+
+# Stesso metodo area(), oggetti diversi
+forme = [Cerchio(5), Rettangolo(4, 6)]
+for forma in forme:
+    print("Area:", forma.area())</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="incapsulamento">
+        <h2>L'incapsulamento</h2>
+        <p>L'<strong>incapsulamento</strong> consiste nel nascondere i dettagli interni di un oggetto, proteggendo i dati. In Python, per convenzione, un attributo con doppio underscore <code class="inline">__nome</code> diventa “privato” (name mangling) e si accede solo tramite metodi pubblici (getter e setter).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class ContoBancario:
+    def __init__(self, saldo):
+        self.__saldo = saldo     # attributo privato
+
+    def deposita(self, importo):
+        if importo > 0:
+            self.__saldo += importo
+
+    def get_saldo(self):
+        return self.__saldo
+
+conto = ContoBancario(100)
+conto.deposita(50)
+print("Saldo:", conto.get_saldo())   # 150
+# print(conto.__saldo)  -> errore: è privato!</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="inner">
+        <h2>Le classi annidate (inner classes)</h2>
+        <p>Una <strong>classe annidata</strong> è una classe definita dentro un'altra classe. Si usa quando un oggetto “interno” ha senso solo nel contesto di quello “esterno”, ad esempio un motore che appartiene a un'automobile.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">class Computer:
+    def __init__(self, marca):
+        self.marca = marca
+        self.cpu = self.CPU("Intel i7")   # crea l'oggetto interno
+
+    class CPU:                            # classe annidata
+        def __init__(self, modello):
+            self.modello = modello
+
+pc = Computer("Dell")
+print(pc.marca, "con CPU", pc.cpu.modello)</script>
         </div>
       </article>
 
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai imparato le basi di Python. Ora tocca a te programmare!</p><div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota</a></div>
+        <h2>Complimenti! 🎉 Hai completato il corso di Python</h2>
+        <p>Hai imparato Python dalle basi (variabili, tipi, cicli e funzioni) fino alla programmazione a oggetti (classi, ereditarietà, polimorfismo e incapsulamento). Ora hai tutti gli strumenti per costruire i tuoi primi programmi.</p>
+        <p>Il modo migliore per consolidare ciò che hai imparato è <strong>esercitarti</strong>: prova a modificare gli esempi, sbaglia, correggi e sperimenta. Se vuoi un percorso guidato o una mano per una verifica, posso aiutarti con le ripetizioni in presenza a Roma.</p>
+        <div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
+
     </main>
   </div>
 </section>
@@ -315,7 +1141,7 @@
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
+      <strong>✏️ Provalo tu — scrivi ed esegui Python</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
@@ -325,7 +1151,7 @@
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
         <div class="preview-label">Risultato</div>
-        <iframe id="ed-preview" title="Anteprima del codice"></iframe>
+        <iframe id="ed-preview" title="Output del codice Python"></iframe>
       </div>
     </div>
   </div>
@@ -359,7 +1185,7 @@
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: "python", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default'
+      tabSize: 4, indentUnit: 4, theme: 'default'
     });
 
     var pyodide = null, pyLoading = false;
@@ -387,7 +1213,6 @@
       var code = cm.getValue();
       try {
         var py = await ensurePyodide();
-        // input() interattivo tramite prompt del browser
         py.globals.set('__js_prompt', function(msg){ return window.prompt(msg || '') || ''; });
         await py.runPythonAsync(
           'import builtins, sys, io\n' +
@@ -415,7 +1240,7 @@
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      preview.srcdoc = shell('<span style="color:#94a3b8">Premi ▶ Esegui per lanciare il codice Python.</span>');
+      preview.srcdoc = shell('<span style="color:#94a3b8">Premi ▶ Esegui (in alto) per lanciare il codice Python.</span>');
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
@@ -425,17 +1250,14 @@
 
     // Rimuove l'indentazione HTML mantenendo quella reale di Python
     function dedent(text){
-      var lines = text.split('\n');
-      var min = Infinity;
+      var lines = text.split('\n'), min = Infinity;
       for (var i = 1; i < lines.length; i++){
         if (!lines[i].trim()) continue;
         var m = lines[i].match(/^ */)[0].length;
         if (m < min) min = m;
       }
       if (min === Infinity || min === 0) return lines.join('\n');
-      for (var j = 1; j < lines.length; j++){
-        lines[j] = lines[j].slice(min);
-      }
+      for (var j = 1; j < lines.length; j++){ lines[j] = lines[j].slice(min); }
       return lines.join('\n');
     }
 
