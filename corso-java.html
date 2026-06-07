@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso JAVA in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Un linguaggio potente e diffusissimo, usato per app Android, software aziendali e tanto altro.">
+  <title>Corso Java in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Java in italiano completo e gratuito: sintassi, variabili, tipi di dato, operatori, stringhe, condizioni, cicli, array, metodi e programmazione a oggetti (classi, ereditarietà, polimorfismo, interfacce). Spiegazioni approfondite con esempi di codice.">
+  <meta name="keywords" content="corso java italiano, imparare java, tutorial java gratis, java da zero, programmazione java, oop java, classi java, esercizi java">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Java in italiano completo e gratuito — AlessandroSimone.it">
+  <meta property="og:description" content="Impara Java da zero in italiano: tutorial completo e approfondito con tanti esempi di codice.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="css/style.css?v=3">
   <style>
-    /* ---- Layout corso ---- */
-    .course-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
     .course-side {
       position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto;
       background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 1.1rem; font-size: .9rem;
     }
-    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1rem 0 .4rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
     .course-side h4:first-child { margin-top: 0; }
-    .course-side a { display: block; padding: .32rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
     .course-side a:hover { background: var(--primary-light); color: var(--primary); }
 
-    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 16px; }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
     .lesson:last-child { border-bottom: none; }
     .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
-    .lesson h3 { font-size: 1.1rem; margin: 1.3rem 0 .5rem; color: var(--primary); }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
     .lesson p { margin-bottom: .9rem; color: #334155; }
     .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
     .lesson li { margin-bottom: .35rem; }
     .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
     .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
     .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
 
-    /* ---- Esempi con codice colorato ---- */
     .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
     .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
     .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
@@ -43,18 +49,14 @@
     .btn-try:hover { background: #0b7c71; }
     pre.codeview { margin: 0; background: #fff; border-left: 4px solid var(--edu); padding: 1rem 1.1rem; overflow-x: auto; }
     pre.codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .87rem; line-height: 1.6; color: #1e293b; background: none; white-space: pre; }
-    /* colori token (stile W3Schools) */
-    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
-    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #a3185d; }
-    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #a3185d; }
     .codeview .token.punctuation, .codeview .token.operator { color: #64748b; }
-    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #0d9488; }
-    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #2563eb; }
-    .codeview .token.attr-value .token.punctuation { color: #2563eb; }
-    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #d97706; }
-    .codeview .token.class-name, .codeview .token.builtin { color: #7c3aed; }
+    .codeview .token.function { color: #0d9488; }
+    .codeview .token.string, .codeview .token.char { color: #2563eb; }
+    .codeview .token.number, .codeview .token.boolean { color: #d97706; }
+    .codeview .token.class-name { color: #7c3aed; }
 
-    /* ---- Editor a tutto schermo (stile W3Schools) ---- */
     .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
     .editor-overlay.open { display: flex; }
     .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
@@ -62,8 +64,6 @@
     .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
-    .ed-run { background: #04AA6D; color: #fff; }
-    .ed-run:hover { background: #038a59; }
     .ed-close { background: #64748b; color: #fff; }
     .ed-close:hover { background: #475569; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
@@ -74,17 +74,11 @@
     .preview-label { background: var(--bg-soft); padding: .4rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
     .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
 
-    /* colori del codice nell'editor (come W3Schools) */
-    .cm-s-default .cm-tag       { color: #a11; }
-    .cm-s-default .cm-bracket   { color: #999; }
-    .cm-s-default .cm-attribute { color: #905; }
-    .cm-s-default .cm-string    { color: #07a; }
-    .cm-s-default .cm-keyword   { color: #a11; }
-    .cm-s-default .cm-def       { color: #0d9488; }
-    .cm-s-default .cm-variable-2 { color: #2563eb; }
-    .cm-s-default .cm-number    { color: #d97706; }
-    .cm-s-default .cm-comment   { color: #999; font-style: italic; }
-    .cm-s-default .cm-meta      { color: #999; }
+    .cm-s-default .cm-keyword { color: #a3185d; }
+    .cm-s-default .cm-string { color: #2563eb; }
+    .cm-s-default .cm-number { color: #d97706; }
+    .cm-s-default .cm-comment { color: #999; font-style: italic; }
+    .cm-s-default .cm-def, .cm-s-default .cm-variable-3 { color: #7c3aed; }
 
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
@@ -112,7 +106,6 @@
   </div>
 </header>
 
-<!-- BARRA CORSI (visibile in tutte le pagine dei corsi) -->
 <div class="course-nav">
   <div class="container course-nav-inner">
     <a href="corso-html.html">HTML</a>
@@ -131,146 +124,670 @@
   </div>
 </div>
 
-
-
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
     <h1>Corso di Java in italiano</h1>
-    <p class="lead" style="margin-inline:auto">Un linguaggio potente e diffusissimo, usato per app Android, software aziendali e tanto altro.</p>
+    <p class="lead" style="margin-inline:auto">Il tutorial completo per imparare Java da zero: dalla sintassi di base alla programmazione a oggetti, con esempi di codice spiegati passo passo.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:1rem">
   <div class="container course-wrap">
     <aside class="course-side">
-      <h4>Corso JAVA</h4>
+      <h4>Tutorial Java</h4>
       <a href="#intro">Introduzione</a>
+      <a href="#installazione">Installazione</a>
+      <a href="#sintassi">Sintassi e primo programma</a>
+      <a href="#output">Output: println</a>
+      <a href="#commenti">Commenti</a>
       <a href="#variabili">Variabili</a>
+      <a href="#tipi">Tipi di dato</a>
+      <a href="#casting">Casting</a>
       <a href="#operatori">Operatori</a>
-      <a href="#condizioni">Condizioni</a>
-      <a href="#cicli">Cicli</a>
+      <a href="#stringhe">Stringhe</a>
+      <a href="#math">Math</a>
+      <a href="#input">Input utente</a>
+      <a href="#ifelse">If...Else</a>
+      <a href="#switch">Switch</a>
+      <a href="#while">Ciclo while</a>
+      <a href="#for">Ciclo for</a>
       <a href="#array">Array</a>
       <a href="#metodi">Metodi</a>
+      <a href="#parametri">Parametri e return</a>
+      <h4>Java e gli oggetti (OOP)</h4>
+      <a href="#oop">OOP: introduzione</a>
       <a href="#classi">Classi e oggetti</a>
+      <a href="#attributi">Attributi</a>
+      <a href="#metodiclasse">Metodi di classe</a>
+      <a href="#costruttori">Costruttori</a>
+      <a href="#modificatori">Modificatori d'accesso</a>
+      <a href="#incapsulamento">Incapsulamento</a>
+      <a href="#ereditarieta">Ereditarietà</a>
+      <a href="#polimorfismo">Polimorfismo</a>
+      <a href="#interfacce">Interfacce</a>
+      <a href="#arraylist">ArrayList</a>
+      <a href="#eccezioni">Eccezioni</a>
+      <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
     <main>
+
       <article class="lesson" id="intro">
         <h2>Introduzione a Java</h2>
-        <p><strong>Java</strong> è un linguaggio orientato agli oggetti. Ogni programma ha un metodo <code class='inline'>main</code> che è il punto di partenza.</p>
+        <p><strong>Java</strong> è un linguaggio di programmazione orientato agli oggetti, creato da Sun Microsystems nel 1995 e oggi mantenuto da Oracle. È uno dei linguaggi più usati al mondo per applicazioni aziendali, app Android, sistemi bancari e software di grandi dimensioni.</p>
+        <p>Il suo motto è <em>“Write Once, Run Anywhere”</em>: il codice Java viene compilato in <strong>bytecode</strong> ed eseguito dalla <strong>JVM</strong> (Java Virtual Machine), perciò gira su qualsiasi sistema operativo senza modifiche. Java è fortemente tipizzato e segue rigorosamente il paradigma a oggetti.</p>
+        <div class="note-box">📌 Java non si esegue nel browser: in questo corso gli esempi si <strong>leggono e si modificano</strong> con la sintassi colorata. Per eseguirli ti serve il JDK installato sul tuo computer (vedi “Installazione”).</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
-          public static void main(String[] args) {
-            System.out.println("Ciao mondo!");
-          }
-        }</script>
+    public static void main(String[] args) {
+        System.out.println("Ciao mondo!");
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="installazione">
+        <h2>Installare Java (Get Started)</h2>
+        <p>Per programmare in Java ti serve il <strong>JDK</strong> (Java Development Kit), che include il compilatore <code class="inline">javac</code> e la JVM. Si scarica da oracle.com o, in versione open source, da adoptium.net. Come editor si usano <strong>IntelliJ IDEA</strong>, <strong>Eclipse</strong> o <strong>VS Code</strong>.</p>
+        <h3>Compilare ed eseguire</h3>
+        <p>Un file Java si salva con lo stesso nome della classe pubblica (es. <code class="inline">Main.java</code>). Dal terminale:</p>
+        <div class="example">
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">// javac Main.java   -> compila e crea Main.class
+// java Main          -> esegue il programma</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="sintassi">
+        <h2>Sintassi e primo programma</h2>
+        <p>Ogni programma Java è organizzato in <strong>classi</strong>. L'esecuzione parte dal metodo speciale <code class="inline">main</code>. Le istruzioni terminano con il punto e virgola <code class="inline">;</code> e i blocchi sono racchiusi tra parentesi graffe <code class="inline">{ }</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        // Il punto di partenza del programma
+        System.out.println("Primo programma Java");
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="output">
+        <h2>Output: System.out.println</h2>
+        <p>Per stampare a schermo si usa <code class="inline">System.out.println()</code> (stampa e va a capo) oppure <code class="inline">System.out.print()</code> (senza andare a capo).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        System.out.println("Riga 1");
+        System.out.print("Senza ");
+        System.out.print("a capo");
+        System.out.println();
+        System.out.println("Somma: " + (2 + 3));
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>I commenti</h2>
+        <p>I commenti spiegano il codice e non vengono eseguiti: su una riga con <code class="inline">//</code>, su più righe con <code class="inline">/* ... */</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">// Commento su una riga
+/* Commento
+   su più righe */
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("I commenti sono ignorati");
+    }
+}</script>
         </div>
       </article>
 
       <article class="lesson" id="variabili">
-        <h2>Variabili e tipi</h2>
-        <p>In Java il tipo va dichiarato: <code class='inline'>int</code>, <code class='inline'>double</code>, <code class='inline'>String</code>, <code class='inline'>boolean</code>.</p>
+        <h2>Le variabili</h2>
+        <p>In Java ogni variabile deve essere <strong>dichiarata con il suo tipo</strong> (tipizzazione statica). La sintassi è <code class="inline">tipo nome = valore;</code>. Con <code class="inline">final</code> si crea una costante non modificabile.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">int eta = 30;
-        String nome = "Alessandro";
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int eta = 30;
         double altezza = 1.80;
-        System.out.println(nome + " ha " + eta + " anni");</script>
+        String nome = "Alessandro";
+        final double PI = 3.14159;
+
+        System.out.println(nome + " ha " + eta + " anni");
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tipi">
+        <h2>I tipi di dato</h2>
+        <p>Java distingue i tipi <strong>primitivi</strong> (valori semplici) dai tipi <strong>riferimento</strong> (oggetti come String, array).</p>
+        <table class="ref">
+          <tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr>
+          <tr><td><code class="inline">int</code></td><td>Intero</td><td>42</td></tr>
+          <tr><td><code class="inline">double</code></td><td>Decimale</td><td>3.14</td></tr>
+          <tr><td><code class="inline">char</code></td><td>Singolo carattere</td><td>'A'</td></tr>
+          <tr><td><code class="inline">boolean</code></td><td>Vero/falso</td><td>true</td></tr>
+          <tr><td><code class="inline">String</code></td><td>Testo (oggetto)</td><td>"ciao"</td></tr>
+        </table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int numero = 10;
+        double prezzo = 19.99;
+        char iniziale = 'A';
+        boolean attivo = true;
+        System.out.println(numero + " " + prezzo + " " + iniziale + " " + attivo);
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="casting">
+        <h2>Il casting (conversione di tipo)</h2>
+        <p>Il <strong>casting</strong> converte un tipo in un altro. Quello <em>widening</em> (es. int → double) è automatico; quello <em>narrowing</em> (es. double → int) va indicato esplicitamente fra parentesi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int i = 9;
+        double d = i;          // automatico: 9.0
+        double pi = 3.99;
+        int troncato = (int) pi; // esplicito: 3
+        System.out.println(d + " " + troncato);
+    }
+}</script>
         </div>
       </article>
 
       <article class="lesson" id="operatori">
-        <h2>Operatori</h2>
-        <p>Aritmetici e di confronto, come negli altri linguaggi.</p>
+        <h2>Gli operatori</h2>
+        <p>Java offre operatori aritmetici (<code class="inline">+ - * / %</code>), di confronto (<code class="inline">== != &gt; &lt;</code>), logici (<code class="inline">&amp;&amp;</code>, <code class="inline">||</code>, <code class="inline">!</code>) e di assegnazione (<code class="inline">= += -=</code>).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">int a = 7, b = 3;
-        System.out.println("Somma: " + (a + b));
-        System.out.println("Resto: " + (a % b));</script>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int a = 10, b = 3;
+        System.out.println(a + b);
+        System.out.println(a % b);        // resto: 1
+        System.out.println(a > b && b > 0); // true
+        System.out.println(!(a == b));      // true
+    }
+}</script>
         </div>
       </article>
 
-      <article class="lesson" id="condizioni">
-        <h2>Condizioni: if/else</h2>
-        <p>Le condizioni in Java usano le parentesi tonde e le graffe.</p>
+      <article class="lesson" id="stringhe">
+        <h2>Le stringhe</h2>
+        <p>La classe <code class="inline">String</code> rappresenta il testo e offre molti metodi: <code class="inline">length()</code>, <code class="inline">toUpperCase()</code>, <code class="inline">substring()</code>, <code class="inline">indexOf()</code>. Le stringhe si concatenano con <code class="inline">+</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">int voto = 7;
-        if (voto >= 6) {
-          System.out.println("Promosso");
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        String testo = "Java è potente";
+        System.out.println(testo.length());
+        System.out.println(testo.toUpperCase());
+        System.out.println(testo.substring(0, 4));
+        System.out.println(testo.contains("potente"));
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="math">
+        <h2>La classe Math</h2>
+        <p>La classe <code class="inline">Math</code> fornisce funzioni matematiche: <code class="inline">Math.sqrt()</code>, <code class="inline">Math.pow()</code>, <code class="inline">Math.max()</code>, <code class="inline">Math.random()</code> e la costante <code class="inline">Math.PI</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        System.out.println(Math.sqrt(144));
+        System.out.println(Math.pow(2, 10));
+        System.out.println(Math.max(7, 12));
+        System.out.println(Math.round(3.7));
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="input">
+        <h2>L'input dell'utente</h2>
+        <p>Per leggere dati dalla tastiera si usa la classe <code class="inline">Scanner</code> del package <code class="inline">java.util</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Come ti chiami? ");
+        String nome = input.nextLine();
+        System.out.println("Ciao " + nome);
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ifelse">
+        <h2>Le condizioni: if, else if, else</h2>
+        <p>Le istruzioni condizionali eseguono codice in base a una condizione booleana.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int voto = 7;
+        if (voto >= 8) {
+            System.out.println("Ottimo!");
+        } else if (voto >= 6) {
+            System.out.println("Sufficiente");
         } else {
-          System.out.println("Bocciato");
-        }</script>
+            System.out.println("Da recuperare");
+        }
+    }
+}</script>
         </div>
       </article>
 
-      <article class="lesson" id="cicli">
-        <h2>I cicli for e while</h2>
-        <p>Il <code class='inline'>for</code> ripete un blocco un numero noto di volte.</p>
+      <article class="lesson" id="switch">
+        <h2>Il costrutto switch</h2>
+        <p>Lo <code class="inline">switch</code> confronta una variabile con più valori (case). Usa <code class="inline">break</code> per uscire e <code class="inline">default</code> per il caso generale.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">for (int i = 1; i <= 5; i++) {
-          System.out.println("Riga " + i);
-        }</script>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int giorno = 3;
+        switch (giorno) {
+            case 1: System.out.println("Lunedì"); break;
+            case 3: System.out.println("Mercoledì"); break;
+            default: System.out.println("Altro giorno");
+        }
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="while">
+        <h2>Il ciclo while</h2>
+        <p>Il <code class="inline">while</code> ripete un blocco finché la condizione è vera. La variante <code class="inline">do...while</code> esegue almeno una volta.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        while (n > 0) {
+            System.out.println("Conto: " + n);
+            n--;
+        }
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="for">
+        <h2>Il ciclo for</h2>
+        <p>Il <code class="inline">for</code> è ideale quando conosci il numero di ripetizioni. Esiste anche il <em>for-each</em> per scorrere array e collezioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Numero " + i);
+        }
+        int[] voti = {6, 7, 8};
+        for (int v : voti) {        // for-each
+            System.out.println("Voto: " + v);
+        }
+    }
+}</script>
         </div>
       </article>
 
       <article class="lesson" id="array">
         <h2>Gli array</h2>
-        <p>Un array contiene più valori dello stesso tipo.</p>
+        <p>Un <strong>array</strong> contiene più valori dello stesso tipo, con dimensione fissa. Si accede con l'indice (parte da 0) e si ottiene la lunghezza con <code class="inline">.length</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">int[] numeri = {10, 20, 30};
-        int somma = 0;
-        for (int n : numeri) {
-          somma += n;
-        }
-        System.out.println("Totale: " + somma);</script>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        String[] frutta = {"mela", "pera", "kiwi"};
+        System.out.println(frutta[0]);
+        System.out.println("Quanti: " + frutta.length);
+
+        int[] numeri = new int[3];
+        numeri[0] = 10;
+        System.out.println(numeri[0]);
+    }
+}</script>
         </div>
       </article>
 
       <article class="lesson" id="metodi">
         <h2>I metodi</h2>
-        <p>I <strong>metodi</strong> sono blocchi di codice riutilizzabili (le funzioni di Java).</p>
+        <p>Un <strong>metodo</strong> è un blocco di codice riutilizzabile con un nome. <code class="inline">void</code> indica che non restituisce nulla; <code class="inline">static</code> permette di chiamarlo senza creare un oggetto.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
-          <script type="text/plain" class="code">public static int somma(int a, int b) {
-          return a + b;
-        }
-        // chiamata: somma(3, 4) restituisce 7</script>
+          <script type="text/plain" class="code">public class Main {
+    static void saluta() {
+        System.out.println("Ciao dalla scuola!");
+    }
+    public static void main(String[] args) {
+        saluta();
+        saluta();
+    }
+}</script>
         </div>
+      </article>
+
+      <article class="lesson" id="parametri">
+        <h2>Parametri e valore di ritorno</h2>
+        <p>Un metodo può ricevere <strong>parametri</strong> e restituire un valore con <code class="inline">return</code>, indicandone il tipo al posto di <code class="inline">void</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    static int somma(int a, int b) {
+        return a + b;
+    }
+    public static void main(String[] args) {
+        int risultato = somma(5, 7);
+        System.out.println("Somma: " + risultato);
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ===== OOP ===== -->
+
+      <article class="lesson" id="oop">
+        <h2>Programmazione a oggetti (OOP)</h2>
+        <p>Java è un linguaggio profondamente <strong>orientato agli oggetti</strong>. Tutto ruota attorno a <strong>classi</strong> (i modelli) e <strong>oggetti</strong> (le istanze). I pilastri sono <strong>incapsulamento</strong>, <strong>ereditarietà</strong>, <strong>polimorfismo</strong> e <strong>astrazione</strong>: permettono di scrivere software grande, ordinato e riutilizzabile.</p>
+        <div class="note-box">📦 Una classe è lo “stampo”, gli oggetti sono i “biscotti” creati con quello stampo.</div>
       </article>
 
       <article class="lesson" id="classi">
         <h2>Classi e oggetti</h2>
-        <p>Java è orientato agli oggetti: una <strong>classe</strong> è un modello, un <strong>oggetto</strong> è un'istanza.</p>
+        <p>Una <strong>classe</strong> definisce attributi (dati) e metodi (comportamenti). Con <code class="inline">new</code> si crea un <strong>oggetto</strong>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Cane {
+    String nome;
+    void abbaia() {
+        System.out.println(nome + " fa Bau!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Cane fido = new Cane();
+        fido.nome = "Fido";
+        fido.abbaia();
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="attributi">
+        <h2>Gli attributi</h2>
+        <p>Gli <strong>attributi</strong> (o campi) sono le variabili che descrivono lo stato di un oggetto. Ogni oggetto ha la propria copia.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Studente {
-          String nome;
-          int voto;
-        }
-        
+    String nome;
+    int voto;
+}
+
+public class Main {
+    public static void main(String[] args) {
         Studente s = new Studente();
-        s.nome = "Marco";
-        s.voto = 8;</script>
+        s.nome = "Giulia";
+        s.voto = 9;
+        System.out.println(s.nome + ": " + s.voto);
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="metodiclasse">
+        <h2>I metodi di classe</h2>
+        <p>I <strong>metodi</strong> definiscono il comportamento degli oggetti e possono usare i loro attributi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Rettangolo {
+    int base, altezza;
+    int area() {
+        return base * altezza;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rettangolo r = new Rettangolo();
+        r.base = 4; r.altezza = 6;
+        System.out.println("Area: " + r.area());
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="costruttori">
+        <h2>I costruttori</h2>
+        <p>Un <strong>costruttore</strong> è un metodo speciale (stesso nome della classe) chiamato automaticamente con <code class="inline">new</code> per inizializzare l'oggetto. La parola chiave <code class="inline">this</code> indica l'oggetto corrente.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Persona {
+    String nome;
+    int eta;
+    Persona(String nome, int eta) {
+        this.nome = nome;
+        this.eta = eta;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p = new Persona("Marco", 17);
+        System.out.println(p.nome + " - " + p.eta);
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="modificatori">
+        <h2>I modificatori d'accesso</h2>
+        <p>I <strong>modificatori d'accesso</strong> stabiliscono la visibilità di attributi e metodi: <code class="inline">public</code> (ovunque), <code class="inline">private</code> (solo nella classe), <code class="inline">protected</code> (classe e sottoclassi), o di default (stesso package).</p>
+        <table class="ref">
+          <tr><th>Modificatore</th><th>Visibilità</th></tr>
+          <tr><td><code class="inline">public</code></td><td>Da qualsiasi classe</td></tr>
+          <tr><td><code class="inline">private</code></td><td>Solo dentro la classe</td></tr>
+          <tr><td><code class="inline">protected</code></td><td>Classe, package e sottoclassi</td></tr>
+        </table>
+      </article>
+
+      <article class="lesson" id="incapsulamento">
+        <h2>L'incapsulamento</h2>
+        <p>L'<strong>incapsulamento</strong> protegge i dati rendendo gli attributi <code class="inline">private</code> e fornendo metodi pubblici <strong>getter</strong> e <strong>setter</strong> per leggerli e modificarli in modo controllato.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Conto {
+    private double saldo;
+    public void deposita(double importo) {
+        if (importo > 0) saldo += importo;
+    }
+    public double getSaldo() {
+        return saldo;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Conto c = new Conto();
+        c.deposita(100);
+        System.out.println("Saldo: " + c.getSaldo());
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ereditarieta">
+        <h2>L'ereditarietà</h2>
+        <p>Con <code class="inline">extends</code> una classe (figlia) eredita attributi e metodi da un'altra (genitore), riutilizzando il codice. <code class="inline">super</code> richiama il genitore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Animale {
+    void respira() {
+        System.out.println("Respiro...");
+    }
+}
+
+class Gatto extends Animale {
+    void miagola() {
+        System.out.println("Miao");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Gatto g = new Gatto();
+        g.respira();  // ereditato
+        g.miagola();
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="polimorfismo">
+        <h2>Il polimorfismo</h2>
+        <p>Il <strong>polimorfismo</strong> permette di usare lo stesso metodo con comportamenti diversi a seconda dell'oggetto. Con l'<strong>override</strong> una sottoclasse ridefinisce un metodo del genitore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">class Animale {
+    String verso() { return "..."; }
+}
+class Cane extends Animale {
+    String verso() { return "Bau"; }
+}
+class Gatto extends Animale {
+    String verso() { return "Miao"; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animale[] animali = { new Cane(), new Gatto() };
+        for (Animale a : animali) {
+            System.out.println(a.verso());
+        }
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="interfacce">
+        <h2>Le interfacce</h2>
+        <p>Un'<strong>interfaccia</strong> definisce un “contratto” di metodi che le classi devono implementare con <code class="inline">implements</code>. È il modo di Java per l'astrazione e per ottenere una forma di ereditarietà multipla.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">interface Figura {
+    double area();
+}
+
+class Cerchio implements Figura {
+    double raggio;
+    Cerchio(double r) { raggio = r; }
+    public double area() {
+        return 3.14 * raggio * raggio;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Figura f = new Cerchio(5);
+        System.out.println("Area: " + f.area());
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="arraylist">
+        <h2>ArrayList e collezioni</h2>
+        <p>L'<code class="inline">ArrayList</code> è una lista dinamica (a dimensione variabile), parte del <em>Collections Framework</em>. A differenza degli array può crescere e ridursi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> nomi = new ArrayList<>();
+        nomi.add("Marco");
+        nomi.add("Giulia");
+        nomi.remove("Marco");
+        System.out.println(nomi);
+        System.out.println("Quanti: " + nomi.size());
+    }
+}</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="eccezioni">
+        <h2>La gestione delle eccezioni</h2>
+        <p>Le <strong>eccezioni</strong> sono errori che si verificano durante l'esecuzione. Si gestiscono con <code class="inline">try ... catch</code> (e l'opzionale <code class="inline">finally</code>) per evitare che il programma vada in crash.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">public class Main {
+    public static void main(String[] args) {
+        try {
+            int risultato = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Errore: divisione per zero");
+        } finally {
+            System.out.println("Fine del blocco");
+        }
+    }
+}</script>
         </div>
       </article>
 
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai visto le basi di Java. Continua a esercitarti!</p><div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota</a></div>
+        <h2>Complimenti! 🎉 Hai completato il corso di Java</h2>
+        <p>Hai imparato la sintassi di Java, i tipi di dato, gli operatori, le strutture di controllo, gli array e i metodi, fino alla programmazione a oggetti (classi, costruttori, ereditarietà, polimorfismo e interfacce).</p>
+        <p>Il prossimo passo è <strong>installare il JDK</strong> ed eseguire questi esempi sul tuo computer, modificandoli e sperimentando. Se vuoi un percorso guidato o aiuto per un progetto o una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
+        <div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
+
     </main>
   </div>
 </section>
@@ -278,17 +795,16 @@
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice Java</strong>
       <div class="ed-actions">
-        <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Risultato</div>
-        <iframe id="ed-preview" title="Anteprima del codice"></iframe>
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note sul codice Java"></iframe>
       </div>
     </div>
   </div>
@@ -306,61 +822,58 @@
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
-<!-- Evidenziazione esempi -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-<!-- Editor di codice -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/php/php.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 <script src="js/main.js?v=3"></script>
 <script>
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
-    var RUNNABLE = false;
-    var DISPLAY = "JAVA";
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: "text/x-java", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default'
+      tabSize: 4, indentUnit: 4, theme: 'default'
     });
 
-    function run(){
-      if (RUNNABLE) { preview.srcdoc = cm.getValue(); }
-      else {
-        preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
-          + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
-          + '<p>Il linguaggio <b>' + DISPLAY + '</b> non si esegue direttamente nel browser. '
-          + 'Qui puoi comunque <b>leggere e modificare</b> il codice con i colori della sintassi, '
-          + 'poi eseguirlo nel tuo ambiente di sviluppo.</p></body>';
-      }
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        + '<h3 style="margin:0 0 .6rem;color:#1e293b">☕ Codice Java</h3>'
+        + '<p>Java non si esegue nel browser: ha bisogno del <b>JDK</b> e della <b>JVM</b>. '
+        + 'Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p>'
+        + '<p>Per eseguirlo: salva il file come <code>Main.java</code>, poi nel terminale digita '
+        + '<code>javac Main.java</code> e <code>java Main</code>.</p></body>';
     }
+
     function openEditor(code){
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      run();
+      note();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    cm.on('change', run);
-    document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
 
+    function dedent(text){
+      var lines = text.split('\n'), min = Infinity;
+      for (var i = 1; i < lines.length; i++){
+        if (!lines[i].trim()) continue;
+        var m = lines[i].match(/^ */)[0].length;
+        if (m < min) min = m;
+      }
+      if (min === Infinity || min === 0) return lines.join('\n');
+      for (var j = 1; j < lines.length; j++){ lines[j] = lines[j].slice(min); }
+      return lines.join('\n');
+    }
+
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent
+      var raw = dedent(ex.querySelector('.code').textContent
                   .replace(/^\n/, '').replace(/\s+$/, '')
-                  .replace(/<\\\/script>/g, '<\/script>');
+                  .replace(/<\\\/script>/g, '<\/script>'));
       var codeEl = ex.querySelector('.codeview code');
       codeEl.textContent = raw;
       if (window.Prism) { Prism.highlightElement(codeEl); }
