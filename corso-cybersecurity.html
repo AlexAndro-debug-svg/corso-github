@@ -3,93 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso CYBERSECURITY in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="I fondamenti della sicurezza informatica: minacce, difese, password sicure e buone pratiche.">
+  <title>Corso di Cybersecurity in italiano completo e gratuito — Sicurezza informatica da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Cybersecurity in italiano completo e gratuito: triade CIA, malware, phishing, password e hashing, crittografia, autenticazione a più fattori, firewall, VPN, SQL injection, XSS, DDoS, sicurezza Wi-Fi, GDPR e buone pratiche. Tutorial per studenti.">
+  <meta name="keywords" content="corso cybersecurity italiano, sicurezza informatica, imparare cybersecurity, crittografia, phishing, malware, password sicure, sql injection, gdpr">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso di Cybersecurity in italiano — AlessandroSimone.it">
+  <meta property="og:description" content="Impara i fondamenti della sicurezza informatica: minacce, crittografia, attacchi e buone pratiche. Tutorial completo in italiano.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="css/style.css?v=3">
   <style>
-    /* ---- Layout corso ---- */
-    .course-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
     .course-side {
       position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto;
       background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 1.1rem; font-size: .9rem;
     }
-    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1rem 0 .4rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
     .course-side h4:first-child { margin-top: 0; }
-    .course-side a { display: block; padding: .32rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
     .course-side a:hover { background: var(--primary-light); color: var(--primary); }
 
-    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 16px; }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
     .lesson:last-child { border-bottom: none; }
     .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
-    .lesson h3 { font-size: 1.1rem; margin: 1.3rem 0 .5rem; color: var(--primary); }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
     .lesson p { margin-bottom: .9rem; color: #334155; }
     .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
     .lesson li { margin-bottom: .35rem; }
     .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
     .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
     .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
 
-    /* ---- Esempi con codice colorato ---- */
     .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
     .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
     .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
-    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
-    .btn-try:hover { background: #0b7c71; }
-    pre.codeview { margin: 0; background: #fff; border-left: 4px solid var(--edu); padding: 1rem 1.1rem; overflow-x: auto; }
-    pre.codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .87rem; line-height: 1.6; color: #1e293b; background: none; white-space: pre; }
-    /* colori token (stile W3Schools) */
-    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
-    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #a3185d; }
-    .codeview .token.tag .token.punctuation { color: #94a3b8; }
-    .codeview .token.punctuation, .codeview .token.operator { color: #64748b; }
-    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #0d9488; }
-    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #2563eb; }
-    .codeview .token.attr-value .token.punctuation { color: #2563eb; }
-    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #d97706; }
-    .codeview .token.class-name, .codeview .token.builtin { color: #7c3aed; }
-
-    /* ---- Editor a tutto schermo (stile W3Schools) ---- */
-    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
-    .editor-overlay.open { display: flex; }
-    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
-    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
-    .editor-top .ed-actions { display: flex; gap: .6rem; }
-    .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
-    .ed-run { background: #04AA6D; color: #fff; }
-    .ed-run:hover { background: #038a59; }
-    .ed-close { background: #64748b; color: #fff; }
-    .ed-close:hover { background: #475569; }
-    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
-    .editor-panes > div { min-width: 0; }
-    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
-    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
-    .preview-wrap { display: flex; flex-direction: column; }
-    .preview-label { background: var(--bg-soft); padding: .4rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
-    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
-
-    /* colori del codice nell'editor (come W3Schools) */
-    .cm-s-default .cm-tag       { color: #a11; }
-    .cm-s-default .cm-bracket   { color: #999; }
-    .cm-s-default .cm-attribute { color: #905; }
-    .cm-s-default .cm-string    { color: #07a; }
-    .cm-s-default .cm-keyword   { color: #a11; }
-    .cm-s-default .cm-def       { color: #0d9488; }
-    .cm-s-default .cm-variable-2 { color: #2563eb; }
-    .cm-s-default .cm-number    { color: #d97706; }
-    .cm-s-default .cm-comment   { color: #999; font-style: italic; }
-    .cm-s-default .cm-meta      { color: #999; }
+    .codeblock { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeblock code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeblock .bad { color: #fca5a5; }
+    .codeblock .good { color: #86efac; }
+    .codeblock .cmt { color: #94a3b8; font-style: italic; }
 
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
-      .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
     }
   </style>
 </head>
@@ -112,7 +76,6 @@
   </div>
 </header>
 
-<!-- BARRA CORSI (visibile in tutte le pagine dei corsi) -->
 <div class="course-nav">
   <div class="container course-nav-inner">
     <a href="corso-html.html">HTML</a>
@@ -131,98 +94,220 @@
   </div>
 </div>
 
-
-
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
     <h1>Corso di Cybersecurity in italiano</h1>
-    <p class="lead" style="margin-inline:auto">I fondamenti della sicurezza informatica: minacce, difese, password sicure e buone pratiche.</p>
+    <p class="lead" style="margin-inline:auto">Il tutorial completo per capire la sicurezza informatica da zero: minacce, crittografia, attacchi più comuni e le buone pratiche per proteggere dati e dispositivi.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:1rem">
   <div class="container course-wrap">
     <aside class="course-side">
-      <h4>Corso CYBERSECURITY</h4>
+      <h4>Tutorial Cybersecurity</h4>
       <a href="#intro">Introduzione</a>
-      <a href="#cia">I 3 pilastri</a>
-      <a href="#minacce">Le minacce</a>
-      <a href="#password">Password sicure</a>
-      <a href="#2fa">Doppia verifica</a>
-      <a href="#crittografia">Crittografia</a>
-      <a href="#buone-pratiche">Buone pratiche</a>
+      <a href="#cia">La triade CIA</a>
+      <a href="#minacce">Tipi di minacce</a>
+      <a href="#malware">Il malware</a>
+      <a href="#phishing">Phishing e ingegneria sociale</a>
+      <a href="#password">Password e hashing</a>
+      <a href="#autenticazione">Autenticazione e MFA</a>
+      <a href="#crittografia">La crittografia</a>
+      <a href="#firewall">Firewall e VPN</a>
+      <a href="#sqlinjection">SQL Injection</a>
+      <a href="#xss">XSS</a>
+      <a href="#attacchi">DDoS e Man-in-the-Middle</a>
+      <a href="#wifi">Sicurezza del Wi-Fi</a>
+      <a href="#gdpr">Privacy e GDPR</a>
+      <a href="#pratiche">Buone pratiche</a>
+      <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
     <main>
+
       <article class="lesson" id="intro">
-        <h2>Cos'è la cybersecurity</h2>
-        <p>La <strong>cybersecurity</strong> (sicurezza informatica) protegge computer, reti e dati da attacchi, furti e danni. È sempre più importante in un mondo connesso.</p>
+        <h2>Introduzione alla cybersecurity</h2>
+        <p>La <strong>cybersecurity</strong> (sicurezza informatica) è l'insieme di tecnologie, processi e pratiche per proteggere computer, reti, programmi e dati da accessi non autorizzati, attacchi e danni. In un mondo dove tutto è connesso, è una delle competenze più importanti e richieste.</p>
+        <p>L'obiettivo non è solo respingere gli “hacker”, ma garantire che i dati restino <strong>riservati</strong>, <strong>integri</strong> e <strong>disponibili</strong>. La sicurezza riguarda tutti: aziende, scuole e singoli cittadini.</p>
+        <div class="note-box">🛡️ La sicurezza informatica è un equilibrio: nessun sistema è sicuro al 100%, ma si può ridurre molto il rischio con le giuste pratiche.</div>
       </article>
 
       <article class="lesson" id="cia">
-        <h2>I tre pilastri: la triade CIA</h2>
-        <ul><li><strong>Riservatezza</strong> (Confidentiality): solo chi è autorizzato accede ai dati.</li><li><strong>Integrità</strong> (Integrity): i dati non vengono alterati.</li><li><strong>Disponibilità</strong> (Availability): i dati sono accessibili quando servono.</li></ul>
+        <h2>La triade CIA</h2>
+        <p>Il modello fondamentale della sicurezza si basa su tre principi, la <strong>triade CIA</strong>:</p>
+        <table class="ref">
+          <tr><th>Principio</th><th>Significato</th></tr>
+          <tr><td><strong>Confidenzialità</strong></td><td>I dati sono accessibili solo a chi è autorizzato (es. crittografia, password).</td></tr>
+          <tr><td><strong>Integrità</strong></td><td>I dati non vengono alterati senza autorizzazione (es. hash, firme digitali).</td></tr>
+          <tr><td><strong>Disponibilità</strong></td><td>I dati e i servizi sono accessibili quando servono (es. backup, ridondanza).</td></tr>
+        </table>
+        <p>Ogni misura di sicurezza serve a proteggere uno o più di questi tre aspetti.</p>
       </article>
 
       <article class="lesson" id="minacce">
-        <h2>Le minacce più comuni</h2>
-        <ul><li><strong>Malware</strong>: virus, trojan, ransomware.</li><li><strong>Phishing</strong>: email ingannevoli che rubano dati.</li><li><strong>Attacchi a forza bruta</strong>: tentativi ripetuti di indovinare le password.</li></ul>
+        <h2>I tipi di minacce</h2>
+        <p>Una <strong>minaccia</strong> è qualsiasi evento che può compromettere la sicurezza. Una <strong>vulnerabilità</strong> è una debolezza sfruttabile, e il <strong>rischio</strong> è la probabilità che una minaccia sfrutti una vulnerabilità.</p>
+        <ul>
+          <li><strong>Attacchi esterni</strong>: hacker, criminali informatici.</li>
+          <li><strong>Minacce interne</strong>: dipendenti distratti o malintenzionati.</li>
+          <li><strong>Errori umani</strong>: la causa più frequente di incidenti.</li>
+          <li><strong>Disastri</strong>: guasti hardware, incendi, mancanza di backup.</li>
+        </ul>
+      </article>
+
+      <article class="lesson" id="malware">
+        <h2>Il malware</h2>
+        <p><strong>Malware</strong> (software malevolo) è qualsiasi programma creato per danneggiare o spiare. I tipi principali:</p>
+        <table class="ref">
+          <tr><th>Tipo</th><th>Cosa fa</th></tr>
+          <tr><td><strong>Virus</strong></td><td>Si attacca ad altri file e si replica.</td></tr>
+          <tr><td><strong>Worm</strong></td><td>Si diffonde da solo nella rete.</td></tr>
+          <tr><td><strong>Trojan</strong></td><td>Si finge un programma utile per ingannare.</td></tr>
+          <tr><td><strong>Ransomware</strong></td><td>Cifra i file e chiede un riscatto.</td></tr>
+          <tr><td><strong>Spyware</strong></td><td>Spia le attività dell'utente.</td></tr>
+        </table>
+        <div class="tip-box">💡 Difese: antivirus aggiornato, non aprire allegati sospetti, backup regolari (fondamentali contro il ransomware).</div>
+      </article>
+
+      <article class="lesson" id="phishing">
+        <h2>Phishing e ingegneria sociale</h2>
+        <p>L'<strong>ingegneria sociale</strong> (social engineering) manipola le persone per ottenere informazioni, sfruttando la fiducia e la fretta invece dei difetti tecnici. La forma più comune è il <strong>phishing</strong>: email o messaggi falsi che imitano banche, corrieri o enti per rubare credenziali.</p>
+        <h3>Come riconoscere il phishing</h3>
+        <ul>
+          <li>Mittente sospetto o indirizzo leggermente diverso da quello reale.</li>
+          <li>Urgenza e minacce (“il tuo account sarà bloccato!”).</li>
+          <li>Link che puntano a siti diversi (passaci sopra il mouse per controllare).</li>
+          <li>Errori grammaticali e richieste di dati personali o password.</li>
+        </ul>
+        <div class="warn-box">⚠️ Nessuna banca o servizio serio chiederà mai la password via email. Nel dubbio, non cliccare e vai sul sito ufficiale digitando tu l'indirizzo.</div>
       </article>
 
       <article class="lesson" id="password">
-        <h2>Le password sicure</h2>
-        <p>Una buona password è lunga, con lettere, numeri e simboli, e diversa per ogni sito. Meglio usare un gestore di password.</p>
+        <h2>Password e hashing</h2>
+        <p>Una <strong>password sicura</strong> è lunga (almeno 12 caratteri), unica per ogni servizio e composta da lettere maiuscole, minuscole, numeri e simboli. Meglio ancora una <strong>passphrase</strong> (una frase facile da ricordare).</p>
+        <p>I siti seri <strong>non</strong> salvano le password in chiaro, ma il loro <strong>hash</strong>: una funzione matematica a senso unico che trasforma la password in una stringa irreversibile. Aggiungendo un <em>salt</em> (valore casuale) si rende ogni hash unico.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-bash"></code></pre>
-          <script type="text/plain" class="code"># Debole:  marco1990
-        # Forte:   M@r!2024_Roma#7x
-        # Regola: almeno 12 caratteri, mai dati personali</script>
+          <div class="codehead"><span>Esempio concettuale</span></div>
+          <pre class="codeblock"><code><span class="cmt">Password in chiaro (MAI salvarla così):</span>
+<span class="bad">"ciao123"</span>
+
+<span class="cmt">Hash salvato nel database (irreversibile):</span>
+<span class="good">"a1f4...e9c2b7" (es. con algoritmo bcrypt)</span></code></pre>
         </div>
+        <div class="tip-box">💡 Usa un <strong>password manager</strong> per generare e memorizzare password diverse per ogni sito.</div>
       </article>
 
-      <article class="lesson" id="2fa">
-        <h2>L'autenticazione a due fattori</h2>
-        <p>La <strong>2FA</strong> aggiunge un secondo controllo oltre alla password (es. un codice sul telefono). Anche se rubano la password, non entrano.</p>
+      <article class="lesson" id="autenticazione">
+        <h2>Autenticazione e MFA</h2>
+        <p>L'<strong>autenticazione</strong> verifica l'identità di un utente. Si basa su tre “fattori”:</p>
+        <ul>
+          <li><strong>Qualcosa che sai</strong>: password, PIN.</li>
+          <li><strong>Qualcosa che hai</strong>: smartphone, token, smart card.</li>
+          <li><strong>Qualcosa che sei</strong>: impronta, volto (biometria).</li>
+        </ul>
+        <p>L'<strong>autenticazione a più fattori (MFA/2FA)</strong> combina almeno due di questi: anche se un attaccante ruba la password, senza il secondo fattore (es. il codice sul telefono) non entra. È una delle protezioni più efficaci in assoluto.</p>
       </article>
 
       <article class="lesson" id="crittografia">
         <h2>La crittografia</h2>
-        <p>La <strong>crittografia</strong> trasforma i dati in un codice illeggibile senza la chiave giusta. Il lucchetto <code class='inline'>HTTPS</code> nel browser indica una connessione cifrata.</p>
+        <p>La <strong>crittografia</strong> trasforma i dati leggibili (testo in chiaro) in dati cifrati, illeggibili senza la chiave corretta. È alla base della confidenzialità.</p>
+        <table class="ref">
+          <tr><th>Tipo</th><th>Come funziona</th></tr>
+          <tr><td><strong>Simmetrica</strong></td><td>Una sola chiave per cifrare e decifrare (veloce, es. AES).</td></tr>
+          <tr><td><strong>Asimmetrica</strong></td><td>Una chiave pubblica per cifrare e una privata per decifrare (es. RSA).</td></tr>
+        </table>
+        <p>Quando navighi su un sito <strong>HTTPS</strong> (col lucchetto), la connessione è cifrata grazie al protocollo <strong>TLS</strong>, che usa proprio la crittografia asimmetrica per scambiare in sicurezza le chiavi.</p>
       </article>
 
-      <article class="lesson" id="buone-pratiche">
-        <h2>Buone pratiche quotidiane</h2>
-        <ul><li>Aggiorna sempre sistema e programmi.</li><li>Non cliccare link sospetti.</li><li>Fai backup dei dati importanti.</li><li>Usa l'antivirus e una rete sicura.</li></ul>
+      <article class="lesson" id="firewall">
+        <h2>Firewall e VPN</h2>
+        <p>Un <strong>firewall</strong> è una barriera (hardware o software) che filtra il traffico di rete in base a regole, bloccando le connessioni non autorizzate. È la prima linea di difesa di una rete.</p>
+        <p>Una <strong>VPN</strong> (Virtual Private Network) crea un “tunnel” cifrato tra il tuo dispositivo e Internet: protegge i dati sulle reti pubbliche (es. il Wi-Fi di un bar) e nasconde il tuo indirizzo IP reale.</p>
+      </article>
+
+      <article class="lesson" id="sqlinjection">
+        <h2>La SQL Injection</h2>
+        <p>La <strong>SQL Injection</strong> è uno degli attacchi web più pericolosi: l'attaccante inserisce codice SQL malevolo nei campi di un form per manipolare il database (rubare dati, aggirare il login).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span></div>
+          <pre class="codeblock"><code><span class="cmt">Query vulnerabile (valori inseriti direttamente):</span>
+<span class="bad">"SELECT * FROM utenti WHERE user='" + input + "'"</span>
+<span class="cmt">Se input = ' OR '1'='1  l'attaccante entra senza password!</span>
+
+<span class="cmt">Difesa: prepared statement (valori separati dalla query):</span>
+<span class="good">"SELECT * FROM utenti WHERE user = ?"</span></code></pre>
+        </div>
+        <div class="warn-box">⚠️ Regola d'oro: non fidarti MAI dei dati inseriti dall'utente. Usa sempre query parametrizzate.</div>
+      </article>
+
+      <article class="lesson" id="xss">
+        <h2>Il Cross-Site Scripting (XSS)</h2>
+        <p>L'<strong>XSS</strong> consiste nell'iniettare codice JavaScript malevolo in una pagina web, che verrà eseguito nel browser di altri utenti (per rubare cookie, sessioni o reindirizzare a siti falsi).</p>
+        <p>La difesa principale è il <strong>sanitizing</strong>: ripulire ed “escapare” sempre l'input dell'utente prima di mostrarlo, convertendo i caratteri speciali (come <code class="inline">&lt;</code> e <code class="inline">&gt;</code>) in entità HTML innocue.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span></div>
+          <pre class="codeblock"><code><span class="cmt">Input malevolo non filtrato:</span>
+<span class="bad">&lt;script&gt;rubaCookie()&lt;/script&gt;</span>
+
+<span class="cmt">Input ripulito (reso innocuo):</span>
+<span class="good">&amp;lt;script&amp;gt;rubaCookie()&amp;lt;/script&amp;gt;</span></code></pre>
+        </div>
+      </article>
+
+      <article class="lesson" id="attacchi">
+        <h2>DDoS e Man-in-the-Middle</h2>
+        <p>Esistono molti altri tipi di attacco. Due tra i più noti:</p>
+        <ul>
+          <li><strong>DDoS</strong> (Distributed Denial of Service): si sommerge un server di richieste da migliaia di dispositivi (botnet) fino a metterlo fuori uso, colpendo la <em>disponibilità</em>.</li>
+          <li><strong>Man-in-the-Middle (MITM)</strong>: l'attaccante si intromette tra due interlocutori intercettando o modificando la comunicazione. La crittografia (HTTPS, VPN) è la difesa principale.</li>
+        </ul>
+        <p>Altri attacchi comuni: <strong>brute force</strong> (provare tutte le password), <strong>spoofing</strong> (falsificare l'identità), <strong>zero-day</strong> (sfruttare vulnerabilità non ancora corrette).</p>
+      </article>
+
+      <article class="lesson" id="wifi">
+        <h2>La sicurezza del Wi-Fi</h2>
+        <p>Una rete Wi-Fi mal protetta è una porta aperta. Buone pratiche per la rete di casa o della scuola:</p>
+        <ul>
+          <li>Usa la cifratura <strong>WPA2</strong> o <strong>WPA3</strong> (mai WEP, obsoleto e insicuro).</li>
+          <li>Cambia la password predefinita del router e il nome di rete (SSID).</li>
+          <li>Aggiorna il firmware del router.</li>
+          <li>Crea una rete <strong>ospiti</strong> separata per i visitatori.</li>
+        </ul>
+        <div class="warn-box">⚠️ Sulle reti Wi-Fi pubbliche evita operazioni sensibili (home banking) o usa una VPN.</div>
+      </article>
+
+      <article class="lesson" id="gdpr">
+        <h2>Privacy e GDPR</h2>
+        <p>Il <strong>GDPR</strong> (Regolamento Generale sulla Protezione dei Dati) è la legge europea che tutela i dati personali dei cittadini. Impone alle organizzazioni di raccogliere solo i dati necessari, proteggerli adeguatamente, informare gli utenti e ottenere il loro consenso.</p>
+        <p>Concetti chiave: <strong>dato personale</strong> (qualsiasi informazione su una persona identificabile), <strong>consenso</strong>, <strong>diritto all'oblio</strong> (cancellazione dei dati) e <strong>obbligo di notifica</strong> in caso di violazione (data breach).</p>
+      </article>
+
+      <article class="lesson" id="pratiche">
+        <h2>Le buone pratiche di sicurezza</h2>
+        <p>Riassumiamo le abitudini che proteggono davvero, valide per tutti:</p>
+        <ul>
+          <li>🔑 Password lunghe e diverse per ogni servizio, con un password manager.</li>
+          <li>📱 Attiva l'<strong>autenticazione a due fattori</strong> ovunque possibile.</li>
+          <li>🔄 Mantieni <strong>aggiornati</strong> sistema operativo e programmi.</li>
+          <li>💾 Fai <strong>backup regolari</strong> dei dati importanti (regola 3-2-1).</li>
+          <li>🎣 Diffida di email e link sospetti, verifica sempre il mittente.</li>
+          <li>🔒 Naviga su siti <strong>HTTPS</strong> e usa una VPN sulle reti pubbliche.</li>
+          <li>🛡️ Usa un antivirus e un firewall attivi.</li>
+        </ul>
+        <div class="note-box">🧠 L'anello più debole della sicurezza è quasi sempre l'essere umano: la consapevolezza è la difesa più importante.</div>
       </article>
 
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai imparato i fondamenti della sicurezza informatica!</p><div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota</a></div>
+        <h2>Complimenti! 🎉 Hai completato il corso di Cybersecurity</h2>
+        <p>Hai imparato i fondamenti della sicurezza informatica: la triade CIA, le minacce e il malware, il phishing, password e hashing, l'autenticazione a più fattori, la crittografia, i principali attacchi (SQL injection, XSS, DDoS, MITM) e le buone pratiche per proteggerti.</p>
+        <p>La sicurezza è un percorso continuo: continua a informarti, perché le minacce evolvono di continuo. Se prepari una verifica o vuoi approfondire con un percorso guidato, posso seguirti con le ripetizioni in presenza a Roma.</p>
+        <div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
+
     </main>
   </div>
 </section>
-
-<div class="editor-overlay" id="editor">
-  <div class="editor-box">
-    <div class="editor-top">
-      <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
-      <div class="ed-actions">
-        <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
-        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
-      </div>
-    </div>
-    <div class="editor-panes">
-      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
-      <div class="preview-wrap">
-        <div class="preview-label">Risultato</div>
-        <iframe id="ed-preview" title="Anteprima del codice"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -236,67 +321,6 @@
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
-<!-- Evidenziazione esempi -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-<!-- Editor di codice -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/php/php.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 <script src="js/main.js?v=3"></script>
-<script>
-  (function(){
-    var overlay = document.getElementById('editor');
-    var preview = document.getElementById('ed-preview');
-    var RUNNABLE = false;
-    var DISPLAY = "CYBERSECURITY";
-
-    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-      mode: "shell", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default'
-    });
-
-    function run(){
-      if (RUNNABLE) { preview.srcdoc = cm.getValue(); }
-      else {
-        preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
-          + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
-          + '<p>Il linguaggio <b>' + DISPLAY + '</b> non si esegue direttamente nel browser. '
-          + 'Qui puoi comunque <b>leggere e modificare</b> il codice con i colori della sintassi, '
-          + 'poi eseguirlo nel tuo ambiente di sviluppo.</p></body>';
-      }
-    }
-    function openEditor(code){
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      cm.setValue(code);
-      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      run();
-    }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
-
-    cm.on('change', run);
-    document.getElementById('ed-run').addEventListener('click', run);
-    document.getElementById('ed-close').addEventListener('click', closeEditor);
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
-
-    document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent
-                  .replace(/^\n/, '').replace(/\s+$/, '')
-                  .replace(/<\\\/script>/g, '<\/script>');
-      var codeEl = ex.querySelector('.codeview code');
-      codeEl.textContent = raw;
-      if (window.Prism) { Prism.highlightElement(codeEl); }
-      ex.querySelector('.btn-try').addEventListener('click', function(){ openEditor(raw); });
-    });
-  })();
-</script>
 </body>
 </html>
