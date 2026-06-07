@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è un ciclo for in Python e come usarlo (guida 2026) — AlessandroSimone.it</title>
+  <meta name="description" content="Guida completa al ciclo for in Python: sintassi, funzione range(), esempi pratici ed errori comuni. Spiegato in modo semplice da un docente di informatica.">
+  <meta name="keywords" content="ciclo for python, for python, range python, cicli python, programmazione python scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 5 min di lettura</span>
+    <h1>Cos'è un ciclo for in Python e come usarlo</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Il <strong>ciclo for in Python</strong> è probabilmente lo strumento che userai più spesso quando inizi a programmare. Eppure, ai miei studenti all'inizio sembra magia nera. In questa guida lo smontiamo pezzo per pezzo, con esempi che puoi copiare e provare subito sul tuo computer. Alla fine non avrai più paura dei cicli — promesso.</p>
+
+    <h2>A cosa serve un ciclo?</h2>
+    <p>Immagina di dover stampare i numeri da 1 a 5. Potresti scrivere cinque <code>print()</code> uno sotto l'altro. Ma se i numeri fossero mille? O un milione? Riscrivere a mano sarebbe impossibile. Il ciclo serve proprio a questo: <strong>ripetere automaticamente un blocco di istruzioni</strong> tante volte, senza copiare e incollare. In informatica si dice che il ciclo permette di "iterare", cioè di ripetere un'operazione su una sequenza di valori.</p>
+
+    <h2>La sintassi del ciclo for</h2>
+    <p>In Python un ciclo for si scrive così:</p>
+    <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+    <p>Questo programma stampa i numeri 1, 2, 3, 4 e 5. Analizziamolo parola per parola:</p>
+    <ul>
+      <li><strong>for</strong> è la parola chiave che avvia il ciclo;</li>
+      <li><strong>i</strong> è una variabile che, a ogni giro, assume un valore diverso (si chiama "variabile di iterazione");</li>
+      <li><strong>in</strong> collega la variabile alla sequenza da scorrere;</li>
+      <li><strong>range(1, 6)</strong> genera la sequenza di numeri;</li>
+      <li>i <strong>due punti</strong> e l'<strong>indentazione</strong> (gli spazi a inizio riga) indicano quali istruzioni fanno parte del ciclo.</li>
+    </ul>
+    <p>Attenzione all'indentazione: in Python non è facoltativa! Tutto ciò che è indentato sotto il <code>for</code> viene ripetuto. È l'errore numero uno dei principianti.</p>
+
+    <h2>La funzione range() spiegata bene</h2>
+    <p>La funzione <code>range()</code> è la compagna inseparabile del ciclo for. Genera una sequenza di numeri interi. Può essere usata in tre modi:</p>
+    <pre><code>range(5)        # 0, 1, 2, 3, 4
+range(1, 6)     # 1, 2, 3, 4, 5
+range(0, 10, 2) # 0, 2, 4, 6, 8 (passo di 2)</code></pre>
+    <p>Qui c'è il <strong>tranello classico</strong> che inganna tutti nelle verifiche: l'estremo finale è sempre <em>escluso</em>. Per questo <code>range(1, 6)</code> arriva fino a 5 e non a 6. Tienilo bene a mente, perché è una delle domande più frequenti agli esami.</p>
+
+    <h2>Scorrere una lista con il for</h2>
+    <p>Il ciclo for non serve solo per i numeri. È perfetto anche per scorrere gli elementi di una lista, una stringa o qualsiasi altra collezione di dati:</p>
+    <pre><code>materie = ["Python", "SQL", "Reti"]
+for materia in materie:
+    print("Oggi studio:", materia)</code></pre>
+    <p>A ogni giro, la variabile <code>materia</code> prende il valore di un elemento della lista. Questo modo di scorrere i dati è elegante, leggibile e tipico di Python: non a caso si dice che Python è un linguaggio "leggibile come l'inglese".</p>
+
+    <h2>Un esempio pratico: la somma dei primi numeri</h2>
+    <p>Mettiamo insieme tutto con un programma che calcola la somma dei numeri da 1 a 100:</p>
+    <pre><code>totale = 0
+for n in range(1, 101):
+    totale = totale + n
+print("La somma è:", totale)   # 5050</code></pre>
+    <p>Qui la variabile <code>totale</code> accumula i valori a ogni giro. Questo schema, chiamato "accumulatore", è uno dei pattern più importanti della programmazione e lo ritroverai ovunque.</p>
+
+    <h2>Gli errori più comuni (e come evitarli)</h2>
+    <ul>
+      <li><strong>Dimenticare i due punti</strong> alla fine della riga del for: Python segnala subito un errore di sintassi.</li>
+      <li><strong>Indentazione sbagliata</strong>: se un'istruzione non è indentata, non farà parte del ciclo.</li>
+      <li><strong>Confondere range(n)</strong>: ricorda che parte da 0 e arriva a n-1.</li>
+      <li><strong>Modificare la lista mentre la scorri</strong>: può causare comportamenti imprevisti.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Il ciclo for è lo strumento che trasforma operazioni ripetitive in poche righe di codice eleganti. Ricorda i tre concetti chiave: la variabile di iterazione cambia a ogni giro, <code>range(a, b)</code> esclude sempre l'estremo finale, e l'indentazione decide cosa viene ripetuto. Con un po' di pratica diventerà automatico.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Vuoi esercitarti sui cicli?</h2>
+      <p>Trovi diversi esercizi sui cicli for, con soluzioni spiegate, nella sezione dedicata del sito.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

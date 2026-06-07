@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gli indirizzi IP spiegati semplici (IPv4, classi e subnet) — AlessandroSimone.it</title>
+  <meta name="description" content="Cosa sono gli indirizzi IP, come sono fatti, le classi A B C e la subnet mask. Guida chiara alle reti per studenti di informatica della scuola superiore.">
+  <meta name="keywords" content="indirizzi ip, ipv4, classi ip, subnet mask, reti informatica scuola, indirizzo ip spiegato">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Reti · 6 min di lettura</span>
+    <h1>Gli indirizzi IP spiegati semplici</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Ogni volta che apri un sito, invii un messaggio o guardi un video online, entra in gioco un <strong>indirizzo IP</strong>. È uno dei concetti fondamentali delle reti di calcolatori, eppure spesso viene spiegato in modo troppo tecnico. In questo articolo lo rendiamo semplice, con paragoni di tutti i giorni e gli esempi che servono per le verifiche di informatica.</p>
+
+    <h2>Cos'è un indirizzo IP?</h2>
+    <p>Un indirizzo IP è il "numero di casa" di un dispositivo in rete. Proprio come la posta ha bisogno del tuo indirizzo per recapitarti una lettera, internet ha bisogno dell'indirizzo IP per sapere a quale computer, smartphone o server inviare i dati. Senza indirizzi IP, i pacchetti di dati non saprebbero dove andare.</p>
+
+    <h2>Com'è fatto un indirizzo IPv4</h2>
+    <p>Il tipo più diffuso è l'<strong>IPv4</strong>, formato da quattro numeri separati da punti, ad esempio:</p>
+    <pre><code>192.168.1.10</code></pre>
+    <p>Ognuno dei quattro numeri si chiama "ottetto" e può andare da <strong>0 a 255</strong>. Perché proprio 255? Perché ogni ottetto corrisponde a 8 bit (8 cifre binarie), e con 8 bit si possono rappresentare 256 combinazioni diverse, da 0 a 255. In totale un indirizzo IPv4 è composto da 32 bit.</p>
+
+    <h2>Rete e host: le due parti dell'indirizzo</h2>
+    <p>Ogni indirizzo IP è diviso in due parti:</p>
+    <ul>
+      <li>la parte <strong>rete</strong>, che identifica la rete di appartenenza (come il nome di una via);</li>
+      <li>la parte <strong>host</strong>, che identifica il singolo dispositivo dentro quella rete (come il numero civico).</li>
+    </ul>
+    <p>A dirci dove finisce la parte rete e dove inizia la parte host è la <strong>subnet mask</strong>, di cui parliamo tra poco.</p>
+
+    <h2>Le classi di indirizzi: A, B e C</h2>
+    <p>Storicamente gli indirizzi IPv4 sono stati divisi in classi, in base al valore del primo ottetto. È un argomento classico delle verifiche:</p>
+    <pre><code>Classe A:   1 - 126     mask 255.0.0.0
+Classe B: 128 - 191     mask 255.255.0.0
+Classe C: 192 - 223     mask 255.255.255.0</code></pre>
+    <p>Esempi pratici:</p>
+    <ul>
+      <li><code>10.0.0.1</code> → Classe A (reti molto grandi)</li>
+      <li><code>172.16.5.4</code> → Classe B (reti medie)</li>
+      <li><code>192.168.1.10</code> → Classe C (reti piccole, come quella di casa)</li>
+    </ul>
+    <p>Non a caso il tuo router di casa assegna quasi sempre indirizzi che iniziano con <code>192.168</code>: è una rete di classe C, perfetta per pochi dispositivi.</p>
+
+    <h2>La subnet mask</h2>
+    <p>La <strong>subnet mask</strong> è una maschera che indica quali bit dell'indirizzo appartengono alla rete e quali all'host. Ad esempio, con la maschera <code>255.255.255.0</code> i primi tre ottetti identificano la rete e l'ultimo identifica i dispositivi. Questo significa che in una rete come <code>192.168.1.0</code> puoi avere host da <code>192.168.1.1</code> a <code>192.168.1.254</code>.</p>
+
+    <h2>Indirizzi privati e pubblici</h2>
+    <p>Esistono due grandi famiglie di indirizzi:</p>
+    <ul>
+      <li>gli <strong>indirizzi privati</strong> (come <code>192.168.x.x</code>) usati dentro le reti locali e non visibili su internet;</li>
+      <li>gli <strong>indirizzi pubblici</strong>, unici al mondo, assegnati dal provider e usati per comunicare su internet.</li>
+    </ul>
+    <p>È per questo che tutti i dispositivi di casa tua possono avere indirizzi privati simili a quelli del tuo vicino: vivono in reti locali separate.</p>
+
+    <h2>E IPv6?</h2>
+    <p>Poiché gli indirizzi IPv4 stanno finendo (sono "solo" circa 4 miliardi), è nato l'<strong>IPv6</strong>, che usa 128 bit e offre un numero praticamente infinito di indirizzi. La sua notazione è più lunga e usa cifre esadecimali, ma il concetto di base resta lo stesso: dare un indirizzo univoco a ogni dispositivo.</p>
+
+    <h2>In sintesi</h2>
+    <p>Un indirizzo IP è il modo in cui internet identifica ogni dispositivo. Ricorda: l'IPv4 ha quattro ottetti da 0 a 255, si divide in parte rete e parte host, e la classe dipende dal primo ottetto. Capire bene questi concetti ti darà una marcia in più non solo nelle verifiche, ma anche per gestire la rete di casa.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Metti alla prova le reti</h2>
+      <p>Nella sezione esercizi trovi domande su indirizzi IP, classi e modello OSI con soluzioni.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

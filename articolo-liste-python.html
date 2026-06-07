@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le liste in Python: la guida completa per principianti — AlessandroSimone.it</title>
+  <meta name="description" content="Tutto sulle liste in Python: come crearle, modificarle, scorrerle e i metodi più utili (append, remove, sort). Guida pratica con esempi per la scuola.">
+  <meta name="keywords" content="liste python, list python, append python, metodi liste python, programmazione python scuola">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 7 min di lettura</span>
+    <h1>Le liste in Python: la guida completa</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Le <strong>liste in Python</strong> sono una delle strutture dati più importanti che imparerai. Servono a memorizzare più valori in un'unica variabile e tornano utili praticamente in ogni programma: dalla gestione di un elenco di voti alla creazione di un piccolo gioco. In questa guida vediamo come crearle, modificarle e usarle, con esempi pensati per chi parte da zero.</p>
+
+    <h2>Cos'è una lista?</h2>
+    <p>Una lista è un contenitore ordinato di elementi. Immaginala come una fila di caselle numerate, ognuna delle quali contiene un valore. Si crea con le parentesi quadre:</p>
+    <pre><code>voti = [7, 8, 6, 9, 5]
+materie = ["Python", "SQL", "Reti"]
+mista = [1, "ciao", 3.14, True]</code></pre>
+    <p>Come vedi, una lista può contenere numeri, stringhe e perfino tipi diversi insieme. È flessibile e potente.</p>
+
+    <h2>Accedere agli elementi: gli indici</h2>
+    <p>Ogni elemento ha una posizione, chiamata <strong>indice</strong>. In Python gli indici partono da <strong>zero</strong>, non da uno! Questo confonde sempre i principianti:</p>
+    <pre><code>materie = ["Python", "SQL", "Reti"]
+print(materie[0])   # Python
+print(materie[1])   # SQL
+print(materie[-1])  # Reti (l'ultimo elemento)</code></pre>
+    <p>L'indice negativo <code>-1</code> è un piccolo trucco molto comodo: ti permette di accedere all'ultimo elemento senza sapere quanti elementi ci sono.</p>
+
+    <h2>Modificare una lista</h2>
+    <p>A differenza delle stringhe, le liste sono <strong>modificabili</strong>: puoi cambiarne il contenuto dopo averle create.</p>
+    <pre><code>voti = [7, 8, 6]
+voti[2] = 10        # cambia il terzo elemento
+print(voti)         # [7, 8, 10]</code></pre>
+
+    <h2>I metodi più utili</h2>
+    <p>Le liste hanno tante funzioni incorporate, chiamate "metodi". Ecco le più importanti da conoscere per la scuola:</p>
+    <pre><code>numeri = [3, 1, 2]
+
+numeri.append(4)    # aggiunge 4 in fondo -> [3, 1, 2, 4]
+numeri.remove(1)    # rimuove il valore 1 -> [3, 2, 4]
+numeri.sort()       # ordina la lista    -> [2, 3, 4]
+numeri.reverse()    # inverte l'ordine   -> [4, 3, 2]
+print(len(numeri))  # quanti elementi ci sono -> 3</code></pre>
+    <ul>
+      <li><strong>append()</strong> aggiunge un elemento alla fine: è il metodo che userai di più;</li>
+      <li><strong>remove()</strong> elimina la prima occorrenza di un valore;</li>
+      <li><strong>sort()</strong> ordina gli elementi dal più piccolo al più grande;</li>
+      <li><strong>len()</strong> (in realtà una funzione) restituisce il numero di elementi.</li>
+    </ul>
+
+    <h2>Scorrere una lista con il for</h2>
+    <p>Per fare qualcosa con ogni elemento si usa il ciclo for, come abbiamo visto nell'articolo dedicato:</p>
+    <pre><code>voti = [7, 8, 6, 9]
+somma = 0
+for voto in voti:
+    somma = somma + voto
+media = somma / len(voti)
+print("Media:", media)   # 7.5</code></pre>
+    <p>Questo è un esempio realistico: calcolare la media dei voti è uno dei primi programmi "utili" che si scrivono a scuola.</p>
+
+    <h2>Lo slicing: tagliare le liste</h2>
+    <p>Lo <strong>slicing</strong> permette di estrarre una porzione di lista indicando un intervallo di indici:</p>
+    <pre><code>numeri = [10, 20, 30, 40, 50]
+print(numeri[1:3])   # [20, 30]
+print(numeri[:2])    # [10, 20]
+print(numeri[2:])    # [30, 40, 50]</code></pre>
+    <p>Come per <code>range()</code>, l'indice finale è escluso. Lo slicing è velocissimo e molto usato.</p>
+
+    <h2>Errori da evitare</h2>
+    <ul>
+      <li><strong>Indice fuori range</strong>: se provi ad accedere a <code>lista[10]</code> ma la lista ha solo 3 elementi, Python dà errore.</li>
+      <li><strong>Dimenticare che gli indici partono da 0</strong>: il primo elemento è sempre <code>lista[0]</code>.</li>
+      <li><strong>Confondere append() e una nuova assegnazione</strong>: append modifica la lista esistente, non ne crea una nuova.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Le liste sono il tuo coltellino svizzero in Python: servono a raccogliere dati, modificarli e scorrerli. Ricorda che gli indici partono da zero, che le liste sono modificabili e che <code>append()</code>, <code>remove()</code> e <code>sort()</code> ti risolveranno la vita. Una volta padroneggiate, sarai pronto per affrontare strutture dati più avanzate come i dizionari.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Esercitati sulle liste</h2>
+      <p>Nella sezione esercizi trovi problemi pratici su liste e cicli, con soluzioni passo passo.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

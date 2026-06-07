@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contatti & FAQ — Alessandro Simone</title>
-  <meta name="description" content="Contatta Alessandro Simone per ripetizioni di informatica. Scrivi una email o consulta le domande frequenti.">
+  <title>Contatti & FAQ — AlessandroSimone.it</title>
+  <meta name="description" content="Contatta Alessandro Simone per ripetizioni di informatica. Compila il modulo con la tua richiesta o consulta le domande frequenti.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    @media (max-width: 560px){ .form-row { grid-template-columns: 1fr; } }
+    .form .hint { font-size: .82rem; color: var(--muted); }
+    .form .req { color: #dc2626; }
+  </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
     <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-menu">
       <a href="index.html">Home</a>
@@ -32,18 +38,100 @@
   <div class="container center mb-3">
     <span class="eyebrow">Contatti</span>
     <h1 class="section-title">Scrivimi</h1>
-    <p class="section-sub" style="margin-inline:auto">Hai una domanda o vuoi organizzare una ripetizione? Scrivimi direttamente via email. Rispondo entro 24 ore.</p>
+    <p class="section-sub" style="margin-inline:auto">Compila il modulo con i dettagli della tua richiesta: più informazioni mi dai, più la mia risposta sarà precisa. Rispondo entro 24 ore.</p>
   </div>
 
   <div class="container">
-    <div class="embed-box">
-      <div class="big">✉️</div>
-      <h3>Scrivimi via email</h3>
-      <p class="mt-2">Raccontami cosa ti serve: la materia, il tuo livello e quando saresti disponibile.<br>Ti rispondo entro 24 ore con disponibilità e tutte le informazioni.</p>
-      <div class="hero-actions mt-3" style="justify-content:center">
-        <a href="mailto:alessandrosimone.it@gmail.com?subject=Richiesta%20ripetizione%20informatica" class="btn btn-primary btn-lg">📧 Scrivi a alessandrosimone.it@gmail.com</a>
+    <form class="form" action="https://formspree.io/f/xgoborob" method="POST">
+
+      <div class="form-row">
+        <div class="field">
+          <label for="nome">Nome e cognome <span class="req">*</span></label>
+          <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="mario@email.it" required>
+        </div>
       </div>
-    </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="telefono">Telefono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+39 333 1234567">
+        </div>
+        <div class="field">
+          <label for="ruolo">Chi sei?</label>
+          <select id="ruolo" name="ruolo">
+            <option>Studente</option>
+            <option>Genitore</option>
+            <option>Altro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="classe">Classe e indirizzo</label>
+          <input type="text" id="classe" name="classe" placeholder="es. 4ª Informatica">
+        </div>
+        <div class="field">
+          <label for="scuola">Scuola / Istituto</label>
+          <input type="text" id="scuola" name="scuola" placeholder="es. I.T.I. di Roma">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="materia">Materia / argomento</label>
+          <select id="materia" name="materia">
+            <option>Programmazione (Python, C, Java)</option>
+            <option>Sviluppo Web (HTML, CSS, JS)</option>
+            <option>Database e SQL</option>
+            <option>Reti e Sistemi</option>
+            <option>Algoritmi</option>
+            <option>Intelligenza Artificiale</option>
+            <option>Preparazione maturità</option>
+            <option>Altro / non so</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo di richiesta</label>
+          <select id="tipo" name="tipo_richiesta">
+            <option>Lezione singola</option>
+            <option>Pacchetto mensile</option>
+            <option>Preparazione esame</option>
+            <option>Solo un'informazione</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="obiettivo">Qual è il tuo obiettivo?</label>
+        <input type="text" id="obiettivo" name="obiettivo" placeholder="es. recuperare un debito, prepararmi a una verifica, capire la programmazione...">
+      </div>
+
+      <div class="field">
+        <label for="disponibilita">Quando sei disponibile?</label>
+        <input type="text" id="disponibilita" name="disponibilita" placeholder="es. lunedì e mercoledì pomeriggio, dopo le 15:00">
+      </div>
+
+      <div class="field">
+        <label for="msg">Messaggio <span class="req">*</span></label>
+        <textarea id="msg" name="messaggio" rows="5" placeholder="Raccontami nel dettaglio cosa ti serve..." required></textarea>
+      </div>
+
+      <!-- Impostazioni Formspree -->
+      <input type="hidden" name="_subject" value="Nuova richiesta da AlessandroSimone.it">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="btn btn-primary btn-lg">📨 Invia richiesta</button>
+      <p class="hint">Inviando accetti di essere ricontattato all'indirizzo indicato. I tuoi dati non saranno condivisi con terzi.</p>
+    </form>
+
+    <p class="center mt-4" style="color:var(--muted)">
+      Preferisci l'email diretta? Scrivimi a <a href="mailto:alessandrosimone.it@gmail.com" style="color:var(--primary);font-weight:600">alessandrosimone.it@gmail.com</a>
+    </p>
   </div>
 </section>
 
@@ -82,13 +170,13 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
     </div>
     <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
     <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
-  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone — Tutti i diritti riservati</div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
 <script src="js/main.js"></script>

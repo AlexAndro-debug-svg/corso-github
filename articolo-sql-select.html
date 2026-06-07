@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL per principianti: SELECT, WHERE e ORDER BY — AlessandroSimone.it</title>
+  <meta name="description" content="Impara le basi di SQL: come usare SELECT, WHERE e ORDER BY per interrogare un database. Guida semplice con esempi pratici per studenti di informatica.">
+  <meta name="keywords" content="sql per principianti, select sql, where sql, order by, query sql scuola, database informatica">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Database · 6 min di lettura</span>
+    <h1>SQL per principianti: SELECT, WHERE e ORDER BY</h1>
+    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Imparare <strong>SQL</strong> significa imparare a "parlare" con un database. SQL (Structured Query Language) è il linguaggio con cui chiediamo informazioni a una base di dati, e le tre parole chiave da cui partire sono <strong>SELECT</strong>, <strong>WHERE</strong> e <strong>ORDER BY</strong>. In questa guida le vediamo una per una, con esempi semplici che potrai riprodurre a scuola o a casa.</p>
+
+    <h2>Il database di esempio</h2>
+    <p>Immaginiamo una tabella chiamata <code>studenti</code> con queste colonne: <code>id</code>, <code>nome</code>, <code>cognome</code>, <code>eta</code> e <code>media</code>. Una tabella è come un foglio Excel: ogni riga è uno studente, ogni colonna un'informazione. Tutte le nostre query lavoreranno su questa tabella.</p>
+
+    <h2>SELECT: scegliere cosa vedere</h2>
+    <p>Il comando <strong>SELECT</strong> serve a estrarre dati. La forma più semplice mostra tutte le colonne di tutte le righe:</p>
+    <pre><code>SELECT * FROM studenti;</code></pre>
+    <p>L'asterisco <code>*</code> significa "tutte le colonne". Ma spesso vogliamo solo alcune informazioni, ad esempio nome e cognome:</p>
+    <pre><code>SELECT nome, cognome FROM studenti;</code></pre>
+    <p>Indicando i nomi delle colonne otteniamo un risultato più pulito e leggibile. Già con questo comando puoi interrogare qualsiasi tabella.</p>
+
+    <h2>WHERE: filtrare i risultati</h2>
+    <p>Quasi mai vogliamo <em>tutte</em> le righe. La clausola <strong>WHERE</strong> ci permette di mettere una condizione e ottenere solo le righe che la rispettano:</p>
+    <pre><code>SELECT nome, cognome
+FROM studenti
+WHERE eta &gt; 18;</code></pre>
+    <p>Questa query restituisce solo gli studenti maggiorenni. Possiamo usare diversi operatori di confronto:</p>
+    <ul>
+      <li><code>=</code> uguale a (es. <code>WHERE nome = 'Mario'</code>)</li>
+      <li><code>&gt;</code> e <code>&lt;</code> maggiore e minore</li>
+      <li><code>&gt;=</code> e <code>&lt;=</code> maggiore o uguale, minore o uguale</li>
+      <li><code>&lt;&gt;</code> diverso da</li>
+    </ul>
+    <p>Nota importante: i testi vanno tra <strong>apici singoli</strong> (<code>'Mario'</code>), mentre i numeri si scrivono senza apici. È un dettaglio che fa sbagliare tanti studenti.</p>
+
+    <h2>Combinare più condizioni: AND e OR</h2>
+    <p>Possiamo unire più condizioni con <code>AND</code> (entrambe vere) e <code>OR</code> (almeno una vera):</p>
+    <pre><code>SELECT nome, cognome
+FROM studenti
+WHERE eta &gt;= 18 AND media &gt;= 8;</code></pre>
+    <p>Questa query trova gli studenti maggiorenni <em>e</em> con media alta. Cambiando <code>AND</code> in <code>OR</code> otterremmo gli studenti che soddisfano almeno una delle due condizioni.</p>
+
+    <h2>ORDER BY: ordinare i risultati</h2>
+    <p>Infine, <strong>ORDER BY</strong> serve a ordinare il risultato secondo una colonna:</p>
+    <pre><code>SELECT nome, cognome, media
+FROM studenti
+ORDER BY media DESC;</code></pre>
+    <p>Con <code>DESC</code> (descending) ordiniamo dal valore più alto al più basso — perfetto per una classifica dei voti. Usando <code>ASC</code> (ascending), o semplicemente nulla, l'ordine è crescente.</p>
+
+    <h2>Mettiamo tutto insieme</h2>
+    <p>Le tre clausole si combinano sempre nello stesso ordine: prima SELECT, poi WHERE, infine ORDER BY:</p>
+    <pre><code>SELECT nome, cognome, media
+FROM studenti
+WHERE eta &gt;= 18
+ORDER BY media DESC;</code></pre>
+    <p>Questa query risponde a una domanda concreta: "Mostrami nome, cognome e media degli studenti maggiorenni, ordinati dal più bravo." Con sole quattro righe abbiamo interrogato un intero archivio.</p>
+
+    <h2>Errori comuni con SQL</h2>
+    <ul>
+      <li><strong>Dimenticare il punto e virgola</strong> alla fine: molti sistemi lo richiedono per eseguire la query.</li>
+      <li><strong>Mettere i numeri tra apici</strong> o, al contrario, dimenticare gli apici sui testi.</li>
+      <li><strong>Invertire l'ordine delle clausole</strong>: WHERE va sempre prima di ORDER BY.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Con SELECT scegli le colonne, con WHERE filtri le righe e con ORDER BY ordini il risultato. Sono le fondamenta di SQL: una volta padroneggiate queste tre clausole, sarai pronto per argomenti più avanzati come le funzioni di aggregazione (COUNT, GROUP BY) e le JOIN tra tabelle. Il segreto, come sempre, è esercitarsi tanto.</p>
+
+    <div class="cta-banner mt-4">
+      <h2>Allenati con le query SQL</h2>
+      <p>Nella sezione esercizi trovi query da risolvere, dalle più semplici alle JOIN, con soluzioni.</p>
+      <a href="esercizi.html" class="btn btn-accent btn-lg">Vai agli esercizi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

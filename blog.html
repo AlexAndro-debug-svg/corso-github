@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog & Guide di Informatica — Alessandro Simone</title>
-  <meta name="description" content="Articoli e guide per capire l'informatica: programmazione, database, reti e algoritmi spiegati in modo semplice.">
+  <title>Blog & Guide di Informatica — AlessandroSimone.it</title>
+  <meta name="description" content="Articoli e guide per capire l'informatica: Python, database, reti e algoritmi spiegati in modo semplice da un docente di scuola secondaria.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post.soon { opacity: .6; pointer-events: none; }
+    .post.soon .thumb { filter: grayscale(1); }
+    .soon-badge { display:inline-block; background:var(--bg-soft); color:var(--muted); font-size:.7rem; font-weight:700; padding:.15rem .5rem; border-radius:6px; margin-left:.4rem; vertical-align:middle; }
+  </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
     <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-menu">
       <a href="index.html">Home</a>
@@ -33,78 +38,81 @@
     <div class="center mb-3">
       <span class="eyebrow" style="color:var(--edu)">Blog & Guide</span>
       <h1 class="section-title">Impara con i miei articoli</h1>
-      <p class="section-sub" style="margin-inline:auto">Spiegazioni semplici dei concetti più importanti dell'informatica. Perfetti per ripassare o approfondire.</p>
+      <p class="section-sub" style="margin-inline:auto">Spiegazioni semplici dei concetti più importanti dell'informatica. Perfetti per ripassare prima di una verifica o approfondire da zero.</p>
     </div>
 
     <div class="posts">
-      <a href="articolo.html" class="post">
+      <a href="articolo-ciclo-for.html" class="post">
         <div class="thumb">🔁</div>
         <div class="body">
           <span class="cat">Programmazione</span>
-          <h3>Cos'è un ciclo for e come usarlo</h3>
-          <p>Il ciclo for spiegato con esempi pratici in Python, passo dopo passo.</p>
-          <div class="date">📅 5 giugno 2026 · 5 min di lettura</div>
+          <h3>Cos'è un ciclo for in Python e come usarlo</h3>
+          <p>Sintassi, funzione range() ed errori comuni: il ciclo for spiegato passo dopo passo.</p>
+          <div class="date">📅 6 giugno 2026 · 5 min di lettura</div>
         </div>
       </a>
-      <a href="articolo.html" class="post">
-        <div class="thumb">🗃️</div>
-        <div class="body">
-          <span class="cat">Database</span>
-          <h3>SQL: la differenza tra WHERE e HAVING</h3>
-          <p>Due clausole che confondono tutti gli studenti: ecco quando usare l'una o l'altra.</p>
-          <div class="date">📅 28 maggio 2026 · 4 min di lettura</div>
-        </div>
-      </a>
-      <a href="articolo.html" class="post">
-        <div class="thumb">📡</div>
-        <div class="body">
-          <span class="cat">Reti</span>
-          <h3>Indirizzi IP spiegati semplici</h3>
-          <p>Cosa sono gli indirizzi IP, come sono fatti e perché servono le subnet mask.</p>
-          <div class="date">📅 15 maggio 2026 · 6 min di lettura</div>
-        </div>
-      </a>
-      <a href="articolo.html" class="post">
+      <a href="articolo-liste-python.html" class="post">
         <div class="thumb">🐍</div>
         <div class="body">
           <span class="cat">Programmazione</span>
-          <h3>Liste in Python: la guida completa</h3>
-          <p>Creare, modificare e scorrere le liste: tutto quello che ti serve per le verifiche.</p>
-          <div class="date">📅 2 maggio 2026 · 7 min di lettura</div>
+          <h3>Le liste in Python: la guida completa</h3>
+          <p>Creare, modificare e scorrere le liste, con tutti i metodi utili per le verifiche.</p>
+          <div class="date">📅 6 giugno 2026 · 7 min di lettura</div>
         </div>
       </a>
-      <a href="articolo.html" class="post">
+      <a href="articolo-sql-select.html" class="post">
+        <div class="thumb">🗃️</div>
+        <div class="body">
+          <span class="cat">Database</span>
+          <h3>SQL per principianti: SELECT, WHERE e ORDER BY</h3>
+          <p>Le tre clausole fondamentali per interrogare un database, con esempi pratici.</p>
+          <div class="date">📅 6 giugno 2026 · 6 min di lettura</div>
+        </div>
+      </a>
+      <a href="articolo-indirizzi-ip.html" class="post">
+        <div class="thumb">📡</div>
+        <div class="body">
+          <span class="cat">Reti</span>
+          <h3>Gli indirizzi IP spiegati semplici</h3>
+          <p>Cosa sono, come sono fatti, classi A/B/C e subnet mask spiegate con parole semplici.</p>
+          <div class="date">📅 6 giugno 2026 · 6 min di lettura</div>
+        </div>
+      </a>
+
+      <span class="post soon">
         <div class="thumb">🧮</div>
         <div class="body">
           <span class="cat">Algoritmi</span>
-          <h3>La ricorsione spiegata senza paura</h3>
+          <h3>La ricorsione spiegata senza paura <span class="soon-badge">IN ARRIVO</span></h3>
           <p>Capire la ricorsione con esempi concreti: fattoriale, Fibonacci e altro.</p>
-          <div class="date">📅 20 aprile 2026 · 6 min di lettura</div>
+          <div class="date">Prossimamente</div>
         </div>
-      </a>
-      <a href="articolo.html" class="post">
+      </span>
+      <span class="post soon">
         <div class="thumb">🌐</div>
         <div class="body">
           <span class="cat">Web</span>
-          <h3>HTML vs CSS vs JavaScript</h3>
-          <p>I tre linguaggi del web e a cosa serve ognuno, spiegati con una metafora.</p>
-          <div class="date">📅 10 aprile 2026 · 5 min di lettura</div>
+          <h3>HTML, CSS e JavaScript: a cosa servono <span class="soon-badge">IN ARRIVO</span></h3>
+          <p>I tre linguaggi del web e il ruolo di ognuno, spiegati con una metafora semplice.</p>
+          <div class="date">Prossimamente</div>
         </div>
-      </a>
+      </span>
     </div>
+
+    <p class="center mt-4" style="color:var(--muted)">📚 Nuovi articoli in arrivo ogni settimana. Torna a trovarmi!</p>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
     </div>
     <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
-    <div><h4>Contatti</h4><a href="mailto:info@alessandrosimone.it">info@alessandrosimone.it</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
-  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone · alessandrosimone.it — Tutti i diritti riservati</div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
 <script src="js/main.js"></script>
