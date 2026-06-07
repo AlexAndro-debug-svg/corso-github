@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso JAVASCRIPT in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Rendi le tue pagine interattive: variabili, funzioni, eventi. Ogni esempio gira subito con “Provalo tu”.">
+  <title>Corso JavaScript completo in italiano: guida da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso JavaScript completo e gratuito in italiano: variabili, operatori, condizioni, cicli, stringhe, funzioni, oggetti, array, Set, Map, Math, RegExp, DOM ed eventi. Tutti gli argomenti spiegati in modo approfondito con esempi eseguibili ed editor Provalo tu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -116,189 +116,442 @@
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
     <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
-    <h1>Corso di JavaScript in italiano</h1>
-    <p class="lead" style="margin-inline:auto">Rendi le tue pagine interattive: variabili, funzioni, eventi. Ogni esempio gira subito con “Provalo tu”.</p>
+    <h1>Corso di JavaScript completo in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara JavaScript da zero con la guida più completa in italiano: <strong>tutti gli argomenti</strong> dalle variabili agli oggetti, dagli array al DOM, fino a RegExp, Set, Map ed eventi. Ogni capitolo ha esempi col codice colorato e l'editor “Provalo tu” che esegue davvero il codice.</p>
   </div>
 </section>
 
 <section class="section" style="padding-top:1rem">
   <div class="container course-wrap">
     <aside class="course-side">
-      <h4>Corso JAVASCRIPT</h4>
-      <a href="#intro">Introduzione</a>
-      <a href="#variabili">Variabili</a>
-      <a href="#tipi">Tipi di dato</a>
-      <a href="#operatori">Operatori</a>
-      <a href="#condizioni">Condizioni</a>
-      <a href="#cicli">Cicli</a>
-      <a href="#funzioni">Funzioni</a>
-      <a href="#eventi">Eventi</a>
-      <a href="#dom">Modificare la pagina</a>
-      <a href="#array-metodi">Array</a>
-      <a href="#fine">E ora?</a>
+      <h4>Corso JavaScript</h4>
+      <a href="#home">JS Home</a>
+      <a href="#introduzione">JS Introduction</a>
+      <a href="#where-to">JS Where To</a>
+      <a href="#output">JS Output</a>
+      <a href="#sintassi">JS Syntax</a>
+      <a href="#operatori">JS Operators</a>
+      <a href="#condizioni">JS If Conditions</a>
+      <a href="#cicli">JS Loops</a>
+      <a href="#stringhe">JS Strings</a>
+      <a href="#numeri">JS Numbers</a>
+      <a href="#funzioni">JS Functions</a>
+      <a href="#oggetti">JS Objects</a>
+      <a href="#scope">JS Scope</a>
+      <a href="#date">JS Dates</a>
+      <a href="#temporal">JS Temporal</a>
+      <a href="#array">JS Arrays</a>
+      <a href="#set">JS Sets</a>
+      <a href="#map">JS Maps</a>
+      <a href="#iterazioni">JS Iterations</a>
+      <a href="#math">JS Math</a>
+      <a href="#regexp">JS RegExp</a>
+      <a href="#tipi">JS Data Types</a>
+      <a href="#errori">JS Errors</a>
+      <a href="#debugging">JS Debugging</a>
+      <a href="#style-guide">JS Style Guide</a>
+      <a href="#versioni">JS Versions</a>
+      <a href="#dom">JS HTML DOM</a>
+      <a href="#eventi">JS HTML Events</a>
     </aside>
     <main>
-      <article class="lesson" id="intro">
+      <article class="lesson" id="home">
+        <h2>Corso di JavaScript completo in italiano</h2>
+        <p>Benvenuto nel <strong>corso di JavaScript</strong> più completo in italiano. JavaScript è il linguaggio di programmazione del web: rende le pagine <strong>interattive e dinamiche</strong> ed è oggi usato anche fuori dal browser (server, app, giochi) grazie a Node.js.</p><p>In questo corso trovi <strong>tutti gli argomenti</strong>, dalle variabili agli oggetti, dagli array alle espressioni regolari, fino alla manipolazione della pagina (DOM) e agli eventi. Ogni capitolo ha esempi col codice colorato e l'editor <strong>“Provalo tu”</strong> che <em>esegue davvero</em> il codice nel browser.</p><div class='note-box'>💡 <strong>HTML, CSS e JavaScript:</strong> l'HTML è la struttura, il CSS è l'aspetto e <strong>JavaScript è il comportamento</strong>. Insieme formano le basi dello sviluppo web.</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  document.getElementById('out').innerHTML = 'Ciao da JavaScript! 👋';
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="introduzione">
         <h2>Introduzione a JavaScript</h2>
-        <p><strong>JavaScript</strong> è il linguaggio che rende interattive le pagine web. Il codice va dentro <code class='inline'>&lt;script&gt;</code>.</p>
+        <p>JavaScript nasce nel 1995 e oggi è uno dei linguaggi più usati al mondo. Gira direttamente nel <strong>browser</strong>, quindi non serve installare nulla per iniziare. Permette di reagire ai clic, validare i form, aggiornare i contenuti senza ricaricare la pagina e molto altro.</p><ul><li>È un linguaggio <strong>interpretato</strong> (eseguito riga per riga).</li><li>È <strong>dinamico</strong>: le variabili possono cambiare tipo.</li><li>Funziona ovunque: browser, server (Node.js), app mobili e desktop.</li></ul>
+      </article>
+
+      <article class="lesson" id="where-to">
+        <h2>Dove inserire JavaScript</h2>
+        <p>Il codice JavaScript si inserisce nell'elemento <code class='inline'>&lt;script&gt;</code>. Può stare nel <code class='inline'>&lt;head&gt;</code>, nel <code class='inline'>&lt;body&gt;</code> (di solito alla fine, per caricare prima i contenuti) oppure in un <strong>file esterno</strong> <code class='inline'>.js</code> collegato con <code class='inline'>&lt;script src="file.js"&gt;</code>.</p><div class='tip-box'>⭐ Mettere lo script appena prima di <code class='inline'>&lt;/body&gt;</code> velocizza il caricamento: la pagina appare subito e poi parte il codice.</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
-          <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          document.getElementById('out').innerHTML = 'Ciao da JavaScript!';
-        <\/script></script>
+          <script type="text/plain" class="code"><button onclick="messaggio()">Cliccami</button>
+<script>
+  function messaggio() {
+    alert('Lo script funziona!');
+  }
+<\/script></script>
         </div>
       </article>
 
-      <article class="lesson" id="variabili">
-        <h2>Le variabili</h2>
-        <p>Le variabili memorizzano dati. Si dichiarano con <code class='inline'>let</code> (modificabili) o <code class='inline'>const</code> (costanti).</p>
+      <article class="lesson" id="output">
+        <h2>Mostrare i risultati (output)</h2>
+        <p>JavaScript può mostrare i dati in vari modi: <code class='inline'>document.write()</code> (scrive nella pagina), <code class='inline'>innerHTML</code> (cambia il contenuto di un elemento), <code class='inline'>alert()</code> (finestra pop-up), <code class='inline'>console.log()</code> (nella console per sviluppatori, ottimo per il debug).</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
-          <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let nome = "Alessandro";
-          let eta = 30;
-          document.getElementById('out').innerHTML = nome + " ha " + eta + " anni";
-        <\/script></script>
+          <script type="text/plain" class="code"><p id="demo"></p>
+<script>
+  document.getElementById('demo').innerHTML = 'Scritto con innerHTML';
+  console.log('Questo appare nella console (F12)');
+<\/script></script>
         </div>
       </article>
 
-      <article class="lesson" id="tipi">
-        <h2>I tipi di dato</h2>
-        <p>I principali: <strong>stringhe</strong> (testo), <strong>numeri</strong>, <strong>booleani</strong> (true/false), <strong>array</strong> (liste).</p>
+      <article class="lesson" id="sintassi">
+        <h2>La sintassi e le variabili</h2>
+        <p>Le <strong>variabili</strong> memorizzano dati e si dichiarano con <code class='inline'>let</code> (modificabili), <code class='inline'>const</code> (costanti) o <code class='inline'>var</code> (vecchio stile). Le istruzioni terminano con il punto e virgola. JavaScript distingue maiuscole e minuscole.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let frutta = ["mela", "pera", "kiwi"];
-          document.getElementById('out').innerHTML = "Ho " + frutta.length + " frutti: " + frutta.join(", ");
-        <\/script></script>
+<script>
+  let nome = "Alessandro";
+  const anno = 2026;
+  document.getElementById('out').innerHTML = nome + " - " + anno;
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="operatori">
         <h2>Gli operatori</h2>
-        <p>Aritmetici (<code class='inline'>+ - * /</code>), di confronto (<code class='inline'>== === &gt; &lt;</code>) e logici (<code class='inline'>&amp;&amp; ||</code>).</p>
+        <p>Gli operatori principali:</p><ul><li><strong>Aritmetici:</strong> <code class='inline'>+ - * / % **</code></li><li><strong>Assegnazione:</strong> <code class='inline'>= += -= *=</code></li><li><strong>Confronto:</strong> <code class='inline'>== === != &gt; &lt; &gt;= &lt;=</code></li><li><strong>Logici:</strong> <code class='inline'>&amp;&amp;</code> (e), <code class='inline'>||</code> (o), <code class='inline'>!</code> (non)</li></ul><div class='note-box'>💡 Usa sempre <code class='inline'>===</code> (uguaglianza stretta) invece di <code class='inline'>==</code>: confronta valore <em>e</em> tipo, evitando sorprese.</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let a = 7, b = 3;
-          document.getElementById('out').innerHTML = "Somma: " + (a+b) + " — Resto: " + (a%b);
-        <\/script></script>
+<script>
+  let a = 7, b = 3;
+  document.getElementById('out').innerHTML =
+    "Somma: " + (a+b) + " | Resto: " + (a%b) + " | Potenza: " + (a**b);
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="condizioni">
-        <h2>Le condizioni (if)</h2>
-        <p>Con <code class='inline'>if...else</code> esegui codice diverso a seconda di una condizione.</p>
+        <h2>Le condizioni (if/else)</h2>
+        <p>Le condizioni eseguono codice diverso a seconda di un test. Si usano <code class='inline'>if</code>, <code class='inline'>else if</code>, <code class='inline'>else</code>, e lo <code class='inline'>switch</code> per molti casi. Esiste anche l'operatore ternario <code class='inline'>condizione ? a : b</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let voto = 7;
-          if (voto >= 6) {
-            document.getElementById('out').innerHTML = "Promosso!";
-          } else {
-            document.getElementById('out').innerHTML = "Da recuperare";
-          }
-        <\/script></script>
+<script>
+  let voto = 7;
+  let esito;
+  if (voto >= 8) { esito = "Ottimo"; }
+  else if (voto >= 6) { esito = "Sufficiente"; }
+  else { esito = "Da recuperare"; }
+  document.getElementById('out').innerHTML = esito;
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="cicli">
         <h2>I cicli (for, while)</h2>
-        <p>I cicli ripetono istruzioni. Il <code class='inline'>for</code> è il più usato.</p>
+        <p>I cicli ripetono istruzioni. Il <code class='inline'>for</code> per un numero noto di volte, il <code class='inline'>while</code> finché una condizione è vera, il <code class='inline'>for...of</code> per scorrere gli array, il <code class='inline'>for...in</code> per gli oggetti. <code class='inline'>break</code> interrompe, <code class='inline'>continue</code> salta un giro.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let testo = "";
-          for (let i = 1; i <= 5; i++) {
-            testo += "Riga " + i + "<br>";
-          }
-          document.getElementById('out').innerHTML = testo;
-        <\/script></script>
+<script>
+  let testo = "";
+  for (let i = 1; i <= 5; i++) {
+    testo += "Riga " + i + "<br>";
+  }
+  document.getElementById('out').innerHTML = testo;
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="stringhe">
+        <h2>Le stringhe</h2>
+        <p>Le <strong>stringhe</strong> sono testo tra apici. Hanno proprietà e metodi utili: <code class='inline'>length</code>, <code class='inline'>toUpperCase()</code>, <code class='inline'>toLowerCase()</code>, <code class='inline'>indexOf()</code>, <code class='inline'>slice()</code>, <code class='inline'>replace()</code>, <code class='inline'>split()</code>. I <strong>template literal</strong> con i backtick permettono di inserire variabili con <code class='inline'>${...}</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let nome = "Alessandro";
+  document.getElementById('out').innerHTML =
+    `Maiuscolo: ${nome.toUpperCase()} | Lettere: ${nome.length}`;
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="numeri">
+        <h2>I numeri</h2>
+        <p>JavaScript ha un unico tipo numerico (interi e decimali). Metodi utili: <code class='inline'>toFixed(n)</code> (decimali), <code class='inline'>parseInt()</code> e <code class='inline'>parseFloat()</code> (da stringa a numero), <code class='inline'>Number()</code>, <code class='inline'>isNaN()</code> (verifica “non è un numero”).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let prezzo = 35.5;
+  document.getElementById('out').innerHTML =
+    "Arrotondato: " + prezzo.toFixed(2) + "€<br>" +
+    "Da stringa: " + parseInt("42 anni");
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="funzioni">
         <h2>Le funzioni</h2>
-        <p>Una <strong>funzione</strong> è un blocco di codice riutilizzabile che può ricevere dati e restituire un risultato.</p>
+        <p>Una <strong>funzione</strong> è un blocco riutilizzabile che riceve parametri e può restituire un valore con <code class='inline'>return</code>. Si possono scrivere come dichiarazione, come espressione o come <strong>arrow function</strong> (<code class='inline'>=&gt;</code>), la forma moderna più compatta.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
           <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          function somma(a, b) {
-            return a + b;
-          }
-          document.getElementById('out').innerHTML = "3 + 4 = " + somma(3, 4);
-        <\/script></script>
+<script>
+  function somma(a, b) { return a + b; }
+  const doppio = x => x * 2;
+  document.getElementById('out').innerHTML =
+    "somma(3,4)=" + somma(3,4) + " | doppio(5)=" + doppio(5);
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="oggetti">
+        <h2>Gli oggetti</h2>
+        <p>Un <strong>oggetto</strong> raggruppa dati correlati in coppie <code class='inline'>chiave: valore</code> (le proprietà) e può contenere funzioni (i metodi). Si accede con la notazione punto <code class='inline'>oggetto.proprietà</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let studente = {
+    nome: "Marco",
+    voto: 8,
+    saluta: function() { return "Ciao, sono " + this.nome; }
+  };
+  document.getElementById('out').innerHTML =
+    studente.saluta() + " (voto " + studente.voto + ")";
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="scope">
+        <h2>Lo scope (visibilità)</h2>
+        <p>Lo <strong>scope</strong> determina dove una variabile è accessibile. Le variabili <code class='inline'>let</code> e <code class='inline'>const</code> hanno scope di <strong>blocco</strong> (valgono solo tra le graffe in cui sono dichiarate); quelle dichiarate fuori da ogni funzione sono <strong>globali</strong>. Limitare lo scope evita errori e conflitti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let globale = "visibile ovunque";
+  function test() {
+    let locale = "solo qui dentro";
+    return locale;
+  }
+  document.getElementById('out').innerHTML = globale + " | " + test();
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="date">
+        <h2>Le date</h2>
+        <p>L'oggetto <code class='inline'>Date</code> gestisce date e orari. Si crea con <code class='inline'>new Date()</code> e offre metodi come <code class='inline'>getFullYear()</code>, <code class='inline'>getMonth()</code>, <code class='inline'>getDate()</code>, <code class='inline'>getHours()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let oggi = new Date();
+  document.getElementById('out').innerHTML =
+    "Anno: " + oggi.getFullYear() + "<br>Ora: " + oggi.getHours() + ":" + oggi.getMinutes();
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="temporal">
+        <h2>Temporal (nuova API date)</h2>
+        <p><strong>Temporal</strong> è la nuova API moderna per gestire date e orari, pensata per risolvere i limiti storici dell'oggetto <code class='inline'>Date</code> (fusi orari, calcoli, immutabilità). È ancora in fase di adozione nei browser, ma rappresenta il futuro della gestione del tempo in JavaScript.</p><div class='note-box'>🆕 Argomento avanzato e recente: per ora, nei progetti reali, si usa ancora <code class='inline'>Date</code> o librerie come date-fns.</div>
+      </article>
+
+      <article class="lesson" id="array">
+        <h2>Gli array</h2>
+        <p>Gli <strong>array</strong> sono liste ordinate di valori, indicizzate da 0. Metodi fondamentali: <code class='inline'>push()</code>/<code class='inline'>pop()</code> (fine), <code class='inline'>shift()</code>/<code class='inline'>unshift()</code> (inizio), <code class='inline'>map()</code>, <code class='inline'>filter()</code>, <code class='inline'>forEach()</code>, <code class='inline'>find()</code>, <code class='inline'>length</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let numeri = [10, 20, 30, 40];
+  let doppi = numeri.map(n => n * 2);
+  let grandi = numeri.filter(n => n > 20);
+  document.getElementById('out').innerHTML =
+    "Doppi: " + doppi.join(", ") + "<br>Grandi: " + grandi.join(", ");
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="set">
+        <h2>I Set (insiemi)</h2>
+        <p>Un <strong>Set</strong> è una collezione di valori <strong>unici</strong>: i duplicati vengono ignorati automaticamente. Utile per eliminare i doppioni da un array. Metodi: <code class='inline'>add()</code>, <code class='inline'>has()</code>, <code class='inline'>delete()</code>, <code class='inline'>size</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let numeri = [1, 2, 2, 3, 3, 3];
+  let unici = new Set(numeri);
+  document.getElementById('out').innerHTML =
+    "Unici: " + [...unici].join(", ") + " (totale " + unici.size + ")";
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="map">
+        <h2>Le Map (mappe)</h2>
+        <p>Una <strong>Map</strong> associa chiavi a valori, come un oggetto, ma le chiavi possono essere di qualsiasi tipo e mantiene l'ordine di inserimento. Metodi: <code class='inline'>set()</code>, <code class='inline'>get()</code>, <code class='inline'>has()</code>, <code class='inline'>delete()</code>, <code class='inline'>size</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let voti = new Map();
+  voti.set("Marco", 8);
+  voti.set("Giulia", 9);
+  document.getElementById('out').innerHTML =
+    "Voto di Giulia: " + voti.get("Giulia") + " | Studenti: " + voti.size;
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="iterazioni">
+        <h2>Le iterazioni</h2>
+        <p><strong>Iterare</strong> significa scorrere gli elementi di una collezione. Oltre ai cicli classici, JavaScript offre <code class='inline'>forEach()</code> per gli array, <code class='inline'>for...of</code> per i valori e <code class='inline'>for...in</code> per le chiavi degli oggetti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let frutta = ["mela", "pera", "kiwi"];
+  let testo = "";
+  frutta.forEach((f, i) => { testo += (i+1) + ". " + f + "<br>"; });
+  document.getElementById('out').innerHTML = testo;
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="math">
+        <h2>L'oggetto Math</h2>
+        <p>L'oggetto <code class='inline'>Math</code> offre funzioni matematiche: <code class='inline'>Math.round()</code> (arrotonda), <code class='inline'>Math.floor()</code>/<code class='inline'>Math.ceil()</code> (giù/su), <code class='inline'>Math.sqrt()</code> (radice), <code class='inline'>Math.max()</code>/<code class='inline'>Math.min()</code>, <code class='inline'>Math.random()</code> (numero casuale tra 0 e 1).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let dado = Math.floor(Math.random() * 6) + 1;
+  document.getElementById('out').innerHTML =
+    "Hai tirato il dado: " + dado + "<br>Radice di 144: " + Math.sqrt(144);
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="regexp">
+        <h2>Le espressioni regolari (RegExp)</h2>
+        <p>Le <strong>espressioni regolari</strong> descrivono schemi di testo per cercare, validare o sostituire. Si scrivono tra slash <code class='inline'>/schema/</code> e si usano con metodi come <code class='inline'>test()</code> (verifica) e <code class='inline'>replace()</code>. Utilissime per validare email, telefoni, password.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  let email = "mario@email.it";
+  let valida = /^[^@ ]+@[^@ ]+\.[a-z]+$/.test(email);
+  document.getElementById('out').innerHTML =
+    "Email valida? " + (valida ? "Sì" : "No");
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tipi">
+        <h2>I tipi di dato</h2>
+        <p>I tipi primitivi sono: <strong>string</strong> (testo), <strong>number</strong> (numeri), <strong>boolean</strong> (true/false), <strong>undefined</strong>, <strong>null</strong>, <strong>bigint</strong> e <strong>symbol</strong>. Poi ci sono gli <strong>object</strong> (array, oggetti, funzioni). L'operatore <code class='inline'>typeof</code> rivela il tipo di un valore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  document.getElementById('out').innerHTML =
+    typeof "ciao" + " | " + typeof 42 + " | " + typeof true + " | " + typeof [1,2];
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="errori">
+        <h2>La gestione degli errori</h2>
+        <p>Per gestire gli errori senza bloccare il programma si usa <code class='inline'>try...catch</code>: il codice rischioso va nel <code class='inline'>try</code>, e se genera un errore viene eseguito il <code class='inline'>catch</code>. Con <code class='inline'>throw</code> si possono lanciare errori personalizzati e con <code class='inline'>finally</code> si esegue del codice in ogni caso.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  try {
+    let x = numeroInesistente * 2;
+  } catch (errore) {
+    document.getElementById('out').innerHTML = "Errore catturato: " + errore.message;
+  }
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="debugging">
+        <h2>Il debugging</h2>
+        <p>Il <strong>debugging</strong> è la ricerca e correzione degli errori. Strumenti principali: <code class='inline'>console.log()</code> per ispezionare i valori, gli <strong>strumenti per sviluppatori</strong> del browser (tasto F12), i <strong>breakpoint</strong> per fermare l'esecuzione riga per riga, e l'istruzione <code class='inline'>debugger</code>.</p><div class='tip-box'>⭐ Apri la Console del browser con F12 e prova a stampare variabili con <code class='inline'>console.log()</code>: è il primo strumento di ogni programmatore.</div>
+      </article>
+
+      <article class="lesson" id="style-guide">
+        <h2>Le buone pratiche (style guide)</h2>
+        <p>Scrivere codice ordinato lo rende leggibile e mantenibile:</p><ul><li>Nomi di variabili <strong>chiari</strong> e in <code class='inline'>camelCase</code>.</li><li>Usa <code class='inline'>const</code> di default, <code class='inline'>let</code> se serve modificare; evita <code class='inline'>var</code>.</li><li>Indentazione coerente (2 o 4 spazi) e punto e virgola.</li><li>Commenta il <em>perché</em>, non l'ovvio.</li></ul>
+      </article>
+
+      <article class="lesson" id="versioni">
+        <h2>Le versioni (ES6 e oltre)</h2>
+        <p>JavaScript segue lo standard <strong>ECMAScript</strong>. La svolta è stata <strong>ES6 (2015)</strong>, che ha introdotto <code class='inline'>let</code>/<code class='inline'>const</code>, le arrow function, i template literal, le classi e i moduli. Da allora esce una versione ogni anno (ES2016, ES2017, …) con nuove funzionalità.</p>
+      </article>
+
+      <article class="lesson" id="dom">
+        <h2>Il DOM (modificare la pagina)</h2>
+        <p>Il <strong>DOM</strong> (Document Object Model) è la rappresentazione ad albero della pagina HTML. Con JavaScript puoi selezionare elementi (<code class='inline'>getElementById</code>, <code class='inline'>querySelector</code>) e modificarne contenuto (<code class='inline'>innerHTML</code>), stile (<code class='inline'>style</code>) e attributi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="testo">Testo originale</p>
+<button onclick="cambia()">Cambia</button>
+<script>
+  function cambia() {
+    let p = document.getElementById('testo');
+    p.innerHTML = 'Testo modificato dal DOM!';
+    p.style.color = '#4f46e5';
+  }
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="eventi">
         <h2>Gli eventi</h2>
-        <p>Gli eventi reagiscono alle azioni dell'utente, come il clic di un pulsante.</p>
+        <p>Gli <strong>eventi</strong> sono azioni a cui la pagina può reagire: clic (<code class='inline'>click</code>), passaggio del mouse (<code class='inline'>mouseover</code>), pressione di tasti (<code class='inline'>keydown</code>), invio di un form (<code class='inline'>submit</code>). Si gestiscono con attributi come <code class='inline'>onclick</code> o, meglio, con <code class='inline'>addEventListener()</code>.</p>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-markup"></code></pre>
-          <script type="text/plain" class="code"><button onclick="saluta()">Cliccami</button>
-        <p id="out"></p>
-        <script>
-          function saluta() {
-            document.getElementById('out').innerHTML = "Hai cliccato! 🎉";
-          }
-        <\/script></script>
-        </div>
-      </article>
-
-      <article class="lesson" id="dom">
-        <h2>Modificare la pagina (DOM)</h2>
-        <p>Con JavaScript puoi leggere e cambiare gli elementi HTML: testo, stile, contenuto.</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-markup"></code></pre>
-          <script type="text/plain" class="code"><p id="testo">Testo originale</p>
-        <button onclick="cambia()">Cambia colore</button>
-        <script>
-          function cambia() {
-            var p = document.getElementById('testo');
-            p.style.color = 'indigo';
-            p.innerHTML = 'Testo cambiato!';
-          }
-        <\/script></script>
-        </div>
-      </article>
-
-      <article class="lesson" id="array-metodi">
-        <h2>Lavorare con gli array</h2>
-        <p>Gli array hanno metodi utili: <code class='inline'>push</code> (aggiunge), <code class='inline'>pop</code> (rimuove), <code class='inline'>length</code> (lunghezza).</p>
-        <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
-          <pre class="codeview"><code class="language-markup"></code></pre>
-          <script type="text/plain" class="code"><p id="out"></p>
-        <script>
-          let numeri = [10, 20, 30];
-          numeri.push(40);
-          let somma = 0;
-          for (let n of numeri) { somma += n; }
-          document.getElementById('out').innerHTML = "Totale: " + somma;
-        <\/script></script>
+          <script type="text/plain" class="code"><button id="btn">Cliccami</button>
+<p id="out"></p>
+<script>
+  document.getElementById('btn').addEventListener('click', function() {
+    document.getElementById('out').innerHTML = 'Evento click gestito! 🎉';
+  });
+<\/script></script>
         </div>
       </article>
 
       <article class="lesson" id="fine" style="border-bottom:none">
         <h2>Complimenti! 🎉</h2>
-        <p>Hai imparato le basi di JavaScript. Continua a fare pratica con l'editor!</p><div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota</a></div>
+        <p>Hai completato il corso di JavaScript più completo in italiano. Continua a programmare con l'editor “Provalo tu” e, se ti serve aiuto, prenota una lezione.</p>
+        <div class="hero-actions"><a href="esercizi.html" class="btn btn-primary">📝 Vai agli esercizi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
     </main>
   </div>
