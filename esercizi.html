@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizi di Informatica — Alessandro Simone</title>
+  <meta name="description" content="Raccolta di esercizi di informatica divisi per argomento e difficoltà, con soluzioni spiegate. Python, HTML/CSS, database, reti e algoritmi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="center mb-3">
+      <span class="eyebrow" style="color:var(--edu)">Area studenti</span>
+      <h1 class="section-title">Esercizi di informatica</h1>
+      <p class="section-sub" style="margin-inline:auto">Allenati con gli esercizi delle lezioni. Filtra per argomento e clicca su <em>"Mostra soluzione"</em> solo dopo aver provato da solo! 😉</p>
+    </div>
+
+    <!-- Filtri -->
+    <div class="filters">
+      <button class="chip active" data-filter="tutti">Tutti</button>
+      <button class="chip" data-filter="python">🐍 Python</button>
+      <button class="chip" data-filter="web">🌐 HTML/CSS</button>
+      <button class="chip" data-filter="database">🗃️ Database</button>
+      <button class="chip" data-filter="reti">📡 Reti</button>
+      <button class="chip" data-filter="algoritmi">🧮 Algoritmi</button>
+    </div>
+
+    <!-- Lista esercizi -->
+    <div class="ex-list">
+
+      <div class="ex-item" data-cat="python">
+        <div class="ex-head">
+          <h4>🐍 Somma dei numeri pari</h4>
+          <div class="ex-meta"><span class="tag base">Base</span></div>
+        </div>
+        <p class="descr">Scrivi un programma che calcola la somma di tutti i numeri pari da 1 a 100.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>totale = 0
+for n in range(1, 101):
+    if n % 2 == 0:
+        totale += n
+print(totale)   # 2550</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="python">
+        <div class="ex-head">
+          <h4>🐍 Numero palindromo</h4>
+          <div class="ex-meta"><span class="tag medio">Medio</span></div>
+        </div>
+        <p class="descr">Verifica se una parola inserita dall'utente è palindroma (si legge uguale al contrario).</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>parola = input("Inserisci una parola: ")
+if parola == parola[::-1]:
+    print("È palindroma!")
+else:
+    print("Non è palindroma.")</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="web">
+        <div class="ex-head">
+          <h4>🌐 Form di contatto HTML</h4>
+          <div class="ex-meta"><span class="tag base">Base</span></div>
+        </div>
+        <p class="descr">Crea un form HTML con campi nome, email e messaggio, più un pulsante di invio.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>&lt;form&gt;
+  &lt;label&gt;Nome: &lt;input type="text" name="nome"&gt;&lt;/label&gt;
+  &lt;label&gt;Email: &lt;input type="email" name="email"&gt;&lt;/label&gt;
+  &lt;label&gt;Messaggio: &lt;textarea name="msg"&gt;&lt;/textarea&gt;&lt;/label&gt;
+  &lt;button type="submit"&gt;Invia&lt;/button&gt;
+&lt;/form&gt;</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="web">
+        <div class="ex-head">
+          <h4>🌐 Centrare un box con Flexbox</h4>
+          <div class="ex-meta"><span class="tag medio">Medio</span></div>
+        </div>
+        <p class="descr">Usa CSS Flexbox per centrare un box sia orizzontalmente che verticalmente nella pagina.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>.contenitore {
+  display: flex;
+  justify-content: center;  /* orizzontale */
+  align-items: center;      /* verticale */
+  height: 100vh;
+}</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="database">
+        <div class="ex-head">
+          <h4>🗃️ Query SELECT con WHERE</h4>
+          <div class="ex-meta"><span class="tag base">Base</span></div>
+        </div>
+        <p class="descr">Dalla tabella <code>studenti</code>, estrai nome e cognome di chi ha più di 18 anni.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>SELECT nome, cognome
+FROM studenti
+WHERE eta &gt; 18;</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="database">
+        <div class="ex-head">
+          <h4>🗃️ JOIN tra due tabelle</h4>
+          <div class="ex-meta"><span class="tag avanzato">Avanzato</span></div>
+        </div>
+        <p class="descr">Mostra il nome di ogni studente con la descrizione del corso a cui è iscritto.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>SELECT s.nome, c.descrizione
+FROM studenti s
+JOIN corsi c ON s.id_corso = c.id;</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="reti">
+        <div class="ex-head">
+          <h4>📡 Livelli del modello OSI</h4>
+          <div class="ex-meta"><span class="tag base">Base</span></div>
+        </div>
+        <p class="descr">Elenca in ordine i 7 livelli del modello OSI dal più alto al più basso.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>7. Applicazione
+6. Presentazione
+5. Sessione
+4. Trasporto
+3. Rete
+2. Collegamento (Data Link)
+1. Fisico</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="algoritmi">
+        <div class="ex-head">
+          <h4>🧮 Fattoriale ricorsivo</h4>
+          <div class="ex-meta"><span class="tag medio">Medio</span></div>
+        </div>
+        <p class="descr">Scrivi una funzione ricorsiva che calcola il fattoriale di un numero n.</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>def fattoriale(n):
+    if n &lt;= 1:
+        return 1
+    return n * fattoriale(n - 1)
+
+print(fattoriale(5))   # 120</pre>
+        </details>
+      </div>
+
+      <div class="ex-item" data-cat="algoritmi">
+        <div class="ex-head">
+          <h4>🧮 Ricerca del massimo</h4>
+          <div class="ex-meta"><span class="tag base">Base</span></div>
+        </div>
+        <p class="descr">Trova il valore massimo in una lista di numeri senza usare la funzione max().</p>
+        <details class="solution">
+          <summary>Mostra soluzione</summary>
+          <pre>numeri = [3, 7, 2, 9, 4]
+massimo = numeri[0]
+for n in numeri:
+    if n &gt; massimo:
+        massimo = n
+print(massimo)   # 9</pre>
+        </details>
+      </div>
+
+    </div>
+
+    <div class="cta-banner mt-4">
+      <h2>Ti serve aiuto con un esercizio?</h2>
+      <p>Se un argomento non ti è chiaro, possiamo affrontarlo insieme in una ripetizione.</p>
+      <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:info@alessandrosimone.it">info@alessandrosimone.it</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone · alessandrosimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
