@@ -17,7 +17,11 @@
     .corso-card h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: .25rem; }
     .corso-card p { font-size: .88rem; color: var(--muted); margin: 0; }
     .corso-card .go { display: inline-block; margin-top: .8rem; font-size: .85rem; font-weight: 700; color: var(--primary); }
-  </style>
+    .corso-card h3 { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .badge-live { font-size: .62rem; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; color: #fff; background: var(--edu, #0d9488); padding: .15rem .45rem; border-radius: 99px; white-space: nowrap; }
+    .legend { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem; font-size: .85rem; color: var(--muted); }
+    .legend .badge-live { font-size: .6rem; }
+</style>
 </head>
 <body>
 
@@ -62,18 +66,19 @@
     <span class="badge-pill"><span class="dot"></span> Gratuiti · Interattivi · In italiano</span>
     <h1>I miei corsi di informatica</h1>
     <p class="lead" style="margin-inline:auto">Una raccolta di corsi gratuiti per imparare a programmare e capire l'informatica, spiegati in modo semplice. Ogni lezione ha esempi col codice colorato e un editor <strong>“Provalo tu”</strong> per scrivere e vedere subito il risultato. Scegli il linguaggio da cui partire.</p>
+    <div class="legend"><span class="badge-live">▶ Interattivo</span> esegui il codice direttamente nel browser, senza installare nulla</div>
   </div>
 </section>
 
 <section class="section" style="padding-top:1rem">
   <div class="container">
     <div class="corsi-grid">
-      <a class="corso-card" href="corso-html.html"><div class="ico">📄</div><h3>HTML</h3><p>La struttura delle pagine web: tag, link, immagini, tabelle e form.</p><span class="go">Inizia →</span></a>
-      <a class="corso-card" href="corso-css.html"><div class="ico">🎨</div><h3>CSS</h3><p>Colori, testi, layout, flexbox e design responsive.</p><span class="go">Inizia →</span></a>
-      <a class="corso-card" href="corso-javascript.html"><div class="ico">⚡</div><h3>JavaScript</h3><p>Rendi le pagine interattive: variabili, funzioni ed eventi.</p><span class="go">Inizia →</span></a>
-      <a class="corso-card" href="corso-sql.html"><div class="ico">🗃️</div><h3>SQL</h3><p>Interroga i database: SELECT, WHERE, JOIN e funzioni.</p><span class="go">Inizia →</span></a>
-      <a class="corso-card" href="corso-mysql.html"><div class="ico">🐬</div><h3>MySQL</h3><p>Il database relazionale più diffuso, con il linguaggio SQL.</p><span class="go">Inizia →</span></a>
-      <a class="corso-card" href="corso-python.html"><div class="ico">🐍</div><h3>Python</h3><p>Il linguaggio più amato per iniziare: semplice e potente.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-html.html"><div class="ico">📄</div><h3>HTML <span class="badge-live">▶ Interattivo</span></h3><p>La struttura delle pagine web: tag, link, immagini, tabelle e form.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-css.html"><div class="ico">🎨</div><h3>CSS <span class="badge-live">▶ Interattivo</span></h3><p>Colori, testi, layout, flexbox e design responsive.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-javascript.html"><div class="ico">⚡</div><h3>JavaScript <span class="badge-live">▶ Interattivo</span></h3><p>Rendi le pagine interattive: variabili, funzioni ed eventi.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-sql.html"><div class="ico">🗃️</div><h3>SQL <span class="badge-live">▶ Interattivo</span></h3><p>Interroga i database: SELECT, WHERE, JOIN e funzioni.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-mysql.html"><div class="ico">🐬</div><h3>MySQL <span class="badge-live">▶ Interattivo</span></h3><p>Il database relazionale più diffuso, con il linguaggio SQL.</p><span class="go">Inizia →</span></a>
+      <a class="corso-card" href="corso-python.html"><div class="ico">🐍</div><h3>Python <span class="badge-live">▶ Interattivo</span></h3><p>Il linguaggio più amato per iniziare: semplice e potente.</p><span class="go">Inizia →</span></a>
       <a class="corso-card" href="corso-java.html"><div class="ico">☕</div><h3>Java</h3><p>Orientato agli oggetti, usato per app Android e software.</p><span class="go">Inizia →</span></a>
       <a class="corso-card" href="corso-php.html"><div class="ico">🐘</div><h3>PHP</h3><p>Il linguaggio del web lato server per pagine dinamiche.</p><span class="go">Inizia →</span></a>
       <a class="corso-card" href="corso-c.html"><div class="ico">🔧</div><h3>C</h3><p>Veloce e vicino alla macchina: le fondamenta della programmazione.</p><span class="go">Inizia →</span></a>
