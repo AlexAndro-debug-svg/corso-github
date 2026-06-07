@@ -44,6 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* --- Menu a tendina "Corsi" --- */
+  const corsi = document.querySelector('.nav-corsi');
+  const corsiToggle = document.querySelector('.nav-corsi-toggle');
+  if (corsi && corsiToggle) {
+    corsiToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      corsi.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!corsi.contains(e.target)) corsi.classList.remove('open');
+    });
+  }
+
   /* --- Anno corrente nel footer --- */
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
