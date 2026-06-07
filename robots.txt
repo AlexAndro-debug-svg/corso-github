@@ -3,4 +3,4 @@ Allow: /
 Disallow: /landing.html
 Disallow: /mockup.html
 
-Sitemap: https://www.alessandrosimone.it/sitemap.xml
+Sitemap: https://alexandro-debug-svg.github.io/corso-github/sitemap.xml
