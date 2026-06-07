@@ -9,6 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .cal-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .cal-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 700px;
+      border: 0;
+    }
+    @media (max-width: 640px) {
+      .cal-wrap iframe { height: 550px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,37 +51,31 @@
   <div class="container center mb-3">
     <span class="eyebrow">Prenotazione</span>
     <h1 class="section-title">Prenota la tua lezione</h1>
-    <p class="section-sub" style="margin-inline:auto">Scegli un orario libero dal calendario qui sotto. Riceverai una conferma via email con il link per la videochiamata.</p>
+    <p class="section-sub" style="margin-inline:auto">Scegli giorno e orario dal calendario qui sotto. Riceverai una conferma con il link per la videochiamata.</p>
   </div>
 
   <div class="container">
     <div class="steps mb-3">
       <div class="step"><div class="circle">1</div><h4>Scegli l'orario</h4><p>Seleziona giorno e ora che preferisci dal calendario.</p></div>
       <div class="step"><div class="circle">2</div><h4>Inserisci i dati</h4><p>Nome, email e l'argomento di cui vuoi parlare.</p></div>
-      <div class="step"><div class="circle">3</div><h4>Ricevi il link</h4><p>Ti arriva subito la conferma con il link alla lezione.</p></div>
+      <div class="step"><div class="circle">3</div><h4>Ricevi la conferma</h4><p>Ti arriva subito l'email di conferma con il link alla lezione.</p></div>
     </div>
 
-    <!-- ============================================================
-         AREA CALENDARIO
-         Qui va incollato il widget di prenotazione.
-         Scegli uno dei servizi gratuiti (istruzioni nel README):
-           • Google Calendar (pagina appuntamenti)
-           • Calendly  → <iframe src="https://calendly.com/tuo-nome"></iframe>
-           • Cal.com   → embed ufficiale
-         Sostituisci il blocco .embed-box qui sotto con l'iframe.
-         ============================================================ -->
-    <div class="embed-box">
-      <div class="big">📅</div>
-      <h3>Calendario in arrivo</h3>
-      <p class="mt-2">Qui comparirà il calendario per scegliere data e ora.<br>
-      Nel frattempo puoi prenotare scrivendomi direttamente.</p>
-      <div class="hero-actions mt-3" style="justify-content:center">
-        <a href="mailto:info@alessandrosimone.it?subject=Richiesta%20ripetizione" class="btn btn-accent">📧 Scrivimi per prenotare</a>
-        <a href="contatti.html" class="btn btn-outline">Vai ai contatti</a>
-      </div>
+    <!-- Calendario Google -->
+    <div class="cal-wrap">
+      <iframe
+        src="https://calendar.app.google/iWPmjoH97vkStSXr7"
+        title="Prenota una lezione con Alessandro Simone"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
     </div>
 
-    <p class="center mt-4" style="color:var(--muted);font-size:.9rem">💡 La prima lezione di prova è <strong>gratuita</strong> e senza impegno.</p>
+    <p class="center mt-4" style="color:var(--muted);font-size:.9rem">
+      💡 La prima lezione di prova è <strong>gratuita</strong> e senza impegno.
+      Problemi con il calendario? Scrivimi a
+      <a href="mailto:alessandrosimone.it@gmail.com?subject=Richiesta%20prenotazione" style="color:var(--primary);font-weight:600">alessandrosimone.it@gmail.com</a>
+    </p>
   </div>
 </section>
 
@@ -73,9 +86,9 @@
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
     </div>
     <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
-    <div><h4>Contatti</h4><a href="mailto:info@alessandrosimone.it">info@alessandrosimone.it</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
-  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone · alessandrosimone.it — Tutti i diritti riservati</div>
+  <div class="footer-bottom">© <span id="year"></span> Alessandro Simone — Tutti i diritti riservati</div>
 </footer>
 
 <script src="js/main.js"></script>
