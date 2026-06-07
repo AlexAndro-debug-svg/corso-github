@@ -142,6 +142,7 @@
       <article class="lesson" id="intro">
         <h2>Introduzione a MYSQL</h2>
         <p><strong>MySQL</strong> è uno dei database relazionali più diffusi al mondo. Usa il linguaggio SQL per gestire i dati.</p>
+        <div class="note-box">💡 In questo corso puoi <strong>eseguire query reali direttamente nel browser</strong>! Clicca su <em>Provalo tu ▶</em>. È già pronto un database di esempio con le tabelle <code class='inline'>studenti</code> (id, nome, voto, classe, classe_id) e <code class='inline'>classi</code> (id, aula, classe). Il motore è SQLite: la sintassi SQL è quasi identica a MySQL.</div>
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
@@ -265,11 +266,13 @@
         <div class="example">
           <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
-          <script type="text/plain" class="code">CREATE TABLE studenti (
-          id INT PRIMARY KEY,
+          <script type="text/plain" class="code">CREATE TABLE prof (
+          id INTEGER PRIMARY KEY,
           nome VARCHAR(50),
-          voto INT
-        );</script>
+          materia VARCHAR(50)
+        );
+        INSERT INTO prof VALUES (1, 'Alessandro', 'Informatica');
+        SELECT * FROM prof;</script>
         </div>
       </article>
 
@@ -317,56 +320,114 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <!-- Editor di codice -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/php/php.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<!-- sql.js: SQLite compilato in WebAssembly, esegue SQL reale nel browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
 <script src="js/main.js?v=3"></script>
 <script>
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
-    var RUNNABLE = false;
-    var DISPLAY = "MYSQL";
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-      mode: "sql", lineNumbers: true, lineWrapping: false,
+      mode: "text/x-sql", lineNumbers: true, lineWrapping: false,
       tabSize: 2, indentUnit: 2, theme: 'default'
     });
 
-    function run(){
-      if (RUNNABLE) { preview.srcdoc = cm.getValue(); }
-      else {
-        preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
-          + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
-          + '<p>Il linguaggio <b>' + DISPLAY + '</b> non si esegue direttamente nel browser. '
-          + 'Qui puoi comunque <b>leggere e modificare</b> il codice con i colori della sintassi, '
-          + 'poi eseguirlo nel tuo ambiente di sviluppo.</p></body>';
+    // Dati di esempio caricati a ogni esecuzione
+    var SEED =
+      "CREATE TABLE classi (id INTEGER PRIMARY KEY, aula TEXT, classe TEXT);" +
+      "INSERT INTO classi VALUES (1,'A12','3A'),(2,'B05','3B');" +
+      "CREATE TABLE studenti (id INTEGER PRIMARY KEY, nome TEXT, voto INTEGER, classe TEXT, classe_id INTEGER);" +
+      "INSERT INTO studenti VALUES" +
+      " (1,'Marco',8,'3A',1),(2,'Giulia',9,'3A',1)," +
+      " (3,'Luca',6,'3B',2),(4,'Sara',7,'3B',2);";
+
+    var SQL = null, sqlLoading = false;
+
+    function page(body){
+      return '<body style="margin:0;font-family:Inter,system-ui,sans-serif;font-size:.9rem;'
+        + 'line-height:1.5;color:#1e293b;padding:1.1rem">'
+        + '<style>table{border-collapse:collapse;margin:.4rem 0 1rem;font-size:.88rem;width:auto}'
+        + 'th,td{border:1px solid #cbd5e1;padding:.35rem .7rem;text-align:left}'
+        + 'th{background:#f1f5f9;font-weight:700}caption{text-align:left;color:#64748b;'
+        + 'font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;padding:.2rem 0;font-weight:700}</style>'
+        + body + '</body>';
+    }
+    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function renderResult(res){
+      if (!res.length){
+        return '<p style="color:#16a34a">✅ Query eseguita correttamente (nessuna tabella da mostrare).</p>';
+      }
+      var html = '';
+      res.forEach(function(r){
+        html += '<table><caption>' + r.columns.length + ' colonne · ' + r.values.length + ' righe</caption><tr>';
+        r.columns.forEach(function(c){ html += '<th>' + esc(c) + '</th>'; });
+        html += '</tr>';
+        r.values.forEach(function(row){
+          html += '<tr>';
+          row.forEach(function(v){ html += '<td>' + (v === null ? '<i style="color:#94a3b8">NULL</i>' : esc(v)) + '</td>'; });
+          html += '</tr>';
+        });
+        html += '</table>';
+      });
+      return html;
+    }
+
+    async function ensureSql(){
+      if (SQL) return SQL;
+      sqlLoading = true;
+      preview.srcdoc = page('<p style="color:#2563eb">⏳ Avvio del motore SQL in corso… (solo la prima volta)</p>');
+      SQL = await initSqlJs({ locateFile: function(f){ return 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/' + f; } });
+      sqlLoading = false;
+      return SQL;
+    }
+
+    async function run(){
+      if (sqlLoading) return;
+      var code = cm.getValue();
+      try {
+        var S = await ensureSql();
+        var db = new S.Database();
+        db.run(SEED);
+        var res = db.exec(code);
+        preview.srcdoc = page(renderResult(res));
+        db.close();
+      } catch (e) {
+        preview.srcdoc = page('<p style="color:#dc2626"><b>Errore SQL:</b> ' + esc(e.message || e) + '</p>');
       }
     }
+
     function openEditor(code){
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      run();
+      preview.srcdoc = page('<p style="color:#64748b">Premi ▶ Esegui per lanciare la query sul database di esempio.</p>');
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    cm.on('change', run);
     document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
 
+    function dedent(text){
+      var lines = text.split('\n'), min = Infinity;
+      for (var i = 1; i < lines.length; i++){
+        if (!lines[i].trim()) continue;
+        var m = lines[i].match(/^ */)[0].length;
+        if (m < min) min = m;
+      }
+      if (min === Infinity || min === 0) return lines.join('\n');
+      for (var j = 1; j < lines.length; j++){ lines[j] = lines[j].slice(min); }
+      return lines.join('\n');
+    }
+
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent
+      var raw = dedent(ex.querySelector('.code').textContent
                   .replace(/^\n/, '').replace(/\s+$/, '')
-                  .replace(/<\\\/script>/g, '<\/script>');
+                  .replace(/<\\\/script>/g, '<\/script>'));
       var codeEl = ex.querySelector('.codeview code');
       codeEl.textContent = raw;
       if (window.Prism) { Prism.highlightElement(codeEl); }

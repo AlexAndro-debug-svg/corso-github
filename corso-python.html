@@ -328,56 +328,101 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <!-- Editor di codice -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/php/php.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<!-- Pyodide: Python compilato in WebAssembly, esegue Python reale nel browser -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script src="js/main.js?v=3"></script>
 <script>
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
-    var RUNNABLE = false;
-    var DISPLAY = "PYTHON";
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: "python", lineNumbers: true, lineWrapping: false,
       tabSize: 2, indentUnit: 2, theme: 'default'
     });
 
-    function run(){
-      if (RUNNABLE) { preview.srcdoc = cm.getValue(); }
-      else {
-        preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
-          + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
-          + '<p>Il linguaggio <b>' + DISPLAY + '</b> non si esegue direttamente nel browser. '
-          + 'Qui puoi comunque <b>leggere e modificare</b> il codice con i colori della sintassi, '
-          + 'poi eseguirlo nel tuo ambiente di sviluppo.</p></body>';
+    var pyodide = null, pyLoading = false;
+
+    function shell(body){
+      return '<body style="margin:0;font-family:Consolas,Monaco,monospace;font-size:.9rem;'
+        + 'line-height:1.55;background:#1e293b;color:#e2e8f0;padding:1.1rem;white-space:pre-wrap">'
+        + body + '</body>';
+    }
+    function escapeHtml(s){
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    async function ensurePyodide(){
+      if (pyodide) return pyodide;
+      pyLoading = true;
+      preview.srcdoc = shell('<span style="color:#7dd3fc">⏳ Avvio dell\'interprete Python in corso…</span>\n<span style="color:#94a3b8">(solo la prima volta, poi è immediato)</span>');
+      pyodide = await loadPyodide();
+      pyLoading = false;
+      return pyodide;
+    }
+
+    async function run(){
+      if (pyLoading) return;
+      var code = cm.getValue();
+      try {
+        var py = await ensurePyodide();
+        // input() interattivo tramite prompt del browser
+        py.globals.set('__js_prompt', function(msg){ return window.prompt(msg || '') || ''; });
+        await py.runPythonAsync(
+          'import builtins, sys, io\n' +
+          'builtins.input = lambda prompt="": __js_prompt(prompt)\n' +
+          '__buf = io.StringIO()\n' +
+          'sys.stdout = __buf\n' +
+          'sys.stderr = __buf\n'
+        );
+        try {
+          await py.runPythonAsync(code);
+        } catch (err) {
+          await py.runPythonAsync('import traceback; print(traceback.format_exc())');
+        }
+        var out = py.runPython('__buf.getvalue()');
+        await py.runPythonAsync('sys.stdout = sys.__stdout__\nsys.stderr = sys.__stderr__');
+        preview.srcdoc = shell(out ? escapeHtml(out)
+          : '<span style="color:#94a3b8">(nessun output — usa print() per mostrare un risultato)</span>');
+      } catch (e) {
+        preview.srcdoc = shell('<span style="color:#fca5a5">Errore: ' + escapeHtml(String(e)) + '</span>');
       }
     }
+
     function openEditor(code){
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      run();
+      preview.srcdoc = shell('<span style="color:#94a3b8">Premi ▶ Esegui per lanciare il codice Python.</span>');
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    cm.on('change', run);
     document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
 
+    // Rimuove l'indentazione HTML mantenendo quella reale di Python
+    function dedent(text){
+      var lines = text.split('\n');
+      var min = Infinity;
+      for (var i = 1; i < lines.length; i++){
+        if (!lines[i].trim()) continue;
+        var m = lines[i].match(/^ */)[0].length;
+        if (m < min) min = m;
+      }
+      if (min === Infinity || min === 0) return lines.join('\n');
+      for (var j = 1; j < lines.length; j++){
+        lines[j] = lines[j].slice(min);
+      }
+      return lines.join('\n');
+    }
+
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent
+      var raw = dedent(ex.querySelector('.code').textContent
                   .replace(/^\n/, '').replace(/\s+$/, '')
-                  .replace(/<\\\/script>/g, '<\/script>');
+                  .replace(/<\\\/script>/g, '<\/script>'));
       var codeEl = ex.querySelector('.codeview code');
       codeEl.textContent = raw;
       if (window.Prism) { Prism.highlightElement(codeEl); }
