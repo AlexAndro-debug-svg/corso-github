@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alessandro Simone — Docente di Informatica | Ripetizioni & Materiale</title>
-  <meta name="description" content="Sito ufficiale di Alessandro Simone, docente di informatica nella scuola secondaria di II grado. Ripetizioni online, esercizi e materiale didattico gratuito.">
+  <title>AlessandroSimone.it — Ripetizioni di Informatica e Materiale Didattico</title>
+  <meta name="description" content="AlessandroSimone.it — docente di informatica nella scuola secondaria di II grado. Ripetizioni online, esercizi e materiale didattico gratuito.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero-photo { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-fallback { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; font-size: 5rem; color: rgba(255,255,255,.85); }
+    .hero-photo.no-img .photo-fallback { display: flex; }
+    @media (max-width: 860px){ .hero-photo { max-width: 320px; margin: 0 auto; } }
+  </style>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="index.html" class="brand">Alessandro<span>Simone</span></a>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-menu">
       <a href="index.html">Home</a>
       <a href="chi-sono.html">Chi sono</a>
@@ -31,12 +35,11 @@
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
       <span class="badge-pill"><span class="dot"></span> Disponibile per ripetizioni online</span>
-      <h1>L'informatica spiegata <em>in modo semplice</em></h1>
+      <h1>L'informatica di Alessandro <em>spiegata in modo semplice</em></h1>
       <p class="lead">Sono Alessandro, docente di informatica nella scuola secondaria di II grado. Qui trovi ripetizioni online, esercizi e materiale per studiare meglio.</p>
       <div class="hero-actions">
         <a href="prenota.html" class="btn btn-accent btn-lg">📅 Prenota una lezione</a>
@@ -44,20 +47,14 @@
       </div>
     </div>
     <div>
-      <div class="hero-card">
-        <div class="hero-dots"><span></span><span></span><span></span></div>
-        <div class="code-line"><span class="c"># lezione di oggi</span></div>
-        <div class="code-line"><span class="k">def</span> studia(<span class="s">argomento</span>):</div>
-        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;capisci = spiegazione(argomento)</div>
-        <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="s">"voto alto"</span> 🎯</div>
-        <div class="code-line">&nbsp;</div>
-        <div class="code-line"><span class="k">print</span>(studia(<span class="s">"informatica"</span>))</div>
+      <div class="hero-photo">
+        <img src="assets/alessandro-home.jpg" alt="Alessandro Simone, docente di informatica" onerror="this.closest('.hero-photo').classList.add('no-img')">
+        <div class="photo-fallback">👨‍🏫</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ BIVIO DUE PUBBLICI ============ -->
 <section class="section">
   <div class="container">
     <div class="center mb-3">
@@ -81,7 +78,6 @@
   </div>
 </section>
 
-<!-- ============ COSA OFFRO ============ -->
 <section class="section soft">
   <div class="container">
     <div class="center mb-3">
@@ -89,31 +85,14 @@
       <h2 class="section-title">Cosa trovi sul sito</h2>
     </div>
     <div class="cards">
-      <div class="card">
-        <div class="ico-box">🎓</div>
-        <h3>Ripetizioni private</h3>
-        <p>Lezioni individuali online di informatica e programmazione, su misura per le tue esigenze.</p>
-      </div>
-      <div class="card edu">
-        <div class="ico-box">📝</div>
-        <h3>Esercizi gratuiti</h3>
-        <p>Raccolta di esercizi divisi per classe e argomento, con soluzioni spiegate passo passo.</p>
-      </div>
-      <div class="card">
-        <div class="ico-box">📅</div>
-        <h3>Prenotazione online</h3>
-        <p>Scegli giorno e ora direttamente dal sito. Niente messaggi, niente attese.</p>
-      </div>
-      <div class="card edu">
-        <div class="ico-box">✍️</div>
-        <h3>Blog e guide</h3>
-        <p>Articoli che spiegano i concetti più difficili dell'informatica in modo chiaro.</p>
-      </div>
+      <div class="card"><div class="ico-box">🎓</div><h3>Ripetizioni private</h3><p>Lezioni individuali online di informatica e programmazione, su misura per le tue esigenze.</p></div>
+      <div class="card edu"><div class="ico-box">📝</div><h3>Esercizi gratuiti</h3><p>Raccolta di esercizi divisi per classe e argomento, con soluzioni spiegate passo passo.</p></div>
+      <div class="card"><div class="ico-box">📅</div><h3>Prenotazione online</h3><p>Scegli giorno e ora direttamente dal sito. Niente messaggi, niente attese.</p></div>
+      <div class="card edu"><div class="ico-box">✍️</div><h3>Blog e guide</h3><p>Articoli che spiegano i concetti più difficili dell'informatica in modo chiaro.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
 <section class="section">
   <div class="container">
     <div class="cta-banner">
@@ -124,30 +103,16 @@
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-brand">Alessandro<span>Simone</span></div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni online e materiale didattico gratuito.</p>
     </div>
-    <div>
-      <h4>Naviga</h4>
-      <a href="chi-sono.html">Chi sono</a>
-      <a href="ripetizioni.html">Ripetizioni</a>
-      <a href="esercizi.html">Esercizi</a>
-      <a href="blog.html">Blog</a>
-    </div>
-    <div>
-      <h4>Contatti</h4>
-      <a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a>
-      <a href="prenota.html">Prenota una lezione</a>
-      <a href="contatti.html">Modulo contatti</a>
-    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
-  <div class="footer-bottom">
-    © <span id="year"></span> Alessandro Simone — Tutti i diritti riservati
-  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
 <script src="js/main.js"></script>
