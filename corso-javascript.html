@@ -1283,13 +1283,25 @@ console.log(adulti);  // Luca e Gio</pre></details>
     var RUNNABLE = true;
     var DISPLAY = "JAVASCRIPT";
 
-    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-      mode: "htmlmixed", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default'
-    });
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+    function ensureCM(){
+      if (!cm && window.CodeMirror) {
+        try {
+          cm = CodeMirror.fromTextArea(ta, {
+            mode: "htmlmixed", lineNumbers: true, lineWrapping: false,
+            tabSize: 2, indentUnit: 2, theme: 'default'
+          });
+          cm.on('change', run);
+        } catch (e) { cm = null; }
+      }
+      return cm;
+    }
+    function getCode(){ return cm ? cm.getValue() : ta.value; }
+    function setCode(v){ if (cm) { cm.setValue(v); } else { ta.value = v; } }
 
     function run(){
-      if (RUNNABLE) { preview.srcdoc = cm.getValue(); }
+      if (RUNNABLE) { preview.srcdoc = getCode(); }
       else {
         preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
           + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
@@ -1301,13 +1313,14 @@ console.log(adulti);  // Luca e Gio</pre></details>
     function openEditor(code){
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
-      cm.setValue(code);
-      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
+      ensureCM();
+      setCode(code);
+      setTimeout(function(){ if (cm) { cm.refresh(); cm.focus(); } }, 20);
       run();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    cm.on('change', run);
+    ta.addEventListener('input', run);
     document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
