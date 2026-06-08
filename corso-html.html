@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso HTML completo in italiano — AlessandroSimone.it</title>
-  <meta name="description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Tutti gli argomenti, esempi con codice colorato e un editor 'Provalo tu' per scrivere e vedere subito il risultato.">
+  <title>Corso HTML completo in italiano con esercizi e soluzioni — AlessandroSimone.it</title>
+  <meta name="description" content="Corso di HTML completo e gratuito in italiano con esercizi svolti e soluzioni, quiz, sfide, esempi pratici e un editor 'Provalo tu' online. Dalle basi all'HTML5 (form, semantica, Web Storage, Web Workers, SSE), riferimenti tag e accessibilità. Spiegato da un docente di informatica.">
+  <meta name="keywords" content="corso HTML, esercizi HTML, esercizi HTML con soluzioni, esercizi HTML svolti, HTML per principianti, imparare HTML, quiz HTML, tutorial HTML italiano, HTML5, form HTML, tag HTML, editor HTML online">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -83,10 +84,30 @@
     .cm-s-default .cm-comment   { color: #999; font-style: italic; }
     .cm-s-default .cm-meta      { color: #999; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-html.html">
@@ -96,20 +117,20 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="AlessandroSimone.it">
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-html.html">
-  <meta property="og:title" content="Corso HTML completo in italiano — AlessandroSimone.it">
-  <meta property="og:description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Tutti gli argomenti, esempi con codice colorato e un editor &#x27;Provalo tu&#x27; per scrivere e vedere subito il risultato.">
+  <meta property="og:title" content="Corso HTML completo in italiano con esercizi e soluzioni — AlessandroSimone.it">
+  <meta property="og:description" content="Corso di HTML completo e gratuito in italiano con esercizi svolti e soluzioni, quiz, sfide, esempi pratici e un editor &#x27;Provalo tu&#x27; online. Dalle basi all&#x27;HTML5 (form, semantica, Web Storage, Web Workers, SSE), riferimenti tag e accessibilità. Spiegato da un docente di informatica.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso HTML completo in italiano — AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Tutti gli argomenti, esempi con codice colorato e un editor &#x27;Provalo tu&#x27; per scrivere e vedere subito il risultato.">
+  <meta name="twitter:title" content="Corso HTML completo in italiano con esercizi e soluzioni — AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di HTML completo e gratuito in italiano con esercizi svolti e soluzioni, quiz, sfide, esempi pratici e un editor &#x27;Provalo tu&#x27; online. Dalle basi all&#x27;HTML5 (form, semantica, Web Storage, Web Workers, SSE), riferimenti tag e accessibilità. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di HTML in italiano",
-  "description": "Corso completo di HTML in italiano, spiegato in modo semplice da un docente di informatica. Tutti gli argomenti, esempi con codice colorato e un editor 'Provalo tu' per scrivere e vedere subito il risultato.",
+  "description": "Corso di HTML completo e gratuito in italiano con esercizi svolti e soluzioni, quiz, sfide, esempi pratici e un editor 'Provalo tu' online. Dalle basi all'HTML5 (form, semantica, Web Storage, Web Workers, SSE), riferimenti tag e accessibilità. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-html.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -235,6 +256,41 @@
       <a href="#geolocation">Geolocalizzazione</a>
       <a href="#web-storage">Web Storage</a>
       <a href="#drag-drop">Drag and Drop</a>
+      <a href="#web-workers">Web Workers</a>
+      <a href="#sse">Server-Sent Events</a>
+      <h4>Esempi &amp; Pratica HTML</h4>
+      <a href="#esempi">Esempi HTML</a>
+      <a href="#editor">Editor HTML online</a>
+      <a href="#quiz">Quiz HTML</a>
+      <a href="#esercizi">Esercizi HTML</a>
+      <a href="#sfide">Sfide HTML</a>
+      <a href="#progetto-sito">Crea un sito web</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp HTML</a>
+      <a href="#riepilogo">Riepilogo HTML</a>
+      <a href="#accessibilita">Accessibilità HTML</a>
+      <h4>Riferimenti HTML</h4>
+      <a href="#tag-list">Lista dei tag</a>
+      <a href="#rif-attributi">Attributi HTML</a>
+      <a href="#attributi-globali">Attributi globali</a>
+      <a href="#browser-support">Supporto browser</a>
+      <a href="#eventi">Eventi HTML</a>
+      <a href="#rif-colori">Colori HTML</a>
+      <a href="#rif-canvas">Canvas</a>
+      <a href="#rif-audio-video">Audio/Video</a>
+      <a href="#doctypes">Doctype</a>
+      <a href="#character-sets">Set di caratteri</a>
+      <a href="#rif-url-encode">URL Encode</a>
+      <a href="#lang-codes">Codici lingua</a>
+      <a href="#http-messages">Messaggi HTTP</a>
+      <a href="#http-methods">Metodi HTTP</a>
+      <a href="#px-em">Convertitore PX ↔ EM</a>
+      <a href="#scorciatoie">Scorciatoie da tastiera</a>
+      <h4>Certificazione HTML</h4>
+      <a href="#certificato">Certificato HTML</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
 
     <!-- CONTENUTO -->
@@ -920,12 +976,486 @@ def saluta():
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai esplorato tutti i mattoni dell'HTML. Il modo migliore per imparare è <strong>fare pratica</strong>: apri gli esempi, modificali, sbaglia e riprova.</p>
-        <p>Vuoi mettere alla prova quello che hai imparato o una mano su un argomento difficile?</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Ricrea la struttura di una pagina che conosci (un social, un giornale online) usando solo HTML semantico: header, nav, main, article e footer. Niente CSS per ora — concentrati sulla struttura.</p></div>
+      <!-- ===== AVANZATO ===== -->
+      <article class="lesson" id="web-workers">
+        <h2>HTML Web Workers</h2>
+        <p>Un <strong>Web Worker</strong> è uno script JavaScript che viene eseguito in <em>background</em>, su un thread separato rispetto a quello della pagina. Significa che puoi fare calcoli pesanti senza “congelare” l'interfaccia: l'utente continua a cliccare, scorrere e digitare mentre il worker lavora.</p>
+        <div class="note-box">💡 <strong>A cosa serve:</strong> elaborare grandi quantità di dati, calcoli matematici complessi, parsing di file di grandi dimensioni — tutto senza rendere la pagina lenta o bloccata.</div>
+        <p>Il worker comunica con la pagina tramite messaggi: si invia con <code class="inline">postMessage()</code> e si riceve con l'evento <code class="inline">onmessage</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><button onclick="avvia()">Conta fino a 5 milioni</button>
+<p id="out">Pronto.</p>
+<script>
+  function avvia(){
+    // codice del worker creato al volo da una stringa
+    var codice = "onmessage=function(){var t=0;for(var i=0;i<5000000;i++){t+=i;}postMessage(t);}";
+    var blob = new Blob([codice], {type:'application/javascript'});
+    var w = new Worker(URL.createObjectURL(blob));
+    w.onmessage = function(e){ document.getElementById('out').innerHTML = 'Risultato: ' + e.data; };
+    w.postMessage('start');
+  }
+<\/script></script>
+        </div>
+        <div class="tip-box">⭐ <strong>Da ricordare:</strong> un Web Worker <u>non</u> può accedere al DOM (non può toccare la pagina direttamente). Restituisce i risultati alla pagina, che poi aggiorna l'HTML.</div>
+      </article>
+
+      <article class="lesson" id="sse">
+        <h2>HTML SSE — Server-Sent Events</h2>
+        <p>Gli <strong>Server-Sent Events</strong> (SSE) permettono a una pagina web di <strong>ricevere aggiornamenti automatici da un server</strong> in tempo reale, su un solo canale unidirezionale (dal server al browser). Sono perfetti per notifiche live, quotazioni di borsa, punteggi sportivi, feed di news.</p>
+        <table class="ref-table">
+          <thead><tr><th>SSE</th><th>WebSocket</th></tr></thead>
+          <tbody>
+            <tr><td>Una direzione (server → browser)</td><td>Due direzioni (bidirezionale)</td></tr>
+            <tr><td>Solo testo, su HTTP normale</td><td>Testo e binario, protocollo dedicato</td></tr>
+            <tr><td>Riconnessione automatica</td><td>Riconnessione manuale</td></tr>
+          </tbody>
+        </table>
+        <div class="example">
+          <div class="codehead"><span>Esempio lato browser</span></div>
+          <pre class="codeview"><code class="language-markup">&lt;script&gt;
+  const sorgente = new EventSource("/aggiornamenti");
+  sorgente.onmessage = function(evento) {
+    document.getElementById("notizie").innerHTML += evento.data + "&lt;br&gt;";
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="note-box">💡 L'oggetto <code class="inline">EventSource</code> apre la connessione una sola volta e resta in ascolto: ogni volta che il server invia un dato, scatta <code class="inline">onmessage</code>.</div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi HTML pronti da copiare</h2>
+        <p>Il modo più rapido per imparare l'HTML è partire da <strong>esempi già funzionanti</strong>, copiarli e modificarli. Qui sotto trovi alcuni esempi tipici che ricorrono in qualsiasi sito web: puoi cliccare <em>“Provalo tu”</em> per aprirli nell'editor e vederli in azione.</p>
+        <div class="example">
+          <div class="codehead"><span>Card prodotto</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><div style="border:1px solid #ddd;border-radius:10px;padding:16px;width:220px;font-family:sans-serif">
+  <img src="https://via.placeholder.com/200x120" alt="Prodotto" style="width:100%;border-radius:6px">
+  <h3>Cuffie Bluetooth</h3>
+  <p style="color:#666">Audio senza fili, 20h di autonomia.</p>
+  <strong>49,90 €</strong>
+  <button style="display:block;margin-top:10px">Aggiungi al carrello</button>
+</div></script>
+        </div>
+        <div class="tip-box">⭐ Ogni esempio di questo corso è un esercizio: aprilo, cambia testi, colori e immagini, e osserva come reagisce la pagina.</div>
+      </article>
+
+      <article class="lesson" id="editor">
+        <h2>Editor HTML online (Provalo tu)</h2>
+        <p>Non hai bisogno di installare nulla per scrivere HTML: su questo corso hai un <strong>editor HTML online gratuito</strong> integrato. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong> che apre l'editor a schermo intero, con il codice da una parte e l'anteprima live dall'altra.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un qualsiasi esempio.</li>
+          <li>Modifica il codice HTML nell'area di sinistra.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda subito il risultato a destra.</li>
+        </ol>
+        <div class="note-box">💡 Per usarlo localmente: salva il codice in un file <code class="inline">.html</code> e aprilo con il browser. Per progetti veri consiglio <strong>Visual Studio Code</strong>.</div>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz HTML — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di HTML</strong> per autovalutarti. Leggi ogni domanda, pensa alla risposta e poi apri la soluzione per verificare.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Quale tag definisce il titolo più importante di una pagina?</summary><p>✅ Il tag <code class="inline">&lt;h1&gt;</code>. I titoli vanno da <code class="inline">&lt;h1&gt;</code> (il più importante) a <code class="inline">&lt;h6&gt;</code>.</p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Come si crea un collegamento (link) a un altro sito?</summary><p>✅ Con il tag <code class="inline">&lt;a href="https://..."&gt;testo&lt;/a&gt;</code>. L'attributo <code class="inline">href</code> indica la destinazione.</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Quale attributo rende accessibile un'immagine se non si carica?</summary><p>✅ L'attributo <code class="inline">alt</code>, che fornisce un testo alternativo descrittivo.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Qual è la differenza tra <code class="inline">&lt;div&gt;</code> e <code class="inline">&lt;span&gt;</code>?</summary><p>✅ <code class="inline">&lt;div&gt;</code> è un contenitore <em>a blocco</em> (va a capo), <code class="inline">&lt;span&gt;</code> è <em>in linea</em> (resta nel flusso del testo).</p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Quale tag HTML5 rappresenta la barra di navigazione?</summary><p>✅ Il tag semantico <code class="inline">&lt;nav&gt;</code>.</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi HTML con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di HTML svolti</strong> sono pensati per chi parte da zero e vuole <strong>fare pratica con esempi reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: prova prima da solo, poi confronta. Sono gli stessi esercizi di HTML che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — La tua prima pagina <span class="tag base">Base</span></h4>
+          <p class="descr">Crea una pagina HTML completa con un titolo principale “Il mio diario” e un paragrafo di presentazione.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="it"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;Diario&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Il mio diario&lt;/h1&gt;
+  &lt;p&gt;Ciao, qui scrivo i miei pensieri.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Lista della spesa <span class="tag base">Base</span></h4>
+          <p class="descr">Crea una lista <em>non ordinata</em> con almeno 4 prodotti della spesa.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;ul&gt;
+  &lt;li&gt;Pane&lt;/li&gt;
+  &lt;li&gt;Latte&lt;/li&gt;
+  &lt;li&gt;Uova&lt;/li&gt;
+  &lt;li&gt;Mele&lt;/li&gt;
+&lt;/ul&gt;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Link e immagine <span class="tag medio">Medio</span></h4>
+          <p class="descr">Inserisci un'immagine cliccabile che, se premuta, porti al sito di Wikipedia. Aggiungi sempre il testo alternativo.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;a href="https://it.wikipedia.org"&gt;
+  &lt;img src="logo.png" alt="Vai a Wikipedia" width="120"&gt;
+&lt;/a&gt;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Tabella orario <span class="tag medio">Medio</span></h4>
+          <p class="descr">Crea una tabella con intestazione (Giorno, Materia) e due righe di dati.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Giorno&lt;/th&gt;&lt;th&gt;Materia&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Lunedì&lt;/td&gt;&lt;td&gt;Informatica&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Martedì&lt;/td&gt;&lt;td&gt;Matematica&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Form di iscrizione <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Crea un form con i campi nome, email (obbligatoria) e un pulsante di invio. Usa le <code>&lt;label&gt;</code> per l'accessibilità.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;form&gt;
+  &lt;label&gt;Nome: &lt;input type="text" name="nome"&gt;&lt;/label&gt;&lt;br&gt;
+  &lt;label&gt;Email: &lt;input type="email" name="email" required&gt;&lt;/label&gt;&lt;br&gt;
+  &lt;button type="submit"&gt;Iscriviti&lt;/button&gt;
+&lt;/form&gt;</pre></details>
+        </div>
+        <div class="tip-box">⭐ Apri ogni soluzione nell'editor “Provalo tu” e modificala: cambiare il codice è il modo migliore per fissare i concetti.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide HTML — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide HTML</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli. Perfette per consolidare quello che hai imparato.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — Pagina “Chi sono”</span><p>Crea una pagina personale con foto, un titolo, tre paragrafi di presentazione e una lista dei tuoi hobby. Usa solo tag semantici (header, main, section, footer).</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Menù di un ristorante</span><p>Costruisci il menù di un ristorante con tre portate, ciascuna in una tabella con piatto, descrizione e prezzo.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Modulo di contatto completo</span><p>Realizza un form di contatto con nome, email, oggetto (menu a tendina) e messaggio, con tutti i campi obbligatori marcati correttamente.</p></div>
+      </article>
+
+      <article class="lesson" id="progetto-sito">
+        <h2>Crea un sito web in HTML (progetto guidato)</h2>
+        <p>Il progetto finale di ogni corso di HTML è <strong>costruire un sito web completo</strong>. Ecco la struttura minima di un sito multi-pagina che puoi realizzare con quello che hai imparato finora.</p>
+        <ul class="lista-check">
+          <li>📄 <strong>index.html</strong> — la home page con intestazione, presentazione e menu di navigazione.</li>
+          <li>📄 <strong>chi-sono.html</strong> — una pagina “Chi sono” con testo e immagine.</li>
+          <li>📄 <strong>contatti.html</strong> — una pagina con un form di contatto.</li>
+          <li>🔗 Un <strong>menu di navigazione</strong> con <code class="inline">&lt;nav&gt;</code> e link tra le pagine, ripetuto su ogni pagina.</li>
+        </ul>
+        <div class="note-box">💡 Quando aggiungerai il <strong>CSS</strong> (nel <a href="corso-css.html">corso CSS</a>) questo stesso sito diventerà bello e professionale. La struttura HTML viene sempre prima dell'aspetto.</div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso HTML (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di HTML</strong>, l'elenco ordinato degli argomenti che affrontiamo dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Basi:</strong> struttura del documento, tag, elementi, attributi, titoli, paragrafi.</li>
+          <li><strong>Testo:</strong> formattazione, citazioni, commenti, colori, entità e simboli.</li>
+          <li><strong>Collegamenti e media:</strong> link, immagini, favicon, audio, video, YouTube.</li>
+          <li><strong>Strutture:</strong> tabelle, liste, div, classi, id, iframe, layout.</li>
+          <li><strong>Form:</strong> campi, tipi di input, attributi e validazione.</li>
+          <li><strong>HTML5 avanzato:</strong> semantica, canvas, SVG, API, Web Storage, Web Workers, SSE.</li>
+          <li><strong>Pratica:</strong> esempi, esercizi, sfide e progetto di un sito completo.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio HTML (quanto tempo serve)</h2>
+        <p>Quanto ci vuole per <strong>imparare l'HTML</strong>? Le basi si acquisiscono in pochi giorni. Ecco un <strong>piano di studio</strong> realistico per chi parte da zero studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1–2</td><td>Struttura base, tag, titoli, paragrafi, formattazione del testo</td></tr>
+            <tr><td>3–4</td><td>Link, immagini, liste, tabelle</td></tr>
+            <tr><td>5</td><td>Div, classi, id, semantica HTML5</td></tr>
+            <tr><td>6</td><td>Form e tipi di input</td></tr>
+            <tr><td>7</td><td>Esercizi, sfide e primo sito completo</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">⭐ Studia poco ma <strong>ogni giorno</strong> e scrivi sempre codice: l'HTML si impara facendo, non solo leggendo.</div>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande HTML frequenti</h2>
+        <p>Le <strong>domande di HTML più frequenti ai colloqui</strong> per ruoli web (front-end, web developer junior). Utili anche per le interrogazioni a scuola.</p>
+        <details class="quiz-q"><summary>Cos'è l'HTML semantico e perché è importante?</summary><p>È l'uso di tag che descrivono il <em>significato</em> del contenuto (<code class="inline">header</code>, <code class="inline">nav</code>, <code class="inline">article</code>, <code class="inline">footer</code>). Migliora accessibilità e SEO.</p></details>
+        <details class="quiz-q"><summary>Differenza tra elementi block e inline?</summary><p>Gli elementi <em>block</em> (es. <code class="inline">div</code>, <code class="inline">p</code>) occupano tutta la larghezza e vanno a capo; gli <em>inline</em> (es. <code class="inline">span</code>, <code class="inline">a</code>) restano nel flusso del testo.</p></details>
+        <details class="quiz-q"><summary>A cosa serve il DOCTYPE?</summary><p>Dichiara al browser la versione di HTML usata. <code class="inline">&lt;!DOCTYPE html&gt;</code> attiva la modalità standard di HTML5.</p></details>
+        <details class="quiz-q"><summary>Cosa rende un'immagine accessibile?</summary><p>L'attributo <code class="inline">alt</code> con una descrizione testuale significativa.</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp HTML — percorso intensivo</h2>
+        <p>Un <strong>bootcamp HTML</strong> è un percorso intensivo che condensa la teoria nella pratica continua. Se vuoi imparare velocemente, alterna ogni argomento con un esercizio immediato seguendo questo schema:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un argomento (max 20 minuti).</li>
+          <li>✅ <strong>Riproduci</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Svolgi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con l'argomento successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp HTML seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un percorso su misura, dal primo tag al sito completo.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo HTML — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di HTML</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 L'HTML descrive la <strong>struttura</strong> di una pagina con i <strong>tag</strong>.</li>
+          <li>📌 Ogni pagina ha <code class="inline">&lt;!DOCTYPE html&gt;</code>, <code class="inline">&lt;html&gt;</code>, <code class="inline">&lt;head&gt;</code> e <code class="inline">&lt;body&gt;</code>.</li>
+          <li>📌 Gli <strong>attributi</strong> aggiungono informazioni ai tag (es. <code class="inline">href</code>, <code class="inline">src</code>, <code class="inline">alt</code>).</li>
+          <li>📌 I tag <strong>semantici</strong> (header, nav, main, article, footer) danno significato al contenuto.</li>
+          <li>📌 I <strong>form</strong> raccolgono i dati dell'utente.</li>
+          <li>📌 La <strong>pratica</strong> è tutto: scrivi codice ogni giorno.</li>
+        </ul>
+      </article>
+
+      <article class="lesson" id="accessibilita">
+        <h2>Accessibilità HTML</h2>
+        <p>L'<strong>accessibilità web</strong> (a11y) significa rendere le pagine usabili da tutti, incluse le persone con disabilità che usano screen reader o navigano con la tastiera. Un buon HTML è già metà del lavoro.</p>
+        <ul class="lista-check">
+          <li>♿ Usa sempre l'attributo <code class="inline">alt</code> nelle immagini.</li>
+          <li>♿ Associa ogni campo del form a una <code class="inline">&lt;label&gt;</code>.</li>
+          <li>♿ Usa i titoli in ordine (<code class="inline">h1</code>, poi <code class="inline">h2</code>…), senza saltarli.</li>
+          <li>♿ Indica la lingua con <code class="inline">&lt;html lang="it"&gt;</code>.</li>
+          <li>♿ Usa tag <strong>semantici</strong> al posto di tanti <code class="inline">div</code> generici.</li>
+          <li>♿ Aggiungi attributi <strong>ARIA</strong> solo quando l'HTML semantico non basta.</li>
+        </ul>
+        <div class="tip-box">⭐ Una pagina accessibile è anche più indicizzata su Google: l'accessibilità aiuta la SEO.</div>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="tag-list">
+        <h2>Lista dei tag HTML più usati</h2>
+        <p>Una <strong>lista di riferimento dei tag HTML</strong> più importanti, con il loro significato. Tienila come promemoria veloce.</p>
+        <table class="ref-table">
+          <thead><tr><th>Tag</th><th>A cosa serve</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;h1&gt;–&lt;h6&gt;</code></td><td>Titoli, dal più importante al meno</td></tr>
+            <tr><td><code>&lt;p&gt;</code></td><td>Paragrafo di testo</td></tr>
+            <tr><td><code>&lt;a&gt;</code></td><td>Link / collegamento</td></tr>
+            <tr><td><code>&lt;img&gt;</code></td><td>Immagine</td></tr>
+            <tr><td><code>&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code></td><td>Liste puntate e numerate</td></tr>
+            <tr><td><code>&lt;table&gt;</code></td><td>Tabella</td></tr>
+            <tr><td><code>&lt;form&gt; &lt;input&gt;</code></td><td>Moduli e campi</td></tr>
+            <tr><td><code>&lt;div&gt; &lt;span&gt;</code></td><td>Contenitori (blocco e in linea)</td></tr>
+            <tr><td><code>&lt;header&gt; &lt;nav&gt; &lt;main&gt; &lt;footer&gt;</code></td><td>Tag semantici di struttura</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-attributi">
+        <h2>Attributi HTML — riferimento</h2>
+        <p>Gli <strong>attributi HTML</strong> più comuni che incontrerai praticamente su ogni elemento.</p>
+        <table class="ref-table">
+          <thead><tr><th>Attributo</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>href</code></td><td>Destinazione di un link</td></tr>
+            <tr><td><code>src</code></td><td>Sorgente di immagini, video, iframe</td></tr>
+            <tr><td><code>alt</code></td><td>Testo alternativo di un'immagine</td></tr>
+            <tr><td><code>width</code> / <code>height</code></td><td>Larghezza e altezza</td></tr>
+            <tr><td><code>type</code></td><td>Tipo di campo input o pulsante</td></tr>
+            <tr><td><code>value</code></td><td>Valore di un campo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="attributi-globali">
+        <h2>Attributi globali HTML</h2>
+        <p>Gli <strong>attributi globali</strong> si possono usare su <em>qualsiasi</em> elemento HTML.</p>
+        <table class="ref-table">
+          <thead><tr><th>Attributo</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>id</code></td><td>Identificatore unico dell'elemento</td></tr>
+            <tr><td><code>class</code></td><td>Una o più classi per stile/script</td></tr>
+            <tr><td><code>style</code></td><td>Stile CSS in linea</td></tr>
+            <tr><td><code>title</code></td><td>Suggerimento al passaggio del mouse</td></tr>
+            <tr><td><code>lang</code></td><td>Lingua del contenuto</td></tr>
+            <tr><td><code>data-*</code></td><td>Dati personalizzati</td></tr>
+            <tr><td><code>hidden</code></td><td>Nasconde l'elemento</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="browser-support">
+        <h2>Supporto dei browser</h2>
+        <p>Praticamente tutti i tag HTML5 sono supportati dai <strong>browser moderni</strong> (Chrome, Firefox, Edge, Safari, Opera). Quando usi funzioni recenti è buona pratica verificare la compatibilità su risorse come <em>Can I Use</em>.</p>
+        <div class="note-box">💡 Per l'HTML di base non devi preoccuparti: titoli, paragrafi, link, immagini, liste, tabelle e form funzionano ovunque, anche su browser vecchi.</div>
+      </article>
+
+      <article class="lesson" id="eventi">
+        <h2>Eventi HTML</h2>
+        <p>Gli <strong>attributi evento</strong> permettono di eseguire JavaScript quando l'utente interagisce con la pagina.</p>
+        <table class="ref-table">
+          <thead><tr><th>Evento</th><th>Quando scatta</th></tr></thead>
+          <tbody>
+            <tr><td><code>onclick</code></td><td>Al clic su un elemento</td></tr>
+            <tr><td><code>onmouseover</code></td><td>Al passaggio del mouse sopra</td></tr>
+            <tr><td><code>onchange</code></td><td>Quando cambia il valore di un campo</td></tr>
+            <tr><td><code>onsubmit</code></td><td>All'invio di un form</td></tr>
+            <tr><td><code>onkeyup</code></td><td>Al rilascio di un tasto</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-colori">
+        <h2>Colori HTML</h2>
+        <p>I <strong>colori in HTML/CSS</strong> si indicano in tre modi: per nome, in esadecimale o in RGB.</p>
+        <table class="ref-table">
+          <thead><tr><th>Modo</th><th>Esempio (rosso)</th></tr></thead>
+          <tbody>
+            <tr><td>Nome</td><td><code>red</code></td></tr>
+            <tr><td>Esadecimale</td><td><code>#FF0000</code></td></tr>
+            <tr><td>RGB</td><td><code>rgb(255, 0, 0)</code></td></tr>
+            <tr><td>RGBA (con trasparenza)</td><td><code>rgba(255, 0, 0, 0.5)</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-canvas">
+        <h2>Canvas — riferimento</h2>
+        <p>Il tag <code class="inline">&lt;canvas&gt;</code> è un'area di disegno controllata da JavaScript: si usa per grafica, grafici e piccoli giochi. Vedi anche la sezione <a href="#canvas">Canvas</a> più sopra.</p>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Disegna</th></tr></thead>
+          <tbody>
+            <tr><td><code>fillRect(x,y,w,h)</code></td><td>Un rettangolo pieno</td></tr>
+            <tr><td><code>arc()</code></td><td>Un cerchio / arco</td></tr>
+            <tr><td><code>lineTo()</code></td><td>Una linea</td></tr>
+            <tr><td><code>fillText()</code></td><td>Del testo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-audio-video">
+        <h2>Audio e Video — riferimento</h2>
+        <p>I tag <code class="inline">&lt;audio&gt;</code> e <code class="inline">&lt;video&gt;</code> incorporano file multimediali con i controlli nativi del browser. Vedi le sezioni <a href="#video">Video</a> e <a href="#audio">Audio</a>.</p>
+        <table class="ref-table">
+          <thead><tr><th>Attributo</th><th>Effetto</th></tr></thead>
+          <tbody>
+            <tr><td><code>controls</code></td><td>Mostra i comandi play/pausa/volume</td></tr>
+            <tr><td><code>autoplay</code></td><td>Avvia automaticamente</td></tr>
+            <tr><td><code>loop</code></td><td>Riproduce in continuo</td></tr>
+            <tr><td><code>muted</code></td><td>Parte senza audio</td></tr>
+            <tr><td><code>poster</code></td><td>Immagine di anteprima del video</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="doctypes">
+        <h2>Doctype HTML</h2>
+        <p>Il <strong>DOCTYPE</strong> è la prima riga di ogni pagina e dice al browser quale versione di HTML usare. In HTML5 è semplicissimo:</p>
+        <pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;</code></pre>
+        <div class="note-box">💡 Senza DOCTYPE corretto il browser può attivare la “quirks mode”, una modalità di compatibilità che fa rendere la pagina in modo imprevedibile. Mettilo <strong>sempre</strong> come prima riga.</div>
+      </article>
+
+      <article class="lesson" id="character-sets">
+        <h2>Set di caratteri (charset)</h2>
+        <p>Il <strong>set di caratteri</strong> definisce come vengono codificate le lettere. Lo standard moderno è <strong>UTF-8</strong>, che supporta tutte le lingue ed emoji. Si dichiara nel <code class="inline">&lt;head&gt;</code>:</p>
+        <pre class="codeview"><code class="language-markup">&lt;meta charset="UTF-8"&gt;</code></pre>
+        <div class="tip-box">⭐ Se vedi caratteri strani al posto delle lettere accentate (à, è, ì), quasi sempre manca <code class="inline">&lt;meta charset="UTF-8"&gt;</code>.</div>
+      </article>
+
+      <article class="lesson" id="rif-url-encode">
+        <h2>URL Encode</h2>
+        <p>La <strong>codifica URL</strong> sostituisce i caratteri non ammessi negli indirizzi web con sequenze sicure. Lo spazio diventa <code class="inline">%20</code>, ad esempio.</p>
+        <table class="ref-table">
+          <thead><tr><th>Carattere</th><th>Codifica</th></tr></thead>
+          <tbody>
+            <tr><td>spazio</td><td><code>%20</code></td></tr>
+            <tr><td><code>&amp;</code></td><td><code>%26</code></td></tr>
+            <tr><td><code>?</code></td><td><code>%3F</code></td></tr>
+            <tr><td><code>=</code></td><td><code>%3D</code></td></tr>
+            <tr><td>à</td><td><code>%C3%A0</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="lang-codes">
+        <h2>Codici lingua HTML</h2>
+        <p>L'attributo <code class="inline">lang</code> usa codici standard (ISO 639) per indicare la lingua di una pagina.</p>
+        <table class="ref-table">
+          <thead><tr><th>Lingua</th><th>Codice</th></tr></thead>
+          <tbody>
+            <tr><td>Italiano</td><td><code>it</code></td></tr>
+            <tr><td>Inglese</td><td><code>en</code></td></tr>
+            <tr><td>Francese</td><td><code>fr</code></td></tr>
+            <tr><td>Spagnolo</td><td><code>es</code></td></tr>
+            <tr><td>Tedesco</td><td><code>de</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="http-messages">
+        <h2>Messaggi HTTP</h2>
+        <p>Quando apri una pagina, il browser e il server si scambiano <strong>messaggi HTTP</strong>: una <em>richiesta</em> e una <em>risposta</em>. La risposta contiene un <strong>codice di stato</strong> che dice com'è andata.</p>
+        <table class="ref-table">
+          <thead><tr><th>Codice</th><th>Significato</th></tr></thead>
+          <tbody>
+            <tr><td><code>200</code></td><td>OK — tutto a posto</td></tr>
+            <tr><td><code>301</code></td><td>Spostato in modo permanente</td></tr>
+            <tr><td><code>404</code></td><td>Pagina non trovata</td></tr>
+            <tr><td><code>403</code></td><td>Accesso negato</td></tr>
+            <tr><td><code>500</code></td><td>Errore interno del server</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="http-methods">
+        <h2>Metodi HTTP</h2>
+        <p>I <strong>metodi HTTP</strong> indicano <em>che tipo</em> di operazione vuole fare il browser. I form HTML usano soprattutto GET e POST.</p>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>GET</code></td><td>Chiede dati (i parametri vanno nell'URL)</td></tr>
+            <tr><td><code>POST</code></td><td>Invia dati (es. un form di registrazione)</td></tr>
+            <tr><td><code>PUT</code></td><td>Aggiorna una risorsa</td></tr>
+            <tr><td><code>DELETE</code></td><td>Elimina una risorsa</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="px-em">
+        <h2>Convertitore PX ↔ EM</h2>
+        <p>In HTML/CSS le dimensioni si esprimono in <strong>px</strong> (pixel, fissi) o in <strong>em/rem</strong> (relativi). La regola base, con dimensione di riferimento 16px:</p>
+        <table class="ref-table">
+          <thead><tr><th>Pixel</th><th>EM (base 16px)</th></tr></thead>
+          <tbody>
+            <tr><td>8px</td><td>0.5em</td></tr>
+            <tr><td>16px</td><td>1em</td></tr>
+            <tr><td>24px</td><td>1.5em</td></tr>
+            <tr><td>32px</td><td>2em</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">💡 Formula: <code class="inline">em = px ÷ 16</code>. Le unità relative (em/rem) rendono il sito più <strong>accessibile</strong> perché si adattano alle preferenze dell'utente.</div>
+      </article>
+
+      <article class="lesson" id="scorciatoie">
+        <h2>Scorciatoie da tastiera utili</h2>
+        <p>Alcune <strong>scorciatoie da tastiera</strong> che velocizzano la scrittura di HTML negli editor come Visual Studio Code.</p>
+        <table class="ref-table">
+          <thead><tr><th>Scorciatoia</th><th>Azione</th></tr></thead>
+          <tbody>
+            <tr><td><code>!</code> + Invio</td><td>Genera la struttura base di una pagina (Emmet)</td></tr>
+            <tr><td><code>Ctrl + /</code></td><td>Commenta / scommenta una riga</td></tr>
+            <tr><td><code>Ctrl + D</code></td><td>Seleziona l'occorrenza successiva</td></tr>
+            <tr><td><code>Alt + ↑ / ↓</code></td><td>Sposta la riga su / giù</td></tr>
+            <tr><td><code>Ctrl + S</code></td><td>Salva il file</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato HTML</h2>
+        <p>Vuoi una <strong>certificazione di HTML</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi e, soprattutto, per <strong>costruire pagine web reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di HTML svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti affrontati e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è il tuo portfolio: un sito che hai costruito da solo vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di HTML completo e gratuito in italiano</strong>: dalla struttura di base ai tag semantici, dai form ai media, dalle API HTML5 (Web Storage, Web Workers, SSE) fino a esercizi, sfide, riferimenti e accessibilità. Ora conosci i mattoni con cui è costruita ogni pagina web.</p>
+        <p>Il modo migliore per imparare l'HTML è <strong>fare pratica ogni giorno</strong>: apri gli esempi, modificali, sbaglia e riprova. Rifai gli <a href="#esercizi">esercizi HTML</a>, affronta le <a href="#sfide">sfide</a> e prova a costruire il tuo <a href="#progetto-sito">primo sito web</a>.</p>
+        <h3>E ora?</h3>
+        <p>Il prossimo passo è dare stile alle tue pagine con il <strong>CSS</strong> e renderle interattive con <strong>JavaScript</strong>. Se vuoi un percorso guidato passo passo o aiuto per una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Ricrea la struttura di una pagina che conosci (un social, un giornale online) usando solo HTML semantico: header, nav, main, article e footer. Niente CSS per ora — concentrati sulla struttura.</p></div>
         <div class="hero-actions">
+          <a href="corso-css.html" class="btn btn-primary">🎨 Continua con il corso CSS</a>
           <a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a>
           <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
         </div>
