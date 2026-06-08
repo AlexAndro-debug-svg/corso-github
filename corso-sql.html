@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
@@ -131,10 +131,10 @@
       <a href="index.html">Home</a>
       <a href="chi-sono.html">Chi sono</a>
       <a href="ripetizioni.html">Ripetizioni</a>
-      <a href="esercizi.html">Esercizi</a>
       <a href="corsi.html">Corsi</a>
       <a href="blog.html">Blog</a>
       <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
       <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
     </nav>
   </div>
@@ -656,7 +656,8 @@ SELECT nome FROM studenti WHERE citta = 'Roma';</script>
         <h2>Complimenti! 🎉 Hai completato il corso di SQL</h2>
         <p>Hai imparato a interrogare i dati (SELECT, WHERE, ORDER BY), ad aggregarli e raggrupparli (COUNT, AVG, GROUP BY, HAVING), a unire più tabelle (JOIN), a usare le subquery e a gestire la struttura del database (CREATE, ALTER, DROP, VIEW, INDEX).</p>
         <p>Il segreto per padroneggiare SQL è <strong>esercitarsi con query reali</strong>: modifica gli esempi di questo corso e osserva come cambiano i risultati. Se vuoi un percorso guidato o aiuto per una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class='hero-actions'><a href='esercizi.html' class='btn btn-primary'>📝 Esercizi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Progetta un piccolo database per una biblioteca (libri, autori, prestiti) e scrivi le query per sapere quali libri sono in prestito e chi ha restituito in ritardo.</p></div>
+        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
 
     </main>
@@ -688,7 +689,7 @@ SELECT nome FROM studenti WHERE citta = 'Roma';</script>
       <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
     </div>
-    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
     <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>

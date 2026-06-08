@@ -132,6 +132,9 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .hero h1 em { font-style: normal; color: var(--primary); }
 .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 1.2rem 0 2rem; max-width: 520px; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.challenge-box { background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 100%); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 14px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; }
+.challenge-box .challenge-label { display: inline-block; font-weight: 700; color: var(--ink); margin-bottom: .35rem; font-size: .95rem; }
+.challenge-box p { margin: 0; color: var(--muted); line-height: 1.6; }
 .badge-pill {
   display: inline-flex; align-items: center; gap: .5rem;
   background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow);

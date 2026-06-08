@@ -3,38 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esercizi di Informatica e Area Studenti — AlessandroSimone.it</title>
-  <meta name="description" content="Esercizi di informatica divisi per argomento con soluzioni, e area studenti riservata su Google Classroom ad accesso su invito per scaricare materiali e caricare i compiti.">
+  <title>Area Riservata Studenti — AlessandroSimone.it</title>
+  <meta name="description" content="Area Riservata Studenti di AlessandroSimone.it: accesso su invito alla classe virtuale Google Classroom per scaricare materiali, caricare i compiti e seguire le lezioni di informatica.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <style>
-    .student-area { max-width: 820px; margin: 0 auto; text-align: center; background: linear-gradient(135deg, var(--edu), #0f766e); color: #fff; border-radius: var(--radius); padding: 2.8rem 2rem; box-shadow: var(--shadow-lg); }
-    .student-area .sa-icon { font-size: 3rem; margin-bottom: .6rem; }
-    .student-area h2 { font-size: 1.8rem; margin-bottom: .6rem; }
-    .student-area > p { opacity: .92; max-width: 560px; margin: 0 auto 1.6rem; }
-    .sa-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; max-width: 560px; margin: 0 auto 1.8rem; text-align: left; }
-    .sa-features div { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius-sm); padding: .7rem .9rem; font-size: .92rem; }
-    .student-area .btn-lg { background: #fff; color: var(--edu); }
-    .sa-note { margin-top: 1.4rem; font-size: .85rem; opacity: .85; }
-    .sa-note a { color: #fff; font-weight: 600; text-decoration: underline; }
-    @media (max-width: 560px){ .sa-features { grid-template-columns: 1fr; } }
+    /* ===== Area Riservata Studenti — portale d'accesso ===== */
+    .sa-hero { position: relative; overflow: hidden; background: radial-gradient(1200px 500px at 50% -10%, #14b8a6 0%, var(--edu) 38%, #0f766e 100%); color: #fff; padding: 4.5rem 0 6rem; text-align: center; }
+    .sa-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 70px; background: var(--bg-soft); clip-path: ellipse(75% 100% at 50% 100%); }
+    .sa-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.28); padding: .4rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 600; backdrop-filter: blur(6px); }
+    .sa-badge .lock { font-size: 1rem; }
+    .sa-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 1.1rem auto .8rem; max-width: 16ch; line-height: 1.1; }
+    .sa-hero p.lead { opacity: .95; max-width: 620px; margin: 0 auto; font-size: 1.08rem; line-height: 1.65; }
+
+    .sa-wrap { max-width: 920px; margin: -4rem auto 0; padding: 0 1.2rem; position: relative; z-index: 2; }
+
+    /* Card d'accesso centrale */
+    .access-card { background: #fff; border: 1px solid var(--border); border-radius: 22px; box-shadow: 0 24px 60px -20px rgba(13,148,136,.35); padding: 2.6rem 2.2rem; text-align: center; }
+    .access-card .gc-logo { width: 76px; height: 76px; border-radius: 20px; margin: 0 auto 1.1rem; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; background: linear-gradient(135deg, #e6fffb, #d1fae5); box-shadow: inset 0 0 0 1px rgba(13,148,136,.15); }
+    .access-card h2 { font-size: 1.6rem; margin-bottom: .6rem; }
+    .access-card > p { color: var(--muted); max-width: 580px; margin: 0 auto 1.7rem; line-height: 1.7; }
+    .access-card .btn-gc { background: linear-gradient(135deg, var(--edu), #0f766e); color: #fff; font-size: 1.05rem; padding: .95rem 2rem; box-shadow: 0 10px 24px -8px rgba(13,148,136,.6); }
+    .access-card .btn-gc:hover { transform: translateY(-2px); }
+    .sa-divider { display: flex; align-items: center; gap: 1rem; color: var(--muted); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: 1.8rem auto; max-width: 420px; }
+    .sa-divider::before, .sa-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .invite-note { background: var(--bg-soft); border: 1px dashed var(--edu); border-radius: 14px; padding: 1rem 1.2rem; font-size: .92rem; color: var(--ink); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .invite-note a { color: var(--edu); font-weight: 700; }
+
+    /* Cosa trovi dentro */
+    .sa-section-title { text-align: center; margin: 3.6rem auto 1.6rem; }
+    .sa-section-title .eyebrow { color: var(--edu); }
+    .sa-section-title h2 { font-size: 1.7rem; }
+    .sa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .sa-feature { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem 1.3rem; transition: transform .18s ease, box-shadow .18s ease; }
+    .sa-feature:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .sa-feature .ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; background: linear-gradient(135deg, #e6fffb, #d1fae5); margin-bottom: .8rem; }
+    .sa-feature h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+    .sa-feature p { font-size: .9rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* Come accedere — passi */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; counter-reset: step; }
+    .step { position: relative; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 1.3rem 1.3rem; }
+    .step::before { counter-increment: step; content: counter(step); position: absolute; top: -16px; left: 1.3rem; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--edu), #0f766e); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px -4px rgba(13,148,136,.55); }
+    .step h3 { font-size: 1.02rem; margin: .5rem 0 .35rem; }
+    .step p { font-size: .9rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    .sa-cta { text-align: center; margin: 3.6rem auto 0; }
+
+    @media (max-width: 820px){
+      .sa-grid, .steps { grid-template-columns: 1fr; }
+      .access-card { padding: 2rem 1.4rem; }
+    }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/esercizi.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="#0d9488">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="AlessandroSimone.it">
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/esercizi.html">
-  <meta property="og:title" content="Esercizi di Informatica e Area Studenti — AlessandroSimone.it">
-  <meta property="og:description" content="Esercizi di informatica divisi per argomento con soluzioni, e area studenti riservata su Google Classroom ad accesso su invito per scaricare materiali e caricare i compiti.">
+  <meta property="og:title" content="Area Riservata Studenti — AlessandroSimone.it">
+  <meta property="og:description" content="Accesso su invito alla classe virtuale Google Classroom: scarica materiali, carica i compiti e segui le lezioni di informatica.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Esercizi di Informatica e Area Studenti — AlessandroSimone.it">
-  <meta name="twitter:description" content="Esercizi di informatica divisi per argomento con soluzioni, e area studenti riservata su Google Classroom ad accesso su invito per scaricare materiali e caricare i compiti.">
+  <meta name="twitter:title" content="Area Riservata Studenti — AlessandroSimone.it">
+  <meta name="twitter:description" content="Accesso su invito alla classe virtuale Google Classroom: scarica materiali, carica i compiti e segui le lezioni di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
 </head>
 <body>
@@ -47,238 +83,106 @@
       <a href="index.html">Home</a>
       <a href="chi-sono.html">Chi sono</a>
       <a href="ripetizioni.html">Ripetizioni</a>
-      <a href="esercizi.html">Esercizi</a>
       <a href="corsi.html">Corsi</a>
       <a href="blog.html">Blog</a>
       <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
       <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
     </nav>
   </div>
 </header>
 
-<section class="section">
-  <div class="container center mb-3">
-    <span class="eyebrow" style="color:var(--edu)">Area studenti</span>
-    <h1 class="section-title">Esercizi e materiale didattico</h1>
-    <p class="section-sub" style="margin-inline:auto">Allenati con gli esercizi liberi qui sotto, oppure accedi all'area riservata per il materiale completo delle lezioni.</p>
-  </div>
-
+<section class="sa-hero">
   <div class="container">
-    <div class="student-area">
-      <div class="sa-icon">🔐</div>
-      <h2>Area Studenti riservata</h2>
-      <p>L'accesso al materiale didattico è riservato ai miei studenti tramite <strong>Google Classroom</strong>, ad <strong>accesso su invito</strong>: sei tu a essere aggiunto dal docente, così solo gli studenti autorizzati possono entrare.</p>
-      <div class="sa-features">
-        <div>📥 Scarica dispense, schede e materiali</div>
-        <div>📤 Carica i compiti svolti</div>
-        <div>📣 Leggi avvisi e comunicazioni</div>
-        <div>📅 Controlla scadenze e consegne</div>
-        <div>📝 Svolgi quiz e verifiche assegnate</div>
-        <div>💬 Fai domande al docente</div>
-      </div>
-      <a href="https://classroom.google.com" target="_blank" rel="noopener" class="btn btn-lg">🎓 Vai a Google Classroom</a>
-      <p class="sa-note">🔒 Area ad accesso riservato: l'ingresso avviene <strong>solo su invito del docente</strong>. Non hai ancora l'accesso? Scrivi a <a href="mailto:alessandrosimone.it@gmail.com?subject=Accesso%20Area%20Studenti">alessandrosimone.it@gmail.com</a> e ti invierò l'invito alla classe.</p>
-    </div>
+    <span class="sa-badge"><span class="lock">🔒</span> Accesso riservato su invito</span>
+    <h1>Area Riservata Studenti</h1>
+    <p class="lead">Lo spazio dedicato ai miei studenti: la classe virtuale dove trovi materiali, consegne e comunicazioni delle lezioni. L'accesso è personale e avviene <strong>solo su mio invito</strong>.</p>
   </div>
 </section>
 
-<section class="section soft">
+<div class="sa-wrap">
+
+  <!-- Card d'accesso -->
+  <div class="access-card">
+    <div class="gc-logo">🎓</div>
+    <h2>Entra nella tua classe</h2>
+    <p>Il materiale didattico è riservato ai miei studenti tramite <strong>Google Classroom</strong>, ad <strong>accesso su invito</strong>: sei tu a essere aggiunto <strong>da me</strong>, così solo <strong>chi è autorizzato da me</strong> può entrare.</p>
+    <a href="https://classroom.google.com" target="_blank" rel="noopener" class="btn btn-lg btn-gc">🚀 Entra in Google Classroom</a>
+
+    <div class="sa-divider">Non hai ancora l'accesso?</div>
+    <p class="invite-note">🔑 L'ingresso avviene <strong>solo su mio invito</strong>. Se sei un mio studente e non hai ancora ricevuto l'invito, scrivimi a <a href="mailto:alessandrosimone.it@gmail.com?subject=Accesso%20Area%20Riservata%20Studenti">alessandrosimone.it@gmail.com</a> indicando nome e classe: ti aggiungerò io alla classe virtuale.</p>
+  </div>
+
+  <!-- Cosa trovi dentro -->
+  <div class="sa-section-title">
+    <span class="eyebrow">Cosa trovi dentro</span>
+    <h2>Tutto il materiale delle lezioni</h2>
+  </div>
+  <div class="sa-grid">
+    <div class="sa-feature">
+      <div class="ico">📥</div>
+      <h3>Materiali da scaricare</h3>
+      <p>Dispense, schede, slide ed esempi di codice sempre disponibili, organizzati per argomento.</p>
+    </div>
+    <div class="sa-feature">
+      <div class="ico">📤</div>
+      <h3>Consegna dei compiti</h3>
+      <p>Carica gli esercizi svolti direttamente in classe e ricevi la correzione con un feedback.</p>
+    </div>
+    <div class="sa-feature">
+      <div class="ico">📣</div>
+      <h3>Avvisi e comunicazioni</h3>
+      <p>Tutte le novità importanti, le scadenze e le comunicazioni in un unico posto ordinato.</p>
+    </div>
+    <div class="sa-feature">
+      <div class="ico">📅</div>
+      <h3>Scadenze e consegne</h3>
+      <p>Tieni sotto controllo le date di consegna e non perdere più nessun compito assegnato.</p>
+    </div>
+    <div class="sa-feature">
+      <div class="ico">📝</div>
+      <h3>Quiz e verifiche</h3>
+      <p>Svolgi quiz e verifiche assegnate online, con risultati e revisione direttamente in classe.</p>
+    </div>
+    <div class="sa-feature">
+      <div class="ico">💬</div>
+      <h3>Domande e supporto</h3>
+      <p>Fai domande quando un argomento non è chiaro: ti rispondo direttamente nello spazio classe.</p>
+    </div>
+  </div>
+
+  <!-- Come accedere -->
+  <div class="sa-section-title">
+    <span class="eyebrow">In 3 passi</span>
+    <h2>Come accedere</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <h3>Ricevi l'invito</h3>
+      <p>Ti aggiungo io alla classe virtuale con la tua email. Sei tu a essere invitato, non puoi iscriverti da solo.</p>
+    </div>
+    <div class="step">
+      <h3>Accedi con Google</h3>
+      <p>Apri Google Classroom ed entra con l'account email a cui hai ricevuto l'invito. Accetta la classe.</p>
+    </div>
+    <div class="step">
+      <h3>Sei dentro</h3>
+      <p>Da subito trovi materiali, compiti e avvisi sempre aggiornati, da computer o smartphone.</p>
+    </div>
+  </div>
+
+  <!-- CTA finale -->
+  <div class="sa-cta">
+    <a href="https://classroom.google.com" target="_blank" rel="noopener" class="btn btn-lg btn-gc">🎓 Vai a Google Classroom</a>
+  </div>
+
+</div>
+
+<section class="section">
   <div class="container">
-    <div class="center mb-3">
-      <span class="eyebrow" style="color:var(--edu)">Esercizi liberi</span>
-      <h2 class="section-title">Mettiti alla prova</h2>
-      <p class="section-sub" style="margin-inline:auto">Filtra per argomento e clicca su <em>"Mostra soluzione"</em> solo dopo aver provato da solo! 😉</p>
-    </div>
-
-    <div class="filters">
-      <button class="chip active" data-filter="tutti">Tutti</button>
-      <button class="chip" data-filter="python">🐍 Python</button>
-      <button class="chip" data-filter="web">🌐 HTML/CSS</button>
-      <button class="chip" data-filter="database">🗃️ Database</button>
-      <button class="chip" data-filter="reti">📡 Reti</button>
-      <button class="chip" data-filter="algoritmi">🧮 Algoritmi</button>
-    </div>
-
-    <div class="ex-list">
-
-      <div class="ex-item" data-cat="python">
-        <div class="ex-head"><h4>🐍 Somma dei numeri pari</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Scrivi un programma che calcola la somma di tutti i numeri pari da 1 a 100. Suggerimento: usa l'operatore modulo <code>%</code> per capire se un numero è divisibile per 2.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>totale = 0
-for n in range(1, 101):
-    if n % 2 == 0:
-        totale += n
-print(totale)   # 2550</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="python">
-        <div class="ex-head"><h4>🐍 Numero palindromo</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Chiedi all'utente una parola e verifica se è palindroma, cioè se si legge uguale anche al contrario (es. "anna", "radar"). Usa lo slicing per invertire la stringa.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>parola = input("Inserisci una parola: ")
-if parola == parola[::-1]:
-    print("È palindroma!")
-else:
-    print("Non è palindroma.")</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="python">
-        <div class="ex-head"><h4>🐍 Tabellina di un numero</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Chiedi un numero all'utente e stampa la sua tabellina dal numero per 1 fino al numero per 10, in formato leggibile (es. "7 x 3 = 21").</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>n = int(input("Numero: "))
-for i in range(1, 11):
-    print(n, "x", i, "=", n * i)</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="python">
-        <div class="ex-head"><h4>🐍 Conta le vocali</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Data una frase inserita dall'utente, conta quante vocali contiene. Ricorda di considerare sia maiuscole che minuscole convertendo tutto in minuscolo.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>frase = input("Frase: ").lower()
-vocali = 0
-for lettera in frase:
-    if lettera in "aeiou":
-        vocali += 1
-print("Vocali:", vocali)</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="python">
-        <div class="ex-head"><h4>🐍 FizzBuzz</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Stampa i numeri da 1 a 30, ma: per i multipli di 3 stampa "Fizz", per i multipli di 5 stampa "Buzz" e per i multipli di entrambi "FizzBuzz". È un classico dei colloqui di lavoro!</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>for n in range(1, 31):
-    if n % 15 == 0:
-        print("FizzBuzz")
-    elif n % 3 == 0:
-        print("Fizz")
-    elif n % 5 == 0:
-        print("Buzz")
-    else:
-        print(n)</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="web">
-        <div class="ex-head"><h4>🌐 Form di contatto HTML</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Crea un form HTML con i campi nome, email e messaggio, più un pulsante di invio. Usa le etichette <code>&lt;label&gt;</code> per rendere il form accessibile.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;form&gt;
-  &lt;label&gt;Nome: &lt;input type="text" name="nome"&gt;&lt;/label&gt;
-  &lt;label&gt;Email: &lt;input type="email" name="email"&gt;&lt;/label&gt;
-  &lt;label&gt;Messaggio: &lt;textarea name="msg"&gt;&lt;/textarea&gt;&lt;/label&gt;
-  &lt;button type="submit"&gt;Invia&lt;/button&gt;
-&lt;/form&gt;</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="web">
-        <div class="ex-head"><h4>🌐 Centrare un box con Flexbox</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Usa CSS Flexbox per centrare un box sia orizzontalmente che verticalmente nella pagina. È una delle domande più frequenti sul CSS.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>.contenitore {
-  display: flex;
-  justify-content: center;  /* orizzontale */
-  align-items: center;      /* verticale */
-  height: 100vh;
-}</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="web">
-        <div class="ex-head"><h4>🌐 Griglia responsive con CSS Grid</h4><div class="ex-meta"><span class="tag avanzato">Avanzato</span></div></div>
-        <p class="descr">Crea una griglia di card che si adatta automaticamente allo schermo: 3 colonne su desktop, che diventano 1 sola su smartphone, senza usare media query.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>.griglia {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="database">
-        <div class="ex-head"><h4>🗃️ Query SELECT con WHERE</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Dalla tabella <code>studenti</code>, estrai nome e cognome di tutti gli studenti che hanno più di 18 anni, ordinati per cognome.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT nome, cognome
-FROM studenti
-WHERE eta &gt; 18
-ORDER BY cognome;</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="database">
-        <div class="ex-head"><h4>🗃️ Conteggio con GROUP BY</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Conta quanti studenti sono iscritti a ciascun corso. Devi raggruppare per corso e contare le righe di ogni gruppo.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT id_corso, COUNT(*) AS numero_studenti
-FROM studenti
-GROUP BY id_corso;</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="database">
-        <div class="ex-head"><h4>🗃️ JOIN tra due tabelle</h4><div class="ex-meta"><span class="tag avanzato">Avanzato</span></div></div>
-        <p class="descr">Mostra il nome di ogni studente insieme alla descrizione del corso a cui è iscritto, collegando le tabelle <code>studenti</code> e <code>corsi</code> tramite la chiave esterna.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT s.nome, c.descrizione
-FROM studenti s
-JOIN corsi c ON s.id_corso = c.id;</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="reti">
-        <div class="ex-head"><h4>📡 I livelli del modello OSI</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Elenca in ordine i 7 livelli del modello OSI, dal più alto (vicino all'utente) al più basso (vicino all'hardware). Prova a ricordarli con una frase mnemonica.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>7. Applicazione
-6. Presentazione
-5. Sessione
-4. Trasporto
-3. Rete
-2. Collegamento (Data Link)
-1. Fisico</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="reti">
-        <div class="ex-head"><h4>📡 Classi di indirizzi IP</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Indica a quale classe (A, B o C) appartengono questi indirizzi IPv4 e qual è la loro subnet mask di default: 10.0.0.1 — 172.16.5.4 — 192.168.1.10.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>10.0.0.1      -&gt; Classe A   (mask 255.0.0.0)
-172.16.5.4    -&gt; Classe B   (mask 255.255.0.0)
-192.168.1.10  -&gt; Classe C   (mask 255.255.255.0)</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="algoritmi">
-        <div class="ex-head"><h4>🧮 Fattoriale ricorsivo</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Scrivi una funzione ricorsiva che calcola il fattoriale di un numero n (n! = n × (n-1) × ... × 1). Ricorda il caso base che ferma la ricorsione.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>def fattoriale(n):
-    if n &lt;= 1:
-        return 1
-    return n * fattoriale(n - 1)
-
-print(fattoriale(5))   # 120</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="algoritmi">
-        <div class="ex-head"><h4>🧮 Serie di Fibonacci</h4><div class="ex-meta"><span class="tag medio">Medio</span></div></div>
-        <p class="descr">Stampa i primi 10 numeri della serie di Fibonacci, dove ogni numero è la somma dei due precedenti (0, 1, 1, 2, 3, 5, 8...).</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>a, b = 0, 1
-for _ in range(10):
-    print(a, end=" ")
-    a, b = b, a + b
-# 0 1 1 2 3 5 8 13 21 34</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="algoritmi">
-        <div class="ex-head"><h4>🧮 Ricerca del massimo</h4><div class="ex-meta"><span class="tag base">Base</span></div></div>
-        <p class="descr">Trova il valore massimo in una lista di numeri senza usare la funzione predefinita <code>max()</code>. Scorri la lista confrontando ogni elemento.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>numeri = [3, 7, 2, 9, 4]
-massimo = numeri[0]
-for n in numeri:
-    if n &gt; massimo:
-        massimo = n
-print(massimo)   # 9</pre></details>
-      </div>
-
-      <div class="ex-item" data-cat="algoritmi">
-        <div class="ex-head"><h4>🧮 Ordinamento Bubble Sort</h4><div class="ex-meta"><span class="tag avanzato">Avanzato</span></div></div>
-        <p class="descr">Ordina una lista di numeri dal più piccolo al più grande usando l'algoritmo Bubble Sort, che confronta coppie di elementi adiacenti e li scambia se sono nell'ordine sbagliato.</p>
-        <details class="solution"><summary>Mostra soluzione</summary><pre>numeri = [5, 2, 8, 1, 9]
-for i in range(len(numeri)):
-    for j in range(len(numeri) - 1 - i):
-        if numeri[j] &gt; numeri[j + 1]:
-            numeri[j], numeri[j + 1] = numeri[j + 1], numeri[j]
-print(numeri)   # [1, 2, 5, 8, 9]</pre></details>
-      </div>
-
-    </div>
-
-    <div class="cta-banner mt-4">
-      <h2>Ti serve aiuto con un esercizio?</h2>
-      <p>Se un argomento non ti è chiaro, possiamo affrontarlo insieme in una ripetizione.</p>
+    <div class="cta-banner">
+      <h2>Cerchi ripetizioni private a Roma?</h2>
+      <p>L'Area Riservata è per i miei studenti a scuola. Se invece vuoi lezioni private in presenza, prenota un primo contatto gratuito.</p>
       <a href="prenota.html" class="btn btn-accent btn-lg">Prenota una lezione →</a>
     </div>
   </div>
@@ -290,7 +194,7 @@ print(numeri)   # [1, 2, 5, 8, 9]</pre></details>
       <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
       <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
     </div>
-    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Esercizi</a><a href="blog.html">Blog</a></div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
     <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
