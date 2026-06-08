@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso JavaScript completo in italiano: guida da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso JavaScript completo e gratuito in italiano: variabili, operatori, condizioni, cicli, stringhe, funzioni, oggetti, array, Set, Map, Math, RegExp, DOM ed eventi. Tutti gli argomenti spiegati in modo approfondito con esempi eseguibili ed editor Provalo tu.">
+  <title>Corso JavaScript completo in italiano con esercizi e soluzioni | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di JavaScript completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, funzioni, oggetti, array, DOM, eventi, classi, asincronia, Promise, async/await, JSON, Fetch/AJAX e Web API. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
+  <meta name="keywords" content="corso JavaScript, esercizi JavaScript, esercizi JavaScript con soluzioni, esercizi JS svolti, JavaScript per principianti, imparare JavaScript, quiz JavaScript, tutorial JavaScript italiano, DOM, async await, fetch, JSON">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -86,10 +87,30 @@
     .cm-s-default .cm-comment   { color: #999; font-style: italic; }
     .cm-s-default .cm-meta      { color: #999; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-javascript.html">
@@ -99,20 +120,20 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="AlessandroSimone.it">
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-javascript.html">
-  <meta property="og:title" content="Corso JavaScript completo in italiano: guida da zero | AlessandroSimone.it">
-  <meta property="og:description" content="Corso JavaScript completo e gratuito in italiano: variabili, operatori, condizioni, cicli, stringhe, funzioni, oggetti, array, Set, Map, Math, RegExp, DOM ed eventi. Tutti gli argomenti spiegati in modo approfondito con esempi eseguibili ed editor Provalo tu.">
+  <meta property="og:title" content="Corso JavaScript completo in italiano con esercizi e soluzioni | AlessandroSimone.it">
+  <meta property="og:description" content="Corso di JavaScript completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, funzioni, oggetti, array, DOM, eventi, classi, asincronia, Promise, async/await, JSON, Fetch/AJAX e Web API. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso JavaScript completo in italiano: guida da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso JavaScript completo e gratuito in italiano: variabili, operatori, condizioni, cicli, stringhe, funzioni, oggetti, array, Set, Map, Math, RegExp, DOM ed eventi. Tutti gli argomenti spiegati in modo approfondito con esempi eseguibili ed editor Provalo tu.">
+  <meta name="twitter:title" content="Corso JavaScript completo in italiano con esercizi e soluzioni | AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di JavaScript completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, funzioni, oggetti, array, DOM, eventi, classi, asincronia, Promise, async/await, JSON, Fetch/AJAX e Web API. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di JavaScript completo in italiano",
-  "description": "Corso JavaScript completo e gratuito in italiano: variabili, operatori, condizioni, cicli, stringhe, funzioni, oggetti, array, Set, Map, Math, RegExp, DOM ed eventi. Tutti gli argomenti spiegati in modo approfondito con esempi eseguibili ed editor Provalo tu.",
+  "description": "Corso di JavaScript completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, funzioni, oggetti, array, DOM, eventi, classi, asincronia, Promise, async/await, JSON, Fetch/AJAX e Web API. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-javascript.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -210,6 +231,46 @@
       <a href="#versioni">JS Versions</a>
       <a href="#dom">JS HTML DOM</a>
       <a href="#eventi">JS HTML Events</a>
+      <a href="#html-first">JS HTML First</a>
+      <h4>JS Avanzato</h4>
+      <a href="#adv-functions">JS Functions</a>
+      <a href="#adv-objects">JS Objects</a>
+      <a href="#classes">JS Classes</a>
+      <a href="#async">JS Asynchronous</a>
+      <a href="#modules">JS Modules</a>
+      <a href="#meta-proxy">JS Meta &amp; Proxy</a>
+      <a href="#typed-arrays">JS Typed Arrays</a>
+      <a href="#dom-navigation">JS DOM Navigation</a>
+      <a href="#windows">JS Windows</a>
+      <a href="#web-api">JS Web API</a>
+      <a href="#ajax">JS AJAX</a>
+      <a href="#json">JS JSON</a>
+      <a href="#jquery">JS jQuery</a>
+      <a href="#graphics">JS Graphics</a>
+      <h4>Esempi &amp; Pratica JS</h4>
+      <a href="#esempi">Esempi JS</a>
+      <a href="#editor">Editor JS online</a>
+      <a href="#quiz">Quiz JS</a>
+      <a href="#esercizi">Esercizi JS</a>
+      <a href="#sfide">Sfide JS</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp JS</a>
+      <a href="#riepilogo">Riepilogo JS</a>
+      <h4>Riferimenti JS</h4>
+      <a href="#rif-stringhe">Metodi delle stringhe</a>
+      <a href="#rif-array">Metodi degli array</a>
+      <a href="#rif-numeri">Metodi dei numeri</a>
+      <a href="#rif-math">Oggetto Math</a>
+      <a href="#rif-date">Metodi delle date</a>
+      <a href="#rif-dom">Metodi del DOM</a>
+      <a href="#rif-eventi">Eventi</a>
+      <a href="#rif-operatori">Operatori</a>
+      <a href="#rif-keywords">Parole chiave</a>
+      <h4>Certificazione JS</h4>
+      <a href="#certificato">Certificato JavaScript</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
     <main>
       <article class="lesson" id="home">
@@ -605,10 +666,564 @@
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai completato il corso di JavaScript più completo in italiano. Continua a programmare con l'editor “Provalo tu” e, se ti serve aiuto, prenota una lezione.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Costruisci una piccola to-do list: aggiungi attività, spuntale come completate e salvale nel localStorage così restano anche dopo aver chiuso il browser.</p></div>
+      <article class="lesson" id="html-first">
+        <h2>JS HTML First — prima l'HTML, poi JavaScript</h2>
+        <p>Una regola d'oro per chi inizia: <strong>prima si costruisce la pagina con l'HTML, poi la si rende interattiva con JavaScript</strong>. JavaScript non disegna la struttura: la <em>manipola</em>. Per questo conviene sempre avere già pronti gli elementi HTML (con i loro <code class="inline">id</code>) e solo dopo agganciarli con il codice.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><!-- prima l'HTML -->
+<button id="btn">Cliccami</button>
+<p id="out"></p>
+
+<!-- poi JavaScript che lo manipola -->
+<script>
+  document.getElementById('btn').onclick = function(){
+    document.getElementById('out').innerHTML = 'Hai cliccato! 🎉';
+  };
+<\/script></script>
+        </div>
+        <div class="tip-box">⭐ Metti il tag <code class="inline">&lt;script&gt;</code> appena prima di <code class="inline">&lt;/body&gt;</code>: così l'HTML è già caricato quando JavaScript va a cercarlo.</div>
+      </article>
+
+      <!-- ===== JS AVANZATO ===== -->
+      <article class="lesson" id="adv-functions">
+        <h2>JS Functions avanzate</h2>
+        <p>Le funzioni in JavaScript sono <strong>valori a tutti gli effetti</strong>: puoi assegnarle a variabili, passarle come argomento e restituirle. Da qui nascono le <em>arrow function</em>, le <em>callback</em> e le <em>closure</em>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  // arrow function
+  const doppio = x => x * 2;
+
+  // closure: la funzione "ricorda" il valore di partenza
+  function contatore(){ let n = 0; return () => ++n; }
+  const conta = contatore();
+
+  document.getElementById('out').innerHTML =
+    doppio(5) + ' — ' + conta() + conta() + conta();  // 10 — 123
+<\/script></script>
+        </div>
+        <div class="note-box">💡 Una <strong>closure</strong> è una funzione che continua ad accedere alle variabili del punto in cui è stata creata, anche dopo che quella funzione esterna è terminata.</div>
+      </article>
+
+      <article class="lesson" id="adv-objects">
+        <h2>JS Objects avanzati</h2>
+        <p>Gli oggetti raggruppano dati (proprietà) e comportamenti (metodi). In JavaScript avanzato usi <em>destructuring</em>, <em>spread</em> e i metodi di <code class="inline">Object</code> per lavorarci comodamente.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  const studente = { nome: 'Anna', voto: 8 };
+  const { nome, voto } = studente;          // destructuring
+  const copia = { ...studente, classe: '3A' }; // spread
+
+  document.getElementById('out').innerHTML =
+    nome + ' (' + voto + ') — ' + JSON.stringify(copia);
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="classes">
+        <h2>JS Classes</h2>
+        <p>Le <strong>classi</strong> sono modelli per creare oggetti dello stesso tipo. Il <code class="inline">constructor</code> inizializza le proprietà, e con <code class="inline">extends</code> una classe può ereditare da un'altra.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  class Studente {
+    constructor(nome, voto){ this.nome = nome; this.voto = voto; }
+    promosso(){ return this.voto >= 6 ? 'promosso' : 'rimandato'; }
+  }
+  const a = new Studente('Marco', 7);
+  document.getElementById('out').innerHTML = a.nome + ' è ' + a.promosso();
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="async">
+        <h2>JS Asynchronous (Promise, async/await)</h2>
+        <p>JavaScript è <strong>asincrono</strong>: alcune operazioni (come scaricare dati) richiedono tempo e non bloccano il resto del codice. Si gestiscono con le <strong>Promise</strong> e la sintassi moderna <code class="inline">async/await</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out">Attendo...</p>
+<script>
+  function attesa(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  async function avvia(){
+    await attesa(1000);
+    document.getElementById('out').innerHTML = 'Fatto dopo 1 secondo! ⏱️';
+  }
+  avvia();
+<\/script></script>
+        </div>
+        <div class="tip-box">⭐ <code class="inline">await</code> mette in pausa la funzione finché la Promise non si risolve, rendendo il codice asincrono leggibile come quello normale.</div>
+      </article>
+
+      <article class="lesson" id="modules">
+        <h2>JS Modules</h2>
+        <p>I <strong>moduli</strong> permettono di dividere il codice in più file e riutilizzarlo con <code class="inline">export</code> e <code class="inline">import</code>. Si attivano con <code class="inline">&lt;script type="module"&gt;</code>.</p>
+        <pre class="codeview"><code class="language-markup">// file utili.js
+export function somma(a, b){ return a + b; }
+
+// file main.js
+import { somma } from './utili.js';
+console.log( somma(2, 3) );  // 5</code></pre>
+        <div class="note-box">💡 I moduli evitano di avere un unico file enorme e prevengono conflitti tra variabili con lo stesso nome.</div>
+      </article>
+
+      <article class="lesson" id="meta-proxy">
+        <h2>JS Meta &amp; Proxy</h2>
+        <p>Un <strong>Proxy</strong> è un oggetto che “avvolge” un altro oggetto e intercetta le operazioni (lettura, scrittura) tramite dei <em>trap</em>. Insieme a <code class="inline">Reflect</code> è la base della meta-programmazione in JavaScript.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  const dati = { prezzo: 100 };
+  const protetto = new Proxy(dati, {
+    get(obj, chiave){
+      return chiave in obj ? obj[chiave] : 'campo inesistente';
+    }
+  });
+  document.getElementById('out').innerHTML =
+    protetto.prezzo + ' / ' + protetto.sconto;  // 100 / campo inesistente
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="typed-arrays">
+        <h2>JS Typed Arrays</h2>
+        <p>Gli <strong>array tipizzati</strong> (come <code class="inline">Int8Array</code>, <code class="inline">Float32Array</code>) gestiscono dati binari grezzi in modo efficiente: utili per grafica, audio, file e prestazioni elevate.</p>
+        <pre class="codeview"><code class="language-markup">const numeri = new Int16Array(3);  // tre interi a 16 bit
+numeri[0] = 100;
+numeri[1] = 250;
+console.log(numeri.length);  // 3</code></pre>
+      </article>
+
+      <article class="lesson" id="dom-navigation">
+        <h2>JS DOM Navigation</h2>
+        <p>Il DOM è un albero: da ogni nodo puoi spostarti verso genitori, figli e fratelli per leggere o modificare la pagina.</p>
+        <table class="ref-table">
+          <thead><tr><th>Proprietà</th><th>Restituisce</th></tr></thead>
+          <tbody>
+            <tr><td><code>parentElement</code></td><td>Il genitore dell'elemento</td></tr>
+            <tr><td><code>children</code></td><td>I figli (solo elementi)</td></tr>
+            <tr><td><code>firstElementChild</code></td><td>Il primo figlio</td></tr>
+            <tr><td><code>nextElementSibling</code></td><td>Il fratello successivo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="windows">
+        <h2>JS Windows (oggetto window e BOM)</h2>
+        <p>L'oggetto <strong>window</strong> rappresenta la finestra del browser (BOM, Browser Object Model). Da qui accedi a dimensioni dello schermo, URL, cronologia, timer e finestre di dialogo.</p>
+        <table class="ref-table">
+          <thead><tr><th>Membro</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>window.innerWidth</code></td><td>Larghezza della finestra</td></tr>
+            <tr><td><code>window.location</code></td><td>URL della pagina</td></tr>
+            <tr><td><code>window.history</code></td><td>Cronologia di navigazione</td></tr>
+            <tr><td><code>setTimeout()</code> / <code>setInterval()</code></td><td>Timer</td></tr>
+            <tr><td><code>alert()</code> / <code>prompt()</code></td><td>Finestre di dialogo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="web-api">
+        <h2>JS Web API</h2>
+        <p>Le <strong>Web API</strong> sono funzionalità che il browser mette a disposizione di JavaScript, oltre al linguaggio in sé: Web Storage, Fetch, Geolocation, Canvas, Web Workers e molte altre.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio — Web Storage API</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><button onclick="salva()">Salva</button>
+<button onclick="leggi()">Leggi</button>
+<p id="out"></p>
+<script>
+  function salva(){ localStorage.setItem('nome', 'Alessandro'); }
+  function leggi(){ document.getElementById('out').innerHTML = localStorage.getItem('nome'); }
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ajax">
+        <h2>JS AJAX (Fetch API)</h2>
+        <p><strong>AJAX</strong> permette di caricare dati dal server <em>senza ricaricare la pagina</em>. Oggi si usa la moderna <code class="inline">fetch()</code>, che restituisce una Promise.</p>
+        <pre class="codeview"><code class="language-markup">fetch('https://api.example.com/dati')
+  .then(risposta => risposta.json())
+  .then(dati => console.log(dati))
+  .catch(errore => console.log('Errore:', errore));
+
+// versione con async/await
+async function carica(){
+  const r = await fetch('/dati');
+  const dati = await r.json();
+  console.log(dati);
+}</code></pre>
+        <div class="note-box">💡 AJAX significa “Asynchronous JavaScript And XML”, ma oggi i dati viaggiano quasi sempre in formato <strong>JSON</strong>.</div>
+      </article>
+
+      <article class="lesson" id="json">
+        <h2>JS JSON</h2>
+        <p><strong>JSON</strong> (JavaScript Object Notation) è il formato standard per scambiare dati sul web. Si converte con <code class="inline">JSON.stringify()</code> (oggetto → testo) e <code class="inline">JSON.parse()</code> (testo → oggetto).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><p id="out"></p>
+<script>
+  const oggetto = { nome: 'Anna', voti: [8, 7, 9] };
+  const testo = JSON.stringify(oggetto);      // a testo
+  const ritorno = JSON.parse(testo);          // di nuovo oggetto
+  document.getElementById('out').innerHTML = testo + '<br>' + ritorno.voti[2];
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="jquery">
+        <h2>JS jQuery</h2>
+        <p><strong>jQuery</strong> è una storica libreria JavaScript che semplifica selezione di elementi, eventi e animazioni con la sintassi <code class="inline">$()</code>. Oggi il JavaScript moderno copre quasi tutto, ma jQuery si incontra ancora in molti progetti esistenti.</p>
+        <pre class="codeview"><code class="language-markup">// jQuery
+$('#btn').click(function(){
+  $('#out').text('Cliccato!');
+});
+
+// JavaScript moderno equivalente
+document.getElementById('btn').onclick = () => {
+  document.getElementById('out').textContent = 'Cliccato!';
+};</code></pre>
+        <div class="tip-box">⭐ Impara prima il JavaScript “puro”: capirai jQuery in pochi minuti e saprai quando (non) serve.</div>
+      </article>
+
+      <article class="lesson" id="graphics">
+        <h2>JS Graphics (Canvas)</h2>
+        <p>Con JavaScript e l'elemento <code class="inline">&lt;canvas&gt;</code> puoi disegnare grafica, grafici e semplici giochi direttamente nel browser.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><canvas id="tela" width="240" height="120" style="border:1px solid #ccc"></canvas>
+<script>
+  const ctx = document.getElementById('tela').getContext('2d');
+  ctx.fillStyle = '#4f46e5';
+  ctx.fillRect(20, 20, 80, 80);
+  ctx.beginPath();
+  ctx.arc(170, 60, 40, 0, Math.PI * 2);
+  ctx.fillStyle = '#f59e0b';
+  ctx.fill();
+<\/script></script>
+        </div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi JavaScript pronti da copiare</h2>
+        <p>Il modo migliore per imparare JavaScript è partire da <strong>esempi già funzionanti</strong>: copiali, aprili nell'editor “Provalo tu” e modificali. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <div class="example">
+          <div class="codehead"><span>Contatore di clic</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><button id="btn">Clic: 0</button>
+<script>
+  let n = 0;
+  document.getElementById('btn').onclick = function(){
+    n++; this.textContent = 'Clic: ' + n;
+  };
+<\/script></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="editor">
+        <h2>Editor JavaScript online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor JavaScript online gratuito</strong> integrato. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong> che apre l'editor a schermo intero, con il codice da una parte e il risultato dall'altra.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
+          <li>Modifica il codice JavaScript dentro il blocco <code class="inline">&lt;script&gt;</code>.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda subito il risultato.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz JavaScript — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di JavaScript</strong> per autovalutarti. Pensa alla risposta e poi apri la soluzione.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Quale parola chiave dichiara una variabile che non cambia?</summary><p>✅ <code class="inline">const</code>. Per variabili che cambiano si usa <code class="inline">let</code>.</p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Come si seleziona un elemento per id?</summary><p>✅ <code class="inline">document.getElementById('nome')</code> oppure <code class="inline">document.querySelector('#nome')</code>.</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Cosa restituisce <code class="inline">typeof []</code>?</summary><p>✅ <code class="inline">"object"</code> — in JavaScript gli array sono oggetti. Per verificarli si usa <code class="inline">Array.isArray()</code>.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Differenza tra <code class="inline">==</code> e <code class="inline">===</code>?</summary><p>✅ <code class="inline">==</code> confronta i valori convertendo i tipi; <code class="inline">===</code> confronta valore <em>e</em> tipo (consigliato).</p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Cosa fa <code class="inline">array.map()</code>?</summary><p>✅ Crea un nuovo array trasformando ogni elemento di quello originale.</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi JavaScript con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di JavaScript svolti</strong> sono pensati per chi vuole <strong>fare pratica con esempi reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: prova prima da solo, poi confronta. Sono gli stessi esercizi di JavaScript che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — Saluto personalizzato <span class="tag base">Base</span></h4>
+          <p class="descr">Chiedi il nome all'utente con <code>prompt()</code> e mostra un saluto.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>const nome = prompt("Come ti chiami?");
+alert("Ciao " + nome + "!");</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Pari o dispari <span class="tag base">Base</span></h4>
+          <p class="descr">Scrivi una funzione che dato un numero restituisce "pari" o "dispari".</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>function pariDispari(n){
+  return n % 2 === 0 ? "pari" : "dispari";
+}
+console.log( pariDispari(7) );  // dispari</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Somma di un array <span class="tag medio">Medio</span></h4>
+          <p class="descr">Calcola la somma di tutti i numeri di un array.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>const numeri = [4, 8, 15, 16, 23, 42];
+const somma = numeri.reduce((tot, n) => tot + n, 0);
+console.log(somma);  // 108</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Cambia testo al clic <span class="tag medio">Medio</span></h4>
+          <p class="descr">Quando si clicca un pulsante, cambia il testo di un paragrafo.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>&lt;button id="btn"&gt;Cambia&lt;/button&gt;
+&lt;p id="out"&gt;Testo iniziale&lt;/p&gt;
+&lt;script&gt;
+  document.getElementById('btn').onclick = function(){
+    document.getElementById('out').textContent = 'Testo cambiato!';
+  };
+&lt;/script&gt;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Filtra i maggiorenni <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Da un array di oggetti persona, estrai solo chi ha 18 anni o più.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>const persone = [
+  { nome: "Sara", eta: 17 },
+  { nome: "Luca", eta: 20 },
+  { nome: "Gio", eta: 25 }
+];
+const adulti = persone.filter(p => p.eta >= 18);
+console.log(adulti);  // Luca e Gio</pre></details>
+        </div>
+        <div class="tip-box">⭐ Apri ogni soluzione nell'editor “Provalo tu” e modificala: cambiare il codice è il modo migliore per fissare i concetti.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide JavaScript — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide JavaScript</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — To-do list</span><p>Crea una lista di cose da fare: aggiungi attività, spuntale come completate e salvale nel localStorage così restano dopo aver chiuso il browser.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Calcolatrice</span><p>Realizza una calcolatrice funzionante con i quattro operatori, gestendo anche la divisione per zero.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Orologio digitale</span><p>Mostra l'ora corrente che si aggiorna ogni secondo usando <code class="inline">setInterval</code> e l'oggetto <code class="inline">Date</code>.</p></div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso JavaScript (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di JavaScript</strong>, l'elenco ordinato degli argomenti dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Basi:</strong> sintassi, variabili, operatori, condizioni e cicli.</li>
+          <li><strong>Dati:</strong> stringhe, numeri, array, oggetti, set e map.</li>
+          <li><strong>Funzioni:</strong> funzioni, scope, arrow function e closure.</li>
+          <li><strong>DOM ed eventi:</strong> selezionare e modificare la pagina, gestire i clic.</li>
+          <li><strong>Avanzato:</strong> classi, asincronia, moduli, JSON, Fetch/AJAX, Web API.</li>
+          <li><strong>Pratica:</strong> esempi, esercizi, sfide e mini-progetti interattivi.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio JavaScript</h2>
+        <p>Quanto ci vuole per <strong>imparare JavaScript</strong>? Le basi in una/due settimane. Ecco un <strong>piano di studio</strong> realistico studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1–2</td><td>Sintassi, variabili, operatori, condizioni</td></tr>
+            <tr><td>3</td><td>Cicli, stringhe e numeri</td></tr>
+            <tr><td>4</td><td>Array e oggetti</td></tr>
+            <tr><td>5</td><td>Funzioni, scope e arrow function</td></tr>
+            <tr><td>6</td><td>DOM ed eventi</td></tr>
+            <tr><td>7</td><td>Asincronia, JSON, esercizi e sfide</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande JavaScript frequenti</h2>
+        <p>Le <strong>domande di JavaScript più frequenti ai colloqui</strong> per ruoli web (front-end). Utili anche per le interrogazioni a scuola.</p>
+        <details class="quiz-q"><summary>Differenza tra <code class="inline">var</code>, <code class="inline">let</code> e <code class="inline">const</code>?</summary><p><code class="inline">var</code> è vecchio e ha scope di funzione; <code class="inline">let</code> e <code class="inline">const</code> hanno scope di blocco. <code class="inline">const</code> non si riassegna.</p></details>
+        <details class="quiz-q"><summary>Cos'è una closure?</summary><p>Una funzione che mantiene accesso alle variabili del contesto in cui è stata creata, anche dopo la fine di quella funzione esterna.</p></details>
+        <details class="quiz-q"><summary>Cosa significa che JavaScript è asincrono?</summary><p>Operazioni lunghe (rete, timer) non bloccano il codice: si gestiscono con callback, Promise e async/await.</p></details>
+        <details class="quiz-q"><summary>Differenza tra <code class="inline">null</code> e <code class="inline">undefined</code>?</summary><p><code class="inline">undefined</code>: variabile dichiarata ma senza valore; <code class="inline">null</code>: assenza di valore impostata volontariamente.</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp JavaScript — percorso intensivo</h2>
+        <p>Un <strong>bootcamp JavaScript</strong> condensa la teoria nella pratica continua. Per imparare velocemente, alterna ogni argomento con un esercizio immediato:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un argomento (max 20 minuti).</li>
+          <li>✅ <strong>Riproduci</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Svolgi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con l'argomento successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp JavaScript seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un percorso su misura, dalla prima variabile alla prima web app.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo JavaScript — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di JavaScript</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 JavaScript rende <strong>interattive</strong> le pagine web.</li>
+          <li>📌 Variabili con <code class="inline">let</code> e <code class="inline">const</code>; usa <code class="inline">===</code> per i confronti.</li>
+          <li>📌 <strong>Array</strong> e <strong>oggetti</strong> sono le strutture dati di base.</li>
+          <li>📌 Le <strong>funzioni</strong> sono valori: callback, arrow function, closure.</li>
+          <li>📌 Il <strong>DOM</strong> permette di leggere e modificare la pagina; gli <strong>eventi</strong> reagiscono all'utente.</li>
+          <li>📌 L'<strong>asincronia</strong> (Promise, async/await, fetch) gestisce dati e tempo.</li>
+        </ul>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="rif-stringhe">
+        <h2>Riferimento — Metodi delle stringhe</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>length</code></td><td>Numero di caratteri</td></tr>
+            <tr><td><code>toUpperCase()</code></td><td>Tutto maiuscolo</td></tr>
+            <tr><td><code>includes()</code></td><td>Verifica se contiene un testo</td></tr>
+            <tr><td><code>slice()</code></td><td>Estrae una porzione</td></tr>
+            <tr><td><code>replace()</code></td><td>Sostituisce del testo</td></tr>
+            <tr><td><code>split()</code></td><td>Divide in un array</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-array">
+        <h2>Riferimento — Metodi degli array</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>push()</code> / <code>pop()</code></td><td>Aggiunge / rimuove in fondo</td></tr>
+            <tr><td><code>map()</code></td><td>Trasforma ogni elemento</td></tr>
+            <tr><td><code>filter()</code></td><td>Tiene solo gli elementi che superano un test</td></tr>
+            <tr><td><code>reduce()</code></td><td>Riduce a un singolo valore (es. somma)</td></tr>
+            <tr><td><code>find()</code></td><td>Trova il primo elemento che corrisponde</td></tr>
+            <tr><td><code>forEach()</code></td><td>Esegue una funzione per ogni elemento</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-numeri">
+        <h2>Riferimento — Metodi dei numeri</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>toFixed(2)</code></td><td>Arrotonda a N decimali</td></tr>
+            <tr><td><code>parseInt()</code></td><td>Testo → numero intero</td></tr>
+            <tr><td><code>parseFloat()</code></td><td>Testo → numero decimale</td></tr>
+            <tr><td><code>Number.isInteger()</code></td><td>Verifica se è un intero</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-math">
+        <h2>Riferimento — Oggetto Math</h2>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>Math.round()</code></td><td>Arrotonda all'intero più vicino</td></tr>
+            <tr><td><code>Math.floor()</code> / <code>Math.ceil()</code></td><td>Arrotonda per difetto / eccesso</td></tr>
+            <tr><td><code>Math.random()</code></td><td>Numero casuale tra 0 e 1</td></tr>
+            <tr><td><code>Math.max()</code> / <code>Math.min()</code></td><td>Massimo / minimo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-date">
+        <h2>Riferimento — Metodi delle date</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Restituisce</th></tr></thead>
+          <tbody>
+            <tr><td><code>new Date()</code></td><td>Data e ora attuali</td></tr>
+            <tr><td><code>getFullYear()</code></td><td>L'anno</td></tr>
+            <tr><td><code>getMonth()</code></td><td>Il mese (0–11)</td></tr>
+            <tr><td><code>getDate()</code></td><td>Il giorno del mese</td></tr>
+            <tr><td><code>getHours()</code></td><td>L'ora</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-dom">
+        <h2>Riferimento — Metodi del DOM</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>getElementById()</code></td><td>Seleziona per id</td></tr>
+            <tr><td><code>querySelector()</code></td><td>Seleziona con un selettore CSS</td></tr>
+            <tr><td><code>createElement()</code></td><td>Crea un nuovo elemento</td></tr>
+            <tr><td><code>appendChild()</code></td><td>Aggiunge un figlio</td></tr>
+            <tr><td><code>addEventListener()</code></td><td>Aggancia un evento</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-eventi">
+        <h2>Riferimento — Eventi JavaScript</h2>
+        <table class="ref-table">
+          <thead><tr><th>Evento</th><th>Quando scatta</th></tr></thead>
+          <tbody>
+            <tr><td><code>click</code></td><td>Al clic</td></tr>
+            <tr><td><code>input</code></td><td>Mentre si digita in un campo</td></tr>
+            <tr><td><code>submit</code></td><td>All'invio di un form</td></tr>
+            <tr><td><code>keydown</code></td><td>Alla pressione di un tasto</td></tr>
+            <tr><td><code>load</code></td><td>Al caricamento della pagina</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-operatori">
+        <h2>Riferimento — Operatori JavaScript</h2>
+        <table class="ref-table">
+          <thead><tr><th>Operatore</th><th>Significato</th></tr></thead>
+          <tbody>
+            <tr><td><code>=== / !==</code></td><td>Uguaglianza / diversità stretta</td></tr>
+            <tr><td><code>&amp;&amp; / ||</code></td><td>AND / OR logici</td></tr>
+            <tr><td><code>?:</code></td><td>Operatore ternario (if compatto)</td></tr>
+            <tr><td><code>??</code></td><td>Valore di riserva se null/undefined</td></tr>
+            <tr><td><code>...</code></td><td>Spread / rest</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-keywords">
+        <h2>Riferimento — Parole chiave JavaScript</h2>
+        <table class="ref-table">
+          <thead><tr><th>Parola chiave</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>let</code> / <code>const</code></td><td>Dichiarare variabili</td></tr>
+            <tr><td><code>function</code></td><td>Definire una funzione</td></tr>
+            <tr><td><code>return</code></td><td>Restituire un valore</td></tr>
+            <tr><td><code>if</code> / <code>else</code></td><td>Condizioni</td></tr>
+            <tr><td><code>for</code> / <code>while</code></td><td>Cicli</td></tr>
+            <tr><td><code>class</code> / <code>extends</code></td><td>Classi ed ereditarietà</td></tr>
+            <tr><td><code>async</code> / <code>await</code></td><td>Codice asincrono</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato JavaScript</h2>
+        <p>Vuoi una <strong>certificazione di JavaScript</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi e, soprattutto, per <strong>costruire pagine e app web interattive reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di JavaScript svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è il tuo portfolio: una web app che hai costruito da solo vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di JavaScript completo e gratuito in italiano</strong>: dalle basi (variabili, condizioni, cicli) ad array e oggetti, dal DOM e gli eventi fino a classi, asincronia, moduli, JSON, Fetch/AJAX e Web API, con esercizi, sfide e riferimenti. Ora sai rendere interattiva qualsiasi pagina web.</p>
+        <p>Il modo migliore per imparare JavaScript è <strong>fare pratica ogni giorno</strong>: rifai gli <a href="#esercizi">esercizi JavaScript</a>, affronta le <a href="#sfide">sfide</a> e prova a costruire una piccola web app.</p>
+        <h3>E ora?</h3>
+        <p>Con HTML, CSS e JavaScript hai la triade completa dello sviluppo web front-end. Il prossimo passo è approfondire framework moderni o il back-end (database, server). Se vuoi un percorso guidato passo passo o aiuto per una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Costruisci una piccola to-do list: aggiungi attività, spuntale come completate e salvale nel localStorage così restano anche dopo aver chiuso il browser.</p></div>
         <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
     </main>
