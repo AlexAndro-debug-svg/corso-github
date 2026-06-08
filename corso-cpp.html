@@ -772,13 +772,16 @@ int main() {
     }
 
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = dedent(ex.querySelector('.code').textContent
+      var codeScript = ex.querySelector('.code');
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeScript || !codeEl) { return; }
+      var raw = dedent(codeScript.textContent
                   .replace(/^\n/, '').replace(/\s+$/, '')
                   .replace(/<\\\/script>/g, '<\/script>'));
-      var codeEl = ex.querySelector('.codeview code');
       codeEl.textContent = raw;
       if (window.Prism) { Prism.highlightElement(codeEl); }
-      ex.querySelector('.btn-try').addEventListener('click', function(){ openEditor(raw); });
+      var btn = ex.querySelector('.btn-try');
+      if (btn) { btn.addEventListener('click', function(){ openEditor(raw); }); }
     });
   })();
 </script>

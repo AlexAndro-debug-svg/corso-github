@@ -1012,15 +1012,12 @@ def saluta():
             <tr><td>Riconnessione automatica</td><td>Riconnessione manuale</td></tr>
           </tbody>
         </table>
-        <div class="example">
-          <div class="codehead"><span>Esempio lato browser</span></div>
-          <pre class="codeview"><code class="language-markup">&lt;script&gt;
+        <pre class="codeview"><code class="language-markup">&lt;script&gt;
   const sorgente = new EventSource("/aggiornamenti");
   sorgente.onmessage = function(evento) {
     document.getElementById("notizie").innerHTML += evento.data + "&lt;br&gt;";
   };
 &lt;/script&gt;</code></pre>
-        </div>
         <div class="note-box">💡 L'oggetto <code class="inline">EventSource</code> apre la connessione una sola volta e resta in ascolto: ogni volta che il server invia un dato, scatta <code class="inline">onmessage</code>.</div>
       </article>
 
@@ -1542,13 +1539,16 @@ def saluta():
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
 
     document.querySelectorAll('.example').forEach(function(ex){
-      var raw = ex.querySelector('.code').textContent
+      var codeScript = ex.querySelector('.code');
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeScript || !codeEl) { return; }
+      var raw = codeScript.textContent
                   .replace(/^\n/, '').replace(/\s+$/, '')
                   .replace(/<\\\/script>/g, '<\/script>');
-      var codeEl = ex.querySelector('.codeview code');
       codeEl.textContent = raw;
       if (window.Prism) { Prism.highlightElement(codeEl); }
-      ex.querySelector('.btn-try').addEventListener('click', function(){ openEditor(raw); });
+      var btn = ex.querySelector('.btn-try');
+      if (btn) { btn.addEventListener('click', function(){ openEditor(raw); }); }
     });
   })();
 </script>
