@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso SQL in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di SQL in italiano completo, gratuito e interattivo: SELECT, WHERE, ORDER BY, INSERT, UPDATE, DELETE, JOIN, GROUP BY, HAVING, funzioni di aggregazione, subquery, viste, indici e creazione di tabelle. Esegui query reali nel browser.">
+  <title>Corso SQL completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di SQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, subquery, funzioni di aggregazione, vincoli, chiavi primarie ed esterne, viste, indici e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.">
   <meta name="keywords" content="corso sql italiano, imparare sql, tutorial sql gratis, query sql, select sql, join sql, database relazionali, esercizi sql">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso SQL in italiano completo e gratuito — AlessandroSimone.it">
@@ -80,10 +80,30 @@
     .cm-s-default .cm-number { color: #d97706; }
     .cm-s-default .cm-comment { color: #999; font-style: italic; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-sql.html">
@@ -95,15 +115,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-sql.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso SQL in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di SQL in italiano completo, gratuito e interattivo: SELECT, WHERE, ORDER BY, INSERT, UPDATE, DELETE, JOIN, GROUP BY, HAVING, funzioni di aggregazione, subquery, viste, indici e creazione di tabelle. Esegui query reali nel browser.">
+  <meta name="twitter:title" content="Corso SQL completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di SQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, subquery, funzioni di aggregazione, vincoli, chiavi primarie ed esterne, viste, indici e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di SQL in italiano",
-  "description": "Corso di SQL in italiano completo, gratuito e interattivo: SELECT, WHERE, ORDER BY, INSERT, UPDATE, DELETE, JOIN, GROUP BY, HAVING, funzioni di aggregazione, subquery, viste, indici e creazione di tabelle. Esegui query reali nel browser.",
+  "description": "Corso di SQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, subquery, funzioni di aggregazione, vincoli, chiavi primarie ed esterne, viste, indici e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-sql.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -183,28 +203,72 @@
       <a href="#update">UPDATE</a>
       <a href="#delete">DELETE</a>
       <a href="#limit">LIMIT</a>
+      <a href="#aggregate">Funzioni di aggregazione</a>
       <a href="#minmax">MIN e MAX</a>
       <a href="#count">COUNT, AVG, SUM</a>
       <a href="#like">LIKE</a>
+      <a href="#wildcards">Wildcards</a>
       <a href="#in">IN</a>
       <a href="#between">BETWEEN</a>
       <a href="#alias">Alias</a>
       <a href="#join">JOIN</a>
       <a href="#innerjoin">INNER JOIN</a>
       <a href="#leftjoin">LEFT JOIN</a>
-      <a href="#union">UNION</a>
+      <a href="#rightjoin">RIGHT JOIN</a>
+      <a href="#fulljoin">FULL JOIN</a>
+      <a href="#selfjoin">SELF JOIN</a>
+      <a href="#union">UNION e UNION ALL</a>
       <a href="#groupby">GROUP BY</a>
       <a href="#having">HAVING</a>
+      <a href="#exists">EXISTS</a>
+      <a href="#anyall">ANY e ALL</a>
+      <a href="#selectinto">SELECT INTO</a>
+      <a href="#insertintoselect">INSERT INTO SELECT</a>
+      <a href="#case">CASE</a>
+      <a href="#nullfunctions">Funzioni NULL</a>
+      <a href="#stored">Stored Procedures</a>
+      <a href="#commenti">Commenti</a>
       <a href="#subquery">Subquery</a>
       <h4>Gestione del database</h4>
+      <a href="#createdb">CREATE DATABASE</a>
+      <a href="#dropdb">DROP DATABASE</a>
+      <a href="#backupdb">BACKUP DATABASE</a>
       <a href="#create">CREATE TABLE</a>
-      <a href="#constraints">Vincoli (Constraints)</a>
-      <a href="#alter">ALTER TABLE</a>
       <a href="#drop">DROP TABLE</a>
+      <a href="#alter">ALTER TABLE</a>
+      <a href="#constraints">Vincoli (Constraints)</a>
+      <a href="#notnull">NOT NULL</a>
+      <a href="#unique">UNIQUE</a>
+      <a href="#primarykey">PRIMARY KEY</a>
+      <a href="#foreignkey">FOREIGN KEY</a>
+      <a href="#check">CHECK</a>
+      <a href="#default">DEFAULT</a>
+      <a href="#indici">CREATE INDEX</a>
+      <a href="#autoincrement">AUTO INCREMENT</a>
+      <a href="#date">Date SQL</a>
       <a href="#viste">Viste (VIEW)</a>
-      <a href="#indici">Indici (INDEX)</a>
-      <h4>Conclusione</h4>
-      <a href="#fine">E ora?</a>
+      <a href="#injection">SQL Injection</a>
+      <a href="#prepared">Prepared Statements</a>
+      <a href="#hosting">Hosting SQL</a>
+      <h4>Esempi &amp; Pratica SQL</h4>
+      <a href="#esempi">Esempi SQL</a>
+      <a href="#editor">Editor SQL online</a>
+      <a href="#quiz">Quiz SQL</a>
+      <a href="#esercizi">Esercizi SQL</a>
+      <a href="#sfide">Sfide SQL</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp SQL</a>
+      <a href="#riepilogo">Riepilogo SQL</a>
+      <h4>Riferimenti SQL</h4>
+      <a href="#data-types">Tipi di dato</a>
+      <a href="#keywords">Parole chiave</a>
+      <a href="#rif-funzioni">Funzioni SQL</a>
+      <a href="#quick-ref">Quick Reference</a>
+      <h4>Certificazione SQL</h4>
+      <a href="#certificato">Certificato SQL</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
     <main>
 
@@ -652,12 +716,493 @@ SELECT nome FROM studenti WHERE citta = 'Roma';</script>
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di SQL</h2>
-        <p>Hai imparato a interrogare i dati (SELECT, WHERE, ORDER BY), ad aggregarli e raggrupparli (COUNT, AVG, GROUP BY, HAVING), a unire più tabelle (JOIN), a usare le subquery e a gestire la struttura del database (CREATE, ALTER, DROP, VIEW, INDEX).</p>
-        <p>Il segreto per padroneggiare SQL è <strong>esercitarsi con query reali</strong>: modifica gli esempi di questo corso e osserva come cambiano i risultati. Se vuoi un percorso guidato o aiuto per una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Progetta un piccolo database per una biblioteca (libri, autori, prestiti) e scrivi le query per sapere quali libri sono in prestito e chi ha restituito in ritardo.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+      <!-- ===== TOPIC AGGIUNTIVI TUTORIAL ===== -->
+      <article class="lesson" id="aggregate">
+        <h2>SQL Funzioni di aggregazione</h2>
+        <p>Le <strong>funzioni di aggregazione</strong> calcolano un singolo valore a partire da un insieme di righe: <code class="inline">COUNT()</code>, <code class="inline">SUM()</code>, <code class="inline">AVG()</code>, <code class="inline">MIN()</code> e <code class="inline">MAX()</code>. Sono la base dei report e delle statistiche su un database.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT COUNT(*) AS totale, AVG(voto) AS media, MAX(voto) AS migliore
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="wildcards">
+        <h2>SQL Wildcards (caratteri jolly)</h2>
+        <p>I <strong>wildcards</strong> si usano con <code class="inline">LIKE</code> per cercare per corrispondenza parziale. Il <code class="inline">%</code> sostituisce qualsiasi sequenza di caratteri, l'<code class="inline">_</code> un singolo carattere.</p>
+        <table class="ref-table">
+          <thead><tr><th>Pattern</th><th>Trova</th></tr></thead>
+          <tbody>
+            <tr><td><code>'A%'</code></td><td>Tutto ciò che inizia per A</td></tr>
+            <tr><td><code>'%a'</code></td><td>Tutto ciò che finisce per a</td></tr>
+            <tr><td><code>'%ar%'</code></td><td>Contiene "ar"</td></tr>
+            <tr><td><code>'_a%'</code></td><td>Seconda lettera "a"</td></tr>
+          </tbody>
+        </table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome FROM studenti
+WHERE nome LIKE 'M%';</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="rightjoin">
+        <h2>SQL RIGHT JOIN</h2>
+        <p>Il <strong>RIGHT JOIN</strong> restituisce tutte le righe della tabella di <em>destra</em> e le corrispondenze da quella di sinistra; dove non c'è corrispondenza, i campi di sinistra sono <code class="inline">NULL</code>. È lo specchio del LEFT JOIN.</p>
+        <pre class="codeview"><code class="language-sql">SELECT studenti.nome, classi.aula
+FROM studenti
+RIGHT JOIN classi ON studenti.classe_id = classi.id;</code></pre>
+        <div class="note-box">💡 SQLite (usato dall'editor di questo corso) non supporta direttamente RIGHT JOIN: si ottiene lo stesso risultato invertendo le tabelle con un LEFT JOIN.</div>
+      </article>
+
+      <article class="lesson" id="fulljoin">
+        <h2>SQL FULL JOIN (FULL OUTER JOIN)</h2>
+        <p>Il <strong>FULL OUTER JOIN</strong> restituisce tutte le righe di <em>entrambe</em> le tabelle: quando non c'è corrispondenza, i campi mancanti sono <code class="inline">NULL</code>. Unisce i risultati di LEFT e RIGHT JOIN.</p>
+        <pre class="codeview"><code class="language-sql">SELECT studenti.nome, classi.aula
+FROM studenti
+FULL OUTER JOIN classi ON studenti.classe_id = classi.id;</code></pre>
+      </article>
+
+      <article class="lesson" id="selfjoin">
+        <h2>SQL SELF JOIN</h2>
+        <p>Un <strong>SELF JOIN</strong> è una tabella unita a sé stessa, usando gli alias per distinguerne le due copie. Utile, ad esempio, per confrontare righe della stessa tabella (studenti della stessa città).</p>
+        <pre class="codeview"><code class="language-sql">SELECT a.nome AS studente1, b.nome AS studente2, a.citta
+FROM studenti a, studenti b
+WHERE a.citta = b.citta AND a.id &lt; b.id;</code></pre>
+      </article>
+
+      <article class="lesson" id="exists">
+        <h2>SQL EXISTS</h2>
+        <p>L'operatore <strong>EXISTS</strong> verifica se una subquery restituisce almeno una riga. Restituisce vero o falso e si usa spesso per controllare l'esistenza di dati collegati.</p>
+        <pre class="codeview"><code class="language-sql">SELECT nome FROM classi c
+WHERE EXISTS (
+  SELECT 1 FROM studenti s WHERE s.classe_id = c.id
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="anyall">
+        <h2>SQL ANY e ALL</h2>
+        <p>Gli operatori <strong>ANY</strong> e <strong>ALL</strong> confrontano un valore con i risultati di una subquery. <code class="inline">ANY</code> è vero se almeno un confronto è vero; <code class="inline">ALL</code> è vero se lo sono tutti.</p>
+        <pre class="codeview"><code class="language-sql">-- studenti con voto maggiore di ALMENO uno della 3A
+SELECT nome FROM studenti
+WHERE voto &gt; ANY (SELECT voto FROM studenti WHERE classe = '3A');</code></pre>
+      </article>
+
+      <article class="lesson" id="selectinto">
+        <h2>SQL SELECT INTO</h2>
+        <p><strong>SELECT INTO</strong> copia i dati di una tabella in una <em>nuova</em> tabella. Utile per creare backup o tabelle temporanee di lavoro.</p>
+        <pre class="codeview"><code class="language-sql">SELECT * INTO studenti_backup
+FROM studenti;
+
+-- solo alcune colonne e righe
+SELECT nome, voto INTO promossi
+FROM studenti WHERE voto &gt;= 6;</code></pre>
+      </article>
+
+      <article class="lesson" id="insertintoselect">
+        <h2>SQL INSERT INTO SELECT</h2>
+        <p><strong>INSERT INTO SELECT</strong> copia righe da una tabella a un'altra <em>già esistente</em>. A differenza di SELECT INTO, la tabella di destinazione deve esistere.</p>
+        <pre class="codeview"><code class="language-sql">INSERT INTO promossi (nome, voto)
+SELECT nome, voto FROM studenti
+WHERE voto &gt;= 6;</code></pre>
+      </article>
+
+      <article class="lesson" id="case">
+        <h2>SQL CASE</h2>
+        <p>L'espressione <strong>CASE</strong> è l'equivalente dell'<em>if/else</em> in SQL: restituisce valori diversi a seconda delle condizioni. Perfetta per creare colonne calcolate.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome, voto,
+  CASE
+    WHEN voto &gt;= 8 THEN 'Ottimo'
+    WHEN voto &gt;= 6 THEN 'Sufficiente'
+    ELSE 'Insufficiente'
+  END AS giudizio
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="nullfunctions">
+        <h2>SQL Funzioni per i NULL</h2>
+        <p>Le <strong>funzioni per i valori NULL</strong> forniscono un valore alternativo quando un campo è vuoto. In SQLite/standard si usa <code class="inline">COALESCE()</code>; altri dialetti hanno <code class="inline">IFNULL()</code>, <code class="inline">ISNULL()</code> o <code class="inline">NVL()</code>.</p>
+        <pre class="codeview"><code class="language-sql">SELECT nome, COALESCE(citta, 'Città non indicata') AS citta
+FROM studenti;</code></pre>
+      </article>
+
+      <article class="lesson" id="stored">
+        <h2>SQL Stored Procedures</h2>
+        <p>Una <strong>stored procedure</strong> è un blocco di codice SQL salvato nel database e richiamabile per nome, anche con parametri. Riduce le ripetizioni e centralizza la logica sul server.</p>
+        <pre class="codeview"><code class="language-sql">-- sintassi SQL Server
+CREATE PROCEDURE StudentiPerClasse @classe VARCHAR(10)
+AS
+SELECT * FROM studenti WHERE classe = @classe;
+
+-- richiamo
+EXEC StudentiPerClasse @classe = '3A';</code></pre>
+        <div class="note-box">💡 La sintassi delle stored procedure cambia tra MySQL, SQL Server e PostgreSQL, ma il concetto è lo stesso: una procedura riutilizzabile salvata nel database.</div>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>SQL Commenti</h2>
+        <p>I <strong>commenti</strong> documentano le query e non vengono eseguiti. Su una riga si usa <code class="inline">--</code>, su più righe <code class="inline">/* ... */</code>.</p>
+        <pre class="codeview"><code class="language-sql">-- Questo è un commento su una riga
+SELECT nome FROM studenti;  -- anche a fine riga
+
+/* Questo commento
+   occupa più righe */</code></pre>
+      </article>
+
+      <!-- ===== GESTIONE DATABASE ===== -->
+      <article class="lesson" id="createdb">
+        <h2>SQL CREATE DATABASE</h2>
+        <p>Il comando <strong>CREATE DATABASE</strong> crea un nuovo database vuoto, dentro al quale poi creerai le tabelle.</p>
+        <pre class="codeview"><code class="language-sql">CREATE DATABASE scuola;</code></pre>
+      </article>
+
+      <article class="lesson" id="dropdb">
+        <h2>SQL DROP DATABASE</h2>
+        <p><strong>DROP DATABASE</strong> elimina <em>definitivamente</em> un intero database con tutti i suoi dati. Da usare con grande attenzione.</p>
+        <pre class="codeview"><code class="language-sql">DROP DATABASE scuola;</code></pre>
+        <div class="tip-box">⚠️ Operazione irreversibile: prima di eseguire un DROP fai sempre un backup.</div>
+      </article>
+
+      <article class="lesson" id="backupdb">
+        <h2>SQL BACKUP DATABASE</h2>
+        <p>Il <strong>backup</strong> salva una copia del database per poterlo ripristinare in caso di guasto o errore. La sintassi dipende dal sistema (qui SQL Server).</p>
+        <pre class="codeview"><code class="language-sql">BACKUP DATABASE scuola
+TO DISK = 'C:\backup\scuola.bak';</code></pre>
+      </article>
+
+      <article class="lesson" id="notnull">
+        <h2>SQL NOT NULL</h2>
+        <p>Il vincolo <strong>NOT NULL</strong> impone che una colonna abbia sempre un valore: non può restare vuota.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  nome TEXT NOT NULL,
+  voto INTEGER
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="unique">
+        <h2>SQL UNIQUE</h2>
+        <p>Il vincolo <strong>UNIQUE</strong> garantisce che tutti i valori di una colonna siano diversi tra loro (ad esempio una email o una matricola).</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  matricola TEXT UNIQUE,
+  nome TEXT NOT NULL
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="primarykey">
+        <h2>SQL PRIMARY KEY</h2>
+        <p>La <strong>chiave primaria</strong> identifica in modo univoco ogni riga di una tabella. È <code class="inline">UNIQUE</code> e <code class="inline">NOT NULL</code> insieme, e ogni tabella dovrebbe averne una.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  nome TEXT NOT NULL
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="foreignkey">
+        <h2>SQL FOREIGN KEY</h2>
+        <p>La <strong>chiave esterna</strong> collega una tabella a un'altra, garantendo l'integrità dei dati: il valore deve esistere nella tabella collegata. È la base delle relazioni tra tabelle.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  nome TEXT,
+  classe_id INTEGER,
+  FOREIGN KEY (classe_id) REFERENCES classi(id)
+);</code></pre>
+        <div class="note-box">💡 La chiave esterna (FOREIGN KEY) punta alla chiave primaria (PRIMARY KEY) di un'altra tabella: è il “ponte” che lega i dati nel modello relazionale.</div>
+      </article>
+
+      <article class="lesson" id="check">
+        <h2>SQL CHECK</h2>
+        <p>Il vincolo <strong>CHECK</strong> impone una condizione sui valori ammessi in una colonna (ad esempio un voto tra 1 e 10).</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  nome TEXT,
+  voto INTEGER CHECK (voto &gt;= 1 AND voto &lt;= 10)
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="default">
+        <h2>SQL DEFAULT</h2>
+        <p>Il vincolo <strong>DEFAULT</strong> assegna un valore predefinito a una colonna quando non se ne specifica uno durante l'inserimento.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INTEGER PRIMARY KEY,
+  nome TEXT,
+  citta TEXT DEFAULT 'Roma'
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="autoincrement">
+        <h2>SQL AUTO INCREMENT</h2>
+        <p>L'<strong>auto increment</strong> genera automaticamente un numero progressivo per ogni nuova riga, perfetto per le chiavi primarie. In SQLite si ottiene con <code class="inline">INTEGER PRIMARY KEY AUTOINCREMENT</code>, in MySQL con <code class="inline">AUTO_INCREMENT</code>.</p>
+        <pre class="codeview"><code class="language-sql">-- MySQL
+CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50)
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="date">
+        <h2>SQL Date</h2>
+        <p>SQL gestisce <strong>date e orari</strong> con tipi come <code class="inline">DATE</code>, <code class="inline">TIME</code> e <code class="inline">DATETIME</code>. Attenzione al formato: confrontare date richiede di usare lo standard <code class="inline">'AAAA-MM-GG'</code>.</p>
+        <pre class="codeview"><code class="language-sql">SELECT * FROM ordini
+WHERE data_ordine &gt;= '2026-01-01'
+  AND data_ordine &lt; '2026-02-01';</code></pre>
+      </article>
+
+      <article class="lesson" id="injection">
+        <h2>SQL Injection (sicurezza)</h2>
+        <p>La <strong>SQL Injection</strong> è una delle vulnerabilità più pericolose: un attaccante inserisce codice SQL malevolo nei campi di input per leggere o distruggere dati. Mai costruire query concatenando direttamente l'input dell'utente!</p>
+        <pre class="codeview"><code class="language-sql">-- ❌ PERICOLOSO: input concatenato
+"SELECT * FROM utenti WHERE nome = '" + input + "'"
+-- se input = ' OR '1'='1  l'attaccante entra senza password</code></pre>
+        <div class="tip-box">⭐ La difesa è usare le <strong>query parametrizzate</strong> (prepared statements): l'input viene trattato come dato, mai come codice. Vedi la sezione successiva.</div>
+      </article>
+
+      <article class="lesson" id="prepared">
+        <h2>SQL Prepared Statements e parametri</h2>
+        <p>I <strong>prepared statements</strong> (query parametrizzate) separano il codice SQL dai dati usando dei segnaposto (<code class="inline">?</code> o <code class="inline">:nome</code>). È il modo corretto e sicuro per inserire l'input dell'utente, e previene la SQL Injection.</p>
+        <pre class="codeview"><code class="language-sql">-- il ? è un parametro: il valore viene passato a parte, in sicurezza
+SELECT * FROM utenti WHERE nome = ? AND password = ?;</code></pre>
+        <div class="note-box">💡 In PHP, Python, Java ecc. il valore reale dei parametri si passa con una funzione apposita (es. <code class="inline">bindParam</code>, <code class="inline">execute([...])</code>), non concatenandolo nella stringa.</div>
+      </article>
+
+      <article class="lesson" id="hosting">
+        <h2>SQL Hosting</h2>
+        <p>Per usare un database in un sito web reale serve un <strong>server di database</strong> in hosting. I sistemi più diffusi sono <strong>MySQL/MariaDB</strong>, <strong>PostgreSQL</strong>, <strong>SQL Server</strong> e <strong>Oracle</strong>; molti hosting includono MySQL con il pannello phpMyAdmin.</p>
+        <div class="note-box">💡 Per imparare e fare esercizi non serve alcun hosting: in questo corso esegui SQL direttamente nel browser con SQLite. Approfondisci con il <a href="corso-mysql.html">corso MySQL</a>.</div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi SQL pronti da copiare</h2>
+        <p>Il modo migliore per imparare SQL è partire da <strong>query già funzionanti</strong>: copiale, aprile nell'editor “Provalo tu” ed eseguile sul database di esempio. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <div class="example">
+          <div class="codehead"><span>Classifica per media voto</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT classe, AVG(voto) AS media
+FROM studenti
+GROUP BY classe
+ORDER BY media DESC;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="editor">
+        <h2>Editor SQL online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor SQL online gratuito</strong> integrato, basato su SQLite: esegui query reali direttamente nel browser, senza installare nulla. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong>.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
+          <li>Modifica la query SQL nell'editor.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda subito la tabella dei risultati.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz SQL — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di SQL</strong> per autovalutarti. Pensa alla risposta e poi apri la soluzione.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Quale comando estrae dati da una tabella?</summary><p>✅ <code class="inline">SELECT</code>.</p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Quale clausola filtra le righe?</summary><p>✅ <code class="inline">WHERE</code>. Per filtrare <em>dopo</em> un raggruppamento si usa <code class="inline">HAVING</code>.</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Quale JOIN restituisce tutte le righe di sinistra anche senza corrispondenza?</summary><p>✅ Il <code class="inline">LEFT JOIN</code>.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Come si contano le righe di una tabella?</summary><p>✅ Con <code class="inline">SELECT COUNT(*) FROM tabella;</code></p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Quale vincolo collega due tabelle?</summary><p>✅ La <code class="inline">FOREIGN KEY</code> (chiave esterna).</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi SQL con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di SQL svolti</strong> sono pensati per chi vuole <strong>fare pratica con query reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: provala nell'editor sul database di esempio (tabelle <code class="inline">studenti</code> e <code class="inline">classi</code>). Sono gli stessi esercizi di SQL che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — Tutti i nomi <span class="tag base">Base</span></h4>
+          <p class="descr">Estrai solo il nome e il voto di tutti gli studenti.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT nome, voto FROM studenti;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Solo i promossi <span class="tag base">Base</span></h4>
+          <p class="descr">Mostra gli studenti con voto maggiore o uguale a 6, ordinati dal voto più alto.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT nome, voto FROM studenti
+WHERE voto &gt;= 6
+ORDER BY voto DESC;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Media per classe <span class="tag medio">Medio</span></h4>
+          <p class="descr">Calcola la media dei voti per ogni classe.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT classe, AVG(voto) AS media
+FROM studenti
+GROUP BY classe;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Studenti e aula <span class="tag medio">Medio</span></h4>
+          <p class="descr">Mostra il nome di ogni studente insieme all'aula della sua classe (JOIN tra studenti e classi).</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT s.nome, c.aula
+FROM studenti s
+JOIN classi c ON s.classe_id = c.id;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Classi numerose <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Trova le classi che hanno più di 1 studente, mostrando quanti sono.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT classe, COUNT(*) AS numero
+FROM studenti
+GROUP BY classe
+HAVING COUNT(*) &gt; 1;</pre></details>
+        </div>
+        <div class="tip-box">⭐ Esegui ogni soluzione nell'editor “Provalo tu” e modificala: cambiare le condizioni è il modo migliore per capire come funziona SQL.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide SQL — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide SQL</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — Biblioteca</span><p>Progetta un database per una biblioteca (libri, autori, prestiti) con le giuste chiavi esterne e scrivi le query per sapere quali libri sono in prestito.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Top studenti</span><p>Scrivi una query che mostri, per ogni classe, solo lo studente con il voto più alto.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Report con CASE</span><p>Crea un report che classifichi ogni studente come "Ottimo", "Sufficiente" o "Insufficiente" e conti quanti studenti ci sono in ogni categoria.</p></div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso SQL (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di SQL</strong>, l'elenco ordinato degli argomenti dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Interrogazioni:</strong> SELECT, DISTINCT, WHERE, ORDER BY, operatori.</li>
+          <li><strong>Modifica dati:</strong> INSERT, UPDATE, DELETE, valori NULL.</li>
+          <li><strong>Aggregazione:</strong> COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING.</li>
+          <li><strong>Più tabelle:</strong> JOIN (inner, left, right, full, self), UNION, subquery.</li>
+          <li><strong>Struttura:</strong> CREATE, ALTER, DROP, vincoli, chiavi, indici, viste.</li>
+          <li><strong>Sicurezza e pratica:</strong> SQL Injection, prepared statements, esercizi.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio SQL</h2>
+        <p>Quanto ci vuole per <strong>imparare SQL</strong>? Le basi in una settimana. Ecco un <strong>piano di studio</strong> realistico studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1–2</td><td>SELECT, WHERE, ORDER BY, operatori</td></tr>
+            <tr><td>3</td><td>INSERT, UPDATE, DELETE, NULL</td></tr>
+            <tr><td>4</td><td>Funzioni di aggregazione, GROUP BY, HAVING</td></tr>
+            <tr><td>5</td><td>JOIN e subquery</td></tr>
+            <tr><td>6</td><td>CREATE TABLE, vincoli, chiavi, indici</td></tr>
+            <tr><td>7</td><td>Viste, sicurezza, esercizi e sfide</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande SQL frequenti</h2>
+        <p>Le <strong>domande di SQL più frequenti ai colloqui</strong> per ruoli da sviluppatore e data analyst. Utili anche per le interrogazioni a scuola.</p>
+        <details class="quiz-q"><summary>Differenza tra WHERE e HAVING?</summary><p><code class="inline">WHERE</code> filtra le righe prima del raggruppamento; <code class="inline">HAVING</code> filtra i gruppi dopo <code class="inline">GROUP BY</code>.</p></details>
+        <details class="quiz-q"><summary>Differenza tra INNER JOIN e LEFT JOIN?</summary><p>INNER restituisce solo le righe con corrispondenza in entrambe le tabelle; LEFT include tutte quelle di sinistra anche senza corrispondenza.</p></details>
+        <details class="quiz-q"><summary>Cos'è una chiave primaria e una esterna?</summary><p>La primaria identifica univocamente una riga; l'esterna collega una tabella alla chiave primaria di un'altra.</p></details>
+        <details class="quiz-q"><summary>Cos'è la SQL Injection e come si previene?</summary><p>È l'iniezione di codice SQL malevolo tramite l'input. Si previene con le query parametrizzate (prepared statements).</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp SQL — percorso intensivo</h2>
+        <p>Un <strong>bootcamp SQL</strong> condensa la teoria nella pratica continua. Per imparare velocemente, alterna ogni argomento con una query da scrivere subito:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un comando (max 20 minuti).</li>
+          <li>✅ <strong>Esegui</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Risolvi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con il comando successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp SQL seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un percorso su misura, dalla prima SELECT al database completo.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo SQL — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di SQL</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 SQL è il linguaggio per <strong>interrogare e gestire</strong> i database relazionali.</li>
+          <li>📌 <code class="inline">SELECT ... FROM ... WHERE</code> è la struttura base di ogni query.</li>
+          <li>📌 Le <strong>funzioni di aggregazione</strong> con <code class="inline">GROUP BY</code> creano report.</li>
+          <li>📌 I <strong>JOIN</strong> uniscono più tabelle tramite le chiavi.</li>
+          <li>📌 I <strong>vincoli</strong> (PRIMARY KEY, FOREIGN KEY, NOT NULL…) garantiscono l'integrità.</li>
+          <li>📌 Usa sempre i <strong>prepared statements</strong> per la sicurezza.</li>
+        </ul>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="data-types">
+        <h2>Riferimento — Tipi di dato SQL</h2>
+        <table class="ref-table">
+          <thead><tr><th>Tipo</th><th>Contiene</th></tr></thead>
+          <tbody>
+            <tr><td><code>INTEGER</code> / <code>INT</code></td><td>Numeri interi</td></tr>
+            <tr><td><code>DECIMAL</code> / <code>FLOAT</code></td><td>Numeri con decimali</td></tr>
+            <tr><td><code>VARCHAR(n)</code> / <code>TEXT</code></td><td>Testo</td></tr>
+            <tr><td><code>DATE</code> / <code>DATETIME</code></td><td>Date e orari</td></tr>
+            <tr><td><code>BOOLEAN</code></td><td>Vero / falso</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="keywords">
+        <h2>Riferimento — Parole chiave SQL</h2>
+        <table class="ref-table">
+          <thead><tr><th>Parola chiave</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>SELECT</code></td><td>Estrae dati</td></tr>
+            <tr><td><code>INSERT</code> / <code>UPDATE</code> / <code>DELETE</code></td><td>Inserisce / modifica / elimina righe</td></tr>
+            <tr><td><code>WHERE</code> / <code>ORDER BY</code></td><td>Filtra / ordina</td></tr>
+            <tr><td><code>GROUP BY</code> / <code>HAVING</code></td><td>Raggruppa / filtra i gruppi</td></tr>
+            <tr><td><code>JOIN</code></td><td>Unisce tabelle</td></tr>
+            <tr><td><code>CREATE</code> / <code>ALTER</code> / <code>DROP</code></td><td>Gestisce la struttura</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-funzioni">
+        <h2>Riferimento — Funzioni SQL</h2>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>COUNT()</code></td><td>Conta le righe</td></tr>
+            <tr><td><code>SUM()</code> / <code>AVG()</code></td><td>Somma / media</td></tr>
+            <tr><td><code>MIN()</code> / <code>MAX()</code></td><td>Minimo / massimo</td></tr>
+            <tr><td><code>UPPER()</code> / <code>LOWER()</code></td><td>Maiuscolo / minuscolo</td></tr>
+            <tr><td><code>ROUND()</code></td><td>Arrotonda un numero</td></tr>
+            <tr><td><code>COALESCE()</code></td><td>Primo valore non NULL</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="quick-ref">
+        <h2>Riferimento — Quick Reference SQL</h2>
+        <p>Lo <strong>schema riassuntivo</strong> delle clausole di una query, nell'ordine in cui si scrivono:</p>
+        <pre class="codeview"><code class="language-sql">SELECT   colonne
+FROM     tabella
+JOIN     altra_tabella ON condizione
+WHERE    condizione
+GROUP BY colonna
+HAVING   condizione_sul_gruppo
+ORDER BY colonna
+LIMIT    n;</code></pre>
+        <div class="note-box">💡 L'ordine di scrittura è questo, ma l'ordine logico di esecuzione parte da <code class="inline">FROM</code>, poi <code class="inline">WHERE</code>, <code class="inline">GROUP BY</code>, <code class="inline">HAVING</code>, <code class="inline">SELECT</code> e infine <code class="inline">ORDER BY</code>.</div>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato SQL</h2>
+        <p>Vuoi una <strong>certificazione di SQL</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi e, soprattutto, per <strong>interrogare e progettare database reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di SQL svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è saper risolvere un problema reale: un database ben progettato vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di SQL completo e gratuito in italiano</strong>: dalle interrogazioni (SELECT, WHERE, ORDER BY) all'aggregazione (COUNT, AVG, GROUP BY, HAVING), dai JOIN alle subquery, dalla gestione del database (CREATE, vincoli, chiavi, indici, viste) fino a sicurezza, esercizi, sfide e riferimenti. Ora sai interrogare e progettare un database relazionale.</p>
+        <p>Il segreto per padroneggiare SQL è <strong>esercitarsi con query reali</strong>: rifai gli <a href="#esercizi">esercizi SQL</a>, affronta le <a href="#sfide">sfide</a> e prova a progettare un piccolo database da zero.</p>
+        <h3>E ora?</h3>
+        <p>Il prossimo passo è mettere in pratica SQL su un vero gestore di database con il <strong>corso MySQL</strong>. Se vuoi un percorso guidato passo passo o aiuto per una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Progetta un piccolo database per una biblioteca (libri, autori, prestiti) e scrivi le query per sapere quali libri sono in prestito e chi ha restituito in ritardo.</p></div>
+        <div class='hero-actions'><a href="corso-mysql.html" class="btn btn-primary">🐬 Continua con il corso MySQL</a><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
 
     </main>
