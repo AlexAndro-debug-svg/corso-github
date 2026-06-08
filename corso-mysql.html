@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso MySQL in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di MySQL in italiano completo, gratuito e interattivo: database, tabelle, tipi di dato, AUTO_INCREMENT, SELECT, WHERE, JOIN, GROUP BY, funzioni, viste e indici. Esegui query reali direttamente nel browser.">
+  <title>Corso MySQL completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di MySQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, funzioni aggregate, vincoli, chiavi primarie ed esterne, viste, indici, stored procedure e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.">
   <meta name="keywords" content="corso mysql italiano, imparare mysql, tutorial mysql gratis, database mysql, query mysql, phpmyadmin, esercizi mysql">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso MySQL in italiano completo e gratuito — AlessandroSimone.it">
@@ -80,10 +80,30 @@
     .cm-s-default .cm-number { color: #d97706; }
     .cm-s-default .cm-comment { color: #999; font-style: italic; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-mysql.html">
@@ -95,15 +115,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-mysql.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso MySQL in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di MySQL in italiano completo, gratuito e interattivo: database, tabelle, tipi di dato, AUTO_INCREMENT, SELECT, WHERE, JOIN, GROUP BY, funzioni, viste e indici. Esegui query reali direttamente nel browser.">
+  <meta name="twitter:title" content="Corso MySQL completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di MySQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, funzioni aggregate, vincoli, chiavi primarie ed esterne, viste, indici, stored procedure e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di MySQL in italiano",
-  "description": "Corso di MySQL in italiano completo, gratuito e interattivo: database, tabelle, tipi di dato, AUTO_INCREMENT, SELECT, WHERE, JOIN, GROUP BY, funzioni, viste e indici. Esegui query reali direttamente nel browser.",
+  "description": "Corso di MySQL completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: SELECT, WHERE, JOIN, GROUP BY, HAVING, funzioni aggregate, vincoli, chiavi primarie ed esterne, viste, indici, stored procedure e sicurezza (SQL Injection, prepared statements). Esegui query reali nel browser. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-mysql.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -170,29 +190,83 @@
   <div class="container course-wrap">
     <aside class="course-side">
       <h4>Tutorial MySQL</h4>
-      <a href="#intro">Introduzione</a>
-      <a href="#dbms">Cos'è un DBMS</a>
-      <a href="#tipi">Tipi di dato</a>
-      <a href="#database">CREATE DATABASE</a>
-      <a href="#create">CREATE TABLE</a>
-      <a href="#autoincrement">AUTO_INCREMENT</a>
-      <a href="#insert">INSERT INTO</a>
+      <a href="#intro">MySQL Intro</a>
+      <a href="#dbms">MySQL RDBMS</a>
+      <h4>MySQL SQL</h4>
+      <a href="#sql">MySQL SQL</a>
       <a href="#select">SELECT</a>
+      <a href="#distinct">SELECT DISTINCT</a>
       <a href="#where">WHERE</a>
-      <a href="#orderby">ORDER BY e LIMIT</a>
+      <a href="#orderby">ORDER BY</a>
+      <a href="#andor">AND, OR, NOT</a>
+      <a href="#insert">INSERT INTO</a>
+      <a href="#null">Valori NULL</a>
       <a href="#update">UPDATE</a>
       <a href="#delete">DELETE</a>
+      <a href="#limit">LIMIT</a>
       <a href="#aggregate">Funzioni aggregate</a>
-      <a href="#like">LIKE, IN, BETWEEN</a>
+      <a href="#minmax">MIN e MAX</a>
+      <a href="#count">COUNT, SUM, AVG</a>
+      <a href="#like">LIKE</a>
+      <a href="#wildcards">Wildcards</a>
+      <a href="#in">IN</a>
+      <a href="#between">BETWEEN</a>
+      <a href="#alias">Alias</a>
       <a href="#join">JOIN</a>
-      <a href="#groupby">GROUP BY e HAVING</a>
-      <a href="#stringhe">Funzioni stringa</a>
+      <a href="#innerjoin">INNER JOIN</a>
+      <a href="#leftjoin">LEFT JOIN</a>
+      <a href="#rightjoin">RIGHT JOIN</a>
+      <a href="#crossjoin">CROSS JOIN</a>
+      <a href="#selfjoin">SELF JOIN</a>
+      <a href="#union">UNION</a>
+      <a href="#groupby">GROUP BY</a>
+      <a href="#having">HAVING</a>
+      <a href="#exists">EXISTS</a>
+      <a href="#anyall">ANY e ALL</a>
+      <a href="#insertselect">INSERT SELECT</a>
+      <a href="#case">CASE</a>
+      <a href="#nullfunctions">Funzioni NULL</a>
+      <a href="#stored">Stored Procedures</a>
+      <a href="#commenti">Commenti</a>
+      <a href="#operatori">Operatori</a>
+      <h4>MySQL Database</h4>
+      <a href="#database">CREATE DATABASE</a>
+      <a href="#dropdb">DROP DATABASE</a>
+      <a href="#create">CREATE TABLE</a>
+      <a href="#drop">DROP TABLE</a>
+      <a href="#alter">ALTER TABLE</a>
+      <a href="#constraints">Vincoli (Constraints)</a>
+      <a href="#notnull">NOT NULL</a>
+      <a href="#unique">UNIQUE</a>
+      <a href="#primarykey">PRIMARY KEY</a>
+      <a href="#foreignkey">FOREIGN KEY</a>
+      <a href="#check">CHECK</a>
+      <a href="#default">DEFAULT</a>
+      <a href="#indici">CREATE INDEX</a>
+      <a href="#autoincrement">AUTO_INCREMENT</a>
       <a href="#date">Funzioni data e ora</a>
       <a href="#viste">Viste (VIEW)</a>
-      <a href="#indici">Indici (INDEX)</a>
       <a href="#utenti">Utenti e privilegi</a>
-      <h4>Conclusione</h4>
-      <a href="#fine">E ora?</a>
+      <a href="#injection">SQL Injection</a>
+      <a href="#prepared">Prepared Statements</a>
+      <h4>Esempi &amp; Pratica MySQL</h4>
+      <a href="#esempi">Esempi MySQL</a>
+      <a href="#editor">Editor MySQL online</a>
+      <a href="#quiz">Quiz MySQL</a>
+      <a href="#esercizi">Esercizi MySQL</a>
+      <a href="#sfide">Sfide MySQL</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp MySQL</a>
+      <a href="#riepilogo">Riepilogo MySQL</a>
+      <h4>Riferimenti MySQL</h4>
+      <a href="#data-types">Tipi di dato</a>
+      <a href="#rif-funzioni">Funzioni MySQL</a>
+      <a href="#quick-ref">Quick Reference</a>
+      <h4>Certificazione MySQL</h4>
+      <a href="#certificato">Certificato MySQL</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
     <main>
 
@@ -478,12 +552,590 @@ SELECT 'Gestione utenti: si fa sul server MySQL' AS nota;</script>
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di MySQL</h2>
-        <p>Hai imparato a creare database e tabelle, a definire tipi di dato e vincoli, a inserire, leggere, modificare ed eliminare dati, a usare JOIN, GROUP BY e funzioni, e a gestire viste, indici e utenti.</p>
-        <p>Per diventare davvero bravo, allena le query su dati reali (ad esempio con XAMPP e phpMyAdmin sul tuo computer). Se vuoi un percorso guidato o aiuto per un progetto o una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Crea da zero un database MySQL per un negozio online: tabelle prodotti, clienti e ordini con le giuste chiavi esterne, poi scrivi una query con JOIN per il fatturato per cliente.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+      <!-- ===== MySQL SQL: topic aggiuntivi ===== -->
+      <article class="lesson" id="sql">
+        <h2>MySQL SQL — cos'è</h2>
+        <p><strong>SQL</strong> (Structured Query Language) è il linguaggio con cui si parla a MySQL: serve a creare database e tabelle, inserire dati e interrogarli. MySQL è il <em>gestore</em> (DBMS) più diffuso al mondo per le applicazioni web, SQL è il <em>linguaggio</em> che usa.</p>
+        <div class="note-box">💡 In questo corso esegui SQL reale direttamente nel browser su un database di esempio con le tabelle <code class="inline">studenti</code> (id, nome, voto, classe, classe_id, citta) e <code class="inline">classi</code> (id, aula, classe).</div>
+      </article>
+
+      <article class="lesson" id="distinct">
+        <h2>MySQL SELECT DISTINCT</h2>
+        <p><code class="inline">SELECT DISTINCT</code> restituisce solo i valori <strong>diversi</strong>, eliminando i duplicati.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT DISTINCT classe FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="andor">
+        <h2>MySQL AND, OR, NOT</h2>
+        <p>Gli operatori logici combinano più condizioni nel <code class="inline">WHERE</code>: <code class="inline">AND</code> (tutte vere), <code class="inline">OR</code> (almeno una), <code class="inline">NOT</code> (negazione).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT * FROM studenti
+WHERE voto &gt;= 6 AND classe = '3A';</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="null">
+        <h2>MySQL Valori NULL</h2>
+        <p><code class="inline">NULL</code> indica un valore <strong>mancante</strong>, diverso da 0 o da stringa vuota. Si verifica con <code class="inline">IS NULL</code> e <code class="inline">IS NOT NULL</code>, mai con <code class="inline">=</code>.</p>
+        <pre class="codeview"><code class="language-sql">SELECT * FROM studenti WHERE citta IS NULL;</code></pre>
+      </article>
+
+      <article class="lesson" id="limit">
+        <h2>MySQL LIMIT</h2>
+        <p><code class="inline">LIMIT</code> restringe il numero di righe restituite. È l'equivalente MySQL del <code class="inline">SELECT TOP</code> di SQL Server.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome, voto FROM studenti
+ORDER BY voto DESC
+LIMIT 3;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="minmax">
+        <h2>MySQL MIN() e MAX()</h2>
+        <p>Le funzioni <code class="inline">MIN()</code> e <code class="inline">MAX()</code> restituiscono il valore più piccolo e più grande di una colonna.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT MIN(voto) AS peggiore, MAX(voto) AS migliore
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="count">
+        <h2>MySQL COUNT(), SUM(), AVG()</h2>
+        <p><code class="inline">COUNT()</code> conta le righe, <code class="inline">SUM()</code> somma, <code class="inline">AVG()</code> calcola la media.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT COUNT(*) AS totale, AVG(voto) AS media
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="wildcards">
+        <h2>MySQL Wildcards</h2>
+        <p>I <strong>caratteri jolly</strong> si usano con <code class="inline">LIKE</code>: <code class="inline">%</code> per qualsiasi sequenza, <code class="inline">_</code> per un singolo carattere.</p>
+        <table class="ref-table">
+          <thead><tr><th>Pattern</th><th>Trova</th></tr></thead>
+          <tbody>
+            <tr><td><code>'A%'</code></td><td>Inizia per A</td></tr>
+            <tr><td><code>'%a'</code></td><td>Finisce per a</td></tr>
+            <tr><td><code>'%ar%'</code></td><td>Contiene "ar"</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="in">
+        <h2>MySQL IN</h2>
+        <p>L'operatore <code class="inline">IN</code> verifica se un valore è in un elenco, in modo più compatto di tanti <code class="inline">OR</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT * FROM studenti
+WHERE classe IN ('3A', '3B');</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="between">
+        <h2>MySQL BETWEEN</h2>
+        <p><code class="inline">BETWEEN</code> seleziona i valori in un intervallo (estremi inclusi).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome, voto FROM studenti
+WHERE voto BETWEEN 6 AND 8;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="alias">
+        <h2>MySQL Alias</h2>
+        <p>Gli <strong>alias</strong> (<code class="inline">AS</code>) rinominano temporaneamente una colonna o una tabella, rendendo i risultati più leggibili.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome AS studente, voto AS valutazione
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="innerjoin">
+        <h2>MySQL INNER JOIN</h2>
+        <p>L'<strong>INNER JOIN</strong> restituisce solo le righe che hanno corrispondenza in <em>entrambe</em> le tabelle.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT s.nome, c.aula
+FROM studenti s
+INNER JOIN classi c ON s.classe_id = c.id;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="leftjoin">
+        <h2>MySQL LEFT JOIN</h2>
+        <p>Il <strong>LEFT JOIN</strong> restituisce tutte le righe della tabella di <em>sinistra</em> e le corrispondenze da destra; dove mancano, i campi sono <code class="inline">NULL</code>.</p>
+        <pre class="codeview"><code class="language-sql">SELECT s.nome, c.aula
+FROM studenti s
+LEFT JOIN classi c ON s.classe_id = c.id;</code></pre>
+      </article>
+
+      <article class="lesson" id="rightjoin">
+        <h2>MySQL RIGHT JOIN</h2>
+        <p>Il <strong>RIGHT JOIN</strong> è lo specchio del LEFT: tutte le righe della tabella di <em>destra</em> e le corrispondenze da sinistra.</p>
+        <pre class="codeview"><code class="language-sql">SELECT s.nome, c.aula
+FROM studenti s
+RIGHT JOIN classi c ON s.classe_id = c.id;</code></pre>
+      </article>
+
+      <article class="lesson" id="crossjoin">
+        <h2>MySQL CROSS JOIN</h2>
+        <p>Il <strong>CROSS JOIN</strong> combina ogni riga della prima tabella con ogni riga della seconda (prodotto cartesiano). Da usare con attenzione: il numero di righe può esplodere.</p>
+        <pre class="codeview"><code class="language-sql">SELECT s.nome, c.aula
+FROM studenti s
+CROSS JOIN classi c;</code></pre>
+      </article>
+
+      <article class="lesson" id="selfjoin">
+        <h2>MySQL SELF JOIN</h2>
+        <p>Un <strong>SELF JOIN</strong> unisce una tabella a sé stessa usando gli alias, ad esempio per confrontare righe della stessa tabella.</p>
+        <pre class="codeview"><code class="language-sql">SELECT a.nome AS studente1, b.nome AS studente2, a.citta
+FROM studenti a, studenti b
+WHERE a.citta = b.citta AND a.id &lt; b.id;</code></pre>
+      </article>
+
+      <article class="lesson" id="union">
+        <h2>MySQL UNION e UNION ALL</h2>
+        <p><strong>UNION</strong> unisce i risultati di due query eliminando i duplicati; <strong>UNION ALL</strong> li tiene tutti. Le query devono avere lo stesso numero di colonne.</p>
+        <pre class="codeview"><code class="language-sql">SELECT nome FROM studenti WHERE classe = '3A'
+UNION
+SELECT nome FROM studenti WHERE voto &gt;= 8;</code></pre>
+      </article>
+
+      <article class="lesson" id="having">
+        <h2>MySQL HAVING</h2>
+        <p><code class="inline">HAVING</code> filtra i <em>gruppi</em> creati da <code class="inline">GROUP BY</code> (mentre <code class="inline">WHERE</code> filtra le righe prima del raggruppamento).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT classe, COUNT(*) AS numero
+FROM studenti
+GROUP BY classe
+HAVING COUNT(*) &gt; 1;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="exists">
+        <h2>MySQL EXISTS</h2>
+        <p><strong>EXISTS</strong> verifica se una subquery restituisce almeno una riga, restituendo vero o falso.</p>
+        <pre class="codeview"><code class="language-sql">SELECT aula FROM classi c
+WHERE EXISTS (SELECT 1 FROM studenti s WHERE s.classe_id = c.id);</code></pre>
+      </article>
+
+      <article class="lesson" id="anyall">
+        <h2>MySQL ANY e ALL</h2>
+        <p><strong>ANY</strong> è vero se almeno un confronto con la subquery è vero; <strong>ALL</strong> se lo sono tutti.</p>
+        <pre class="codeview"><code class="language-sql">SELECT nome FROM studenti
+WHERE voto &gt; ANY (SELECT voto FROM studenti WHERE classe = '3A');</code></pre>
+      </article>
+
+      <article class="lesson" id="insertselect">
+        <h2>MySQL INSERT INTO SELECT</h2>
+        <p><strong>INSERT INTO SELECT</strong> copia righe da una tabella a un'altra già esistente.</p>
+        <pre class="codeview"><code class="language-sql">INSERT INTO promossi (nome, voto)
+SELECT nome, voto FROM studenti WHERE voto &gt;= 6;</code></pre>
+      </article>
+
+      <article class="lesson" id="case">
+        <h2>MySQL CASE</h2>
+        <p>L'espressione <strong>CASE</strong> è l'if/else di SQL: restituisce valori diversi secondo le condizioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT nome, voto,
+  CASE
+    WHEN voto &gt;= 8 THEN 'Ottimo'
+    WHEN voto &gt;= 6 THEN 'Sufficiente'
+    ELSE 'Insufficiente'
+  END AS giudizio
+FROM studenti;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="nullfunctions">
+        <h2>MySQL Funzioni per i NULL</h2>
+        <p>In MySQL <code class="inline">IFNULL()</code> e <code class="inline">COALESCE()</code> forniscono un valore alternativo quando un campo è <code class="inline">NULL</code>.</p>
+        <pre class="codeview"><code class="language-sql">SELECT nome, IFNULL(citta, 'Non indicata') AS citta
+FROM studenti;</code></pre>
+      </article>
+
+      <article class="lesson" id="stored">
+        <h2>MySQL Stored Procedures</h2>
+        <p>Una <strong>stored procedure</strong> è un blocco SQL salvato nel database e richiamabile per nome, anche con parametri.</p>
+        <pre class="codeview"><code class="language-sql">DELIMITER //
+CREATE PROCEDURE StudentiClasse(IN c VARCHAR(10))
+BEGIN
+  SELECT * FROM studenti WHERE classe = c;
+END //
+DELIMITER ;
+
+CALL StudentiClasse('3A');</code></pre>
+      </article>
+
+      <article class="lesson" id="commenti">
+        <h2>MySQL Commenti</h2>
+        <p>I <strong>commenti</strong> documentano le query: <code class="inline">--</code> o <code class="inline">#</code> su una riga, <code class="inline">/* ... */</code> su più righe.</p>
+        <pre class="codeview"><code class="language-sql"># commento MySQL su una riga
+SELECT nome FROM studenti;  -- anche così
+/* commento
+   su più righe */</code></pre>
+      </article>
+
+      <article class="lesson" id="operatori">
+        <h2>MySQL Operatori</h2>
+        <table class="ref-table">
+          <thead><tr><th>Operatore</th><th>Significato</th></tr></thead>
+          <tbody>
+            <tr><td><code>=</code>, <code>&lt;&gt;</code></td><td>Uguale, diverso</td></tr>
+            <tr><td><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td><td>Confronti</td></tr>
+            <tr><td><code>AND</code>, <code>OR</code>, <code>NOT</code></td><td>Logici</td></tr>
+            <tr><td><code>LIKE</code>, <code>IN</code>, <code>BETWEEN</code></td><td>Ricerca</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- ===== MySQL Database: topic aggiuntivi ===== -->
+      <article class="lesson" id="dropdb">
+        <h2>MySQL DROP DATABASE</h2>
+        <p><strong>DROP DATABASE</strong> elimina definitivamente un intero database. Operazione irreversibile.</p>
+        <pre class="codeview"><code class="language-sql">DROP DATABASE scuola;</code></pre>
+        <div class="tip-box">⚠️ Prima di un DROP fai sempre un backup del database.</div>
+      </article>
+
+      <article class="lesson" id="drop">
+        <h2>MySQL DROP TABLE</h2>
+        <p><strong>DROP TABLE</strong> elimina una tabella con tutti i suoi dati. Per svuotarla mantenendone la struttura si usa invece <code class="inline">TRUNCATE TABLE</code>.</p>
+        <pre class="codeview"><code class="language-sql">DROP TABLE studenti;</code></pre>
+      </article>
+
+      <article class="lesson" id="alter">
+        <h2>MySQL ALTER TABLE</h2>
+        <p><strong>ALTER TABLE</strong> modifica la struttura di una tabella esistente: aggiunge, modifica o elimina colonne.</p>
+        <pre class="codeview"><code class="language-sql">ALTER TABLE studenti ADD email VARCHAR(100);
+ALTER TABLE studenti DROP COLUMN email;</code></pre>
+      </article>
+
+      <article class="lesson" id="constraints">
+        <h2>MySQL Vincoli (Constraints)</h2>
+        <p>I <strong>vincoli</strong> definiscono regole sui dati di una colonna per garantirne la correttezza.</p>
+        <table class="ref-table">
+          <thead><tr><th>Vincolo</th><th>Garantisce</th></tr></thead>
+          <tbody>
+            <tr><td><code>NOT NULL</code></td><td>Campo sempre valorizzato</td></tr>
+            <tr><td><code>UNIQUE</code></td><td>Valori tutti diversi</td></tr>
+            <tr><td><code>PRIMARY KEY</code></td><td>Identificatore univoco</td></tr>
+            <tr><td><code>FOREIGN KEY</code></td><td>Collegamento ad altra tabella</td></tr>
+            <tr><td><code>CHECK</code></td><td>Condizione sui valori</td></tr>
+            <tr><td><code>DEFAULT</code></td><td>Valore predefinito</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="notnull">
+        <h2>MySQL NOT NULL</h2>
+        <p>Il vincolo <strong>NOT NULL</strong> impone che una colonna abbia sempre un valore.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="unique">
+        <h2>MySQL UNIQUE</h2>
+        <p>Il vincolo <strong>UNIQUE</strong> impedisce valori duplicati in una colonna (es. email, matricola).</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(100) UNIQUE
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="primarykey">
+        <h2>MySQL PRIMARY KEY</h2>
+        <p>La <strong>chiave primaria</strong> identifica univocamente ogni riga: è <code class="inline">UNIQUE</code> e <code class="inline">NOT NULL</code> insieme.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50)
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="foreignkey">
+        <h2>MySQL FOREIGN KEY</h2>
+        <p>La <strong>chiave esterna</strong> collega una tabella alla chiave primaria di un'altra, garantendo l'integrità referenziale. È la base delle relazioni in MySQL (motore InnoDB).</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50),
+  classe_id INT,
+  FOREIGN KEY (classe_id) REFERENCES classi(id)
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="check">
+        <h2>MySQL CHECK</h2>
+        <p>Il vincolo <strong>CHECK</strong> limita i valori ammessi in una colonna a quelli che soddisfano una condizione.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  voto INT CHECK (voto BETWEEN 1 AND 10)
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="default">
+        <h2>MySQL DEFAULT</h2>
+        <p>Il vincolo <strong>DEFAULT</strong> assegna un valore predefinito quando non se ne fornisce uno.</p>
+        <pre class="codeview"><code class="language-sql">CREATE TABLE studenti (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  citta VARCHAR(50) DEFAULT 'Roma'
+);</code></pre>
+      </article>
+
+      <article class="lesson" id="injection">
+        <h2>MySQL SQL Injection (sicurezza)</h2>
+        <p>La <strong>SQL Injection</strong> è una grave vulnerabilità: inserendo codice SQL nei campi di input, un attaccante può leggere o distruggere dati. Mai concatenare l'input dell'utente nelle query!</p>
+        <pre class="codeview"><code class="language-sql">-- ❌ PERICOLOSO
+"SELECT * FROM utenti WHERE nome = '" + input + "'"
+-- input = ' OR '1'='1  → l'attaccante entra senza password</code></pre>
+        <div class="tip-box">⭐ La difesa sono i <strong>prepared statements</strong>: l'input è trattato come dato, mai come codice.</div>
+      </article>
+
+      <article class="lesson" id="prepared">
+        <h2>MySQL Prepared Statements</h2>
+        <p>I <strong>prepared statements</strong> separano il codice SQL dai dati con dei segnaposto (<code class="inline">?</code>), prevenendo la SQL Injection. È il modo corretto di gestire l'input.</p>
+        <pre class="codeview"><code class="language-sql">PREPARE stmt FROM 'SELECT * FROM studenti WHERE classe = ?';
+SET @c = '3A';
+EXECUTE stmt USING @c;</code></pre>
+        <div class="note-box">💡 In PHP, Python, Java ecc. il valore dei parametri si passa con apposite funzioni (<code class="inline">bindParam</code>, <code class="inline">execute([...])</code>), non concatenandolo nella stringa.</div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi MySQL pronti da copiare</h2>
+        <p>Il modo migliore per imparare MySQL è partire da <strong>query già funzionanti</strong>: copiale, aprile nell'editor “Provalo tu” ed eseguile. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <div class="example">
+          <div class="codehead"><span>Media per classe</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-sql"></code></pre>
+          <script type="text/plain" class="code">SELECT classe, AVG(voto) AS media
+FROM studenti
+GROUP BY classe
+ORDER BY media DESC;</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="editor">
+        <h2>Editor MySQL online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor SQL online gratuito</strong> integrato: esegui query reali direttamente nel browser, senza installare MySQL. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong>.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
+          <li>Modifica la query.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda la tabella dei risultati.</li>
+        </ol>
+        <div class="note-box">💡 Per usare MySQL “vero” sul tuo computer installa <strong>XAMPP</strong> (include MySQL/MariaDB e phpMyAdmin) oppure <strong>MySQL Workbench</strong>.</div>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz MySQL — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di MySQL</strong> per autovalutarti. Pensa alla risposta e poi apri la soluzione.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Quale comando crea un nuovo database?</summary><p>✅ <code class="inline">CREATE DATABASE nome;</code></p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Quale clausola limita il numero di righe in MySQL?</summary><p>✅ <code class="inline">LIMIT</code> (in SQL Server è <code class="inline">TOP</code>).</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Quale attributo genera numeri progressivi automatici?</summary><p>✅ <code class="inline">AUTO_INCREMENT</code>.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Come si verifica un campo vuoto?</summary><p>✅ Con <code class="inline">IS NULL</code>, mai con <code class="inline">= NULL</code>.</p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Quale motore MySQL supporta le chiavi esterne?</summary><p>✅ <strong>InnoDB</strong> (MyISAM non le supporta).</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi MySQL con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di MySQL svolti</strong> sono pensati per chi vuole <strong>fare pratica con query reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: provala nell'editor sul database di esempio (tabelle <code class="inline">studenti</code> e <code class="inline">classi</code>). Sono gli stessi esercizi di MySQL che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — I migliori 3 <span class="tag base">Base</span></h4>
+          <p class="descr">Mostra i 3 studenti con il voto più alto.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT nome, voto FROM studenti
+ORDER BY voto DESC
+LIMIT 3;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Studenti di Roma <span class="tag base">Base</span></h4>
+          <p class="descr">Estrai tutti gli studenti della città di Roma.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT * FROM studenti
+WHERE citta = 'Roma';</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Conta per città <span class="tag medio">Medio</span></h4>
+          <p class="descr">Conta quanti studenti ci sono per ogni città.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT citta, COUNT(*) AS numero
+FROM studenti
+GROUP BY citta;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Studenti con aula <span class="tag medio">Medio</span></h4>
+          <p class="descr">Mostra nome studente e aula della sua classe con un INNER JOIN.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT s.nome, c.aula
+FROM studenti s
+INNER JOIN classi c ON s.classe_id = c.id;</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Giudizio con CASE <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Crea una colonna "giudizio" che vale Ottimo/Sufficiente/Insufficiente in base al voto.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>SELECT nome, voto,
+  CASE
+    WHEN voto &gt;= 8 THEN 'Ottimo'
+    WHEN voto &gt;= 6 THEN 'Sufficiente'
+    ELSE 'Insufficiente'
+  END AS giudizio
+FROM studenti;</pre></details>
+        </div>
+        <div class="tip-box">⭐ Esegui ogni soluzione nell'editor “Provalo tu” e modificala: è il modo migliore per capire MySQL.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide MySQL — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide MySQL</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — Negozio online</span><p>Crea da zero un database per un negozio online: tabelle prodotti, clienti e ordini con le giuste chiavi esterne, poi scrivi una query con JOIN per il fatturato per cliente.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Vista riutilizzabile</span><p>Crea una VIEW che mostri solo gli studenti promossi con la loro aula, e interrogala come fosse una tabella.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Procedura con parametro</span><p>Scrivi una stored procedure che, dato il nome di una classe, restituisce media, voto minimo e massimo di quella classe.</p></div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso MySQL (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di MySQL</strong>, l'elenco ordinato degli argomenti dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Fondamenti:</strong> cos'è un RDBMS, tipi di dato, CREATE DATABASE e TABLE.</li>
+          <li><strong>Dati:</strong> INSERT, SELECT, WHERE, ORDER BY, UPDATE, DELETE, LIMIT.</li>
+          <li><strong>Aggregazione:</strong> funzioni aggregate, GROUP BY, HAVING.</li>
+          <li><strong>Più tabelle:</strong> JOIN (inner, left, right, cross, self), UNION, subquery.</li>
+          <li><strong>Struttura:</strong> vincoli, chiavi, indici, viste, AUTO_INCREMENT.</li>
+          <li><strong>Avanzato:</strong> stored procedure, utenti, sicurezza e prepared statements.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio MySQL</h2>
+        <p>Quanto ci vuole per <strong>imparare MySQL</strong>? Le basi in una settimana. Ecco un <strong>piano di studio</strong> realistico studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>RDBMS, tipi di dato, CREATE DATABASE/TABLE</td></tr>
+            <tr><td>2</td><td>INSERT, SELECT, WHERE, ORDER BY</td></tr>
+            <tr><td>3</td><td>UPDATE, DELETE, funzioni aggregate</td></tr>
+            <tr><td>4</td><td>GROUP BY, HAVING, LIKE, IN, BETWEEN</td></tr>
+            <tr><td>5</td><td>JOIN e subquery</td></tr>
+            <tr><td>6</td><td>Vincoli, chiavi, indici, viste</td></tr>
+            <tr><td>7</td><td>Stored procedure, sicurezza, esercizi</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande MySQL frequenti</h2>
+        <p>Le <strong>domande di MySQL più frequenti ai colloqui</strong> per ruoli da sviluppatore backend e data analyst.</p>
+        <details class="quiz-q"><summary>Differenza tra MyISAM e InnoDB?</summary><p>InnoDB supporta transazioni e chiavi esterne; MyISAM è più semplice e veloce in sola lettura ma senza integrità referenziale.</p></details>
+        <details class="quiz-q"><summary>Differenza tra WHERE e HAVING?</summary><p>WHERE filtra le righe prima del raggruppamento; HAVING filtra i gruppi dopo GROUP BY.</p></details>
+        <details class="quiz-q"><summary>Cosa fa AUTO_INCREMENT?</summary><p>Genera automaticamente un numero progressivo univoco, tipicamente per la chiave primaria.</p></details>
+        <details class="quiz-q"><summary>Come si previene la SQL Injection?</summary><p>Con i prepared statements / query parametrizzate, mai concatenando l'input dell'utente.</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp MySQL — percorso intensivo</h2>
+        <p>Un <strong>bootcamp MySQL</strong> condensa la teoria nella pratica continua. Per imparare velocemente, alterna ogni argomento con una query da scrivere subito:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un comando (max 20 minuti).</li>
+          <li>✅ <strong>Esegui</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Risolvi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con il comando successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp MySQL seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un database completo, dalla progettazione alle query avanzate.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo MySQL — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di MySQL</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 MySQL è il <strong>DBMS relazionale</strong> open source più usato per il web.</li>
+          <li>📌 Si comanda con il linguaggio <strong>SQL</strong>: SELECT, INSERT, UPDATE, DELETE.</li>
+          <li>📌 <code class="inline">LIMIT</code> e <code class="inline">AUTO_INCREMENT</code> sono tipici di MySQL.</li>
+          <li>📌 I <strong>JOIN</strong> uniscono le tabelle tramite le chiavi.</li>
+          <li>📌 I <strong>vincoli</strong> e le <strong>chiavi</strong> garantiscono l'integrità (motore InnoDB).</li>
+          <li>📌 Usa <strong>prepared statements</strong> per la sicurezza.</li>
+        </ul>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="data-types">
+        <h2>Riferimento — Tipi di dato MySQL</h2>
+        <table class="ref-table">
+          <thead><tr><th>Tipo</th><th>Contiene</th></tr></thead>
+          <tbody>
+            <tr><td><code>INT</code>, <code>BIGINT</code></td><td>Numeri interi</td></tr>
+            <tr><td><code>DECIMAL</code>, <code>FLOAT</code></td><td>Numeri con decimali</td></tr>
+            <tr><td><code>VARCHAR(n)</code>, <code>TEXT</code></td><td>Testo</td></tr>
+            <tr><td><code>DATE</code>, <code>DATETIME</code>, <code>TIMESTAMP</code></td><td>Date e orari</td></tr>
+            <tr><td><code>BOOLEAN</code> (TINYINT)</td><td>Vero / falso</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-funzioni">
+        <h2>Riferimento — Funzioni MySQL</h2>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>COUNT()</code>, <code>SUM()</code>, <code>AVG()</code></td><td>Aggregazione</td></tr>
+            <tr><td><code>CONCAT()</code></td><td>Unisce stringhe</td></tr>
+            <tr><td><code>UPPER()</code>, <code>LOWER()</code></td><td>Maiuscolo / minuscolo</td></tr>
+            <tr><td><code>NOW()</code>, <code>CURDATE()</code></td><td>Data e ora corrente</td></tr>
+            <tr><td><code>IFNULL()</code>, <code>COALESCE()</code></td><td>Gestione dei NULL</td></tr>
+            <tr><td><code>ROUND()</code></td><td>Arrotonda un numero</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="quick-ref">
+        <h2>Riferimento — Quick Reference MySQL</h2>
+        <p>Lo <strong>schema riassuntivo</strong> di una query, nell'ordine in cui si scrivono le clausole:</p>
+        <pre class="codeview"><code class="language-sql">SELECT   colonne
+FROM     tabella
+JOIN     altra ON condizione
+WHERE    condizione
+GROUP BY colonna
+HAVING   condizione_sul_gruppo
+ORDER BY colonna
+LIMIT    n;</code></pre>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato MySQL</h2>
+        <p>Vuoi una <strong>certificazione di MySQL</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi e, soprattutto, per <strong>progettare e gestire database reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di MySQL svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è un database ben progettato e funzionante: vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di MySQL completo e gratuito in italiano</strong>: dai fondamenti dei database relazionali alla creazione di tabelle, dai dati (SELECT, INSERT, UPDATE, DELETE) all'aggregazione e ai JOIN, dai vincoli e le chiavi a viste, indici, stored procedure, utenti e sicurezza, con esercizi, sfide e riferimenti. Ora sai progettare e interrogare un database MySQL.</p>
+        <p>Il segreto per padroneggiare MySQL è <strong>esercitarsi con dati reali</strong>: rifai gli <a href="#esercizi">esercizi MySQL</a>, affronta le <a href="#sfide">sfide</a> e prova a progettare un database da zero (ad esempio con XAMPP e phpMyAdmin).</p>
+        <h3>E ora?</h3>
+        <p>Il prossimo passo è collegare il database a un'applicazione web con <strong>PHP</strong>, oppure approfondire la teoria con il <strong>corso SQL</strong>. Se vuoi un percorso guidato passo passo o aiuto per un progetto o una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Crea da zero un database MySQL per un negozio online: tabelle prodotti, clienti e ordini con le giuste chiavi esterne, poi scrivi una query con JOIN per il fatturato per cliente.</p></div>
+        <div class='hero-actions'><a href="corso-php.html" class="btn btn-primary">🐘 Continua con il corso PHP</a><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
 
     </main>
