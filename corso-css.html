@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso CSS completo in italiano: guida da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso CSS completo e gratuito in italiano: sintassi, selettori, box model, colori, testo, Flexbox, posizionamento, pseudo-classi, media query, unità, specificità e layout. Tutti gli argomenti spiegati in modo approfondito con esempi ed editor Provalo tu.">
+  <title>Corso CSS completo in italiano con esercizi e soluzioni | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di CSS completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: selettori, box model, Flexbox, Grid, gradienti, ombre, transizioni, animazioni, variabili, media query e responsive design. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
+  <meta name="keywords" content="corso CSS, esercizi CSS, esercizi CSS con soluzioni, esercizi CSS svolti, CSS per principianti, imparare CSS, quiz CSS, tutorial CSS italiano, Flexbox, CSS Grid, responsive design, animazioni CSS">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
@@ -86,10 +87,30 @@
     .cm-s-default .cm-comment   { color: #999; font-style: italic; }
     .cm-s-default .cm-meta      { color: #999; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-css.html">
@@ -99,20 +120,20 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="AlessandroSimone.it">
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-css.html">
-  <meta property="og:title" content="Corso CSS completo in italiano: guida da zero | AlessandroSimone.it">
-  <meta property="og:description" content="Corso CSS completo e gratuito in italiano: sintassi, selettori, box model, colori, testo, Flexbox, posizionamento, pseudo-classi, media query, unità, specificità e layout. Tutti gli argomenti spiegati in modo approfondito con esempi ed editor Provalo tu.">
+  <meta property="og:title" content="Corso CSS completo in italiano con esercizi e soluzioni | AlessandroSimone.it">
+  <meta property="og:description" content="Corso di CSS completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: selettori, box model, Flexbox, Grid, gradienti, ombre, transizioni, animazioni, variabili, media query e responsive design. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso CSS completo in italiano: guida da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso CSS completo e gratuito in italiano: sintassi, selettori, box model, colori, testo, Flexbox, posizionamento, pseudo-classi, media query, unità, specificità e layout. Tutti gli argomenti spiegati in modo approfondito con esempi ed editor Provalo tu.">
+  <meta name="twitter:title" content="Corso CSS completo in italiano con esercizi e soluzioni | AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di CSS completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: selettori, box model, Flexbox, Grid, gradienti, ombre, transizioni, animazioni, variabili, media query e responsive design. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di CSS completo in italiano",
-  "description": "Corso CSS completo e gratuito in italiano: sintassi, selettori, box model, colori, testo, Flexbox, posizionamento, pseudo-classi, media query, unità, specificità e layout. Tutti gli argomenti spiegati in modo approfondito con esempi ed editor Provalo tu.",
+  "description": "Corso di CSS completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: selettori, box model, Flexbox, Grid, gradienti, ombre, transizioni, animazioni, variabili, media query e responsive design. Con editor 'Provalo tu' online. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-css.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -231,6 +252,74 @@
       <a href="#optimization">CSS Optimization</a>
       <a href="#accessibility">CSS Accessibility</a>
       <a href="#layout">CSS Website Layout</a>
+      <h4>CSS Avanzato</h4>
+      <a href="#rounded-corners">Bordi arrotondati</a>
+      <a href="#border-images">Immagini nei bordi</a>
+      <a href="#adv-backgrounds">Sfondi avanzati</a>
+      <a href="#adv-colors">Colori avanzati</a>
+      <a href="#gradients">Gradienti</a>
+      <a href="#shadows">Ombre</a>
+      <a href="#text-effects">Effetti sul testo</a>
+      <a href="#custom-fonts">Web Font</a>
+      <a href="#transforms-2d">Trasformazioni 2D</a>
+      <a href="#transforms-3d">Trasformazioni 3D</a>
+      <a href="#transitions">Transizioni</a>
+      <a href="#animations">Animazioni</a>
+      <a href="#tooltips">Tooltip</a>
+      <a href="#image-styling">Stile delle immagini</a>
+      <a href="#object-fit">object-fit</a>
+      <a href="#masking">Masking</a>
+      <a href="#buttons">Pulsanti</a>
+      <a href="#pagination">Paginazione</a>
+      <a href="#multiple-columns">Colonne multiple</a>
+      <a href="#variables">Variabili CSS</a>
+      <a href="#box-sizing">Box Sizing</a>
+      <a href="#media-queries">Media Query</a>
+      <h4>CSS Flexbox</h4>
+      <a href="#flexbox-intro">Introduzione a Flexbox</a>
+      <a href="#flex-container">Flex Container</a>
+      <a href="#flex-items">Flex Items</a>
+      <a href="#flex-responsive">Flexbox Responsive</a>
+      <h4>CSS Grid</h4>
+      <a href="#grid-intro">Introduzione a Grid</a>
+      <a href="#grid-container">Grid Container</a>
+      <a href="#grid-items">Grid Items</a>
+      <h4>CSS Responsive</h4>
+      <a href="#rwd-intro">Responsive Web Design</a>
+      <a href="#rwd-viewport">Viewport</a>
+      <a href="#rwd-media-queries">Media Query RWD</a>
+      <a href="#rwd-images">Immagini responsive</a>
+      <a href="#rwd-frameworks">Framework CSS</a>
+      <h4>CSS SASS</h4>
+      <a href="#sass">Introduzione a SASS</a>
+      <h4>Esempi &amp; Pratica CSS</h4>
+      <a href="#esempi">Esempi CSS</a>
+      <a href="#editor">Editor CSS online</a>
+      <a href="#quiz">Quiz CSS</a>
+      <a href="#esercizi">Esercizi CSS</a>
+      <a href="#sfide">Sfide CSS</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp CSS</a>
+      <a href="#riepilogo">Riepilogo CSS</a>
+      <h4>Riferimenti CSS</h4>
+      <a href="#rif-selettori">Selettori</a>
+      <a href="#combinatori">Combinatori</a>
+      <a href="#rif-pseudo-classi">Pseudo-classi</a>
+      <a href="#rif-pseudo-elementi">Pseudo-elementi</a>
+      <a href="#at-rules">At-rules</a>
+      <a href="#rif-funzioni">Funzioni</a>
+      <a href="#web-safe-fonts">Web Safe Fonts</a>
+      <a href="#animatable">Proprietà animabili</a>
+      <a href="#rif-unita">Unità di misura</a>
+      <a href="#px-em">Convertitore PX ↔ EM</a>
+      <a href="#rif-colori-2">Colori</a>
+      <a href="#default-values">Valori predefiniti</a>
+      <a href="#rif-browser-support">Supporto browser</a>
+      <h4>Certificazione CSS</h4>
+      <a href="#certificato">Certificato CSS</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
     <main>
       <article class="lesson" id="home">
@@ -1003,11 +1092,785 @@
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉</h2>
-        <p>Hai completato il corso di CSS più completo in italiano. Continua a fare pratica con l'editor e, se ti serve una mano, prenota una lezione.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Prendi una pagina HTML che hai già scritto e trasformala: scegli una palette di tre colori, usa Flexbox o Grid per il layout e aggiungi una transizione al passaggio del mouse su un bottone.</p></div>
-        <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
+      <!-- ===== CSS AVANZATO ===== -->
+      <article class="lesson" id="rounded-corners">
+        <h2>CSS Bordi arrotondati (border-radius)</h2>
+        <p>La proprietà <code class="inline">border-radius</code> arrotonda gli angoli di un elemento. Con valori alti crei pulsanti a pillola; con <code class="inline">50%</code> ottieni un cerchio perfetto.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { width:120px; height:120px; background:#4f46e5; color:#fff;
+         display:flex; align-items:center; justify-content:center; margin:8px; }
+  .r1 { border-radius:12px; }
+  .r2 { border-radius:50%; }
+  .r3 { border-radius:0 40px 0 40px; }
+</style>
+<div class="box r1">12px</div>
+<div class="box r2">cerchio</div>
+<div class="box r3">misto</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="border-images">
+        <h2>CSS Immagini nei bordi (border-image)</h2>
+        <p>Con <code class="inline">border-image</code> puoi usare un'immagine come bordo di un elemento, utile per cornici decorative.</p>
+        <pre class="codeview"><code class="language-markup">.cornice {
+  border: 20px solid transparent;
+  border-image: url(bordo.png) 30 round;
+}</code></pre>
+        <div class="note-box">💡 I tre valori chiave sono: <em>source</em> (l'immagine), <em>slice</em> (come tagliarla) e <em>repeat</em> (<code class="inline">stretch</code>, <code class="inline">repeat</code> o <code class="inline">round</code>).</div>
+      </article>
+
+      <article class="lesson" id="adv-backgrounds">
+        <h2>CSS Sfondi avanzati</h2>
+        <p>Le proprietà <code class="inline">background-*</code> permettono di controllare immagini di sfondo multiple, posizione, ripetizione e dimensione. La scorciatoia <code class="inline">background</code> le riunisce tutte.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .hero { height:160px; color:#fff; padding:16px; border-radius:10px;
+          background:
+            linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+            url('https://via.placeholder.com/600x200');
+          background-size: cover;
+          background-position: center; }
+</style>
+<div class="hero"><h3>Testo leggibile su immagine</h3></div></script>
+        </div>
+        <div class="tip-box">⭐ Sovrapporre un gradiente scuro sull'immagine è il trucco classico per rendere il testo sempre leggibile.</div>
+      </article>
+
+      <article class="lesson" id="adv-colors">
+        <h2>CSS Colori avanzati (HSL, RGBA)</h2>
+        <p>Oltre a nomi ed esadecimali, CSS supporta <code class="inline">rgb()</code>, <code class="inline">rgba()</code> (con trasparenza) e <code class="inline">hsl()</code> (tonalità, saturazione, luminosità), molto comodo per creare varianti di uno stesso colore.</p>
+        <table class="ref-table">
+          <thead><tr><th>Notazione</th><th>Esempio</th></tr></thead>
+          <tbody>
+            <tr><td>Esadecimale</td><td><code>#4f46e5</code></td></tr>
+            <tr><td>RGB</td><td><code>rgb(79, 70, 229)</code></td></tr>
+            <tr><td>RGBA</td><td><code>rgba(79, 70, 229, .5)</code></td></tr>
+            <tr><td>HSL</td><td><code>hsl(244, 76%, 59%)</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="gradients">
+        <h2>CSS Gradienti (linear, radial, conic)</h2>
+        <p>I <strong>gradienti CSS</strong> creano transizioni morbide tra due o più colori, senza usare immagini. I tre tipi sono <code class="inline">linear-gradient</code>, <code class="inline">radial-gradient</code> e <code class="inline">conic-gradient</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .g { height:90px; border-radius:10px; margin:8px 0; }
+  .lin { background: linear-gradient(135deg, #4f46e5, #f59e0b); }
+  .rad { background: radial-gradient(circle, #0d9488, #1e293b); }
+  .con { background: conic-gradient(#4f46e5, #f59e0b, #0d9488, #4f46e5); }
+</style>
+<div class="g lin"></div>
+<div class="g rad"></div>
+<div class="g con"></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="shadows">
+        <h2>CSS Ombre (box-shadow e text-shadow)</h2>
+        <p>Le ombre danno profondità: <code class="inline">box-shadow</code> per gli elementi e <code class="inline">text-shadow</code> per il testo. I valori sono: spostamento X, Y, sfocatura, espansione e colore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .card { background:#fff; padding:20px; border-radius:12px; width:200px;
+          box-shadow: 0 10px 25px rgba(0,0,0,.18); }
+  h3 { text-shadow: 2px 2px 4px rgba(0,0,0,.3); }
+</style>
+<div class="card"><h3>Card con ombra</h3></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="text-effects">
+        <h2>CSS Effetti sul testo</h2>
+        <p>Proprietà come <code class="inline">text-overflow</code>, <code class="inline">word-wrap</code>, <code class="inline">writing-mode</code> e <code class="inline">-webkit-background-clip</code> permettono effetti tipografici avanzati, come il testo con gradiente.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .grad-text { font-size:34px; font-weight:800;
+    background: linear-gradient(90deg, #4f46e5, #f59e0b);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+</style>
+<h2 class="grad-text">Testo con gradiente</h2></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="custom-fonts">
+        <h2>CSS Web Font (@font-face e Google Fonts)</h2>
+        <p>Puoi usare font personalizzati con la regola <code class="inline">@font-face</code> o collegando <strong>Google Fonts</strong> nell'HTML. Questo corso, ad esempio, usa i font Inter e Poppins.</p>
+        <pre class="codeview"><code class="language-markup">/* nel CSS */
+@font-face {
+  font-family: 'MioFont';
+  src: url('miofont.woff2') format('woff2');
+}
+body { font-family: 'MioFont', sans-serif; }</code></pre>
+        <div class="note-box">💡 Il modo più semplice è incollare il <code class="inline">&lt;link&gt;</code> di Google Fonts nel <code class="inline">&lt;head&gt;</code> e poi usare <code class="inline">font-family</code> nel CSS.</div>
+      </article>
+
+      <article class="lesson" id="transforms-2d">
+        <h2>CSS Trasformazioni 2D</h2>
+        <p>La proprietà <code class="inline">transform</code> sposta, ruota, scala e inclina gli elementi sul piano: <code class="inline">translate()</code>, <code class="inline">rotate()</code>, <code class="inline">scale()</code>, <code class="inline">skew()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { width:90px; height:90px; background:#4f46e5; margin:30px; display:inline-block; }
+  .b1 { transform: rotate(20deg); }
+  .b2 { transform: scale(1.3); }
+  .b3 { transform: skewX(20deg); }
+</style>
+<div class="box b1"></div>
+<div class="box b2"></div>
+<div class="box b3"></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="transforms-3d">
+        <h2>CSS Trasformazioni 3D</h2>
+        <p>Con <code class="inline">rotateX()</code>, <code class="inline">rotateY()</code> e la proprietà <code class="inline">perspective</code> puoi ruotare gli elementi nello spazio tridimensionale.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .scena { perspective: 600px; }
+  .carta { width:120px; height:160px; background:#0d9488; color:#fff; margin:30px;
+           display:flex; align-items:center; justify-content:center; border-radius:10px;
+           transform: rotateY(40deg); }
+</style>
+<div class="scena"><div class="carta">3D</div></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="transitions">
+        <h2>CSS Transizioni</h2>
+        <p>Le <strong>transizioni CSS</strong> animano in modo fluido il passaggio di una proprietà da un valore a un altro (ad esempio al passaggio del mouse). Si controllano con <code class="inline">transition</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .btn { padding:14px 26px; background:#4f46e5; color:#fff; border:none; border-radius:10px;
+         transition: background .3s, transform .3s; cursor:pointer; }
+  .btn:hover { background:#f59e0b; transform: translateY(-4px); }
+</style>
+<button class="btn">Passami sopra</button></script>
+        </div>
+        <div class="tip-box">⭐ Regola d'oro: metti la <code class="inline">transition</code> sullo stato normale, non su <code class="inline">:hover</code>, così l'animazione è fluida sia all'entrata che all'uscita.</div>
+      </article>
+
+      <article class="lesson" id="animations">
+        <h2>CSS Animazioni (@keyframes)</h2>
+        <p>Le <strong>animazioni CSS</strong> permettono movimenti ripetuti e complessi definendo i fotogrammi con <code class="inline">@keyframes</code> e applicandoli con <code class="inline">animation</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  @keyframes rimbalza {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+  }
+  .palla { width:60px; height:60px; background:#f59e0b; border-radius:50%;
+           animation: rimbalza 1s infinite ease-in-out; }
+</style>
+<div class="palla"></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tooltips">
+        <h2>CSS Tooltip</h2>
+        <p>Un <strong>tooltip</strong> è un fumetto informativo che appare al passaggio del mouse. Si realizza con un elemento nascosto reso visibile in <code class="inline">:hover</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .tip { position:relative; border-bottom:1px dotted #333; cursor:help; }
+  .tip .testo { visibility:hidden; background:#1e293b; color:#fff; padding:6px 10px;
+                border-radius:6px; position:absolute; bottom:130%; left:0; white-space:nowrap; }
+  .tip:hover .testo { visibility:visible; }
+</style>
+<p>Passa sopra <span class="tip">questo termine<span class="testo">Ecco la spiegazione!</span></span>.</p></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="image-styling">
+        <h2>CSS Stile delle immagini</h2>
+        <p>Con il CSS puoi rendere le immagini rotonde, aggiungere bordi e ombre, creare miniature e immagini responsive che non escono dal contenitore.</p>
+        <pre class="codeview"><code class="language-markup">img { max-width: 100%; height: auto; }      /* responsive */
+.avatar { border-radius: 50%; }              /* rotonda */
+.thumb { border: 3px solid #ddd; padding: 4px; border-radius: 8px; }</code></pre>
+      </article>
+
+      <article class="lesson" id="object-fit">
+        <h2>CSS object-fit e object-position</h2>
+        <p>La proprietà <code class="inline">object-fit</code> controlla come un'immagine riempie il suo contenitore senza deformarsi: <code class="inline">cover</code> riempie ritagliando, <code class="inline">contain</code> mostra tutta l'immagine.</p>
+        <pre class="codeview"><code class="language-markup">img {
+  width: 200px; height: 200px;
+  object-fit: cover;        /* riempie senza deformare */
+  object-position: center;
+}</code></pre>
+      </article>
+
+      <article class="lesson" id="masking">
+        <h2>CSS Masking</h2>
+        <p>Il <strong>masking</strong> nasconde parti di un elemento usando un'immagine o un gradiente come maschera, per creare forme e sfumature.</p>
+        <pre class="codeview"><code class="language-markup">.img {
+  -webkit-mask-image: linear-gradient(black, transparent);
+  mask-image: linear-gradient(black, transparent);
+}</code></pre>
+        <div class="note-box">💡 Le zone nere della maschera mostrano l'elemento, quelle trasparenti lo nascondono.</div>
+      </article>
+
+      <article class="lesson" id="buttons">
+        <h2>CSS Pulsanti</h2>
+        <p>I <strong>pulsanti CSS</strong> si creano applicando padding, colore di sfondo, bordi arrotondati ed effetti <code class="inline">:hover</code> a un <code class="inline">&lt;button&gt;</code> o a un link.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .b { padding:12px 22px; border:none; border-radius:10px; color:#fff; cursor:pointer;
+       font-size:15px; margin:5px; transition:.25s; }
+  .primario { background:#4f46e5; }
+  .primario:hover { background:#4338ca; }
+  .ghost { background:transparent; color:#4f46e5; border:2px solid #4f46e5; }
+  .ghost:hover { background:#4f46e5; color:#fff; }
+</style>
+<button class="b primario">Primario</button>
+<button class="b ghost">Ghost</button></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="pagination">
+        <h2>CSS Paginazione</h2>
+        <p>La <strong>paginazione</strong> mostra i numeri di pagina (1, 2, 3…) di un elenco lungo. Si costruisce con una lista di link stilizzati.</p>
+        <pre class="codeview"><code class="language-markup">.pagina a {
+  padding: 8px 14px; text-decoration: none; color: #333;
+  border: 1px solid #ddd; border-radius: 6px;
+}
+.pagina a.attiva { background: #4f46e5; color: #fff; border-color: #4f46e5; }</code></pre>
+      </article>
+
+      <article class="lesson" id="multiple-columns">
+        <h2>CSS Colonne multiple</h2>
+        <p>La proprietà <code class="inline">column-count</code> dispone il testo su più colonne, come in un giornale.</p>
+        <pre class="codeview"><code class="language-markup">.testo {
+  column-count: 3;
+  column-gap: 30px;
+}</code></pre>
+      </article>
+
+      <article class="lesson" id="variables">
+        <h2>CSS Variabili (custom properties)</h2>
+        <p>Le <strong>variabili CSS</strong> (o <em>custom properties</em>) memorizzano valori riutilizzabili: definisci un colore una volta e lo usi ovunque. Si dichiarano in <code class="inline">:root</code> e si leggono con <code class="inline">var()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  :root { --primario:#4f46e5; --raggio:12px; }
+  .box { background: var(--primario); color:#fff; padding:20px;
+         border-radius: var(--raggio); }
+</style>
+<div class="box">Uso le variabili CSS</div></script>
+        </div>
+        <div class="tip-box">⭐ Cambiando una sola variabile in <code class="inline">:root</code> aggiorni tutto il sito: è la base dei temi chiaro/scuro.</div>
+      </article>
+
+      <article class="lesson" id="box-sizing">
+        <h2>CSS Box Sizing</h2>
+        <p>La proprietà <code class="inline">box-sizing: border-box</code> fa sì che padding e bordo siano <em>inclusi</em> nella larghezza dichiarata, evitando calcoli e sorprese nel layout.</p>
+        <pre class="codeview"><code class="language-markup">* { box-sizing: border-box; }   /* regola consigliata su tutti i progetti */</code></pre>
+        <div class="note-box">💡 Senza <code class="inline">border-box</code>, un elemento <code class="inline">width:200px</code> con <code class="inline">padding:20px</code> occupa in realtà 240px. Con <code class="inline">border-box</code> resta 200px.</div>
+      </article>
+
+      <article class="lesson" id="media-queries">
+        <h2>CSS Media Query</h2>
+        <p>Le <strong>media query</strong> applicano stili diversi in base alla larghezza dello schermo: sono il cuore del <em>responsive design</em>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .box { padding:30px; background:#4f46e5; color:#fff; border-radius:10px; }
+  @media (max-width: 600px) {
+    .box { background:#f59e0b; }
+  }
+</style>
+<div class="box">Restringi la finestra: cambio colore sotto i 600px.</div></script>
+        </div>
+      </article>
+
+      <!-- ===== FLEXBOX ===== -->
+      <article class="lesson" id="flexbox-intro">
+        <h2>CSS Flexbox — introduzione</h2>
+        <p><strong>Flexbox</strong> è un sistema di layout monodimensionale che dispone gli elementi in riga o in colonna, distribuendo spazio e allineamenti in modo semplice. Si attiva con <code class="inline">display: flex</code> sul contenitore.</p>
+        <div class="note-box">💡 Flexbox lavora su <strong>un asse alla volta</strong> (riga oppure colonna). Per layout a griglia su due assi si usa CSS Grid.</div>
+      </article>
+
+      <article class="lesson" id="flex-container">
+        <h2>CSS Flex Container</h2>
+        <p>Sul contenitore flex agisci con <code class="inline">flex-direction</code> (direzione), <code class="inline">justify-content</code> (asse principale), <code class="inline">align-items</code> (asse trasversale) e <code class="inline">flex-wrap</code> (andare a capo).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .flex { display:flex; justify-content:space-between; align-items:center;
+          gap:10px; background:#eef2ff; padding:14px; border-radius:10px; }
+  .flex div { background:#4f46e5; color:#fff; padding:18px; border-radius:8px; }
+</style>
+<div class="flex">
+  <div>1</div><div>2</div><div>3</div>
+</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="flex-items">
+        <h2>CSS Flex Items</h2>
+        <p>Sui figli agisci con <code class="inline">flex-grow</code> (quanto crescono), <code class="inline">flex-shrink</code> (quanto si restringono), <code class="inline">flex-basis</code> (dimensione base) e <code class="inline">order</code> (ordine visuale).</p>
+        <pre class="codeview"><code class="language-markup">.item     { flex: 1; }       /* tutti gli item occupano lo stesso spazio */
+.item.big { flex: 2; }       /* questo occupa il doppio */</code></pre>
+      </article>
+
+      <article class="lesson" id="flex-responsive">
+        <h2>CSS Flexbox Responsive</h2>
+        <p>Aggiungendo <code class="inline">flex-wrap: wrap</code> e dando una larghezza minima agli item, ottieni un layout che passa automaticamente da più colonne a una sola sui dispositivi piccoli.</p>
+        <pre class="codeview"><code class="language-markup">.griglia { display:flex; flex-wrap:wrap; gap:16px; }
+.griglia .card { flex: 1 1 250px; }   /* min 250px, poi va a capo */</code></pre>
+      </article>
+
+      <!-- ===== GRID ===== -->
+      <article class="lesson" id="grid-intro">
+        <h2>CSS Grid — introduzione</h2>
+        <p><strong>CSS Grid</strong> è un sistema di layout <em>bidimensionale</em>: gestisce righe e colonne contemporaneamente, ideale per layout di pagina complessi. Si attiva con <code class="inline">display: grid</code>.</p>
+      </article>
+
+      <article class="lesson" id="grid-container">
+        <h2>CSS Grid Container</h2>
+        <p>Con <code class="inline">grid-template-columns</code> definisci le colonne; l'unità <code class="inline">fr</code> rappresenta una frazione dello spazio disponibile. <code class="inline">gap</code> aggiunge lo spazio tra le celle.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+  .grid div { background:#0d9488; color:#fff; padding:24px; border-radius:8px; text-align:center; }
+</style>
+<div class="grid">
+  <div>1</div><div>2</div><div>3</div>
+  <div>4</div><div>5</div><div>6</div>
+</div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="grid-items">
+        <h2>CSS Grid Items</h2>
+        <p>Con <code class="inline">grid-column</code> e <code class="inline">grid-row</code> un elemento può occupare più colonne o righe, ad esempio per un'intestazione a tutta larghezza.</p>
+        <pre class="codeview"><code class="language-markup">.header { grid-column: 1 / -1; }   /* occupa tutta la riga */
+.sidebar { grid-row: span 2; }     /* alta due righe */</code></pre>
+        <div class="tip-box">⭐ Una griglia responsive senza media query: <code class="inline">grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</code></div>
+      </article>
+
+      <!-- ===== RESPONSIVE ===== -->
+      <article class="lesson" id="rwd-intro">
+        <h2>CSS Responsive Web Design (RWD)</h2>
+        <p>Il <strong>Responsive Web Design</strong> rende un sito leggibile e usabile su qualsiasi schermo — computer, tablet e smartphone — usando layout flessibili, immagini fluide e media query.</p>
+      </article>
+
+      <article class="lesson" id="rwd-viewport">
+        <h2>CSS Viewport</h2>
+        <p>Il meta tag <strong>viewport</strong> è indispensabile per il responsive: dice al browser di adattare la pagina alla larghezza del dispositivo. Va sempre nell'<code class="inline">&lt;head&gt;</code>.</p>
+        <pre class="codeview"><code class="language-markup">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+      </article>
+
+      <article class="lesson" id="rwd-media-queries">
+        <h2>CSS Media Query per il Responsive</h2>
+        <p>I <strong>breakpoint</strong> più comuni separano smartphone, tablet e desktop. L'approccio <em>mobile-first</em> parte dallo stile per cellulare e aggiunge regole per schermi più grandi.</p>
+        <pre class="codeview"><code class="language-markup">/* mobile-first: stile base per cellulare */
+.col { width: 100%; }
+@media (min-width: 768px)  { .col { width: 50%; } }   /* tablet */
+@media (min-width: 1024px) { .col { width: 33%; } }   /* desktop */</code></pre>
+      </article>
+
+      <article class="lesson" id="rwd-images">
+        <h2>CSS Immagini Responsive</h2>
+        <p>Per immagini che non escono mai dal contenitore basta la regola d'oro <code class="inline">max-width: 100%; height: auto;</code>. Con <code class="inline">srcset</code> nell'HTML puoi anche servire immagini di dimensioni diverse per schermi diversi.</p>
+        <pre class="codeview"><code class="language-markup">img { max-width: 100%; height: auto; display: block; }</code></pre>
+      </article>
+
+      <article class="lesson" id="rwd-frameworks">
+        <h2>CSS Framework</h2>
+        <p>I <strong>framework CSS</strong> offrono componenti e griglie pronte all'uso per costruire siti responsive più in fretta. I più diffusi sono <strong>Bootstrap</strong> e <strong>Tailwind CSS</strong>.</p>
+        <div class="note-box">💡 Imparare prima il CSS “puro” è fondamentale: i framework si capiscono e si personalizzano solo se conosci le basi che hai studiato in questo corso.</div>
+      </article>
+
+      <!-- ===== SASS ===== -->
+      <article class="lesson" id="sass">
+        <h2>CSS SASS — introduzione</h2>
+        <p><strong>SASS</strong> è un <em>preprocessore CSS</em>: estende il CSS con variabili, annidamento, funzioni e moduli, poi viene “compilato” in normale CSS. Rende i fogli di stile più ordinati e riutilizzabili.</p>
+        <pre class="codeview"><code class="language-markup">$primario: #4f46e5;          // variabile SASS
+
+.card {
+  background: $primario;
+  .titolo { color: white; }  // annidamento
+}</code></pre>
+        <div class="tip-box">⭐ Oggi molte funzioni di SASS (come le variabili) esistono anche nel CSS nativo, ma SASS resta utile in progetti grandi.</div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi CSS pronti da copiare</h2>
+        <p>Il modo migliore per imparare il CSS è partire da <strong>esempi già funzionanti</strong>: copiali, aprili nell'editor “Provalo tu” e modificali. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <div class="example">
+          <div class="codehead"><span>Card con hover</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-markup"></code></pre>
+          <script type="text/plain" class="code"><style>
+  .card { width:200px; padding:20px; border-radius:14px; background:#fff;
+          box-shadow:0 8px 20px rgba(0,0,0,.1); transition:.3s; }
+  .card:hover { transform:translateY(-8px); box-shadow:0 16px 30px rgba(0,0,0,.18); }
+</style>
+<div class="card"><h3>Passami sopra</h3><p>Mi sollevo!</p></div></script>
+        </div>
+      </article>
+
+      <article class="lesson" id="editor">
+        <h2>Editor CSS online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor CSS online gratuito</strong> integrato. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong> che apre l'editor a schermo intero, con il codice da una parte e l'anteprima live dall'altra.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
+          <li>Modifica le regole CSS dentro il blocco <code class="inline">&lt;style&gt;</code>.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda subito il risultato.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz CSS — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di CSS</strong> per autovalutarti. Pensa alla risposta e poi apri la soluzione.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Quale proprietà cambia il colore del testo?</summary><p>✅ <code class="inline">color</code>. Attenzione: <code class="inline">background-color</code> cambia invece lo sfondo.</p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Come si centra orizzontalmente un blocco con larghezza fissa?</summary><p>✅ Con <code class="inline">margin: 0 auto;</code> (e una <code class="inline">width</code> definita).</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Quale display attiva il layout Flexbox?</summary><p>✅ <code class="inline">display: flex;</code> sul contenitore.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Cosa fa <code class="inline">box-sizing: border-box</code>?</summary><p>✅ Include padding e bordo dentro la larghezza dichiarata.</p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Quale selettore ha la specificità più alta tra <code class="inline">#id</code>, <code class="inline">.classe</code> e <code class="inline">p</code>?</summary><p>✅ <code class="inline">#id</code>. L'ordine di forza è: id &gt; classe &gt; elemento.</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi CSS con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di CSS svolti</strong> sono pensati per chi vuole <strong>fare pratica con esempi reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: prova prima da solo, poi confronta. Sono gli stessi esercizi di CSS che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — Bottone colorato <span class="tag base">Base</span></h4>
+          <p class="descr">Crea un pulsante con sfondo blu, testo bianco, angoli arrotondati e padding generoso.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>button {
+  background: #4f46e5;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+}</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Centrare un box <span class="tag base">Base</span></h4>
+          <p class="descr">Centra un box largo 300px orizzontalmente nella pagina.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>.box {
+  width: 300px;
+  margin: 0 auto;
+}</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Hover con transizione <span class="tag medio">Medio</span></h4>
+          <p class="descr">Fai cambiare colore a un link in modo fluido quando ci passi sopra il mouse.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>a {
+  color: #4f46e5;
+  transition: color .3s;
+}
+a:hover {
+  color: #f59e0b;
+}</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Griglia di 3 card <span class="tag medio">Medio</span></h4>
+          <p class="descr">Disponi tre box affiancati e ben distanziati usando Flexbox.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>.griglia {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Layout responsive <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Crea una griglia di card che mostra 3 colonne su desktop e 1 sola su smartphone, senza media query.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}</pre></details>
+        </div>
+        <div class="tip-box">⭐ Apri ogni soluzione nell'editor “Provalo tu” e modificala: cambiare i valori è il modo migliore per capire come funziona il CSS.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide CSS — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide CSS</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — Card prodotto</span><p>Crea una card prodotto con immagine, titolo, prezzo e pulsante, con ombra e un effetto di sollevamento al passaggio del mouse.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Navbar responsive</span><p>Realizza una barra di navigazione orizzontale su desktop che diventa una colonna verticale sotto i 600px usando una media query.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Loader animato</span><p>Crea uno spinner di caricamento circolare che gira in continuo usando <code class="inline">@keyframes</code> e <code class="inline">animation</code>.</p></div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso CSS (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di CSS</strong>, l'elenco ordinato degli argomenti dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Basi:</strong> sintassi, selettori, come applicare il CSS, commenti.</li>
+          <li><strong>Aspetto:</strong> colori, sfondi, bordi, box model, testo e font.</li>
+          <li><strong>Layout:</strong> display, position, float, Flexbox e Grid.</li>
+          <li><strong>Avanzato:</strong> gradienti, ombre, transizioni, animazioni, trasformazioni, variabili.</li>
+          <li><strong>Responsive:</strong> media query, viewport, immagini fluide, mobile-first.</li>
+          <li><strong>Pratica:</strong> esempi, esercizi, sfide e un layout di pagina completo.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio CSS</h2>
+        <p>Quanto ci vuole per <strong>imparare il CSS</strong>? Le basi si acquisiscono in una settimana. Ecco un <strong>piano di studio</strong> realistico studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1–2</td><td>Sintassi, selettori, colori, sfondi, testo</td></tr>
+            <tr><td>3</td><td>Box model, bordi, margini, padding</td></tr>
+            <tr><td>4</td><td>Display, position, Flexbox</td></tr>
+            <tr><td>5</td><td>CSS Grid e layout di pagina</td></tr>
+            <tr><td>6</td><td>Transizioni, animazioni, variabili</td></tr>
+            <tr><td>7</td><td>Responsive design, esercizi e sfide</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande CSS frequenti</h2>
+        <p>Le <strong>domande di CSS più frequenti ai colloqui</strong> per ruoli web (front-end). Utili anche per le interrogazioni a scuola.</p>
+        <details class="quiz-q"><summary>Cos'è il box model?</summary><p>Il modello a scatola: ogni elemento è composto da contenuto, padding, bordo e margine.</p></details>
+        <details class="quiz-q"><summary>Differenza tra Flexbox e Grid?</summary><p>Flexbox è monodimensionale (una riga o una colonna), Grid è bidimensionale (righe e colonne insieme).</p></details>
+        <details class="quiz-q"><summary>Come funziona la specificità dei selettori?</summary><p>Determina quale regola vince in caso di conflitto: id (forte) &gt; classe &gt; elemento (debole). <code class="inline">!important</code> ha la precedenza ma va evitato.</p></details>
+        <details class="quiz-q"><summary>Differenza tra position relative, absolute e fixed?</summary><p><em>relative</em>: spostato rispetto a sé stesso; <em>absolute</em>: rispetto al genitore posizionato; <em>fixed</em>: rispetto alla finestra (resta fisso allo scroll).</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp CSS — percorso intensivo</h2>
+        <p>Un <strong>bootcamp CSS</strong> condensa la teoria nella pratica continua. Se vuoi imparare velocemente, alterna ogni argomento con un esercizio immediato:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un argomento (max 20 minuti).</li>
+          <li>✅ <strong>Riproduci</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Svolgi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con l'argomento successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp CSS seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un percorso su misura, dalla prima regola al sito responsive completo.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo CSS — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di CSS</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 Il CSS definisce l'<strong>aspetto</strong> (colori, posizioni, dimensioni) delle pagine HTML.</li>
+          <li>📌 Una regola è fatta da <strong>selettore</strong> + <strong>proprietà: valore</strong>.</li>
+          <li>📌 Il <strong>box model</strong> (contenuto, padding, bordo, margine) governa lo spazio.</li>
+          <li>📌 <strong>Flexbox</strong> e <strong>Grid</strong> sono i sistemi moderni di layout.</li>
+          <li>📌 Le <strong>media query</strong> rendono il sito responsive.</li>
+          <li>📌 Le <strong>variabili</strong> e <code class="inline">transition</code>/<code class="inline">animation</code> portano il sito a livello professionale.</li>
+        </ul>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="rif-selettori">
+        <h2>Riferimento — Selettori CSS</h2>
+        <p>I <strong>selettori CSS</strong> indicano a quali elementi applicare una regola.</p>
+        <table class="ref-table">
+          <thead><tr><th>Selettore</th><th>Seleziona</th></tr></thead>
+          <tbody>
+            <tr><td><code>p</code></td><td>Tutti i paragrafi</td></tr>
+            <tr><td><code>.classe</code></td><td>Elementi con quella classe</td></tr>
+            <tr><td><code>#id</code></td><td>L'elemento con quell'id</td></tr>
+            <tr><td><code>*</code></td><td>Tutti gli elementi</td></tr>
+            <tr><td><code>a, p</code></td><td>Più elementi insieme (gruppo)</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="combinatori">
+        <h2>Riferimento — Combinatori CSS</h2>
+        <table class="ref-table">
+          <thead><tr><th>Combinatore</th><th>Significato</th></tr></thead>
+          <tbody>
+            <tr><td><code>div p</code></td><td>Discendente: ogni p dentro un div</td></tr>
+            <tr><td><code>div &gt; p</code></td><td>Figlio diretto</td></tr>
+            <tr><td><code>div + p</code></td><td>Fratello immediatamente successivo</td></tr>
+            <tr><td><code>div ~ p</code></td><td>Tutti i fratelli successivi</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-pseudo-classi">
+        <h2>Riferimento — Pseudo-classi</h2>
+        <table class="ref-table">
+          <thead><tr><th>Pseudo-classe</th><th>Quando si applica</th></tr></thead>
+          <tbody>
+            <tr><td><code>:hover</code></td><td>Al passaggio del mouse</td></tr>
+            <tr><td><code>:focus</code></td><td>Quando l'elemento ha il focus</td></tr>
+            <tr><td><code>:first-child</code></td><td>Primo figlio</td></tr>
+            <tr><td><code>:nth-child(2)</code></td><td>Il figlio in posizione data</td></tr>
+            <tr><td><code>:checked</code></td><td>Checkbox/radio selezionato</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-pseudo-elementi">
+        <h2>Riferimento — Pseudo-elementi</h2>
+        <table class="ref-table">
+          <thead><tr><th>Pseudo-elemento</th><th>Cosa stila</th></tr></thead>
+          <tbody>
+            <tr><td><code>::before</code></td><td>Contenuto inserito prima</td></tr>
+            <tr><td><code>::after</code></td><td>Contenuto inserito dopo</td></tr>
+            <tr><td><code>::first-line</code></td><td>La prima riga di testo</td></tr>
+            <tr><td><code>::placeholder</code></td><td>Il testo segnaposto di un input</td></tr>
+            <tr><td><code>::selection</code></td><td>Il testo selezionato dall'utente</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="at-rules">
+        <h2>Riferimento — At-rules (@)</h2>
+        <table class="ref-table">
+          <thead><tr><th>At-rule</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>@media</code></td><td>Stili condizionati allo schermo (responsive)</td></tr>
+            <tr><td><code>@import</code></td><td>Importa un altro foglio di stile</td></tr>
+            <tr><td><code>@font-face</code></td><td>Definisce un font personalizzato</td></tr>
+            <tr><td><code>@keyframes</code></td><td>Definisce i fotogrammi di un'animazione</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-funzioni">
+        <h2>Riferimento — Funzioni CSS</h2>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>A cosa serve</th></tr></thead>
+          <tbody>
+            <tr><td><code>var()</code></td><td>Usa una variabile CSS</td></tr>
+            <tr><td><code>calc()</code></td><td>Calcoli tra unità diverse (es. <code>100% - 20px</code>)</td></tr>
+            <tr><td><code>clamp()</code></td><td>Valore fluido tra un minimo e un massimo</td></tr>
+            <tr><td><code>min()</code> / <code>max()</code></td><td>Il valore minore/maggiore tra quelli dati</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="web-safe-fonts">
+        <h2>Riferimento — Web Safe Fonts</h2>
+        <p>I <strong>web safe font</strong> sono installati su quasi tutti i dispositivi, quindi si vedono sempre. Si usano come <em>fallback</em> dopo i font personalizzati.</p>
+        <table class="ref-table">
+          <thead><tr><th>Famiglia</th><th>Esempi</th></tr></thead>
+          <tbody>
+            <tr><td>Sans-serif</td><td>Arial, Helvetica, Verdana</td></tr>
+            <tr><td>Serif</td><td>Times New Roman, Georgia</td></tr>
+            <tr><td>Monospace</td><td>Courier New, Consolas</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="animatable">
+        <h2>Riferimento — Proprietà animabili</h2>
+        <p>Non tutte le proprietà si possono animare in modo fluido. Le più performanti da animare sono <code class="inline">transform</code> e <code class="inline">opacity</code>.</p>
+        <table class="ref-table">
+          <thead><tr><th>Proprietà</th><th>Animabile</th></tr></thead>
+          <tbody>
+            <tr><td><code>opacity</code></td><td>✅ Sì (consigliata)</td></tr>
+            <tr><td><code>transform</code></td><td>✅ Sì (consigliata)</td></tr>
+            <tr><td><code>color</code>, <code>background</code></td><td>✅ Sì</td></tr>
+            <tr><td><code>display</code></td><td>❌ No</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-unita">
+        <h2>Riferimento — Unità di misura CSS</h2>
+        <table class="ref-table">
+          <thead><tr><th>Unità</th><th>Tipo</th></tr></thead>
+          <tbody>
+            <tr><td><code>px</code></td><td>Assoluta (pixel)</td></tr>
+            <tr><td><code>%</code></td><td>Relativa al contenitore</td></tr>
+            <tr><td><code>em</code></td><td>Relativa al font dell'elemento</td></tr>
+            <tr><td><code>rem</code></td><td>Relativa al font radice</td></tr>
+            <tr><td><code>vw</code> / <code>vh</code></td><td>% della larghezza/altezza della finestra</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="px-em">
+        <h2>Riferimento — Convertitore PX ↔ EM</h2>
+        <p>Conversione tra <strong>px</strong> ed <strong>em</strong> con dimensione di riferimento 16px. Formula: <code class="inline">em = px ÷ 16</code>.</p>
+        <table class="ref-table">
+          <thead><tr><th>Pixel</th><th>EM (base 16px)</th></tr></thead>
+          <tbody>
+            <tr><td>8px</td><td>0.5em</td></tr>
+            <tr><td>16px</td><td>1em</td></tr>
+            <tr><td>24px</td><td>1.5em</td></tr>
+            <tr><td>32px</td><td>2em</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-colori-2">
+        <h2>Riferimento — Colori CSS</h2>
+        <table class="ref-table">
+          <thead><tr><th>Modo</th><th>Esempio (viola)</th></tr></thead>
+          <tbody>
+            <tr><td>Nome</td><td><code>indigo</code></td></tr>
+            <tr><td>Esadecimale</td><td><code>#4f46e5</code></td></tr>
+            <tr><td>RGB</td><td><code>rgb(79, 70, 229)</code></td></tr>
+            <tr><td>HSL</td><td><code>hsl(244, 76%, 59%)</code></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="default-values">
+        <h2>Riferimento — Valori predefiniti</h2>
+        <p>Ogni proprietà CSS ha un <strong>valore iniziale</strong> usato se non lo imposti. La parola chiave <code class="inline">initial</code> riporta una proprietà al suo default, <code class="inline">inherit</code> la fa ereditare dal genitore.</p>
+        <table class="ref-table">
+          <thead><tr><th>Proprietà</th><th>Valore predefinito</th></tr></thead>
+          <tbody>
+            <tr><td><code>display</code></td><td><code>inline</code> (varia per tag)</td></tr>
+            <tr><td><code>color</code></td><td>ereditato (di solito nero)</td></tr>
+            <tr><td><code>margin</code> / <code>padding</code></td><td><code>0</code> (ma i browser hanno default propri)</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-browser-support">
+        <h2>Riferimento — Supporto dei browser</h2>
+        <p>Quasi tutte le proprietà CSS moderne (Flexbox, Grid, variabili, transizioni) sono supportate dai <strong>browser moderni</strong> (Chrome, Firefox, Edge, Safari). Per le funzioni più recenti conviene verificare su <em>Can I Use</em>.</p>
+        <div class="note-box">💡 Il prefisso <code class="inline">-webkit-</code> serviva per alcune proprietà sperimentali su Chrome/Safari: oggi è raramente necessario.</div>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato CSS</h2>
+        <p>Vuoi una <strong>certificazione di CSS</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi e, soprattutto, per <strong>costruire siti web responsive reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di CSS svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è il tuo portfolio: un sito responsive che hai realizzato da solo vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di CSS completo e gratuito in italiano</strong>: dalla sintassi e i selettori al box model, da Flexbox e Grid alle animazioni, dalle variabili al responsive design, fino a esercizi, sfide, riferimenti e SASS. Ora sai dare stile a qualsiasi pagina web.</p>
+        <p>Il modo migliore per imparare il CSS è <strong>fare pratica ogni giorno</strong>: rifai gli <a href="#esercizi">esercizi CSS</a>, affronta le <a href="#sfide">sfide</a> e prova a costruire un <a href="#layout">layout di pagina completo</a>.</p>
+        <h3>E ora?</h3>
+        <p>Il prossimo passo è rendere le tue pagine interattive con <strong>JavaScript</strong>. Se vuoi un percorso guidato passo passo o aiuto per una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Prendi una pagina HTML che hai già scritto e trasformala: scegli una palette di tre colori, usa Flexbox o Grid per il layout e aggiungi una transizione al passaggio del mouse su un bottone.</p></div>
+        <div class="hero-actions"><a href="corso-javascript.html" class="btn btn-primary">⚡ Continua con il corso JavaScript</a><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
     </main>
   </div>
