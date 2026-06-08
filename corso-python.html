@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso Python in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di Python in italiano completo, gratuito e interattivo: sintassi, variabili, tipi di dato, stringhe, liste, tuple, set, dizionari, cicli, funzioni, moduli, file, JSON, RegEx, gestione errori e programmazione a oggetti (OOP). Scrivi ed esegui Python direttamente nel browser.">
+  <title>Corso Python completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Python completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, cicli, funzioni, liste, dizionari, OOP, gestione file, NumPy, Pandas, Matplotlib, machine learning, strutture dati e algoritmi (DSA), MySQL e MongoDB. Scrivi ed esegui Python nel browser. Spiegato da un docente di informatica.">
   <meta name="keywords" content="corso python italiano, imparare python, tutorial python gratis, python da zero, programmazione python, esercizi python, python online, OOP python, classi python">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso Python in italiano completo e gratuito — AlessandroSimone.it">
@@ -88,10 +88,30 @@
     .cm-s-default .cm-builtin   { color: #7c3aed; }
     .cm-s-default .cm-meta      { color: #999; }
 
+    /* Tabelle di riferimento */
+    .ref-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+    .ref-table th, .ref-table td { border: 1px solid var(--border); padding: .55rem .8rem; text-align: left; }
+    .ref-table thead th { background: var(--bg-soft); font-weight: 700; }
+    .ref-table tbody tr:nth-child(even) { background: #fafbfc; }
+    .ref-table code { background: var(--primary-light); color: var(--primary); padding: .05rem .35rem; border-radius: 5px; font-size: .9em; }
+    /* Quiz e domande colloquio */
+    .quiz-q { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .2rem .9rem; margin: .55rem 0; }
+    .quiz-q summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+    .quiz-q summary:hover { color: var(--primary); }
+    .quiz-q p { margin: .3rem 0 .7rem; color: var(--ink); }
+    /* Card esercizi */
+    .ex-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--edu); border-radius: 12px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .ex-card h4 { font-size: 1.05rem; margin-bottom: .35rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .ex-card .descr { color: var(--muted); margin-bottom: .5rem; }
+    /* Liste */
+    .lista-num, .lista-check { margin: 1rem 0; padding-left: 1.2rem; line-height: 1.8; }
+    .lista-check { list-style: none; padding-left: 0; }
+    .lista-check li { margin-bottom: .35rem; }
     @media (max-width: 900px){
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
       .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+      .ref-table { font-size: .85rem; }
     }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-python.html">
@@ -103,15 +123,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-python.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso Python in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di Python in italiano completo, gratuito e interattivo: sintassi, variabili, tipi di dato, stringhe, liste, tuple, set, dizionari, cicli, funzioni, moduli, file, JSON, RegEx, gestione errori e programmazione a oggetti (OOP). Scrivi ed esegui Python direttamente nel browser.">
+  <meta name="twitter:title" content="Corso Python completo in italiano con esercizi e soluzioni — Tutorial da zero | AlessandroSimone.it">
+  <meta name="twitter:description" content="Corso di Python completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, cicli, funzioni, liste, dizionari, OOP, gestione file, NumPy, Pandas, Matplotlib, machine learning, strutture dati e algoritmi (DSA), MySQL e MongoDB. Scrivi ed esegui Python nel browser. Spiegato da un docente di informatica.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di Python in italiano",
-  "description": "Corso di Python in italiano completo, gratuito e interattivo: sintassi, variabili, tipi di dato, stringhe, liste, tuple, set, dizionari, cicli, funzioni, moduli, file, JSON, RegEx, gestione errori e programmazione a oggetti (OOP). Scrivi ed esegui Python direttamente nel browser.",
+  "description": "Corso di Python completo e gratuito in italiano con esercizi svolti e soluzioni, quiz e sfide: variabili, cicli, funzioni, liste, dizionari, OOP, gestione file, NumPy, Pandas, Matplotlib, machine learning, strutture dati e algoritmi (DSA), MySQL e MongoDB. Scrivi ed esegui Python nel browser. Spiegato da un docente di informatica.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-python.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -225,8 +245,59 @@
       <a href="#polimorfismo">Polimorfismo</a>
       <a href="#incapsulamento">Incapsulamento</a>
       <a href="#inner">Classi annidate</a>
-      <h4>Conclusione</h4>
-      <a href="#fine">E ora?</a>
+      <h4>Gestione dei file</h4>
+      <a href="#file-handling">Gestione dei file</a>
+      <a href="#file-read">Leggere i file</a>
+      <a href="#file-write">Scrivere e creare file</a>
+      <a href="#file-delete">Eliminare i file</a>
+      <h4>Librerie Python</h4>
+      <a href="#numpy">NumPy</a>
+      <a href="#pandas">Pandas</a>
+      <a href="#scipy">SciPy</a>
+      <a href="#django">Django</a>
+      <a href="#matplotlib">Matplotlib</a>
+      <h4>Machine Learning</h4>
+      <a href="#ml-intro">Introduzione al ML</a>
+      <a href="#ml-statistica">Media, mediana, moda</a>
+      <a href="#ml-deviazione">Deviazione standard</a>
+      <a href="#ml-distribuzione">Distribuzione dei dati</a>
+      <a href="#ml-regressione">Regressione lineare</a>
+      <a href="#ml-regressione-poly">Regressione polinomiale</a>
+      <a href="#ml-train-test">Train/Test</a>
+      <a href="#ml-decision-tree">Albero decisionale</a>
+      <a href="#ml-knn">K-Nearest Neighbors</a>
+      <h4>Strutture dati e algoritmi (DSA)</h4>
+      <a href="#dsa-intro">Introduzione alla DSA</a>
+      <a href="#dsa-stack">Stack (pile)</a>
+      <a href="#dsa-queue">Queue (code)</a>
+      <a href="#dsa-linked">Liste collegate</a>
+      <a href="#dsa-hash">Hash table</a>
+      <a href="#dsa-trees">Alberi</a>
+      <a href="#dsa-graphs">Grafi</a>
+      <a href="#dsa-search">Ricerca lineare e binaria</a>
+      <a href="#dsa-sort">Algoritmi di ordinamento</a>
+      <h4>Python con i database</h4>
+      <a href="#py-mysql">Python e MySQL</a>
+      <a href="#py-mongodb">Python e MongoDB</a>
+      <h4>Esempi &amp; Pratica Python</h4>
+      <a href="#esempi">Esempi Python</a>
+      <a href="#editor-online">Editor Python online</a>
+      <a href="#quiz">Quiz Python</a>
+      <a href="#esercizi">Esercizi Python</a>
+      <a href="#sfide">Sfide Python</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Preparazione al colloquio</a>
+      <a href="#bootcamp">Bootcamp Python</a>
+      <a href="#riepilogo">Riepilogo Python</a>
+      <h4>Riferimenti Python</h4>
+      <a href="#rif-builtin">Funzioni built-in</a>
+      <a href="#rif-stringhe">Metodi delle stringhe</a>
+      <a href="#rif-liste">Metodi delle liste</a>
+      <a href="#rif-dizionari">Metodi dei dizionari</a>
+      <h4>Certificazione Python</h4>
+      <a href="#certificato">Certificato Python</a>
+      <a href="#conclusione">Conclusione</a>
     </aside>
     <main>
 
@@ -1161,12 +1232,628 @@ print(pc.marca, "con CPU", pc.cpu.modello)</script>
         </div>
       </article>
 
-      <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di Python</h2>
-        <p>Hai imparato Python dalle basi (variabili, tipi, cicli e funzioni) fino alla programmazione a oggetti (classi, ereditarietà, polimorfismo e incapsulamento). Ora hai tutti gli strumenti per costruire i tuoi primi programmi.</p>
-        <p>Il modo migliore per consolidare ciò che hai imparato è <strong>esercitarti</strong>: prova a modificare gli esempi, sbaglia, correggi e sperimenta. Se vuoi un percorso guidato o una mano per una verifica, posso aiutarti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Scrivi un programma che chiede all'utente una lista di voti e stampa media, voto più alto, voto più basso e quanti sono sopra la sufficienza. Prova a gestire anche input non validi.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+      <!-- ===== GESTIONE FILE ===== -->
+      <article class="lesson" id="file-handling">
+        <h2>Python Gestione dei file (File Handling)</h2>
+        <p>La <strong>gestione dei file</strong> in Python permette di leggere e scrivere file sul disco con la funzione <code class="inline">open()</code>. Si indica il nome del file e la <em>modalità</em>: <code class="inline">"r"</code> (lettura), <code class="inline">"w"</code> (scrittura), <code class="inline">"a"</code> (aggiunta), <code class="inline">"x"</code> (crea).</p>
+        <table class="ref-table">
+          <thead><tr><th>Modalità</th><th>Significato</th></tr></thead>
+          <tbody>
+            <tr><td><code>"r"</code></td><td>Lettura (errore se non esiste)</td></tr>
+            <tr><td><code>"w"</code></td><td>Scrittura (sovrascrive)</td></tr>
+            <tr><td><code>"a"</code></td><td>Aggiunge in fondo</td></tr>
+            <tr><td><code>"x"</code></td><td>Crea un nuovo file</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">⭐ Usa sempre <code class="inline">with open(...) as f:</code>: chiude automaticamente il file anche in caso di errore.</div>
+      </article>
+
+      <article class="lesson" id="file-read">
+        <h2>Python Leggere i file</h2>
+        <p>Per <strong>leggere un file</strong> si apre in modalità <code class="inline">"r"</code> e si usa <code class="inline">read()</code> (tutto il contenuto) o si itera riga per riga.</p>
+        <pre class="codeview"><code class="language-python">with open("dati.txt", "r") as f:
+    contenuto = f.read()
+    print(contenuto)
+
+# riga per riga
+with open("dati.txt", "r") as f:
+    for riga in f:
+        print(riga.strip())</code></pre>
+      </article>
+
+      <article class="lesson" id="file-write">
+        <h2>Python Scrivere e creare file</h2>
+        <p>Per <strong>scrivere</strong> si apre in <code class="inline">"w"</code> (sovrascrive) o <code class="inline">"a"</code> (aggiunge). Se il file non esiste, viene creato.</p>
+        <pre class="codeview"><code class="language-python">with open("note.txt", "w") as f:
+    f.write("Prima riga\n")
+    f.write("Seconda riga\n")
+
+# aggiungere senza cancellare
+with open("note.txt", "a") as f:
+    f.write("Riga aggiunta\n")</code></pre>
+      </article>
+
+      <article class="lesson" id="file-delete">
+        <h2>Python Eliminare i file</h2>
+        <p>Per <strong>eliminare un file</strong> si usa il modulo <code class="inline">os</code>. È buona pratica controllare prima che il file esista.</p>
+        <pre class="codeview"><code class="language-python">import os
+
+if os.path.exists("note.txt"):
+    os.remove("note.txt")
+    print("File eliminato")
+else:
+    print("Il file non esiste")</code></pre>
+      </article>
+
+      <!-- ===== LIBRERIE ===== -->
+      <article class="lesson" id="numpy">
+        <h2>Python NumPy</h2>
+        <p><strong>NumPy</strong> è la libreria fondamentale per il calcolo numerico in Python: introduce gli <em>array</em> multidimensionali, molto più veloci delle liste per i calcoli matematici. È la base di Pandas, SciPy e del machine learning.</p>
+        <pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3, 4])
+print(a * 2)        # [2 4 6 8]
+print(a.mean())     # 2.5
+print(a.sum())      # 10</code></pre>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install numpy</code>. Gli array NumPy permettono operazioni su tutti gli elementi senza scrivere cicli.</div>
+      </article>
+
+      <article class="lesson" id="pandas">
+        <h2>Python Pandas</h2>
+        <p><strong>Pandas</strong> è la libreria per l'<strong>analisi dei dati</strong>: lavora con tabelle chiamate <em>DataFrame</em>, simili a un foglio Excel. Permette di leggere file CSV/Excel, filtrare, raggruppare e calcolare statistiche.</p>
+        <pre class="codeview"><code class="language-python">import pandas as pd
+
+dati = pd.DataFrame({
+    "nome": ["Anna", "Luca", "Sara"],
+    "voto": [8, 6, 9]
+})
+print(dati["voto"].mean())          # 7.67
+print(dati[dati["voto"] >= 7])      # solo i promossi</code></pre>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install pandas</code>. È lo strumento principale dei data analyst.</div>
+      </article>
+
+      <article class="lesson" id="scipy">
+        <h2>Python SciPy</h2>
+        <p><strong>SciPy</strong> estende NumPy con funzioni avanzate di <strong>matematica, scienza e ingegneria</strong>: ottimizzazione, statistica, algebra lineare, elaborazione di segnali.</p>
+        <pre class="codeview"><code class="language-python">from scipy import stats
+
+dati = [4, 8, 15, 16, 23, 42]
+print(stats.tmean(dati))     # media
+print(stats.mode([1,1,2,3])) # moda</code></pre>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install scipy</code>. Si usa insieme a NumPy nel calcolo scientifico.</div>
+      </article>
+
+      <article class="lesson" id="django">
+        <h2>Python Django</h2>
+        <p><strong>Django</strong> è il <strong>framework web</strong> più usato in Python: permette di costruire siti e applicazioni web complete e sicure, con database, autenticazione e pannello di amministrazione già pronti.</p>
+        <pre class="codeview"><code class="language-python"># views.py — una semplice pagina Django
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Ciao dal mio sito Django!")</code></pre>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install django</code>. Segue il pattern MVT (Model-View-Template). Alternative più leggere: Flask e FastAPI.</div>
+      </article>
+
+      <article class="lesson" id="matplotlib">
+        <h2>Python Matplotlib</h2>
+        <p><strong>Matplotlib</strong> è la libreria per creare <strong>grafici</strong> in Python: linee, barre, istogrammi, grafici a torta e a dispersione (scatter). Il modulo principale è <code class="inline">pyplot</code>, di solito importato come <code class="inline">plt</code>.</p>
+        <pre class="codeview"><code class="language-python">import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [10, 25, 18, 40]
+
+plt.plot(x, y, marker="o")     # grafico a linee
+plt.title("Andamento")
+plt.xlabel("Mese")
+plt.ylabel("Vendite")
+plt.grid(True)
+plt.show()</code></pre>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>Tipo di grafico</th></tr></thead>
+          <tbody>
+            <tr><td><code>plt.plot()</code></td><td>Linee</td></tr>
+            <tr><td><code>plt.bar()</code></td><td>Barre</td></tr>
+            <tr><td><code>plt.scatter()</code></td><td>Dispersione (scatter)</td></tr>
+            <tr><td><code>plt.hist()</code></td><td>Istogramma</td></tr>
+            <tr><td><code>plt.pie()</code></td><td>Torta</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install matplotlib</code>. Con <code class="inline">plt.subplot()</code> metti più grafici nella stessa figura.</div>
+      </article>
+
+      <!-- ===== MACHINE LEARNING ===== -->
+      <article class="lesson" id="ml-intro">
+        <h2>Python Machine Learning — introduzione</h2>
+        <p>Il <strong>machine learning</strong> (apprendimento automatico) insegna al computer a fare previsioni a partire dai dati, invece di programmare regole fisse. Python è il linguaggio più usato per il ML grazie a librerie come <strong>scikit-learn</strong>, NumPy e Pandas.</p>
+        <ul class="lista-check">
+          <li>🤖 <strong>Apprendimento supervisionato:</strong> si impara da dati già etichettati (es. regressione, classificazione).</li>
+          <li>🧩 <strong>Apprendimento non supervisionato:</strong> si trovano schemi nei dati senza etichette (es. clustering, K-means).</li>
+        </ul>
+      </article>
+
+      <article class="lesson" id="ml-statistica">
+        <h2>Python ML — Media, Mediana, Moda</h2>
+        <p>Le tre misure di tendenza centrale sono la base della statistica per il ML: <strong>media</strong> (valore medio), <strong>mediana</strong> (valore centrale), <strong>moda</strong> (valore più frequente).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import statistics
+voti = [4, 6, 6, 7, 8, 9, 10]
+print("Media:", statistics.mean(voti))
+print("Mediana:", statistics.median(voti))
+print("Moda:", statistics.mode(voti))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ml-deviazione">
+        <h2>Python ML — Deviazione standard e percentili</h2>
+        <p>La <strong>deviazione standard</strong> misura quanto i dati si discostano dalla media: un valore basso indica dati vicini alla media, alto indica dati molto sparsi. I <strong>percentili</strong> indicano sotto quale valore si trova una certa percentuale dei dati.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import statistics
+voti = [4, 6, 6, 7, 8, 9, 10]
+print("Deviazione standard:", round(statistics.pstdev(voti), 2))</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="ml-distribuzione">
+        <h2>Python ML — Distribuzione dei dati</h2>
+        <p>Capire la <strong>distribuzione dei dati</strong> è il primo passo del ML. La <strong>distribuzione normale</strong> (a campana) è la più comune: la maggior parte dei valori si concentra intorno alla media. Con NumPy si generano dati casuali per allenare i modelli.</p>
+        <pre class="codeview"><code class="language-python">import numpy as np
+# 250 valori con media 50 e deviazione standard 10
+dati = np.random.normal(50, 10, 250)
+print(dati.mean(), dati.std())</code></pre>
+      </article>
+
+      <article class="lesson" id="ml-regressione">
+        <h2>Python ML — Regressione lineare</h2>
+        <p>La <strong>regressione lineare</strong> trova la retta che meglio approssima la relazione tra due variabili, per fare previsioni (es. prevedere il prezzo in base alla dimensione).</p>
+        <pre class="codeview"><code class="language-python">from scipy import stats
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 5, 4, 6]
+slope, intercept, r, p, std = stats.linregress(x, y)
+def previsione(v): return slope * v + intercept
+print(previsione(6))   # previsione per x=6</code></pre>
+      </article>
+
+      <article class="lesson" id="ml-regressione-poly">
+        <h2>Python ML — Regressione polinomiale e multipla</h2>
+        <p>Quando i dati non seguono una retta, la <strong>regressione polinomiale</strong> usa una curva. La <strong>regressione multipla</strong> prevede un valore in base a <em>più</em> variabili contemporaneamente (es. prezzo in base a dimensione <em>e</em> numero di stanze).</p>
+        <pre class="codeview"><code class="language-python">import numpy as np
+x = [1, 2, 3, 5, 6, 7]
+y = [5, 3, 2, 3, 5, 8]
+modello = np.poly1d(np.polyfit(x, y, 3))   # grado 3
+print(modello(4))</code></pre>
+      </article>
+
+      <article class="lesson" id="ml-train-test">
+        <h2>Python ML — Train/Test e scala dei dati</h2>
+        <p>Per valutare un modello si dividono i dati in <strong>training set</strong> (per allenare) e <strong>test set</strong> (per verificare), tipicamente 80/20. La <strong>scalatura</strong> porta variabili con unità diverse sulla stessa scala.</p>
+        <pre class="codeview"><code class="language-python">from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)</code></pre>
+        <div class="note-box">💡 Separare train e test evita l'<strong>overfitting</strong>: un modello che “memorizza” i dati invece di imparare a generalizzare.</div>
+      </article>
+
+      <article class="lesson" id="ml-decision-tree">
+        <h2>Python ML — Albero decisionale e altri modelli</h2>
+        <p>L'<strong>albero decisionale</strong> prende decisioni con una serie di domande sì/no. Altri modelli comuni in scikit-learn: <strong>regressione logistica</strong> (classificazione), <strong>K-means</strong> (clustering), <strong>matrice di confusione</strong> (per valutare un classificatore).</p>
+        <pre class="codeview"><code class="language-python">from sklearn import tree
+modello = tree.DecisionTreeClassifier()
+modello.fit(X, y)
+print(modello.predict([[nuovo_dato]]))</code></pre>
+      </article>
+
+      <article class="lesson" id="ml-knn">
+        <h2>Python ML — K-Nearest Neighbors</h2>
+        <p>Il <strong>K-Nearest Neighbors</strong> (KNN) classifica un nuovo dato in base ai <em>k</em> esempi più vicini. È semplice e intuitivo: “dimmi con chi vai e ti dirò chi sei”.</p>
+        <pre class="codeview"><code class="language-python">from sklearn.neighbors import KNeighborsClassifier
+modello = KNeighborsClassifier(n_neighbors=3)
+modello.fit(X, y)
+print(modello.predict([[nuovo_dato]]))</code></pre>
+      </article>
+
+      <!-- ===== DSA ===== -->
+      <article class="lesson" id="dsa-intro">
+        <h2>Python DSA — Strutture dati e algoritmi</h2>
+        <p>Le <strong>strutture dati e algoritmi</strong> (DSA, Data Structures and Algorithms) sono il cuore dell'informatica: imparare a organizzare i dati e a risolvere problemi in modo efficiente è fondamentale per i colloqui tecnici e per scrivere programmi veloci.</p>
+        <div class="note-box">💡 Una <strong>struttura dati</strong> è un modo di organizzare i dati (lista, pila, albero); un <strong>algoritmo</strong> è una sequenza di passi per risolvere un problema (cercare, ordinare).</div>
+      </article>
+
+      <article class="lesson" id="dsa-stack">
+        <h2>Python DSA — Stack (pile)</h2>
+        <p>Uno <strong>stack</strong> (pila) segue la logica <strong>LIFO</strong> (Last In, First Out): l'ultimo elemento inserito è il primo a uscire, come una pila di piatti. In Python si realizza con una lista.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">pila = []
+pila.append("A")   # push
+pila.append("B")
+pila.append("C")
+print(pila.pop())  # C (esce l'ultimo)
+print(pila)        # ['A', 'B']</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dsa-queue">
+        <h2>Python DSA — Queue (code)</h2>
+        <p>Una <strong>queue</strong> (coda) segue la logica <strong>FIFO</strong> (First In, First Out): il primo elemento inserito è il primo a uscire, come una fila allo sportello.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">from collections import deque
+coda = deque()
+coda.append("A")   # entra
+coda.append("B")
+print(coda.popleft())  # A (esce il primo)
+print(coda)            # deque(['B'])</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dsa-linked">
+        <h2>Python DSA — Liste collegate (Linked List)</h2>
+        <p>Una <strong>lista collegata</strong> è una sequenza di nodi, dove ogni nodo contiene un valore e un riferimento al nodo successivo. A differenza degli array, gli elementi non sono contigui in memoria.</p>
+        <pre class="codeview"><code class="language-python">class Nodo:
+    def __init__(self, valore):
+        self.valore = valore
+        self.successivo = None
+
+a = Nodo("A"); b = Nodo("B")
+a.successivo = b        # A -> B</code></pre>
+      </article>
+
+      <article class="lesson" id="dsa-hash">
+        <h2>Python DSA — Hash table</h2>
+        <p>Una <strong>hash table</strong> associa chiavi a valori con accesso quasi istantaneo. In Python è già integrata nel tipo <strong>dizionario</strong> (<code class="inline">dict</code>).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">rubrica = {"Anna": "333111", "Luca": "333222"}
+print(rubrica["Anna"])   # accesso immediato per chiave
+rubrica["Sara"] = "333333"
+print(rubrica)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dsa-trees">
+        <h2>Python DSA — Alberi (Trees)</h2>
+        <p>Un <strong>albero</strong> è una struttura gerarchica con una radice e nodi figli. Casi particolari: <strong>albero binario</strong> (max 2 figli per nodo), <strong>albero binario di ricerca (BST)</strong> e gli alberi bilanciati <strong>AVL</strong>, che mantengono le ricerche veloci.</p>
+        <pre class="codeview"><code class="language-python">class NodoAlbero:
+    def __init__(self, valore):
+        self.valore = valore
+        self.sinistro = None
+        self.destro = None
+
+radice = NodoAlbero(10)
+radice.sinistro = NodoAlbero(5)
+radice.destro = NodoAlbero(15)</code></pre>
+      </article>
+
+      <article class="lesson" id="dsa-graphs">
+        <h2>Python DSA — Grafi (Graphs)</h2>
+        <p>Un <strong>grafo</strong> rappresenta relazioni tra elementi (nodi) collegati da archi: mappe stradali, social network, reti. In Python si rappresenta spesso con un dizionario di liste di adiacenza.</p>
+        <pre class="codeview"><code class="language-python">grafo = {
+    "A": ["B", "C"],
+    "B": ["A", "D"],
+    "C": ["A", "D"],
+    "D": ["B", "C"]
+}
+print(grafo["A"])   # vicini di A: ['B', 'C']</code></pre>
+      </article>
+
+      <article class="lesson" id="dsa-search">
+        <h2>Python DSA — Ricerca lineare e binaria</h2>
+        <p>La <strong>ricerca lineare</strong> scorre tutti gli elementi uno per uno. La <strong>ricerca binaria</strong> è molto più veloce ma richiede una lista <em>ordinata</em>: dimezza l'intervallo a ogni passo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio — ricerca binaria</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">def ricerca_binaria(lista, x):
+    basso, alto = 0, len(lista) - 1
+    while basso <= alto:
+        medio = (basso + alto) // 2
+        if lista[medio] == x: return medio
+        elif lista[medio] < x: basso = medio + 1
+        else: alto = medio - 1
+    return -1
+
+print(ricerca_binaria([1,3,5,7,9,11], 7))   # 3</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="dsa-sort">
+        <h2>Python DSA — Algoritmi di ordinamento</h2>
+        <p>Gli <strong>algoritmi di ordinamento</strong> mettono in ordine gli elementi di una lista. I principali sono <strong>Bubble Sort</strong>, <strong>Selection Sort</strong>, <strong>Insertion Sort</strong>, <strong>Quick Sort</strong>, <strong>Merge Sort</strong>, <strong>Counting Sort</strong> e <strong>Radix Sort</strong>, con diverse velocità (complessità).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio — Bubble Sort</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">numeri = [5, 2, 8, 1, 9]
+for i in range(len(numeri)):
+    for j in range(len(numeri) - 1 - i):
+        if numeri[j] > numeri[j + 1]:
+            numeri[j], numeri[j + 1] = numeri[j + 1], numeri[j]
+print(numeri)   # [1, 2, 5, 8, 9]</script>
+        </div>
+        <table class="ref-table">
+          <thead><tr><th>Algoritmo</th><th>Complessità media</th></tr></thead>
+          <tbody>
+            <tr><td>Bubble / Selection / Insertion</td><td>O(n²)</td></tr>
+            <tr><td>Quick Sort / Merge Sort</td><td>O(n log n)</td></tr>
+            <tr><td>Counting / Radix Sort</td><td>O(n) (casi particolari)</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">⭐ In pratica si usa <code class="inline">sorted(lista)</code>, che in Python usa Timsort (O(n log n)). Gli algoritmi qui sopra servono a <em>capire</em> come funziona l'ordinamento.</div>
+      </article>
+
+      <!-- ===== DATABASE ===== -->
+      <article class="lesson" id="py-mysql">
+        <h2>Python e MySQL</h2>
+        <p>Python può collegarsi a un database <strong>MySQL</strong> con il connettore <code class="inline">mysql-connector-python</code>. Si apre una connessione, si crea un <em>cursore</em> e si eseguono le query SQL.</p>
+        <pre class="codeview"><code class="language-python">import mysql.connector
+
+db = mysql.connector.connect(
+    host="localhost", user="root", password="", database="scuola")
+cur = db.cursor()
+
+cur.execute("SELECT nome, voto FROM studenti WHERE voto >= %s", (6,))
+for nome, voto in cur.fetchall():
+    print(nome, voto)</code></pre>
+        <div class="note-box">💡 Il <code class="inline">%s</code> è un parametro (prepared statement): previene la SQL Injection. Approfondisci con il <a href="corso-mysql.html">corso MySQL</a>.</div>
+      </article>
+
+      <article class="lesson" id="py-mongodb">
+        <h2>Python e MongoDB</h2>
+        <p><strong>MongoDB</strong> è un database <em>NoSQL</em> a documenti (in formato simile al JSON). Python ci si collega con la libreria <code class="inline">pymongo</code>: invece di tabelle e righe, si lavora con <em>collezioni</em> e <em>documenti</em>.</p>
+        <pre class="codeview"><code class="language-python">from pymongo import MongoClient
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["scuola"]
+studenti = db["studenti"]
+
+studenti.insert_one({"nome": "Anna", "voto": 8})
+for s in studenti.find({"voto": {"$gte": 6}}):
+    print(s["nome"], s["voto"])</code></pre>
+        <div class="note-box">💡 Si installa con <code class="inline">pip install pymongo</code>. MongoDB è molto usato per applicazioni web moderne e dati non strutturati.</div>
+      </article>
+
+      <!-- ===== ESEMPI & PRATICA ===== -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi Python pronti da copiare</h2>
+        <p>Il modo migliore per imparare Python è partire da <strong>programmi già funzionanti</strong>: copiali, aprili nell'editor “Provalo tu” ed eseguili. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <div class="example">
+          <div class="codehead"><span>Indovina il numero</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-python"></code></pre>
+          <script type="text/plain" class="code">import random
+segreto = random.randint(1, 10)
+print("Ho pensato un numero da 1 a 10:", segreto)
+print("Esempio: il quadrato del numero è", segreto ** 2)</script>
+        </div>
+      </article>
+
+      <article class="lesson" id="editor-online">
+        <h2>Editor Python online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor Python online gratuito</strong> integrato, basato su Pyodide: esegui codice Python reale direttamente nel browser, senza installare nulla. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong>.</p>
+        <ol class="lista-num">
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
+          <li>Modifica il codice Python.</li>
+          <li>Premi <strong>▶ Esegui</strong> e guarda subito l'output.</li>
+        </ol>
+        <div class="note-box">💡 Per programmare sul tuo computer installa Python da <strong>python.org</strong> e un editor come <strong>Visual Studio Code</strong> o <strong>Thonny</strong> (ottimo per iniziare).</div>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz Python — metti alla prova le tue conoscenze</h2>
+        <p>Un breve <strong>quiz di Python</strong> per autovalutarti. Pensa alla risposta e poi apri la soluzione.</p>
+        <details class="quiz-q"><summary><strong>1.</strong> Come si stampa a schermo in Python?</summary><p>✅ Con la funzione <code class="inline">print()</code>.</p></details>
+        <details class="quiz-q"><summary><strong>2.</strong> Qual è la differenza tra lista e tupla?</summary><p>✅ La lista è modificabile (<code class="inline">[]</code>), la tupla è immutabile (<code class="inline">()</code>).</p></details>
+        <details class="quiz-q"><summary><strong>3.</strong> Come si gestisce un errore senza bloccare il programma?</summary><p>✅ Con il blocco <code class="inline">try / except</code>.</p></details>
+        <details class="quiz-q"><summary><strong>4.</strong> Cosa fa <code class="inline">len("ciao")</code>?</summary><p>✅ Restituisce 4, il numero di caratteri.</p></details>
+        <details class="quiz-q"><summary><strong>5.</strong> Come si definisce una funzione?</summary><p>✅ Con la parola chiave <code class="inline">def</code>.</p></details>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi Python con soluzioni (per principianti)</h2>
+        <p>Questi <strong>esercizi di Python svolti</strong> sono pensati per chi vuole <strong>fare pratica con esempi reali</strong>. Per ognuno c'è la consegna e la <strong>soluzione commentata</strong>: provala nell'editor “Provalo tu”. Sono gli stessi esercizi di Python che assegno ai miei studenti durante le ripetizioni a Roma.</p>
+
+        <div class="ex-card">
+          <h4>Esercizio 1 — Pari o dispari <span class="tag base">Base</span></h4>
+          <p class="descr">Chiedi un numero e stampa se è pari o dispari.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>n = int(input("Numero: "))
+if n % 2 == 0:
+    print("Pari")
+else:
+    print("Dispari")</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 2 — Somma di una lista <span class="tag base">Base</span></h4>
+          <p class="descr">Calcola la somma dei numeri di una lista senza usare sum().</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>numeri = [4, 8, 15, 16, 23, 42]
+totale = 0
+for n in numeri:
+    totale += n
+print(totale)   # 108</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 3 — Conta le vocali <span class="tag medio">Medio</span></h4>
+          <p class="descr">Conta quante vocali ci sono in una frase.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>frase = input("Frase: ").lower()
+vocali = sum(1 for c in frase if c in "aeiou")
+print("Vocali:", vocali)</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 4 — Numero palindromo <span class="tag medio">Medio</span></h4>
+          <p class="descr">Verifica se una parola è palindroma (si legge uguale al contrario).</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>parola = input("Parola: ")
+if parola == parola[::-1]:
+    print("È palindroma!")
+else:
+    print("Non è palindroma.")</pre></details>
+        </div>
+
+        <div class="ex-card">
+          <h4>Esercizio 5 — Dizionario dei voti <span class="tag avanzato">Avanzato</span></h4>
+          <p class="descr">Dato un dizionario nome→voto, stampa la media e chi è promosso.</p>
+          <details class="solution"><summary>Mostra soluzione</summary><pre>voti = {"Anna": 8, "Luca": 5, "Sara": 7}
+media = sum(voti.values()) / len(voti)
+print("Media:", round(media, 2))
+promossi = [n for n, v in voti.items() if v >= 6]
+print("Promossi:", promossi)</pre></details>
+        </div>
+        <div class="tip-box">⭐ Esegui ogni soluzione nell'editor “Provalo tu” e modificala: è il modo migliore per imparare Python.</div>
+      </article>
+
+      <article class="lesson" id="sfide">
+        <h2>Sfide Python — esercizi avanzati senza soluzione</h2>
+        <p>Le <strong>sfide Python</strong> sono esercizi più impegnativi, <em>senza soluzione data</em>: l'obiettivo è ragionare e costruire da soli.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 1 — Registro voti</span><p>Scrivi un programma che chiede all'utente una lista di voti e stampa media, voto più alto, voto più basso e quanti sono sopra la sufficienza. Gestisci anche input non validi.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 2 — Indovina il numero</span><p>Il computer pensa un numero da 1 a 100 e l'utente prova a indovinarlo; a ogni tentativo il programma dice “più alto” o “più basso”.</p></div>
+        <div class="challenge-box"><span class="challenge-label">🎯 Sfida 3 — Conta parole</span><p>Dato un testo, conta quante volte compare ogni parola e mostra le 3 più frequenti (usa un dizionario).</p></div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso Python (syllabus)</h2>
+        <p>Questo è il <strong>programma completo del corso di Python</strong>, l'elenco ordinato degli argomenti dal principiante all'avanzato. È lo stesso <em>syllabus</em> che seguo in classe e nelle ripetizioni.</p>
+        <ol class="lista-num">
+          <li><strong>Basi:</strong> sintassi, variabili, tipi di dato, operatori, input/output.</li>
+          <li><strong>Controllo:</strong> condizioni, cicli while e for, funzioni.</li>
+          <li><strong>Strutture dati:</strong> liste, tuple, set, dizionari.</li>
+          <li><strong>Avanzato:</strong> moduli, gestione errori, file, OOP (classi ed ereditarietà).</li>
+          <li><strong>Librerie:</strong> NumPy, Pandas, Matplotlib e un'introduzione al machine learning.</li>
+          <li><strong>Pratica:</strong> DSA, database, esercizi e mini-progetti.</li>
+        </ol>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio Python</h2>
+        <p>Quanto ci vuole per <strong>imparare Python</strong>? Le basi in 1-2 settimane. Ecco un <strong>piano di studio</strong> realistico studiando circa un'ora al giorno.</p>
+        <table class="ref-table">
+          <thead><tr><th>Giorno</th><th>Cosa studiare</th></tr></thead>
+          <tbody>
+            <tr><td>1–2</td><td>Sintassi, variabili, tipi, input/output</td></tr>
+            <tr><td>3</td><td>Condizioni e cicli</td></tr>
+            <tr><td>4</td><td>Liste, tuple, set, dizionari</td></tr>
+            <tr><td>5</td><td>Funzioni e moduli</td></tr>
+            <tr><td>6</td><td>Gestione errori, file, OOP</td></tr>
+            <tr><td>7</td><td>Esercizi, sfide e prima libreria (NumPy/Pandas)</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Preparazione al colloquio — domande Python frequenti</h2>
+        <p>Le <strong>domande di Python più frequenti ai colloqui</strong> per ruoli da sviluppatore e data analyst. Utili anche per le interrogazioni a scuola.</p>
+        <details class="quiz-q"><summary>Differenza tra lista e tupla?</summary><p>La lista è mutabile, la tupla è immutabile. La tupla è più veloce e usabile come chiave di dizionario.</p></details>
+        <details class="quiz-q"><summary>Cosa sono le list comprehension?</summary><p>Un modo conciso per creare liste: <code class="inline">[x*2 for x in range(5)]</code>.</p></details>
+        <details class="quiz-q"><summary>Differenza tra <code class="inline">==</code> e <code class="inline">is</code>?</summary><p><code class="inline">==</code> confronta i valori, <code class="inline">is</code> confronta l'identità (stesso oggetto in memoria).</p></details>
+        <details class="quiz-q"><summary>Cos'è l'ereditarietà nella OOP?</summary><p>Il meccanismo per cui una classe figlia eredita attributi e metodi dalla classe padre, riusando il codice.</p></details>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp Python — percorso intensivo</h2>
+        <p>Un <strong>bootcamp Python</strong> condensa la teoria nella pratica continua. Per imparare velocemente, alterna ogni argomento con un esercizio immediato:</p>
+        <ul class="lista-check">
+          <li>✅ <strong>Studia</strong> un argomento (max 20 minuti).</li>
+          <li>✅ <strong>Esegui</strong> l'esempio nell'editor “Provalo tu”.</li>
+          <li>✅ <strong>Risolvi</strong> un esercizio collegato senza guardare la soluzione.</li>
+          <li>✅ <strong>Ripeti</strong> con l'argomento successivo.</li>
+        </ul>
+        <div class="note-box">💡 Vuoi un bootcamp Python seguito di persona a Roma? Con le ripetizioni in presenza costruiamo insieme un percorso su misura, dal primo print() al primo progetto.</div>
+      </article>
+
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo Python — i concetti chiave</h2>
+        <p>Un <strong>riepilogo veloce di Python</strong> da ripassare prima di una verifica o un colloquio:</p>
+        <ul class="lista-check">
+          <li>📌 Python è semplice, leggibile e usatissimo (web, dati, AI, automazione).</li>
+          <li>📌 L'<strong>indentazione</strong> definisce i blocchi (niente parentesi graffe).</li>
+          <li>📌 <strong>Liste, tuple, set, dizionari</strong> sono le strutture dati di base.</li>
+          <li>📌 Le <strong>funzioni</strong> (<code class="inline">def</code>) organizzano e riusano il codice.</li>
+          <li>📌 La <strong>OOP</strong> (classi) modella oggetti del mondo reale.</li>
+          <li>📌 Le <strong>librerie</strong> (NumPy, Pandas, Matplotlib) rendono Python potentissimo per i dati.</li>
+        </ul>
+      </article>
+
+      <!-- ===== RIFERIMENTI ===== -->
+      <article class="lesson" id="rif-builtin">
+        <h2>Riferimento — Funzioni built-in</h2>
+        <table class="ref-table">
+          <thead><tr><th>Funzione</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>print()</code></td><td>Stampa a schermo</td></tr>
+            <tr><td><code>len()</code></td><td>Lunghezza di una sequenza</td></tr>
+            <tr><td><code>type()</code></td><td>Tipo di un valore</td></tr>
+            <tr><td><code>range()</code></td><td>Sequenza di numeri</td></tr>
+            <tr><td><code>int()</code>, <code>str()</code>, <code>float()</code></td><td>Conversione di tipo</td></tr>
+            <tr><td><code>input()</code></td><td>Legge l'input dell'utente</td></tr>
+            <tr><td><code>sum()</code>, <code>max()</code>, <code>min()</code></td><td>Somma, massimo, minimo</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-stringhe">
+        <h2>Riferimento — Metodi delle stringhe</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>upper()</code> / <code>lower()</code></td><td>Maiuscolo / minuscolo</td></tr>
+            <tr><td><code>strip()</code></td><td>Toglie gli spazi ai lati</td></tr>
+            <tr><td><code>replace()</code></td><td>Sostituisce del testo</td></tr>
+            <tr><td><code>split()</code></td><td>Divide in una lista</td></tr>
+            <tr><td><code>find()</code></td><td>Posizione di una sottostringa</td></tr>
+            <tr><td><code>startswith()</code> / <code>endswith()</code></td><td>Inizia / finisce con</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-liste">
+        <h2>Riferimento — Metodi delle liste</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>append()</code></td><td>Aggiunge in fondo</td></tr>
+            <tr><td><code>insert()</code></td><td>Inserisce in una posizione</td></tr>
+            <tr><td><code>remove()</code></td><td>Rimuove un valore</td></tr>
+            <tr><td><code>pop()</code></td><td>Rimuove e restituisce</td></tr>
+            <tr><td><code>sort()</code></td><td>Ordina la lista</td></tr>
+            <tr><td><code>reverse()</code></td><td>Inverte l'ordine</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="lesson" id="rif-dizionari">
+        <h2>Riferimento — Metodi dei dizionari</h2>
+        <table class="ref-table">
+          <thead><tr><th>Metodo</th><th>Cosa fa</th></tr></thead>
+          <tbody>
+            <tr><td><code>keys()</code></td><td>Tutte le chiavi</td></tr>
+            <tr><td><code>values()</code></td><td>Tutti i valori</td></tr>
+            <tr><td><code>items()</code></td><td>Coppie chiave-valore</td></tr>
+            <tr><td><code>get()</code></td><td>Valore di una chiave (senza errore)</td></tr>
+            <tr><td><code>update()</code></td><td>Aggiorna con un altro dizionario</td></tr>
+            <tr><td><code>pop()</code></td><td>Rimuove una chiave</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- ===== CERTIFICAZIONE ===== -->
+      <article class="lesson" id="certificato">
+        <h2>Certificato Python</h2>
+        <p>Vuoi una <strong>certificazione di Python</strong> da mostrare nel CV? Al termine di questo corso hai le competenze per affrontare i test di certificazione online più diffusi (come PCEP/PCAP) e, soprattutto, per <strong>scrivere programmi Python reali</strong>.</p>
+        <p>Se sei un mio studente, posso rilasciarti un <strong>attestato di partecipazione</strong> al percorso di Python svolto durante le ripetizioni in presenza a Roma, con l'elenco degli argomenti e dei progetti realizzati.</p>
+        <div class="tip-box">⭐ Il vero “certificato” è il tuo portfolio: un programma o un'analisi dati che hai costruito da solo vale più di qualsiasi attestato.</div>
+      </article>
+
+      <article class="lesson" id="conclusione" style="border-bottom:none">
+        <h2>Conclusione</h2>
+        <p>Complimenti! 🎉 Hai completato il <strong>corso di Python completo e gratuito in italiano</strong>: dalle basi (variabili, cicli, funzioni) alla programmazione a oggetti, dalla gestione dei file alle grandi librerie (NumPy, Pandas, Matplotlib), dal machine learning alle strutture dati e algoritmi (DSA), fino ai database (MySQL, MongoDB), con esercizi, sfide e riferimenti. Ora hai una panoramica completa di uno dei linguaggi più richiesti al mondo.</p>
+        <p>Il modo migliore per consolidare Python è <strong>esercitarsi ogni giorno</strong>: rifai gli <a href="#esercizi">esercizi Python</a>, affronta le <a href="#sfide">sfide</a> e prova a costruire un piccolo progetto.</p>
+        <h3>E ora?</h3>
+        <p>Da qui puoi specializzarti: <strong>sviluppo web</strong> (Django/Flask), <strong>data science</strong> e <strong>intelligenza artificiale</strong> (Pandas, scikit-learn), oppure <strong>automazione</strong>. Se vuoi un percorso guidato passo passo o aiuto per una verifica, posso seguirti con le ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Scrivi un programma che chiede all'utente una lista di voti e stampa media, voto più alto, voto più basso e quanti sono sopra la sufficienza. Prova a gestire anche input non validi.</p></div>
+        <div class='hero-actions'><a href="corso-mysql.html" class="btn btn-primary">🐬 Continua con il corso MySQL</a><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
       </article>
 
     </main>
