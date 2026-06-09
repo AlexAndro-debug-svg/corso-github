@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso PHP in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di PHP in italiano completo e gratuito: sintassi, variabili, tipi di dato, stringhe, operatori, condizioni, cicli, funzioni, array, form e $_POST, sessioni, date, programmazione a oggetti e connessione a MySQL. Spiegazioni approfondite con esempi.">
-  <meta name="keywords" content="corso php italiano, imparare php, tutorial php gratis, php da zero, programmazione web php, php mysql, form php, esercizi php">
+  <title>Corso PHP in italiano completo e gratuito — Tutorial da zero con esercizi svolti | AlessandroSimone.it</title>
+  <meta name="description" content="Corso PHP italiano completo e gratuito: sintassi, variabili, stringhe, array, funzioni, form, sessioni, cookie, file, JSON, OOP, namespace, traits, PDO e MySQL. Esercizi svolti, quiz, AJAX, riferimenti e certificazione. Tutorial PHP da zero a avanzato.">
+  <meta name="keywords" content="corso php italiano, imparare php, tutorial php gratis, php da zero, esercizi php con soluzioni, esercizi php svolti, php mysql pdo, form php, sessioni php, cookie php, oop php, classi php, namespace php, traits php, php ajax, php json, certificazione php, php per principianti, programmazione web php, corso php completo">
   <meta name="author" content="Alessandro Simone">
-  <meta property="og:title" content="Corso PHP in italiano completo e gratuito — AlessandroSimone.it">
-  <meta property="og:description" content="Impara PHP da zero in italiano: tutorial completo e approfondito per lo sviluppo web lato server.">
+  <meta property="og:title" content="Corso PHP in italiano completo e gratuito — Tutorial da zero con esercizi | AlessandroSimone.it">
+  <meta property="og:description" content="Impara PHP da zero in italiano: form, sessioni, file, OOP, namespace, PDO/MySQL, AJAX, esercizi svolti e certificazione.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,15 +95,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-php.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso PHP in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di PHP in italiano completo e gratuito: sintassi, variabili, tipi di dato, stringhe, operatori, condizioni, cicli, funzioni, array, form e $_POST, sessioni, date, programmazione a oggetti e connessione a MySQL. Spiegazioni approfondite con esempi.">
+  <meta name="twitter:title" content="Corso PHP in italiano completo e gratuito — Esercizi svolti | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial PHP completo in italiano: form, sessioni, file, JSON, OOP, namespace, traits, PDO/MySQL, AJAX, esercizi svolti, quiz e certificazione.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di PHP in italiano",
-  "description": "Corso di PHP in italiano completo e gratuito: sintassi, variabili, tipi di dato, stringhe, operatori, condizioni, cicli, funzioni, array, form e $_POST, sessioni, date, programmazione a oggetti e connessione a MySQL. Spiegazioni approfondite con esempi.",
+  "description": "Corso PHP italiano completo e gratuito: sintassi, stringhe, array, funzioni, form, sessioni, cookie, file, JSON, OOP, namespace, traits, PDO/MySQL, AJAX, esercizi svolti, quiz, riferimenti e certificazione.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-php.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -191,15 +191,65 @@
       <a href="#foreach">Foreach</a>
       <a href="#date">Date</a>
       <a href="#include">Include e require</a>
-      <h4>Form e dati</h4>
+      <a href="#match">Match</a>
+      <a href="#magic-constants">Costanti magiche</a>
+      <a href="#regex">RegEx</a>
+      <h4>Form PHP</h4>
       <a href="#form">Form e $_POST</a>
       <a href="#get">$_GET</a>
       <a href="#validazione">Validazione</a>
+      <a href="#form-required">Campi obbligatori</a>
+      <a href="#form-url-email">URL ed E-mail</a>
+      <a href="#form-complete">Form completo</a>
+      <h4>PHP Avanzato</h4>
       <a href="#sessioni">Sessioni e cookie</a>
-      <h4>PHP avanzato</h4>
-      <a href="#oop">OOP: classi e oggetti</a>
+      <a href="#file-handling">Gestione file</a>
+      <a href="#file-read">Aprire e leggere file</a>
+      <a href="#file-write">Creare e scrivere file</a>
+      <a href="#file-upload">Upload file</a>
+      <a href="#filters">Filtri</a>
+      <a href="#callback">Funzioni callback</a>
+      <a href="#json">JSON</a>
+      <a href="#exceptions">Eccezioni</a>
+      <h4>PHP OOP</h4>
+      <a href="#oop">OOP: introduzione</a>
+      <a href="#classi">Classi e oggetti</a>
+      <a href="#costruttore">Costruttore e distruttore</a>
+      <a href="#access-modifiers">Modificatori d'accesso</a>
       <a href="#ereditarieta">Ereditarietà</a>
-      <a href="#mysql">PHP e MySQL</a>
+      <a href="#abstract">Classi astratte</a>
+      <a href="#interfacce">Interfacce</a>
+      <a href="#traits">Traits</a>
+      <a href="#static">Metodi statici</a>
+      <a href="#namespaces">Namespace</a>
+      <a href="#iterables">Iterables</a>
+      <h4>MySQL Database</h4>
+      <a href="#mysql">PHP e MySQL (PDO)</a>
+      <a href="#mysql-create">Creare DB e tabelle</a>
+      <a href="#mysql-insert">Inserire dati</a>
+      <a href="#mysql-select">Leggere dati</a>
+      <a href="#mysql-update">Aggiornare ed eliminare</a>
+      <h4>PHP XML &amp; AJAX</h4>
+      <a href="#xml">SimpleXML</a>
+      <a href="#ajax">AJAX con PHP</a>
+      <h4>Esempi &amp; Pratica</h4>
+      <a href="#esempi">Esempi pratici</a>
+      <a href="#editor-online">Editor online</a>
+      <a href="#quiz">Quiz PHP</a>
+      <a href="#esercizi">Esercizi svolti</a>
+      <a href="#sfide">Sfide</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#riepilogo">Riepilogo</a>
+      <h4>Riferimenti</h4>
+      <a href="#string-ref">Funzioni String</a>
+      <a href="#array-ref">Funzioni Array</a>
+      <a href="#math-ref">Funzioni Math</a>
+      <a href="#superglobals-ref">Superglobali</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione PHP</a>
       <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
@@ -538,6 +588,92 @@ echo " definiti una volta sola in un file a parte.";
         </div>
       </article>
 
+      <!-- ═══ MATCH ═══ -->
+      <article class="lesson" id="match">
+        <h2>Espressione match</h2>
+        <p>Introdotto in PHP 8, <code class="inline">match</code> è una versione moderna e più sicura di <code class="inline">switch</code>: usa il confronto stretto (<code class="inline">===</code>), restituisce un valore e non richiede <code class="inline">break</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$voto = 8;
+$giudizio = match(true) {
+    $voto >= 9 => "Ottimo",
+    $voto >= 7 => "Buono",
+    $voto >= 6 => "Sufficiente",
+    default => "Insufficiente",
+};
+echo $giudizio; // Buono
+
+$giorno = "lun";
+echo match($giorno) {
+    "sab", "dom" => "Weekend",
+    default => "Giorno feriale",
+};
+?></script>
+        </div>
+        <div class="tip-box">💡 A differenza di <code>switch</code>, <code>match</code> non ha "fall-through" e confronta i tipi: <code>match("1")</code> non corrisponde a <code>1</code>.</div>
+      </article>
+
+      <!-- ═══ MAGIC CONSTANTS ═══ -->
+      <article class="lesson" id="magic-constants">
+        <h2>Costanti magiche</h2>
+        <p>Le <strong>costanti magiche</strong> sono costanti predefinite che cambiano valore a seconda di dove vengono usate. Sono utilissime per il debug e il logging.</p>
+        <table class="ref"><thead><tr><th>Costante</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>__LINE__</code></td><td>Numero della riga corrente</td></tr>
+          <tr><td><code>__FILE__</code></td><td>Percorso completo del file</td></tr>
+          <tr><td><code>__DIR__</code></td><td>Cartella del file</td></tr>
+          <tr><td><code>__FUNCTION__</code></td><td>Nome della funzione corrente</td></tr>
+          <tr><td><code>__CLASS__</code></td><td>Nome della classe corrente</td></tr>
+          <tr><td><code>__METHOD__</code></td><td>Nome del metodo corrente</td></tr>
+          <tr><td><code>__NAMESPACE__</code></td><td>Namespace corrente</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+echo "Riga: " . __LINE__ . "\n";
+echo "File: " . __FILE__ . "\n";
+
+function saluta() {
+    echo "Funzione: " . __FUNCTION__;
+}
+saluta(); // Funzione: saluta
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ REGEX ═══ -->
+      <article class="lesson" id="regex">
+        <h2>Espressioni regolari (RegEx)</h2>
+        <p>Le <strong>espressioni regolari</strong> permettono di cercare, validare e sostituire testo secondo pattern. PHP usa la sintassi PCRE con le funzioni <code class="inline">preg_*</code>.</p>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>preg_match()</code></td><td>Cerca la prima corrispondenza</td></tr>
+          <tr><td><code>preg_match_all()</code></td><td>Cerca tutte le corrispondenze</td></tr>
+          <tr><td><code>preg_replace()</code></td><td>Sostituisce le corrispondenze</td></tr>
+          <tr><td><code>preg_split()</code></td><td>Divide una stringa con un pattern</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// Validazione email
+$email = "utente@esempio.it";
+if (preg_match("/^[\w.-]+@[\w.-]+\.[a-z]{2,}$/", $email)) {
+    echo "Email valida!\n";
+}
+
+// Sostituzione
+$testo = "PHP è bello";
+echo preg_replace("/bello/", "fantastico", $testo); // PHP è fantastico
+
+// Trova tutti i numeri
+preg_match_all("/\d+/", "Ho 3 mele e 5 pere", $risultati);
+print_r($risultati[0]); // [3, 5]
+?></script>
+        </div>
+      </article>
+
       <!-- ===== Form e dati ===== -->
 
       <article class="lesson" id="form">
@@ -596,6 +732,92 @@ if (empty($email)) {
         </div>
       </article>
 
+      <!-- ═══ FORM REQUIRED ═══ -->
+      <article class="lesson" id="form-required">
+        <h2>Campi obbligatori nei form</h2>
+        <p>Per rendere obbligatori alcuni campi, in PHP si verifica che non siano vuoti e si mostra un messaggio d'errore accanto al campo mancante.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$nomeErr = $emailErr = "";
+$nome = $email = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["nome"])) {
+        $nomeErr = "Il nome è obbligatorio";
+    } else {
+        $nome = htmlspecialchars($_POST["nome"]);
+    }
+    if (empty($_POST["email"])) {
+        $emailErr = "L'email è obbligatoria";
+    } else {
+        $email = htmlspecialchars($_POST["email"]);
+    }
+}
+echo $nomeErr ?: "Nome OK: $nome";
+?></script>
+        </div>
+        <div class="tip-box">🔒 Usa sempre <code>htmlspecialchars()</code> sui dati dell'utente per prevenire attacchi XSS (Cross-Site Scripting).</div>
+      </article>
+
+      <!-- ═══ FORM URL/EMAIL ═══ -->
+      <article class="lesson" id="form-url-email">
+        <h2>Validare URL ed E-mail</h2>
+        <p>PHP fornisce i <strong>filtri</strong> <code class="inline">filter_var()</code> per validare facilmente email, URL, interi e altri formati comuni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$email = "mario.rossi@scuola.it";
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Email valida!\n";
+} else {
+    echo "Email non valida.\n";
+}
+
+$url = "https://alessandrosimone.it";
+if (filter_var($url, FILTER_VALIDATE_URL)) {
+    echo "URL valido!";
+}
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ FORM COMPLETE ═══ -->
+      <article class="lesson" id="form-complete">
+        <h2>Form completo: esempio pratico</h2>
+        <p>Un modulo di contatto completo che combina validazione, campi obbligatori, controllo email e protezione XSS — uno schema riutilizzabile per progetti reali.</p>
+        <div class="example">
+          <div class="codehead"><span>Form di contatto</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+function pulisci($dato) {
+    return htmlspecialchars(stripslashes(trim($dato)));
+}
+
+$errori = [];
+$nome = $email = $messaggio = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = pulisci($_POST["nome"] ?? "");
+    $email = pulisci($_POST["email"] ?? "");
+    $messaggio = pulisci($_POST["messaggio"] ?? "");
+
+    if (!$nome) $errori[] = "Nome obbligatorio";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errori[] = "Email non valida";
+    if (strlen($messaggio) < 10) $errori[] = "Messaggio troppo breve";
+
+    if (empty($errori)) {
+        echo "Grazie $nome, messaggio inviato!";
+    } else {
+        foreach ($errori as $e) echo "$e<br>";
+    }
+}
+?></script>
+        </div>
+      </article>
+
       <article class="lesson" id="sessioni">
         <h2>Sessioni e cookie</h2>
         <p>Le <strong>sessioni</strong> conservano dati lato server tra una pagina e l'altra (es. per il login). I <strong>cookie</strong> salvano dati nel browser dell'utente. Una sessione si avvia con <code class="inline">session_start()</code> e si usa l'array <code class="inline">$_SESSION</code>.</p>
@@ -617,7 +839,207 @@ setcookie("tema", "scuro", time() + 3600);
         </div>
       </article>
 
-      <!-- ===== PHP avanzato ===== -->
+      <!-- ═══ FILE HANDLING ═══ -->
+      <article class="lesson" id="file-handling">
+        <h2>Gestione file in PHP</h2>
+        <p>PHP può leggere, scrivere e manipolare file sul server. Le funzioni principali sono <code class="inline">fopen()</code>, <code class="inline">fread()</code>, <code class="inline">fwrite()</code> e <code class="inline">fclose()</code>.</p>
+        <table class="ref"><thead><tr><th>Modalità</th><th>Significato</th></tr></thead><tbody>
+          <tr><td><code>r</code></td><td>Lettura, dall'inizio</td></tr>
+          <tr><td><code>w</code></td><td>Scrittura, cancella il contenuto esistente</td></tr>
+          <tr><td><code>a</code></td><td>Append, aggiunge in coda</td></tr>
+          <tr><td><code>x</code></td><td>Crea un nuovo file (errore se esiste)</td></tr>
+          <tr><td><code>r+</code></td><td>Lettura e scrittura</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ FILE READ ═══ -->
+      <article class="lesson" id="file-read">
+        <h2>Aprire e leggere file</h2>
+        <p>Per leggere un intero file la via più rapida è <code class="inline">file_get_contents()</code>. Per leggere riga per riga si usa <code class="inline">fopen()</code> + <code class="inline">fgets()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// Leggere tutto in una volta
+$contenuto = file_get_contents("note.txt");
+echo $contenuto;
+
+// Leggere riga per riga
+$file = fopen("note.txt", "r");
+while (!feof($file)) {
+    $riga = fgets($file);
+    echo $riga;
+}
+fclose($file);
+
+// Leggere in un array (una riga per elemento)
+$righe = file("note.txt");
+foreach ($righe as $r) echo $r;
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE WRITE ═══ -->
+      <article class="lesson" id="file-write">
+        <h2>Creare e scrivere file</h2>
+        <p>Con <code class="inline">fwrite()</code> si scrive su un file aperto in modalità <code class="inline">w</code> (sovrascrive) o <code class="inline">a</code> (aggiunge). La scorciatoia <code class="inline">file_put_contents()</code> fa tutto in una riga.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// Scrittura con fopen/fwrite
+$file = fopen("log.txt", "w");
+fwrite($file, "Prima riga\n");
+fwrite($file, "Seconda riga\n");
+fclose($file);
+
+// Append con scorciatoia
+file_put_contents("log.txt", "Nuova riga\n", FILE_APPEND);
+
+echo "File scritto con successo!";
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE UPLOAD ═══ -->
+      <article class="lesson" id="file-upload">
+        <h2>Upload di file</h2>
+        <p>PHP gestisce l'upload tramite la superglobale <code class="inline">$_FILES</code>. Il form HTML deve avere <code class="inline">enctype="multipart/form-data"</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["foto"])) {
+    $nomeFile = $_FILES["foto"]["name"];
+    $tmp = $_FILES["foto"]["tmp_name"];
+    $dimensione = $_FILES["foto"]["size"];
+
+    // Controlli di sicurezza
+    $estensioni = ["jpg", "jpeg", "png", "gif"];
+    $ext = strtolower(pathinfo($nomeFile, PATHINFO_EXTENSION));
+
+    if (in_array($ext, $estensioni) && $dimensione < 2000000) {
+        move_uploaded_file($tmp, "uploads/" . $nomeFile);
+        echo "File caricato: $nomeFile";
+    } else {
+        echo "File non valido o troppo grande.";
+    }
+}
+?></script>
+        </div>
+        <div class="tip-box">🔒 Controlla sempre estensione e dimensione del file caricato, e salva in una cartella non eseguibile per evitare upload di codice malevolo.</div>
+      </article>
+
+      <!-- ═══ FILTERS ═══ -->
+      <article class="lesson" id="filters">
+        <h2>Filtri PHP</h2>
+        <p>I <strong>filtri</strong> (<code class="inline">filter_var()</code>) validano e sanificano i dati. Sono fondamentali per gestire in sicurezza gli input dell'utente.</p>
+        <table class="ref"><thead><tr><th>Filtro</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>FILTER_VALIDATE_EMAIL</code></td><td>Valida un'email</td></tr>
+          <tr><td><code>FILTER_VALIDATE_URL</code></td><td>Valida un URL</td></tr>
+          <tr><td><code>FILTER_VALIDATE_INT</code></td><td>Valida un intero</td></tr>
+          <tr><td><code>FILTER_VALIDATE_FLOAT</code></td><td>Valida un numero decimale</td></tr>
+          <tr><td><code>FILTER_SANITIZE_EMAIL</code></td><td>Rimuove caratteri non validi da un'email</td></tr>
+          <tr><td><code>FILTER_SANITIZE_SPECIAL_CHARS</code></td><td>Codifica caratteri speciali HTML</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$eta = "25";
+if (filter_var($eta, FILTER_VALIDATE_INT)) {
+    echo "Età valida: $eta\n";
+}
+
+// Sanificazione
+$input = "<b>ciao</b>";
+echo filter_var($input, FILTER_SANITIZE_SPECIAL_CHARS);
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ CALLBACK ═══ -->
+      <article class="lesson" id="callback">
+        <h2>Funzioni callback</h2>
+        <p>Una <strong>callback</strong> è una funzione passata come argomento a un'altra funzione. Molte funzioni PHP (come <code class="inline">array_map</code> e <code class="inline">usort</code>) accettano callback.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$numeri = [1, 2, 3, 4, 5];
+
+// array_map con funzione anonima
+$quadrati = array_map(function($n) {
+    return $n * $n;
+}, $numeri);
+print_r($quadrati); // [1, 4, 9, 16, 25]
+
+// array_filter con callback
+$pari = array_filter($numeri, fn($n) => $n % 2 == 0);
+print_r($pari); // [2, 4]
+
+// usort: ordinamento personalizzato
+$parole = ["banana", "kiwi", "mela"];
+usort($parole, fn($a, $b) => strlen($a) - strlen($b));
+print_r($parole); // [kiwi, mela, banana]
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ JSON ═══ -->
+      <article class="lesson" id="json">
+        <h2>JSON in PHP</h2>
+        <p><strong>JSON</strong> è il formato standard per scambiare dati tra server e client (es. con JavaScript e API). PHP converte con <code class="inline">json_encode()</code> e <code class="inline">json_decode()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// PHP array → JSON
+$studente = [
+    "nome" => "Luca",
+    "eta" => 17,
+    "materie" => ["Matematica", "Informatica"]
+];
+$json = json_encode($studente);
+echo $json . "\n";
+// {"nome":"Luca","eta":17,"materie":["Matematica","Informatica"]}
+
+// JSON → PHP array
+$dati = json_decode('{"citta":"Roma","cap":"00100"}', true);
+echo $dati["citta"]; // Roma
+?></script>
+        </div>
+        <div class="tip-box">💡 Con il secondo parametro <code>true</code>, <code>json_decode()</code> restituisce un array associativo invece di un oggetto.</div>
+      </article>
+
+      <!-- ═══ EXCEPTIONS ═══ -->
+      <article class="lesson" id="exceptions">
+        <h2>Gestione delle eccezioni</h2>
+        <p>Le <strong>eccezioni</strong> gestiscono gli errori in modo controllato con i blocchi <code class="inline">try</code>, <code class="inline">catch</code> e <code class="inline">finally</code>, senza interrompere bruscamente il programma.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+function dividi($a, $b) {
+    if ($b == 0) {
+        throw new Exception("Divisione per zero!");
+    }
+    return $a / $b;
+}
+
+try {
+    echo dividi(10, 2) . "\n"; // 5
+    echo dividi(10, 0) . "\n"; // lancia eccezione
+} catch (Exception $e) {
+    echo "Errore: " . $e->getMessage() . "\n";
+} finally {
+    echo "Operazione terminata.";
+}
+?></script>
+        </div>
+      </article>
+
+      <!-- ===== PHP OOP ===== -->
 
       <article class="lesson" id="oop">
         <h2>OOP: classi e oggetti</h2>
@@ -642,6 +1064,91 @@ class Studente {
 
 $s = new Studente("Giulia", 9);
 echo $s->descrivi();
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ CLASSI ═══ -->
+      <article class="lesson" id="classi">
+        <h2>Classi, oggetti e proprietà</h2>
+        <p>Una <strong>classe</strong> è il modello da cui si creano gli <strong>oggetti</strong>. Le <strong>proprietà</strong> sono le variabili della classe, i <strong>metodi</strong> le sue funzioni. Si accede con l'operatore <code class="inline">-&gt;</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+class Auto {
+    public $marca;
+    public $velocita = 0;
+
+    public function accelera($incremento) {
+        $this->velocita += $incremento;
+    }
+    public function info() {
+        return "$this->marca a $this->velocita km/h";
+    }
+}
+
+$a = new Auto();
+$a->marca = "Fiat";
+$a->accelera(50);
+echo $a->info(); // Fiat a 50 km/h
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ COSTRUTTORE ═══ -->
+      <article class="lesson" id="costruttore">
+        <h2>Costruttore e distruttore</h2>
+        <p>Il <strong>costruttore</strong> <code class="inline">__construct()</code> viene chiamato automaticamente alla creazione dell'oggetto. Il <strong>distruttore</strong> <code class="inline">__destruct()</code> quando l'oggetto viene eliminato.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+class Connessione {
+    public function __construct() {
+        echo "Connessione aperta\n";
+    }
+    public function __destruct() {
+        echo "Connessione chiusa\n";
+    }
+}
+
+$c = new Connessione(); // Connessione aperta
+echo "Lavoro in corso...\n";
+// Alla fine dello script: Connessione chiusa
+?></script>
+        </div>
+        <div class="tip-box">💡 Da PHP 8 puoi usare la <em>constructor property promotion</em>: <code>public function __construct(private string $nome) {}</code> dichiara e assegna la proprietà in una riga.</div>
+      </article>
+
+      <!-- ═══ ACCESS MODIFIERS ═══ -->
+      <article class="lesson" id="access-modifiers">
+        <h2>Modificatori d'accesso</h2>
+        <p>I <strong>modificatori d'accesso</strong> controllano la visibilità di proprietà e metodi (incapsulamento).</p>
+        <table class="ref"><thead><tr><th>Modificatore</th><th>Accessibile da</th></tr></thead><tbody>
+          <tr><td><code>public</code></td><td>Ovunque (default)</td></tr>
+          <tr><td><code>protected</code></td><td>Solo dalla classe e dalle sottoclassi</td></tr>
+          <tr><td><code>private</code></td><td>Solo dalla classe stessa</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+class ContoBancario {
+    private $saldo = 0;
+
+    public function deposita($importo) {
+        if ($importo > 0) $this->saldo += $importo;
+    }
+    public function getSaldo() {
+        return $this->saldo;
+    }
+}
+
+$conto = new ContoBancario();
+$conto->deposita(100);
+echo $conto->getSaldo(); // 100
+// $conto->saldo è inaccessibile: è private!
 ?></script>
         </div>
       </article>
@@ -671,6 +1178,176 @@ echo $c->respira() . " " . $c->abbaia();
         </div>
       </article>
 
+      <!-- ═══ ABSTRACT ═══ -->
+      <article class="lesson" id="abstract">
+        <h2>Classi astratte</h2>
+        <p>Una <strong>classe astratta</strong> (<code class="inline">abstract</code>) non può essere istanziata: serve da modello per le sottoclassi. I metodi astratti definiscono solo la firma, l'implementazione è obbligatoria nelle classi figlie.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+abstract class Forma {
+    abstract public function area();
+
+    public function descrivi() {
+        return "Area: " . $this->area();
+    }
+}
+
+class Rettangolo extends Forma {
+    public function __construct(private $b, private $h) {}
+    public function area() {
+        return $this->b * $this->h;
+    }
+}
+
+$r = new Rettangolo(5, 3);
+echo $r->descrivi(); // Area: 15
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ INTERFACCE ═══ -->
+      <article class="lesson" id="interfacce">
+        <h2>Interfacce</h2>
+        <p>Un'<strong>interfaccia</strong> definisce un contratto: un insieme di metodi che le classi devono implementare. Una classe può implementare più interfacce con <code class="inline">implements</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+interface Animale {
+    public function verso();
+}
+interface Domestico {
+    public function nome();
+}
+
+class Cane implements Animale, Domestico {
+    public function __construct(private $nome) {}
+    public function verso() { return "Bau!"; }
+    public function nome() { return $this->nome; }
+}
+
+$c = new Cane("Rex");
+echo $c->nome() . " dice " . $c->verso(); // Rex dice Bau!
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ TRAITS ═══ -->
+      <article class="lesson" id="traits">
+        <h2>Traits</h2>
+        <p>I <strong>traits</strong> permettono di riutilizzare gruppi di metodi in più classi, superando il limite dell'ereditarietà singola di PHP.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+trait Salutabile {
+    public function saluta() {
+        return "Ciao, sono " . $this->nome;
+    }
+}
+trait Loggabile {
+    public function log($msg) {
+        echo "[LOG] $msg\n";
+    }
+}
+
+class Utente {
+    use Salutabile, Loggabile;
+    public function __construct(public $nome) {}
+}
+
+$u = new Utente("Anna");
+echo $u->saluta() . "\n"; // Ciao, sono Anna
+$u->log("Login effettuato");
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ STATIC ═══ -->
+      <article class="lesson" id="static">
+        <h2>Metodi e proprietà statiche</h2>
+        <p>I membri <code class="inline">static</code> appartengono alla classe, non agli oggetti. Si accede con l'operatore <code class="inline">::</code> senza creare un'istanza.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+class Contatore {
+    public static $totale = 0;
+
+    public static function incrementa() {
+        self::$totale++;
+    }
+}
+
+Contatore::incrementa();
+Contatore::incrementa();
+echo Contatore::$totale; // 2
+
+class MathUtil {
+    public static function quadrato($n) { return $n * $n; }
+}
+echo "\n" . MathUtil::quadrato(6); // 36
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ NAMESPACES ═══ -->
+      <article class="lesson" id="namespaces">
+        <h2>Namespace</h2>
+        <p>I <strong>namespace</strong> organizzano il codice ed evitano i conflitti di nome tra classi/funzioni con lo stesso nome (es. provenienti da librerie diverse).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+namespace App\Modelli;
+
+class Utente {
+    public function __construct(public $nome) {}
+}
+
+// In un altro file:
+// use App\Modelli\Utente;
+$u = new \App\Modelli\Utente("Marco");
+echo $u->nome; // Marco
+?></script>
+        </div>
+        <div class="tip-box">💡 I namespace sono la base dell'autoloading PSR-4 usato da Composer, il gestore di pacchetti standard di PHP.</div>
+      </article>
+
+      <!-- ═══ ITERABLES ═══ -->
+      <article class="lesson" id="iterables">
+        <h2>Iterables e generatori</h2>
+        <p>Un <strong>iterable</strong> è qualsiasi cosa percorribile con <code class="inline">foreach</code> (array o oggetti <code>Traversable</code>). I <strong>generatori</strong> (<code class="inline">yield</code>) producono valori on-demand, risparmiando memoria.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// Generatore: non crea tutto l'array in memoria
+function contaFino($max) {
+    for ($i = 1; $i <= $max; $i++) {
+        yield $i;
+    }
+}
+
+foreach (contaFino(5) as $n) {
+    echo $n . " "; // 1 2 3 4 5
+}
+
+// Funzione che accetta iterable
+function somma(iterable $numeri) {
+    $tot = 0;
+    foreach ($numeri as $n) $tot += $n;
+    return $tot;
+}
+echo "\n" . somma([10, 20, 30]); // 60
+?></script>
+        </div>
+      </article>
+
+      <!-- ===== MySQL Database ===== -->
+
       <article class="lesson" id="mysql">
         <h2>PHP e MySQL</h2>
         <p>La combinazione PHP + MySQL è alla base dei siti dinamici: PHP si connette al database, esegue query e mostra i risultati. Il modo moderno e sicuro è <strong>PDO</strong>, che protegge dalle SQL injection con i <em>prepared statement</em>.</p>
@@ -693,12 +1370,501 @@ foreach ($stmt as $riga) {
         <div class="tip-box">🔒 Usa <strong>sempre</strong> i prepared statement (i <code class="inline">?</code> al posto dei valori): inserire variabili direttamente nella query apre la porta agli attacchi di SQL injection.</div>
       </article>
 
+      <!-- ═══ MYSQL CREATE ═══ -->
+      <article class="lesson" id="mysql-create">
+        <h2>Creare database e tabelle</h2>
+        <p>Con PDO puoi eseguire qualsiasi comando SQL, inclusi <code class="inline">CREATE DATABASE</code> e <code class="inline">CREATE TABLE</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$pdo = new PDO("mysql:host=localhost", "root", "");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Crea database
+$pdo->exec("CREATE DATABASE IF NOT EXISTS scuola");
+$pdo->exec("USE scuola");
+
+// Crea tabella
+$pdo->exec("CREATE TABLE IF NOT EXISTS studenti (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    voto INT
+)");
+
+echo "Database e tabella creati!";
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ MYSQL INSERT ═══ -->
+      <article class="lesson" id="mysql-insert">
+        <h2>Inserire dati</h2>
+        <p>Per inserire dati in modo sicuro si usano i <strong>prepared statement</strong>, che separano la query dai valori prevenendo le SQL injection.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
+
+// Inserimento singolo
+$stmt = $pdo->prepare("INSERT INTO studenti (nome, voto) VALUES (?, ?)");
+$stmt->execute(["Luca", 8]);
+
+// Inserimento con parametri nominati
+$stmt = $pdo->prepare("INSERT INTO studenti (nome, voto) VALUES (:n, :v)");
+$stmt->execute([":n" => "Anna", ":v" => 9]);
+
+echo "Ultimo ID inserito: " . $pdo->lastInsertId();
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ MYSQL SELECT ═══ -->
+      <article class="lesson" id="mysql-select">
+        <h2>Leggere dati</h2>
+        <p>La query <code class="inline">SELECT</code> recupera i dati. Con <code class="inline">fetch()</code> leggi una riga, con <code class="inline">fetchAll()</code> tutte le righe.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
+
+// Tutti gli studenti con voto >= 8
+$stmt = $pdo->prepare("SELECT * FROM studenti WHERE voto >= ? ORDER BY voto DESC");
+$stmt->execute([8]);
+$studenti = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($studenti as $s) {
+    echo $s["nome"] . ": " . $s["voto"] . "\n";
+}
+
+// Conteggio
+$totale = $pdo->query("SELECT COUNT(*) FROM studenti")->fetchColumn();
+echo "Totale studenti: $totale";
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ MYSQL UPDATE ═══ -->
+      <article class="lesson" id="mysql-update">
+        <h2>Aggiornare ed eliminare dati</h2>
+        <p><code class="inline">UPDATE</code> modifica i record esistenti, <code class="inline">DELETE</code> li elimina. Usa sempre <code class="inline">WHERE</code> per non agire su tutta la tabella!</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
+
+// Aggiornare
+$stmt = $pdo->prepare("UPDATE studenti SET voto = ? WHERE nome = ?");
+$stmt->execute([10, "Luca"]);
+echo "Righe aggiornate: " . $stmt->rowCount() . "\n";
+
+// Eliminare
+$stmt = $pdo->prepare("DELETE FROM studenti WHERE voto < ?");
+$stmt->execute([6]);
+echo "Righe eliminate: " . $stmt->rowCount();
+?></script>
+        </div>
+        <div class="tip-box">🔒 Dimenticare <code>WHERE</code> in un <code>UPDATE</code> o <code>DELETE</code> modifica/cancella <strong>tutti</strong> i record. Verifica sempre la condizione prima di eseguire.</div>
+      </article>
+
+      <!-- ═══ XML / SimpleXML ═══ -->
+      <article class="lesson" id="xml">
+        <h2>Leggere XML con SimpleXML</h2>
+        <p><strong>SimpleXML</strong> è il modo più semplice per leggere documenti XML in PHP, trasformandoli in oggetti navigabili.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$xmlStr = '<?xml version="1.0"?>
+<libreria>
+    <libro><titolo>PHP Base</titolo><prezzo>20</prezzo></libro>
+    <libro><titolo>PHP Avanzato</titolo><prezzo>35</prezzo></libro>
+</libreria>';
+
+$xml = simplexml_load_string($xmlStr);
+
+foreach ($xml->libro as $libro) {
+    echo $libro->titolo . " - " . $libro->prezzo . "€\n";
+}
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ AJAX ═══ -->
+      <article class="lesson" id="ajax">
+        <h2>AJAX con PHP</h2>
+        <p><strong>AJAX</strong> permette di scambiare dati con il server senza ricaricare la pagina. JavaScript invia una richiesta a uno script PHP, che risponde (spesso in JSON).</p>
+        <div class="example">
+          <div class="codehead"><span>Lato server: api.php</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// api.php — risponde in JSON
+header("Content-Type: application/json");
+
+$nome = $_GET["nome"] ?? "ospite";
+$risposta = [
+    "messaggio" => "Ciao, $nome!",
+    "ora" => date("H:i:s")
+];
+
+echo json_encode($risposta);
+?></script>
+        </div>
+        <p>Lato client, JavaScript moderno usa <code class="inline">fetch()</code>:</p>
+        <pre class="codeview"><code class="language-js">fetch("api.php?nome=Luca")
+  .then(res =&gt; res.json())
+  .then(dati =&gt; console.log(dati.messaggio));</code></pre>
+      </article>
+
+      <!-- ═══ ESEMPI ═══ -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi pratici PHP</h2>
+        <p>Esempi completi e riutilizzabili per consolidare PHP nel contesto web reale.</p>
+        <h3>Contatore di visite con file</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$file = "contatore.txt";
+$visite = file_exists($file) ? (int)file_get_contents($file) : 0;
+$visite++;
+file_put_contents($file, $visite);
+echo "Questa pagina è stata visitata $visite volte.";
+?></script>
+        </div>
+        <h3>Tabella HTML dinamica da array</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$studenti = [
+    ["nome" => "Luca", "voto" => 8],
+    ["nome" => "Anna", "voto" => 9],
+    ["nome" => "Marco", "voto" => 7],
+];
+
+echo "<table border='1'>";
+echo "<tr><th>Nome</th><th>Voto</th></tr>";
+foreach ($studenti as $s) {
+    echo "<tr><td>{$s['nome']}</td><td>{$s['voto']}</td></tr>";
+}
+echo "</table>";
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online PHP</h2>
+        <p>Scrivi e leggi codice PHP con la sintassi colorata. Per eseguirlo installa <strong>XAMPP</strong>, salva come <code class="inline">pagina.php</code> nella cartella <code class="inline">htdocs</code> e apri <code class="inline">http://localhost/pagina.php</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Il tuo codice PHP</span><button class="btn-try">Apri editor ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+// Scrivi qui il tuo codice PHP
+$nome = "Studente";
+echo "Ciao, $nome!\n";
+
+for ($i = 1; $i <= 5; $i++) {
+    echo "Numero: $i\n";
+}
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz PHP — verifica le tue conoscenze</h2>
+        <p>Rispondi mentalmente, poi controlla la soluzione.</p>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:1.2rem"><strong>Qual è la differenza tra <code>echo</code> e <code>print</code>?</strong><br><em>Risposta:</em> Entrambi stampano, ma <code>echo</code> può accettare più argomenti ed è leggermente più veloce; <code>print</code> restituisce sempre 1, quindi può essere usato in espressioni.</li>
+          <li style="margin-bottom:1.2rem"><strong>Cosa significa che PHP è "loosely typed"?</strong><br><em>Risposta:</em> Le variabili non hanno un tipo fisso: PHP lo deduce dal valore e può convertirlo automaticamente (type juggling).</li>
+          <li style="margin-bottom:1.2rem"><strong>Differenza tra <code>==</code> e <code>===</code>?</strong><br><em>Risposta:</em> <code>==</code> confronta solo il valore (con conversione di tipo); <code>===</code> confronta valore E tipo (confronto stretto).</li>
+          <li style="margin-bottom:1.2rem"><strong>Cos'è una superglobale?</strong><br><em>Risposta:</em> Un array predefinito accessibile ovunque, come <code>$_POST</code>, <code>$_GET</code>, <code>$_SESSION</code>, <code>$_SERVER</code>.</li>
+          <li style="margin-bottom:1.2rem"><strong>Perché usare i prepared statement?</strong><br><em>Risposta:</em> Separano la query dai dati, prevenendo le SQL injection e migliorando le prestazioni con query ripetute.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi PHP con soluzioni</h2>
+        <p>Cinque esercizi con soluzione completa. Provaci prima di guardare!</p>
+
+        <h3>Esercizio 1 — FizzBuzz</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+for ($i = 1; $i <= 20; $i++) {
+    if ($i % 15 == 0) echo "FizzBuzz\n";
+    elseif ($i % 3 == 0) echo "Fizz\n";
+    elseif ($i % 5 == 0) echo "Buzz\n";
+    else echo "$i\n";
+}
+?></script>
+        </div>
+
+        <h3>Esercizio 2 — Conta vocali</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+function contaVocali($str) {
+    return preg_match_all('/[aeiou]/i', $str);
+}
+echo contaVocali("Programmazione PHP"); // 7
+?></script>
+        </div>
+
+        <h3>Esercizio 3 — Array associativo e media</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+$voti = ["Italiano" => 7, "Mate" => 8, "Storia" => 6, "Info" => 9];
+$media = array_sum($voti) / count($voti);
+echo "Media: " . number_format($media, 2) . "\n";
+arsort($voti); // ordina per voto decrescente
+foreach ($voti as $materia => $v) {
+    echo "$materia: $v\n";
+}
+?></script>
+        </div>
+
+        <h3>Esercizio 4 — Palindromo</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+function isPalindromo($str) {
+    $s = strtolower(preg_replace('/[^a-z]/i', '', $str));
+    return $s === strrev($s);
+}
+var_dump(isPalindromo("Anna"));        // true
+var_dump(isPalindromo("PHP rocks"));   // false
+?></script>
+        </div>
+
+        <h3>Esercizio 5 — Classe Carrello</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-php"></code></pre>
+          <script type="text/plain" class="code"><?php
+class Carrello {
+    private $articoli = [];
+    public function aggiungi($nome, $prezzo) {
+        $this->articoli[] = ["nome" => $nome, "prezzo" => $prezzo];
+    }
+    public function totale() {
+        return array_sum(array_column($this->articoli, "prezzo"));
+    }
+}
+$c = new Carrello();
+$c->aggiungi("Libro", 20);
+$c->aggiungi("Penna", 2);
+echo "Totale: " . $c->totale() . "€"; // Totale: 22€
+?></script>
+        </div>
+      </article>
+
+      <!-- ═══ SFIDE ═══ -->
+      <article class="lesson" id="sfide">
+        <h2>Sfide PHP</h2>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:.8rem">🟢 Crea un generatore di password casuali con lunghezza e caratteri configurabili.</li>
+          <li style="margin-bottom:.8rem">🟡 Realizza un sistema di login completo con sessioni e password hashate (<code>password_hash</code>/<code>password_verify</code>).</li>
+          <li style="margin-bottom:.8rem">🟡 Costruisci un mini-blog con CRUD completo (crea, leggi, aggiorna, elimina) su database MySQL.</li>
+          <li style="margin-bottom:.8rem">🔴 Implementa una semplice REST API in PHP che restituisce dati JSON con routing per metodo HTTP.</li>
+          <li style="margin-bottom:.8rem">🔴 Crea un sistema di caricamento immagini con generazione di anteprime (thumbnail) usando la libreria GD.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ PROGETTI ═══ -->
+      <article class="lesson" id="progetti">
+        <h2>Progetti pratici con PHP</h2>
+        <ul>
+          <li>📝 <strong>Blog dinamico</strong>: articoli su MySQL con area admin protetta da login</li>
+          <li>🛒 <strong>Mini e-commerce</strong>: catalogo prodotti, carrello con sessioni, checkout</li>
+          <li>📋 <strong>To-Do list</strong>: gestione attività con database e filtri</li>
+          <li>💬 <strong>Sistema di commenti</strong>: con validazione, protezione XSS e moderazione</li>
+          <li>📧 <strong>Form di contatto</strong>: con invio email (<code>PHPMailer</code>) e salvataggio messaggi</li>
+          <li>🔐 <strong>Sistema di autenticazione</strong>: registrazione, login, recupero password, ruoli utente</li>
+        </ul>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma completo del corso PHP</h2>
+        <table class="ref"><thead><tr><th>Modulo</th><th>Argomenti</th><th>Ore</th></tr></thead><tbody>
+          <tr><td>1 — Basi</td><td>Installazione XAMPP, sintassi, echo, variabili, tipi, operatori</td><td>5</td></tr>
+          <tr><td>2 — Controllo</td><td>If/else, switch, match, while, for, funzioni</td><td>5</td></tr>
+          <tr><td>3 — Dati</td><td>Stringhe, numeri, array, array associativi, foreach, date</td><td>6</td></tr>
+          <tr><td>4 — Form</td><td>$_POST, $_GET, validazione, sicurezza, form completo</td><td>5</td></tr>
+          <tr><td>5 — Avanzato</td><td>Sessioni, cookie, file, filtri, JSON, eccezioni, RegEx</td><td>6</td></tr>
+          <tr><td>6 — OOP</td><td>Classi, costruttori, ereditarietà, interfacce, traits, namespace</td><td>8</td></tr>
+          <tr><td>7 — Database</td><td>PDO, MySQL, CRUD, prepared statement</td><td>7</td></tr>
+          <tr><td>8 — Web moderno</td><td>XML, AJAX, REST API, progetto finale</td><td>8</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio PHP (8 settimane)</h2>
+        <table class="ref"><thead><tr><th>Settimana</th><th>Obiettivo</th></tr></thead><tbody>
+          <tr><td>1</td><td>Installazione XAMPP, sintassi, variabili, tipi, operatori, echo/print</td></tr>
+          <tr><td>2</td><td>Strutture di controllo: if/else, switch, match, cicli, funzioni</td></tr>
+          <tr><td>3</td><td>Stringhe, numeri, array, array associativi, foreach, date</td></tr>
+          <tr><td>4</td><td>Form: $_POST/$_GET, validazione, sicurezza XSS, form completo</td></tr>
+          <tr><td>5</td><td>Sessioni, cookie, gestione file, filtri, JSON, eccezioni</td></tr>
+          <tr><td>6</td><td>OOP: classi, costruttori, ereditarietà, interfacce, traits, namespace</td></tr>
+          <tr><td>7</td><td>MySQL con PDO: connessione, CRUD, prepared statement</td></tr>
+          <tr><td>8</td><td>XML, AJAX, REST API — progetto finale</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio PHP</h2>
+        <ul>
+          <li>💬 <strong>Differenza tra <code>include</code> e <code>require</code>?</strong> — <code>require</code> blocca lo script con errore fatale se il file manca; <code>include</code> emette solo un warning e continua.</li>
+          <li>💬 <strong>Cos'è il type juggling?</strong> — La conversione automatica di tipo che PHP applica nei confronti e nelle operazioni. Per evitarne le insidie usa <code>===</code>.</li>
+          <li>💬 <strong>Come si prevengono le SQL injection?</strong> — Usando prepared statement con PDO o MySQLi, mai concatenando input nelle query.</li>
+          <li>💬 <strong>Cosa fa <code>password_hash()</code>?</strong> — Genera un hash sicuro (bcrypt/Argon2) della password, da verificare con <code>password_verify()</code>. Mai salvare password in chiaro.</li>
+          <li>💬 <strong>Differenza tra sessioni e cookie?</strong> — Le sessioni salvano i dati sul server (più sicure); i cookie li salvano nel browser dell'utente.</li>
+          <li>💬 <strong>Cos'è Composer?</strong> — Il gestore di dipendenze standard di PHP, usato per installare librerie e gestire l'autoloading PSR-4.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ RIEPILOGO ═══ -->
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo PHP</h2>
+        <ul>
+          <li>✅ <strong>Sintassi</strong>: variabili, tipi, stringhe, numeri, costanti, operatori</li>
+          <li>✅ <strong>Controllo</strong>: if/else, switch, match, while, for, funzioni</li>
+          <li>✅ <strong>Dati</strong>: array, array associativi, foreach, date, RegEx</li>
+          <li>✅ <strong>Form</strong>: $_POST, $_GET, validazione, sicurezza, filtri</li>
+          <li>✅ <strong>Avanzato</strong>: sessioni, cookie, file, JSON, eccezioni, callback</li>
+          <li>✅ <strong>OOP</strong>: classi, costruttori, modificatori, ereditarietà, interfacce, traits, namespace, static</li>
+          <li>✅ <strong>Database</strong>: PDO, MySQL, CRUD, prepared statement</li>
+          <li>✅ <strong>Web moderno</strong>: XML, AJAX, REST API, JSON</li>
+        </ul>
+        <div class="note-box">📌 PHP è il linguaggio lato server più diffuso al mondo (oltre il 75% dei siti web). Padroneggiarlo apre le porte a ruoli da PHP Developer, Backend Developer e WordPress Developer.</div>
+      </article>
+
+      <!-- ═══ STRING REF ═══ -->
+      <article class="lesson" id="string-ref">
+        <h2>Riferimento — Funzioni String</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>strlen()</code></td><td>Lunghezza stringa</td><td><code>strlen("PHP") → 3</code></td></tr>
+          <tr><td><code>strtoupper()</code></td><td>Maiuscolo</td><td><code>strtoupper("php") → "PHP"</code></td></tr>
+          <tr><td><code>strtolower()</code></td><td>Minuscolo</td><td><code>strtolower("PHP") → "php"</code></td></tr>
+          <tr><td><code>ucfirst()</code></td><td>Prima lettera maiuscola</td><td><code>ucfirst("ciao") → "Ciao"</code></td></tr>
+          <tr><td><code>trim()</code></td><td>Rimuove spazi ai lati</td><td><code>trim(" hi ") → "hi"</code></td></tr>
+          <tr><td><code>str_replace()</code></td><td>Sostituisce testo</td><td><code>str_replace("a","o","casa") → "coso"</code></td></tr>
+          <tr><td><code>substr()</code></td><td>Sottostringa</td><td><code>substr("PHP",0,2) → "PH"</code></td></tr>
+          <tr><td><code>strpos()</code></td><td>Posizione di una sottostringa</td><td><code>strpos("PHP","H") → 1</code></td></tr>
+          <tr><td><code>str_contains()</code></td><td>Contiene? (PHP 8+)</td><td><code>str_contains("PHP","H") → true</code></td></tr>
+          <tr><td><code>explode()</code></td><td>Stringa → array</td><td><code>explode(",","a,b") → ["a","b"]</code></td></tr>
+          <tr><td><code>implode()</code></td><td>Array → stringa</td><td><code>implode("-",["a","b"]) → "a-b"</code></td></tr>
+          <tr><td><code>strrev()</code></td><td>Inverte la stringa</td><td><code>strrev("abc") → "cba"</code></td></tr>
+          <tr><td><code>number_format()</code></td><td>Formatta numeri</td><td><code>number_format(1234.5,2) → "1,234.50"</code></td></tr>
+          <tr><td><code>sprintf()</code></td><td>Stringa formattata</td><td><code>sprintf("%.2f",3.1) → "3.10"</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ ARRAY REF ═══ -->
+      <article class="lesson" id="array-ref">
+        <h2>Riferimento — Funzioni Array</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>count()</code></td><td>Numero di elementi</td></tr>
+          <tr><td><code>array_push()</code></td><td>Aggiunge in coda</td></tr>
+          <tr><td><code>array_pop()</code></td><td>Rimuove l'ultimo elemento</td></tr>
+          <tr><td><code>array_shift()</code></td><td>Rimuove il primo elemento</td></tr>
+          <tr><td><code>array_merge()</code></td><td>Unisce più array</td></tr>
+          <tr><td><code>array_map()</code></td><td>Applica una funzione a ogni elemento</td></tr>
+          <tr><td><code>array_filter()</code></td><td>Filtra con una callback</td></tr>
+          <tr><td><code>array_keys()</code></td><td>Restituisce le chiavi</td></tr>
+          <tr><td><code>array_values()</code></td><td>Restituisce i valori</td></tr>
+          <tr><td><code>array_column()</code></td><td>Estrae una colonna da array di array</td></tr>
+          <tr><td><code>in_array()</code></td><td>Verifica se un valore esiste</td></tr>
+          <tr><td><code>array_search()</code></td><td>Cerca un valore e ne dà la chiave</td></tr>
+          <tr><td><code>sort() / rsort()</code></td><td>Ordina crescente / decrescente</td></tr>
+          <tr><td><code>asort() / arsort()</code></td><td>Ordina mantenendo le chiavi</td></tr>
+          <tr><td><code>array_sum()</code></td><td>Somma dei valori</td></tr>
+          <tr><td><code>array_unique()</code></td><td>Rimuove i duplicati</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ MATH REF ═══ -->
+      <article class="lesson" id="math-ref">
+        <h2>Riferimento — Funzioni Math</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>abs()</code></td><td>Valore assoluto</td><td><code>abs(-5) → 5</code></td></tr>
+          <tr><td><code>ceil()</code></td><td>Arrotonda per eccesso</td><td><code>ceil(4.1) → 5</code></td></tr>
+          <tr><td><code>floor()</code></td><td>Arrotonda per difetto</td><td><code>floor(4.9) → 4</code></td></tr>
+          <tr><td><code>round()</code></td><td>Arrotonda</td><td><code>round(3.456,2) → 3.46</code></td></tr>
+          <tr><td><code>sqrt()</code></td><td>Radice quadrata</td><td><code>sqrt(16) → 4</code></td></tr>
+          <tr><td><code>pow()</code></td><td>Potenza</td><td><code>pow(2,10) → 1024</code></td></tr>
+          <tr><td><code>max() / min()</code></td><td>Massimo / minimo</td><td><code>max(3,7,2) → 7</code></td></tr>
+          <tr><td><code>rand()</code></td><td>Numero casuale</td><td><code>rand(1,100)</code></td></tr>
+          <tr><td><code>intdiv()</code></td><td>Divisione intera</td><td><code>intdiv(10,3) → 3</code></td></tr>
+          <tr><td><code>pi() / M_PI</code></td><td>Pi greco</td><td><code>pi() → 3.14159</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ SUPERGLOBALS REF ═══ -->
+      <article class="lesson" id="superglobals-ref">
+        <h2>Riferimento — Superglobali</h2>
+        <table class="ref"><thead><tr><th>Superglobale</th><th>Contenuto</th></tr></thead><tbody>
+          <tr><td><code>$_GET</code></td><td>Dati passati nell'URL (querystring)</td></tr>
+          <tr><td><code>$_POST</code></td><td>Dati inviati da un form con metodo POST</td></tr>
+          <tr><td><code>$_REQUEST</code></td><td>GET, POST e COOKIE combinati</td></tr>
+          <tr><td><code>$_SESSION</code></td><td>Dati di sessione lato server</td></tr>
+          <tr><td><code>$_COOKIE</code></td><td>Cookie del browser</td></tr>
+          <tr><td><code>$_FILES</code></td><td>File caricati tramite form</td></tr>
+          <tr><td><code>$_SERVER</code></td><td>Info su server e richiesta HTTP</td></tr>
+          <tr><td><code>$_ENV</code></td><td>Variabili d'ambiente</td></tr>
+          <tr><td><code>$GLOBALS</code></td><td>Tutte le variabili globali</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione PHP</h2>
+        <p>Le certificazioni PHP attestano le competenze e sono apprezzate dalle aziende che sviluppano in PHP:</p>
+        <table class="ref"><thead><tr><th>Certificazione</th><th>Ente</th><th>Livello</th></tr></thead><tbody>
+          <tr><td>Zend Certified PHP Engineer (ZCPE)</td><td>Zend / Perforce</td><td>Professionale (la più riconosciuta)</td></tr>
+          <tr><td>PHP Certification</td><td>W3Schools</td><td>Base/Intermedio</td></tr>
+          <tr><td>Laravel Certification</td><td>Laravel</td><td>Framework avanzato</td></tr>
+          <tr><td>Symfony Certification</td><td>SensioLabs</td><td>Framework avanzato</td></tr>
+        </tbody></table>
+        <h3>Come prepararsi</h3>
+        <ul>
+          <li>📚 Studia il manuale ufficiale PHP (<a href="https://www.php.net/manual/it/" rel="noopener noreferrer" target="_blank">php.net/manual</a>)</li>
+          <li>🧪 Pratica con progetti reali: blog, e-commerce, REST API</li>
+          <li>🛠️ Impara un framework moderno: <strong>Laravel</strong> o <strong>Symfony</strong></li>
+          <li>📦 Padroneggia <strong>Composer</strong> e gli standard <strong>PSR</strong></li>
+          <li>⏱️ Tempo medio di preparazione ZCPE: 3-4 mesi</li>
+        </ul>
+      </article>
+
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di PHP</h2>
-        <p>Hai imparato la sintassi di PHP, le variabili e i tipi, gli array, le funzioni, la gestione dei form con <code class="inline">$_POST</code> e <code class="inline">$_GET</code>, le sessioni, la programmazione a oggetti e la connessione a MySQL: tutto ciò che serve per costruire siti web dinamici.</p>
-        <p>Il prossimo passo è <strong>installare XAMPP</strong> ed eseguire questi esempi sul tuo computer, costruendo le tue prime pagine dinamiche. Se vuoi un percorso guidato o aiuto per un progetto o una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Crea una pagina PHP che riceve i dati di un form di contatto, li valida e mostra un messaggio di conferma personalizzato. Bonus: salva i messaggi in un file.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso di PHP! Hai imparato la sintassi, la gestione dei form, sessioni e cookie, il lavoro con i file, la programmazione a oggetti, i namespace, i traits e la connessione a MySQL con PDO. Sei pronto per costruire siti web dinamici reali.</p>
+        <h3>E ora cosa fare?</h3>
+        <ul>
+          <li>💻 <strong>Installa XAMPP</strong> ed esegui i tuoi script in locale su <code class="inline">localhost</code></li>
+          <li>🐙 <strong>Carica i progetti su GitHub</strong> per costruire il tuo portfolio</li>
+          <li>🚀 <strong>Studia Laravel</strong> — il framework PHP più richiesto dalle aziende</li>
+          <li>📦 <strong>Impara Composer</strong> e gli standard PSR per codice professionale</li>
+          <li>🔐 <strong>Approfondisci la sicurezza</strong>: hashing password, protezione CSRF/XSS, validazione</li>
+          <li>🎯 <strong>Punta alla certificazione ZCPE</strong> riconosciuta a livello internazionale</li>
+        </ul>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Crea un mini-blog completo: pagina con elenco articoli da MySQL, form per aggiungere un articolo (con validazione e protezione XSS), e un'area admin protetta da login con sessioni e password hashate. Bonus: aggiungi un sistema di commenti.</p></div>
+        <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
 
     </main>
