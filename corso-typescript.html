@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso TypeScript in italiano completo e gratuito — Tipi, Generics, Decorators da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso TypeScript italiano completo e gratuito: tipi, inferenza, union types, generics, classi, interfacce, decorators, utility types, async, configurazione tsconfig. Quiz, programma e certificazione.">
+  <meta name="keywords" content="corso typescript italiano, imparare typescript, typescript tutorial italiano, tipi typescript, generics typescript, interfacce typescript, decorators typescript, tsconfig, typescript con react, typescript con nodejs, certificazione typescript, quiz typescript">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso TypeScript in italiano completo e gratuito — Tipi, Generics e Interfacce | AlessandroSimone.it">
+  <meta property="og:description" content="Impara TypeScript da zero in italiano: tipi, generics, classi, interfacce, utility types, decorators, async, tsconfig, quiz e certificazione. Tutorial completo e gratuito.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
+    .ed-btn:hover { background: var(--bg-soft); }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: #f8fafc; border-bottom: 1px solid var(--border); padding: .35rem .9rem; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-typescript.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-typescript.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso TypeScript in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial TypeScript completo in italiano: tipi, generics, classi, interfacce, utility types, async, decorators, tsconfig, quiz e certificazione.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso TypeScript in italiano","description":"Corso TypeScript italiano completo e gratuito: tipi, generics, classi, interfacce, utility types, decorators, async, tsconfig, quiz e certificazione.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-typescript.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html" class="active">TYPESCRIPT</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso TypeScript in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il tutorial completo per imparare TypeScript da zero: tipi, generics, interfacce, classi, utility types, decorators, async e molto altro.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>TypeScript Tutorial</h4>
+      <a href="#intro">Introduzione</a>
+      <a href="#getstarted">Get Started</a>
+      <a href="#simple-types">Tipi semplici</a>
+      <a href="#explicit-inference">Explicit &amp; Inference</a>
+      <a href="#special-types">Tipi speciali</a>
+      <a href="#arrays">Array</a>
+      <a href="#tuples">Tuple</a>
+      <a href="#object-types">Object Types</a>
+      <a href="#enums">Enums</a>
+      <a href="#aliases-interfaces">Aliases &amp; Interfacce</a>
+      <a href="#union-types">Union Types</a>
+      <a href="#functions">Funzioni</a>
+      <a href="#casting">Casting</a>
+      <a href="#classes">Classi</a>
+      <a href="#basic-generics">Generics base</a>
+      <a href="#utility-types">Utility Types</a>
+      <a href="#keyof">Keyof</a>
+      <a href="#null">Null</a>
+      <a href="#definitely-typed">Definitely Typed</a>
+      <a href="#ts5-updates">TypeScript 5</a>
+      <a href="#configuration">Configurazione</a>
+      <a href="#with-nodejs">TS con Node.js</a>
+      <a href="#with-react">TS con React</a>
+      <a href="#tooling">Tooling</a>
+      <h4>Tipi Avanzati</h4>
+      <a href="#advanced-types">Tipi avanzati</a>
+      <a href="#type-guards">Type Guards</a>
+      <a href="#conditional-types">Tipi condizionali</a>
+      <a href="#mapped-types">Mapped Types</a>
+      <a href="#type-inference">Inferenza avanzata</a>
+      <a href="#literal-types">Literal Types</a>
+      <a href="#namespaces">Namespaces</a>
+      <a href="#index-signatures">Index Signatures</a>
+      <a href="#declaration-merging">Declaration Merging</a>
+      <a href="#async-programming">Async Programming</a>
+      <a href="#decorators">Decorators</a>
+      <a href="#in-js-projects">TS in progetti JS</a>
+      <a href="#migration">Migrazione a TS</a>
+      <a href="#error-handling">Error Handling</a>
+      <a href="#best-practices">Best Practices</a>
+      <h4>Esami &amp; Pratica</h4>
+      <a href="#editor-online">Editor online</a>
+      <a href="#esercizi">Esercizi</a>
+      <a href="#quiz">Quiz TypeScript</a>
+      <a href="#pratica">Problemi pratici</a>
+      <a href="#programma">Programma</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#bootcamp">Bootcamp</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione TS</a>
+      <h4>Conclusione</h4>
+      <a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+      <article class="lesson" id="intro">
+        <h2>Introduzione a TypeScript</h2>
+        <p><strong>TypeScript</strong> è un linguaggio di programmazione open-source sviluppato da Microsoft che estende JavaScript aggiungendo la <strong>tipizzazione statica opzionale</strong>. Il codice TypeScript viene compilato (<em>transpilato</em>) in JavaScript puro, quindi gira ovunque gira JavaScript: browser, Node.js, Deno.</p>
+        <p>TypeScript non sostituisce JavaScript: lo <em>potenzia</em>. Ogni file JavaScript valido è già TypeScript valido. Puoi adottarlo gradualmente nel tuo progetto esistente.</p>
+        <h3>Perché usare TypeScript?</h3>
+        <ul>
+          <li>🐛 <strong>Errori a compile-time</strong>: individua i bug prima di eseguire il codice</li>
+          <li>🧠 <strong>Autocompletamento intelligente</strong>: l'editor conosce i tipi e suggerisce i metodi corretti</li>
+          <li>📖 <strong>Codice auto-documentato</strong>: i tipi spiegano cosa si aspetta ogni funzione</li>
+          <li>🔄 <strong>Refactoring sicuro</strong>: rinominare un campo aggiorna tutto il progetto</li>
+          <li>🏢 <strong>Standard industriale</strong>: usato da Google, Microsoft, Airbnb, Slack, VS Code stesso</li>
+        </ul>
+        <div class="note-box">📘 TypeScript non gira direttamente nel browser: viene compilato in JavaScript con il comando <code class="inline">tsc</code>. Usa il <a href="https://www.typescriptlang.org/play" target="_blank" rel="noreferrer">TypeScript Playground</a> per provare subito senza installare nulla.</div>
+        <div class="example">
+          <div class="codehead"><span>JS vs TS — stesso errore, esiti diversi</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// JavaScript — nessun avviso, errore solo a runtime
+function somma(a, b) {
+  return a + b;
+}
+console.log(somma(5, "3")); // "53" — bug silenzioso!
+
+// TypeScript — errore a compile-time
+function sommaTS(a: number, b: number): number {
+  return a + b;
+}
+console.log(sommaTS(5, "3")); // ❌ Errore: '"3"' non è 'number'
+console.log(sommaTS(5, 3));   // ✅ 8
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="getstarted">
+        <h2>Get Started — Installazione</h2>
+        <p>Per iniziare con TypeScript ti serve <strong>Node.js</strong> installato. TypeScript si installa globalmente via npm e si usa con il compilatore <code class="inline">tsc</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Installazione e primo progetto</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+# Installa TypeScript globalmente
+npm install -g typescript
+
+# Verifica la versione
+tsc --version
+
+# Crea un file TypeScript
+# ciao.ts
+const messaggio: string = "Ciao, TypeScript!";
+console.log(messaggio);
+
+# Compila il file
+tsc ciao.ts
+# Genera: ciao.js
+
+# Esegui il JavaScript compilato
+node ciao.js
+          </script>
+        </div>
+        <h3>Avvio rapido senza installazione</h3>
+        <p>Per sperimentare subito senza installare nulla, usa il <strong>TypeScript Playground</strong> ufficiale su <a href="https://www.typescriptlang.org/play" target="_blank" rel="noreferrer">typescriptlang.org/play</a>: scrivi TypeScript a sinistra e vedi il JavaScript compilato a destra in tempo reale.</p>
+        <div class="tip-box">💡 Nei progetti moderni con Vite o Create React App, TypeScript è già configurato: basta usare l'estensione <code class="inline">.ts</code> o <code class="inline">.tsx</code> e il compilatore gira automaticamente in background.</div>
+      </article>
+
+      <article class="lesson" id="simple-types">
+        <h2>Tipi semplici</h2>
+        <p>TypeScript supporta tutti i tipi primitivi di JavaScript, con la possibilità di dichiararli esplicitamente. I principali tipi primitivi sono <code class="inline">string</code>, <code class="inline">number</code>, <code class="inline">boolean</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Tipi primitivi</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+let nome: string = "Alice";
+let eta: number = 25;
+let attivo: boolean = true;
+let punteggio: number = 9.5;
+
+// Errori rilevati a compile-time
+nome = 42;        // ❌ Type 'number' is not assignable to type 'string'
+eta = "venticinque"; // ❌ Type 'string' is not assignable to type 'number'
+attivo = "si";    // ❌ Type 'string' is not assignable to type 'boolean'
+
+// Uso corretto
+console.log(`${nome} ha ${eta} anni. Attivo: ${attivo}`);
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>Tipo</th><th>Esempio</th><th>Descrizione</th></tr>
+          <tr><td>string</td><td><code>"ciao"</code></td><td>Testo</td></tr>
+          <tr><td>number</td><td><code>42</code>, <code>3.14</code></td><td>Numeri interi e decimali</td></tr>
+          <tr><td>boolean</td><td><code>true</code>, <code>false</code></td><td>Valori logici</td></tr>
+          <tr><td>bigint</td><td><code>100n</code></td><td>Interi molto grandi</td></tr>
+          <tr><td>symbol</td><td><code>Symbol("id")</code></td><td>Identificatori unici</td></tr>
+        </table>
+      </article>
+
+      <article class="lesson" id="explicit-inference">
+        <h2>Dichiarazione esplicita e inferenza</h2>
+        <p>TypeScript può dedurre (<strong>inferire</strong>) il tipo automaticamente dal valore assegnato. Non è sempre necessario scrivere il tipo esplicitamente: TypeScript lo capisce dal contesto.</p>
+        <div class="example">
+          <div class="codehead"><span>Esplicito vs Inferito</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Dichiarazione ESPLICITA — scrivi il tipo tu
+let nome: string = "Alice";
+let eta: number = 25;
+
+// Dichiarazione INFERITA — TypeScript deduce il tipo
+let cognome = "Rossi";    // inferito: string
+let anno = 2024;          // inferito: number
+let online = true;        // inferito: boolean
+
+// L'inferenza funziona anche nelle funzioni
+function raddoppia(n: number) {
+  return n * 2; // il tipo di ritorno è inferito: number
+}
+
+// Quando usare l'esplicito?
+// - Quando dichiari prima e assegni dopo
+let valore: string;
+valore = "ciao"; // TypeScript sa già che è string
+
+// - Quando il tipo non può essere dedotto
+let dati: unknown = fetch('/api');
+          </script>
+        </div>
+        <div class="tip-box">💡 Regola pratica: lascia che TypeScript inferisca quando inizializzi con un valore. Dichiara esplicitamente quando la variabile è dichiarata senza valore o il tipo non è ovvio.</div>
+      </article>
+
+      <article class="lesson" id="special-types">
+        <h2>Tipi speciali</h2>
+        <p>TypeScript ha alcuni tipi speciali che non esistono (o hanno significato diverso) in JavaScript puro.</p>
+        <div class="example">
+          <div class="codehead"><span>any, unknown, never, void</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// any — disabilita il controllo dei tipi (da evitare!)
+let qualsiasi: any = "stringa";
+qualsiasi = 42;       // OK
+qualsiasi = true;     // OK — nessun controllo
+
+// unknown — tipo sicuro per valori sconosciuti
+let ignoto: unknown = "testo";
+// ignoto.toUpperCase(); // ❌ Errore: devi verificare prima
+if (typeof ignoto === "string") {
+  console.log(ignoto.toUpperCase()); // ✅ OK dopo il type guard
+}
+
+// void — funzione che non restituisce nulla
+function saluta(nome: string): void {
+  console.log(`Ciao, ${nome}!`);
+}
+
+// never — codice che non arriva mai alla fine
+function lancia(msg: string): never {
+  throw new Error(msg);
+}
+
+// undefined e null
+let u: undefined = undefined;
+let n: null = null;
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>Tipo</th><th>Uso</th></tr>
+          <tr><td>any</td><td>Disabilita il type checking — usare con parsimonia</td></tr>
+          <tr><td>unknown</td><td>Valore sconosciuto ma sicuro — richiede type guard prima dell'uso</td></tr>
+          <tr><td>void</td><td>Funzione senza valore di ritorno</td></tr>
+          <tr><td>never</td><td>Codice irraggiungibile o funzione che lancia sempre un errore</td></tr>
+        </table>
+      </article>
+
+      <article class="lesson" id="arrays">
+        <h2>Array</h2>
+        <p>Gli array TypeScript sono tipizzati: ogni elemento deve rispettare il tipo dichiarato. Ci sono due sintassi equivalenti per dichiarare un array tipizzato.</p>
+        <div class="example">
+          <div class="codehead"><span>Array tipizzati</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Sintassi 1: tipo[]
+const numeri: number[] = [1, 2, 3, 4, 5];
+const nomi: string[] = ["Alice", "Marco", "Giulia"];
+
+// Sintassi 2: Array<tipo>
+const prezzi: Array<number> = [9.99, 19.99, 4.99];
+
+// Array di oggetti
+const utenti: { nome: string; eta: number }[] = [
+  { nome: "Alice", eta: 25 },
+  { nome: "Marco", eta: 30 },
+];
+
+// TypeScript controlla i metodi degli array
+numeri.push(6);        // ✅
+numeri.push("sette");  // ❌ Errore: string non è number
+
+// Array di sola lettura (readonly)
+const colori: readonly string[] = ["rosso", "verde", "blu"];
+// colori.push("giallo"); // ❌ Errore: proprietà di sola lettura
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tuples">
+        <h2>Tuple</h2>
+        <p>Una <strong>tuple</strong> è un array con un numero fisso di elementi, ognuno con il proprio tipo. A differenza degli array normali, l'ordine e il tipo di ogni posizione sono definiti con precisione.</p>
+        <div class="example">
+          <div class="codehead"><span>Tuple TypeScript</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Tupla: [string, number]
+let persona: [string, number] = ["Alice", 25];
+
+// Accesso per indice
+console.log(persona[0]); // "Alice" — tipo: string
+console.log(persona[1]); // 25      — tipo: number
+
+// Errori
+persona = [25, "Alice"]; // ❌ Ordine sbagliato
+
+// Tupla con etichette (TypeScript 4+) — più leggibile
+let punto: [x: number, y: number] = [10, 20];
+
+// Tuple readonly
+const rgb: readonly [number, number, number] = [255, 128, 0];
+
+// Destruring delle tuple
+const [nome, eta] = persona;
+console.log(`${nome} ha ${eta} anni`);
+
+// Uso tipico: funzione che restituisce più valori
+function dividi(a: number, b: number): [number, number] {
+  return [Math.floor(a / b), a % b]; // [quoziente, resto]
+}
+const [quoziente, resto] = dividi(17, 5);
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="object-types">
+        <h2>Object Types</h2>
+        <p>TypeScript permette di descrivere la struttura degli oggetti definendo il tipo di ogni proprietà. Puoi usare la sintassi inline oppure un <strong>type alias</strong> o un'<strong>interfaccia</strong>.</p>
+        <div class="example">
+          <div class="codehead"><span>Tipi degli oggetti</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Tipo inline
+const utente: { nome: string; eta: number; email: string } = {
+  nome: "Alice",
+  eta: 25,
+  email: "alice@esempio.it",
+};
+
+// Proprietà opzionali (?)
+const prodotto: { nome: string; prezzo: number; sconto?: number } = {
+  nome: "Laptop",
+  prezzo: 999,
+  // sconto è opzionale — OK se manca
+};
+
+// Proprietà readonly
+const punto: { readonly x: number; readonly y: number } = { x: 10, y: 20 };
+// punto.x = 5; // ❌ Errore: readonly
+
+// Indice dinamico
+const dizionario: { [chiave: string]: string } = {};
+dizionario["it"] = "italiano";
+dizionario["en"] = "inglese";
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="enums">
+        <h2>Enums</h2>
+        <p>Un <strong>enum</strong> è un insieme di costanti con nome. Rendono il codice più leggibile rispetto ai valori magici come <code class="inline">0</code>, <code class="inline">1</code>, <code class="inline">2</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Enum numerici e a stringa</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Enum numerico (default: 0, 1, 2, ...)
+enum Direzione {
+  Su,     // 0
+  Giu,    // 1
+  Sinistra, // 2
+  Destra, // 3
+}
+
+let mossa: Direzione = Direzione.Su;
+console.log(mossa); // 0
+
+// Enum a stringa (più sicuro — valori espliciti)
+enum StatoOrdine {
+  InAttesa = "IN_ATTESA",
+  Spedito = "SPEDITO",
+  Consegnato = "CONSEGNATO",
+  Annullato = "ANNULLATO",
+}
+
+let stato: StatoOrdine = StatoOrdine.Spedito;
+console.log(stato); // "SPEDITO"
+
+// Uso in una funzione
+function descriviStato(s: StatoOrdine): string {
+  switch (s) {
+    case StatoOrdine.Consegnato: return "✅ Consegnato";
+    case StatoOrdine.Annullato: return "❌ Annullato";
+    default: return "⏳ In lavorazione";
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="aliases-interfaces">
+        <h2>Type Aliases e Interfacce</h2>
+        <p>Sia i <strong>type alias</strong> che le <strong>interfacce</strong> permettono di dare un nome a una struttura di tipo. Sono simili ma con differenze importanti.</p>
+        <div class="example">
+          <div class="codehead"><span>Type Alias vs Interface</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// TYPE ALIAS — può descrivere qualsiasi tipo
+type Punto = {
+  x: number;
+  y: number;
+};
+
+type ID = string | number; // Union type — solo con type alias
+
+const p: Punto = { x: 10, y: 20 };
+
+// INTERFACE — descrive la forma di un oggetto o classe
+interface Utente {
+  nome: string;
+  eta: number;
+  saluta(): string;
+}
+
+const alice: Utente = {
+  nome: "Alice",
+  eta: 25,
+  saluta() { return `Ciao, sono ${this.nome}`; },
+};
+
+// Le interfacce possono essere estese
+interface Admin extends Utente {
+  ruolo: string;
+}
+
+// Le interfacce possono essere dichiarate più volte (merging)
+interface Utente {
+  email?: string; // aggiunge email all'interfaccia Utente
+}
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th></th><th>type</th><th>interface</th></tr>
+          <tr><td>Union / Intersection</td><td>✅</td><td>❌</td></tr>
+          <tr><td>Estensione</td><td>con &amp;</td><td>con extends</td></tr>
+          <tr><td>Declaration merging</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Classi (implements)</td><td>✅</td><td>✅</td></tr>
+        </table>
+      </article>
+
+      <article class="lesson" id="union-types">
+        <h2>Union Types</h2>
+        <p>Un <strong>union type</strong> permette a una variabile di avere uno tra più tipi possibili, separati dall'operatore <code class="inline">|</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Union Types</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Una variabile può essere string O number
+let id: string | number;
+id = "abc-123"; // ✅
+id = 42;        // ✅
+id = true;      // ❌
+
+// Union in funzioni
+function stampaId(id: string | number): void {
+  if (typeof id === "string") {
+    console.log(id.toUpperCase()); // TypeScript sa che è string
+  } else {
+    console.log(id.toFixed(2));    // TypeScript sa che è number
+  }
+}
+
+// Union con valori letterali
+type Direzione = "nord" | "sud" | "est" | "ovest";
+let dove: Direzione = "nord"; // ✅
+// dove = "diagonale";        // ❌
+
+// Union di oggetti (discriminated union)
+type Cerchio = { forma: "cerchio"; raggio: number };
+type Rettangolo = { forma: "rettangolo"; larghezza: number; altezza: number };
+type Forma = Cerchio | Rettangolo;
+
+function area(f: Forma): number {
+  if (f.forma === "cerchio") return Math.PI * f.raggio ** 2;
+  return f.larghezza * f.altezza;
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="functions">
+        <h2>Funzioni</h2>
+        <p>TypeScript permette di tipizzare i parametri e il valore di ritorno delle funzioni, rendendo l'API di ogni funzione chiara e verificata a compile-time.</p>
+        <div class="example">
+          <div class="codehead"><span>Funzioni tipizzate</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Parametri e tipo di ritorno espliciti
+function somma(a: number, b: number): number {
+  return a + b;
+}
+
+// Parametro opzionale
+function saluta(nome: string, titolo?: string): string {
+  return titolo ? `${titolo} ${nome}` : nome;
+}
+
+// Parametro con valore di default
+function potenza(base: number, esponente: number = 2): number {
+  return base ** esponente;
+}
+
+// Rest parameters
+function sommaTutti(...numeri: number[]): number {
+  return numeri.reduce((tot, n) => tot + n, 0);
+}
+
+// Tipo di funzione (function type)
+type Operazione = (a: number, b: number) => number;
+const moltiplica: Operazione = (a, b) => a * b;
+
+// Overloads — stessa funzione, firme diverse
+function combina(a: string, b: string): string;
+function combina(a: number, b: number): number;
+function combina(a: any, b: any): any {
+  return a + b;
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="casting">
+        <h2>Casting (Type Assertions)</h2>
+        <p>Il <strong>casting</strong> in TypeScript permette di dire al compilatore "fidati, so il tipo di questo valore". Non converte il valore a runtime, ma dice al type checker come trattarlo.</p>
+        <div class="example">
+          <div class="codehead"><span>Type assertions</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Sintassi con "as" (preferita)
+let valore: unknown = "Ciao TypeScript!";
+let lunghezza: number = (valore as string).length;
+
+// Sintassi con <tipo> (non funziona in JSX)
+let lunghezza2: number = (<string>valore).length;
+
+// Uso comune: querySelector restituisce Element | null
+const input = document.querySelector("#nome") as HTMLInputElement;
+input.value = "Alice"; // OK — TypeScript sa che è HTMLInputElement
+
+// Non-null assertion operator (!)
+const canvas = document.getElementById("myCanvas")!; // assicura che non è null
+
+// Doppio casting (da usare con cautela)
+const num = (("ciao" as unknown) as number); // forzato — pericoloso!
+
+// Caso tipico: dati da API
+const risposta: unknown = JSON.parse('{"nome":"Alice"}');
+const dati = risposta as { nome: string };
+console.log(dati.nome);
+          </script>
+        </div>
+        <div class="warn-box">⚠️ Il casting non converte il valore a runtime: se asserisci il tipo sbagliato, l'errore comparirà comunque durante l'esecuzione. Usare con cura.</div>
+      </article>
+
+      <article class="lesson" id="classes">
+        <h2>Classi</h2>
+        <p>TypeScript estende le classi ES6 con <strong>modificatori di accesso</strong>, <strong>proprietà tipizzate</strong>, <strong>classi astratte</strong> e molto altro.</p>
+        <div class="example">
+          <div class="codehead"><span>Classi TypeScript</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+class Persona {
+  // Modificatori: public (default), private, protected, readonly
+  public nome: string;
+  private eta: number;
+  protected email: string;
+  readonly id: number;
+
+  constructor(nome: string, eta: number, email: string) {
+    this.nome = nome;
+    this.eta = eta;
+    this.email = email;
+    this.id = Math.random();
+  }
+
+  // Getter/Setter
+  get infoEta(): string {
+    return `${this.eta} anni`;
+  }
+
+  set nuovaEta(valore: number) {
+    if (valore < 0) throw new Error("Età negativa!");
+    this.eta = valore;
+  }
+
+  saluta(): string {
+    return `Ciao, sono ${this.nome}`;
+  }
+}
+
+// Shorthand nel costruttore
+class Prodotto {
+  constructor(
+    public nome: string,
+    public prezzo: number,
+    private stock: number = 0
+  ) {}
+}
+
+// Classe astratta
+abstract class Forma {
+  abstract area(): number;
+  descrivi(): string { return `Area: ${this.area()}`; }
+}
+
+class Cerchio extends Forma {
+  constructor(private raggio: number) { super(); }
+  area(): number { return Math.PI * this.raggio ** 2; }
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="basic-generics">
+        <h2>Generics base</h2>
+        <p>I <strong>generics</strong> permettono di scrivere codice riutilizzabile che funziona con qualsiasi tipo, mantenendo la type-safety. Invece di usare <code class="inline">any</code>, usi un <strong>tipo parametro</strong> come <code class="inline">T</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Funzioni e classi generiche</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Funzione generica
+function primoElemento<T>(array: T[]): T {
+  return array[0];
+}
+
+const num = primoElemento([1, 2, 3]);         // T = number
+const str = primoElemento(["a", "b", "c"]);   // T = string
+
+// Funzione con più parametri generici
+function coppia<T, U>(primo: T, secondo: U): [T, U] {
+  return [primo, secondo];
+}
+const p = coppia("Alice", 25); // [string, number]
+
+// Classe generica
+class Pila<T> {
+  private elementi: T[] = [];
+  push(item: T): void { this.elementi.push(item); }
+  pop(): T | undefined { return this.elementi.pop(); }
+  get lunghezza(): number { return this.elementi.length; }
+}
+
+const pilaNumeri = new Pila<number>();
+pilaNumeri.push(1);
+pilaNumeri.push(2);
+console.log(pilaNumeri.pop()); // 2
+
+// Vincolo sui generics (constraints)
+function lunghezza<T extends { length: number }>(val: T): number {
+  return val.length;
+}
+lunghezza("stringa"); // ✅
+lunghezza([1, 2, 3]); // ✅
+// lunghezza(42);     // ❌ number non ha .length
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="utility-types">
+        <h2>Utility Types</h2>
+        <p>TypeScript include molti <strong>utility types</strong> predefiniti che trasformano un tipo esistente in uno nuovo. Evitano di riscrivere strutture simili da zero.</p>
+        <div class="example">
+          <div class="codehead"><span>Utility Types più usati</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+interface Utente {
+  id: number;
+  nome: string;
+  email: string;
+  password: string;
+}
+
+// Partial<T> — tutte le proprietà diventano opzionali
+type AggiornamentoUtente = Partial<Utente>;
+const update: AggiornamentoUtente = { nome: "Marco" }; // OK
+
+// Required<T> — tutte le proprietà diventano obbligatorie
+type UtenteSenzaOpzionali = Required<Utente>;
+
+// Readonly<T> — tutte le proprietà diventano readonly
+type UtenteReadonly = Readonly<Utente>;
+
+// Pick<T, K> — seleziona solo alcune proprietà
+type UtentePublico = Pick<Utente, "id" | "nome">;
+
+// Omit<T, K> — esclude alcune proprietà
+type UtenteSenzaPassword = Omit<Utente, "password">;
+
+// Record<K, V> — oggetto con chiavi K e valori V
+type RuoliUtenti = Record<string, "admin" | "user" | "guest">;
+const ruoli: RuoliUtenti = { alice: "admin", marco: "user" };
+
+// ReturnType<F> — tipo del valore di ritorno di una funzione
+function getUtente(): Utente { return {} as Utente; }
+type TipoRitorno = ReturnType<typeof getUtente>; // Utente
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="keyof">
+        <h2>Keyof</h2>
+        <p>L'operatore <code class="inline">keyof</code> restituisce un union type con tutte le chiavi di un tipo oggetto. È molto utile per creare funzioni generiche che operano sulle proprietà di un oggetto.</p>
+        <div class="example">
+          <div class="codehead"><span>keyof operator</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+interface Persona {
+  nome: string;
+  eta: number;
+  email: string;
+}
+
+// keyof produce: "nome" | "eta" | "email"
+type ChiaviPersona = keyof Persona;
+
+// Funzione type-safe che legge una proprietà
+function getProprietà<T, K extends keyof T>(obj: T, chiave: K): T[K] {
+  return obj[chiave];
+}
+
+const alice: Persona = { nome: "Alice", eta: 25, email: "alice@es.it" };
+
+const nome = getProprietà(alice, "nome");   // tipo: string
+const eta = getProprietà(alice, "eta");     // tipo: number
+// getProprietà(alice, "altezza");          // ❌ non è una chiave di Persona
+
+// keyof con typeof
+const config = { debug: true, porta: 3000, host: "localhost" };
+type ChiaviConfig = keyof typeof config; // "debug" | "porta" | "host"
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="null">
+        <h2>Null e Undefined</h2>
+        <p>Con <code class="inline">strictNullChecks</code> attivo (default in TypeScript moderno), <code class="inline">null</code> e <code class="inline">undefined</code> non sono assegnabili a qualsiasi tipo: devono essere esplicitamente dichiarati.</p>
+        <div class="example">
+          <div class="codehead"><span>Gestione di null e undefined</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Con strictNullChecks: true (default)
+let nome: string = "Alice";
+// nome = null; // ❌ Errore
+
+// Per permettere null, devi dichiararlo esplicitamente
+let nomeNullabile: string | null = "Alice";
+nomeNullabile = null; // ✅
+
+// Optional chaining (?.) — non lancia errore se null/undefined
+const utente: { profilo?: { avatar: string } } | null = null;
+const avatar = utente?.profilo?.avatar; // undefined (no errore)
+
+// Nullish coalescing (??) — valore di default se null/undefined
+const display = avatar ?? "avatar-default.png";
+
+// Non-null assertion (!) — dici a TS che non è null
+function trova(id: number): string | undefined {
+  return id > 0 ? "trovato" : undefined;
+}
+const risultato = trova(1)!; // assicuri che non è undefined
+
+// Narrowing con if
+function stampa(testo: string | null): void {
+  if (testo === null) {
+    console.log("Testo mancante");
+    return;
+  }
+  console.log(testo.toUpperCase()); // TypeScript sa che è string
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="definitely-typed">
+        <h2>Definitely Typed (@types)</h2>
+        <p>Molte librerie JavaScript non includono i tipi TypeScript. Il progetto <strong>Definitely Typed</strong> fornisce i file di dichiarazione dei tipi (<code class="inline">.d.ts</code>) per migliaia di librerie populari, sotto il namespace <code class="inline">@types</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Installare i tipi di una libreria</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+# Installa i tipi per Node.js
+npm install --save-dev @types/node
+
+# Installa i tipi per Express
+npm install express
+npm install --save-dev @types/express
+
+# Installa i tipi per jQuery
+npm install --save-dev @types/jquery
+
+# Dopo l'installazione, TypeScript conosce i tipi
+import express, { Request, Response } from 'express';
+
+const app = express();
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello TypeScript!');
+});
+
+// Creare un file .d.ts per una libreria senza tipi
+// mia-libreria.d.ts
+declare module 'mia-libreria' {
+  export function funzione(x: string): number;
+  export const versione: string;
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Molte librerie moderne includono già i tipi (React, Axios, Zod, ecc.) — non serve installare <code>@types</code> separatamente. Controlla se esiste già un campo <code>"types"</code> in package.json.</div>
+      </article>
+
+      <article class="lesson" id="ts5-updates">
+        <h2>TypeScript 5 — Novità principali</h2>
+        <p>TypeScript 5 (2023) ha introdotto miglioramenti significativi alle performance e nuove funzionalità del linguaggio.</p>
+        <div class="example">
+          <div class="codehead"><span>Novità TypeScript 5</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// 1. Decorators stabili (ora standard ECMAScript)
+function Log(target: any, key: string, desc: PropertyDescriptor) {
+  const orig = desc.value;
+  desc.value = function (...args: any[]) {
+    console.log(`Chiamata: ${key}(${args})`);
+    return orig.apply(this, args);
+  };
+}
+
+class Servizio {
+  @Log
+  calcola(x: number, y: number): number { return x + y; }
+}
+
+// 2. Const type parameters
+function primo<const T extends readonly unknown[]>(arr: T): T[0] {
+  return arr[0];
+}
+const val = primo([1, "due", true] as const); // tipo: 1 (non number)
+
+// 3. Multiple config extends
+// tsconfig.json
+// { "extends": ["./base.json", "./strict.json"] }
+
+// 4. Resolution customization (bundler mode)
+// { "moduleResolution": "bundler" } — per Vite, esbuild, etc.
+
+// 5. Varianza esplicita sulle interfacce generiche
+interface Produttore<out T> { produci(): T; }
+interface Consumatore<in T> { consuma(val: T): void; }
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="configuration">
+        <h2>Configurazione — tsconfig.json</h2>
+        <p>Il file <code class="inline">tsconfig.json</code> controlla il comportamento del compilatore TypeScript per il progetto. È la prima cosa da configurare in ogni progetto TS.</p>
+        <div class="example">
+          <div class="codehead"><span>tsconfig.json tipico</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// tsconfig.json
+{
+  "compilerOptions": {
+    // Target: a quale versione JS compilare
+    "target": "ES2020",
+
+    // Moduli
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    // Cartelle
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Strict mode (raccomandato)
+    "strict": true,           // abilita tutti i controlli
+    "strictNullChecks": true, // null/undefined separati
+    "noImplicitAny": true,    // vieta 'any' implicito
+
+    // Qualità del codice
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+
+    // Source maps per il debugging
+    "sourceMap": true,
+
+    // Interoperabilità
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Per progetti React
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Usa <code class="inline">tsc --init</code> per generare automaticamente un <code>tsconfig.json</code> di partenza con tutti i commenti esplicativi.</div>
+      </article>
+
+      <article class="lesson" id="with-nodejs">
+        <h2>TypeScript con Node.js</h2>
+        <p>TypeScript si integra perfettamente con Node.js. Per lo sviluppo locale puoi usare <strong>ts-node</strong> (esecuzione diretta) o <strong>tsx</strong> (più veloce). Per la produzione si compila con <code class="inline">tsc</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Setup TypeScript + Node.js</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+# Setup progetto Node.js + TypeScript
+npm init -y
+npm install typescript --save-dev
+npm install @types/node --save-dev
+npm install tsx --save-dev  # runner TS veloce
+tsc --init
+
+# package.json scripts
+# "dev": "tsx watch src/index.ts",
+# "build": "tsc",
+# "start": "node dist/index.js"
+
+// src/index.ts
+import { createServer, IncomingMessage, ServerResponse } from 'http';
+
+const PORT: number = 3000;
+
+const server = createServer(
+  (req: IncomingMessage, res: ServerResponse): void => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Ciao da TypeScript + Node.js!\n');
+  }
+);
+
+server.listen(PORT, () => {
+  console.log(`Server su http://localhost:${PORT}`);
+});
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="with-react">
+        <h2>TypeScript con React</h2>
+        <p>React e TypeScript si abbinano perfettamente. Vite crea un progetto React+TypeScript con un solo comando. Le props, lo state e gli eventi sono tutti tipizzati.</p>
+        <div class="example">
+          <div class="codehead"><span>Componente React tipizzato</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+# Crea progetto React + TypeScript con Vite
+npm create vite@latest mia-app -- --template react-ts
+
+// Tipizzare le props
+interface CartaProps {
+  titolo: string;
+  testo: string;
+  colore?: string;    // opzionale
+  onClick: () => void; // funzione
+}
+
+function Carta({ titolo, testo, colore = "#fff", onClick }: CartaProps) {
+  return (
+    <div style={{ background: colore }} onClick={onClick}>
+      <h2>{titolo}</h2>
+      <p>{testo}</p>
+    </div>
+  );
+}
+
+// useState con tipo esplicito
+import { useState } from 'react';
+
+function Contatore() {
+  const [conta, setConta] = useState<number>(0);
+  return <button onClick={() => setConta(c => c + 1)}>{conta}</button>;
+}
+
+// Tipizzare eventi
+function Form() {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
+  }
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    console.log(e.target.value);
+  }
+  return <form onSubmit={handleSubmit}><input onChange={handleChange} /></form>;
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="tooling">
+        <h2>Tooling</h2>
+        <p>L'ecosistema TypeScript offre strumenti eccellenti per migliorare la produttività e la qualità del codice.</p>
+        <table class="ref">
+          <tr><th>Strumento</th><th>Funzione</th></tr>
+          <tr><td>tsc</td><td>Compilatore ufficiale TypeScript</td></tr>
+          <tr><td>tsx / ts-node</td><td>Esecuzione diretta di file .ts senza compilazione</td></tr>
+          <tr><td>ESLint + @typescript-eslint</td><td>Linting e regole di qualità per TS</td></tr>
+          <tr><td>Prettier</td><td>Formattazione automatica del codice</td></tr>
+          <tr><td>Vite</td><td>Build tool moderno con supporto TS nativo</td></tr>
+          <tr><td>VS Code</td><td>L'IDE con il miglior supporto TypeScript (IntelliSense completo)</td></tr>
+          <tr><td>TypeScript Playground</td><td>Editor online ufficiale per sperimentare</td></tr>
+          <tr><td>Zod / Yup</td><td>Validazione runtime con inferenza dei tipi</td></tr>
+        </table>
+        <div class="example">
+          <div class="codehead"><span>Setup ESLint per TypeScript</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+# Installazione ESLint + plugin TypeScript
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+# .eslintrc.json
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="advanced-types">
+        <h2>Tipi avanzati</h2>
+        <p>TypeScript offre operatori per costruire tipi complessi a partire da tipi esistenti: <strong>intersection</strong>, <strong>template literal types</strong> e molto altro.</p>
+        <div class="example">
+          <div class="codehead"><span>Intersection, template literals, infer</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Intersection type (&) — combina più tipi
+type A = { nome: string };
+type B = { eta: number };
+type AB = A & B; // { nome: string; eta: number }
+
+const persona: AB = { nome: "Alice", eta: 25 };
+
+// Template Literal Types
+type Colore = "rosso" | "verde" | "blu";
+type ClasseCSS = `testo-${Colore}`; // "testo-rosso" | "testo-verde" | "testo-blu"
+
+type EventName = "click" | "focus" | "blur";
+type Handler = `on${Capitalize<EventName>}`; // "onClick" | "onFocus" | "onBlur"
+
+// Recursive types
+type JSONValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JSONValue[]
+  | { [key: string]: JSONValue };
+
+// Indexed access types
+type NomeTipo = AB["nome"]; // string
+type ValoreArray = string[][number]; // string
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="type-guards">
+        <h2>Type Guards</h2>
+        <p>I <strong>type guards</strong> sono controlli a runtime che permettono a TypeScript di restringere (<em>narrowing</em>) il tipo di una variabile all'interno di un blocco condizionale.</p>
+        <div class="example">
+          <div class="codehead"><span>Type guards comuni</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// typeof — per tipi primitivi
+function elabora(val: string | number): string {
+  if (typeof val === "string") {
+    return val.toUpperCase(); // TypeScript sa: string
+  }
+  return val.toFixed(2); // TypeScript sa: number
+}
+
+// instanceof — per classi
+class Cane { abbaia() { return "Bau!"; } }
+class Gatto { fa() { return "Miao!"; } }
+type Animale = Cane | Gatto;
+
+function parla(a: Animale): string {
+  if (a instanceof Cane) return a.abbaia();
+  return a.fa();
+}
+
+// in — verifica se esiste una proprietà
+type Admin = { ruolo: "admin"; permessi: string[] };
+type Utente = { nome: string };
+
+function isAdmin(obj: Admin | Utente): obj is Admin {
+  return "permessi" in obj; // custom type guard
+}
+
+// Discriminated union con campo discriminante
+type Risultato =
+  | { successo: true; dati: string }
+  | { successo: false; errore: string };
+
+function gestisci(r: Risultato): void {
+  if (r.successo) {
+    console.log(r.dati);    // TypeScript sa che dati esiste
+  } else {
+    console.log(r.errore);  // TypeScript sa che errore esiste
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="conditional-types">
+        <h2>Tipi condizionali</h2>
+        <p>I <strong>tipi condizionali</strong> permettono di scegliere un tipo in base a una condizione, usando la sintassi <code class="inline">T extends U ? X : Y</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Conditional Types</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Tipo condizionale base
+type IsString<T> = T extends string ? "sì" : "no";
+
+type Test1 = IsString<string>;  // "sì"
+type Test2 = IsString<number>;  // "no"
+
+// infer — estrae un tipo in una condizione
+type TipoElemento<T> = T extends (infer U)[] ? U : never;
+type NumeroArray = TipoElemento<number[]>; // number
+type StringArray = TipoElemento<string[]>; // string
+
+// Rimuovere null da un tipo
+type NonNullable<T> = T extends null | undefined ? never : T;
+type Stringa = NonNullable<string | null>; // string
+
+// Distributive conditional types
+type ToArray<T> = T extends unknown ? T[] : never;
+type StrOrNum = ToArray<string | number>; // string[] | number[]
+
+// Utility types implementati con conditional types
+type Parameters<T extends (...args: any) => any> =
+  T extends (...args: infer P) => any ? P : never;
+
+type ReturnType<T extends (...args: any) => any> =
+  T extends (...args: any) => infer R ? R : any;
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="mapped-types">
+        <h2>Mapped Types</h2>
+        <p>I <strong>mapped types</strong> creano un nuovo tipo iterando sulle chiavi di un tipo esistente. Sono la base su cui sono costruiti gli utility types come <code class="inline">Partial</code>, <code class="inline">Readonly</code>, <code class="inline">Required</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Mapped Types</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+interface Utente {
+  nome: string;
+  eta: number;
+  email: string;
+}
+
+// Implementazione manuale di Partial
+type MioPartial<T> = {
+  [K in keyof T]?: T[K];
+};
+
+// Implementazione manuale di Readonly
+type MioReadonly<T> = {
+  readonly [K in keyof T]: T[K];
+};
+
+// Mappare i valori (cambia il tipo di ogni proprietà)
+type Stringified<T> = {
+  [K in keyof T]: string;
+};
+type UtenteStrings = Stringified<Utente>;
+// { nome: string; eta: string; email: string }
+
+// Filtrare proprietà con conditional types
+type SoloStringhe<T> = {
+  [K in keyof T as T[K] extends string ? K : never]: T[K];
+};
+type UtenteSoloStr = SoloStringhe<Utente>;
+// { nome: string; email: string } — eta (number) escluso
+
+// Remapping con as
+type Getter<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+};
+type GetterUtente = Getter<Utente>;
+// { getNome: () => string; getEta: () => number; ... }
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="type-inference">
+        <h2>Inferenza dei tipi avanzata</h2>
+        <p>TypeScript inferisce i tipi in molti contesti avanzati: valori di ritorno, parametri di callback, variabili distruttturate e altro ancora.</p>
+        <div class="example">
+          <div class="codehead"><span>Inferenza avanzata</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Inferenza contestuale — TypeScript deduce il tipo dal contesto
+const numeri = [1, 2, 3]; // number[]
+const mappa = numeri.map(n => n * 2); // number[] — n è inferito number
+
+// Inferenza nel destructuring
+const { nome, eta } = { nome: "Alice", eta: 25 };
+// nome: string, eta: number
+
+// Inferenza con const assertion
+const config = {
+  host: "localhost",
+  porta: 3000,
+} as const;
+// config.host: "localhost" (literal type, non string)
+
+// Inferenza nei generics
+function identita<T>(val: T): T { return val; }
+const x = identita("ciao"); // T inferito = string
+const y = identita(42);     // T inferito = number
+
+// satisfies operator (TS 4.9+)
+// Verifica il tipo ma mantiene il tipo letterale
+const palette = {
+  rosso: [255, 0, 0],
+  verde: "#00ff00",
+} satisfies Record<string, string | number[]>;
+
+palette.rosso;  // number[] (non string | number[])
+palette.verde;  // string (non string | number[])
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="literal-types">
+        <h2>Literal Types</h2>
+        <p>I <strong>literal types</strong> permettono di specificare non solo il tipo ma il valore esatto che una variabile può assumere. Sono molto usati per creare API espressive e sicure.</p>
+        <div class="example">
+          <div class="codehead"><span>Literal Types</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Literal types numerici e stringa
+type Dado = 1 | 2 | 3 | 4 | 5 | 6;
+type Verso = "nord" | "sud" | "est" | "ovest";
+type OnOff = "on" | "off";
+
+let tiro: Dado = 3;    // ✅
+// tiro = 7;           // ❌ 7 non è in 1..6
+
+// Literal types con funzioni — API tipiche
+function muovi(direzione: Verso, passi: number): void {
+  console.log(`Muovo ${passi} passi verso ${direzione}`);
+}
+muovi("nord", 3); // ✅
+// muovi("diagonale", 3); // ❌
+
+// Template literal types
+type Dimensione = "sm" | "md" | "lg";
+type ClasseTailwind = `text-${Dimensione}`; // "text-sm" | "text-md" | "text-lg"
+
+// Const assertion per creare literal types da oggetti
+const COLORI = ["rosso", "verde", "blu"] as const;
+type Colore = typeof COLORI[number]; // "rosso" | "verde" | "blu"
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="namespaces">
+        <h2>Namespaces</h2>
+        <p>I <strong>namespaces</strong> (ex "moduli interni") organizzano il codice in scope nominati per evitare collisioni di nomi. Nei progetti moderni con ES Modules sono meno usati, ma restano utili per librerie e file di dichiarazione.</p>
+        <div class="example">
+          <div class="codehead"><span>Namespaces</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+namespace Geometria {
+  export interface Punto {
+    x: number;
+    y: number;
+  }
+
+  export function distanza(a: Punto, b: Punto): number {
+    return Math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2);
+  }
+
+  // Namespace annidato
+  export namespace Forme {
+    export function areaQuadrato(lato: number): number {
+      return lato * lato;
+    }
+  }
+}
+
+// Uso del namespace
+const p1: Geometria.Punto = { x: 0, y: 0 };
+const p2: Geometria.Punto = { x: 3, y: 4 };
+console.log(Geometria.distanza(p1, p2));   // 5
+console.log(Geometria.Forme.areaQuadrato(5)); // 25
+
+// Alias per namespace lunghi
+import Geo = Geometria;
+console.log(Geo.distanza(p1, p2));
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="index-signatures">
+        <h2>Index Signatures</h2>
+        <p>Le <strong>index signatures</strong> permettono di definire il tipo dei valori di un oggetto quando le chiavi non sono note in anticipo (dizionari, mappe).</p>
+        <div class="example">
+          <div class="codehead"><span>Index Signatures</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Index signature base
+interface Dizionario {
+  [chiave: string]: string;
+}
+
+const trad: Dizionario = {
+  cane: "dog",
+  gatto: "cat",
+  casa: "house",
+};
+
+// Index signature con numero
+interface ArrayLike {
+  [indice: number]: string;
+  length: number;
+}
+
+// Combinare proprietà fisse e index signature
+interface Configurazione {
+  nome: string;         // proprietà fissa
+  versione: number;     // proprietà fissa
+  [chiave: string]: string | number; // altre proprietà dinamiche
+}
+
+// Record<K, V> — alternativa più moderna a index signature
+const prezzi: Record<string, number> = {
+  mela: 0.5,
+  banana: 0.3,
+};
+
+// Index signature readonly
+interface CacheReadOnly {
+  readonly [chiave: string]: unknown;
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="declaration-merging">
+        <h2>Declaration Merging</h2>
+        <p>TypeScript può unire più dichiarazioni con lo stesso nome in un'unica definizione. Funziona con interfacce, namespace e, in alcuni casi, funzioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Declaration Merging</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Interface merging — le dichiarazioni si fondono
+interface Utente {
+  nome: string;
+}
+interface Utente {
+  eta: number;
+}
+interface Utente {
+  email?: string;
+}
+// Risultato: { nome: string; eta: number; email?: string }
+const u: Utente = { nome: "Alice", eta: 25 };
+
+// Namespace + funzione merging
+function crea(x: number): number;
+function crea(x: string): string;
+function crea(x: any): any { return x; }
+
+namespace crea {
+  export const versione = "1.0";
+}
+
+console.log(crea(42));         // 42
+console.log(crea.versione);    // "1.0"
+
+// Augmenting existing types (module augmentation)
+declare module 'express' {
+  interface Request {
+    utente?: { id: number; nome: string };
+  }
+}
+// Ora req.utente è disponibile con i tipi corretti
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="async-programming">
+        <h2>Async Programming</h2>
+        <p>TypeScript si integra perfettamente con <code class="inline">Promise</code>, <code class="inline">async/await</code> e i tipi asincroni. Tipizzare le Promise rende il codice asincrono più sicuro.</p>
+        <div class="example">
+          <div class="codehead"><span>Promise e async/await tipizzati</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Promessa tipizzata
+function attendi(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// async/await con tipo di ritorno
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+async function getPost(id: number): Promise<Post> {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json() as Promise<Post>;
+}
+
+// Gestione errori tipizzata
+async function caricaDati(): Promise<void> {
+  try {
+    const post = await getPost(1);
+    console.log(post.title); // TypeScript sa che è string
+  } catch (errore) {
+    if (errore instanceof Error) {
+      console.error(errore.message); // TypeScript sa che message esiste
+    }
+  }
+}
+
+// Promise.all con tipi
+async function multiLoad(): Promise<[Post, Post]> {
+  return Promise.all([getPost(1), getPost(2)]);
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="decorators">
+        <h2>Decorators</h2>
+        <p>I <strong>decorators</strong> sono funzioni speciali che possono annotare e modificare classi, metodi, proprietà e parametri. Sono standard ECMAScript dalla versione TypeScript 5.</p>
+        <div class="example">
+          <div class="codehead"><span>Decorators di classe e metodo</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Class decorator
+function Registrato(target: Function) {
+  console.log(`Classe registrata: ${target.name}`);
+}
+
+// Method decorator
+function LogTempi(target: any, key: string, desc: PropertyDescriptor) {
+  const orig = desc.value;
+  desc.value = function (...args: any[]) {
+    const inizio = performance.now();
+    const risultato = orig.apply(this, args);
+    console.log(`${key} eseguito in ${performance.now() - inizio}ms`);
+    return risultato;
+  };
+}
+
+// Property decorator
+function MinLunghezza(min: number) {
+  return function (target: any, propertyKey: string) {
+    let valore: string;
+    Object.defineProperty(target, propertyKey, {
+      get: () => valore,
+      set: (v: string) => {
+        if (v.length < min) throw new Error(`Minimo ${min} caratteri`);
+        valore = v;
+      },
+    });
+  };
+}
+
+@Registrato
+class Servizio {
+  @MinLunghezza(3)
+  nome: string = "srv";
+
+  @LogTempi
+  calcola(n: number): number {
+    return n * n;
+  }
+}
+
+const s = new Servizio();
+s.calcola(42); // Log: "calcola eseguito in X ms"
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="in-js-projects">
+        <h2>TypeScript in progetti JavaScript</h2>
+        <p>Puoi usare TypeScript anche <strong>senza rinominare i file</strong> in <code>.ts</code>: attiva <code class="inline">checkJs</code> nel tsconfig e TypeScript controllerà i tuoi file JS esistenti con i commenti JSDoc.</p>
+        <div class="example">
+          <div class="codehead"><span>TS in file .js con JSDoc</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// tsconfig.json per progetti JavaScript
+{
+  "compilerOptions": {
+    "checkJs": true,       // controlla i file .js
+    "allowJs": true,       // permette file .js
+    "noEmit": true,        // solo type checking, non compila
+    "strict": true
+  },
+  "include": ["src/**/*"]
+}
+
+// utils.js — TypeScript lo controlla con JSDoc
+/**
+ * @param {number} a
+ * @param {number} b
+ * @returns {number}
+ */
+function somma(a, b) {
+  return a + b;
+}
+
+/**
+ * @typedef {Object} Utente
+ * @property {string} nome
+ * @property {number} eta
+ */
+
+/**
+ * @param {Utente} utente
+ * @returns {string}
+ */
+function saluta(utente) {
+  return `Ciao, ${utente.nome}!`; // TypeScript controlla i tipi
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="migration">
+        <h2>Migrazione da JavaScript a TypeScript</h2>
+        <p>Migrare un progetto JS esistente a TypeScript è un processo graduale. Non è necessario convertire tutto in una volta.</p>
+        <div class="example">
+          <div class="codehead"><span>Strategia di migrazione graduale</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// FASE 1 — Aggiungi tsconfig.json permissivo
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,     // inizia senza controllo
+    "noEmit": true,
+    "strict": false       // niente strict all'inizio
+  }
+}
+
+// FASE 2 — Rinomina i file critici da .js a .ts
+// Inizia dai moduli più "foglia" (senza dipendenze interne)
+
+// FASE 3 — Aggiungi i tipi gradualmente
+// Prima: (nessun tipo)
+function calcola(a, b) { return a + b; }
+
+// Dopo: aggiungi i tipi uno per uno
+function calcola(a: number, b: number): number { return a + b; }
+
+// FASE 4 — Attiva strict gradualmente
+// Prima: "strict": false
+// Poi: "strictNullChecks": true (correggi errori null)
+// Poi: "noImplicitAny": true (aggiungi i tipi mancanti)
+// Infine: "strict": true (massima sicurezza)
+
+// FASE 5 — Rimuovi i @ts-ignore e i any rimasti
+// @ts-ignore  ← da eliminare
+function vecchiaFunzione(x) { return x; }
+          </script>
+        </div>
+        <div class="tip-box">💡 Strategia consigliata: inizia abilitando TypeScript solo sui nuovi file, poi converti gradualmente i file esistenti partendo dai più semplici (tipi/utility) verso i più complessi (componenti principali).</div>
+      </article>
+
+      <article class="lesson" id="error-handling">
+        <h2>Error Handling</h2>
+        <p>TypeScript migliora la gestione degli errori tipizzando le eccezioni. Dal TS 4.4, puoi usare <code class="inline">useUnknownInCatchVariables</code> per forzare il controllo del tipo negli errori catturati.</p>
+        <div class="example">
+          <div class="codehead"><span>Errori tipizzati</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// Classi di errori personalizzate
+class ErroreRete extends Error {
+  constructor(
+    message: string,
+    public readonly statusCode: number
+  ) {
+    super(message);
+    this.name = "ErroreRete";
+  }
+}
+
+class ErroreValidazione extends Error {
+  constructor(message: string, public readonly campo: string) {
+    super(message);
+    this.name = "ErroreValidazione";
+  }
+}
+
+// Gestione errori type-safe
+async function carica(url: string): Promise<unknown> {
+  const res = await fetch(url);
+  if (!res.ok) throw new ErroreRete(`HTTP ${res.status}`, res.status);
+  return res.json();
+}
+
+async function main(): Promise<void> {
+  try {
+    await carica("https://api.esempio.it/dati");
+  } catch (errore: unknown) {
+    if (errore instanceof ErroreRete) {
+      console.error(`Errore di rete ${errore.statusCode}: ${errore.message}`);
+    } else if (errore instanceof Error) {
+      console.error(`Errore generico: ${errore.message}`);
+    } else {
+      console.error("Errore sconosciuto", errore);
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <article class="lesson" id="best-practices">
+        <h2>Best Practices TypeScript</h2>
+        <p>Seguire le convenzioni della comunità TypeScript rende il codice più leggibile, manutenibile e sicuro.</p>
+        <div class="example">
+          <div class="codehead"><span>Buone pratiche</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+// ✅ Usa strict: true nel tsconfig
+// ✅ Preferisci unknown ad any
+function elabora(dati: unknown): string {
+  if (typeof dati !== "string") throw new Error("Atteso string");
+  return dati.toUpperCase();
+}
+
+// ✅ Usa interfacce per le API pubbliche, type per le implementazioni
+interface ServizioUtente {
+  getUtente(id: number): Promise<Utente>;
+}
+
+// ✅ Usa const assertion per gli oggetti di configurazione
+const ROUTES = {
+  home: "/",
+  profilo: "/profilo",
+  impostazioni: "/impostazioni",
+} as const;
+
+// ✅ Usa Omit/Pick invece di ridefinire
+type UtenteForm = Omit<Utente, "id" | "createdAt">;
+
+// ❌ Evita any
+function cattivo(x: any) { return x.foo.bar; } // nessuna protezione
+
+// ❌ Evita le asserzioni non necessarie
+const el = document.getElementById("app") as HTMLDivElement; // solo se sicuro
+
+// ✅ Usa i discriminated union per stati complessi
+type Stato =
+  | { tipo: "caricamento" }
+  | { tipo: "successo"; dati: Utente }
+  | { tipo: "errore"; messaggio: string };
+          </script>
+        </div>
+        <ul>
+          <li>🔒 Abilita sempre <code class="inline">"strict": true</code> nei nuovi progetti</li>
+          <li>🚫 Evita <code class="inline">any</code> — usa <code class="inline">unknown</code> e i type guard</li>
+          <li>📐 Preferisci <code class="inline">interface</code> per le API pubbliche e <code class="inline">type</code> per le union</li>
+          <li>🔑 Usa i <strong>discriminated union</strong> per gli stati complessi</li>
+          <li>🛠️ Configura ESLint con <code class="inline">@typescript-eslint</code></li>
+          <li>📦 Organizza i tipi in file dedicati (<code>types/</code> o <code>*.types.ts</code>)</li>
+        </ul>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online — Prova TypeScript</h2>
+        <p>TypeScript richiede compilazione prima dell'esecuzione. Usa questi strumenti per sperimentare subito senza installare nulla:</p>
+        <ul>
+          <li>🎮 <strong><a href="https://www.typescriptlang.org/play" target="_blank" rel="noreferrer">TypeScript Playground</a></strong> — Editor ufficiale: scrivi TS a sinistra, vedi il JS compilato a destra</li>
+          <li>🚀 <strong><a href="https://stackblitz.com" target="_blank" rel="noreferrer">StackBlitz</a></strong> — Ambiente Node.js o Vite completo nel browser</li>
+          <li>📦 <strong><a href="https://codesandbox.io" target="_blank" rel="noreferrer">CodeSandbox</a></strong> — Template TypeScript pronti all'uso</li>
+        </ul>
+        <div class="note-box">📘 L'editor integrato in questa pagina mostra il codice con la sintassi colorata e ti permette di modificarlo. Per eseguirlo usa uno dei link sopra.</div>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi pratici TypeScript</h2>
+        <h3>Esercizio 1 — Tipizza un'interfaccia Prodotto</h3>
+        <p>Crea un'interfaccia <code class="inline">Prodotto</code> con: <code>id</code> (number), <code>nome</code> (string), <code>prezzo</code> (number), <code>categoria</code> (union: "elettronica" | "abbigliamento" | "cibo"), <code>sconto</code> opzionale (number). Poi crea una funzione <code>prezzoFinale(p: Prodotto): number</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+interface Prodotto {
+  id: number;
+  nome: string;
+  prezzo: number;
+  categoria: "elettronica" | "abbigliamento" | "cibo";
+  sconto?: number;
+}
+
+function prezzoFinale(p: Prodotto): number {
+  if (p.sconto === undefined) return p.prezzo;
+  return p.prezzo * (1 - p.sconto / 100);
+}
+
+const laptop: Prodotto = {
+  id: 1,
+  nome: "Laptop Pro",
+  prezzo: 999,
+  categoria: "elettronica",
+  sconto: 10,
+};
+
+console.log(prezzoFinale(laptop)); // 899.1
+          </script>
+        </div>
+        <h3>Esercizio 2 — Funzione generica</h3>
+        <p>Scrivi una funzione generica <code class="inline">filtra&lt;T&gt;(array: T[], predicato: (item: T) =&gt; boolean): T[]</code> che filtra un array mantenendo il tipo. Usala con array di numeri e array di oggetti.</p>
+        <h3>Esercizio 3 — Utility Types</h3>
+        <p>Dato un type <code class="inline">Configurazione</code> con 5 proprietà, crea con gli utility types: una versione con tutte opzionali, una senza password, una readonly.</p>
+        <h3>Esercizio 4 — Classe con generics</h3>
+        <p>Crea una classe generica <code class="inline">Repository&lt;T extends { id: number }&gt;</code> con metodi <code>aggiungi</code>, <code>trovaPerId</code>, <code>rimuovi</code> e <code>tutti</code>.</p>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz TypeScript</h2>
+        <ol>
+          <li>❓ Qual è la differenza tra <code class="inline">any</code> e <code class="inline">unknown</code>?<br><strong>R:</strong> <code>any</code> disabilita completamente il type checking; <code>unknown</code> richiede un type guard prima dell'uso — è la versione sicura di <code>any</code>.</li>
+          <li>❓ Quando preferire <code class="inline">interface</code> a <code class="inline">type</code>?<br><strong>R:</strong> <code>interface</code> quando definisci la forma di un oggetto o una classe (supporta extends e merging); <code>type</code> per union, intersection e tipi più complessi.</li>
+          <li>❓ Cosa fa <code class="inline">Partial&lt;T&gt;</code>?<br><strong>R:</strong> Rende tutte le proprietà di T opzionali (<code>?</code>). Utile per oggetti di aggiornamento parziale.</li>
+          <li>❓ Cos'è un type guard?<br><strong>R:</strong> Un controllo a runtime (typeof, instanceof, in) che permette a TypeScript di restringere il tipo di una variabile in un blocco condizionale.</li>
+          <li>❓ Cosa significa <code class="inline">strict: true</code> nel tsconfig?<br><strong>R:</strong> Abilita tutti i controlli rigorosi: strictNullChecks, noImplicitAny, strictFunctionTypes, ecc.</li>
+          <li>❓ Qual è la differenza tra un type alias e un'interfaccia per un union type?<br><strong>R:</strong> Solo <code>type</code> supporta i union type (<code>string | number</code>); le interfacce non possono esprimere direttamente un union.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ PRATICA ═══ -->
+      <article class="lesson" id="pratica">
+        <h2>Problemi pratici</h2>
+        <h3>Problema 1 — Sistema di notifiche</h3>
+        <p>Crea un sistema di notifiche con un discriminated union <code class="inline">Notifica</code> (tipi: "info", "successo", "errore", "avviso") e una funzione che le visualizza in modo diverso.</p>
+        <h3>Problema 2 — Validatore generico</h3>
+        <p>Crea un tipo <code class="inline">Validatore&lt;T&gt;</code> con un metodo <code>valida(val: unknown): val is T</code>. Implementa validatori per string, number e oggetto Utente.</p>
+        <h3>Problema 3 — Deep Readonly</h3>
+        <p>Crea un utility type <code class="inline">DeepReadonly&lt;T&gt;</code> che rende readonly tutte le proprietà di T, incluse quelle annidate.</p>
+        <div class="example">
+          <div class="codehead"><span>Soluzione DeepReadonly</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-typescript"></code></pre>
+          <script type="text/plain" class="code">
+type DeepReadonly<T> = {
+  readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
+};
+
+interface Config {
+  server: {
+    host: string;
+    porta: number;
+  };
+  database: {
+    url: string;
+    nome: string;
+  };
+}
+
+const config: DeepReadonly<Config> = {
+  server: { host: "localhost", porta: 3000 },
+  database: { url: "db://...", nome: "mydb" },
+};
+
+// config.server.host = "altro"; // ❌ readonly
+console.log(config.server.host); // ✅ "localhost"
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma del corso TypeScript</h2>
+        <table class="ref">
+          <tr><th>Modulo</th><th>Argomenti</th></tr>
+          <tr><td>1 — Fondamenti</td><td>Intro, installazione, tipi primitivi, inferenza, tipi speciali</td></tr>
+          <tr><td>2 — Strutture</td><td>Array, tuple, object types, enums, type alias, interfacce</td></tr>
+          <tr><td>3 — Funzioni e classi</td><td>Union types, funzioni tipizzate, casting, classi, modificatori di accesso</td></tr>
+          <tr><td>4 — Generics e Utility</td><td>Generics, utility types (Partial, Pick, Omit, Record), keyof</td></tr>
+          <tr><td>5 — Configurazione</td><td>tsconfig.json, Definitely Typed, tooling, TypeScript 5</td></tr>
+          <tr><td>6 — Integrazione</td><td>TS con Node.js, TS con React, tooling avanzato</td></tr>
+          <tr><td>7 — Tipi avanzati</td><td>Type guards, conditional types, mapped types, literal types, decorators</td></tr>
+          <tr><td>8 — Progetto e migrazione</td><td>Migrazione JS→TS, error handling, best practices, progetto finale</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio TypeScript (8 settimane)</h2>
+        <table class="ref">
+          <tr><th>Settimana</th><th>Obiettivo</th></tr>
+          <tr><td>1</td><td>Tipi primitivi, inferenza, tipi speciali (any, unknown, void, never)</td></tr>
+          <tr><td>2</td><td>Array, tuple, object types, enums, type alias, interfacce</td></tr>
+          <tr><td>3</td><td>Union types, funzioni tipizzate, overloads, casting</td></tr>
+          <tr><td>4</td><td>Classi (modificatori, getter/setter, classi astratte)</td></tr>
+          <tr><td>5</td><td>Generics (funzioni, classi, constraints), utility types</td></tr>
+          <tr><td>6</td><td>tsconfig.json, Definitely Typed, TS con Node.js e React</td></tr>
+          <tr><td>7</td><td>Type guards, conditional types, mapped types, decorators</td></tr>
+          <tr><td>8</td><td>Best practices, migrazione, progetto completo tipizzato</td></tr>
+        </table>
+        <div class="tip-box">💡 Se già conosci JavaScript, 4 settimane bastano per i moduli 1-5. Concentra le ultime settimane sui generics e la configurazione — sono le basi per usare TS in progetti reali.</div>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio TypeScript</h2>
+        <ul>
+          <li>💬 <strong>Cos'è TypeScript e qual è il suo rapporto con JavaScript?</strong> — TypeScript è un superset di JavaScript con tipizzazione statica opzionale. Ogni codice JS è TS valido; TS viene compilato in JS prima dell'esecuzione.</li>
+          <li>💬 <strong>Differenza tra interface e type?</strong> — Entrambi descrivono strutture di oggetti. <code>interface</code> supporta declaration merging ed è preferita per le API; <code>type</code> supporta union, intersection e tipi complessi.</li>
+          <li>💬 <strong>Cosa sono i generics e perché usarli?</strong> — Permettono di scrivere codice riutilizzabile che mantiene la type-safety con qualsiasi tipo, senza ricorrere ad <code>any</code>.</li>
+          <li>💬 <strong>Cosa fa strict: true?</strong> — Abilita strictNullChecks, noImplicitAny, strictFunctionTypes e altri controlli rigorosi. Fortemente consigliato in tutti i nuovi progetti.</li>
+          <li>💬 <strong>Differenza tra unknown e any?</strong> — <code>any</code> disabilita il type checking; <code>unknown</code> è sicuro perché richiede un type guard prima di operare sul valore.</li>
+          <li>💬 <strong>Cosa sono i discriminated union?</strong> — Union di oggetti con un campo discriminante comune (es. <code>tipo: "A" | "B"</code>) che permette a TypeScript di narroware il tipo automaticamente con switch/if.</li>
+          <li>💬 <strong>Come tipizzare le props in React con TypeScript?</strong> — Con un'interfaccia o type alias passato come generic al componente o usato nel destructuring dei parametri della funzione.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ BOOTCAMP ═══ -->
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp TypeScript — Progetto finale</h2>
+        <p>Costruisci un'app completamente tipizzata che integra tutto il corso:</p>
+        <h3>🚀 Progetto: API Client tipizzato + Dashboard React</h3>
+        <ul>
+          <li>🔷 <strong>Tipi condivisi</strong>: definisci in <code>types/</code> tutte le interfacce (Utente, Prodotto, Ordine, ApiResponse)</li>
+          <li>🔌 <strong>API Client generico</strong>: classe generica <code>ApiClient&lt;T&gt;</code> con metodi <code>get</code>, <code>post</code>, <code>put</code>, <code>delete</code> tutti tipizzati</li>
+          <li>🗂️ <strong>Repository pattern</strong>: <code>Repository&lt;T extends { id: number }&gt;</code> con CRUD completo</li>
+          <li>⚛️ <strong>Frontend React+TS</strong>: componenti con props tipizzate, hook personalizzati tipizzati, Context tipizzato</li>
+          <li>🛡️ <strong>Error handling</strong>: classi di errori custom, gestione type-safe negli async</li>
+          <li>✅ <strong>Strict mode</strong>: zero <code>any</code>, zero <code>@ts-ignore</code>, <code>strict: true</code></li>
+        </ul>
+        <div class="challenge-box">
+          <span class="challenge-label">🎯 Sfida avanzata</span>
+          <p>Implementa un validatore generico usando i mapped types e i conditional types: dato uno schema di validazione, crea automaticamente il tipo TypeScript corrispondente (simile a ciò che fa la libreria Zod).</p>
+        </div>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione TypeScript</h2>
+        <p>TypeScript è richiesto in quasi tutte le posizioni frontend/fullstack moderne. Ecco come valorizzare le tue competenze:</p>
+        <table class="ref">
+          <tr><th>Certificazione / Percorso</th><th>Ente</th><th>Note</th></tr>
+          <tr><td>TypeScript Certificate</td><td>W3Schools</td><td>Base, buono per il CV</td></tr>
+          <tr><td>Meta Front-End Developer</td><td>Coursera (Meta)</td><td>Include TypeScript + React</td></tr>
+          <tr><td>TypeScript: The Complete Course</td><td>Udemy</td><td>Certificato di completamento</td></tr>
+          <tr><td>Execute Program — TypeScript</td><td>Execute Program</td><td>Corso interattivo, molto pratico</td></tr>
+          <tr><td>Total TypeScript</td><td>Matt Pocock</td><td>Il corso più avanzato disponibile</td></tr>
+          <tr><td>Progetto su GitHub</td><td>Portfolio</td><td>La migliore prova pratica per i recruiter</td></tr>
+        </table>
+        <h3>Come prepararsi al colloquio TS</h3>
+        <ul>
+          <li>🔷 Conosci bene generics, utility types e mapped types</li>
+          <li>🏗️ Mostra un progetto React+TypeScript con zero <code>any</code></li>
+          <li>📖 Studia i tipi avanzati (conditional, template literal, infer)</li>
+          <li>🔧 Sai configurare il tsconfig e lavorare con @types</li>
+          <li>🛡️ Conosci i pattern per gestire <code>unknown</code> e i discriminated union</li>
+        </ul>
+      </article>
+
+      <!-- ═══ FINE ═══ -->
+      <article class="lesson" id="fine" style="border-bottom:none">
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso TypeScript! Hai imparato i tipi primitivi, l'inferenza, i tipi speciali, array, tuple, enums, interfacce, union types, generics, utility types, classi, decorators, mapped types, conditional types, type guards, la configurazione con tsconfig e l'integrazione con Node.js e React.</p>
+        <h3>I tuoi prossimi passi</h3>
+        <ul>
+          <li>⚛️ <strong>Usa TypeScript nel tuo prossimo progetto React</strong>: è il modo più rapido per consolidare le basi</li>
+          <li>📦 <strong>Studia Zod</strong>: validazione runtime con inferenza automatica dei tipi TS</li>
+          <li>🚀 <strong>Esplora Next.js con TypeScript</strong>: routing, server components, API routes tutti tipizzati</li>
+          <li>🎓 <strong>Segui Total TypeScript</strong> di Matt Pocock per i tipi avanzati</li>
+          <li>🔧 <strong>Configura ESLint + @typescript-eslint</strong> nel tuo progetto per mantenere alta la qualità</li>
+          <li>🏗️ <strong>Contribuisci a DefinitelyTyped</strong>: aggiungi i tipi a una libreria che usi</li>
+        </ul>
+        <div class="challenge-box">
+          <span class="challenge-label">🎯 La tua sfida finale</span>
+          <p>Prendi un tuo progetto JavaScript esistente (o uno degli esercizi dei corsi precedenti) e migra almeno il 50% del codice a TypeScript con strict mode attivo e zero <code>any</code>. Documenta i bug che TypeScript ha trovato durante la migrazione — scoprirai che il compilatore cattura problemi reali che il runtime non avrebbe segnalato subito.</p>
+        </div>
+        <div class="hero-actions">
+          <a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a>
+          <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice TypeScript</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note sul codice TypeScript"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="js/main.js?v=3"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+
+    function ensureCM(){
+      if (!cm && window.CodeMirror){
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'javascript',lineNumbers:true,lineWrapping:false,tabSize:2,indentUnit:2,theme:'default'}); }
+        catch(e){ cm=null; }
+      }
+      return cm;
+    }
+
+    function note(){
+      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        +'<h3 style="margin:0 0 .6rem;color:#1e293b">🔷 Codice TypeScript</h3>'
+        +'<p>TypeScript richiede compilazione prima dell\'esecuzione. Per provare subito:</p>'
+        +'<ul><li><a href="https://www.typescriptlang.org/play" target="_blank">TypeScript Playground</a> — editor ufficiale online</li>'
+        +'<li><a href="https://stackblitz.com" target="_blank">StackBlitz</a> — ambiente Node.js/Vite nel browser</li></ul>'
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+    }
+
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      var editor=ensureCM();
+      if(editor){ editor.setValue(code); }
+      else { ta.value=code; }
+      note();
+      setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
+    }
+
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+    document.getElementById('ed-close').addEventListener('click',closeEditor);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeEditor(); });
+
+    function dedent(text){
+      var lines=text.split('\n'),min=Infinity;
+      for(var i=1;i<lines.length;i++){
+        if(!lines[i].trim()) continue;
+        var m=lines[i].match(/^ */)[0].length;
+        if(m<min) min=m;
+      }
+      if(min===Infinity||min===0) return lines.join('\n');
+      for(var j=1;j<lines.length;j++) lines[j]=lines[j].slice(min);
+      return lines.join('\n');
+    }
+
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeScript=ex.querySelector('.code');
+      var codeEl=ex.querySelector('.codeview code');
+      if(!codeScript||!codeEl){ return; }
+      var raw=dedent(codeScript.textContent.replace(/^\n/,'').replace(/\s+$/,'').replace(/<\\\/script>/g,'<\/script>'));
+      codeEl.textContent=raw;
+      if(window.Prism){ Prism.highlightElement(codeEl); }
+      var btn=ex.querySelector('.btn-try');
+      if(btn){ btn.addEventListener('click',function(){ openEditor(raw); }); }
+    });
+  })();
+</script>
+</body>
+</html>
