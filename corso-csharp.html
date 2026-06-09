@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso C# in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di C# in italiano completo e gratuito: .NET, sintassi, Console, variabili, tipi di dato, operatori, condizioni, cicli, array, List, metodi e programmazione a oggetti (classi, proprietà, ereditarietà, polimorfismo, interfacce). Esempi spiegati.">
-  <meta name="keywords" content="corso c# italiano, imparare c sharp, tutorial c# gratis, programmazione c#, .net, unity c#, oop c#, esercizi c#">
+  <title>Corso C# in italiano completo e gratuito — Tutorial da zero con esercizi svolti | AlessandroSimone.it</title>
+  <meta name="description" content="Corso C# italiano completo e gratuito: .NET, sintassi, OOP (classi, proprietà, ereditarietà, polimorfismo, astrazione, interfacce), enum, file, eccezioni, List, metodi. Esercizi svolti, quiz, progetti, riferimenti e certificazione. Tutorial C# da zero a avanzato.">
+  <meta name="keywords" content="corso c# italiano, imparare c sharp, tutorial c# gratis, esercizi c# con soluzioni, esercizi c# svolti, programmazione c#, .net, unity c#, oop c#, classi c#, proprietà c#, ereditarietà c#, polimorfismo c#, interfacce c#, list c#, eccezioni c#, file c#, c# da zero, certificazione c#, c# per principianti, corso c# completo">
   <meta name="author" content="Alessandro Simone">
-  <meta property="og:title" content="Corso C# in italiano completo e gratuito — AlessandroSimone.it">
-  <meta property="og:description" content="Impara C# da zero in italiano: tutorial completo e approfondito con esempi di codice.">
+  <meta property="og:title" content="Corso C# in italiano completo e gratuito — Tutorial da zero con esercizi | AlessandroSimone.it">
+  <meta property="og:description" content="Impara C# da zero in italiano: OOP, proprietà, interfacce, file, eccezioni, esercizi svolti, progetti e certificazione.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,15 +95,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-csharp.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso C# in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di C# in italiano completo e gratuito: .NET, sintassi, Console, variabili, tipi di dato, operatori, condizioni, cicli, array, List, metodi e programmazione a oggetti (classi, proprietà, ereditarietà, polimorfismo, interfacce). Esempi spiegati.">
+  <meta name="twitter:title" content="Corso C# in italiano completo e gratuito — Esercizi svolti | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial C# completo in italiano: OOP, proprietà, ereditarietà, polimorfismo, astrazione, interfacce, enum, file, eccezioni, esercizi svolti, quiz e certificazione.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di C# in italiano",
-  "description": "Corso di C# in italiano completo e gratuito: .NET, sintassi, Console, variabili, tipi di dato, operatori, condizioni, cicli, array, List, metodi e programmazione a oggetti (classi, proprietà, ereditarietà, polimorfismo, interfacce). Esempi spiegati.",
+  "description": "Corso C# italiano completo e gratuito: .NET, sintassi, OOP (classi, proprietà, ereditarietà, polimorfismo, astrazione, interfacce), enum, file, eccezioni, List, metodi, esercizi svolti, quiz, riferimenti e certificazione.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-csharp.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -176,26 +176,55 @@
       <a href="#commenti">Commenti</a>
       <a href="#variabili">Variabili</a>
       <a href="#tipi">Tipi di dato</a>
-      <a href="#casting">Casting</a>
+      <a href="#casting">Type casting</a>
       <a href="#operatori">Operatori</a>
       <a href="#input">Input utente</a>
+      <a href="#math">Math</a>
       <a href="#stringhe">Stringhe</a>
+      <a href="#booleans">Booleans</a>
       <a href="#ifelse">If...Else</a>
       <a href="#switch">Switch</a>
       <a href="#while">Ciclo while</a>
       <a href="#for">Ciclo for</a>
+      <a href="#break-continue">Break / Continue</a>
       <a href="#array">Array</a>
       <a href="#list">List</a>
+      <h4>Metodi in C#</h4>
       <a href="#metodi">Metodi</a>
-      <h4>C# e gli oggetti (OOP)</h4>
+      <a href="#parametri">Parametri</a>
+      <a href="#overloading">Overloading</a>
+      <h4>C# Classi (OOP)</h4>
       <a href="#oop">OOP: introduzione</a>
       <a href="#classi">Classi e oggetti</a>
-      <a href="#proprieta">Proprietà</a>
+      <a href="#membri">Membri di classe</a>
       <a href="#costruttori">Costruttori</a>
+      <a href="#access-modifiers">Modificatori d'accesso</a>
+      <a href="#proprieta">Proprietà (get/set)</a>
       <a href="#ereditarieta">Ereditarietà</a>
       <a href="#polimorfismo">Polimorfismo</a>
+      <a href="#abstraction">Astrazione</a>
       <a href="#interfacce">Interfacce</a>
+      <a href="#enum">Enum</a>
+      <a href="#file">File</a>
       <a href="#eccezioni">Eccezioni</a>
+      <h4>Esempi &amp; Pratica</h4>
+      <a href="#esempi">Esempi pratici</a>
+      <a href="#editor-online">Editor online</a>
+      <a href="#quiz">Quiz C#</a>
+      <a href="#esercizi">Esercizi svolti</a>
+      <a href="#sfide">Sfide</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#riepilogo">Riepilogo</a>
+      <h4>Riferimenti</h4>
+      <a href="#keywords-ref">Parole chiave</a>
+      <a href="#string-ref">Metodi String</a>
+      <a href="#math-ref">Metodi Math</a>
+      <a href="#list-ref">Metodi List</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione C#</a>
       <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
@@ -361,6 +390,33 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ MATH ═══ -->
+      <article class="lesson" id="math">
+        <h2>Math in C#</h2>
+        <p>La classe <code class="inline">Math</code> fornisce funzioni matematiche e costanti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine(Math.Sqrt(64));    // 8
+        Console.WriteLine(Math.Pow(2, 10));  // 1024
+        Console.WriteLine(Math.Abs(-15));    // 15
+        Console.WriteLine(Math.Max(3, 7));   // 7
+        Console.WriteLine(Math.Min(3, 7));   // 3
+        Console.WriteLine(Math.Round(4.567, 2)); // 4.57
+        Console.WriteLine(Math.PI);          // 3.14159...
+
+        // Numero casuale
+        Random rnd = new Random();
+        Console.WriteLine(rnd.Next(1, 7));   // dado 1-6
+    }
+}</script>
+        </div>
+      </article>
+
       <article class="lesson" id="stringhe">
         <h2>Le stringhe</h2>
         <p>La classe <code class="inline">string</code> offre molti metodi: <code class="inline">.Length</code>, <code class="inline">.ToUpper()</code>, <code class="inline">.Substring()</code>, <code class="inline">.Replace()</code>, <code class="inline">.Contains()</code>.</p>
@@ -375,6 +431,32 @@ class Program {
         Console.WriteLine(testo.Length);
         Console.WriteLine(testo.ToUpper());
         Console.WriteLine(testo.Contains("potente"));
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ BOOLEANS ═══ -->
+      <article class="lesson" id="booleans">
+        <h2>Booleans in C#</h2>
+        <p>Il tipo <code class="inline">bool</code> assume i valori <code class="inline">true</code> o <code class="inline">false</code>. È il risultato di tutte le espressioni di confronto e la base delle condizioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static void Main() {
+        bool attivo = true;
+        int eta = 20;
+
+        Console.WriteLine(eta > 18);    // True
+        Console.WriteLine(eta == 30);   // False
+
+        bool puoVotare = attivo && (eta >= 18);
+        Console.WriteLine(puoVotare);   // True
+
+        Console.WriteLine(!attivo);     // False
     }
 }</script>
         </div>
@@ -457,6 +539,31 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ BREAK/CONTINUE ═══ -->
+      <article class="lesson" id="break-continue">
+        <h2>Break e Continue</h2>
+        <p><code class="inline">break</code> interrompe il ciclo; <code class="inline">continue</code> salta all'iterazione successiva.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static void Main() {
+        for (int i = 0; i < 10; i++) {
+            if (i == 5) break;        // si ferma a 5
+            Console.Write(i + " ");   // 0 1 2 3 4
+        }
+        Console.WriteLine();
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) continue; // salta i pari
+            Console.Write(i + " ");   // 1 3 5 7 9
+        }
+    }
+}</script>
+        </div>
+      </article>
+
       <article class="lesson" id="array">
         <h2>Gli array</h2>
         <div class="example">
@@ -516,6 +623,61 @@ class Program {
 
       <!-- ===== OOP ===== -->
 
+      <!-- ═══ PARAMETRI ═══ -->
+      <article class="lesson" id="parametri">
+        <h2>Parametri dei metodi</h2>
+        <p>I metodi ricevono dati tramite i <strong>parametri</strong>. C# supporta parametri di default, <code class="inline">ref</code> (per riferimento), <code class="inline">out</code> (valori in uscita) e <code class="inline">params</code> (numero variabile).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    // Parametro di default
+    static int Potenza(int b, int e = 2) {
+        int r = 1;
+        for (int i = 0; i < e; i++) r *= b;
+        return r;
+    }
+    // params: numero variabile di argomenti
+    static int Somma(params int[] numeri) {
+        int t = 0;
+        foreach (int n in numeri) t += n;
+        return t;
+    }
+
+    static void Main() {
+        Console.WriteLine(Potenza(3));      // 9
+        Console.WriteLine(Potenza(2, 10));  // 1024
+        Console.WriteLine(Somma(1, 2, 3, 4)); // 10
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ OVERLOADING ═══ -->
+      <article class="lesson" id="overloading">
+        <h2>Overloading dei metodi</h2>
+        <p>C# permette più metodi con lo <strong>stesso nome</strong> ma parametri diversi (tipo o numero). Il compilatore sceglie quello giusto in base agli argomenti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static int Somma(int a, int b) => a + b;
+    static double Somma(double a, double b) => a + b;
+    static int Somma(int a, int b, int c) => a + b + c;
+
+    static void Main() {
+        Console.WriteLine(Somma(2, 3));      // 5
+        Console.WriteLine(Somma(2.5, 1.5));  // 4
+        Console.WriteLine(Somma(1, 2, 3));   // 6
+    }
+}</script>
+        </div>
+      </article>
+
       <article class="lesson" id="oop">
         <h2>Programmazione a oggetti (OOP)</h2>
         <p>C# è interamente orientato agli oggetti. Tutto è organizzato in <strong>classi</strong> e <strong>oggetti</strong>; i pilastri sono incapsulamento, ereditarietà, polimorfismo e astrazione.</p>
@@ -547,6 +709,40 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ MEMBRI ═══ -->
+      <article class="lesson" id="membri">
+        <h2>Membri di classe</h2>
+        <p>I <strong>membri</strong> di una classe sono i <strong>campi</strong> (variabili), i <strong>metodi</strong> (funzioni) e le <strong>proprietà</strong>. I membri <code class="inline">static</code> appartengono alla classe, non alle singole istanze.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Contatore {
+    public int valore;              // campo di istanza
+    public static int totale = 0;   // campo statico (condiviso)
+
+    public void Incrementa() {      // metodo di istanza
+        valore++;
+        totale++;
+    }
+    public static void Reset() {    // metodo statico
+        totale = 0;
+    }
+}
+
+class Program {
+    static void Main() {
+        var c1 = new Contatore();
+        var c2 = new Contatore();
+        c1.Incrementa();
+        c2.Incrementa();
+        Console.WriteLine("Totale: " + Contatore.totale); // 2
+    }
+}</script>
+        </div>
+      </article>
+
       <article class="lesson" id="proprieta">
         <h2>Le proprietà</h2>
         <p>Le <strong>proprietà</strong> sono il modo elegante di C# per l'incapsulamento: combinano un campo privato con un getter e un setter, con la sintassi compatta <code class="inline">{ get; set; }</code>.</p>
@@ -566,6 +762,40 @@ class Program {
         s.Nome = "Giulia";
         s.Voto = 9;
         Console.WriteLine($"{s.Nome}: {s.Voto}");
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ ACCESS MODIFIERS ═══ -->
+      <article class="lesson" id="access-modifiers">
+        <h2>Modificatori d'accesso</h2>
+        <p>I <strong>modificatori d'accesso</strong> controllano la visibilità di classi e membri.</p>
+        <table class="ref"><thead><tr><th>Modificatore</th><th>Accessibile da</th></tr></thead><tbody>
+          <tr><td><code>public</code></td><td>Ovunque</td></tr>
+          <tr><td><code>private</code></td><td>Solo dalla classe stessa (default)</td></tr>
+          <tr><td><code>protected</code></td><td>Dalla classe e dalle derivate</td></tr>
+          <tr><td><code>internal</code></td><td>Dallo stesso assembly (progetto)</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class ContoBancario {
+    private double saldo = 0;          // solo interno
+    public void Deposita(double x) {   // accessibile ovunque
+        if (x > 0) saldo += x;
+    }
+    public double GetSaldo() => saldo;
+}
+
+class Program {
+    static void Main() {
+        var c = new ContoBancario();
+        c.Deposita(100);
+        Console.WriteLine(c.GetSaldo()); // 100
+        // c.saldo non è accessibile: è private!
     }
 }</script>
         </div>
@@ -651,6 +881,38 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ ABSTRACTION ═══ -->
+      <article class="lesson" id="abstraction">
+        <h2>Astrazione (classi astratte)</h2>
+        <p>L'<strong>astrazione</strong> nasconde i dettagli implementativi ed espone solo l'essenziale. Una <code class="inline">abstract class</code> non può essere istanziata e può contenere metodi astratti (senza corpo) che le classi derivate devono implementare.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+abstract class Forma {
+    public abstract double Area();   // metodo astratto
+    public void Descrivi() {         // metodo concreto
+        Console.WriteLine("Area: " + Area());
+    }
+}
+
+class Cerchio : Forma {
+    public double Raggio { get; set; }
+    public Cerchio(double r) { Raggio = r; }
+    public override double Area() => Math.PI * Raggio * Raggio;
+}
+
+class Program {
+    static void Main() {
+        Forma f = new Cerchio(5);
+        f.Descrivi(); // Area: 78.53...
+    }
+}</script>
+        </div>
+        <div class="note-box">📌 Una classe astratta può avere sia metodi astratti (da implementare) sia metodi concreti (già implementati). Non può essere istanziata direttamente.</div>
+      </article>
+
       <article class="lesson" id="interfacce">
         <h2>Le interfacce</h2>
         <p>Un'<strong>interfaccia</strong> definisce un contratto di metodi che le classi devono implementare. Per convenzione il nome inizia con la “I”.</p>
@@ -680,6 +942,75 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ ENUM ═══ -->
+      <article class="lesson" id="enum">
+        <h2>Enum</h2>
+        <p>Un <strong>enum</strong> definisce un insieme di costanti con nomi leggibili. Utile per stati, giorni, livelli e categorie.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+enum Livello { Basso, Medio, Alto }
+
+class Program {
+    static void Main() {
+        Livello l = Livello.Medio;
+        Console.WriteLine(l);          // Medio
+        Console.WriteLine((int)l);     // 1
+
+        if (l == Livello.Medio)
+            Console.WriteLine("Livello intermedio");
+
+        // Iterare su tutti i valori
+        foreach (Livello val in Enum.GetValues(typeof(Livello)))
+            Console.WriteLine(val);
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE ═══ -->
+      <article class="lesson" id="file">
+        <h2>Gestione file in C#</h2>
+        <p>La classe <code class="inline">File</code> (namespace <code class="inline">System.IO</code>) permette di creare, scrivere e leggere file con metodi statici molto semplici.</p>
+        <div class="example">
+          <div class="codehead"><span>Scrivere e leggere</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+using System.IO;
+
+class Program {
+    static void Main() {
+        // Scrittura
+        File.WriteAllText("dati.txt", "Prima riga\nSeconda riga");
+
+        // Append
+        File.AppendAllText("dati.txt", "\nTerza riga");
+
+        // Lettura completa
+        string contenuto = File.ReadAllText("dati.txt");
+        Console.WriteLine(contenuto);
+
+        // Lettura riga per riga
+        string[] righe = File.ReadAllLines("dati.txt");
+        Console.WriteLine("Righe totali: " + righe.Length);
+
+        // Verifica esistenza
+        Console.WriteLine("Esiste? " + File.Exists("dati.txt"));
+    }
+}</script>
+        </div>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>File.WriteAllText()</code></td><td>Scrive (sovrascrive) testo</td></tr>
+          <tr><td><code>File.AppendAllText()</code></td><td>Aggiunge testo in coda</td></tr>
+          <tr><td><code>File.ReadAllText()</code></td><td>Legge tutto il contenuto</td></tr>
+          <tr><td><code>File.ReadAllLines()</code></td><td>Legge le righe in un array</td></tr>
+          <tr><td><code>File.Exists()</code></td><td>Verifica se il file esiste</td></tr>
+          <tr><td><code>File.Delete()</code></td><td>Elimina il file</td></tr>
+        </tbody></table>
+      </article>
+
       <article class="lesson" id="eccezioni">
         <h2>La gestione delle eccezioni</h2>
         <p>Gli errori a runtime si gestiscono con <code class="inline">try ... catch</code> (e l'opzionale <code class="inline">finally</code>), per evitare il crash del programma.</p>
@@ -704,12 +1035,381 @@ class Program {
         </div>
       </article>
 
+      <!-- ═══ ESEMPI ═══ -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi pratici C#</h2>
+        <p>Esempi reali e completi per consolidare C# con OOP e collezioni.</p>
+        <h3>Gestione voti con List</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program {
+    static void Main() {
+        List<int> voti = new List<int> { 7, 8, 6, 9, 7, 10 };
+        Console.WriteLine("Media: " + voti.Average());
+        Console.WriteLine("Max: " + voti.Max());
+        Console.WriteLine("Promossi: " + voti.Count(v => v >= 6));
+    }
+}</script>
+        </div>
+        <h3>Classe ContoBancario</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class ContoBancario {
+    public double Saldo { get; private set; }
+    public void Deposita(double importo) => Saldo += importo;
+    public bool Preleva(double importo) {
+        if (importo > Saldo) return false;
+        Saldo -= importo;
+        return true;
+    }
+}
+
+class Program {
+    static void Main() {
+        var c = new ContoBancario();
+        c.Deposita(100);
+        c.Preleva(30);
+        Console.WriteLine("Saldo: " + c.Saldo); // 70
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online C#</h2>
+        <p>Scrivi e leggi codice C# con la sintassi colorata. Per eseguirlo installa il <strong>.NET SDK</strong> (o usa <a href="https://dotnetfiddle.net/" rel="noopener noreferrer" target="_blank">.NET Fiddle</a>), crea un progetto con <code class="inline">dotnet new console</code> ed esegui con <code class="inline">dotnet run</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Il tuo codice C#</span><button class="btn-try">Apri editor ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static void Main() {
+        // Scrivi qui il tuo codice C#
+        Console.WriteLine("Ciao, mondo C#!");
+
+        for (int i = 1; i <= 5; i++) {
+            Console.WriteLine("Numero: " + i);
+        }
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz C# — verifica le tue conoscenze</h2>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:1.2rem"><strong>Cos'è il .NET?</strong><br><em>Risposta:</em> Una piattaforma di sviluppo open source di Microsoft che esegue C#. Comprende il runtime (CLR), le librerie di base e gli strumenti di compilazione.</li>
+          <li style="margin-bottom:1.2rem"><strong>Differenza tra <code>==</code> ed <code>.Equals()</code> per le stringhe?</strong><br><em>Risposta:</em> Per le stringhe in C# entrambi confrontano il contenuto. Per gli oggetti, <code>==</code> confronta i riferimenti se non è sovrascritto.</li>
+          <li style="margin-bottom:1.2rem"><strong>Cosa sono le proprietà (properties)?</strong><br><em>Risposta:</em> Membri che combinano un campo con i metodi <code>get</code> e <code>set</code>, permettendo accesso controllato con sintassi da campo.</li>
+          <li style="margin-bottom:1.2rem"><strong>Differenza tra classe astratta e interfaccia?</strong><br><em>Risposta:</em> La classe astratta può avere implementazioni e stato; l'interfaccia definisce solo contratti. Una classe eredita da una sola classe ma implementa più interfacce.</li>
+          <li style="margin-bottom:1.2rem"><strong>Cos'è il garbage collector?</strong><br><em>Risposta:</em> Il componente del CLR che libera automaticamente la memoria degli oggetti non più referenziati, evitando i memory leak.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi C# con soluzioni</h2>
+        <p>Cinque esercizi con soluzione completa. Provaci prima di guardare!</p>
+
+        <h3>Esercizio 1 — FizzBuzz</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static void Main() {
+        for (int i = 1; i <= 20; i++) {
+            if (i % 15 == 0) Console.WriteLine("FizzBuzz");
+            else if (i % 3 == 0) Console.WriteLine("Fizz");
+            else if (i % 5 == 0) Console.WriteLine("Buzz");
+            else Console.WriteLine(i);
+        }
+    }
+}</script>
+        </div>
+
+        <h3>Esercizio 2 — Numero primo</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+
+class Program {
+    static bool IsPrimo(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i * i <= n; i++)
+            if (n % i == 0) return false;
+        return true;
+    }
+    static void Main() {
+        for (int n = 2; n <= 30; n++)
+            if (IsPrimo(n)) Console.Write(n + " ");
+    }
+}</script>
+        </div>
+
+        <h3>Esercizio 3 — Inversione stringa</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+using System.Linq;
+
+class Program {
+    static void Main() {
+        string s = "Programmazione";
+        string inverso = new string(s.Reverse().ToArray());
+        Console.WriteLine(inverso);
+    }
+}</script>
+        </div>
+
+        <h3>Esercizio 4 — Classe Studente</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Studente {
+    public string Nome { get; set; }
+    public List<int> Voti { get; set; } = new List<int>();
+    public double Media() => Voti.Any() ? Voti.Average() : 0;
+}
+
+class Program {
+    static void Main() {
+        var s = new Studente { Nome = "Luca" };
+        s.Voti.AddRange(new[] { 8, 7, 9 });
+        Console.WriteLine($"{s.Nome} media: {s.Media():F2}");
+    }
+}</script>
+        </div>
+
+        <h3>Esercizio 5 — Conta parole con Dictionary</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-csharp"></code></pre>
+          <script type="text/plain" class="code">using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main() {
+        string testo = "il cane il gatto il topo";
+        var conteggio = new Dictionary<string, int>();
+        foreach (string parola in testo.Split(' ')) {
+            if (conteggio.ContainsKey(parola)) conteggio[parola]++;
+            else conteggio[parola] = 1;
+        }
+        foreach (var coppia in conteggio)
+            Console.WriteLine($"{coppia.Key}: {coppia.Value}");
+    }
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ SFIDE ═══ -->
+      <article class="lesson" id="sfide">
+        <h2>Sfide C#</h2>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:.8rem">🟢 Crea una classe <strong>Temperatura</strong> con proprietà per Celsius e Fahrenheit che si convertono automaticamente.</li>
+          <li style="margin-bottom:.8rem">🟡 Implementa una <strong>rubrica</strong> con Dictionary e menu console (aggiungi, cerca, elimina contatti).</li>
+          <li style="margin-bottom:.8rem">🟡 Realizza una gerarchia <strong>Veicolo → Auto/Moto/Camion</strong> con metodo virtuale e polimorfismo.</li>
+          <li style="margin-bottom:.8rem">🔴 Crea un'interfaccia <strong>IForma</strong> con metodo <code>Area()</code> implementata da Cerchio, Rettangolo e Triangolo, e usa LINQ per trovare la più grande.</li>
+          <li style="margin-bottom:.8rem">🔴 Implementa un sistema di gestione biblioteca con classi, eccezioni custom e salvataggio su file.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ PROGETTI ═══ -->
+      <article class="lesson" id="progetti">
+        <h2>Progetti pratici con C#</h2>
+        <ul>
+          <li>🎮 <strong>Gioco con Unity</strong>: C# è il linguaggio ufficiale del motore Unity</li>
+          <li>🖥️ <strong>App desktop WPF/WinForms</strong>: interfacce grafiche con .NET</li>
+          <li>🌐 <strong>Web API con ASP.NET Core</strong>: backend REST moderno e performante</li>
+          <li>🏦 <strong>Gestionale console</strong>: magazzino o banca con OOP e persistenza file</li>
+          <li>📊 <strong>Analisi dati con LINQ</strong>: lettura CSV, statistiche e query fluenti</li>
+          <li>🤖 <strong>Bot Discord/Telegram</strong>: integrazione API con C# e .NET</li>
+        </ul>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma completo del corso C#</h2>
+        <table class="ref"><thead><tr><th>Modulo</th><th>Argomenti</th><th>Ore</th></tr></thead><tbody>
+          <tr><td>1 — Basi</td><td>Installazione .NET SDK, Console, variabili, tipi, casting, operatori, math</td><td>6</td></tr>
+          <tr><td>2 — Controllo</td><td>Booleans, if/else, switch, while, for, break/continue</td><td>4</td></tr>
+          <tr><td>3 — Collezioni</td><td>Array, List, stringhe</td><td>4</td></tr>
+          <tr><td>4 — Metodi</td><td>Metodi, parametri, overloading</td><td>5</td></tr>
+          <tr><td>5 — OOP base</td><td>Classi, membri, costruttori, modificatori, proprietà</td><td>7</td></tr>
+          <tr><td>6 — OOP avanzato</td><td>Ereditarietà, polimorfismo, astrazione, interfacce, enum</td><td>7</td></tr>
+          <tr><td>7 — File ed errori</td><td>File, eccezioni, gestione errori</td><td>4</td></tr>
+          <tr><td>8 — Progetto</td><td>Applicazione completa (console, WPF o Unity)</td><td>8</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio C# (8 settimane)</h2>
+        <table class="ref"><thead><tr><th>Settimana</th><th>Obiettivo</th></tr></thead><tbody>
+          <tr><td>1</td><td>Installazione .NET SDK, Console, variabili, tipi, casting, operatori</td></tr>
+          <tr><td>2</td><td>Math, booleans, if/else, switch, cicli, break/continue</td></tr>
+          <tr><td>3</td><td>Array, List, stringhe e relativi metodi</td></tr>
+          <tr><td>4</td><td>Metodi, parametri, overloading</td></tr>
+          <tr><td>5</td><td>OOP: classi, membri, costruttori, modificatori, proprietà</td></tr>
+          <tr><td>6</td><td>Ereditarietà, polimorfismo, astrazione, interfacce</td></tr>
+          <tr><td>7</td><td>Enum, file, eccezioni</td></tr>
+          <tr><td>8</td><td>LINQ, progetto finale</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio C#</h2>
+        <ul>
+          <li>💬 <strong>Differenza tra <code>class</code> e <code>struct</code>?</strong> — Le classi sono reference type (allocate sull'heap); le struct sono value type (sullo stack). Le struct si copiano per valore.</li>
+          <li>💬 <strong>Cos'è il boxing/unboxing?</strong> — Boxing converte un value type in object (heap); unboxing fa il contrario. Operazioni costose da evitare nei loop.</li>
+          <li>💬 <strong>Cosa sono i delegate?</strong> — Tipi che rappresentano riferimenti a metodi, base per eventi e callback (simili ai puntatori a funzione).</li>
+          <li>💬 <strong>Cos'è LINQ?</strong> — Language Integrated Query: permette di interrogare collezioni, database e XML con sintassi fluente e leggibile.</li>
+          <li>💬 <strong>Differenza tra <code>IEnumerable</code> e <code>List</code>?</strong> — <code>IEnumerable</code> è l'interfaccia base per l'iterazione (lazy); <code>List</code> è una collezione concreta con accesso casuale.</li>
+          <li>💬 <strong>Cosa fa <code>async/await</code>?</strong> — Permette la programmazione asincrona non bloccante, fondamentale per operazioni I/O e web.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ RIEPILOGO ═══ -->
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo C#</h2>
+        <ul>
+          <li>✅ <strong>Sintassi</strong>: Console, variabili, tipi, casting, operatori, math</li>
+          <li>✅ <strong>Controllo</strong>: booleans, if/else, switch, while, for, break/continue</li>
+          <li>✅ <strong>Collezioni</strong>: array, List, stringhe</li>
+          <li>✅ <strong>Metodi</strong>: parametri, overloading, valori di ritorno</li>
+          <li>✅ <strong>OOP</strong>: classi, membri, costruttori, modificatori, proprietà (get/set)</li>
+          <li>✅ <strong>OOP avanzato</strong>: ereditarietà, polimorfismo, astrazione, interfacce, enum</li>
+          <li>✅ <strong>File ed errori</strong>: lettura/scrittura file, eccezioni try/catch/finally</li>
+        </ul>
+        <div class="note-box">📌 C# è il linguaggio di Unity (videogiochi), delle app aziendali Windows e del backend con ASP.NET Core. Padroneggiarlo apre le porte a ruoli da C# Developer, Game Developer e .NET Developer.</div>
+      </article>
+
+      <!-- ═══ KEYWORDS REF ═══ -->
+      <article class="lesson" id="keywords-ref">
+        <h2>Riferimento — Parole chiave C#</h2>
+        <table class="ref"><thead><tr><th>Keyword</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>class, struct, interface</code></td><td>Definiscono tipi</td></tr>
+          <tr><td><code>public, private, protected, internal</code></td><td>Modificatori d'accesso</td></tr>
+          <tr><td><code>static</code></td><td>Membro di classe (non di istanza)</td></tr>
+          <tr><td><code>abstract, virtual, override, sealed</code></td><td>Polimorfismo ed ereditarietà</td></tr>
+          <tr><td><code>get, set</code></td><td>Accessori delle proprietà</td></tr>
+          <tr><td><code>new</code></td><td>Crea un'istanza</td></tr>
+          <tr><td><code>this, base</code></td><td>Istanza corrente / classe base</td></tr>
+          <tr><td><code>using</code></td><td>Importa namespace / gestione risorse</td></tr>
+          <tr><td><code>namespace</code></td><td>Raggruppa tipi correlati</td></tr>
+          <tr><td><code>try, catch, finally, throw</code></td><td>Gestione eccezioni</td></tr>
+          <tr><td><code>var</code></td><td>Tipo dedotto automaticamente</td></tr>
+          <tr><td><code>async, await</code></td><td>Programmazione asincrona</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ STRING REF ═══ -->
+      <article class="lesson" id="string-ref">
+        <h2>Riferimento — Metodi String</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>Length</code></td><td>Lunghezza</td><td><code>"C#".Length → 2</code></td></tr>
+          <tr><td><code>ToUpper() / ToLower()</code></td><td>Maiuscolo / minuscolo</td><td><code>"c#".ToUpper() → "C#"</code></td></tr>
+          <tr><td><code>Trim()</code></td><td>Rimuove spazi ai lati</td><td><code>" hi ".Trim() → "hi"</code></td></tr>
+          <tr><td><code>Substring(i, n)</code></td><td>Sottostringa</td><td><code>"Csharp".Substring(0,1) → "C"</code></td></tr>
+          <tr><td><code>Replace(a, b)</code></td><td>Sostituisce</td><td><code>"aaa".Replace("a","b") → "bbb"</code></td></tr>
+          <tr><td><code>Contains(s)</code></td><td>Contiene?</td><td><code>"C#".Contains("#") → true</code></td></tr>
+          <tr><td><code>IndexOf(s)</code></td><td>Posizione</td><td><code>"Csharp".IndexOf("s") → 1</code></td></tr>
+          <tr><td><code>Split(c)</code></td><td>Divide in array</td><td><code>"a,b".Split(',') → ["a","b"]</code></td></tr>
+          <tr><td><code>StartsWith/EndsWith</code></td><td>Inizia/finisce con?</td><td><code>"C#".StartsWith("C") → true</code></td></tr>
+          <tr><td><code>string.Join()</code></td><td>Unisce con separatore</td><td><code>string.Join("-", arr)</code></td></tr>
+          <tr><td><code>string.Format() / $""</code></td><td>Interpolazione</td><td><code>$"Ciao {nome}"</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ MATH REF ═══ -->
+      <article class="lesson" id="math-ref">
+        <h2>Riferimento — Metodi Math</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>Math.Abs()</code></td><td>Valore assoluto</td><td><code>Math.Abs(-5) → 5</code></td></tr>
+          <tr><td><code>Math.Max() / Min()</code></td><td>Massimo / minimo</td><td><code>Math.Max(3,7) → 7</code></td></tr>
+          <tr><td><code>Math.Pow()</code></td><td>Potenza</td><td><code>Math.Pow(2,10) → 1024</code></td></tr>
+          <tr><td><code>Math.Sqrt()</code></td><td>Radice quadrata</td><td><code>Math.Sqrt(16) → 4</code></td></tr>
+          <tr><td><code>Math.Round()</code></td><td>Arrotonda</td><td><code>Math.Round(3.5) → 4</code></td></tr>
+          <tr><td><code>Math.Floor() / Ceiling()</code></td><td>Difetto / eccesso</td><td><code>Math.Floor(4.9) → 4</code></td></tr>
+          <tr><td><code>Math.PI</code></td><td>Pi greco</td><td><code>Math.PI → 3.14159</code></td></tr>
+          <tr><td><code>Math.Sin/Cos/Tan()</code></td><td>Trigonometria</td><td><code>Math.Sin(0) → 0</code></td></tr>
+          <tr><td><code>new Random().Next()</code></td><td>Numero casuale</td><td><code>rnd.Next(1, 100)</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ LIST REF ═══ -->
+      <article class="lesson" id="list-ref">
+        <h2>Riferimento — Metodi List</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>Add(x)</code></td><td>Aggiunge un elemento</td></tr>
+          <tr><td><code>AddRange(c)</code></td><td>Aggiunge più elementi</td></tr>
+          <tr><td><code>Remove(x) / RemoveAt(i)</code></td><td>Rimuove per valore / indice</td></tr>
+          <tr><td><code>Count</code></td><td>Numero di elementi</td></tr>
+          <tr><td><code>Contains(x)</code></td><td>Verifica presenza</td></tr>
+          <tr><td><code>IndexOf(x)</code></td><td>Posizione di un elemento</td></tr>
+          <tr><td><code>Sort()</code></td><td>Ordina la lista</td></tr>
+          <tr><td><code>Reverse()</code></td><td>Inverte l'ordine</td></tr>
+          <tr><td><code>Clear()</code></td><td>Svuota la lista</td></tr>
+          <tr><td><code>Find() / FindAll()</code></td><td>Cerca con un predicato</td></tr>
+          <tr><td><code>Average() / Max() / Min() / Sum()</code></td><td>Statistiche (LINQ)</td></tr>
+          <tr><td><code>Where() / Select()</code></td><td>Filtra / trasforma (LINQ)</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione C#</h2>
+        <p>Microsoft offre certificazioni ufficiali apprezzate dalle aziende che sviluppano in .NET:</p>
+        <table class="ref"><thead><tr><th>Certificazione</th><th>Ente</th><th>Livello</th></tr></thead><tbody>
+          <tr><td>Microsoft Certified: Azure Developer Associate</td><td>Microsoft</td><td>Professionale (cloud + C#)</td></tr>
+          <tr><td>Foundational C# with Microsoft</td><td>Microsoft / freeCodeCamp</td><td>Base (gratuita)</td></tr>
+          <tr><td>C# Certification</td><td>W3Schools</td><td>Base</td></tr>
+          <tr><td>Unity Certified Programmer</td><td>Unity</td><td>Game dev con C#</td></tr>
+        </tbody></table>
+        <h3>Come prepararsi</h3>
+        <ul>
+          <li>📚 Studia su <a href="https://learn.microsoft.com/it-it/dotnet/csharp/" rel="noopener noreferrer" target="_blank">Microsoft Learn</a> (gratuito e ufficiale)</li>
+          <li>💻 Pratica con progetti reali: console, WPF, ASP.NET Core, Unity</li>
+          <li>🛠️ Impara Visual Studio / VS Code e il .NET CLI</li>
+          <li>📖 Approfondisci LINQ, async/await e i pattern OOP</li>
+          <li>⏱️ La certificazione gratuita "Foundational C#" è un ottimo punto di partenza</li>
+        </ul>
+      </article>
+
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di C#</h2>
-        <p>Hai imparato la sintassi di C#, i tipi, gli operatori, le strutture di controllo, array e List, i metodi, fino alla programmazione a oggetti (classi, proprietà, ereditarietà, polimorfismo, interfacce) e alla gestione delle eccezioni.</p>
-        <p>Il prossimo passo è <strong>installare il .NET SDK</strong> (o Visual Studio) ed eseguire questi esempi, magari avvicinandoti a Unity per creare un videogioco. Se vuoi un percorso guidato o aiuto per una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Realizza una piccola applicazione console che gestisce un elenco di studenti con nome e voto, calcola la media della classe e mostra chi è promosso.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso di C#! Hai imparato la sintassi, l'OOP completa (classi, proprietà, ereditarietà, polimorfismo, astrazione, interfacce), gli enum, i file e la gestione delle eccezioni. Sei pronto per costruire applicazioni reali con .NET.</p>
+        <h3>E ora cosa fare?</h3>
+        <ul>
+          <li>💻 <strong>Installa il .NET SDK</strong> e Visual Studio (o VS Code) per sviluppare in locale</li>
+          <li>🎮 <strong>Prova Unity</strong> — C# è il linguaggio ufficiale per creare videogiochi</li>
+          <li>🌐 <strong>Studia ASP.NET Core</strong> per il backend web e le Web API</li>
+          <li>📖 <strong>Approfondisci LINQ e async/await</strong>, fondamentali nel C# moderno</li>
+          <li>🐙 <strong>Pubblica i progetti su GitHub</strong> per il tuo portfolio</li>
+          <li>🎯 <strong>Punta alla certificazione</strong> Microsoft (gratuita "Foundational C#")</li>
+        </ul>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Realizza un'applicazione console che gestisce un elenco di studenti (nome e voti) con classi e proprietà. Calcola la media della classe, mostra chi è promosso, ordina per media con LINQ e salva i risultati in un file di testo.</p></div>
+        <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
 
     </main>
