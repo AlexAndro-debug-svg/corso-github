@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso C in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di C in italiano completo e gratuito: sintassi, printf, variabili, tipi di dato, operatori, condizioni, cicli, array, stringhe, funzioni, puntatori, struct e gestione della memoria. Spiegazioni approfondite con esempi di codice.">
-  <meta name="keywords" content="corso c italiano, imparare c, tutorial c gratis, linguaggio c, programmazione c, puntatori c, esercizi c">
+  <title>Corso C in italiano completo e gratuito — Tutorial da zero con esercizi svolti | AlessandroSimone.it</title>
+  <meta name="description" content="Corso C italiano completo e gratuito: sintassi, puntatori, array, stringhe, funzioni, struct, union, enum, file, gestione memoria (malloc/free), macro, bitwise, debugging. Esercizi svolti, quiz, progetti, riferimenti e certificazione. Tutorial C da zero a avanzato.">
+  <meta name="keywords" content="corso c italiano, imparare c, tutorial c gratis, linguaggio c, esercizi c con soluzioni, esercizi c svolti, puntatori c, array c, struct c, funzioni c, malloc free c, gestione memoria c, macro c, file c, programmazione c, c da zero, certificazione c, c per principianti, corso c completo, c scuola superiore">
   <meta name="author" content="Alessandro Simone">
-  <meta property="og:title" content="Corso C in italiano completo e gratuito — AlessandroSimone.it">
-  <meta property="og:description" content="Impara il linguaggio C da zero in italiano: tutorial completo e approfondito con esempi di codice.">
+  <meta property="og:title" content="Corso C in italiano completo e gratuito — Tutorial da zero con esercizi | AlessandroSimone.it">
+  <meta property="og:description" content="Impara il linguaggio C da zero in italiano: puntatori, struct, file, gestione memoria, esercizi svolti, progetti e certificazione.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,15 +96,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-c.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso C in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di C in italiano completo e gratuito: sintassi, printf, variabili, tipi di dato, operatori, condizioni, cicli, array, stringhe, funzioni, puntatori, struct e gestione della memoria. Spiegazioni approfondite con esempi di codice.">
+  <meta name="twitter:title" content="Corso C in italiano completo e gratuito — Esercizi svolti | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial C completo in italiano: puntatori, array, struct, union, file, gestione memoria, macro, esercizi svolti, quiz e certificazione.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di C in italiano",
-  "description": "Corso di C in italiano completo e gratuito: sintassi, printf, variabili, tipi di dato, operatori, condizioni, cicli, array, stringhe, funzioni, puntatori, struct e gestione della memoria. Spiegazioni approfondite con esempi di codice.",
+  "description": "Corso C italiano completo e gratuito: sintassi, puntatori, array, stringhe, funzioni, struct, union, enum, file, gestione memoria, macro, bitwise, debugging, esercizi svolti, quiz, riferimenti e certificazione.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-c.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -178,19 +178,70 @@
       <a href="#commenti">Commenti</a>
       <a href="#variabili">Variabili</a>
       <a href="#tipi">Tipi di dato</a>
+      <a href="#conversione">Conversione di tipo</a>
       <a href="#costanti">Costanti</a>
       <a href="#operatori">Operatori</a>
+      <a href="#booleans">Booleans</a>
       <a href="#input">Input: scanf</a>
       <a href="#ifelse">If...Else</a>
       <a href="#switch">Switch</a>
       <a href="#while">Ciclo while</a>
       <a href="#for">Ciclo for</a>
+      <a href="#break-continue">Break / Continue</a>
       <a href="#array">Array</a>
       <a href="#stringhe">Stringhe</a>
-      <a href="#funzioni">Funzioni</a>
+      <a href="#memory-address">Indirizzo di memoria</a>
       <a href="#puntatori">Puntatori</a>
+      <h4>Funzioni in C</h4>
+      <a href="#funzioni">Funzioni</a>
+      <a href="#parametri">Parametri</a>
+      <a href="#scope">Scope</a>
+      <a href="#dichiarazione">Dichiarazione (prototipi)</a>
+      <a href="#math">Funzioni Math</a>
+      <a href="#inline">Funzioni inline</a>
+      <a href="#recursione">Ricorsione</a>
+      <a href="#function-pointers">Puntatori a funzione</a>
+      <h4>File in C</h4>
+      <a href="#file-create">Creare file</a>
+      <a href="#file-write">Scrivere su file</a>
+      <a href="#file-read">Leggere file</a>
+      <h4>Strutture in C</h4>
       <a href="#struct">Struct</a>
-      <a href="#memoria">Gestione della memoria</a>
+      <a href="#nested-struct">Struct annidate</a>
+      <a href="#struct-pointers">Struct e puntatori</a>
+      <a href="#union">Union</a>
+      <a href="#typedef">typedef</a>
+      <a href="#enum">Enum</a>
+      <h4>Memoria ed Errori</h4>
+      <a href="#memoria">Gestione memoria (malloc)</a>
+      <a href="#errori">Gestione errori</a>
+      <a href="#debugging">Debugging</a>
+      <a href="#null">NULL</a>
+      <a href="#input-validation">Validazione input</a>
+      <h4>C Avanzato</h4>
+      <a href="#date">Data e ora</a>
+      <a href="#random">Numeri casuali</a>
+      <a href="#macros">Macro</a>
+      <a href="#storage-classes">Storage classes</a>
+      <a href="#bitwise">Operatori bitwise</a>
+      <h4>Esempi &amp; Pratica</h4>
+      <a href="#esempi">Esempi pratici</a>
+      <a href="#editor-online">Editor online</a>
+      <a href="#quiz">Quiz C</a>
+      <a href="#esercizi">Esercizi svolti</a>
+      <a href="#sfide">Sfide</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#riepilogo">Riepilogo</a>
+      <h4>Riferimenti</h4>
+      <a href="#keywords-ref">Parole chiave</a>
+      <a href="#stdio-ref">&lt;stdio.h&gt;</a>
+      <a href="#string-ref">&lt;string.h&gt;</a>
+      <a href="#math-ref">&lt;math.h&gt;</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione C</a>
       <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
@@ -308,6 +359,35 @@ int main() {
         <p>C non ha un tipo booleano nativo nelle versioni storiche: si usano gli interi (0 = falso, diverso da 0 = vero) o <code class="inline">stdbool.h</code>.</p>
       </article>
 
+      <!-- ═══ CONVERSIONE ═══ -->
+      <article class="lesson" id="conversione">
+        <h2>Conversione di tipo (casting)</h2>
+        <p>La <strong>conversione di tipo</strong> trasforma un valore da un tipo a un altro. Può essere <strong>implicita</strong> (automatica) o <strong>esplicita</strong> (cast manuale con <code class="inline">(tipo)</code>).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    // Conversione implicita
+    int intero = 5;
+    double decimale = intero;  // int → double automatico
+    printf("%.1f\n", decimale); // 5.0
+
+    // Conversione esplicita (cast)
+    double pi = 3.99;
+    int troncato = (int)pi;    // double → int (tronca)
+    printf("%d\n", troncato);  // 3
+
+    // Attenzione alla divisione intera!
+    int a = 7, b = 2;
+    printf("%.1f\n", (double)a / b); // 3.5 (senza cast: 3)
+    return 0;
+}</script>
+        </div>
+        <div class="tip-box">💡 La divisione tra due interi dà un intero: <code>7/2</code> = 3. Per ottenere 3.5 serve il cast a <code>double</code> di almeno un operando.</div>
+      </article>
+
       <article class="lesson" id="costanti">
         <h2>Le costanti</h2>
         <p>Una costante non può cambiare valore. Si dichiara con <code class="inline">const</code> oppure con la direttiva <code class="inline">#define</code>.</p>
@@ -342,6 +422,32 @@ int main() {
     return 0;
 }</script>
         </div>
+      </article>
+
+      <!-- ═══ BOOLEANS ═══ -->
+      <article class="lesson" id="booleans">
+        <h2>Booleans in C</h2>
+        <p>C non aveva un tipo booleano nativo fino a C99. Includendo <code class="inline">stdbool.h</code> si possono usare <code class="inline">bool</code>, <code class="inline">true</code> e <code class="inline">false</code>. Senza la libreria, 0 è falso e qualsiasi altro valore è vero.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    bool maggiorenne = true;
+    int eta = 20;
+
+    bool puoVotare = (eta >= 18);
+    printf("Può votare: %d\n", puoVotare); // 1 (true)
+
+    if (maggiorenne && puoVotare) {
+        printf("Accesso consentito\n");
+    }
+    return 0;
+}</script>
+        </div>
+        <div class="note-box">📌 In C i booleani sono interi: <code>true</code> vale 1, <code>false</code> vale 0. Le funzioni di confronto restituiscono questi valori.</div>
       </article>
 
       <article class="lesson" id="input">
@@ -436,6 +542,34 @@ int main() {
         </div>
       </article>
 
+      <!-- ═══ BREAK/CONTINUE ═══ -->
+      <article class="lesson" id="break-continue">
+        <h2>Break e Continue</h2>
+        <p><code class="inline">break</code> interrompe immediatamente il ciclo; <code class="inline">continue</code> salta all'iterazione successiva.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    // break: si ferma a 5
+    for (int i = 0; i < 10; i++) {
+        if (i == 5) break;
+        printf("%d ", i);  // 0 1 2 3 4
+    }
+    printf("\n");
+
+    // continue: salta i pari
+    for (int i = 0; i < 10; i++) {
+        if (i % 2 == 0) continue;
+        printf("%d ", i);  // 1 3 5 7 9
+    }
+    printf("\n");
+    return 0;
+}</script>
+        </div>
+      </article>
+
       <article class="lesson" id="array">
         <h2>Gli array</h2>
         <p>Un <strong>array</strong> contiene più valori dello stesso tipo, con dimensione fissa. Si accede con l'indice (da 0).</p>
@@ -493,6 +627,26 @@ int main() {
         </div>
       </article>
 
+      <!-- ═══ MEMORY ADDRESS ═══ -->
+      <article class="lesson" id="memory-address">
+        <h2>Indirizzo di memoria</h2>
+        <p>Ogni variabile è salvata in una cella di memoria con un proprio <strong>indirizzo</strong>. L'operatore <code class="inline">&amp;</code> restituisce l'indirizzo di una variabile, che si stampa con <code class="inline">%p</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int eta = 25;
+    printf("Valore: %d\n", eta);
+    printf("Indirizzo: %p\n", (void*)&eta);
+    printf("Dimensione: %lu byte\n", sizeof(eta));
+    return 0;
+}</script>
+        </div>
+        <div class="note-box">📌 Comprendere gli indirizzi di memoria è il primo passo per padroneggiare i puntatori, il cuore del linguaggio C.</div>
+      </article>
+
       <article class="lesson" id="puntatori">
         <h2>I puntatori</h2>
         <p>I <strong>puntatori</strong> sono la caratteristica più potente (e temuta) di C: una variabile che contiene l'<strong>indirizzo di memoria</strong> di un'altra variabile. Si dichiarano con <code class="inline">*</code> e si ottiene l'indirizzo con <code class="inline">&amp;</code>.</p>
@@ -516,6 +670,256 @@ int main() {
         </div>
       </article>
 
+      <!-- ═══ PARAMETRI ═══ -->
+      <article class="lesson" id="parametri">
+        <h2>Parametri delle funzioni</h2>
+        <p>Le funzioni ricevono dati tramite i <strong>parametri</strong>. In C il passaggio è <strong>per valore</strong>: la funzione riceve una copia. Per modificare l'originale si passa un puntatore (passaggio per riferimento).</p>
+        <div class="example">
+          <div class="codehead"><span>Per valore vs riferimento</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+void perValore(int x) { x = 100; }        // non modifica l'originale
+void perRiferimento(int *x) { *x = 100; } // modifica l'originale
+
+int main() {
+    int a = 5;
+    perValore(a);
+    printf("Dopo perValore: %d\n", a);      // 5
+    perRiferimento(&a);
+    printf("Dopo perRiferimento: %d\n", a);  // 100
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ SCOPE ═══ -->
+      <article class="lesson" id="scope">
+        <h2>Scope delle variabili</h2>
+        <p>Lo <strong>scope</strong> determina dove una variabile è visibile. Le variabili <strong>locali</strong> esistono solo nel blocco in cui sono dichiarate; le <strong>globali</strong> sono visibili ovunque.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int globale = 10;  // visibile ovunque
+
+void funzione() {
+    int locale = 5;  // visibile solo qui
+    printf("Locale: %d, Globale: %d\n", locale, globale);
+}
+
+int main() {
+    funzione();
+    printf("Globale da main: %d\n", globale);
+    // printf("%d", locale); // ERRORE: locale non visibile qui
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ DICHIARAZIONE ═══ -->
+      <article class="lesson" id="dichiarazione">
+        <h2>Dichiarazione di funzione (prototipi)</h2>
+        <p>Un <strong>prototipo</strong> dichiara la firma di una funzione prima del suo uso, separando dichiarazione e definizione. Permette di definire le funzioni dopo <code class="inline">main()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+// Prototipi (dichiarazioni)
+int somma(int a, int b);
+void saluta(void);
+
+int main() {
+    saluta();
+    printf("Somma: %d\n", somma(3, 4));
+    return 0;
+}
+
+// Definizioni (dopo main)
+int somma(int a, int b) { return a + b; }
+void saluta(void) { printf("Ciao!\n"); }</script>
+        </div>
+        <div class="tip-box">💡 I prototipi si raccolgono nei file header <code>.h</code>, mentre le definizioni stanno nei file <code>.c</code>: è la base dell'organizzazione del codice in C.</div>
+      </article>
+
+      <!-- ═══ MATH ═══ -->
+      <article class="lesson" id="math">
+        <h2>Funzioni matematiche</h2>
+        <p>La libreria <code class="inline">math.h</code> offre funzioni matematiche avanzate. Ricorda di compilare con <code class="inline">-lm</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <math.h>
+
+int main() {
+    printf("sqrt(25) = %.1f\n", sqrt(25));
+    printf("pow(2,8) = %.0f\n", pow(2, 8));
+    printf("ceil(4.2) = %.0f\n", ceil(4.2));
+    printf("floor(4.8) = %.0f\n", floor(4.8));
+    printf("fabs(-7.5) = %.1f\n", fabs(-7.5));
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ INLINE ═══ -->
+      <article class="lesson" id="inline">
+        <h2>Funzioni inline</h2>
+        <p>La parola chiave <code class="inline">inline</code> suggerisce al compilatore di inserire il corpo della funzione direttamente nel punto di chiamata, eliminando l'overhead della chiamata. Utile per funzioni piccole e frequenti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+inline int quadrato(int x) {
+    return x * x;
+}
+
+int main() {
+    printf("%d\n", quadrato(5));  // 25
+    printf("%d\n", quadrato(9));  // 81
+    return 0;
+}</script>
+        </div>
+        <div class="note-box">📌 <code>inline</code> è solo un suggerimento: il compilatore decide se applicarlo. Con l'ottimizzazione (<code>-O2</code>) GCC inlinea automaticamente le funzioni piccole.</div>
+      </article>
+
+      <!-- ═══ RECURSIONE ═══ -->
+      <article class="lesson" id="recursione">
+        <h2>Ricorsione</h2>
+        <p>Una funzione <strong>ricorsiva</strong> chiama se stessa. Serve sempre un <em>caso base</em> che ferma la ricorsione, altrimenti si ha uno stack overflow.</p>
+        <div class="example">
+          <div class="codehead"><span>Fattoriale e potenza</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int fattoriale(int n) {
+    if (n <= 1) return 1;          // caso base
+    return n * fattoriale(n - 1);  // caso ricorsivo
+}
+
+int potenza(int base, int esp) {
+    if (esp == 0) return 1;
+    return base * potenza(base, esp - 1);
+}
+
+int main() {
+    printf("5! = %d\n", fattoriale(5)); // 120
+    printf("2^8 = %d\n", potenza(2, 8)); // 256
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ FUNCTION POINTERS ═══ -->
+      <article class="lesson" id="function-pointers">
+        <h2>Puntatori a funzione</h2>
+        <p>Un <strong>puntatore a funzione</strong> memorizza l'indirizzo di una funzione, permettendo di passarla come argomento o sceglierla a runtime (callback).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int somma(int a, int b) { return a + b; }
+int prodotto(int a, int b) { return a * b; }
+
+int main() {
+    // Puntatore a funzione
+    int (*operazione)(int, int);
+
+    operazione = somma;
+    printf("Somma: %d\n", operazione(3, 4));   // 7
+
+    operazione = prodotto;
+    printf("Prodotto: %d\n", operazione(3, 4)); // 12
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE CREATE ═══ -->
+      <article class="lesson" id="file-create">
+        <h2>Creare file in C</h2>
+        <p>Si apre (creandolo) un file con <code class="inline">fopen()</code> in modalità <code class="inline">"w"</code> (scrittura). Restituisce un puntatore <code class="inline">FILE*</code> da chiudere con <code class="inline">fclose()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    FILE *f = fopen("nuovo.txt", "w");  // crea il file
+    if (f == NULL) {
+        printf("Errore nella creazione!\n");
+        return 1;
+    }
+    printf("File creato con successo!\n");
+    fclose(f);
+    return 0;
+}</script>
+        </div>
+        <table class="ref"><thead><tr><th>Modalità</th><th>Significato</th></tr></thead><tbody>
+          <tr><td><code>"r"</code></td><td>Lettura (il file deve esistere)</td></tr>
+          <tr><td><code>"w"</code></td><td>Scrittura (cancella il contenuto)</td></tr>
+          <tr><td><code>"a"</code></td><td>Append (aggiunge in coda)</td></tr>
+          <tr><td><code>"r+"</code></td><td>Lettura e scrittura</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ FILE WRITE ═══ -->
+      <article class="lesson" id="file-write">
+        <h2>Scrivere su file</h2>
+        <p>Con <code class="inline">fprintf()</code> si scrive testo formattato in un file, esattamente come <code class="inline">printf()</code> su schermo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    FILE *f = fopen("voti.txt", "w");
+    if (f == NULL) return 1;
+
+    fprintf(f, "Luca: 8\n");
+    fprintf(f, "Anna: 9\n");
+    fputs("Marco: 7\n", f);
+
+    fclose(f);
+    printf("Dati scritti nel file!\n");
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE READ ═══ -->
+      <article class="lesson" id="file-read">
+        <h2>Leggere da file</h2>
+        <p>Con <code class="inline">fgets()</code> si legge una riga alla volta finché non si raggiunge la fine del file (<code class="inline">EOF</code>).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    FILE *f = fopen("voti.txt", "r");
+    if (f == NULL) {
+        printf("Impossibile aprire il file\n");
+        return 1;
+    }
+    char riga[100];
+    while (fgets(riga, sizeof(riga), f) != NULL) {
+        printf("%s", riga);
+    }
+    fclose(f);
+    return 0;
+}</script>
+        </div>
+        <div class="tip-box">💡 Controlla sempre che <code>fopen()</code> non restituisca <code>NULL</code> prima di leggere: il file potrebbe non esistere o non essere accessibile.</div>
+      </article>
+
+      <!-- ===== Strutture in C ===== -->
+
       <article class="lesson" id="struct">
         <h2>Le struct</h2>
         <p>Una <strong>struct</strong> raggruppa più variabili (anche di tipo diverso) in un unico tipo personalizzato: è l'antenato degli oggetti.</p>
@@ -536,6 +940,138 @@ int main() {
 }</script>
         </div>
       </article>
+
+      <!-- ═══ NESTED STRUCT ═══ -->
+      <article class="lesson" id="nested-struct">
+        <h2>Struct annidate</h2>
+        <p>Una struct può contenere altre struct come campi. Utile per modellare dati gerarchici (es. uno studente che contiene una data).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+struct Data {
+    int giorno, mese, anno;
+};
+struct Studente {
+    char nome[50];
+    struct Data nascita;  // struct annidata
+};
+
+int main() {
+    struct Studente s = {"Luca", {15, 3, 2007}};
+    printf("%s nato il %d/%d/%d\n",
+        s.nome, s.nascita.giorno, s.nascita.mese, s.nascita.anno);
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ STRUCT POINTERS ═══ -->
+      <article class="lesson" id="struct-pointers">
+        <h2>Struct e puntatori</h2>
+        <p>Con un puntatore a struct si accede ai campi con l'operatore freccia <code class="inline">-&gt;</code> invece del punto. È il modo più efficiente per passare struct alle funzioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+struct Punto { int x, y; };
+
+void sposta(struct Punto *p, int dx, int dy) {
+    p->x += dx;   // -> equivale a (*p).x
+    p->y += dy;
+}
+
+int main() {
+    struct Punto p = {3, 4};
+    sposta(&p, 2, 1);
+    printf("Punto: (%d, %d)\n", p.x, p.y); // (5, 5)
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ UNION ═══ -->
+      <article class="lesson" id="union">
+        <h2>Union</h2>
+        <p>Una <strong>union</strong> è simile a una struct, ma tutti i campi condividono la stessa area di memoria. Occupa lo spazio del campo più grande e può contenere un solo valore alla volta.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+union Valore {
+    int intero;
+    float decimale;
+    char carattere;
+};
+
+int main() {
+    union Valore v;
+    v.intero = 42;
+    printf("Intero: %d\n", v.intero);
+    v.decimale = 3.14;  // sovrascrive la stessa memoria
+    printf("Decimale: %.2f\n", v.decimale);
+    printf("Dimensione union: %lu byte\n", sizeof(v));
+    return 0;
+}</script>
+        </div>
+        <div class="note-box">📌 Differenza chiave: in una <code>struct</code> ogni campo ha la sua memoria; in una <code>union</code> condividono lo stesso spazio.</div>
+      </article>
+
+      <!-- ═══ TYPEDEF ═══ -->
+      <article class="lesson" id="typedef">
+        <h2>typedef</h2>
+        <p><code class="inline">typedef</code> crea un alias (un nuovo nome) per un tipo esistente. Si usa spesso per semplificare la sintassi delle struct.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+typedef unsigned int uint;
+
+typedef struct {
+    char nome[30];
+    int eta;
+} Persona;   // ora "Persona" è un tipo
+
+int main() {
+    uint x = 100;
+    Persona p = {"Anna", 25};  // niente "struct" davanti!
+    printf("%u\n", x);
+    printf("%s, %d anni\n", p.nome, p.eta);
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ ENUM ═══ -->
+      <article class="lesson" id="enum">
+        <h2>Enum</h2>
+        <p>Un <strong>enum</strong> definisce un insieme di costanti intere con nomi leggibili. Per default partono da 0 e incrementano di 1.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+enum Giorno { LUN, MAR, MER, GIO, VEN, SAB, DOM };
+
+int main() {
+    enum Giorno oggi = MER;
+    printf("Oggi è il giorno n. %d\n", oggi); // 2
+
+    if (oggi == SAB || oggi == DOM) {
+        printf("Weekend!\n");
+    } else {
+        printf("Giorno feriale\n");
+    }
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ===== Memoria ed Errori ===== -->
 
       <article class="lesson" id="memoria">
         <h2>La gestione della memoria</h2>
@@ -558,12 +1094,598 @@ int main() {
         </div>
       </article>
 
+      <!-- ═══ ERRORI ═══ -->
+      <article class="lesson" id="errori">
+        <h2>Gestione errori in C</h2>
+        <p>C non ha le eccezioni: gli errori si gestiscono controllando i <strong>valori di ritorno</strong> delle funzioni e la variabile globale <code class="inline">errno</code> (libreria <code class="inline">errno.h</code>).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+int main() {
+    FILE *f = fopen("inesistente.txt", "r");
+    if (f == NULL) {
+        printf("Errore %d: %s\n", errno, strerror(errno));
+        return 1;
+    }
+    fclose(f);
+    return 0;
+}</script>
+        </div>
+        <div class="tip-box">💡 Convenzione C: una funzione restituisce <code>0</code> in caso di successo e un valore diverso da zero in caso di errore.</div>
+      </article>
+
+      <!-- ═══ DEBUGGING ═══ -->
+      <article class="lesson" id="debugging">
+        <h2>Debugging in C</h2>
+        <p>Il <strong>debugging</strong> individua e corregge gli errori. In C gli strumenti principali sono <code class="inline">printf</code> di controllo, il debugger <strong>GDB</strong> e l'analizzatore di memoria <strong>Valgrind</strong>.</p>
+        <ul>
+          <li><strong>Errori di compilazione</strong>: segnalati da GCC (sintassi, tipi)</li>
+          <li><strong>Errori a runtime</strong>: segmentation fault, accessi a memoria non valida</li>
+          <li><strong>Memory leak</strong>: memoria allocata e mai liberata (rilevati da Valgrind)</li>
+        </ul>
+        <div class="tip-box">💡 Compila con <code>gcc -g -Wall programma.c</code>: <code>-g</code> abilita il debug con GDB, <code>-Wall</code> mostra tutti gli avvisi. Poi avvia <code>valgrind ./a.out</code> per scovare i memory leak.</div>
+      </article>
+
+      <!-- ═══ NULL ═══ -->
+      <article class="lesson" id="null">
+        <h2>NULL e puntatori nulli</h2>
+        <p><code class="inline">NULL</code> è un puntatore speciale che non punta a nulla. Si usa per indicare "nessun valore" e va sempre controllato prima di dereferenziare un puntatore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *p = NULL;   // puntatore nullo
+
+    if (p == NULL) {
+        printf("Il puntatore è nullo, non dereferenziarlo!\n");
+    }
+
+    p = malloc(sizeof(int));
+    if (p != NULL) {  // controlla sempre malloc
+        *p = 42;
+        printf("Valore: %d\n", *p);
+        free(p);
+        p = NULL;     // evita dangling pointer
+    }
+    return 0;
+}</script>
+        </div>
+        <div class="note-box">⚠️ Dereferenziare un puntatore <code>NULL</code> (es. <code>*p</code> quando <code>p == NULL</code>) causa un <em>segmentation fault</em>, il crash più comune in C.</div>
+      </article>
+
+      <!-- ═══ INPUT VALIDATION ═══ -->
+      <article class="lesson" id="input-validation">
+        <h2>Validazione dell'input</h2>
+        <p>Validare l'input dell'utente previene crash e comportamenti imprevisti. <code class="inline">scanf()</code> restituisce il numero di valori letti correttamente: controllalo sempre.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int eta;
+    printf("Inserisci la tua età: ");
+
+    if (scanf("%d", &eta) != 1) {
+        printf("Input non valido!\n");
+        return 1;
+    }
+    if (eta < 0 || eta > 120) {
+        printf("Età fuori intervallo!\n");
+        return 1;
+    }
+    printf("Hai %d anni.\n", eta);
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ DATE ═══ -->
+      <article class="lesson" id="date">
+        <h2>Data e ora</h2>
+        <p>La libreria <code class="inline">time.h</code> fornisce funzioni per gestire data e ora di sistema.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <time.h>
+
+int main() {
+    time_t adesso = time(NULL);
+    struct tm *locale = localtime(&adesso);
+
+    printf("Data e ora: %s", asctime(locale));
+    printf("Anno: %d\n", locale->tm_year + 1900);
+    printf("Timestamp: %ld\n", (long)adesso);
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ RANDOM ═══ -->
+      <article class="lesson" id="random">
+        <h2>Numeri casuali</h2>
+        <p>Le funzioni <code class="inline">rand()</code> e <code class="inline">srand()</code> (libreria <code class="inline">stdlib.h</code>) generano numeri pseudo-casuali. Si inizializza il seme con <code class="inline">srand(time(NULL))</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL));  // inizializza il seme
+
+    // 5 numeri casuali tra 1 e 6 (dado)
+    for (int i = 0; i < 5; i++) {
+        int dado = rand() % 6 + 1;
+        printf("Dado: %d\n", dado);
+    }
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ MACROS ═══ -->
+      <article class="lesson" id="macros">
+        <h2>Macro e preprocessore</h2>
+        <p>Le <strong>macro</strong> (<code class="inline">#define</code>) sono sostituzioni di testo effettuate dal preprocessore prima della compilazione. Si usano per costanti e piccole "funzioni".</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+#define PI 3.14159
+#define QUADRATO(x) ((x) * (x))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+int main() {
+    printf("Area cerchio r=5: %.2f\n", PI * QUADRATO(5));
+    printf("Massimo: %d\n", MAX(3, 7));
+    return 0;
+}</script>
+        </div>
+        <div class="tip-box">💡 Metti sempre le parentesi attorno ai parametri di una macro: <code>QUADRATO(x)</code> come <code>((x)*(x))</code> evita errori con espressioni come <code>QUADRATO(2+3)</code>.</div>
+      </article>
+
+      <!-- ═══ STORAGE CLASSES ═══ -->
+      <article class="lesson" id="storage-classes">
+        <h2>Storage classes</h2>
+        <p>Le <strong>storage classes</strong> definiscono durata, visibilità e posizione in memoria delle variabili.</p>
+        <table class="ref"><thead><tr><th>Classe</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>auto</code></td><td>Variabile locale (default), durata limitata al blocco</td></tr>
+          <tr><td><code>static</code></td><td>Conserva il valore tra le chiamate; visibilità limitata al file</td></tr>
+          <tr><td><code>extern</code></td><td>Variabile globale dichiarata in un altro file</td></tr>
+          <tr><td><code>register</code></td><td>Suggerisce di tenere la variabile in un registro CPU</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>static in azione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+void contatore() {
+    static int conta = 0;  // mantiene il valore tra le chiamate
+    conta++;
+    printf("Chiamata n. %d\n", conta);
+}
+
+int main() {
+    contatore(); // 1
+    contatore(); // 2
+    contatore(); // 3
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ BITWISE ═══ -->
+      <article class="lesson" id="bitwise">
+        <h2>Operatori bitwise</h2>
+        <p>Gli <strong>operatori bitwise</strong> lavorano sui singoli bit dei numeri. Sono usati in programmazione di basso livello, embedded e ottimizzazioni.</p>
+        <table class="ref"><thead><tr><th>Operatore</th><th>Nome</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>&amp;</code></td><td>AND</td><td><code>5 &amp; 3 = 1</code></td></tr>
+          <tr><td><code>|</code></td><td>OR</td><td><code>5 | 3 = 7</code></td></tr>
+          <tr><td><code>^</code></td><td>XOR</td><td><code>5 ^ 3 = 6</code></td></tr>
+          <tr><td><code>~</code></td><td>NOT</td><td><code>~5 = -6</code></td></tr>
+          <tr><td><code>&lt;&lt;</code></td><td>Shift sinistra</td><td><code>5 &lt;&lt; 1 = 10</code></td></tr>
+          <tr><td><code>&gt;&gt;</code></td><td>Shift destra</td><td><code>5 &gt;&gt; 1 = 2</code></td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int a = 5, b = 3;
+    printf("a & b = %d\n", a & b);   // 1
+    printf("a | b = %d\n", a | b);   // 7
+    printf("a ^ b = %d\n", a ^ b);   // 6
+    printf("a << 1 = %d\n", a << 1); // 10 (moltiplica per 2)
+    printf("a >> 1 = %d\n", a >> 1); // 2  (divide per 2)
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ ESEMPI ═══ -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi pratici C</h2>
+        <p>Esempi reali e completi per consolidare la programmazione in C.</p>
+        <h3>Numeri primi fino a N</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int n = 30;
+    for (int num = 2; num <= n; num++) {
+        int primo = 1;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) { primo = 0; break; }
+        }
+        if (primo) printf("%d ", num);
+    }
+    return 0;
+}</script>
+        </div>
+        <h3>Ordinamento bubble sort</h3>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int arr[] = {5, 2, 8, 1, 9, 3};
+    int n = 6;
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online C</h2>
+        <p>Scrivi e leggi codice C con la sintassi colorata. Per eseguirlo installa <strong>GCC</strong> (o usa <a href="https://www.onlinegdb.com/online_c_compiler" rel="noopener noreferrer" target="_blank">OnlineGDB</a>), salva come <code class="inline">programma.c</code> e compila con <code class="inline">gcc programma.c -o programma &amp;&amp; ./programma</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Il tuo codice C</span><button class="btn-try">Apri editor ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    // Scrivi qui il tuo codice C
+    printf("Ciao, mondo C!\n");
+
+    for (int i = 1; i <= 5; i++) {
+        printf("Numero: %d\n", i);
+    }
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz C — verifica le tue conoscenze</h2>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:1.2rem"><strong>Qual è la differenza tra <code>=</code> e <code>==</code>?</strong><br><em>Risposta:</em> <code>=</code> è l'assegnazione, <code>==</code> è il confronto di uguaglianza. Confonderli è un errore classico (es. <code>if(x=5)</code> assegna invece di confrontare).</li>
+          <li style="margin-bottom:1.2rem"><strong>Cosa fa l'operatore <code>&amp;</code> davanti a una variabile?</strong><br><em>Risposta:</em> Restituisce l'<strong>indirizzo di memoria</strong> della variabile. Si usa con <code>scanf</code> e con i puntatori.</li>
+          <li style="margin-bottom:1.2rem"><strong>Perché chiamare <code>free()</code> dopo <code>malloc()</code>?</strong><br><em>Risposta:</em> Per liberare la memoria allocata dinamicamente ed evitare i <em>memory leak</em>. C non ha garbage collector.</li>
+          <li style="margin-bottom:1.2rem"><strong>Cos'è un segmentation fault?</strong><br><em>Risposta:</em> Un crash causato dall'accesso a una zona di memoria non valida (es. dereferenziare <code>NULL</code> o uscire dai limiti di un array).</li>
+          <li style="margin-bottom:1.2rem"><strong>Qual è la differenza tra array e puntatore?</strong><br><em>Risposta:</em> Un array è un blocco contiguo di memoria di dimensione fissa; un puntatore è una variabile che contiene un indirizzo. Il nome dell'array "decade" nell'indirizzo del primo elemento.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi C con soluzioni</h2>
+        <p>Cinque esercizi con soluzione completa. Provaci prima di guardare!</p>
+
+        <h3>Esercizio 1 — Fattoriale</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+long fattoriale(int n) {
+    if (n <= 1) return 1;
+    return n * fattoriale(n - 1);
+}
+
+int main() {
+    printf("5! = %ld\n", fattoriale(5)); // 120
+    return 0;
+}</script>
+        </div>
+
+        <h3>Esercizio 2 — Inversione di una stringa</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[] = "Linguaggio C";
+    int len = strlen(s);
+    for (int i = len - 1; i >= 0; i--) {
+        printf("%c", s[i]);
+    }
+    printf("\n");
+    return 0;
+}</script>
+        </div>
+
+        <h3>Esercizio 3 — Massimo di un array</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int arr[] = {12, 45, 7, 89, 23, 56};
+    int n = 6, max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) max = arr[i];
+    }
+    printf("Massimo: %d\n", max); // 89
+    return 0;
+}</script>
+        </div>
+
+        <h3>Esercizio 4 — Conta vocali</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char frase[] = "Programmare in C";
+    int vocali = 0;
+    for (int i = 0; frase[i] != '\0'; i++) {
+        char c = tolower(frase[i]);
+        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u') vocali++;
+    }
+    printf("Vocali: %d\n", vocali); // 6
+    return 0;
+}</script>
+        </div>
+
+        <h3>Esercizio 5 — Serie di Fibonacci</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <pre class="codeview"><code class="language-c"></code></pre>
+          <script type="text/plain" class="code">#include <stdio.h>
+
+int main() {
+    int n = 10, a = 0, b = 1;
+    printf("%d %d ", a, b);
+    for (int i = 2; i < n; i++) {
+        int c = a + b;
+        printf("%d ", c);
+        a = b; b = c;
+    }
+    printf("\n");
+    return 0;
+}</script>
+        </div>
+      </article>
+
+      <!-- ═══ SFIDE ═══ -->
+      <article class="lesson" id="sfide">
+        <h2>Sfide C</h2>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:.8rem">🟢 Scrivi una funzione che verifica se un numero è palindromo (es. 12321).</li>
+          <li style="margin-bottom:.8rem">🟡 Implementa una <strong>calcolatrice</strong> con menu che usa puntatori a funzione per le operazioni.</li>
+          <li style="margin-bottom:.8rem">🟡 Crea una <strong>lista concatenata</strong> (linked list) con funzioni per inserire, rimuovere e stampare i nodi.</li>
+          <li style="margin-bottom:.8rem">🔴 Implementa uno <strong>stack</strong> e una <strong>coda</strong> con allocazione dinamica della memoria.</li>
+          <li style="margin-bottom:.8rem">🔴 Scrivi un programma che legge un file di testo e conta parole, righe e caratteri (come il comando <code>wc</code>).</li>
+        </ol>
+      </article>
+
+      <!-- ═══ PROGETTI ═══ -->
+      <article class="lesson" id="progetti">
+        <h2>Progetti pratici con C</h2>
+        <ul>
+          <li>🎮 <strong>Gioco indovina il numero</strong>: con numeri casuali e conteggio tentativi</li>
+          <li>📇 <strong>Rubrica telefonica</strong>: con struct, file e ricerca</li>
+          <li>🧮 <strong>Calcolatrice scientifica</strong>: con puntatori a funzione</li>
+          <li>📊 <strong>Gestione magazzino</strong>: CRUD su file binario con struct</li>
+          <li>🔢 <strong>Convertitore di basi</strong>: decimale, binario, esadecimale</li>
+          <li>📝 <strong>Editor di testo minimale</strong>: lettura/scrittura file da terminale</li>
+        </ul>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma completo del corso C</h2>
+        <table class="ref"><thead><tr><th>Modulo</th><th>Argomenti</th><th>Ore</th></tr></thead><tbody>
+          <tr><td>1 — Basi</td><td>Installazione GCC, sintassi, printf, variabili, tipi, conversione, costanti</td><td>6</td></tr>
+          <tr><td>2 — Controllo</td><td>Operatori, booleans, if/else, switch, while, for, break/continue</td><td>5</td></tr>
+          <tr><td>3 — Array e stringhe</td><td>Array, stringhe, indirizzi di memoria, puntatori</td><td>6</td></tr>
+          <tr><td>4 — Funzioni</td><td>Parametri, scope, prototipi, math, inline, ricorsione, puntatori a funzione</td><td>7</td></tr>
+          <tr><td>5 — Strutture</td><td>Struct, struct annidate, union, typedef, enum</td><td>6</td></tr>
+          <tr><td>6 — Memoria</td><td>malloc/free, NULL, errori, debugging, validazione input</td><td>6</td></tr>
+          <tr><td>7 — File</td><td>Creare, scrivere e leggere file</td><td>4</td></tr>
+          <tr><td>8 — Avanzato</td><td>Date, random, macro, storage classes, bitwise</td><td>5</td></tr>
+          <tr><td>9 — Progetto</td><td>Realizzazione di un progetto completo</td><td>8</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio C (8 settimane)</h2>
+        <table class="ref"><thead><tr><th>Settimana</th><th>Obiettivo</th></tr></thead><tbody>
+          <tr><td>1</td><td>Installazione GCC, sintassi, printf/scanf, variabili, tipi, conversione</td></tr>
+          <tr><td>2</td><td>Operatori, booleans, if/else, switch, cicli, break/continue</td></tr>
+          <tr><td>3</td><td>Array, stringhe, indirizzi di memoria, puntatori</td></tr>
+          <tr><td>4</td><td>Funzioni: parametri, scope, prototipi, ricorsione, puntatori a funzione</td></tr>
+          <tr><td>5</td><td>Struct, struct annidate, union, typedef, enum</td></tr>
+          <tr><td>6</td><td>Gestione memoria: malloc/free, NULL, debugging con GDB/Valgrind</td></tr>
+          <tr><td>7</td><td>File: creare, scrivere, leggere; gestione errori</td></tr>
+          <tr><td>8</td><td>Macro, storage classes, bitwise — progetto finale</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio C</h2>
+        <ul>
+          <li>💬 <strong>Differenza tra <code>malloc</code> e <code>calloc</code>?</strong> — Entrambi allocano memoria; <code>calloc</code> la inizializza a zero e prende numero+dimensione come parametri separati.</li>
+          <li>💬 <strong>Cos'è un dangling pointer?</strong> — Un puntatore che punta a memoria già liberata con <code>free()</code>. Per evitarlo, imposta il puntatore a <code>NULL</code> dopo il free.</li>
+          <li>💬 <strong>Differenza tra <code>struct</code> e <code>union</code>?</strong> — In una struct ogni campo ha la propria memoria; in una union tutti i campi condividono lo stesso spazio (dimensione = campo più grande).</li>
+          <li>💬 <strong>Cosa significa passaggio per valore e per riferimento?</strong> — Per valore si copia il dato (le modifiche non escono dalla funzione); con i puntatori si passa l'indirizzo, modificando l'originale.</li>
+          <li>💬 <strong>Cos'è il preprocessore?</strong> — Elabora le direttive <code>#include</code>, <code>#define</code>, <code>#ifdef</code> PRIMA della compilazione, sostituendo testo.</li>
+          <li>💬 <strong>Perché C non ha garbage collector?</strong> — Per dare al programmatore il controllo totale e massime prestazioni. La memoria va gestita manualmente con malloc/free.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ RIEPILOGO ═══ -->
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo C</h2>
+        <ul>
+          <li>✅ <strong>Sintassi</strong>: printf/scanf, variabili, tipi, conversione, costanti, operatori</li>
+          <li>✅ <strong>Controllo</strong>: booleans, if/else, switch, while, for, break/continue</li>
+          <li>✅ <strong>Dati</strong>: array, stringhe, indirizzi di memoria, puntatori</li>
+          <li>✅ <strong>Funzioni</strong>: parametri, scope, prototipi, ricorsione, inline, puntatori a funzione</li>
+          <li>✅ <strong>Strutture</strong>: struct, struct annidate, union, typedef, enum</li>
+          <li>✅ <strong>Memoria</strong>: malloc/free, NULL, dangling pointer, memory leak</li>
+          <li>✅ <strong>File</strong>: creare, scrivere, leggere con fopen/fprintf/fscanf</li>
+          <li>✅ <strong>Avanzato</strong>: macro, storage classes, operatori bitwise, date/time</li>
+        </ul>
+        <div class="note-box">📌 C è il linguaggio alla base di sistemi operativi, embedded, driver e di linguaggi come Python e Java. Padroneggiarlo dà fondamenta solide per tutta la programmazione.</div>
+      </article>
+
+      <!-- ═══ KEYWORDS REF ═══ -->
+      <article class="lesson" id="keywords-ref">
+        <h2>Riferimento — Parole chiave C</h2>
+        <table class="ref"><thead><tr><th>Keyword</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>int, char, float, double</code></td><td>Tipi di dato base</td></tr>
+          <tr><td><code>short, long, signed, unsigned</code></td><td>Modificatori di tipo</td></tr>
+          <tr><td><code>if, else, switch, case, default</code></td><td>Controllo condizionale</td></tr>
+          <tr><td><code>for, while, do</code></td><td>Cicli</td></tr>
+          <tr><td><code>break, continue, return, goto</code></td><td>Controllo di flusso</td></tr>
+          <tr><td><code>struct, union, enum, typedef</code></td><td>Tipi personalizzati</td></tr>
+          <tr><td><code>const</code></td><td>Valore costante</td></tr>
+          <tr><td><code>static, extern, auto, register</code></td><td>Storage classes</td></tr>
+          <tr><td><code>sizeof</code></td><td>Dimensione in byte di un tipo</td></tr>
+          <tr><td><code>void</code></td><td>Tipo vuoto / nessun valore</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ STDIO REF ═══ -->
+      <article class="lesson" id="stdio-ref">
+        <h2>Riferimento — &lt;stdio.h&gt;</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>printf()</code></td><td>Stampa formattata su schermo</td></tr>
+          <tr><td><code>scanf()</code></td><td>Legge input formattato da tastiera</td></tr>
+          <tr><td><code>puts()</code></td><td>Stampa una stringa + a capo</td></tr>
+          <tr><td><code>gets() / fgets()</code></td><td>Legge una riga (usa fgets, sicuro)</td></tr>
+          <tr><td><code>getchar() / putchar()</code></td><td>Legge/scrive un singolo carattere</td></tr>
+          <tr><td><code>fopen() / fclose()</code></td><td>Apre / chiude un file</td></tr>
+          <tr><td><code>fprintf() / fscanf()</code></td><td>Scrive / legge su file</td></tr>
+          <tr><td><code>fgets() / fputs()</code></td><td>Legge / scrive righe su file</td></tr>
+          <tr><td><code>sprintf()</code></td><td>Stampa formattata in una stringa</td></tr>
+        </tbody></table>
+        <h3>Specificatori di formato</h3>
+        <table class="ref"><thead><tr><th>Specificatore</th><th>Tipo</th></tr></thead><tbody>
+          <tr><td><code>%d</code></td><td>int</td></tr>
+          <tr><td><code>%f</code></td><td>float / double</td></tr>
+          <tr><td><code>%c</code></td><td>char</td></tr>
+          <tr><td><code>%s</code></td><td>stringa</td></tr>
+          <tr><td><code>%p</code></td><td>puntatore (indirizzo)</td></tr>
+          <tr><td><code>%x</code></td><td>esadecimale</td></tr>
+          <tr><td><code>%ld</code></td><td>long</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ STRING REF ═══ -->
+      <article class="lesson" id="string-ref">
+        <h2>Riferimento — &lt;string.h&gt;</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>strlen()</code></td><td>Lunghezza stringa</td><td><code>strlen("C") → 1</code></td></tr>
+          <tr><td><code>strcpy()</code></td><td>Copia una stringa</td><td><code>strcpy(dest, src)</code></td></tr>
+          <tr><td><code>strncpy()</code></td><td>Copia n caratteri (sicuro)</td><td><code>strncpy(d, s, 10)</code></td></tr>
+          <tr><td><code>strcat()</code></td><td>Concatena stringhe</td><td><code>strcat(s1, s2)</code></td></tr>
+          <tr><td><code>strcmp()</code></td><td>Confronta stringhe</td><td><code>strcmp("a","b") → -1</code></td></tr>
+          <tr><td><code>strchr()</code></td><td>Cerca un carattere</td><td><code>strchr("casa",'s')</code></td></tr>
+          <tr><td><code>strstr()</code></td><td>Cerca una sottostringa</td><td><code>strstr("casa","sa")</code></td></tr>
+          <tr><td><code>strtok()</code></td><td>Divide in token</td><td><code>strtok(s, ",")</code></td></tr>
+          <tr><td><code>memset()</code></td><td>Riempie memoria con un valore</td><td><code>memset(a, 0, n)</code></td></tr>
+          <tr><td><code>memcpy()</code></td><td>Copia blocchi di memoria</td><td><code>memcpy(d, s, n)</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ MATH REF ═══ -->
+      <article class="lesson" id="math-ref">
+        <h2>Riferimento — &lt;math.h&gt;</h2>
+        <table class="ref"><thead><tr><th>Funzione</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>sqrt()</code></td><td>Radice quadrata</td><td><code>sqrt(16) → 4.0</code></td></tr>
+          <tr><td><code>pow()</code></td><td>Potenza</td><td><code>pow(2,10) → 1024</code></td></tr>
+          <tr><td><code>fabs()</code></td><td>Valore assoluto (double)</td><td><code>fabs(-5.5) → 5.5</code></td></tr>
+          <tr><td><code>ceil()</code></td><td>Arrotonda per eccesso</td><td><code>ceil(4.1) → 5</code></td></tr>
+          <tr><td><code>floor()</code></td><td>Arrotonda per difetto</td><td><code>floor(4.9) → 4</code></td></tr>
+          <tr><td><code>round()</code></td><td>Arrotonda</td><td><code>round(4.5) → 5</code></td></tr>
+          <tr><td><code>sin() cos() tan()</code></td><td>Trigonometria (radianti)</td><td><code>sin(0) → 0</code></td></tr>
+          <tr><td><code>log() / log10()</code></td><td>Logaritmo naturale / base 10</td><td><code>log10(1000) → 3</code></td></tr>
+          <tr><td><code>exp()</code></td><td>e elevato a x</td><td><code>exp(1) → 2.718</code></td></tr>
+          <tr><td><code>fmod()</code></td><td>Resto in virgola mobile</td><td><code>fmod(7.5,2) → 1.5</code></td></tr>
+        </tbody></table>
+        <div class="note-box">📌 Per usare <code>&lt;math.h&gt;</code> compila linkando la libreria matematica: <code>gcc programma.c -lm</code></div>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione C</h2>
+        <p>Le certificazioni in linguaggio C sono apprezzate nei settori embedded, sistemi e sicurezza:</p>
+        <table class="ref"><thead><tr><th>Certificazione</th><th>Ente</th><th>Livello</th></tr></thead><tbody>
+          <tr><td>CLA — C Programming Language Certified Associate</td><td>C++ Institute / Pearson VUE</td><td>Base/Intermedio</td></tr>
+          <tr><td>CLP — C Certified Professional Programmer</td><td>C++ Institute</td><td>Avanzato</td></tr>
+          <tr><td>C Certification</td><td>W3Schools</td><td>Base</td></tr>
+        </tbody></table>
+        <h3>Come prepararsi</h3>
+        <ul>
+          <li>📚 Studia il classico <em>The C Programming Language</em> di Kernighan &amp; Ritchie (il "K&amp;R")</li>
+          <li>💻 Pratica con progetti reali: strutture dati, gestione file, allocazione dinamica</li>
+          <li>🛠️ Impara a usare GCC, GDB e Valgrind</li>
+          <li>🧪 Esercitati con mock exam del C++ Institute</li>
+          <li>⏱️ Tempo medio di preparazione CLA: 2-3 mesi</li>
+        </ul>
+      </article>
+
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di C</h2>
-        <p>Hai imparato la sintassi di C, i tipi di dato, gli operatori, le strutture di controllo, gli array, le stringhe, le funzioni e i concetti più avanzati come puntatori, struct e gestione della memoria.</p>
-        <p>Il prossimo passo è <strong>installare GCC</strong> e compilare questi esempi sul tuo computer. C è impegnativo ma formativo: ti dà basi solidissime per qualsiasi altro linguaggio. Se vuoi un percorso guidato o aiuto per una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Scrivi un programma in C che legge 10 numeri in un array, li ordina dal più piccolo al più grande e stampa la media. Prova a farlo usando una funzione separata per l'ordinamento.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso di C! Hai imparato la sintassi, i puntatori, le struct, la gestione manuale della memoria, i file e le funzionalità avanzate. C è impegnativo ma formativo: ti dà basi solidissime per qualsiasi altro linguaggio.</p>
+        <h3>E ora cosa fare?</h3>
+        <ul>
+          <li>💻 <strong>Installa GCC</strong> (MinGW su Windows, già presente su Linux/Mac) e compila in locale</li>
+          <li>🐛 <strong>Impara GDB e Valgrind</strong> per il debug e la caccia ai memory leak</li>
+          <li>🐙 <strong>Pubblica i progetti su GitHub</strong> per il tuo portfolio</li>
+          <li>🚀 <strong>Passa al C++</strong> per la programmazione a oggetti, oppure approfondisci l'<strong>embedded</strong> (Arduino, microcontrollori)</li>
+          <li>🔐 <strong>Esplora la sicurezza</strong>: buffer overflow, gestione memoria sicura</li>
+          <li>🎯 <strong>Punta alla certificazione CLA</strong> del C++ Institute</li>
+        </ul>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Scrivi un programma in C che legge 10 numeri in un array, li ordina dal più piccolo al più grande con una funzione separata e calcola media, massimo e minimo. Bonus: salva i risultati in un file di testo.</p></div>
+        <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
 
     </main>
