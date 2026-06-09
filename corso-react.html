@@ -48,6 +48,17 @@
     .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
     .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
     .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    /* colori token (stile W3Schools) */
+    .codeview .token { background: none !important; }
+    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
+    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #f472b6; }
+    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.punctuation, .codeview .token.operator { color: #94a3b8; }
+    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #5eead4; }
+    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #93c5fd; }
+    .codeview .token.attr-value .token.punctuation { color: #93c5fd; }
+    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #fbbf24; }
+    .codeview .token.class-name, .codeview .token.builtin { color: #c4b5fd; }
 
     .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
     .btn-try:hover { background: #0b7c71; }
