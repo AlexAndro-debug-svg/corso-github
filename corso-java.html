@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corso Java in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso di Java in italiano completo e gratuito: sintassi, variabili, tipi di dato, operatori, stringhe, condizioni, cicli, array, metodi e programmazione a oggetti (classi, ereditarietà, polimorfismo, interfacce). Spiegazioni approfondite con esempi di codice.">
-  <meta name="keywords" content="corso java italiano, imparare java, tutorial java gratis, java da zero, programmazione java, oop java, classi java, esercizi java">
+  <title>Corso Java in italiano completo e gratuito — Tutorial da zero con esercizi svolti | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Java italiano completo e gratuito: sintassi, OOP, Collections, File I/O, generics, lambda, thread. Esercizi svolti, quiz, progetti, riferimenti e certificazione Oracle. Tutorial Java da zero a avanzato.">
+  <meta name="keywords" content="corso java italiano, imparare java, tutorial java gratis, java da zero, esercizi java con soluzioni, esercizi java svolti, oop java, collections java, arraylist java, hashmap java, lambda java, thread java, certificazione java oracle, java per principianti, programmazione java, corso java completo, java school, java scuola superiore">
   <meta name="author" content="Alessandro Simone">
-  <meta property="og:title" content="Corso Java in italiano completo e gratuito — AlessandroSimone.it">
-  <meta property="og:description" content="Impara Java da zero in italiano: tutorial completo e approfondito con tanti esempi di codice.">
+  <meta property="og:title" content="Corso Java in italiano completo e gratuito — Tutorial da zero con esercizi | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Java da zero in italiano: OOP, Collections, File I/O, lambda, thread, esercizi svolti e certificazione Oracle.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,15 +95,15 @@
   <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-java.html">
   <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Corso Java in italiano completo e gratuito — Tutorial da zero | AlessandroSimone.it">
-  <meta name="twitter:description" content="Corso di Java in italiano completo e gratuito: sintassi, variabili, tipi di dato, operatori, stringhe, condizioni, cicli, array, metodi e programmazione a oggetti (classi, ereditarietà, polimorfismo, interfacce). Spiegazioni approfondite con esempi di codice.">
+  <meta name="twitter:title" content="Corso Java in italiano completo e gratuito — Esercizi svolti | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Java completo in italiano: OOP, Collections, lambda, thread, file I/O, esercizi svolti, quiz e certificazione Oracle.">
   <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Corso di Java in italiano",
-  "description": "Corso di Java in italiano completo e gratuito: sintassi, variabili, tipi di dato, operatori, stringhe, condizioni, cicli, array, metodi e programmazione a oggetti (classi, ereditarietà, polimorfismo, interfacce). Spiegazioni approfondite con esempi di codice.",
+  "description": "Corso Java italiano completo e gratuito: OOP, Collections, File I/O, generics, lambda, thread, esercizi svolti, quiz, riferimenti e certificazione Oracle.",
   "url": "https://alexandro-debug-svg.github.io/corso-github/corso-java.html",
   "inLanguage": "it-IT",
   "isAccessibleForFree": true,
@@ -202,6 +202,70 @@
       <a href="#interfacce">Interfacce</a>
       <a href="#arraylist">ArrayList</a>
       <a href="#eccezioni">Eccezioni</a>
+      <h4>Java Avanzato Base</h4>
+      <a href="#booleans">Booleans</a>
+      <a href="#break-continue">Break / Continue</a>
+      <h4>Metodi avanzati</h4>
+      <a href="#overloading">Overloading</a>
+      <a href="#scope">Scope</a>
+      <a href="#recursione">Ricorsione</a>
+      <h4>OOP Avanzato</h4>
+      <a href="#this-kw">Parola chiave this</a>
+      <a href="#package">Package e API</a>
+      <a href="#super">Super</a>
+      <a href="#inner-classes">Classi interne</a>
+      <a href="#abstraction">Astrazione</a>
+      <a href="#anonymous">Classi anonime</a>
+      <a href="#enum">Enum</a>
+      <a href="#date">Date</a>
+      <h4>Gestione Errori</h4>
+      <a href="#debug">Debugging</a>
+      <a href="#multi-catch">Eccezioni multiple</a>
+      <a href="#try-resources">Try-with-resources</a>
+      <h4>File I/O</h4>
+      <a href="#files">File: gestione</a>
+      <a href="#file-create">Creare file</a>
+      <a href="#file-write">Scrivere su file</a>
+      <a href="#file-read">Leggere file</a>
+      <a href="#file-delete">Eliminare file</a>
+      <a href="#fileInputStream">FileInputStream</a>
+      <a href="#fileOutputStream">FileOutputStream</a>
+      <a href="#bufferedReader">BufferedReader/Writer</a>
+      <h4>Strutture dati</h4>
+      <a href="#collections">Collections</a>
+      <a href="#linkedlist">LinkedList</a>
+      <a href="#hashset">HashSet</a>
+      <a href="#treeset">TreeSet</a>
+      <a href="#hashmap">HashMap</a>
+      <a href="#treemap">TreeMap</a>
+      <a href="#iterator">Iterator</a>
+      <a href="#algorithms">Algoritmi di ordinamento</a>
+      <h4>Java Avanzato</h4>
+      <a href="#wrapper">Wrapper class</a>
+      <a href="#generics">Generics</a>
+      <a href="#annotations">Annotazioni</a>
+      <a href="#regex">RegEx</a>
+      <a href="#threads">Thread</a>
+      <a href="#lambda">Lambda</a>
+      <h4>Esempi &amp; Pratica</h4>
+      <a href="#esempi">Esempi pratici</a>
+      <a href="#editor-online">Editor online</a>
+      <a href="#quiz">Quiz Java</a>
+      <a href="#esercizi">Esercizi svolti</a>
+      <a href="#sfide">Sfide</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#bootcamp">Bootcamp Java</a>
+      <a href="#riepilogo">Riepilogo</a>
+      <h4>Riferimenti</h4>
+      <a href="#keywords-ref">Parole chiave</a>
+      <a href="#string-ref">Metodi String</a>
+      <a href="#math-ref">Metodi Math</a>
+      <a href="#collections-ref">Collections API</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione Java</a>
       <h4>Conclusione</h4>
       <a href="#fine">E ora?</a>
     </aside>
@@ -815,12 +879,1462 @@ public class Main {
         </div>
       </article>
 
+      <!-- ═══ BOOLEANS ═══ -->
+      <article class="lesson" id="booleans">
+        <h2>Booleans in Java</h2>
+        <p>Un tipo booleano (<code class="inline">boolean</code>) può assumere solo due valori: <code class="inline">true</code> o <code class="inline">false</code>. È il tipo restituito da tutte le espressioni di confronto.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+boolean isOnline = true;
+boolean isLoggedIn = false;
+int x = 10;
+System.out.println(x > 5);   // true
+System.out.println(x == 3);  // false
+System.out.println(isOnline && isLoggedIn); // false
+System.out.println(isOnline || isLoggedIn); // true
+          </script>
+        </div>
+        <p>Gli operatori logici: <code class="inline">&&</code> (AND), <code class="inline">||</code> (OR), <code class="inline">!</code> (NOT). Sono fondamentali per condizioni composte nei blocchi <code class="inline">if</code>, <code class="inline">while</code> e <code class="inline">for</code>.</p>
+      </article>
+
+      <!-- ═══ BREAK / CONTINUE ═══ -->
+      <article class="lesson" id="break-continue">
+        <h2>Break e Continue</h2>
+        <p><code class="inline">break</code> interrompe immediatamente il ciclo (o lo <code class="inline">switch</code>). <code class="inline">continue</code> salta l'iterazione corrente e passa alla successiva.</p>
+        <div class="example">
+          <div class="codehead"><span>Break</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+for (int i = 0; i < 10; i++) {
+  if (i == 5) break;
+  System.out.println(i); // stampa 0,1,2,3,4
+}
+          </script>
+        </div>
+        <div class="example">
+          <div class="codehead"><span>Continue</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+for (int i = 0; i < 8; i++) {
+  if (i % 2 == 0) continue; // salta i pari
+  System.out.println(i); // 1,3,5,7
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ OVERLOADING ═══ -->
+      <article class="lesson" id="overloading">
+        <h2>Overloading dei metodi</h2>
+        <p>Java permette di definire più metodi con lo <strong>stesso nome</strong> ma parametri diversi (tipo o numero). Questo si chiama <em>method overloading</em>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+static int somma(int a, int b) { return a + b; }
+static double somma(double a, double b) { return a + b; }
+static int somma(int a, int b, int c) { return a + b + c; }
+
+public static void main(String[] args) {
+  System.out.println(somma(2, 3));       // 5
+  System.out.println(somma(2.5, 1.5));   // 4.0
+  System.out.println(somma(1, 2, 3));    // 6
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 L'overloading migliora la leggibilità del codice: stesso nome semantico, comportamento adattato al tipo.</div>
+      </article>
+
+      <!-- ═══ SCOPE ═══ -->
+      <article class="lesson" id="scope">
+        <h2>Scope delle variabili</h2>
+        <p>Lo <strong>scope</strong> (ambito) di una variabile determina dove può essere usata. In Java le variabili dichiarate dentro un blocco <code class="inline">{ }</code> esistono solo all'interno di quel blocco.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public static void main(String[] args) {
+  int x = 10; // scope: tutto il metodo main
+  if (x > 5) {
+    int y = 20; // scope: solo questo blocco if
+    System.out.println(y);
+  }
+  // System.out.println(y); // ERRORE: y non è visibile qui
+  System.out.println(x); // OK
+}
+          </script>
+        </div>
+        <ul>
+          <li><strong>Variabili locali</strong>: esistono solo nel metodo/blocco in cui sono dichiarate</li>
+          <li><strong>Attributi di classe</strong>: visibili in tutti i metodi della classe</li>
+          <li><strong>Variabili statiche</strong>: condivise tra tutte le istanze della classe</li>
+        </ul>
+      </article>
+
+      <!-- ═══ RECURSIONE ═══ -->
+      <article class="lesson" id="recursone">
+        <h2>Ricorsione</h2>
+        <p>Un metodo <strong>ricorsivo</strong> è un metodo che chiama se stesso. Ogni chiamata ricorsiva deve avvicinarsi a un <em>caso base</em> che interrompe la ricorsione.</p>
+        <div class="example">
+          <div class="codehead"><span>Fattoriale ricorsivo</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+static int fattoriale(int n) {
+  if (n <= 1) return 1;        // caso base
+  return n * fattoriale(n - 1); // caso ricorsivo
+}
+public static void main(String[] args) {
+  System.out.println(fattoriale(5)); // 120
+  System.out.println(fattoriale(0)); // 1
+}
+          </script>
+        </div>
+        <div class="note-box">⚠️ Senza caso base la ricorsione è infinita e genera <code>StackOverflowError</code>. Usare la ricorsione con attenzione per dati molto grandi.</div>
+      </article>
+
+      <!-- ═══ THIS ═══ -->
+      <article class="lesson" id="this-kw">
+        <h2>Parola chiave <code class="inline">this</code></h2>
+        <p><code class="inline">this</code> si riferisce all'istanza corrente della classe. Si usa per disambiguare attributi da parametri con lo stesso nome, o per chiamare un altro costruttore.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class Persona {
+  String nome;
+  int eta;
+  Persona(String nome, int eta) {
+    this.nome = nome; // disambigua dall'attributo
+    this.eta = eta;
+  }
+  void saluta() {
+    System.out.println("Ciao, sono " + this.nome);
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    Persona p = new Persona("Luca", 30);
+    p.saluta(); // Ciao, sono Luca
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ PACKAGE ═══ -->
+      <article class="lesson" id="package">
+        <h2>Package e API Java</h2>
+        <p>Un <strong>package</strong> è un raggruppamento di classi correlate, simile a una cartella. Java include una ricca libreria standard (<em>Java API</em>) organizzata in package.</p>
+        <div class="example">
+          <div class="codehead"><span>Importare package</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.ArrayList;   // importa singola classe
+import java.util.*;            // importa tutto il package
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> lista = new ArrayList<>();
+    lista.add("Java");
+    lista.add("Python");
+    System.out.println(lista);
+  }
+}
+          </script>
+        </div>
+        <table class="ref"><thead><tr><th>Package</th><th>Contenuto</th></tr></thead><tbody>
+          <tr><td><code>java.lang</code></td><td>String, Math, Integer, System (importato automaticamente)</td></tr>
+          <tr><td><code>java.util</code></td><td>ArrayList, HashMap, Scanner, Date, Collections</td></tr>
+          <tr><td><code>java.io</code></td><td>File, InputStream, OutputStream, Reader, Writer</td></tr>
+          <tr><td><code>java.time</code></td><td>LocalDate, LocalTime, LocalDateTime</td></tr>
+          <tr><td><code>java.net</code></td><td>URL, HttpURLConnection, Socket</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ SUPER ═══ -->
+      <article class="lesson" id="super">
+        <h2>Parola chiave <code class="inline">super</code></h2>
+        <p><code class="inline">super</code> fa riferimento alla classe padre (superclasse). Si usa per chiamare il costruttore o i metodi della superclasse.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class Animale {
+  String nome;
+  Animale(String nome) { this.nome = nome; }
+  void suono() { System.out.println("..."); }
+}
+class Cane extends Animale {
+  String razza;
+  Cane(String nome, String razza) {
+    super(nome);    // chiama il costruttore di Animale
+    this.razza = razza;
+  }
+  @Override
+  void suono() {
+    super.suono();  // chiama il metodo del padre
+    System.out.println(nome + " abbaia!");
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    Cane c = new Cane("Rex", "Labrador");
+    c.suono();
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ INNER CLASSES ═══ -->
+      <article class="lesson" id="inner-classes">
+        <h2>Classi interne (Inner Classes)</h2>
+        <p>Una <strong>classe interna</strong> è una classe definita all'interno di un'altra classe. Ha accesso agli attributi privati della classe esterna.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class Esterna {
+  int x = 10;
+  class Interna {
+    void stampa() {
+      System.out.println("x dall'interno: " + x);
+    }
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    Esterna est = new Esterna();
+    Esterna.Interna inn = est.new Interna();
+    inn.stampa(); // x dall'interno: 10
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ABSTRACTION ═══ -->
+      <article class="lesson" id="abstraction">
+        <h2>Astrazione</h2>
+        <p>L'<strong>astrazione</strong> nasconde i dettagli implementativi ed espone solo le funzionalità essenziali. Si realizza con <strong>classi astratte</strong> (<code class="inline">abstract</code>) e <strong>interfacce</strong>.</p>
+        <div class="example">
+          <div class="codehead"><span>Classe astratta</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+abstract class Forma {
+  abstract double area(); // metodo astratto: nessun corpo
+  void descrizione() {
+    System.out.println("Sono una forma con area: " + area());
+  }
+}
+class Cerchio extends Forma {
+  double r;
+  Cerchio(double r) { this.r = r; }
+  @Override
+  double area() { return Math.PI * r * r; }
+}
+public class Main {
+  public static void main(String[] args) {
+    Cerchio c = new Cerchio(5);
+    c.descrizione();
+  }
+}
+          </script>
+        </div>
+        <div class="note-box">📌 Una classe astratta non può essere istanziata direttamente. Deve essere estesa da una classe concreta che implementa tutti i metodi astratti.</div>
+      </article>
+
+      <!-- ═══ ANONYMOUS ═══ -->
+      <article class="lesson" id="anonymous">
+        <h2>Classi anonime</h2>
+        <p>Una <strong>classe anonima</strong> è una classe senza nome, definita e istanziata in un'unica espressione. Utile per implementare interfacce o classi astratte al volo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+interface Saluta {
+  void ciao(String nome);
+}
+public class Main {
+  public static void main(String[] args) {
+    Saluta s = new Saluta() {  // classe anonima
+      @Override
+      public void ciao(String nome) {
+        System.out.println("Ciao, " + nome + "!");
+      }
+    };
+    s.ciao("Luca"); // Ciao, Luca!
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ENUM ═══ -->
+      <article class="lesson" id="enum">
+        <h2>Enum</h2>
+        <p>Un <strong>enum</strong> (enumerazione) è un tipo speciale con un insieme fisso di costanti. Si usa per valori predefiniti come giorni, stati, direzioni.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+enum Giorno { LUN, MAR, MER, GIO, VEN, SAB, DOM }
+
+public class Main {
+  public static void main(String[] args) {
+    Giorno oggi = Giorno.MER;
+    System.out.println(oggi);       // MER
+    System.out.println(oggi.name()); // MER
+    System.out.println(oggi.ordinal()); // 2 (indice 0-based)
+    if (oggi == Giorno.MER) {
+      System.out.println("È mercoledì!");
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ DATE ═══ -->
+      <article class="lesson" id="date">
+        <h2>Date e ora in Java</h2>
+        <p>Da Java 8 si usa il package <code class="inline">java.time</code> per gestire date e orari in modo sicuro e immutabile.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+  public static void main(String[] args) {
+    LocalDate oggi = LocalDate.now();
+    System.out.println("Oggi: " + oggi);
+
+    LocalDateTime adesso = LocalDateTime.now();
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    System.out.println("Adesso: " + adesso.format(fmt));
+
+    LocalDate domani = oggi.plusDays(1);
+    System.out.println("Domani: " + domani);
+  }
+}
+          </script>
+        </div>
+        <table class="ref"><thead><tr><th>Classe</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>LocalDate</code></td><td>Solo data (anno, mese, giorno)</td></tr>
+          <tr><td><code>LocalTime</code></td><td>Solo ora (ore, minuti, secondi)</td></tr>
+          <tr><td><code>LocalDateTime</code></td><td>Data + ora</td></tr>
+          <tr><td><code>DateTimeFormatter</code></td><td>Formatta date come stringa</td></tr>
+          <tr><td><code>Period</code></td><td>Differenza tra date</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ DEBUG ═══ -->
+      <article class="lesson" id="debug">
+        <h2>Debugging in Java</h2>
+        <p>Il <strong>debugging</strong> è il processo di individuazione e correzione degli errori. Java distingue tre tipi di errori: <em>syntax errors</em> (errori di sintassi), <em>runtime errors</em> (errori a runtime) e <em>logic errors</em> (errori logici).</p>
+        <ul>
+          <li><strong>Syntax error</strong>: rilevato dal compilatore (manca <code>;</code>, parentesi, ecc.)</li>
+          <li><strong>Runtime error</strong>: genera un'eccezione durante l'esecuzione (<code>NullPointerException</code>, <code>ArrayIndexOutOfBoundsException</code>)</li>
+          <li><strong>Logic error</strong>: il programma gira ma produce risultati sbagliati</li>
+        </ul>
+        <p>Strumenti di debug: <strong>System.out.println()</strong> per stampe di controllo, <strong>IDE debugger</strong> (IntelliJ IDEA, Eclipse, VS Code) per breakpoint, watch variables, step-by-step execution.</p>
+        <div class="tip-box">💡 Usa il debugger dell'IDE: posiziona un <em>breakpoint</em> su una riga, avvia in modalità debug e osserva i valori delle variabili in tempo reale.</div>
+      </article>
+
+      <!-- ═══ MULTI-CATCH ═══ -->
+      <article class="lesson" id="multi-catch">
+        <h2>Eccezioni multiple (multi-catch)</h2>
+        <p>Java permette di catturare più tipi di eccezione nello stesso blocco <code class="inline">catch</code> usando <code class="inline">|</code>, oppure con più blocchi <code class="inline">catch</code> consecutivi.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public class Main {
+  public static void main(String[] args) {
+    try {
+      int[] arr = new int[3];
+      arr[5] = 10; // ArrayIndexOutOfBoundsException
+    } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
+      System.out.println("Errore: " + e.getMessage());
+    } catch (Exception e) {
+      System.out.println("Errore generico: " + e.getMessage());
+    } finally {
+      System.out.println("Blocco finally sempre eseguito");
+    }
+  }
+}
+          </script>
+        </div>
+        <p>Le eccezioni principali di Java:</p>
+        <table class="ref"><thead><tr><th>Eccezione</th><th>Causa</th></tr></thead><tbody>
+          <tr><td><code>NullPointerException</code></td><td>Uso di variabile non inizializzata</td></tr>
+          <tr><td><code>ArrayIndexOutOfBoundsException</code></td><td>Accesso oltre i limiti dell'array</td></tr>
+          <tr><td><code>NumberFormatException</code></td><td>Conversione stringa non numerica</td></tr>
+          <tr><td><code>ClassCastException</code></td><td>Cast tra tipi incompatibili</td></tr>
+          <tr><td><code>IllegalArgumentException</code></td><td>Argomento non valido passato a un metodo</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ TRY-WITH-RESOURCES ═══ -->
+      <article class="lesson" id="try-resources">
+        <h2>Try-with-resources</h2>
+        <p>Il <strong>try-with-resources</strong> (Java 7+) garantisce che le risorse (file, connessioni DB, stream) vengano chiuse automaticamente al termine del blocco, anche in caso di eccezione.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.*;
+
+public class Main {
+  public static void main(String[] args) {
+    // Il file viene chiuso automaticamente alla fine del try
+    try (BufferedReader br = new BufferedReader(new FileReader("testo.txt"))) {
+      String riga;
+      while ((riga = br.readLine()) != null) {
+        System.out.println(riga);
+      }
+    } catch (IOException e) {
+      System.out.println("Errore: " + e.getMessage());
+    }
+    // Non serve chiamare br.close() — lo fa automaticamente
+  }
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Funziona con qualsiasi classe che implementa <code>AutoCloseable</code>: File, Stream, Connection JDBC, ecc.</div>
+      </article>
+
+      <!-- ═══ FILES ═══ -->
+      <article class="lesson" id="files">
+        <h2>Gestione file in Java</h2>
+        <p>La classe <code class="inline">File</code> del package <code class="inline">java.io</code> permette di lavorare con file e directory: creare, leggere, scrivere, eliminare file e navigare il filesystem.</p>
+        <div class="example">
+          <div class="codehead"><span>Info su un file</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.File;
+
+public class Main {
+  public static void main(String[] args) {
+    File f = new File("dati.txt");
+    System.out.println("Esiste: " + f.exists());
+    System.out.println("Nome: " + f.getName());
+    System.out.println("Percorso: " + f.getAbsolutePath());
+    System.out.println("Dimensione: " + f.length() + " byte");
+    System.out.println("È directory: " + f.isDirectory());
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE CREATE ═══ -->
+      <article class="lesson" id="file-create">
+        <h2>Creare un file</h2>
+        <p>Il metodo <code class="inline">createNewFile()</code> crea un nuovo file vuoto. Restituisce <code class="inline">true</code> se il file è stato creato, <code class="inline">false</code> se esiste già.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.File;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    try {
+      File f = new File("mioFile.txt");
+      if (f.createNewFile()) {
+        System.out.println("File creato: " + f.getName());
+      } else {
+        System.out.println("File già esistente.");
+      }
+    } catch (IOException e) {
+      System.out.println("Errore: " + e.getMessage());
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE WRITE ═══ -->
+      <article class="lesson" id="file-write">
+        <h2>Scrivere su file</h2>
+        <p><code class="inline">FileWriter</code> scrive testo in un file. Con <code class="inline">true</code> come secondo parametro, aggiunge al file esistente (append mode).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    try {
+      FileWriter fw = new FileWriter("mioFile.txt");
+      fw.write("Prima riga\n");
+      fw.write("Seconda riga\n");
+      fw.close();
+      System.out.println("Scritto con successo!");
+    } catch (IOException e) {
+      System.out.println("Errore: " + e.getMessage());
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE READ ═══ -->
+      <article class="lesson" id="file-read">
+        <h2>Leggere un file</h2>
+        <p><code class="inline">Scanner</code> con <code class="inline">File</code> permette di leggere riga per riga un file di testo in modo semplice.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+public class Main {
+  public static void main(String[] args) {
+    try {
+      File f = new File("mioFile.txt");
+      Scanner sc = new Scanner(f);
+      while (sc.hasNextLine()) {
+        String riga = sc.nextLine();
+        System.out.println(riga);
+      }
+      sc.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("File non trovato: " + e.getMessage());
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FILE DELETE ═══ -->
+      <article class="lesson" id="file-delete">
+        <h2>Eliminare un file</h2>
+        <p>Il metodo <code class="inline">delete()</code> della classe <code class="inline">File</code> elimina un file. Restituisce <code class="inline">true</code> in caso di successo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.File;
+
+public class Main {
+  public static void main(String[] args) {
+    File f = new File("mioFile.txt");
+    if (f.delete()) {
+      System.out.println("File eliminato: " + f.getName());
+    } else {
+      System.out.println("Eliminazione fallita.");
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FileInputStream ═══ -->
+      <article class="lesson" id="fileInputStream">
+        <h2>FileInputStream e FileOutputStream</h2>
+        <p>Per leggere e scrivere file <strong>binari</strong> (immagini, PDF, audio) si usano <code class="inline">FileInputStream</code> e <code class="inline">FileOutputStream</code> che operano sui byte.</p>
+        <div class="example">
+          <div class="codehead"><span>FileInputStream</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.*;
+
+public class Main {
+  public static void main(String[] args) {
+    try (FileInputStream fis = new FileInputStream("immagine.png");
+         FileOutputStream fos = new FileOutputStream("copia.png")) {
+      int byte_letto;
+      while ((byte_letto = fis.read()) != -1) {
+        fos.write(byte_letto);
+      }
+      System.out.println("File copiato con successo!");
+    } catch (IOException e) {
+      System.out.println("Errore: " + e.getMessage());
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ BufferedReader ═══ -->
+      <article class="lesson" id="bufferedReader">
+        <h2>BufferedReader e BufferedWriter</h2>
+        <p><code class="inline">BufferedReader</code> e <code class="inline">BufferedWriter</code> aggiungono un buffer di memoria che riduce gli accessi al disco, rendendo la lettura/scrittura di file di testo molto più efficiente.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.io.*;
+
+public class Main {
+  public static void main(String[] args) {
+    // Scrittura
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("note.txt"))) {
+      bw.write("Riga uno");
+      bw.newLine();
+      bw.write("Riga due");
+    } catch (IOException e) { e.printStackTrace(); }
+
+    // Lettura
+    try (BufferedReader br = new BufferedReader(new FileReader("note.txt"))) {
+      String riga;
+      while ((riga = br.readLine()) != null) {
+        System.out.println(riga);
+      }
+    } catch (IOException e) { e.printStackTrace(); }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ COLLECTIONS ═══ -->
+      <article class="lesson" id="collections">
+        <h2>Collections Framework</h2>
+        <p>Il <strong>Java Collections Framework</strong> è un insieme di interfacce e classi per gestire gruppi di oggetti in modo efficiente. Le interfacce principali sono <code class="inline">List</code>, <code class="inline">Set</code> e <code class="inline">Map</code>.</p>
+        <table class="ref"><thead><tr><th>Interfaccia</th><th>Implementazioni principali</th><th>Caratteristica</th></tr></thead><tbody>
+          <tr><td><code>List</code></td><td>ArrayList, LinkedList</td><td>Ordinata, ammette duplicati</td></tr>
+          <tr><td><code>Set</code></td><td>HashSet, TreeSet, LinkedHashSet</td><td>Non ammette duplicati</td></tr>
+          <tr><td><code>Map</code></td><td>HashMap, TreeMap, LinkedHashMap</td><td>Coppie chiave-valore</td></tr>
+          <tr><td><code>Queue</code></td><td>LinkedList, PriorityQueue</td><td>FIFO (coda)</td></tr>
+          <tr><td><code>Deque</code></td><td>ArrayDeque</td><td>Coda a doppia entrata</td></tr>
+        </tbody></table>
+        <div class="note-box">📌 Importa sempre da <code>java.util.*</code>. Preferisci programmare con l'interfaccia (<code>List&lt;String&gt; lista = new ArrayList&lt;&gt;()</code>) per maggiore flessibilità.</div>
+      </article>
+
+      <!-- ═══ LINKEDLIST ═══ -->
+      <article class="lesson" id="linkedlist">
+        <h2>LinkedList</h2>
+        <p><code class="inline">LinkedList</code> implementa sia <code class="inline">List</code> che <code class="inline">Deque</code>. Ogni elemento è un nodo collegato al precedente e al successivo. Inserimento/cancellazione in testa o coda sono O(1), ma l'accesso casuale è O(n).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<String> ll = new LinkedList<>();
+    ll.add("A");
+    ll.addFirst("Z"); // aggiunge in testa
+    ll.addLast("M");  // aggiunge in coda
+    System.out.println(ll); // [Z, A, M]
+    ll.removeFirst();
+    System.out.println(ll); // [A, M]
+    System.out.println("Primo: " + ll.peekFirst());
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ HASHSET ═══ -->
+      <article class="lesson" id="hashset">
+        <h2>HashSet</h2>
+        <p><code class="inline">HashSet</code> è una collezione che non ammette duplicati e non garantisce nessun ordine. Usa una tabella hash internamente — operazioni di ricerca e inserimento sono O(1).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.HashSet;
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<String> frutti = new HashSet<>();
+    frutti.add("Mela");
+    frutti.add("Banana");
+    frutti.add("Mela"); // duplicato, ignorato
+    System.out.println(frutti.size()); // 2
+    System.out.println(frutti.contains("Banana")); // true
+    frutti.remove("Banana");
+    System.out.println(frutti); // [Mela]
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ TREESET ═══ -->
+      <article class="lesson" id="treeset">
+        <h2>TreeSet</h2>
+        <p><code class="inline">TreeSet</code> è un <code class="inline">Set</code> che mantiene gli elementi in <strong>ordine naturale crescente</strong> (o con un comparatore personalizzato). Usa un albero red-black internamente — operazioni O(log n).</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.TreeSet;
+
+public class Main {
+  public static void main(String[] args) {
+    TreeSet<Integer> numeri = new TreeSet<>();
+    numeri.add(5); numeri.add(2); numeri.add(8); numeri.add(1);
+    System.out.println(numeri); // [1, 2, 5, 8] — ordinato!
+    System.out.println("Min: " + numeri.first()); // 1
+    System.out.println("Max: " + numeri.last());  // 8
+    System.out.println("Sottoinsieme: " + numeri.subSet(2, 8)); // [2, 5]
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ HASHMAP ═══ -->
+      <article class="lesson" id="hashmap">
+        <h2>HashMap e TreeMap</h2>
+        <p><code class="inline">HashMap</code> memorizza coppie <em>chiave → valore</em>. Le chiavi sono uniche; i valori possono ripetersi. <code class="inline">TreeMap</code> tiene le chiavi ordinate.</p>
+        <div class="example">
+          <div class="codehead"><span>HashMap</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    HashMap<String, Integer> voti = new HashMap<>();
+    voti.put("Luca", 8);
+    voti.put("Anna", 9);
+    voti.put("Marco", 7);
+    System.out.println(voti.get("Anna")); // 9
+    System.out.println(voti.containsKey("Luca")); // true
+    for (String nome : voti.keySet()) {
+      System.out.println(nome + " → " + voti.get(nome));
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ TREEMAP ═══ -->
+      <article class="lesson" id="treemap">
+        <h2>TreeMap</h2>
+        <p><code class="inline">TreeMap</code> è come <code class="inline">HashMap</code> ma mantiene le chiavi <strong>ordinate</strong>. Utile quando serve iterare in ordine alfabetico o numerico.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.TreeMap;
+
+public class Main {
+  public static void main(String[] args) {
+    TreeMap<String, Integer> prezzi = new TreeMap<>();
+    prezzi.put("Zaino", 35);
+    prezzi.put("Agenda", 12);
+    prezzi.put("Matita", 2);
+    System.out.println(prezzi); // {Agenda=12, Matita=2, Zaino=35}
+    System.out.println("Primo: " + prezzi.firstKey());
+    System.out.println("Ultimo: " + prezzi.lastKey());
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ITERATOR ═══ -->
+      <article class="lesson" id="iterator">
+        <h2>Iterator</h2>
+        <p>Un <code class="inline">Iterator</code> permette di scorrere una collezione in modo sicuro, potendo rimuovere elementi durante l'iterazione senza <code>ConcurrentModificationException</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+    Iterator<Integer> it = numeri.iterator();
+    while (it.hasNext()) {
+      int n = it.next();
+      if (n % 2 == 0) it.remove(); // rimuove i pari
+    }
+    System.out.println(numeri); // [1, 3, 5]
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ALGORITHMS ═══ -->
+      <article class="lesson" id="algorithms">
+        <h2>Algoritmi di ordinamento e ricerca</h2>
+        <p>La classe <code class="inline">Collections</code> fornisce algoritmi pronti per ordinare, cercare e manipolare collezioni. <code class="inline">Arrays</code> fa lo stesso per gli array.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> lista = new ArrayList<>(Arrays.asList(5, 2, 8, 1, 9, 3));
+    Collections.sort(lista);
+    System.out.println("Ordinata: " + lista); // [1, 2, 3, 5, 8, 9]
+    System.out.println("Max: " + Collections.max(lista));
+    System.out.println("Min: " + Collections.min(lista));
+    Collections.reverse(lista);
+    System.out.println("Invertita: " + lista);
+    Collections.shuffle(lista);
+    System.out.println("Mescolata: " + lista);
+  }
+}
+          </script>
+        </div>
+        <table class="ref"><thead><tr><th>Complessità</th><th>Algoritmo</th><th>Best</th><th>Medio</th><th>Worst</th></tr></thead><tbody>
+          <tr><td>Collections.sort()</td><td>Timsort</td><td>O(n)</td><td>O(n log n)</td><td>O(n log n)</td></tr>
+          <tr><td>Arrays.sort()</td><td>Dual-Pivot Quicksort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td></tr>
+          <tr><td>Collections.binarySearch()</td><td>Binary search</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ WRAPPER ═══ -->
+      <article class="lesson" id="wrapper">
+        <h2>Wrapper class</h2>
+        <p>Le <strong>Wrapper class</strong> trasformano i tipi primitivi in oggetti. Sono necessarie per usare tipi primitivi nelle Collections (che accettano solo oggetti).</p>
+        <table class="ref"><thead><tr><th>Primitivo</th><th>Wrapper</th><th>Metodo utile</th></tr></thead><tbody>
+          <tr><td><code>int</code></td><td><code>Integer</code></td><td><code>Integer.parseInt("42")</code></td></tr>
+          <tr><td><code>double</code></td><td><code>Double</code></td><td><code>Double.parseDouble("3.14")</code></td></tr>
+          <tr><td><code>boolean</code></td><td><code>Boolean</code></td><td><code>Boolean.parseBoolean("true")</code></td></tr>
+          <tr><td><code>char</code></td><td><code>Character</code></td><td><code>Character.isLetter('a')</code></td></tr>
+          <tr><td><code>long</code></td><td><code>Long</code></td><td><code>Long.MAX_VALUE</code></td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Autoboxing e unboxing</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    // Autoboxing: int → Integer automatico
+    ArrayList<Integer> lista = new ArrayList<>();
+    lista.add(42); // autoboxing
+    int valore = lista.get(0); // unboxing automatico
+    System.out.println(valore);
+
+    String s = "123";
+    int n = Integer.parseInt(s);
+    System.out.println(n + 1); // 124
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ GENERICS ═══ -->
+      <article class="lesson" id="generics">
+        <h2>Generics</h2>
+        <p>I <strong>Generics</strong> permettono di scrivere classi e metodi che funzionano con qualsiasi tipo, garantendo la sicurezza a compile-time senza cast espliciti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class Coppia<T, U> {
+  T primo;
+  U secondo;
+  Coppia(T primo, U secondo) {
+    this.primo = primo;
+    this.secondo = secondo;
+  }
+  void stampa() {
+    System.out.println("(" + primo + ", " + secondo + ")");
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    Coppia<String, Integer> c1 = new Coppia<>("Java", 8);
+    Coppia<Double, Boolean> c2 = new Coppia<>(3.14, true);
+    c1.stampa(); // (Java, 8)
+    c2.stampa(); // (3.14, true)
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ANNOTATIONS ═══ -->
+      <article class="lesson" id="annotations">
+        <h2>Annotazioni (Annotations)</h2>
+        <p>Le <strong>annotazioni</strong> forniscono metadati al compilatore o al runtime. Le più usate sono predefinite in Java.</p>
+        <table class="ref"><thead><tr><th>Annotazione</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>@Override</code></td><td>Indica che un metodo sovrascrive quello della superclasse</td></tr>
+          <tr><td><code>@Deprecated</code></td><td>Segna un metodo/classe come obsoleto</td></tr>
+          <tr><td><code>@SuppressWarnings</code></td><td>Sopprime avvisi del compilatore</td></tr>
+          <tr><td><code>@FunctionalInterface</code></td><td>Indica un'interfaccia con un solo metodo astratto</td></tr>
+          <tr><td><code>@SafeVarargs</code></td><td>Sopprime avvisi per varargs generici</td></tr>
+        </tbody></table>
+        <div class="example">
+          <div class="codehead"><span>Esempio @Override</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class Veicolo {
+  void muovi() { System.out.println("Il veicolo si muove"); }
+}
+class Auto extends Veicolo {
+  @Override
+  void muovi() { System.out.println("L'auto accelera!"); }
+}
+public class Main {
+  public static void main(String[] args) {
+    Veicolo v = new Auto();
+    v.muovi(); // L'auto accelera!
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ REGEX ═══ -->
+      <article class="lesson" id="regex">
+        <h2>Espressioni regolari (RegEx)</h2>
+        <p>Le <strong>espressioni regolari</strong> (regex) sono pattern per trovare, validare e manipolare testo. In Java si usa il package <code class="inline">java.util.regex</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.regex.*;
+
+public class Main {
+  public static void main(String[] args) {
+    String email = "utente@esempio.it";
+    String pattern = "^[\\w.-]+@[\\w.-]+\\.[a-z]{2,}$";
+    boolean valida = Pattern.matches(pattern, email);
+    System.out.println("Email valida: " + valida); // true
+
+    // Trova tutte le parole
+    String testo = "Java è bellissimo";
+    Pattern p = Pattern.compile("\\b\\w+\\b");
+    Matcher m = p.matcher(testo);
+    while (m.find()) {
+      System.out.println(m.group());
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ THREADS ═══ -->
+      <article class="lesson" id="threads">
+        <h2>Thread (Programmazione concorrente)</h2>
+        <p>Un <strong>thread</strong> è un flusso di esecuzione indipendente. Java supporta la programmazione multi-thread nativamente, permettendo di eseguire più compiti in parallelo.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+class MioThread extends Thread {
+  String nome;
+  MioThread(String nome) { this.nome = nome; }
+  @Override
+  public void run() {
+    for (int i = 1; i <= 3; i++) {
+      System.out.println(nome + " - step " + i);
+      try { Thread.sleep(100); } catch (InterruptedException e) {}
+    }
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    MioThread t1 = new MioThread("Thread-A");
+    MioThread t2 = new MioThread("Thread-B");
+    t1.start();
+    t2.start();
+  }
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 In alternativa a <code>extends Thread</code>, implementa <code>Runnable</code> e passalo a un <code>Thread</code>: più flessibile perché non blocca l'ereditarietà.</div>
+      </article>
+
+      <!-- ═══ LAMBDA ═══ -->
+      <article class="lesson" id="lambda">
+        <h2>Lambda (Java 8+)</h2>
+        <p>Le <strong>espressioni lambda</strong> sono funzioni anonime compatte, usate principalmente con interfacce funzionali e le API Stream.</p>
+        <div class="example">
+          <div class="codehead"><span>Lambda + forEach</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    List<String> nomi = Arrays.asList("Luca", "Anna", "Marco", "Sofia");
+
+    // Lambda con forEach
+    nomi.forEach(n -> System.out.println("Ciao, " + n));
+
+    // Lambda con stream e filter
+    nomi.stream()
+        .filter(n -> n.length() > 4)
+        .sorted()
+        .forEach(System.out::println);
+  }
+}
+          </script>
+        </div>
+        <p>Sintassi: <code class="inline">(parametri) -> espressione</code> oppure <code class="inline">(parametri) -> { blocco; }</code></p>
+      </article>
+
+      <!-- ═══ ESEMPI PRATICI ═══ -->
+      <article class="lesson" id="esempi">
+        <h2>Esempi pratici Java</h2>
+        <p>Esempi reali e completi per consolidare la programmazione Java con OOP e strutture dati.</p>
+        <h3>Gestione rubrica con HashMap</h3>
+        <div class="example">
+          <div class="codehead"><span>Rubrica</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    HashMap<String, String> rubrica = new HashMap<>();
+    rubrica.put("Luca", "333-111-2222");
+    rubrica.put("Anna", "347-555-6666");
+    rubrica.put("Marco", "380-999-0000");
+
+    // Ricerca
+    String cerca = "Anna";
+    if (rubrica.containsKey(cerca)) {
+      System.out.println(cerca + ": " + rubrica.get(cerca));
+    }
+    // Stampa tutta la rubrica
+    for (Map.Entry<String, String> entry : rubrica.entrySet()) {
+      System.out.println(entry.getKey() + " → " + entry.getValue());
+    }
+  }
+}
+          </script>
+        </div>
+
+        <h3>Calcolo della media con ArrayList</h3>
+        <div class="example">
+          <div class="codehead"><span>Media voti</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> voti = new ArrayList<>(Arrays.asList(7, 8, 6, 9, 7, 10, 8));
+    int somma = 0;
+    for (int v : voti) somma += v;
+    double media = (double) somma / voti.size();
+    System.out.printf("Media: %.2f%n", media);
+    System.out.println("Max: " + Collections.max(voti));
+    System.out.println("Min: " + Collections.min(voti));
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online Java</h2>
+        <p>Usa l'editor qui sotto per scrivere e leggere codice Java con la sintassi colorata. Per eseguirlo installa il JDK e lancia <code class="inline">javac NomeFile.java &amp;&amp; java NomeFile</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Il tuo codice Java</span><button class="btn-try">▶ Apri editor</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public class Main {
+  public static void main(String[] args) {
+    // Scrivi qui il tuo codice Java
+    String messaggio = "Ciao, mondo Java!";
+    System.out.println(messaggio);
+
+    for (int i = 1; i <= 5; i++) {
+      System.out.println("Iterazione " + i);
+    }
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz Java — metti alla prova le tue conoscenze</h2>
+        <p>Rispondi mentalmente a queste domande e poi espandi la risposta per verificare.</p>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:1.2rem"><strong>Qual è la differenza tra <code>==</code> e <code>.equals()</code> in Java?</strong><br><em>Risposta:</em> <code>==</code> confronta i riferimenti (indirizzi in memoria); <code>.equals()</code> confronta il contenuto. Per le stringhe usa sempre <code>.equals()</code>.</li>
+          <li style="margin-bottom:1.2rem"><strong>Cosa succede se non si chiama <code>super()</code> in un costruttore figlio?</strong><br><em>Risposta:</em> Java lo chiama automaticamente se la superclasse ha un costruttore senza argomenti. Altrimenti è necessario chiamarlo esplicitamente.</li>
+          <li style="margin-bottom:1.2rem"><strong>Qual è la differenza tra <code>ArrayList</code> e <code>LinkedList</code>?</strong><br><em>Risposta:</em> <code>ArrayList</code> usa un array dinamico (accesso casuale O(1), inserimento in mezzo O(n)); <code>LinkedList</code> usa nodi collegati (inserimento in testa/coda O(1), accesso casuale O(n)).</li>
+          <li style="margin-bottom:1.2rem"><strong>Cosa significa <code>static</code>?</strong><br><em>Risposta:</em> Un membro <code>static</code> appartiene alla classe, non alle singole istanze. È condiviso tra tutti gli oggetti e si accede tramite il nome della classe.</li>
+          <li style="margin-bottom:1.2rem"><strong>Quando si usa un'interfaccia invece di una classe astratta?</strong><br><em>Risposta:</em> Si usa l'interfaccia quando si vogliono definire comportamenti da condividere tra classi non correlate. Una classe può implementare più interfacce ma estendere solo una classe.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi Java con soluzioni</h2>
+        <p>Cinque esercizi pratici con soluzione completa commentata. Prova da solo prima di leggere la soluzione!</p>
+
+        <h3>Esercizio 1 — Numeri pari tra 1 e 100</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public class Main {
+  public static void main(String[] args) {
+    System.out.print("Pari: ");
+    for (int i = 2; i <= 100; i += 2) {
+      System.out.print(i + " ");
+    }
+  }
+}
+          </script>
+        </div>
+
+        <h3>Esercizio 2 — Verifica numero primo</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public class Main {
+  static boolean isPrimo(int n) {
+    if (n < 2) return false;
+    for (int i = 2; i <= Math.sqrt(n); i++) {
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
+  public static void main(String[] args) {
+    for (int n = 2; n <= 50; n++) {
+      if (isPrimo(n)) System.out.print(n + " ");
+    }
+    // 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+  }
+}
+          </script>
+        </div>
+
+        <h3>Esercizio 3 — Classe Studente con media</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.*;
+
+class Studente {
+  String nome;
+  ArrayList<Integer> voti = new ArrayList<>();
+  Studente(String nome) { this.nome = nome; }
+  void aggiungiVoto(int v) { voti.add(v); }
+  double media() {
+    int somma = 0;
+    for (int v : voti) somma += v;
+    return voti.isEmpty() ? 0 : (double) somma / voti.size();
+  }
+  @Override
+  public String toString() {
+    return nome + " — media: " + String.format("%.2f", media());
+  }
+}
+public class Main {
+  public static void main(String[] args) {
+    Studente s = new Studente("Luca");
+    s.aggiungiVoto(8); s.aggiungiVoto(7); s.aggiungiVoto(9);
+    System.out.println(s);
+  }
+}
+          </script>
+        </div>
+
+        <h3>Esercizio 4 — Inversione di una stringa</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+public class Main {
+  static String inverti(String s) {
+    return new StringBuilder(s).reverse().toString();
+  }
+  public static void main(String[] args) {
+    System.out.println(inverti("Java"));    // avaJ
+    System.out.println(inverti("ciao"));   // oaic
+    // Palindromo?
+    String w = "radar";
+    System.out.println(w.equals(inverti(w)) ? "Palindromo" : "Non palindromo");
+  }
+}
+          </script>
+        </div>
+
+        <h3>Esercizio 5 — Stack con LinkedList</h3>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-java"></code></pre>
+          <script type="text/plain" class="code">
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<Integer> stack = new LinkedList<>();
+    stack.push(10); stack.push(20); stack.push(30); // push in cima
+    System.out.println("Stack: " + stack); // [30, 20, 10]
+    System.out.println("Pop: " + stack.pop()); // rimuove 30
+    System.out.println("Peek: " + stack.peek()); // vede 20 senza rimuovere
+    System.out.println("Stack finale: " + stack);
+  }
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ SFIDE ═══ -->
+      <article class="lesson" id="sfide">
+        <h2>Sfide Java</h2>
+        <p>Mettiti alla prova con queste sfide di crescente difficoltà:</p>
+        <ol style="list-style:decimal;margin-left:1.4rem;color:#334155">
+          <li style="margin-bottom:.8rem">🟢 Scrivi un programma che calcola il <strong>massimo comune divisore (MCD)</strong> di due numeri con l'algoritmo di Euclide.</li>
+          <li style="margin-bottom:.8rem">🟡 Implementa una <strong>lista doppiamente collegata</strong> con metodi per aggiungere, rimuovere e stampare tutti i nodi.</li>
+          <li style="margin-bottom:.8rem">🟡 Crea una classe <strong>Libreria</strong> che gestisce libri (aggiungi, rimuovi, cerca per autore) usando ArrayList.</li>
+          <li style="margin-bottom:.8rem">🔴 Implementa un <strong>albero binario di ricerca</strong> (BST) con metodi di inserimento e visita in-order.</li>
+          <li style="margin-bottom:.8rem">🔴 Scrivi un programma che usa i <strong>thread</strong> per simulare produttore-consumatore con una coda condivisa.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ PROGETTI ═══ -->
+      <article class="lesson" id="progetti">
+        <h2>Progetti pratici con Java</h2>
+        <p>Progetti reali per consolidare le competenze Java e arricchire il portfolio:</p>
+        <ul>
+          <li>📱 <strong>Gestione biblioteca</strong>: CRUD per libri/utenti con file CSV come persistenza</li>
+          <li>🧮 <strong>Calcolatrice scientifica</strong>: con interfaccia grafica usando Java Swing</li>
+          <li>🎮 <strong>Gioco Tris</strong>: implementazione testuale di tic-tac-toe con AI minimax</li>
+          <li>📊 <strong>Analisi dati CSV</strong>: leggi file CSV, calcola statistiche, ordina e filtra</li>
+          <li>🌐 <strong>Client HTTP</strong>: scarica pagine web con <code>HttpURLConnection</code> e analizza il contenuto</li>
+          <li>🏦 <strong>Banca OOP</strong>: sistema bancario completo con account, transazioni, eredità</li>
+        </ul>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma completo del corso Java</h2>
+        <p>Struttura modulare del corso, ideale per scuola superiore e autodidatti:</p>
+        <table class="ref"><thead><tr><th>Modulo</th><th>Argomenti</th><th>Ore</th></tr></thead><tbody>
+          <tr><td>1 — Basi</td><td>Installazione JDK, Hello World, variabili, tipi, operatori</td><td>6</td></tr>
+          <tr><td>2 — Controllo</td><td>If/else, switch, while, for, break, continue</td><td>5</td></tr>
+          <tr><td>3 — Array e metodi</td><td>Array 1D/2D, metodi, overloading, scope, ricorsione</td><td>6</td></tr>
+          <tr><td>4 — OOP base</td><td>Classi, oggetti, costruttori, modificatori, incapsulamento</td><td>8</td></tr>
+          <tr><td>5 — OOP avanzato</td><td>Ereditarietà, polimorfismo, interfacce, this, super, abstract, enum</td><td>8</td></tr>
+          <tr><td>6 — Eccezioni &amp; File</td><td>Try/catch, multi-catch, try-with-resources, I/O file</td><td>5</td></tr>
+          <tr><td>7 — Collections</td><td>List, Set, Map, Iterator, algoritmi</td><td>6</td></tr>
+          <tr><td>8 — Avanzato</td><td>Generics, lambda, thread, regex, annotazioni</td><td>6</td></tr>
+          <tr><td>9 — Progetto</td><td>Realizzazione di un progetto completo</td><td>8</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio Java (8 settimane)</h2>
+        <table class="ref"><thead><tr><th>Settimana</th><th>Obiettivo</th></tr></thead><tbody>
+          <tr><td>1</td><td>Installazione JDK, sintassi base, tipi, operatori, I/O da tastiera</td></tr>
+          <tr><td>2</td><td>Strutture di controllo: if/else, switch, while, for, break/continue</td></tr>
+          <tr><td>3</td><td>Array, metodi, parametri, overloading, ricorsione</td></tr>
+          <tr><td>4</td><td>OOP: classi, oggetti, costruttori, modificatori, incapsulamento</td></tr>
+          <tr><td>5</td><td>OOP avanzato: ereditarietà, polimorfismo, interfacce, abstract, enum</td></tr>
+          <tr><td>6</td><td>Eccezioni, file I/O, try-with-resources</td></tr>
+          <tr><td>7</td><td>Collections Framework: ArrayList, HashMap, HashSet, TreeMap, Iterator</td></tr>
+          <tr><td>8</td><td>Lambda, thread, generics — progetto finale</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio Java</h2>
+        <p>Le domande Java più frequenti in colloqui tecnici e selezioni universitarie:</p>
+        <ul>
+          <li>💬 <strong>Spiega il principio SOLID.</strong> — Cinque principi di buona progettazione OOP: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.</li>
+          <li>💬 <strong>Cosa è il garbage collector?</strong> — Processo JVM che libera automaticamente la memoria non più referenziata.</li>
+          <li>💬 <strong>Differenza tra <code>HashMap</code> e <code>Hashtable</code>?</strong> — <code>HashMap</code> non è sincronizzata (più veloce), <code>Hashtable</code> è thread-safe ma obsoleta. Per concorrenza usa <code>ConcurrentHashMap</code>.</li>
+          <li>💬 <strong>Cos'è il pattern Singleton?</strong> — Garantisce che una classe abbia una sola istanza. Si implementa con costruttore privato e metodo statico <code>getInstance()</code>.</li>
+          <li>💬 <strong>Cosa sono le Stream API?</strong> — Introdotte in Java 8, permettono operazioni funzionali (filter, map, reduce) su collezioni in modo fluente e leggibile.</li>
+          <li>💬 <strong>Differenza tra <code>abstract class</code> e <code>interface</code>?</strong> — La classe astratta può avere stato e implementazioni parziali; l'interfaccia definisce solo contratti (da Java 8 può avere metodi <code>default</code>). Una classe estende una sola classe ma implementa più interfacce.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ BOOTCAMP ═══ -->
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp Java intensivo (2 settimane)</h2>
+        <p>Piano accelerato per chi vuole padroneggiare Java rapidamente. 4-5 ore al giorno.</p>
+        <table class="ref"><thead><tr><th>Giorno</th><th>Contenuto</th></tr></thead><tbody>
+          <tr><td>1-2</td><td>Setup JDK, sintassi, variabili, tipi, operatori, I/O, condizioni, cicli</td></tr>
+          <tr><td>3</td><td>Array, metodi, scope, overloading, varargs</td></tr>
+          <tr><td>4-5</td><td>OOP: classi, oggetti, costruttori, modificatori, incapsulamento, ereditarietà</td></tr>
+          <tr><td>6</td><td>Polimorfismo, interfacce, classi astratte, enum, inner classes</td></tr>
+          <tr><td>7</td><td>Eccezioni, debugging, try-with-resources</td></tr>
+          <tr><td>8</td><td>File I/O: FileWriter, BufferedReader, FileInputStream</td></tr>
+          <tr><td>9-10</td><td>Collections: ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap</td></tr>
+          <tr><td>11</td><td>Generics, lambda, Stream API, annotazioni</td></tr>
+          <tr><td>12</td><td>Thread, concorrenza, regex, date/time API</td></tr>
+          <tr><td>13-14</td><td>Progetto finale + revisione + domande da colloquio</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ RIEPILOGO ═══ -->
+      <article class="lesson" id="riepilogo">
+        <h2>Riepilogo Java</h2>
+        <p>I concetti fondamentali che ogni programmatore Java deve padroneggiare:</p>
+        <ul>
+          <li>✅ <strong>Sintassi</strong>: tipi primitivi, variabili, operatori, casting, stringhe</li>
+          <li>✅ <strong>Controllo</strong>: if/else, switch, while, for, break, continue</li>
+          <li>✅ <strong>Metodi</strong>: parametri, return, overloading, scope, ricorsione</li>
+          <li>✅ <strong>OOP</strong>: classi, costruttori, incapsulamento, ereditarietà, polimorfismo, interfacce</li>
+          <li>✅ <strong>OOP avanzato</strong>: abstract, enum, inner classes, anonymous, this, super, package</li>
+          <li>✅ <strong>Eccezioni</strong>: try/catch/finally, multi-catch, eccezioni custom, try-with-resources</li>
+          <li>✅ <strong>File I/O</strong>: File, FileWriter, BufferedReader, FileInputStream</li>
+          <li>✅ <strong>Collections</strong>: ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap, Iterator</li>
+          <li>✅ <strong>Java moderno</strong>: Generics, lambda, Stream API, thread, regex, annotazioni</li>
+        </ul>
+        <div class="note-box">📌 Java è il linguaggio più richiesto nelle aziende italiane per backend enterprise. Padroneggiarlo apre le porte a ruoli da Java Developer, Android Developer e Software Engineer.</div>
+      </article>
+
+      <!-- ═══ KEYWORDS REF ═══ -->
+      <article class="lesson" id="keywords-ref">
+        <h2>Riferimento — Parole chiave Java</h2>
+        <table class="ref"><thead><tr><th>Keyword</th><th>Uso</th></tr></thead><tbody>
+          <tr><td><code>class</code></td><td>Definisce una classe</td></tr>
+          <tr><td><code>interface</code></td><td>Definisce un'interfaccia</td></tr>
+          <tr><td><code>extends</code></td><td>Ereditarietà (classe)</td></tr>
+          <tr><td><code>implements</code></td><td>Implementa un'interfaccia</td></tr>
+          <tr><td><code>abstract</code></td><td>Classe o metodo astratto</td></tr>
+          <tr><td><code>static</code></td><td>Membro di classe (non di istanza)</td></tr>
+          <tr><td><code>final</code></td><td>Costante / classe non ereditabile</td></tr>
+          <tr><td><code>private / public / protected</code></td><td>Modificatori d'accesso</td></tr>
+          <tr><td><code>new</code></td><td>Crea un nuovo oggetto</td></tr>
+          <tr><td><code>this</code></td><td>Riferimento all'istanza corrente</td></tr>
+          <tr><td><code>super</code></td><td>Riferimento alla superclasse</td></tr>
+          <tr><td><code>return</code></td><td>Restituisce un valore dal metodo</td></tr>
+          <tr><td><code>void</code></td><td>Metodo senza valore di ritorno</td></tr>
+          <tr><td><code>try / catch / finally</code></td><td>Gestione eccezioni</td></tr>
+          <tr><td><code>throw / throws</code></td><td>Lancia eccezioni</td></tr>
+          <tr><td><code>import</code></td><td>Importa classi da package</td></tr>
+          <tr><td><code>package</code></td><td>Raggruppa classi</td></tr>
+          <tr><td><code>enum</code></td><td>Tipo enumerazione</td></tr>
+          <tr><td><code>instanceof</code></td><td>Verifica il tipo di un oggetto</td></tr>
+          <tr><td><code>synchronized</code></td><td>Blocco thread-safe</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ STRING REF ═══ -->
+      <article class="lesson" id="string-ref">
+        <h2>Riferimento — Metodi String</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>length()</code></td><td>Lunghezza della stringa</td><td><code>"Java".length() → 4</code></td></tr>
+          <tr><td><code>charAt(i)</code></td><td>Carattere all'indice i</td><td><code>"Java".charAt(1) → 'a'</code></td></tr>
+          <tr><td><code>substring(a,b)</code></td><td>Sottostringa da a a b</td><td><code>"Java".substring(1,3) → "av"</code></td></tr>
+          <tr><td><code>toUpperCase()</code></td><td>Converte in maiuscolo</td><td><code>"java".toUpperCase() → "JAVA"</code></td></tr>
+          <tr><td><code>toLowerCase()</code></td><td>Converte in minuscolo</td><td><code>"JAVA".toLowerCase() → "java"</code></td></tr>
+          <tr><td><code>trim()</code></td><td>Rimuove spazi iniziali/finali</td><td><code>" ciao ".trim() → "ciao"</code></td></tr>
+          <tr><td><code>replace(a,b)</code></td><td>Sostituisce occorrenze</td><td><code>"ciao".replace("a","o") → "cioo"</code></td></tr>
+          <tr><td><code>contains(s)</code></td><td>Controlla se contiene s</td><td><code>"Java".contains("av") → true</code></td></tr>
+          <tr><td><code>startsWith(s)</code></td><td>Inizia con s?</td><td><code>"Java".startsWith("Ja") → true</code></td></tr>
+          <tr><td><code>endsWith(s)</code></td><td>Finisce con s?</td><td><code>"Java".endsWith("va") → true</code></td></tr>
+          <tr><td><code>indexOf(s)</code></td><td>Posizione prima occorrenza</td><td><code>"Java".indexOf("a") → 1</code></td></tr>
+          <tr><td><code>split(regex)</code></td><td>Divide in array</td><td><code>"a,b,c".split(",") → ["a","b","c"]</code></td></tr>
+          <tr><td><code>equals(s)</code></td><td>Confronto contenuto</td><td><code>"Java".equals("Java") → true</code></td></tr>
+          <tr><td><code>equalsIgnoreCase(s)</code></td><td>Confronto senza case</td><td><code>"java".equalsIgnoreCase("JAVA") → true</code></td></tr>
+          <tr><td><code>isEmpty()</code></td><td>Stringa vuota?</td><td><code>"".isEmpty() → true</code></td></tr>
+          <tr><td><code>toCharArray()</code></td><td>Converte in array di char</td><td><code>"hi".toCharArray() → ['h','i']</code></td></tr>
+          <tr><td><code>valueOf(x)</code></td><td>Converte in stringa</td><td><code>String.valueOf(42) → "42"</code></td></tr>
+          <tr><td><code>format()</code></td><td>Stringa formattata</td><td><code>String.format("%.2f", 3.14) → "3,14"</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ MATH REF ═══ -->
+      <article class="lesson" id="math-ref">
+        <h2>Riferimento — Metodi Math</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th><th>Esempio</th></tr></thead><tbody>
+          <tr><td><code>Math.abs(x)</code></td><td>Valore assoluto</td><td><code>Math.abs(-5) → 5</code></td></tr>
+          <tr><td><code>Math.max(a,b)</code></td><td>Massimo tra a e b</td><td><code>Math.max(3,7) → 7</code></td></tr>
+          <tr><td><code>Math.min(a,b)</code></td><td>Minimo tra a e b</td><td><code>Math.min(3,7) → 3</code></td></tr>
+          <tr><td><code>Math.pow(b,e)</code></td><td>b elevato alla e</td><td><code>Math.pow(2,10) → 1024.0</code></td></tr>
+          <tr><td><code>Math.sqrt(x)</code></td><td>Radice quadrata</td><td><code>Math.sqrt(16) → 4.0</code></td></tr>
+          <tr><td><code>Math.round(x)</code></td><td>Arrotonda all'intero più vicino</td><td><code>Math.round(3.7) → 4</code></td></tr>
+          <tr><td><code>Math.floor(x)</code></td><td>Arrotonda per difetto</td><td><code>Math.floor(3.9) → 3.0</code></td></tr>
+          <tr><td><code>Math.ceil(x)</code></td><td>Arrotonda per eccesso</td><td><code>Math.ceil(3.1) → 4.0</code></td></tr>
+          <tr><td><code>Math.random()</code></td><td>Numero casuale [0.0, 1.0)</td><td><code>Math.random() → es. 0.42</code></td></tr>
+          <tr><td><code>Math.PI</code></td><td>π ≈ 3.14159</td><td><code>Math.PI * r * r</code></td></tr>
+          <tr><td><code>Math.log(x)</code></td><td>Logaritmo naturale</td><td><code>Math.log(Math.E) → 1.0</code></td></tr>
+          <tr><td><code>Math.sin/cos/tan(rad)</code></td><td>Funzioni trigonometriche</td><td><code>Math.sin(Math.PI/2) → 1.0</code></td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ COLLECTIONS REF ═══ -->
+      <article class="lesson" id="collections-ref">
+        <h2>Riferimento — Collections API</h2>
+        <table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th></tr></thead><tbody>
+          <tr><td><code>Collections.sort(list)</code></td><td>Ordina la lista in ordine naturale</td></tr>
+          <tr><td><code>Collections.sort(list, comp)</code></td><td>Ordina con comparatore personalizzato</td></tr>
+          <tr><td><code>Collections.reverse(list)</code></td><td>Inverte l'ordine degli elementi</td></tr>
+          <tr><td><code>Collections.shuffle(list)</code></td><td>Mescola casualmente</td></tr>
+          <tr><td><code>Collections.max(col)</code></td><td>Elemento massimo</td></tr>
+          <tr><td><code>Collections.min(col)</code></td><td>Elemento minimo</td></tr>
+          <tr><td><code>Collections.frequency(col, obj)</code></td><td>Conteggio di obj nella collezione</td></tr>
+          <tr><td><code>Collections.nCopies(n, obj)</code></td><td>Lista con n copie di obj</td></tr>
+          <tr><td><code>Collections.unmodifiableList(list)</code></td><td>Lista immutabile</td></tr>
+          <tr><td><code>Collections.synchronizedList(list)</code></td><td>Lista thread-safe</td></tr>
+          <tr><td><code>Arrays.asList(a, b, c)</code></td><td>Crea una lista da valori</td></tr>
+          <tr><td><code>Arrays.sort(arr)</code></td><td>Ordina array primitivo</td></tr>
+          <tr><td><code>Arrays.copyOf(arr, n)</code></td><td>Copia i primi n elementi</td></tr>
+          <tr><td><code>Arrays.fill(arr, v)</code></td><td>Riempie tutto l'array con v</td></tr>
+        </tbody></table>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione Java</h2>
+        <p>Oracle offre certificazioni ufficiali Java molto apprezzate nel mercato del lavoro:</p>
+        <table class="ref"><thead><tr><th>Certificazione</th><th>Livello</th><th>Prerequisiti</th></tr></thead><tbody>
+          <tr><td>Oracle Certified Foundations Associate (OCFA) Java</td><td>Base</td><td>Nessuno</td></tr>
+          <tr><td>Oracle Certified Associate (OCA) — Java SE 8</td><td>Intermedio</td><td>Basi Java</td></tr>
+          <tr><td>Oracle Certified Professional (OCP) — Java SE 11/17/21</td><td>Avanzato</td><td>OCA o esperienza</td></tr>
+          <tr><td>Oracle Certified Expert (OCE) — Java EE</td><td>Enterprise</td><td>OCP</td></tr>
+        </tbody></table>
+        <h3>Come prepararsi</h3>
+        <ul>
+          <li>📚 Studia il materiale ufficiale Oracle (<a href="https://education.oracle.com" rel="noopener noreferrer" target="_blank">education.oracle.com</a>)</li>
+          <li>📖 Libri consigliati: <em>OCP Java SE 17 Developer Complete Study Guide</em> di Jeanne Boyarsky</li>
+          <li>🧪 Pratica con mock exam su Enthuware o Whizlabs</li>
+          <li>💻 Progetto reale con almeno 3 moduli OOP + Collections + I/O</li>
+          <li>⏱️ Tempo medio di preparazione: 3-4 mesi con 2 ore al giorno</li>
+        </ul>
+      </article>
+
       <article class="lesson" id="fine" style="border-bottom:none">
-        <h2>Complimenti! 🎉 Hai completato il corso di Java</h2>
-        <p>Hai imparato la sintassi di Java, i tipi di dato, gli operatori, le strutture di controllo, gli array e i metodi, fino alla programmazione a oggetti (classi, costruttori, ereditarietà, polimorfismo e interfacce).</p>
-        <p>Il prossimo passo è <strong>installare il JDK</strong> ed eseguire questi esempi sul tuo computer, modificandoli e sperimentando. Se vuoi un percorso guidato o aiuto per un progetto o una verifica, posso seguirti con le ripetizioni in presenza a Roma.</p>
-        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida</span><p>Realizza una classe ContoBancario con metodi per versare, prelevare (senza andare in rosso) e visualizzare il saldo. Poi crea due conti e simula qualche operazione.</p></div>
-        <div class='hero-actions'><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href='prenota.html' class='btn btn-accent'>📅 Prenota una lezione</a></div>
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso di Java! Hai imparato la sintassi, la programmazione a oggetti, la gestione degli errori, il file I/O, le Collections e le funzionalità moderne di Java (lambda, generics, thread). Sei pronto per costruire applicazioni reali.</p>
+        <h3>E ora cosa fare?</h3>
+        <ul>
+          <li>💻 <strong>Installa IntelliJ IDEA Community</strong> (gratuito) — il miglior IDE per Java</li>
+          <li>🐙 <strong>Carica i tuoi progetti su GitHub</strong> — fondamentale per il portfolio</li>
+          <li>🌐 <strong>Studia Spring Boot</strong> — il framework Java più usato per web API</li>
+          <li>📱 <strong>Prova Android Studio</strong> — sviluppa app Android con Java/Kotlin</li>
+          <li>🎯 <strong>Affronta la certificazione OCA/OCP</strong> — riconosciuta dalle aziende</li>
+          <li>📖 Leggi <em>Effective Java</em> di Joshua Bloch — la bibbia del Java avanzato</li>
+        </ul>
+        <div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Realizza una classe <strong>ContoBancario</strong> con metodi per versare, prelevare (senza andare in rosso) e visualizzare il saldo. Usa ArrayList per registrare tutte le transazioni con data e importo. Poi crea due conti, simula operazioni e stampa l'estratto conto.</p></div>
+        <div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
       </article>
 
     </main>
