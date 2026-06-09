@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso React in italiano completo e gratuito — Componenti, Hook e JSX da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso React italiano completo e gratuito: JSX, componenti, props, state, eventi, hook (useState, useEffect, useContext, useRef, useReducer), router, form, CSS Modules, CSS-in-JS, Sass. Quiz, programma e certificazione.">
+  <meta name="keywords" content="corso react italiano, imparare react, react tutorial italiano, jsx, componenti react, props react, state react, hook react, usestate, useeffect, usecontext, useref, usereducer, usecallback, usememo, custom hooks, react router, react form, css modules react, certificazione react, quiz react">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso React in italiano completo e gratuito — Componenti, Hook e JSX | AlessandroSimone.it">
+  <meta property="og:description" content="Impara React da zero in italiano: JSX, componenti, props, eventi, hook, router, form, CSS-in-JS, Sass, quiz e certificazione. Tutorial completo e gratuito.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side {
+      position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto;
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.1rem; font-size: .9rem;
+    }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
+    .ed-btn:hover { background: var(--bg-soft); }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: #f8fafc; border-bottom: 1px solid var(--border); padding: .35rem .9rem; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+
+    @media (max-width: 900px){
+      .course-wrap { grid-template-columns: 1fr; }
+      .course-side { position: static; max-height: none; }
+      .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+    }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-react.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-react.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso React in italiano completo e gratuito — Componenti, Hook e JSX | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial React completo in italiano: JSX, componenti, props, hook, router, form, CSS-in-JS, Sass, quiz e certificazione.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Corso React in italiano",
+  "description": "Corso React italiano completo e gratuito: JSX, componenti, props, state, eventi, hook (useState, useEffect, useContext, useRef, useReducer, useCallback, useMemo), router, form, CSS Modules, Sass, quiz, programma e certificazione.",
+  "url": "https://alexandro-debug-svg.github.io/corso-github/corso-react.html",
+  "inLanguage": "it-IT",
+  "isAccessibleForFree": true,
+  "provider": {
+    "@type": "Person",
+    "name": "Alessandro Simone",
+    "url": "https://alexandro-debug-svg.github.io/corso-github"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  }
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="corsi.html">Corsi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html" class="active">REACT</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso React in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il tutorial completo per imparare React da zero: JSX, componenti, props, state, hook, router, form, CSS-in-JS e molto altro.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>React Tutorial</h4>
+      <a href="#intro">Introduzione</a>
+      <a href="#getstarted">Guida introduttiva</a>
+      <a href="#firstapp">Prima app</a>
+      <a href="#renderhtml">Render HTML</a>
+      <a href="#upgrade">Upgrade</a>
+      <a href="#es6">ES6</a>
+      <h4>JSX</h4>
+      <a href="#jsx-intro">JSX Introduzione</a>
+      <a href="#jsx-expressions">JSX Espressioni</a>
+      <a href="#jsx-attributes">JSX Attributi</a>
+      <a href="#jsx-if">JSX If Statements</a>
+      <h4>Componenti</h4>
+      <a href="#components">Componenti</a>
+      <a href="#class">Class Components</a>
+      <h4>Props</h4>
+      <a href="#props">Props</a>
+      <a href="#props-destructuring">Destructuring</a>
+      <a href="#props-children">Children</a>
+      <h4>Interattività</h4>
+      <a href="#events">Eventi</a>
+      <a href="#conditionals">Condizionali</a>
+      <a href="#lists">Liste</a>
+      <h4>Form</h4>
+      <a href="#forms">Form</a>
+      <a href="#forms-submit">Submit</a>
+      <a href="#forms-textarea">Textarea</a>
+      <a href="#forms-select">Select</a>
+      <a href="#forms-multiple">Input multipli</a>
+      <a href="#forms-checkbox">Checkbox</a>
+      <a href="#forms-radio">Radio</a>
+      <h4>Avanzato</h4>
+      <a href="#portals">Portals</a>
+      <a href="#suspense">Suspense</a>
+      <a href="#css-styling">CSS Styling</a>
+      <a href="#css-modules">CSS Modules</a>
+      <a href="#css-in-js">CSS-in-JS</a>
+      <a href="#router">Router</a>
+      <a href="#transitions">Transitions</a>
+      <a href="#forward-ref">Forward Ref</a>
+      <a href="#hoc">HOC</a>
+      <a href="#sass">Sass</a>
+      <h4>React Hooks</h4>
+      <a href="#usestate">useState</a>
+      <a href="#useeffect">useEffect</a>
+      <a href="#usecontext">useContext</a>
+      <a href="#useref">useRef</a>
+      <a href="#usereducer">useReducer</a>
+      <a href="#usecallback">useCallback</a>
+      <a href="#usememo">useMemo</a>
+      <a href="#custom-hooks">Custom Hooks</a>
+      <h4>Esami &amp; Pratica</h4>
+      <a href="#quiz">Quiz React</a>
+      <a href="#esercizi">Esercizi</a>
+      <a href="#programma">Programma del corso</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#bootcamp">Bootcamp</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione React</a>
+      <h4>Conclusione</h4>
+      <a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+      <!-- ═══ INTRO ═══ -->
+      <article class="lesson" id="intro">
+        <h2>Introduzione a React</h2>
+        <p><strong>React</strong> è una libreria JavaScript open-source sviluppata da Facebook (Meta) per costruire interfacce utente interattive. È la tecnologia frontend più usata al mondo ed è alla base di app come Facebook, Instagram, WhatsApp Web e migliaia di applicazioni aziendali.</p>
+        <p>React introduce un approccio basato su <strong>componenti</strong> riutilizzabili: ogni pezzo dell'interfaccia (pulsante, menu, modulo) è un componente indipendente con la propria logica. Questo rende il codice più organizzato, testabile e scalabile.</p>
+        <h3>Perché imparare React?</h3>
+        <ul>
+          <li>🏆 La libreria frontend più richiesta nelle offerte di lavoro</li>
+          <li>⚡ Virtual DOM per aggiornamenti ultra-veloci dell'interfaccia</li>
+          <li>🧩 Architettura a componenti riutilizzabili</li>
+          <li>🌍 Ecosistema enorme: React Router, Redux, Next.js, React Native</li>
+          <li>📱 Con React Native puoi creare app mobile iOS e Android</li>
+        </ul>
+        <div class="note-box">⚛️ React non è un framework completo: gestisce solo la <strong>view</strong> (la UI). Per routing, state globale e altro si usano librerie aggiuntive dell'ecosistema React.</div>
+        <div class="example">
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Il tuo primo componente React
+function Benvenuto() {
+  return <h1>Ciao, React! 👋</h1>;
+}
+
+// Uso del componente
+function App() {
+  return (
+    <div>
+      <Benvenuto />
+      <p>Questo è il mio primo componente React.</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ GET STARTED ═══ -->
+      <article class="lesson" id="getstarted">
+        <h2>Guida introduttiva</h2>
+        <p>Il modo più rapido per iniziare con React oggi è usare <strong>Vite</strong>, uno strumento di build moderno che crea in pochi secondi un progetto React pronto all'uso.</p>
+        <h3>Creare un progetto React con Vite</h3>
+        <div class="example">
+          <div class="codehead"><span>Terminale</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+# Crea il progetto (richiede Node.js installato)
+npm create vite@latest mia-app -- --template react
+cd mia-app
+npm install
+npm run dev
+          </script>
+        </div>
+        <p>Dopo aver eseguito questi comandi, apri il browser su <code class="inline">http://localhost:5173</code> per vedere la tua app React in esecuzione.</p>
+        <h3>Struttura base del progetto</h3>
+        <table class="ref">
+          <tr><th>File/cartella</th><th>Descrizione</th></tr>
+          <tr><td><code class="inline">src/App.jsx</code></td><td>Componente principale dell'app</td></tr>
+          <tr><td><code class="inline">src/main.jsx</code></td><td>Punto di ingresso — monta React nel DOM</td></tr>
+          <tr><td><code class="inline">index.html</code></td><td>HTML di base con div#root</td></tr>
+          <tr><td><code class="inline">vite.config.js</code></td><td>Configurazione di Vite</td></tr>
+          <tr><td><code class="inline">package.json</code></td><td>Dipendenze e script</td></tr>
+        </table>
+        <div class="tip-box">💡 In alternativa a Vite puoi usare <strong>Create React App</strong> (più lento ma storico) oppure <strong>Next.js</strong> per app con SSR (server-side rendering).</div>
+      </article>
+
+      <!-- ═══ FIRST APP ═══ -->
+      <article class="lesson" id="firstapp">
+        <h2>Prima applicazione React</h2>
+        <p>Il file <code class="inline">main.jsx</code> è il punto di ingresso: monta il componente radice nell'elemento HTML con <code class="inline">id="root"</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>main.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+          </script>
+        </div>
+        <div class="example">
+          <div class="codehead"><span>App.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function App() {
+  return (
+    <div className="App">
+      <h1>La mia prima app React</h1>
+      <p>Benvenuto nel mondo dei componenti!</p>
+    </div>
+  );
+}
+
+export default App;
+          </script>
+        </div>
+        <div class="note-box">⚛️ React usa <code class="inline">className</code> al posto di <code class="inline">class</code> perché <code>class</code> è una parola riservata in JavaScript.</div>
+      </article>
+
+      <!-- ═══ RENDER HTML ═══ -->
+      <article class="lesson" id="renderhtml">
+        <h2>Render HTML</h2>
+        <p>React renderizza i componenti nel DOM reale attraverso il <strong>Virtual DOM</strong>: una rappresentazione in memoria dell'interfaccia. Quando lo stato cambia, React calcola solo le differenze (diff) e aggiorna solo ciò che è necessario, rendendo le app molto performanti.</p>
+        <div class="example">
+          <div class="codehead"><span>Esempio — ReactDOM.createRoot</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import ReactDOM from 'react-dom/client';
+
+// Seleziona il div#root in index.html
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Renderizza qualsiasi elemento JSX
+root.render(<h1>Ciao dal Virtual DOM! ⚛️</h1>);
+          </script>
+        </div>
+        <h3>Virtual DOM vs DOM reale</h3>
+        <table class="ref">
+          <tr><th>Virtual DOM</th><th>DOM Reale</th></tr>
+          <tr><td>Oggetto JavaScript in memoria</td><td>Struttura HTML nel browser</td></tr>
+          <tr><td>Aggiornamenti istantanei</td><td>Aggiornamenti costosi</td></tr>
+          <tr><td>React calcola le differenze</td><td>Solo le differenze vengono applicate</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ UPGRADE ═══ -->
+      <article class="lesson" id="upgrade">
+        <h2>Upgrade — React 18</h2>
+        <p>React 18 (2022) ha introdotto importanti novità rispetto alle versioni precedenti. La più visibile è la nuova API <code class="inline">createRoot</code> che sostituisce il vecchio <code class="inline">ReactDOM.render</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>React 17 (vecchio) vs React 18 (nuovo)</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// ❌ React 17 — deprecato
+import ReactDOM from 'react-dom';
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// ✅ React 18 — corretto
+import ReactDOM from 'react-dom/client';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+          </script>
+        </div>
+        <h3>Novità di React 18</h3>
+        <ul>
+          <li><strong>Concurrent Mode</strong>: React può interrompere e riprendere il rendering per mantenere l'app reattiva</li>
+          <li><strong>Automatic Batching</strong>: gli aggiornamenti di stato multipli vengono raggruppati automaticamente</li>
+          <li><strong>useTransition</strong> e <strong>useDeferredValue</strong>: hook per gestire transizioni UI non urgenti</li>
+          <li><strong>Suspense migliorato</strong>: supporto per il data fetching asincrono</li>
+        </ul>
+      </article>
+
+      <!-- ═══ ES6 ═══ -->
+      <article class="lesson" id="es6">
+        <h2>ES6 in React</h2>
+        <p>React fa ampio uso delle funzionalità moderne di JavaScript (ES6+). Conoscerle è fondamentale per scrivere codice React idiomatico.</p>
+        <div class="example">
+          <div class="codehead"><span>Arrow functions, destructuring, spread</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Arrow function
+const saluta = (nome) => `Ciao, ${nome}!`;
+
+// Destructuring di oggetto
+const { nome, eta } = utente;
+
+// Destructuring di array
+const [primo, secondo] = lista;
+
+// Spread operator
+const nuovoArray = [...vecchioArray, nuovoElemento];
+const nuovoOggetto = { ...vecchioOggetto, nuovaProp: 'valore' };
+
+// Template literals
+const messaggio = `Benvenuto, ${nome}! Hai ${eta} anni.`;
+
+// Moduli ES6
+import React from 'react';
+export default function App() { return <div />; }
+          </script>
+        </div>
+        <div class="tip-box">💡 Lo <strong>spread operator</strong> è molto usato in React per aggiornare lo state in modo immutabile senza modificare l'oggetto originale.</div>
+      </article>
+
+      <!-- ═══ JSX INTRO ═══ -->
+      <article class="lesson" id="jsx-intro">
+        <h2>JSX — Introduzione</h2>
+        <p><strong>JSX</strong> (JavaScript XML) è un'estensione della sintassi JavaScript che permette di scrivere markup simile all'HTML direttamente nel codice JS. Babel lo compila in chiamate <code class="inline">React.createElement()</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>JSX vs createElement</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Con JSX (leggibile)
+const elemento = <h1 className="titolo">Ciao mondo!</h1>;
+
+// Equivalente senza JSX (generato da Babel)
+const elemento = React.createElement(
+  'h1',
+  { className: 'titolo' },
+  'Ciao mondo!'
+);
+          </script>
+        </div>
+        <h3>Regole fondamentali JSX</h3>
+        <ul>
+          <li>Ogni componente deve restituire <strong>un solo elemento radice</strong> (usa un <code class="inline">&lt;div&gt;</code> o un Fragment <code class="inline">&lt;&gt;...&lt;/&gt;</code>)</li>
+          <li>I tag vanno sempre chiusi: <code class="inline">&lt;br /&gt;</code>, <code class="inline">&lt;img /&gt;</code></li>
+          <li>Usa <code class="inline">className</code> invece di <code>class</code></li>
+          <li>Usa <code class="inline">htmlFor</code> invece di <code>for</code></li>
+        </ul>
+      </article>
+
+      <!-- ═══ JSX EXPRESSIONS ═══ -->
+      <article class="lesson" id="jsx-expressions">
+        <h2>JSX — Espressioni</h2>
+        <p>In JSX puoi inserire qualsiasi <strong>espressione JavaScript</strong> tra parentesi graffe <code class="inline">{}</code>. Puoi usare variabili, operazioni matematiche, chiamate a funzioni e operatori ternari.</p>
+        <div class="example">
+          <div class="codehead"><span>Espressioni JSX</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function Profilo() {
+  const nome = 'Alice';
+  const eta = 25;
+  const attivo = true;
+
+  return (
+    <div>
+      <h2>{nome}</h2>
+      <p>Età: {eta}</p>
+      <p>Anno di nascita: {new Date().getFullYear() - eta}</p>
+      <p>Stato: {attivo ? 'Attivo' : 'Non attivo'}</p>
+      <p>{nome.toUpperCase()}</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="note-box">📌 Le parentesi graffe accettano solo <strong>espressioni</strong>, non istruzioni (<code>if</code>, <code>for</code>, ecc.). Per la logica usa operatori ternari o funzioni esterne.</div>
+      </article>
+
+      <!-- ═══ JSX ATTRIBUTES ═══ -->
+      <article class="lesson" id="jsx-attributes">
+        <h2>JSX — Attributi</h2>
+        <p>Gli attributi JSX seguono la convenzione <strong>camelCase</strong>. Molti attributi HTML hanno nomi diversi in JSX per evitare conflitti con parole riservate JavaScript.</p>
+        <div class="example">
+          <div class="codehead"><span>Attributi JSX</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function Esempio() {
+  const url = 'https://esempio.com';
+  const colore = 'blue';
+
+  return (
+    <div>
+      {/* className invece di class */}
+      <p className="testo-grande">Testo</p>
+
+      {/* htmlFor invece di for */}
+      <label htmlFor="nome">Nome:</label>
+      <input id="nome" type="text" />
+
+      {/* Attributi dinamici con {} */}
+      <a href={url} target="_blank" rel="noreferrer">
+        Visita il sito
+      </a>
+
+      {/* Style come oggetto */}
+      <span style={{ color: colore, fontWeight: 'bold' }}>
+        Testo colorato
+      </span>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>HTML</th><th>JSX</th></tr>
+          <tr><td>class</td><td>className</td></tr>
+          <tr><td>for</td><td>htmlFor</td></tr>
+          <tr><td>tabindex</td><td>tabIndex</td></tr>
+          <tr><td>onclick</td><td>onClick</td></tr>
+          <tr><td>style="color:red"</td><td>style={{ color: 'red' }}</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ JSX IF ═══ -->
+      <article class="lesson" id="jsx-if">
+        <h2>JSX — If Statements</h2>
+        <p>In JSX non puoi usare direttamente <code class="inline">if</code> dentro le parentesi graffe, ma hai tre alternative comuni:</p>
+        <div class="example">
+          <div class="codehead"><span>Condizioni in JSX</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function Accesso({ utente }) {
+  // 1. Ternario (inline)
+  return (
+    <div>
+      {utente ? <p>Ciao, {utente.nome}!</p> : <p>Effettua il login.</p>}
+    </div>
+  );
+}
+
+function Notifica({ messaggi }) {
+  // 2. Operatore && (short-circuit)
+  return (
+    <div>
+      {messaggi.length > 0 && (
+        <p>Hai {messaggi.length} nuovi messaggi.</p>
+      )}
+    </div>
+  );
+}
+
+function Stato({ livello }) {
+  // 3. Funzione esterna con if
+  function renderBadge() {
+    if (livello === 'admin') return <span>👑 Admin</span>;
+    if (livello === 'pro') return <span>⭐ Pro</span>;
+    return <span>👤 Utente</span>;
+  }
+  return <div>{renderBadge()}</div>;
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ COMPONENTS ═══ -->
+      <article class="lesson" id="components">
+        <h2>Componenti</h2>
+        <p>I <strong>componenti</strong> sono i mattoncini di React. Ogni componente è una funzione (o classe) che riceve dati in input (<strong>props</strong>) e restituisce JSX. I componenti si compongono tra loro per costruire interfacce complesse.</p>
+        <div class="example">
+          <div class="codehead"><span>Componenti funzionali</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Componente semplice (nessuna prop)
+function Intestazione() {
+  return <header><h1>Il mio sito</h1></header>;
+}
+
+// Componente con props
+function Carta({ titolo, testo }) {
+  return (
+    <div className="carta">
+      <h2>{titolo}</h2>
+      <p>{testo}</p>
+    </div>
+  );
+}
+
+// Composizione di componenti
+function App() {
+  return (
+    <div>
+      <Intestazione />
+      <Carta titolo="React" testo="Una libreria per UI." />
+      <Carta titolo="JSX" testo="Sintassi simile all'HTML." />
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 I nomi dei componenti <strong>devono iniziare con la lettera maiuscola</strong>: React usa questa convenzione per distinguere i componenti custom dai tag HTML nativi.</div>
+      </article>
+
+      <!-- ═══ CLASS ═══ -->
+      <article class="lesson" id="class">
+        <h2>Class Components</h2>
+        <p>Prima degli hook (React 16.8), i componenti con stato dovevano essere scritti come <strong>classi</strong>. Oggi si preferiscono i componenti funzionali con hook, ma è importante conoscere le classi per lavorare su codice legacy.</p>
+        <div class="example">
+          <div class="codehead"><span>Class Component</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import React, { Component } from 'react';
+
+class Contatore extends Component {
+  constructor(props) {
+    super(props);
+    // Lo stato è un oggetto
+    this.state = { conteggio: 0 };
+  }
+
+  incrementa() {
+    this.setState({ conteggio: this.state.conteggio + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Conteggio: {this.state.conteggio}</p>
+        <button onClick={() => this.incrementa()}>
+          Incrementa
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Contatore;
+          </script>
+        </div>
+        <h3>Ciclo di vita dei Class Components</h3>
+        <table class="ref">
+          <tr><th>Metodo</th><th>Quando viene chiamato</th></tr>
+          <tr><td>componentDidMount</td><td>Dopo il primo render (mounting)</td></tr>
+          <tr><td>componentDidUpdate</td><td>Dopo ogni aggiornamento dello state/props</td></tr>
+          <tr><td>componentWillUnmount</td><td>Prima che il componente venga rimosso</td></tr>
+          <tr><td>render</td><td>Ad ogni render (obbligatorio)</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ PROPS ═══ -->
+      <article class="lesson" id="props">
+        <h2>Props</h2>
+        <p>Le <strong>props</strong> (proprietà) sono il meccanismo con cui un componente genitore passa dati a un componente figlio. Le props sono <strong>immutabili</strong>: il figlio può leggerle ma non modificarle.</p>
+        <div class="example">
+          <div class="codehead"><span>Passare e ricevere props</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Componente figlio — riceve props
+function Saluto(props) {
+  return <h2>Ciao, {props.nome}! Hai {props.eta} anni.</h2>;
+}
+
+// Componente genitore — passa props
+function App() {
+  return (
+    <div>
+      <Saluto nome="Alice" eta={25} />
+      <Saluto nome="Marco" eta={30} />
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="note-box">📌 Le props fluiscono sempre <strong>dall'alto verso il basso</strong> (dal genitore al figlio). Per passare dati in senso contrario si usano le callback.</div>
+      </article>
+
+      <!-- ═══ PROPS DESTRUCTURING ═══ -->
+      <article class="lesson" id="props-destructuring">
+        <h2>Props — Destructuring</h2>
+        <p>Il destructuring ES6 rende il codice più pulito: invece di scrivere <code class="inline">props.nome</code>, puoi estrarre le proprietà direttamente nei parametri della funzione.</p>
+        <div class="example">
+          <div class="codehead"><span>Destructuring delle props</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// ❌ Senza destructuring
+function Carta(props) {
+  return <div><h2>{props.titolo}</h2><p>{props.testo}</p></div>;
+}
+
+// ✅ Con destructuring nei parametri
+function Carta({ titolo, testo, colore = 'blu' }) {
+  return (
+    <div style={{ borderColor: colore }}>
+      <h2>{titolo}</h2>
+      <p>{testo}</p>
+    </div>
+  );
+}
+
+// ✅ Oppure nel corpo della funzione
+function Profilo(props) {
+  const { nome, eta, immagine } = props;
+  return <div><img src={immagine} alt={nome} /><p>{nome}, {eta} anni</p></div>;
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Puoi definire <strong>valori di default</strong> direttamente nel destructuring: <code class="inline">{ colore = "blu" }</code>.</div>
+      </article>
+
+      <!-- ═══ PROPS CHILDREN ═══ -->
+      <article class="lesson" id="props-children">
+        <h2>Props — Children</h2>
+        <p>La prop speciale <code class="inline">children</code> contiene tutto ciò che viene scritto <strong>tra i tag di apertura e chiusura</strong> del componente. Permette di creare componenti "contenitore" generici.</p>
+        <div class="example">
+          <div class="codehead"><span>Props children</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// Componente contenitore con children
+function Box({ titolo, children }) {
+  return (
+    <div className="box">
+      <h3>{titolo}</h3>
+      <div className="contenuto">{children}</div>
+    </div>
+  );
+}
+
+// Utilizzo: qualsiasi JSX tra i tag diventa children
+function App() {
+  return (
+    <Box titolo="La mia scatola">
+      <p>Questo è il contenuto della scatola.</p>
+      <button>Clicca qui</button>
+    </Box>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ EVENTS ═══ -->
+      <article class="lesson" id="events">
+        <h2>Eventi</h2>
+        <p>In React gli eventi si gestiscono con attributi camelCase e si passa una <strong>funzione handler</strong> (non una stringa). React utilizza un sistema di <strong>eventi sintetici</strong> che normalizza il comportamento cross-browser.</p>
+        <div class="example">
+          <div class="codehead"><span>Gestire eventi</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function ContatoreClic() {
+  const [conteggio, setConteggio] = useState(0);
+
+  // Handler dell'evento
+  function handleClick() {
+    setConteggio(conteggio + 1);
+  }
+
+  function handleMouse(e) {
+    console.log('Posizione:', e.clientX, e.clientY);
+  }
+
+  return (
+    <div>
+      <p>Clic: {conteggio}</p>
+      <button onClick={handleClick}>Clicca</button>
+      <button onClick={() => setConteggio(0)}>Reset</button>
+      <div onMouseMove={handleMouse}>Muovi il mouse qui</div>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>Evento</th><th>Descrizione</th></tr>
+          <tr><td>onClick</td><td>Clic del mouse</td></tr>
+          <tr><td>onChange</td><td>Cambiamento valore input</td></tr>
+          <tr><td>onSubmit</td><td>Invio form</td></tr>
+          <tr><td>onFocus / onBlur</td><td>Focus / perdita focus</td></tr>
+          <tr><td>onKeyDown / onKeyUp</td><td>Pressione tasto</td></tr>
+          <tr><td>onMouseEnter / onMouseLeave</td><td>Mouse sopra/fuori</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ CONDITIONALS ═══ -->
+      <article class="lesson" id="conditionals">
+        <h2>Rendering condizionale</h2>
+        <p>React permette di mostrare o nascondere elementi in base a condizioni. Le tecniche principali sono l'operatore ternario, l'operatore <code class="inline">&&</code> e le variabili JSX.</p>
+        <div class="example">
+          <div class="codehead"><span>Rendering condizionale</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function Pannello() {
+  const [aperto, setAperto] = useState(false);
+  const [vip, setVip] = useState(true);
+
+  return (
+    <div>
+      {/* Ternario */}
+      <button onClick={() => setAperto(!aperto)}>
+        {aperto ? 'Chiudi' : 'Apri'}
+      </button>
+
+      {/* Operatore && */}
+      {aperto && <p>Contenuto del pannello!</p>}
+
+      {/* Variabile JSX */}
+      {vip ? <span>👑 Utente VIP</span> : <span>👤 Utente standard</span>}
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ LISTS ═══ -->
+      <article class="lesson" id="lists">
+        <h2>Liste</h2>
+        <p>Per renderizzare liste di elementi si usa il metodo <code class="inline">.map()</code>. Ogni elemento della lista deve avere una prop <code class="inline">key</code> unica per aiutare React a identificare gli elementi nel Virtual DOM.</p>
+        <div class="example">
+          <div class="codehead"><span>Renderizzare una lista</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function ListaFrutti() {
+  const frutti = [
+    { id: 1, nome: 'Mela', emoji: '🍎' },
+    { id: 2, nome: 'Banana', emoji: '🍌' },
+    { id: 3, nome: 'Arancia', emoji: '🍊' },
+  ];
+
+  return (
+    <ul>
+      {frutti.map((frutto) => (
+        <li key={frutto.id}>
+          {frutto.emoji} {frutto.nome}
+        </li>
+      ))}
+    </ul>
+  );
+}
+          </script>
+        </div>
+        <div class="warn-box">⚠️ Non usare l'<strong>indice dell'array</strong> come key se l'ordine degli elementi può cambiare: usa sempre un ID univoco e stabile.</div>
+      </article>
+
+      <!-- ═══ FORMS ═══ -->
+      <article class="lesson" id="forms">
+        <h2>Form</h2>
+        <p>In React i form si gestiscono con i <strong>componenti controllati</strong>: il valore dell'input è legato allo state, e ogni modifica aggiorna lo state tramite <code class="inline">onChange</code>. React diventa così la "fonte di verità" per i dati del form.</p>
+        <div class="example">
+          <div class="codehead"><span>Input controllato</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function FormNome() {
+  const [nome, setNome] = useState('');
+
+  return (
+    <div>
+      <label htmlFor="nome">Nome:</label>
+      <input
+        id="nome"
+        type="text"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
+        placeholder="Scrivi il tuo nome"
+      />
+      <p>Ciao, <strong>{nome || '...'}</strong>!</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS SUBMIT ═══ -->
+      <article class="lesson" id="forms-submit">
+        <h2>Form — Submit</h2>
+        <p>Per gestire l'invio del form si usa l'evento <code class="inline">onSubmit</code>. È importante chiamare <code class="inline">e.preventDefault()</code> per impedire il ricaricamento della pagina.</p>
+        <div class="example">
+          <div class="codehead"><span>Form con submit</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function FormLogin() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault(); // Impedisce il ricaricamento
+    console.log('Login con:', email, password);
+    alert(`Benvenuto, ${email}!`);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="email" value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email" required />
+      <input type="password" value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password" required />
+      <button type="submit">Accedi</button>
+    </form>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS TEXTAREA ═══ -->
+      <article class="lesson" id="forms-textarea">
+        <h2>Form — Textarea</h2>
+        <p>In React, <code class="inline">&lt;textarea&gt;</code> funziona come un input normale: il valore è gestito tramite la prop <code class="inline">value</code> e <code class="inline">onChange</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Textarea controllata</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function FormMessaggio() {
+  const [messaggio, setMessaggio] = useState('');
+
+  return (
+    <div>
+      <label htmlFor="msg">Messaggio:</label>
+      <textarea
+        id="msg"
+        value={messaggio}
+        onChange={(e) => setMessaggio(e.target.value)}
+        rows={5}
+        placeholder="Scrivi il tuo messaggio..."
+      />
+      <p>Caratteri: {messaggio.length}</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS SELECT ═══ -->
+      <article class="lesson" id="forms-select">
+        <h2>Form — Select</h2>
+        <p>Un <code class="inline">&lt;select&gt;</code> controllato usa la prop <code class="inline">value</code> sul tag <code class="inline">select</code> (non <code>selected</code> sull'option).</p>
+        <div class="example">
+          <div class="codehead"><span>Select controllata</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function SceltaLinguaggio() {
+  const [lingua, setLingua] = useState('javascript');
+
+  return (
+    <div>
+      <label htmlFor="lingua">Linguaggio:</label>
+      <select
+        id="lingua"
+        value={lingua}
+        onChange={(e) => setLingua(e.target.value)}
+      >
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="react">React</option>
+      </select>
+      <p>Hai scelto: <strong>{lingua}</strong></p>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS MULTIPLE ═══ -->
+      <article class="lesson" id="forms-multiple">
+        <h2>Form — Input multipli</h2>
+        <p>Con più input puoi gestire lo stato con un unico oggetto. Usa l'attributo <code class="inline">name</code> per identificare ogni campo e aggiornare la proprietà corrispondente nello state.</p>
+        <div class="example">
+          <div class="codehead"><span>Form con input multipli</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function FormRegistrazione() {
+  const [dati, setDati] = useState({ nome: '', email: '', citta: '' });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setDati((prev) => ({ ...prev, [name]: value }));
+  }
+
+  return (
+    <form>
+      <input name="nome" value={dati.nome} onChange={handleChange} placeholder="Nome" />
+      <input name="email" value={dati.email} onChange={handleChange} placeholder="Email" />
+      <input name="citta" value={dati.citta} onChange={handleChange} placeholder="Città" />
+      <pre>{JSON.stringify(dati, null, 2)}</pre>
+    </form>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS CHECKBOX ═══ -->
+      <article class="lesson" id="forms-checkbox">
+        <h2>Form — Checkbox</h2>
+        <p>Per le checkbox si usa la prop <code class="inline">checked</code> (booleano) invece di <code>value</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Checkbox controllata</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function AccettaTermini() {
+  const [accettato, setAccettato] = useState(false);
+
+  return (
+    <div>
+      <label>
+        <input
+          type="checkbox"
+          checked={accettato}
+          onChange={(e) => setAccettato(e.target.checked)}
+        />
+        {' '}Accetto i termini e condizioni
+      </label>
+      <button disabled={!accettato}>Continua</button>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORMS RADIO ═══ -->
+      <article class="lesson" id="forms-radio">
+        <h2>Form — Radio</h2>
+        <p>I radio button si gestiscono confrontando il valore dello state con il <code class="inline">value</code> di ogni radio.</p>
+        <div class="example">
+          <div class="codehead"><span>Radio button controllato</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function SceltaSpedizione() {
+  const [spedizione, setSpedizione] = useState('standard');
+
+  return (
+    <fieldset>
+      <legend>Tipo di spedizione:</legend>
+      {['standard', 'express', 'overnight'].map((tipo) => (
+        <label key={tipo}>
+          <input
+            type="radio"
+            value={tipo}
+            checked={spedizione === tipo}
+            onChange={(e) => setSpedizione(e.target.value)}
+          />
+          {' '}{tipo}
+        </label>
+      ))}
+      <p>Scelto: {spedizione}</p>
+    </fieldset>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ PORTALS ═══ -->
+      <article class="lesson" id="portals">
+        <h2>Portals</h2>
+        <p>I <strong>React Portals</strong> permettono di renderizzare un componente figlio in un nodo DOM diverso dal genitore. Sono utili per modali, tooltip e dropdown che devono "uscire" dal flusso DOM normale.</p>
+        <div class="example">
+          <div class="codehead"><span>ReactDOM.createPortal</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import ReactDOM from 'react-dom';
+
+function Modale({ children }) {
+  // Renderizza in #modal-root invece che nel genitore
+  return ReactDOM.createPortal(
+    <div className="overlay">
+      <div className="modale">{children}</div>
+    </div>,
+    document.getElementById('modal-root')
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>App principale</h1>
+      <Modale>
+        <p>Sono dentro un Portal! 🚪</p>
+      </Modale>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="note-box">📌 In <code class="inline">index.html</code> aggiungi <code class="inline">&lt;div id="modal-root"&gt;&lt;/div&gt;</code> accanto a <code class="inline">&lt;div id="root"&gt;</code>.</div>
+      </article>
+
+      <!-- ═══ SUSPENSE ═══ -->
+      <article class="lesson" id="suspense">
+        <h2>Suspense</h2>
+        <p><strong>React.Suspense</strong> permette di mostrare un contenuto di fallback (es. uno spinner) mentre un componente figlio viene caricato in modo asincrono. È usato con <code class="inline">React.lazy()</code> per il code splitting.</p>
+        <div class="example">
+          <div class="codehead"><span>React.lazy e Suspense</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import React, { Suspense, lazy } from 'react';
+
+// Importazione lazy: il bundle viene caricato solo quando necessario
+const PaginaProfilo = lazy(() => import('./PaginaProfilo'));
+const PaginaImpostazioni = lazy(() => import('./PaginaImpostazioni'));
+
+function App() {
+  return (
+    <div>
+      <Suspense fallback={<div>Caricamento in corso... ⏳</div>}>
+        <PaginaProfilo />
+        <PaginaImpostazioni />
+      </Suspense>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Suspense migliora le performance dell'app: i bundle vengono scaricati solo quando l'utente naviga verso quella sezione (<strong>code splitting</strong>).</div>
+      </article>
+
+      <!-- ═══ CSS STYLING ═══ -->
+      <article class="lesson" id="css-styling">
+        <h2>CSS Styling in React</h2>
+        <p>React offre diversi approcci per aggiungere stili ai componenti. Ogni approccio ha i suoi punti di forza.</p>
+        <div class="example">
+          <div class="codehead"><span>Stili inline con oggetto</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+function Bottone({ primario }) {
+  const stile = {
+    backgroundColor: primario ? '#4f46e5' : '#e2e8f0',
+    color: primario ? '#fff' : '#334155',
+    padding: '0.5rem 1.2rem',
+    borderRadius: '8px',
+    border: 'none',
+    cursor: 'pointer',
+    fontWeight: '600',
+  };
+
+  return <button style={stile}>Clicca</button>;
+}
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>Approccio</th><th>Pro</th><th>Contro</th></tr>
+          <tr><td>CSS esterno</td><td>Familiare, semplice</td><td>Nomi globali, conflitti</td></tr>
+          <tr><td>Stili inline</td><td>Dinamici, nessun file extra</td><td>No pseudo-classi, no media query</td></tr>
+          <tr><td>CSS Modules</td><td>Scoping locale, no conflitti</td><td>Setup richiesto</td></tr>
+          <tr><td>CSS-in-JS</td><td>Completamente dinamico</td><td>Dipendenza extra, overhead</td></tr>
+          <tr><td>Sass</td><td>Variabili, nesting, potente</td><td>Compilazione richiesta</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ CSS MODULES ═══ -->
+      <article class="lesson" id="css-modules">
+        <h2>CSS Modules</h2>
+        <p>I <strong>CSS Modules</strong> sono file CSS normali con l'estensione <code class="inline">.module.css</code>. Vite e Create React App li supportano nativamente. I nomi delle classi vengono trasformati in identificatori univoci, eliminando i conflitti.</p>
+        <div class="example">
+          <div class="codehead"><span>Bottone.module.css + Bottone.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+/* Bottone.module.css */
+.bottone {
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.bottone:hover {
+  background: #4338ca;
+}
+
+/* Bottone.jsx */
+import styles from './Bottone.module.css';
+
+function Bottone({ testo }) {
+  return (
+    <button className={styles.bottone}>{testo}</button>
+  );
+}
+          </script>
+        </div>
+        <div class="note-box">📌 Vite trasforma <code class="inline">styles.bottone</code> in un nome univoco come <code>Bottone_bottone__3xKj1</code>, garantendo l'isolamento degli stili.</div>
+      </article>
+
+      <!-- ═══ CSS-IN-JS ═══ -->
+      <article class="lesson" id="css-in-js">
+        <h2>CSS-in-JS</h2>
+        <p>Le librerie CSS-in-JS come <strong>styled-components</strong> e <strong>Emotion</strong> permettono di scrivere CSS direttamente nel file JavaScript, con pieno supporto a props dinamiche, temi e pseudo-classi.</p>
+        <div class="example">
+          <div class="codehead"><span>styled-components</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// npm install styled-components
+import styled from 'styled-components';
+
+// Crea un componente stilizzato
+const Bottone = styled.button`
+  background: ${(props) => props.primario ? '#4f46e5' : 'white'};
+  color: ${(props) => props.primario ? 'white' : '#4f46e5'};
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #4f46e5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
+function App() {
+  return (
+    <div>
+      <Bottone primario>Primario</Bottone>
+      <Bottone>Secondario</Bottone>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ ROUTER ═══ -->
+      <article class="lesson" id="router">
+        <h2>React Router</h2>
+        <p><strong>React Router</strong> è la libreria standard per il routing nelle app React. Permette di navigare tra "pagine" senza ricaricare il browser (Single Page Application).</p>
+        <div class="example">
+          <div class="codehead"><span>React Router v6 — Setup base</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// npm install react-router-dom
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+function Home() { return <h2>🏠 Home</h2>; }
+function Profilo() { return <h2>👤 Profilo</h2>; }
+function NonTrovato() { return <h2>404 — Pagina non trovata</h2>; }
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link> |{' '}
+        <Link to="/profilo">Profilo</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profilo" element={<Profilo />} />
+        <Route path="*" element={<NonTrovato />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Usa <code class="inline">useNavigate()</code> per navigare via codice e <code class="inline">useParams()</code> per leggere i parametri dinamici dell'URL (<code>/prodotti/:id</code>).</div>
+      </article>
+
+      <!-- ═══ TRANSITIONS ═══ -->
+      <article class="lesson" id="transitions">
+        <h2>Transitions — useTransition</h2>
+        <p>L'hook <code class="inline">useTransition</code> (React 18) permette di marcare alcuni aggiornamenti di stato come "non urgenti". React dà priorità agli aggiornamenti urgenti (input utente) e posticipa quelli secondari, mantenendo l'interfaccia reattiva.</p>
+        <div class="example">
+          <div class="codehead"><span>useTransition</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState, useTransition } from 'react';
+
+function RicercaLenta() {
+  const [query, setQuery] = useState('');
+  const [risultati, setRisultati] = useState([]);
+  const [isPending, startTransition] = useTransition();
+
+  function handleChange(e) {
+    const valore = e.target.value;
+    setQuery(valore); // Urgente: aggiorna subito l'input
+
+    // Non urgente: può essere posticipato
+    startTransition(() => {
+      const filtrati = datiGrandi.filter(item =>
+        item.includes(valore)
+      );
+      setRisultati(filtrati);
+    });
+  }
+
+  return (
+    <div>
+      <input value={query} onChange={handleChange} placeholder="Cerca..." />
+      {isPending ? <p>Ricerca in corso...</p> : (
+        <ul>{risultati.map(r => <li key={r}>{r}</li>)}</ul>
+      )}
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ FORWARD REF ═══ -->
+      <article class="lesson" id="forward-ref">
+        <h2>Forward Ref</h2>
+        <p><code class="inline">React.forwardRef</code> permette a un componente figlio di esporre un riferimento DOM al genitore. Utile per componenti di input personalizzati che devono essere controllati dall'esterno.</p>
+        <div class="example">
+          <div class="codehead"><span>forwardRef</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { forwardRef, useRef } from 'react';
+
+// Componente con ref forwarding
+const InputPersonalizzato = forwardRef(function InputPersonalizzato(
+  { label, ...props },
+  ref
+) {
+  return (
+    <div>
+      <label>{label}</label>
+      <input ref={ref} {...props} />
+    </div>
+  );
+});
+
+// Genitore che usa il ref
+function Form() {
+  const inputRef = useRef(null);
+
+  function focusInput() {
+    inputRef.current.focus();
+  }
+
+  return (
+    <div>
+      <InputPersonalizzato label="Nome:" ref={inputRef} />
+      <button onClick={focusInput}>Focus sull'input</button>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ HOC ═══ -->
+      <article class="lesson" id="hoc">
+        <h2>Higher-Order Components (HOC)</h2>
+        <p>Un <strong>HOC</strong> è una funzione che riceve un componente e ne restituisce uno nuovo con funzionalità aggiuntive. È un pattern per il riuso della logica tra componenti (oggi spesso sostituito dagli hook).</p>
+        <div class="example">
+          <div class="codehead"><span>HOC — withAuth</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// HOC: aggiunge protezione autenticazione
+function withAuth(ComponenteProtetto) {
+  return function ComponenteConAuth(props) {
+    const autenticato = true; // Logica reale: controlla token/sessione
+
+    if (!autenticato) {
+      return <p>Accesso negato. Effettua il login.</p>;
+    }
+
+    return <ComponenteProtetto {...props} />;
+  };
+}
+
+// Componente normale
+function Dashboard({ utente }) {
+  return <h2>Dashboard di {utente}</h2>;
+}
+
+// Versione protetta
+const DashboardProtetta = withAuth(Dashboard);
+
+// Utilizzo
+function App() {
+  return <DashboardProtetta utente="Alice" />;
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ SASS ═══ -->
+      <article class="lesson" id="sass">
+        <h2>Sass in React</h2>
+        <p><strong>Sass</strong> è un pre-processore CSS che aggiunge variabili, nesting, mixin e funzioni al CSS. In Vite basta installare il pacchetto <code class="inline">sass</code> e usare l'estensione <code class="inline">.scss</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>Sass con React</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+// npm install sass
+
+/* App.scss */
+$primario: #4f46e5;
+$raggio: 8px;
+
+.carta {
+  border: 1px solid #e2e8f0;
+  border-radius: $raggio;
+  padding: 1rem;
+
+  &:hover {
+    border-color: $primario;
+    box-shadow: 0 4px 12px rgba($primario, 0.15);
+  }
+
+  h2 {
+    color: $primario;
+    margin: 0 0 0.5rem;
+  }
+}
+
+/* App.jsx */
+import './App.scss';
+
+function App() {
+  return (
+    <div className="carta">
+      <h2>Sass funziona! 🎨</h2>
+      <p>Stili potenziati con variabili e nesting.</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ USESTATE ═══ -->
+      <article class="lesson" id="usestate">
+        <h2>Hook — useState</h2>
+        <p><code class="inline">useState</code> è l'hook più fondamentale: permette di aggiungere <strong>stato locale</strong> a un componente funzionale. Restituisce il valore corrente e una funzione per aggiornarlo.</p>
+        <div class="example">
+          <div class="codehead"><span>useState — Contatore</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function Contatore() {
+  // [valore, funzioneAggiornamento] = useState(valoreIniziale)
+  const [conteggio, setConteggio] = useState(0);
+  const [colore, setColore] = useState('nero');
+
+  return (
+    <div>
+      <p style={{ color: colore }}>Conteggio: {conteggio}</p>
+      <button onClick={() => setConteggio(c => c + 1)}>+1</button>
+      <button onClick={() => setConteggio(c => c - 1)}>-1</button>
+      <button onClick={() => setConteggio(0)}>Reset</button>
+      <button onClick={() => setColore(c => c === 'nero' ? 'rosso' : 'nero')}>
+        Cambia colore
+      </button>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Quando il nuovo stato dipende da quello precedente, usa la forma funzionale: <code class="inline">setCount(c =&gt; c + 1)</code>. Evita race condition in aggiornamenti multipli.</div>
+      </article>
+
+      <!-- ═══ USEEFFECT ═══ -->
+      <article class="lesson" id="useeffect">
+        <h2>Hook — useEffect</h2>
+        <p><code class="inline">useEffect</code> gestisce gli <strong>effetti collaterali</strong>: fetch di dati, sottoscrizioni a eventi, aggiornamento del DOM. Sostituisce <code>componentDidMount</code>, <code>componentDidUpdate</code> e <code>componentWillUnmount</code>.</p>
+        <div class="example">
+          <div class="codehead"><span>useEffect — fetch dati</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState, useEffect } from 'react';
+
+function Utenti() {
+  const [utenti, setUtenti] = useState([]);
+  const [caricamento, setCaricamento] = useState(true);
+
+  useEffect(() => {
+    // Eseguito dopo il mount del componente
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((res) => res.json())
+      .then((dati) => {
+        setUtenti(dati);
+        setCaricamento(false);
+      });
+
+    // Cleanup (eseguito prima di smontare o aggiornare)
+    return () => {
+      console.log('Componente smontato');
+    };
+  }, []); // Array di dipendenze vuoto = eseguito solo al mount
+
+  if (caricamento) return <p>Caricamento...</p>;
+
+  return (
+    <ul>
+      {utenti.map((u) => <li key={u.id}>{u.name}</li>)}
+    </ul>
+  );
+}
+          </script>
+        </div>
+        <table class="ref">
+          <tr><th>Array dipendenze</th><th>Comportamento</th></tr>
+          <tr><td>Omesso</td><td>Eseguito dopo ogni render</td></tr>
+          <tr><td><code>[]</code> vuoto</td><td>Solo al mount (una volta)</td></tr>
+          <tr><td><code>[val]</code></td><td>Quando <code>val</code> cambia</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ USECONTEXT ═══ -->
+      <article class="lesson" id="usecontext">
+        <h2>Hook — useContext</h2>
+        <p><code class="inline">useContext</code> consente di condividere dati tra componenti senza passare props a ogni livello (<strong>prop drilling</strong>). Il <strong>Context</strong> è ideale per temi, lingua, utente autenticato.</p>
+        <div class="example">
+          <div class="codehead"><span>useContext — Tema</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { createContext, useContext, useState } from 'react';
+
+// 1. Crea il context
+const TemaContext = createContext('chiaro');
+
+// 2. Provider: avvolge l'app e fornisce il valore
+function AppConTema() {
+  const [tema, setTema] = useState('chiaro');
+
+  return (
+    <TemaContext.Provider value={{ tema, setTema }}>
+      <Pagina />
+    </TemaContext.Provider>
+  );
+}
+
+// 3. Consumer: legge il context con useContext
+function Pagina() {
+  const { tema, setTema } = useContext(TemaContext);
+
+  return (
+    <div style={{ background: tema === 'scuro' ? '#1e293b' : '#fff' }}>
+      <p>Tema: {tema}</p>
+      <button onClick={() => setTema(t => t === 'chiaro' ? 'scuro' : 'chiaro')}>
+        Cambia tema
+      </button>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ USEREF ═══ -->
+      <article class="lesson" id="useref">
+        <h2>Hook — useRef</h2>
+        <p><code class="inline">useRef</code> restituisce un oggetto mutabile con una proprietà <code class="inline">.current</code>. È usato per accedere direttamente agli elementi DOM e per conservare valori che <strong>non devono causare un re-render</strong> quando cambiano.</p>
+        <div class="example">
+          <div class="codehead"><span>useRef — DOM e timer</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useRef, useEffect, useState } from 'react';
+
+function CronometroRef() {
+  const [secondi, setSecondi] = useState(0);
+  const intervalloRef = useRef(null); // Non causa re-render
+  const inputRef = useRef(null);      // Accesso al DOM
+
+  function avvia() {
+    intervalloRef.current = setInterval(() => {
+      setSecondi((s) => s + 1);
+    }, 1000);
+  }
+
+  function ferma() {
+    clearInterval(intervalloRef.current);
+  }
+
+  useEffect(() => {
+    inputRef.current.focus(); // Focus automatico
+    return () => clearInterval(intervalloRef.current);
+  }, []);
+
+  return (
+    <div>
+      <input ref={inputRef} placeholder="Tocca per focus" />
+      <p>Secondi: {secondi}</p>
+      <button onClick={avvia}>Avvia</button>
+      <button onClick={ferma}>Ferma</button>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ USEREDUCER ═══ -->
+      <article class="lesson" id="usereducer">
+        <h2>Hook — useReducer</h2>
+        <p><code class="inline">useReducer</code> è un'alternativa a <code class="inline">useState</code> per stato complesso. Si ispira al pattern Redux: un <strong>reducer</strong> riceve lo stato corrente e un'azione, e restituisce il nuovo stato.</p>
+        <div class="example">
+          <div class="codehead"><span>useReducer — Contatore avanzato</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useReducer } from 'react';
+
+// Reducer: funzione pura (stato, azione) => nuovoStato
+function reducer(state, action) {
+  switch (action.type) {
+    case 'incrementa': return { conteggio: state.conteggio + 1 };
+    case 'decrementa': return { conteggio: state.conteggio - 1 };
+    case 'reset':      return { conteggio: 0 };
+    default: throw new Error('Azione sconosciuta: ' + action.type);
+  }
+}
+
+function Contatore() {
+  const [state, dispatch] = useReducer(reducer, { conteggio: 0 });
+
+  return (
+    <div>
+      <p>Conteggio: {state.conteggio}</p>
+      <button onClick={() => dispatch({ type: 'incrementa' })}>+1</button>
+      <button onClick={() => dispatch({ type: 'decrementa' })}>-1</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 Preferisci <code class="inline">useReducer</code> quando hai molte variabili di stato correlate o logica di transizione complessa.</div>
+      </article>
+
+      <!-- ═══ USECALLBACK ═══ -->
+      <article class="lesson" id="usecallback">
+        <h2>Hook — useCallback</h2>
+        <p><code class="inline">useCallback</code> restituisce una versione <strong>memoizzata</strong> di una funzione callback. È utile per ottimizzare le performance quando si passa una callback a componenti figli profondi: evita che il figlio si re-renderizzi inutilmente ad ogni render del genitore.</p>
+        <div class="example">
+          <div class="codehead"><span>useCallback</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState, useCallback, memo } from 'react';
+
+// Componente figlio — re-renderizza solo se le props cambiano
+const BottoneFiglio = memo(function BottoneFiglio({ onClick, testo }) {
+  console.log(`Render: ${testo}`);
+  return <button onClick={onClick}>{testo}</button>;
+});
+
+function Genitore() {
+  const [contA, setContA] = useState(0);
+  const [contB, setContB] = useState(0);
+
+  // Con useCallback: stessa funzione finché le dipendenze non cambiano
+  const handleA = useCallback(() => setContA(c => c + 1), []);
+  const handleB = useCallback(() => setContB(c => c + 1), []);
+
+  return (
+    <div>
+      <p>A: {contA} | B: {contB}</p>
+      <BottoneFiglio onClick={handleA} testo="Incrementa A" />
+      <BottoneFiglio onClick={handleB} testo="Incrementa B" />
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ USEMEMO ═══ -->
+      <article class="lesson" id="usememo">
+        <h2>Hook — useMemo</h2>
+        <p><code class="inline">useMemo</code> memoizza il <strong>risultato di un calcolo</strong> costoso: lo ricalcola solo quando le dipendenze cambiano. È utile per filtrare/ordinare grandi liste o calcoli pesanti.</p>
+        <div class="example">
+          <div class="codehead"><span>useMemo — Filtro lista</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState, useMemo } from 'react';
+
+const PRODOTTI = Array.from({ length: 1000 }, (_, i) => ({
+  id: i,
+  nome: `Prodotto ${i}`,
+  prezzo: Math.round(Math.random() * 100),
+}));
+
+function ListaProdotti() {
+  const [query, setQuery] = useState('');
+  const [soglia, setSoglia] = useState(50);
+
+  // Ricalcolato solo quando query o soglia cambiano
+  const prodottiFiltrati = useMemo(() => {
+    console.log('Ricalcolo filtro...');
+    return PRODOTTI
+      .filter((p) => p.nome.includes(query) && p.prezzo <= soglia)
+      .slice(0, 20);
+  }, [query, soglia]);
+
+  return (
+    <div>
+      <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cerca" />
+      <input type="range" min={0} max={100} value={soglia}
+        onChange={(e) => setSoglia(Number(e.target.value))} />
+      <p>Prezzo max: €{soglia} — {prodottiFiltrati.length} risultati</p>
+      <ul>{prodottiFiltrati.map((p) => <li key={p.id}>{p.nome} — €{p.prezzo}</li>)}</ul>
+    </div>
+  );
+}
+          </script>
+        </div>
+      </article>
+
+      <!-- ═══ CUSTOM HOOKS ═══ -->
+      <article class="lesson" id="custom-hooks">
+        <h2>Custom Hooks</h2>
+        <p>I <strong>Custom Hook</strong> sono funzioni JavaScript che iniziano con <code class="inline">use</code> e possono chiamare altri hook. Permettono di estrarre e riutilizzare logica stateful tra più componenti.</p>
+        <div class="example">
+          <div class="codehead"><span>Custom Hook — useFetch</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState, useEffect } from 'react';
+
+// Custom Hook riutilizzabile per fetch dati
+function useFetch(url) {
+  const [dati, setDati] = useState(null);
+  const [caricamento, setCaricamento] = useState(true);
+  const [errore, setErrore] = useState(null);
+
+  useEffect(() => {
+    setCaricamento(true);
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) throw new Error('Errore HTTP ' + res.status);
+        return res.json();
+      })
+      .then((d) => { setDati(d); setCaricamento(false); })
+      .catch((e) => { setErrore(e.message); setCaricamento(false); });
+  }, [url]);
+
+  return { dati, caricamento, errore };
+}
+
+// Utilizzo in qualsiasi componente
+function ListaPost() {
+  const { dati, caricamento, errore } = useFetch(
+    'https://jsonplaceholder.typicode.com/posts?_limit=5'
+  );
+
+  if (caricamento) return <p>⏳ Caricamento...</p>;
+  if (errore) return <p>❌ Errore: {errore}</p>;
+
+  return (
+    <ul>
+      {dati.map((post) => <li key={post.id}>{post.title}</li>)}
+    </ul>
+  );
+}
+          </script>
+        </div>
+        <div class="tip-box">💡 I Custom Hook sono il modo moderno per condividere logica in React. Seguono sempre la convenzione <code class="inline">use</code> all'inizio del nome.</div>
+      </article>
+
+      <!-- ═══ EDITOR ONLINE ═══ -->
+      <article class="lesson" id="editor-online">
+        <h2>Editor online — Prova React</h2>
+        <p>React richiede un ambiente di build (Vite, Next.js) per essere eseguito. Puoi sperimentare immediatamente online con questi strumenti gratuiti:</p>
+        <ul>
+          <li>🚀 <strong><a href="https://stackblitz.com" target="_blank" rel="noreferrer">StackBlitz</a></strong> — Ambiente Vite+React completo nel browser</li>
+          <li>📦 <strong><a href="https://codesandbox.io" target="_blank" rel="noreferrer">CodeSandbox</a></strong> — IDE online con template React</li>
+          <li>⚡ <strong><a href="https://playcode.io/react" target="_blank" rel="noreferrer">PlayCode</a></strong> — Editor React veloce e leggero</li>
+        </ul>
+        <div class="note-box">⚛️ Gli esempi in questo corso mostrano codice JSX con sintassi colorata. L'editor integrato ti permette di leggerli e modificarli — usa uno dei link sopra per eseguirli.</div>
+      </article>
+
+      <!-- ═══ QUIZ ═══ -->
+      <article class="lesson" id="quiz">
+        <h2>Quiz React</h2>
+        <p>Metti alla prova le tue conoscenze con queste domande:</p>
+        <ol>
+          <li>❓ Cosa restituisce <code class="inline">useState(0)</code>?<br><strong>R:</strong> Un array con il valore corrente (<code>0</code>) e la funzione di aggiornamento: <code>[0, setStato]</code>.</li>
+          <li>❓ Qual è la differenza tra <code class="inline">useCallback</code> e <code class="inline">useMemo</code>?<br><strong>R:</strong> <code>useCallback</code> memoizza una <em>funzione</em>; <code>useMemo</code> memoizza il <em>risultato</em> di un calcolo.</li>
+          <li>❓ Cosa succede se non si fornisce una <code class="inline">key</code> in una lista React?<br><strong>R:</strong> React non riesce a tracciare efficientemente gli elementi → warning in console e possibili bug di rendering.</li>
+          <li>❓ Quando viene eseguito il cleanup di <code class="inline">useEffect</code>?<br><strong>R:</strong> Prima che il componente venga smontato e prima che l'effetto venga rieseguito (se le dipendenze cambiano).</li>
+          <li>❓ Cos'è il "prop drilling"?<br><strong>R:</strong> Passare props attraverso molti livelli di componenti annidati. Si risolve con Context o Redux.</li>
+          <li>❓ Quali hook sono disponibili solo in componenti funzionali?<br><strong>R:</strong> Tutti gli hook React (<code>useState</code>, <code>useEffect</code>, ecc.) — non si possono usare nelle classi.</li>
+        </ol>
+      </article>
+
+      <!-- ═══ ESERCIZI ═══ -->
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi pratici React</h2>
+        <h3>Esercizio 1 — Lista della spesa</h3>
+        <p>Crea un'app dove l'utente può aggiungere elementi a una lista e rimuoverli con un clic.</p>
+        <div class="example">
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <pre class="codeview"><code class="language-jsx"></code></pre>
+          <script type="text/plain" class="code">
+import { useState } from 'react';
+
+function ListaSpesa() {
+  const [testo, setTesto] = useState('');
+  const [lista, setLista] = useState([]);
+
+  function aggiungi() {
+    if (!testo.trim()) return;
+    setLista((l) => [...l, { id: Date.now(), nome: testo }]);
+    setTesto('');
+  }
+
+  function rimuovi(id) {
+    setLista((l) => l.filter((el) => el.id !== id));
+  }
+
+  return (
+    <div>
+      <h2>Lista della spesa</h2>
+      <input value={testo} onChange={(e) => setTesto(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && aggiungi()}
+        placeholder="Aggiungi elemento..." />
+      <button onClick={aggiungi}>Aggiungi</button>
+      <ul>
+        {lista.map((el) => (
+          <li key={el.id}>
+            {el.nome}
+            <button onClick={() => rimuovi(el.id)}>🗑️</button>
+          </li>
+        ))}
+      </ul>
+      <p>Totale: {lista.length} elementi</p>
+    </div>
+  );
+}
+          </script>
+        </div>
+        <h3>Esercizio 2 — Cronometro con useRef</h3>
+        <p>Crea un cronometro con i pulsanti Avvia, Pausa e Reset. Usa <code class="inline">useRef</code> per conservare l'ID dell'intervallo senza causare re-render.</p>
+        <h3>Esercizio 3 — Fetch con useFetch</h3>
+        <p>Crea un Custom Hook <code class="inline">useFetch</code> e usalo per visualizzare una lista di post da <code>https://jsonplaceholder.typicode.com/posts</code>.</p>
+        <h3>Esercizio 4 — Tema scuro/chiaro</h3>
+        <p>Implementa un toggle tema scuro/chiaro usando <code class="inline">useContext</code>. Il tema deve essere accessibile in tutta l'app senza prop drilling.</p>
+      </article>
+
+      <!-- ═══ PROGRAMMA ═══ -->
+      <article class="lesson" id="programma">
+        <h2>Programma del corso React</h2>
+        <table class="ref">
+          <tr><th>Modulo</th><th>Argomenti</th></tr>
+          <tr><td>1 — Basi React</td><td>Intro, Vite setup, JSX, componenti, props, rendering condizionale, liste</td></tr>
+          <tr><td>2 — State e Form</td><td>useState, eventi, form controllati, input multipli, checkbox, radio, select</td></tr>
+          <tr><td>3 — Hook fondamentali</td><td>useEffect, useContext, useRef, useReducer</td></tr>
+          <tr><td>4 — Ottimizzazione</td><td>useCallback, useMemo, React.memo, code splitting, Suspense</td></tr>
+          <tr><td>5 — Routing</td><td>React Router v6, BrowserRouter, Routes, Link, useNavigate, useParams</td></tr>
+          <tr><td>6 — Stile</td><td>CSS Modules, CSS-in-JS, styled-components, Sass, temi dinamici</td></tr>
+          <tr><td>7 — Pattern avanzati</td><td>Custom Hook, HOC, forwardRef, Portals, Transitions</td></tr>
+          <tr><td>8 — Progetto finale</td><td>App completa con routing, stato globale (Context), fetch, form e stile</td></tr>
+        </table>
+      </article>
+
+      <!-- ═══ PIANO STUDIO ═══ -->
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio React (8 settimane)</h2>
+        <table class="ref">
+          <tr><th>Settimana</th><th>Obiettivo</th></tr>
+          <tr><td>1</td><td>Fondamenti: JSX, componenti, props, rendering condizionale, liste</td></tr>
+          <tr><td>2</td><td>useState, eventi, form controllati (input, textarea, select, checkbox, radio)</td></tr>
+          <tr><td>3</td><td>useEffect (fetch dati, cleanup), useContext (temi, autenticazione)</td></tr>
+          <tr><td>4</td><td>useRef, useReducer, pattern avanzati dello stato</td></tr>
+          <tr><td>5</td><td>React Router v6: routing SPA completo con parametri dinamici</td></tr>
+          <tr><td>6</td><td>useCallback, useMemo, React.memo — ottimizzazione delle performance</td></tr>
+          <tr><td>7</td><td>Custom Hook, CSS Modules, Sass, styled-components</td></tr>
+          <tr><td>8</td><td>Progetto completo: app con routing, context, fetch API, form, stile</td></tr>
+        </table>
+        <div class="tip-box">💡 Dopo le basi React, studia <strong>Next.js</strong> per SSR/SSG oppure <strong>React Native</strong> per le app mobile — entrambi basati sugli stessi principi che hai imparato qui.</div>
+      </article>
+
+      <!-- ═══ COLLOQUIO ═══ -->
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio React</h2>
+        <ul>
+          <li>💬 <strong>Differenza tra stato locale e stato globale?</strong> — Lo stato locale (<code>useState</code>) è isolato nel componente. Lo stato globale (Context, Redux, Zustand) è condiviso tra più componenti.</li>
+          <li>💬 <strong>Cos'è il Virtual DOM e perché è importante?</strong> — Una rappresentazione in memoria del DOM reale. React calcola le differenze (reconciliation) e aggiorna solo le parti cambiate, rendendo le app molto veloci.</li>
+          <li>💬 <strong>Quando usare useEffect?</strong> — Per effetti collaterali: fetch dati, sottoscrizioni, interazioni con API esterne, aggiornamenti del titolo della pagina.</li>
+          <li>💬 <strong>Cosa sono le Controlled Components?</strong> — Componenti form il cui valore è gestito dallo stato React, non dal DOM. React è la fonte di verità per il valore.</li>
+          <li>💬 <strong>Perché le key nelle liste devono essere univoche?</strong> — React le usa per riconoscere quali elementi sono cambiati, aggiunti o rimossi, ottimizzando il re-rendering.</li>
+          <li>💬 <strong>Differenza tra useCallback e useMemo?</strong> — <code>useCallback</code> memoizza una funzione; <code>useMemo</code> memoizza il risultato di un calcolo. Entrambi evitano rielaborazioni inutili.</li>
+          <li>💬 <strong>Cos'è il Context e quando usarlo?</strong> — Permette di passare dati in profondità senza prop drilling. Adatto per temi, lingua, autenticazione. Non è sostituto di Redux per stato complesso e frequentemente aggiornato.</li>
+        </ul>
+      </article>
+
+      <!-- ═══ BOOTCAMP ═══ -->
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp React — Progetto finale</h2>
+        <p>Costruisci un'app completa che integra tutti i concetti del corso:</p>
+        <h3>🚀 Progetto: App Gestione Note</h3>
+        <ul>
+          <li>📝 <strong>CRUD completo</strong>: Crea, leggi, modifica ed elimina note</li>
+          <li>🔍 <strong>Ricerca e filtro</strong>: Filtra le note con <code>useMemo</code> per performance</li>
+          <li>🌙 <strong>Tema scuro/chiaro</strong>: Toggle con <code>useContext</code></li>
+          <li>💾 <strong>Persistenza</strong>: Salva le note in <code>localStorage</code> con <code>useEffect</code></li>
+          <li>🔀 <strong>Routing</strong>: Pagina lista, pagina dettaglio nota, pagina nuova nota</li>
+          <li>🎨 <strong>Stile</strong>: CSS Modules con supporto al tema scuro</li>
+          <li>🪝 <strong>Custom Hooks</strong>: <code>useLocalStorage</code>, <code>useSearch</code></li>
+        </ul>
+        <div class="challenge-box">
+          <span class="challenge-label">🎯 Sfida avanzata</span>
+          <p>Aggiungi autenticazione simulata con Context (login/logout), condividi lo stato utente in tutta l'app e proteggi le route private redirigendo al login se non autenticato.</p>
+        </div>
+        <h3>Risorse consigliate per continuare</h3>
+        <ul>
+          <li>📚 <strong>Next.js</strong>: React con SSR, routing file-based, API routes</li>
+          <li>📦 <strong>Redux Toolkit</strong>: Gestione stato globale per app complesse</li>
+          <li>🎯 <strong>React Query / TanStack Query</strong>: Gestione asincrona dei dati con cache</li>
+          <li>📱 <strong>React Native</strong>: Stesse basi React per app iOS e Android</li>
+          <li>🧪 <strong>React Testing Library</strong>: Testing dei componenti React</li>
+        </ul>
+      </article>
+
+      <!-- ═══ CERTIFICAZIONE ═══ -->
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione React</h2>
+        <p>Padroneggiare React è uno dei requisiti più richiesti nelle offerte di lavoro frontend. Ecco come valorizzare le tue competenze:</p>
+        <table class="ref">
+          <tr><th>Certificazione / Percorso</th><th>Ente / Piattaforma</th><th>Note</th></tr>
+          <tr><td>React Certificate</td><td>W3Schools</td><td>Base, ottimo per iniziare il CV</td></tr>
+          <tr><td>Meta Front-End Developer</td><td>Coursera (Meta)</td><td>Include React — riconosciuto da Meta</td></tr>
+          <tr><td>React - The Complete Guide</td><td>Udemy (Maximilian)</td><td>Corso più popolare, certificato di completamento</td></tr>
+          <tr><td>Frontend Developer Career Path</td><td>Scrimba</td><td>Interattivo, include React</td></tr>
+          <tr><td>Progetto su GitHub</td><td>Portfolio personale</td><td>La migliore prova pratica per i recruiter</td></tr>
+        </table>
+        <h3>Come prepararsi al colloquio</h3>
+        <ul>
+          <li>🏗️ Costruisci 2-3 progetti completi visibili su GitHub</li>
+          <li>⚡ Conosci bene gli hook: <code>useState</code>, <code>useEffect</code>, <code>useContext</code>, <code>useRef</code></li>
+          <li>🚀 Impara <strong>Next.js</strong>: molte aziende lo usano con React</li>
+          <li>🧪 Impara le basi del testing con React Testing Library</li>
+          <li>📖 Studia i concetti: Virtual DOM, reconciliation, re-render, memoization</li>
+        </ul>
+      </article>
+
+      <!-- ═══ FINE ═══ -->
+      <article class="lesson" id="fine" style="border-bottom:none">
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso React! Hai imparato JSX, i componenti funzionali, le props, tutti i principali hook (useState, useEffect, useContext, useRef, useReducer, useCallback, useMemo), i Custom Hook, React Router, la gestione dei form, CSS Modules, CSS-in-JS, Sass, Portals, Suspense e i pattern avanzati come HOC e forwardRef.</p>
+        <h3>I tuoi prossimi passi</h3>
+        <ul>
+          <li>🏗️ <strong>Costruisci un progetto reale</strong>: un'app todo, un portfolio, un e-commerce semplice</li>
+          <li>⚡ <strong>Studia Next.js</strong>: aggiunge routing, SSR e API routes a React</li>
+          <li>📦 <strong>Esplora Redux Toolkit</strong> per gestire stato globale complesso</li>
+          <li>📱 <strong>Prova React Native</strong> se ti interessano le app mobile</li>
+          <li>🧪 <strong>Impara il testing</strong> con Jest e React Testing Library</li>
+          <li>🎨 <strong>Approfondisci l'accessibilità</strong>: aria-label, ruoli semantici, focus management</li>
+        </ul>
+        <div class="challenge-box">
+          <span class="challenge-label">🎯 La tua sfida finale</span>
+          <p>Crea un'app React completa con almeno: un'interfaccia con più "pagine" gestite da React Router, stato condiviso tramite Context, fetch di dati da una API pubblica, un form con validazione, e CSS Modules per lo stile. Pubblicala su Vercel o Netlify e inseriscila nel tuo portfolio!</p>
+        </div>
+        <div class="hero-actions">
+          <a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a>
+          <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice React (JSX)</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note sul codice React"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="js/main.js?v=3"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+
+    function ensureCM(){
+      if (!cm && window.CodeMirror) {
+        try {
+          cm = CodeMirror.fromTextArea(ta, {
+            mode: 'javascript', lineNumbers: true,
+            lineWrapping: false, tabSize: 2, indentUnit: 2, theme: 'default'
+          });
+        } catch(e) { cm = null; }
+      }
+      return cm;
+    }
+
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        + '<h3 style="margin:0 0 .6rem;color:#1e293b">⚛️ Codice React (JSX)</h3>'
+        + '<p>React richiede un ambiente di build (Vite, Next.js). '
+        + 'Per eseguire subito il codice, copialo su:</p>'
+        + '<ul><li><a href="https://stackblitz.com" target="_blank">StackBlitz</a> — Vite + React nel browser</li>'
+        + '<li><a href="https://codesandbox.io" target="_blank">CodeSandbox</a> — IDE online con template React</li></ul>'
+        + '<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+    }
+
+    function setCode(code){
+      var editor = ensureCM();
+      if (editor) { editor.setValue(code); }
+      else { ta.value = code; }
+    }
+
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setCode(code);
+      note();
+      setTimeout(function(){
+        var editor = ensureCM();
+        if (editor) { editor.refresh(); editor.focus(); }
+      }, 20);
+    }
+
+    function closeEditor(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEditor(); });
+
+    function dedent(text){
+      var lines = text.split('\n'), min = Infinity;
+      for (var i = 1; i < lines.length; i++){
+        if (!lines[i].trim()) continue;
+        var m = lines[i].match(/^ */)[0].length;
+        if (m < min) min = m;
+      }
+      if (min === Infinity || min === 0) return lines.join('\n');
+      for (var j = 1; j < lines.length; j++){ lines[j] = lines[j].slice(min); }
+      return lines.join('\n');
+    }
+
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeScript = ex.querySelector('.code');
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeScript || !codeEl) { return; }
+      var raw = dedent(codeScript.textContent
+        .replace(/^\n/, '').replace(/\s+$/, '')
+        .replace(/<\\\/script>/g, '<\/script>'));
+      codeEl.textContent = raw;
+      if (window.Prism) { Prism.highlightElement(codeEl); }
+      var btn = ex.querySelector('.btn-try');
+      if (btn) { btn.addEventListener('click', function(){ openEditor(raw); }); }
+    });
+  })();
+</script>
+</body>
+</html>
