@@ -57,6 +57,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* --- Barra corsi: evidenzia e porta in vista il corso attivo --- */
+  const courseNav = document.querySelector('.course-nav-inner');
+  if (courseNav) {
+    const page = location.pathname.split('/').pop() || 'index.html';
+    let active = courseNav.querySelector('a.active');
+    // Se nessun link è già marcato active, ricavalo dalla pagina corrente
+    if (!active) {
+      courseNav.querySelectorAll('a').forEach(a => {
+        if (a.getAttribute('href') === page) { a.classList.add('active'); active = a; }
+      });
+    }
+    // Porta il corso attivo al centro della barra scorrevole orizzontale.
+    // Uso i rect (non offsetLeft) per essere indipendente dall'offsetParent
+    // e non provocare scroll verticale della pagina.
+    if (active) {
+      const centra = () => {
+        const navRect = courseNav.getBoundingClientRect();
+        const aRect = active.getBoundingClientRect();
+        const posInNav = (aRect.left - navRect.left) + courseNav.scrollLeft;
+        const target = posInNav - (courseNav.clientWidth / 2) + (aRect.width / 2);
+        courseNav.scrollLeft = Math.max(0, target);
+      };
+      centra();
+      // i font web possono cambiare le larghezze dopo il load: ricentra
+      window.addEventListener('load', centra);
+    }
+  }
+
   /* --- Anno corrente nel footer --- */
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();

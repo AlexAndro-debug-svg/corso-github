@@ -34,13 +34,17 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* overflow-x:hidden sull'elemento HTML (non su body) evita lo scroll
+   orizzontale accidentale su mobile SENZA rompere position:sticky:
+   è ciò che teneva nascosto l'header in alcune pagine dei corsi. */
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: var(--font);
   color: var(--ink);
   background: var(--bg);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* doppia rete: clip non crea scroll container, non tocca lo sticky */
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -101,6 +105,11 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .course-nav-inner { display: flex; align-items: center; gap: 1.4rem; height: 52px; overflow-x: auto; }
 .course-nav a { font-size: .92rem; font-weight: 600; color: var(--muted); white-space: nowrap; transition: color var(--transition); }
 .course-nav a:hover, .course-nav a.active { color: var(--primary); }
+.course-nav a.active { font-weight: 700; }
+/* Su mobile le tabelle larghe scorrono invece di essere tagliate dall'overflow-x:hidden */
+@media (max-width: 900px){
+  .course-wrap table { display: block; width: 100%; overflow-x: auto; }
+}
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: .4rem; }
 .nav-toggle span { width: 26px; height: 3px; background: var(--ink); border-radius: 3px; transition: var(--transition); }
