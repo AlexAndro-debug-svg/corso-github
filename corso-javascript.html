@@ -1315,6 +1315,7 @@ console.log(adulti);  // Luca e Gio</pre></details>
     }
     function openEditor(code){
       overlay.classList.add('open');
+      document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
       ensureCM();
       setCode(code);

@@ -1526,6 +1526,7 @@ def saluta():
     function run(){ preview.srcdoc = cm.getValue(); }
     function openEditor(code){
       overlay.classList.add('open');
+      document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
@@ -1533,6 +1534,7 @@ def saluta():
     }
     function closeEditor(){
       overlay.classList.remove('open');
+      document.body.classList.remove('editor-open');
       document.body.style.overflow = '';
     }
 

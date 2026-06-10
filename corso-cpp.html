@@ -2007,6 +2007,7 @@ int main() {
 
     function openEditor(code){
       overlay.classList.add('open');
+      document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);

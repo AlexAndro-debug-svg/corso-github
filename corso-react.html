@@ -2053,6 +2053,7 @@ function ListaSpesa() {
 
     function openEditor(code){
       overlay.classList.add('open');
+      document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
       setCode(code);
       note();
@@ -2064,6 +2065,7 @@ function ListaSpesa() {
 
     function closeEditor(){
       overlay.classList.remove('open');
+      document.body.classList.remove('editor-open');
       document.body.style.overflow = '';
     }
 
