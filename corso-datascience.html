@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Data Science in italiano completo e gratuito — Pandas, statistica, regressione e Python da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Data Science italiano completo e gratuito: Python, Pandas, NumPy, Matplotlib, statistica, correlazione, regressione lineare, R-quadro e P-value. Con esempi pratici, quiz, esercizi, piano di studio e certificazione.">
+  <meta name="keywords" content="corso data science italiano, imparare data science, data science da zero, pandas tutorial italiano, analisi dati python, statistica per data science, regressione lineare python, numpy matplotlib, machine learning basi, data scientist, scienza dei dati, quiz data science, certificazione data science">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Data Science in italiano completo e gratuito — Analisi dati con Python | AlessandroSimone.it">
+  <meta property="og:description" content="Impara la Data Science da zero in italiano: Pandas, statistica, correlazione, regressione lineare e previsioni con Python. Tutorial completo e gratuito con quiz ed esercizi.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
+    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #f472b6; }
+    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.punctuation, .codeview .token.operator { color: #94a3b8; }
+    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #5eead4; }
+    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #93c5fd; }
+    .codeview .token.attr-value .token.punctuation { color: #93c5fd; }
+    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #fbbf24; }
+    .codeview .token.class-name, .codeview .token.builtin { color: #c4b5fd; }
+    .codeview .token.parameter, .codeview .token.variable { color: #fda4af; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1000; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
+    .ed-btn:hover { background: var(--bg-soft); }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: #f8fafc; border-bottom: 1px solid var(--border); padding: .35rem .9rem; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-datascience.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-datascience.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Data Science in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Data Science completo in italiano: Pandas, statistica, correlazione, regressione lineare, R-quadro, quiz e certificazione.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Data Science in italiano","description":"Corso Data Science italiano completo e gratuito: Python, Pandas, NumPy, Matplotlib, statistica, correlazione, regressione lineare, R-quadro e P-value. Quiz, esercizi e certificazione.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-datascience.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html" class="active">DATA SCIENCE</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Data Science in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara ad analizzare i dati da zero: Pandas, statistica, correlazione e regressione lineare con Python, per trasformare i numeri in previsioni e decisioni.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Data Science</h4>
+      <a href="#intro">Introduzione</a>
+      <a href="#what-is-data">Cosa sono i dati</a>
+      <a href="#database">Tabella Database</a>
+      <a href="#python">Python per la DS</a>
+      <a href="#dataframe">DataFrame</a>
+      <a href="#functions">Funzioni</a>
+      <a href="#prep">Preparazione dati</a>
+      <h4>DS Math</h4>
+      <a href="#linear-functions">Funzioni lineari</a>
+      <a href="#plotting">Grafici</a>
+      <a href="#slope">Pendenza e intercetta</a>
+      <h4>DS Statistics</h4>
+      <a href="#stat-intro">Introduzione statistica</a>
+      <a href="#percentiles">Percentili</a>
+      <a href="#std">Deviazione standard</a>
+      <a href="#variance">Varianza</a>
+      <a href="#correlation">Correlazione</a>
+      <a href="#corr-matrix">Matrice di correlazione</a>
+      <a href="#causality">Correlazione e causalità</a>
+      <h4>DS Advanced</h4>
+      <a href="#linear-regression">Regressione lineare</a>
+      <a href="#regression-table">Tabella regressione</a>
+      <a href="#regression-info">Info regressione</a>
+      <a href="#regression-coeff">Coefficienti</a>
+      <a href="#regression-pvalue">P-Value</a>
+      <a href="#regression-r2">R-Squared</a>
+      <a href="#regression-case">Caso pratico</a>
+      <h4>Pratica & Risorse</h4>
+      <a href="#editor-online">Pratica online</a>
+      <a href="#esercizi">Esercizi</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#programma">Programma</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#bootcamp">Bootcamp</a>
+      <h4>Certificazione</h4>
+      <a href="#certificazione">Certificazione</a>
+      <a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+      <article class="lesson" id="intro">
+        <h2>Cos'è la Data Science</h2>
+        <p>La <strong>Data Science</strong> (scienza dei dati) è la disciplina che usa metodi scientifici, statistica, programmazione e algoritmi per <strong>estrarre conoscenza e valore dai dati</strong>. È uno dei mestieri più richiesti del momento: ogni azienda raccoglie dati e ha bisogno di persone capaci di trasformarli in decisioni.</p>
+<h3>Cosa fa un Data Scientist</h3>
+<ul>
+  <li>📥 <strong>Raccoglie</strong> i dati da database, file, API e sensori</li>
+  <li>🧹 <strong>Pulisce e prepara</strong> i dati (la fase più lunga del lavoro)</li>
+  <li>📊 <strong>Analizza</strong> i dati con statistica e visualizzazioni</li>
+  <li>🤖 <strong>Modella</strong> i dati con algoritmi di machine learning</li>
+  <li>💡 <strong>Comunica</strong> i risultati per guidare le decisioni</li>
+</ul>
+<h3>A cosa serve</h3>
+<p>La Data Science risponde a domande concrete: <em>Quali clienti rischiano di abbandonare? Quanto venderemo il mese prossimo? Questa email è spam? Quali prodotti consigliare?</em> Dietro a Netflix, Amazon, le diagnosi mediche assistite e le previsioni meteo c'è la scienza dei dati.</p>
+<div class="note-box">📘 In questo corso useremo <strong>Python</strong> con le librerie <strong>Pandas</strong> (gestione dati), <strong>NumPy</strong> (calcolo numerico) e <strong>Matplotlib</strong> (grafici): lo stack standard della Data Science.</div>
+<div class="tip-box">💡 Non parti da zero in informatica? Ti consiglio di seguire prima il <a href="corso-python.html">corso Python</a>: qui daremo per scontate le basi del linguaggio.</div>
+      </article>
+
+      <article class="lesson" id="what-is-data">
+        <h2>Cosa sono i dati</h2>
+        <p>Un <strong>dato</strong> (data) è una raccolta di informazioni: numeri, parole, misurazioni, osservazioni o descrizioni di qualcosa. I dati sono la materia prima della Data Science.</p>
+<h3>I due tipi principali di dati</h3>
+<ul>
+  <li><strong>Dati strutturati</strong>: organizzati in tabelle con righe e colonne (es. un foglio Excel, un database). Facili da analizzare.</li>
+  <li><strong>Dati non strutturati</strong>: testo libero, immagini, audio, video. Più ricchi ma più difficili da elaborare.</li>
+</ul>
+<h3>Tipi di valori</h3>
+<table class="ref">
+  <tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr>
+  <tr><td>Numerici</td><td>Numeri, su cui si fanno calcoli</td><td>età, prezzo, temperatura</td></tr>
+  <tr><td>Categorici</td><td>Categorie/etichette, senza ordine numerico</td><td>colore, città, sì/no</td></tr>
+  <tr><td>Ordinali</td><td>Categorie con un ordine</td><td>basso/medio/alto, voto scolastico</td></tr>
+</table>
+<p>I numerici si dividono ancora in <strong>discreti</strong> (contabili, es. numero di figli) e <strong>continui</strong> (qualsiasi valore in un intervallo, es. altezza). Capire il tipo di dato è il primo passo: determina quali analisi e quali grafici hanno senso.</p>
+<div class="note-box">📘 <strong>Dataset</strong>: un insieme di dati organizzato, di solito una tabella. <strong>Data point</strong> (o osservazione): una singola riga. <strong>Feature</strong> (o variabile): una singola colonna.</div>
+      </article>
+
+      <article class="lesson" id="database">
+        <h2>La tabella: righe e colonne</h2>
+        <p>Nella Data Science i dati vivono quasi sempre in una <strong>tabella</strong>: una griglia di <strong>righe</strong> (le osservazioni) e <strong>colonne</strong> (le variabili). È la stessa struttura di un database o di un foglio di calcolo.</p>
+<table class="ref">
+  <tr><th>Durata</th><th>Battiti medi</th><th>Calorie</th></tr>
+  <tr><td>60</td><td>110</td><td>409</td></tr>
+  <tr><td>60</td><td>117</td><td>479</td></tr>
+  <tr><td>45</td><td>109</td><td>340</td></tr>
+  <tr><td>45</td><td>118</td><td>406</td></tr>
+</table>
+<p>Questa tabella descrive sessioni di allenamento: ogni <strong>riga</strong> è una sessione, ogni <strong>colonna</strong> una caratteristica misurata (durata in minuti, battiti cardiaci medi, calorie bruciate).</p>
+<h3>Perché la struttura conta</h3>
+<ul>
+  <li>Ogni riga = un'osservazione completa e indipendente</li>
+  <li>Ogni colonna = una variabile con un tipo coerente (tutti numeri, o tutte categorie)</li>
+  <li>L'analisi cerca <strong>relazioni tra colonne</strong> (es. più durata → più calorie?)</li>
+</ul>
+<div class="tip-box">💡 In Python questa tabella diventa un <strong>DataFrame</strong> di Pandas: lo vedremo tra poco. Mentalmente, pensa sempre ai tuoi dati come a una tabella ordinata.</div>
+      </article>
+
+      <article class="lesson" id="python">
+        <h2>Python per la Data Science</h2>
+        <p><strong>Python</strong> è il linguaggio più usato nella Data Science: semplice da leggere, con un ecosistema enorme di librerie specializzate. Vediamo gli strumenti fondamentali.</p>
+<table class="ref">
+  <tr><th>Libreria</th><th>A cosa serve</th></tr>
+  <tr><td><strong>Pandas</strong></td><td>Caricare, pulire e manipolare tabelle di dati (DataFrame)</td></tr>
+  <tr><td><strong>NumPy</strong></td><td>Calcolo numerico veloce su array e matrici</td></tr>
+  <tr><td><strong>Matplotlib</strong></td><td>Creare grafici e visualizzazioni</td></tr>
+  <tr><td><strong>SciPy</strong></td><td>Statistica avanzata e calcolo scientifico</td></tr>
+  <tr><td><strong>Scikit-learn</strong></td><td>Machine learning (regressione, classificazione...)</td></tr>
+</table>
+<div class="example"><div class="codehead"><span>Importare le librerie</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+# Le importazioni standard della Data Science
+import pandas as pd          # tabelle di dati
+import numpy as np           # calcolo numerico
+import matplotlib.pyplot as plt   # grafici
+
+# Una prima analisi: la media di una lista di numeri
+import statistics
+
+calorie = [409, 479, 340, 406, 350]
+print("Media calorie:", statistics.mean(calorie))   # 396.8
+print("Massimo:", max(calorie))                      # 479
+print("Minimo:", min(calorie))                       # 340
+</script></div>
+<div class="note-box">📘 La convenzione <code class="inline">import pandas as pd</code> dà alle librerie un alias breve: troverai sempre <code class="inline">pd</code>, <code class="inline">np</code> e <code class="inline">plt</code> in ogni codice di Data Science.</div>
+      </article>
+
+      <article class="lesson" id="dataframe">
+        <h2>Il DataFrame di Pandas</h2>
+        <p>Il <strong>DataFrame</strong> è la struttura dati centrale di Pandas: una tabella bidimensionale con righe e colonne etichettate. È come un foglio Excel programmabile.</p>
+<div class="example"><div class="codehead"><span>Creare e ispezionare un DataFrame</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+
+# Creare un DataFrame da un dizionario
+dati = {
+    "durata": [60, 60, 45, 45, 60],
+    "battiti": [110, 117, 109, 118, 102],
+    "calorie": [409, 479, 340, 406, 380]
+}
+df = pd.DataFrame(dati)
+
+print(df)
+print(df.shape)        # (5, 3) -> 5 righe, 3 colonne
+print(df.columns)      # le etichette delle colonne
+print(df["calorie"])   # selezionare una colonna
+print(df.head(2))      # le prime 2 righe
+print(df.describe())   # statistiche riassuntive automatiche!
+</script></div>
+<h3>Caricare dati reali</h3>
+<div class="example"><div class="codehead"><span>Leggere un file CSV</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+
+# Caricare un file CSV (il formato piu' comune per i dati)
+df = pd.read_csv("dati.csv")
+
+# Pandas legge anche Excel, JSON, SQL...
+# df = pd.read_excel("dati.xlsx")
+# df = pd.read_json("dati.json")
+
+print(df.info())     # tipi di colonna e valori mancanti
+print(df.tail())     # le ultime righe
+</script></div>
+<div class="tip-box">💡 <code class="inline">df.describe()</code> e <code class="inline">df.info()</code> sono i tuoi primi due comandi su qualsiasi dataset nuovo: ti danno subito media, min, max e l'elenco dei valori mancanti.</div>
+      </article>
+
+      <article class="lesson" id="functions">
+        <h2>Funzioni utili sui dati</h2>
+        <p>Pandas offre decine di funzioni per <strong>esplorare e riassumere</strong> i dati con una riga di codice. Sono il pane quotidiano dell'analisi.</p>
+<div class="example"><div class="codehead"><span>Funzioni di analisi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+
+df = pd.DataFrame({
+    "durata": [60, 60, 45, 45, 60],
+    "calorie": [409, 479, 340, 406, 380]
+})
+
+# Statistiche su una colonna
+print(df["calorie"].mean())     # media
+print(df["calorie"].median())   # mediana
+print(df["calorie"].max())      # massimo
+print(df["calorie"].min())      # minimo
+print(df["calorie"].sum())      # somma
+print(df["calorie"].std())      # deviazione standard
+print(df["calorie"].count())    # quanti valori
+
+# Filtrare le righe (es. allenamenti lunghi)
+lunghi = df[df["durata"] >= 60]
+print(lunghi)
+
+# Ordinare
+print(df.sort_values("calorie", ascending=False))
+
+# Raggruppare e aggregare
+print(df.groupby("durata")["calorie"].mean())
+</script></div>
+<div class="note-box">📘 <code class="inline">groupby</code> è potentissimo: "raggruppa per durata e calcola la media delle calorie" diventa una sola riga. È il cuore di gran parte delle analisi.</div>
+      </article>
+
+      <article class="lesson" id="prep">
+        <h2>Preparazione dei dati</h2>
+        <p>I dati reali sono <strong>sporchi</strong>: valori mancanti, duplicati, formati sbagliati, errori. La <strong>preparazione dei dati</strong> (data cleaning) è la fase più lunga e importante: si dice che occupi l'80% del tempo di un Data Scientist.</p>
+<h3>I problemi tipici</h3>
+<ul>
+  <li>🕳️ <strong>Valori mancanti</strong> (celle vuote, <code class="inline">NaN</code>)</li>
+  <li>👯 <strong>Duplicati</strong> (righe ripetute)</li>
+  <li>🔤 <strong>Formato sbagliato</strong> (date come testo, numeri con la virgola)</li>
+  <li>📏 <strong>Valori anomali</strong> (outlier: un'età di 300 anni)</li>
+</ul>
+<div class="example"><div class="codehead"><span>Pulire un DataFrame</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    "durata": [60, 60, np.nan, 45, 60, 60],
+    "calorie": [409, 479, 340, 406, np.nan, 409]
+})
+
+# 1. Trovare i valori mancanti
+print(df.isnull().sum())
+
+# 2. Rimuovere le righe con valori mancanti...
+df_pulito = df.dropna()
+
+# 3. ...oppure riempirli (es. con la media)
+df["calorie"] = df["calorie"].fillna(df["calorie"].mean())
+
+# 4. Rimuovere i duplicati
+df = df.drop_duplicates()
+
+# 5. Convertire il tipo di una colonna
+df["durata"] = df["durata"].astype(int)
+
+print(df)
+</script></div>
+<div class="warn-box">⚠️ Non esiste UNA risposta giusta per i valori mancanti: a volte si eliminano, a volte si riempiono con media/mediana. La scelta dipende dal contesto e influenza i risultati: documentala sempre.</div>
+      </article>
+
+      <article class="lesson" id="linear-functions">
+        <h2>Funzioni lineari</h2>
+        <p>La matematica è il linguaggio dei dati. La <strong>funzione lineare</strong> è la più semplice e la più usata: descrive una relazione a "linea retta" tra due variabili.</p>
+<p>La sua formula è:</p>
+<p style="text-align:center;font-size:1.2rem"><code class="inline">f(x) = a·x + b</code></p>
+<ul>
+  <li><strong>x</strong> è l'ingresso (la variabile indipendente)</li>
+  <li><strong>a</strong> è la <strong>pendenza</strong> (slope): di quanto cresce f(x) quando x aumenta di 1</li>
+  <li><strong>b</strong> è l'<strong>intercetta</strong> (intercept): il valore di f(x) quando x = 0</li>
+</ul>
+<div class="example"><div class="codehead"><span>Una funzione lineare in Python</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+# f(x) = 2x + 80
+# Esempio: stima delle calorie in base ai minuti di allenamento
+def f(x):
+    return 2 * x + 80
+
+print(f(0))    # 80  -> intercetta: calorie "di base"
+print(f(30))   # 140
+print(f(60))   # 200 -> piu' minuti, piu' calorie
+
+# La pendenza a = 2 significa:
+# ogni minuto in piu' aggiunge 2 calorie
+</script></div>
+<div class="note-box">📘 Le funzioni lineari sono alla base della <strong>regressione lineare</strong>, il modello predittivo più importante che vedremo nella sezione avanzata.</div>
+      </article>
+
+      <article class="lesson" id="plotting">
+        <h2>Disegnare le funzioni</h2>
+        <p><strong>Visualizzare</strong> i dati è essenziale: un grafico comunica in un istante ciò che una tabella di numeri nasconde. In Python usiamo <strong>Matplotlib</strong>.</p>
+<div class="example"><div class="codehead"><span>Disegnare una funzione lineare</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Genera 50 valori di x da 0 a 60
+x = np.linspace(0, 60, 50)
+
+# f(x) = 2x + 80
+y = 2 * x + 80
+
+plt.plot(x, y)
+plt.title("Calorie stimate per durata")
+plt.xlabel("Durata (minuti)")
+plt.ylabel("Calorie")
+plt.grid(True)
+plt.show()
+</script></div>
+<h3>Il grafico a dispersione (scatter)</h3>
+<div class="example"><div class="codehead"><span>Scatter plot: dati reali vs retta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import matplotlib.pyplot as plt
+
+durata  = [60, 60, 45, 45, 30, 30]
+calorie = [409, 479, 340, 406, 200, 240]
+
+# Ogni punto e' un'osservazione reale
+plt.scatter(durata, calorie)
+plt.title("Calorie reali per durata")
+plt.xlabel("Durata (minuti)")
+plt.ylabel("Calorie")
+plt.show()
+</script></div>
+<div class="tip-box">💡 Lo <strong>scatter plot</strong> è il primo grafico da fare per studiare la relazione tra due variabili numeriche: ti mostra subito se c'è un andamento (e se è lineare).</div>
+      </article>
+
+      <article class="lesson" id="slope">
+        <h2>Pendenza e intercetta</h2>
+        <p>I due numeri che definiscono una retta hanno un significato pratico fondamentale nella Data Science.</p>
+<h3>La pendenza (slope, <em>a</em>)</h3>
+<p>Indica <strong>quanto cambia y per ogni unità di x</strong>. Si calcola come variazione di y diviso variazione di x:</p>
+<p style="text-align:center;font-size:1.1rem"><code class="inline">a = (y₂ − y₁) / (x₂ − x₁)</code></p>
+<h3>L'intercetta (intercept, <em>b</em>)</h3>
+<p>È il <strong>valore di y quando x = 0</strong>: il punto in cui la retta tocca l'asse verticale.</p>
+<div class="example"><div class="codehead"><span>Calcolare pendenza e intercetta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+# Due punti noti: (30, 140) e (60, 200)
+x1, y1 = 30, 140
+x2, y2 = 60, 200
+
+# Pendenza
+a = (y2 - y1) / (x2 - x1)
+print("Pendenza a =", a)        # 2.0
+
+# Intercetta: b = y - a*x usando uno dei punti
+b = y1 - a * x1
+print("Intercetta b =", b)      # 80.0
+
+# La retta e' quindi: y = 2x + 80
+def retta(x):
+    return a * x + b
+
+print(retta(45))   # 170 -> previsione per 45 minuti
+</script></div>
+<div class="note-box">📘 Trovare la "miglior retta" che attraversa una nuvola di punti reali significa trovare la pendenza e l'intercetta ottimali: è esattamente ciò che fa la <strong>regressione lineare</strong>.</div>
+      </article>
+
+      <article class="lesson" id="stat-intro">
+        <h2>Introduzione alla statistica</h2>
+        <p>La <strong>statistica</strong> è il cuore della Data Science: l'insieme di metodi per descrivere, riassumere e trarre conclusioni dai dati.</p>
+<h3>Le misure di centralità</h3>
+<table class="ref">
+  <tr><th>Misura</th><th>Cos'è</th></tr>
+  <tr><td><strong>Media</strong> (mean)</td><td>La somma dei valori divisa per quanti sono</td></tr>
+  <tr><td><strong>Mediana</strong> (median)</td><td>Il valore centrale, ordinando i dati</td></tr>
+  <tr><td><strong>Moda</strong> (mode)</td><td>Il valore che compare più spesso</td></tr>
+</table>
+<div class="example"><div class="codehead"><span>Media, mediana e moda</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import numpy as np
+from scipy import stats
+
+eta = [22, 25, 25, 30, 35, 40, 90]
+
+print("Media:", np.mean(eta))        # 38.1 -> "tirata su" dal 90
+print("Mediana:", np.median(eta))    # 30   -> piu' robusta
+print("Moda:", stats.mode(eta, keepdims=False).mode)  # 25
+</script></div>
+<div class="warn-box">⚠️ La media è sensibile ai valori estremi (outlier): un solo stipendio da milionario alza la "media degli stipendi" di un'azienda. In questi casi la <strong>mediana</strong> descrive meglio la realtà.</div>
+      </article>
+
+      <article class="lesson" id="percentiles">
+        <h2>I percentili</h2>
+        <p>Un <strong>percentile</strong> indica il valore sotto al quale cade una certa percentuale dei dati. Il 75° percentile è il valore sotto cui sta il 75% delle osservazioni.</p>
+<p>Sono utilissimi per capire la <strong>distribuzione</strong>: l'altezza al 90° percentile dei bambini di un'età è quella superata solo dal 10% più alto.</p>
+<div class="example"><div class="codehead"><span>Calcolare i percentili</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import numpy as np
+
+eta = [5, 31, 43, 48, 50, 41, 7, 11, 15, 39,
+       80, 82, 32, 2, 8, 6, 25, 36, 27, 61, 31]
+
+# Il 75esimo percentile: il 75% delle persone ha questa eta' o meno
+print(np.percentile(eta, 75))   # 43.0
+
+# La mediana e' il 50esimo percentile
+print(np.percentile(eta, 50))   # 31.0
+
+# I quartili dividono i dati in 4 parti
+print(np.percentile(eta, [25, 50, 75]))
+</script></div>
+<div class="note-box">📘 I <strong>quartili</strong> (25°, 50°, 75° percentile) dividono i dati in quattro parti uguali e sono alla base del <em>box plot</em>, un grafico che riassume la distribuzione in un colpo d'occhio.</div>
+      </article>
+
+      <article class="lesson" id="std">
+        <h2>La deviazione standard</h2>
+        <p>La <strong>deviazione standard</strong> misura quanto i dati sono <strong>sparpagliati</strong> attorno alla media. Bassa = i valori sono vicini alla media; alta = molto dispersi.</p>
+<div class="example"><div class="codehead"><span>Deviazione standard</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import numpy as np
+
+# Due gruppi con la STESSA media (100) ma dispersione diversa
+gruppo_a = [98, 99, 100, 101, 102]    # vicini
+gruppo_b = [60, 80, 100, 120, 140]    # sparsi
+
+print("Media A:", np.mean(gruppo_a), "Std A:", np.std(gruppo_a))
+print("Media B:", np.mean(gruppo_b), "Std B:", np.std(gruppo_b))
+
+# Std A ~ 1.4   -> dati compatti
+# Std B ~ 28.3  -> dati molto dispersi
+</script></div>
+<h3>Interpretazione pratica</h3>
+<p>In una distribuzione "a campana" (normale), circa il <strong>68%</strong> dei dati cade entro 1 deviazione standard dalla media, il <strong>95%</strong> entro 2 e il <strong>99,7%</strong> entro 3. È la famosa <em>regola 68-95-99,7</em>.</p>
+<div class="tip-box">💡 Media e deviazione standard insieme raccontano molto: "stipendio medio 30.000€ con deviazione 2.000€" è un'azienda molto diversa da "30.000€ con deviazione 20.000€".</div>
+      </article>
+
+      <article class="lesson" id="variance">
+        <h2>La varianza</h2>
+        <p>La <strong>varianza</strong> è un'altra misura di dispersione, strettamente legata alla deviazione standard: la <strong>deviazione standard è la radice quadrata della varianza</strong>.</p>
+<p>Si calcola facendo la media dei <strong>quadrati delle distanze</strong> di ogni valore dalla media. Si eleva al quadrato per evitare che scarti positivi e negativi si annullino.</p>
+<div class="example"><div class="codehead"><span>Varianza e deviazione standard</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import numpy as np
+
+dati = [32, 111, 138, 28, 59, 77, 97]
+
+varianza = np.var(dati)
+deviazione = np.std(dati)
+
+print("Varianza:", varianza)              # ~1432.2
+print("Deviazione std:", deviazione)      # ~37.8
+print("Radice della varianza:", np.sqrt(varianza))  # = deviazione std
+
+# Calcolo manuale per capire la formula:
+media = np.mean(dati)
+scarti_quadr = [(x - media) ** 2 for x in dati]
+print("Varianza a mano:", np.mean(scarti_quadr))
+</script></div>
+<div class="note-box">📘 Perché due misure? La <strong>varianza</strong> è comoda nei calcoli matematici (compare nelle formule), la <strong>deviazione standard</strong> è più intuitiva perché ha la stessa unità di misura dei dati (euro, cm...).</div>
+      </article>
+
+      <article class="lesson" id="correlation">
+        <h2>La correlazione</h2>
+        <p>La <strong>correlazione</strong> misura quanto due variabili <strong>variano insieme</strong>. Il <em>coefficiente di correlazione</em> va da −1 a +1:</p>
+<ul>
+  <li><strong>+1</strong>: correlazione positiva perfetta (una cresce, l'altra cresce in proporzione)</li>
+  <li><strong>0</strong>: nessuna relazione lineare</li>
+  <li><strong>−1</strong>: correlazione negativa perfetta (una cresce, l'altra cala)</li>
+</ul>
+<div class="example"><div class="codehead"><span>Calcolare la correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+
+df = pd.DataFrame({
+    "durata":  [60, 60, 45, 45, 30, 30, 90],
+    "calorie": [409, 479, 340, 406, 200, 240, 700]
+})
+
+# Coefficiente di correlazione tra le due colonne
+print(df["durata"].corr(df["calorie"]))   # ~0.98 -> forte e positiva!
+
+# Piu' a lungo ci si allena, piu' calorie si bruciano:
+# la correlazione vicina a +1 lo conferma
+</script></div>
+<div class="tip-box">💡 Una correlazione vicina a ±1 indica una relazione lineare forte e quindi <strong>prevedibile</strong>: è il segnale che la regressione lineare funzionerà bene.</div>
+      </article>
+
+      <article class="lesson" id="corr-matrix">
+        <h2>La matrice di correlazione</h2>
+        <p>Quando le variabili sono molte, la <strong>matrice di correlazione</strong> mostra in un colpo d'occhio la correlazione tra <em>ogni coppia</em> di colonne.</p>
+<div class="example"><div class="codehead"><span>Matrice di correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+
+df = pd.DataFrame({
+    "durata":  [60, 60, 45, 45, 30, 90],
+    "battiti": [110, 117, 109, 118, 100, 130],
+    "calorie": [409, 479, 340, 406, 200, 700]
+})
+
+# Una riga: la matrice di correlazione completa
+print(df.corr())
+
+# La diagonale e' sempre 1 (ogni colonna correla 1 con se stessa)
+# I valori fuori diagonale mostrano le relazioni tra coppie
+</script></div>
+<h3>Visualizzarla: la heatmap</h3>
+<div class="example"><div class="codehead"><span>Heatmap della correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "durata":  [60, 60, 45, 45, 30, 90],
+    "battiti": [110, 117, 109, 118, 100, 130],
+    "calorie": [409, 479, 340, 406, 200, 700]
+})
+
+corr = df.corr()
+plt.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
+plt.colorbar()
+plt.xticks(range(len(corr)), corr.columns, rotation=45)
+plt.yticks(range(len(corr)), corr.columns)
+plt.title("Matrice di correlazione")
+plt.show()
+</script></div>
+<div class="note-box">📘 La <strong>heatmap</strong> usa il colore per l'intensità: rosso acceso per correlazioni forti positive, blu per quelle negative. È lo strumento standard per esplorare dataset con molte colonne.</div>
+      </article>
+
+      <article class="lesson" id="causality">
+        <h2>Correlazione ≠ causalità</h2>
+        <p>È la lezione più importante di tutta la statistica: <strong>la correlazione non implica la causalità</strong>. Due variabili possono muoversi insieme senza che una causi l'altra.</p>
+<h3>L'esempio classico</h3>
+<p>Le vendite di gelati e gli annegamenti sono fortemente correlati. Il gelato causa annegamenti? No: c'è una <strong>terza variabile nascosta</strong> — il caldo estivo — che fa aumentare entrambi.</p>
+<h3>Le trappole da conoscere</h3>
+<ul>
+  <li><strong>Variabile confondente</strong>: una causa comune nascosta (il caldo)</li>
+  <li><strong>Causalità inversa</strong>: è B a causare A, non il contrario</li>
+  <li><strong>Coincidenza</strong>: con tanti dati, alcune correlazioni nascono per puro caso</li>
+</ul>
+<div class="warn-box">⚠️ Confondere correlazione e causalità porta a decisioni disastrose. Prima di dire "X causa Y" servono esperimenti controllati (es. test A/B), non la sola correlazione osservata nei dati.</div>
+<div class="note-box">📘 Esistono interi siti che raccolgono <em>correlazioni spurie</em> esilaranti (es. il consumo di formaggio e i decessi per lenzuola aggrovigliate): un promemoria divertente di quanto sia facile farsi ingannare.</div>
+      </article>
+
+      <article class="lesson" id="linear-regression">
+        <h2>La regressione lineare</h2>
+        <p>La <strong>regressione lineare</strong> è il modello predittivo più importante: trova la <strong>retta che meglio approssima</strong> la relazione tra una variabile di ingresso (x) e una di uscita (y), per poi <strong>fare previsioni</strong>.</p>
+<div class="example"><div class="codehead"><span>La tua prima regressione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+from scipy import stats
+
+# Durata dell'allenamento (x) e calorie bruciate (y)
+durata  = [30, 45, 45, 60, 60, 90]
+calorie = [200, 340, 406, 409, 479, 700]
+
+# La regressione lineare calcola pendenza e intercetta ottimali
+slope, intercept, r, p, std_err = stats.linregress(durata, calorie)
+
+print("Pendenza:", slope)
+print("Intercetta:", intercept)
+
+# La retta del modello: y = slope*x + intercept
+def prevedi(x):
+    return slope * x + intercept
+
+# PREVISIONE: quante calorie per 50 minuti?
+print("50 min ->", prevedi(50), "calorie")
+</script></div>
+<div class="note-box">📘 "Regressione" = trovare la relazione tra variabili. "Lineare" = la relazione è una retta. Il modello impara dai dati passati per prevedere casi nuovi mai visti.</div>
+      </article>
+
+      <article class="lesson" id="regression-table">
+        <h2>La tabella di regressione</h2>
+        <p>Per analisi serie si usa <strong>statsmodels</strong>, che produce una <strong>tabella di regressione</strong> completa: non solo la previsione, ma anche quanto fidarsi del modello.</p>
+<div class="example"><div class="codehead"><span>Regressione con statsmodels</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import statsmodels.api as sm
+
+durata  = [30, 45, 45, 60, 60, 90]
+calorie = [200, 340, 406, 409, 479, 700]
+
+X = sm.add_constant(durata)   # aggiunge l'intercetta al modello
+model = sm.OLS(calorie, X).fit()
+
+# La tabella completa con tutti gli indicatori
+print(model.summary())
+</script></div>
+<p>La tabella contiene molti numeri. Nelle prossime lezioni impareremo a leggere i più importanti: <strong>coefficienti</strong>, <strong>P-value</strong> e <strong>R-quadro</strong>.</p>
+<div class="tip-box">💡 La <code class="inline">summary()</code> sembra intimidatoria all'inizio, ma bastano 3-4 numeri per giudicare un modello. È lo standard nei report di analisi dei dati.</div>
+      </article>
+
+      <article class="lesson" id="regression-info">
+        <h2>Leggere le informazioni</h2>
+        <p>In cima alla tabella di regressione ci sono le <strong>informazioni generali</strong> sul modello: cosa stiamo predicendo, con quale metodo, su quanti dati.</p>
+<table class="ref">
+  <tr><th>Voce</th><th>Significato</th></tr>
+  <tr><td>Dep. Variable</td><td>La variabile che stiamo predicendo (y)</td></tr>
+  <tr><td>Method</td><td>Il metodo di stima (OLS = minimi quadrati ordinari)</td></tr>
+  <tr><td>No. Observations</td><td>Quanti dati abbiamo usato</td></tr>
+  <tr><td>R-squared</td><td>Quanto bene il modello spiega i dati (0–1)</td></tr>
+  <tr><td>Df Residuals / Model</td><td>Gradi di libertà (dati e variabili usate)</td></tr>
+</table>
+<div class="note-box">📘 <strong>OLS (Ordinary Least Squares)</strong>, i "minimi quadrati", è il metodo che trova la retta minimizzando la somma dei quadrati degli errori (le distanze verticali tra i punti reali e la retta).</div>
+<div class="tip-box">💡 Più "No. Observations" (più dati) hai, più il modello è affidabile. Una regressione su 5 punti dice poco; su 5.000 punti diventa solida.</div>
+      </article>
+
+      <article class="lesson" id="regression-coeff">
+        <h2>I coefficienti</h2>
+        <p>I <strong>coefficienti</strong> sono il cuore del modello: i numeri che definiscono la retta. Sono esattamente la <strong>pendenza</strong> e l'<strong>intercetta</strong> che già conosci.</p>
+<table class="ref">
+  <tr><th>Coefficiente</th><th>Significato</th></tr>
+  <tr><td><strong>const</strong> (intercetta)</td><td>Il valore previsto di y quando x = 0</td></tr>
+  <tr><td><strong>x1</strong> (pendenza)</td><td>Di quanto cambia y per ogni unità di x in più</td></tr>
+</table>
+<div class="example"><div class="codehead"><span>Estrarre e usare i coefficienti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import statsmodels.api as sm
+
+durata  = [30, 45, 45, 60, 60, 90]
+calorie = [200, 340, 406, 409, 479, 700]
+
+X = sm.add_constant(durata)
+model = sm.OLS(calorie, X).fit()
+
+# I coefficienti del modello
+print(model.params)
+# const  -> intercetta
+# x1     -> pendenza
+
+intercetta, pendenza = model.params
+
+# Interpretazione: ogni minuto in piu' ->  "pendenza" calorie in piu'
+print(f"Ogni minuto aggiunge {pendenza:.1f} calorie")
+</script></div>
+<div class="note-box">📘 Il coefficiente di una variabile risponde alla domanda chiave del business: "se aumento questa leva di 1, di quanto cambia il risultato?". È l'informazione più azionabile del modello.</div>
+      </article>
+
+      <article class="lesson" id="regression-pvalue">
+        <h2>Il P-Value</h2>
+        <p>Il <strong>P-value</strong> risponde a una domanda cruciale: <em>questa variabile conta davvero, o l'apparente relazione è frutto del caso?</em></p>
+<ul>
+  <li><strong>P-value piccolo</strong> (&lt; 0,05): la variabile è <strong>statisticamente significativa</strong>, la relazione è probabilmente reale</li>
+  <li><strong>P-value grande</strong> (&gt; 0,05): non abbiamo prove sufficienti, la relazione potrebbe essere casuale</li>
+</ul>
+<div class="example"><div class="codehead"><span>Leggere i P-value</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import statsmodels.api as sm
+
+durata  = [30, 45, 45, 60, 60, 90]
+calorie = [200, 340, 406, 409, 479, 700]
+
+X = sm.add_constant(durata)
+model = sm.OLS(calorie, X).fit()
+
+# I P-value di ogni coefficiente
+print(model.pvalues)
+
+# Se il P-value di x1 e' < 0.05, la durata
+# influenza davvero le calorie (non e' un caso)
+if model.pvalues["x1"] < 0.05:
+    print("La durata e' un predittore significativo!")
+</script></div>
+<div class="warn-box">⚠️ La soglia 0,05 è una convenzione, non una verità assoluta. E "significativo" non vuol dire "grande": una variabile può essere statisticamente significativa ma avere un effetto pratico minuscolo. Valuta sempre entrambe le cose.</div>
+      </article>
+
+      <article class="lesson" id="regression-r2">
+        <h2>R-quadro (R²)</h2>
+        <p>L'<strong>R-quadro</strong> (R², o coefficiente di determinazione) misura <strong>quanto bene il modello spiega i dati</strong>. Va da 0 a 1:</p>
+<ul>
+  <li><strong>R² = 1</strong>: il modello spiega il 100% della variabilità (retta perfetta)</li>
+  <li><strong>R² = 0,8</strong>: spiega l'80% — buon modello</li>
+  <li><strong>R² = 0</strong>: il modello non spiega nulla</li>
+</ul>
+<div class="example"><div class="codehead"><span>Valutare il modello con R²</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import statsmodels.api as sm
+
+durata  = [30, 45, 45, 60, 60, 90]
+calorie = [200, 340, 406, 409, 479, 700]
+
+X = sm.add_constant(durata)
+model = sm.OLS(calorie, X).fit()
+
+print("R-quadro:", model.rsquared)
+# Vicino a 1 -> la durata spiega quasi tutta
+# la variazione delle calorie: ottimo modello
+
+print(f"Il modello spiega il {model.rsquared*100:.1f}% della variabilita'")
+</script></div>
+<div class="tip-box">💡 Un R² alto NON garantisce buone previsioni su dati nuovi (rischio di <em>overfitting</em>) e NON implica causalità. È un buon indicatore, ma va sempre letto insieme a P-value, quantità di dati e buon senso.</div>
+      </article>
+
+      <article class="lesson" id="regression-case">
+        <h2>Caso pratico completo</h2>
+        <p>Mettiamo tutto insieme in un <strong>caso completo</strong>: dalla preparazione dei dati alla previsione, con valutazione del modello e grafico finale.</p>
+<div class="example"><div class="codehead"><span>Progetto: prevedere le calorie</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+
+# 1. I dati (in un caso reale: pd.read_csv("allenamenti.csv"))
+df = pd.DataFrame({
+    "durata":  [30, 45, 45, 60, 60, 75, 90],
+    "calorie": [200, 340, 406, 409, 479, 560, 700]
+})
+
+# 2. Esplorazione
+print(df.describe())
+print("Correlazione:", df["durata"].corr(df["calorie"]))
+
+# 3. Il modello
+slope, intercept, r, p, std_err = stats.linregress(
+    df["durata"], df["calorie"])
+print("R-quadro:", r**2)
+print("P-value:", p)
+
+# 4. Previsione su un caso nuovo
+def prevedi(x):
+    return slope * x + intercept
+print("50 minuti ->", round(prevedi(50)), "calorie")
+
+# 5. Grafico: dati reali + retta del modello
+plt.scatter(df["durata"], df["calorie"], label="Dati reali")
+plt.plot(df["durata"], [prevedi(x) for x in df["durata"]],
+         color="red", label="Modello")
+plt.xlabel("Durata (min)"); plt.ylabel("Calorie")
+plt.legend(); plt.show()
+</script></div>
+<div class="note-box">📘 Questo è il flusso completo della Data Science: <strong>dati → pulizia → esplorazione → modello → valutazione → previsione → comunicazione</strong>. Lo ripeterai su ogni progetto, dal più semplice al più complesso.</div>
+<div class="challenge-box">
+  <span class="challenge-label">🎯 Sfida</span>
+  <p>Trova online un dataset che ti interessa (sport, videogiochi, musica, meteo) su <a href="https://www.kaggle.com/datasets" target="_blank" rel="noreferrer">Kaggle</a>, caricalo con Pandas e prova a prevedere una colonna a partire da un'altra con una regressione. Calcola R² e P-value: il tuo modello è affidabile?</p>
+</div>
+      </article>
+
+      <article class="lesson" id="editor-online">
+        <h2>Praticare la Data Science online</h2>
+        <p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor dove puoi <strong>leggere e modificare</strong> il codice Python con la sintassi colorata. Per <strong>eseguirlo davvero</strong> (con Pandas, NumPy e i grafici) usa uno di questi ambienti gratuiti.</p>
+<h3>Dove eseguire il codice</h3>
+<ul>
+  <li>📓 <strong><a href="https://colab.research.google.com" target="_blank" rel="noreferrer">Google Colab</a></strong> — notebook Python nel browser, gratis, con Pandas/NumPy/Matplotlib già pronti: l'ideale per la Data Science</li>
+  <li>🪐 <strong><a href="https://jupyter.org/try" target="_blank" rel="noreferrer">Jupyter Notebook</a></strong> — lo standard professionale per analisi dati</li>
+  <li>📊 <strong><a href="https://www.kaggle.com/code" target="_blank" rel="noreferrer">Kaggle Notebooks</a></strong> — notebook + migliaia di dataset reali pronti all'uso</li>
+  <li>💻 <strong>Anaconda</strong> — la distribuzione Python con tutte le librerie, da installare sul tuo computer</li>
+</ul>
+<div class="example"><div class="codehead"><span>Il tuo primo notebook</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+# Incolla questo in una cella di Google Colab e premi Esegui:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "durata":  [30, 45, 60, 75, 90],
+    "calorie": [200, 340, 409, 560, 700]
+})
+
+print(df.describe())
+df.plot(x="durata", y="calorie", kind="scatter")
+plt.show()
+# Hai appena fatto la tua prima analisi dati!
+</script></div>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi di Data Science</h2>
+        <p>Esercizi pratici progressivi. Fai ognuno in un notebook (Google Colab è perfetto).</p>
+<h3>Livello base</h3>
+<ol>
+  <li>Crea un DataFrame con i voti di 5 esami e calcola media, mediana e massimo</li>
+  <li>Filtra le righe con voto ≥ 24 e contale</li>
+  <li>Ordina il DataFrame per voto decrescente</li>
+  <li>Carica un CSV qualsiasi e stampa <code class="inline">describe()</code> e <code class="inline">info()</code></li>
+</ol>
+<h3>Livello intermedio</h3>
+<ol>
+  <li>Trova e riempi i valori mancanti di una colonna con la sua media</li>
+  <li>Calcola la correlazione tra due colonne numeriche e interpretala</li>
+  <li>Disegna uno scatter plot di due variabili e descrivi l'andamento</li>
+  <li>Usa <code class="inline">groupby</code> per calcolare una media per categoria</li>
+</ol>
+<h3>Livello avanzato</h3>
+<ol>
+  <li>Costruisci una regressione lineare con <code class="inline">scipy</code> e fai una previsione</li>
+  <li>Stampa la <code class="inline">summary()</code> di statsmodels e leggi R² e P-value</li>
+  <li>Disegna i dati reali con sopra la retta del modello</li>
+  <li>Trova un dataset su Kaggle e svolgi l'intero flusso dall'inizio alla previsione</li>
+</ol>
+<div class="challenge-box">
+  <span class="challenge-label">🎯 Sfida</span>
+  <p>Scarica il celebre dataset <em>Titanic</em> da Kaggle e rispondi con i dati: la classe del biglietto era correlata alla sopravvivenza? Usa <code class="inline">groupby</code>, percentuali e una heatmap di correlazione per costruire il tuo primo mini-report.</p>
+</div>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz di Data Science</h2>
+        <p>Verifica le tue conoscenze. Le risposte sono in fondo.</p>
+<ol>
+  <li>Qual è la differenza tra dato strutturato e non strutturato?</li>
+  <li>Cos'è un DataFrame?</li>
+  <li>Quale funzione Pandas dà al volo media, min e max di tutte le colonne?</li>
+  <li>Quando è meglio usare la mediana al posto della media?</li>
+  <li>Cosa misura la deviazione standard?</li>
+  <li>Che relazione c'è tra varianza e deviazione standard?</li>
+  <li>Cosa significa un coefficiente di correlazione di −1?</li>
+  <li>Perché "correlazione non implica causalità"?</li>
+  <li>Cosa rappresentano pendenza e intercetta in una regressione?</li>
+  <li>Cosa indica un R-quadro vicino a 1?</li>
+</ol>
+<div class="note-box">📘 <strong>Risposte:</strong> 1) Strutturato = in tabelle righe/colonne; non strutturato = testo/immagini/audio. 2) Una tabella dati bidimensionale di Pandas. 3) <code>describe()</code>. 4) Quando ci sono outlier che falsano la media. 5) Quanto i dati sono dispersi attorno alla media. 6) La deviazione standard è la radice quadrata della varianza. 7) Correlazione negativa perfetta: una sale, l'altra scende in proporzione. 8) Possono variare insieme per una causa comune nascosta o per caso. 9) Pendenza = quanto cambia y per unità di x; intercetta = y quando x=0. 10) Il modello spiega quasi tutta la variabilità dei dati.</div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso</h2>
+        <p>La mappa completa di tutto ciò che copre questo corso, dai primi dati ai modelli predittivi.</p>
+<ul>
+  <li><strong>Fondamenti</strong>: cos'è la Data Science, tipi di dati, tabelle, Python e le sue librerie</li>
+  <li><strong>Pandas</strong>: DataFrame, caricamento dati, funzioni di analisi, pulizia dei dati</li>
+  <li><strong>Matematica</strong>: funzioni lineari, grafici, pendenza e intercetta</li>
+  <li><strong>Statistica</strong>: media, mediana, percentili, deviazione standard, varianza, correlazione</li>
+  <li><strong>Modelli</strong>: regressione lineare, tabella di regressione, coefficienti, P-value, R-quadro</li>
+  <li><strong>Pratica</strong>: caso completo, esercizi, dataset reali</li>
+</ul>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio</h2>
+        <p>La Data Science si impara mettendo le mani sui dati. Il piano alterna teoria, statistica e pratica con dataset reali.</p>
+<table class="ref">
+  <tr><th>Periodo</th><th>Obiettivo</th></tr>
+  <tr><td>Settimana 1</td><td>Basi: tipi di dati, Pandas, DataFrame, caricare CSV, describe/info</td></tr>
+  <tr><td>Settimana 2</td><td>Pulizia dati + funzioni (filtri, groupby, sort) su un dataset reale</td></tr>
+  <tr><td>Settimana 3</td><td>Statistica: media, mediana, deviazione standard, percentili, grafici</td></tr>
+  <tr><td>Settimana 4</td><td>Correlazione, matrice di correlazione, heatmap</td></tr>
+  <tr><td>Settimana 5</td><td>Regressione lineare: modello, previsioni, R², P-value</td></tr>
+  <tr><td>Settimana 6</td><td>Progetto completo su un dataset Kaggle, dall'inizio al report</td></tr>
+</table>
+<div class="tip-box">💡 Il segreto: dalla settimana 2 lavora SEMPRE su dati che ti interessano davvero. Analizzare i tuoi dati Spotify o i risultati della tua squadra rende tutto più motivante e memorabile.</div>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio</h2>
+        <p>La Data Science è molto richiesta. Queste sono le domande più frequenti ai colloqui per analisti e data scientist junior.</p>
+<ul>
+  <li>🔹 Differenza tra media, mediana e moda: quando usare l'una o l'altra?</li>
+  <li>🔹 Cosa misura la deviazione standard? E la varianza?</li>
+  <li>🔹 Perché correlazione non implica causalità? Fai un esempio</li>
+  <li>🔹 Come gestisci i valori mancanti in un dataset?</li>
+  <li>🔹 Cos'è un outlier e come lo tratti?</li>
+  <li>🔹 Spiega la regressione lineare a chi non è tecnico</li>
+  <li>🔹 Cosa indica l'R-quadro? E il P-value?</li>
+  <li>🔹 Cos'è l'overfitting?</li>
+  <li>🔹 Quali librerie Python usi e per cosa?</li>
+  <li>🔹 Descrivi il flusso completo di un progetto di analisi dati</li>
+</ul>
+<div class="tip-box">💡 Ai colloqui di Data Science conta più il <strong>ragionamento</strong> sui dati che la formula a memoria: spiega <em>perché</em> scegli un metodo e quali assunzioni stai facendo.</div>
+      </article>
+
+      <article class="lesson" id="bootcamp">
+        <h2>Bootcamp Data Science</h2>
+        <p>Un percorso intensivo per partire da zero e arrivare al tuo primo modello predittivo, con progetti guidati su dataset reali.</p>
+<h3>Cosa imparerai</h3>
+<ul>
+  <li>✅ Manipolare dati come un professionista con Pandas</li>
+  <li>✅ Pulire dataset reali e sporchi</li>
+  <li>✅ Visualizzare i dati con grafici efficaci</li>
+  <li>✅ Applicare la statistica per trovare relazioni nascoste</li>
+  <li>✅ Costruire e valutare modelli di regressione</li>
+  <li>✅ Presentare i risultati in un report convincente</li>
+</ul>
+<div class="note-box">📘 Vuoi un percorso guidato con un docente? <a href="prenota.html">Prenota una lezione</a> o scrivi dal <a href="contatti.html">modulo contatti</a>: prepariamo un piano su misura, anche per gruppi e classi.</div>
+      </article>
+
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione in Data Science</h2>
+        <p>Le certificazioni attestano le tue competenze nell'analisi dei dati: un plus sul CV, anche se un <strong>portfolio di progetti reali</strong> resta la prova più convincente per i datori di lavoro.</p>
+<table class="ref">
+  <tr><th>Certificazione</th><th>Ente</th><th>Note</th></tr>
+  <tr><td>Data Science Certificate</td><td>W3Schools</td><td>Base, buono per iniziare il CV</td></tr>
+  <tr><td>IBM Data Science Professional</td><td>IBM / Coursera</td><td>Completo e riconosciuto</td></tr>
+  <tr><td>Google Data Analytics</td><td>Google / Coursera</td><td>Ottimo per analisti junior</td></tr>
+  <tr><td>Competizioni Kaggle</td><td>Kaggle</td><td>I risultati valgono più di un badge</td></tr>
+</table>
+<h3>Come prepararsi</h3>
+<ul>
+  <li>📊 Padroneggia Pandas, NumPy e Matplotlib</li>
+  <li>📈 Conosci bene statistica descrittiva e regressione</li>
+  <li>🧹 Sai pulire e preparare dati reali e disordinati</li>
+  <li>🟩 Pubblica i tuoi progetti su <a href="corso-git.html">GitHub</a> e partecipa a competizioni Kaggle</li>
+</ul>
+      </article>
+
+      <article class="lesson" id="fine" style="border-bottom:none">
+        <h2>Conclusione — E ora?</h2>
+        <p>Hai completato il corso di Data Science! Ora sai manipolare i dati con Pandas, pulirli, analizzarli con la statistica, visualizzarli e costruire modelli di regressione per fare previsioni. Hai in mano il flusso completo del data scientist.</p>
+<h3>I tuoi prossimi passi</h3>
+<ul>
+  <li>🤖 <strong>Machine Learning</strong>: approfondisci con <em>scikit-learn</em> — classificazione, clustering, alberi decisionali</li>
+  <li>📊 <strong>Visualizzazione avanzata</strong>: impara Seaborn e Plotly per grafici interattivi</li>
+  <li>🗄️ <strong>SQL</strong>: i dati vivono nei database — il <a href="corso-sql.html">corso SQL</a> è un alleato indispensabile</li>
+  <li>🐍 <strong>Rinforza Python</strong> con il <a href="corso-python.html">corso Python</a> se senti qualche lacuna</li>
+  <li>🟩 <strong>Costruisci un portfolio</strong>: pubblica i tuoi notebook su <a href="corso-git.html">GitHub</a> e Kaggle</li>
+</ul>
+<div class="challenge-box">
+  <span class="challenge-label">🎯 La tua sfida finale</span>
+  <p>Scegli un tema che ami, trova un dataset reale su Kaggle e realizza un <strong>progetto completo</strong>: carica i dati, puliscili, esplorali con grafici e statistica, costruisci un modello di regressione e scrivi un breve report con le tue conclusioni. Pubblicalo su GitHub: sarà il primo pezzo del tuo portfolio da data scientist.</p>
+</div>
+<div class="hero-actions">
+  <a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a>
+  <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+      </article>
+
+
+    </main>
+  </div>
+</section>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice Python</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note sul codice Python"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="js/main.js?v=4"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+    function ensureCM(){
+      if (!cm && window.CodeMirror){
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'python',lineNumbers:true,lineWrapping:false,tabSize:4,indentUnit:4,theme:'default'}); }
+        catch(e){ cm=null; }
+      }
+      return cm;
+    }
+    function note(){
+      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        +'<h3 style="margin:0 0 .6rem;color:#1e293b">\uD83D\uDCCA Codice Python per la Data Science</h3>'
+        +'<p>Questo codice usa Pandas, NumPy e Matplotlib. Per eseguirlo davvero (con grafici e tabelle) usa un notebook:</p>'
+        +'<ul><li><a href="https://colab.research.google.com" target="_blank">Google Colab</a> \u2014 notebook Python gratis nel browser, librerie gia\u0027 pronte</li>'
+        +'<li><a href="https://www.kaggle.com/code" target="_blank">Kaggle Notebooks</a> \u2014 notebook + migliaia di dataset reali</li>'
+        +'<li><a href="https://jupyter.org/try" target="_blank">Jupyter</a> \u2014 lo standard professionale dell\u0027analisi dati</li></ul>'
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+    }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      var editor=ensureCM();
+      if(editor){ editor.setValue(code); }
+      else { ta.value=code; }
+      note();
+      setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+    document.getElementById('ed-close').addEventListener('click',closeEditor);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeEditor(); });
+    function dedent(text){
+      var lines=text.split('\n'),min=Infinity;
+      for(var i=1;i<lines.length;i++){
+        if(!lines[i].trim()) continue;
+        var m=lines[i].match(/^ */)[0].length;
+        if(m<min) min=m;
+      }
+      if(min===Infinity||min===0) return lines.join('\n');
+      for(var j=1;j<lines.length;j++) lines[j]=lines[j].slice(min);
+      return lines.join('\n');
+    }
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeScript=ex.querySelector('.code');
+      var codeEl=ex.querySelector('.codeview code');
+      if(!codeScript||!codeEl){ return; }
+      var raw=dedent(codeScript.textContent.replace(/^\n/,'').replace(/\s+$/,'').replace(/<\\\/script>/g,'<\/script>'));
+      codeEl.textContent=raw;
+      if(window.Prism){ Prism.highlightElement(codeEl); }
+      var btn=ex.querySelector('.btn-try');
+      if(btn){ btn.addEventListener('click',function(){ openEditor(raw); }); }
+    });
+  })();
+</script>
+</body>
+</html>
