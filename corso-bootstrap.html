@@ -139,7 +139,7 @@
 
 <section class="hero" style="padding:2.4rem 0 1.6rem">
   <div class="container center">
-    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
     <h1>Corso Bootstrap 5 in italiano</h1>
     <p class="lead" style="margin-inline:auto">Costruisci siti responsive e moderni da zero: griglia a 12 colonne, componenti pronti, form e utility. Con editor live per provare ogni esempio sul momento.</p>
   </div>
@@ -1120,10 +1120,12 @@
         + '</body></html>';
       preview.srcdoc = doc;
     }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
       run();
@@ -1132,6 +1134,7 @@
       overlay.classList.remove('open');
       document.body.classList.remove('editor-open');
       document.body.style.overflow = '';
+      document.removeEventListener('touchmove', preventTouch);
     }
     cm.on('change', run);
     document.getElementById('ed-run').addEventListener('click', run);

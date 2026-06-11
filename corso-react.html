@@ -2051,10 +2051,12 @@ function ListaSpesa() {
       else { ta.value = code; }
     }
 
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       setCode(code);
       note();
       setTimeout(function(){
@@ -2067,6 +2069,7 @@ function ListaSpesa() {
       overlay.classList.remove('open');
       document.body.classList.remove('editor-open');
       document.body.style.overflow = '';
+      document.removeEventListener('touchmove', preventTouch);
     }
 
     document.getElementById('ed-close').addEventListener('click', closeEditor);

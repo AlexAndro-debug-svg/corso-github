@@ -1063,17 +1063,19 @@ plt.show()
         +'<li><a href="https://jupyter.org/try" target="_blank">Jupyter</a> \u2014 lo standard professionale dell\u0027analisi dati</li></ul>'
         +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
     }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       var editor=ensureCM();
       if(editor){ editor.setValue(code); }
       else { ta.value=code; }
       note();
       setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
     }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; document.removeEventListener('touchmove', preventTouch); }
     document.getElementById('ed-close').addEventListener('click',closeEditor);
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeEditor(); });
     function dedent(text){

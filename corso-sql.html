@@ -1328,10 +1328,12 @@ LIMIT    n;</code></pre>
       }
     }
 
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
       preview.srcdoc = page('<p style="color:#64748b">Premi ▶ Esegui (in alto) per lanciare la query sul database di esempio.</p>');

@@ -1313,10 +1313,12 @@ console.log(adulti);  // Luca e Gio</pre></details>
           + 'poi eseguirlo nel tuo ambiente di sviluppo.</p></body>';
       }
     }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       ensureCM();
       setCode(code);
       setTimeout(function(){ if (cm) { cm.refresh(); cm.focus(); } }, 20);

@@ -1933,10 +1933,12 @@ echo "Totale: " . $c->totale() . "€"; // Totale: 22€
         + '<code>htdocs</code> e aprilo su <code>http://localhost/pagina.php</code>.</p></body>';
     }
 
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
       overlay.classList.add('open');
       document.body.classList.add('editor-open');
       document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
       note();
