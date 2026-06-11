@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Angular in italiano completo e gratuito — componenti, direttive, servizi, routing e Signals da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Angular italiano completo e gratuito: componenti, data binding, direttive, servizi, dependency injection, routing, HTTP, pipe, Signals, control flow, SSR e testing. Il framework di Google in TypeScript spiegato da zero.">
+  <meta name="keywords" content="corso angular italiano, angular tutorial italiano, imparare angular, angular da zero, angular typescript, angular componenti, angular direttive, angular servizi, dependency injection, angular routing, angular signals, angular standalone, angular per principianti">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Angular in italiano completo e gratuito — il framework di Google da zero | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Angular da zero in italiano: componenti, direttive, servizi, dependency injection, routing, HTTP, Signals e SSR. Tutorial completo e gratuito con esempi.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box  { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example  { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.builtin, .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.punctuation, .codeview .token.operator { color: #94a3b8; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.string, .codeview .token.char, .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.tag { color: #f472b6; }
+    .codeview .token.attr-name { color: #5eead4; }
+    .codeview .token.decorator, .codeview .token.parameter { color: #fda4af; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1200; }
+    .editor-overlay.open { display: flex; }
+    .editor-box  { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top  { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn  { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
+    .ed-btn:hover  { background: var(--bg-soft); }
+    .ed-close { background: #64748b; color: #fff; }
+    .ed-close:hover { background: #475569; }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: #f8fafc; border-bottom: 1px solid var(--border); padding: .35rem .9rem; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-angular.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-angular.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Angular in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Angular completo in italiano: componenti, direttive, servizi, routing, HTTP, Signals, SSR e testing.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Angular in italiano","description":"Corso Angular italiano completo e gratuito: componenti, data binding, direttive, servizi, dependency injection, routing, HTTP, pipe, Signals, control flow, SSR e testing.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-angular.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html" class="active">ANGULAR</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Angular in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara da zero il framework di Google in TypeScript: componenti, direttive, servizi, dependency injection, routing, HTTP, Signals, control flow e SSR. 32 lezioni con esempi di codice.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Angular Tutorial</h4>
+      <a href="#home">Angular Home</a>
+      <a href="#intro">Angular Intro</a>
+      <a href="#get-started">Angular Get Started</a>
+      <a href="#first-app">Angular First App</a>
+      <a href="#templates">Angular Templates</a>
+      <a href="#components">Angular Components</a>
+      <a href="#data-binding">Angular Data Binding</a>
+      <a href="#directives">Angular Directives</a>
+      <a href="#events">Angular Events</a>
+      <a href="#conditional">Angular Conditional</a>
+      <a href="#lists">Angular Lists</a>
+      <a href="#forms">Angular Forms</a>
+      <a href="#router">Angular Router</a>
+      <a href="#services">Angular Services & DI</a>
+      <a href="#http">Angular HTTP Client</a>
+      <a href="#pipes">Angular Pipes</a>
+      <a href="#lifecycle">Angular Lifecycle Hooks</a>
+      <a href="#styling">Angular Styling</a>
+      <h4>Advanced Angular</h4>
+      <a href="#bootstrap">Angular App Bootstrap</a>
+      <a href="#control-flow">Angular Control Flow</a>
+      <a href="#signals">Angular Signals</a>
+      <a href="#change-detection">Angular Change Detection</a>
+      <a href="#dynamic-comp">Angular Dynamic Comp</a>
+      <a href="#advanced-di">Angular Advanced DI</a>
+      <a href="#router-advanced">Angular Router Advanced</a>
+      <a href="#interceptors">Angular HTTP Interceptors</a>
+      <a href="#forms-advanced">Angular Forms Advanced</a>
+      <a href="#state-management">Angular State Management</a>
+      <a href="#animations">Angular Animations</a>
+      <a href="#testing">Angular Testing</a>
+      <a href="#security">Angular Security</a>
+      <a href="#ssr">Angular SSR & Hydration</a>
+    </aside>
+    <main>
+
+      <article class="lesson" id="home">
+<h2>Corso Angular</h2>
+<p><strong>Angular</strong> è una piattaforma e un framework per costruire applicazioni web a pagina singola (<strong>SPA</strong>) usando <strong>HTML</strong> e <strong>TypeScript</strong>. È sviluppato e mantenuto da <strong>Google</strong>.</p>
+<h3>Perché scegliere Angular?</h3>
+<ul>
+<li>🏗️ <strong>Framework completo</strong>: routing, form, HTTP e testing già inclusi</li>
+<li>📐 <strong>Struttura solida</strong>: ideale per applicazioni grandi ed enterprise</li>
+<li>🔷 <strong>TypeScript</strong>: tipizzazione statica che previene molti errori</li>
+<li>⚡ <strong>Reattività moderna</strong>: con i Signals e il change detection ottimizzato</li>
+</ul>
+<h3>Un componente Angular</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: '<h1>Ciao, {{ nome }}!</h1>'
+})
+export class AppComponent {
+  nome = 'Angular';
+}
+</script></div>
+<p>Angular usa <strong>TypeScript</strong> e si compila con la <strong>Angular CLI</strong>. Nel pannello laterale trovi i link per provare il codice online su StackBlitz.</p>
+      </article>
+
+      <article class="lesson" id="intro">
+<h2>Introduzione ad Angular</h2>
+<p>Angular è stato creato da <strong>Google</strong> nel 2016 (la riscrittura completa di AngularJS del 2010). Oggi è uno dei framework frontend più usati nelle grandi aziende.</p>
+<h3>Concetti fondamentali</h3>
+<ul>
+<li><strong>Componenti</strong>: i mattoni dell'interfaccia utente</li>
+<li><strong>Template</strong>: l'HTML con la sintassi Angular</li>
+<li><strong>Direttive</strong>: estendono l'HTML con comportamenti</li>
+<li><strong>Servizi</strong>: logica riutilizzabile e condivisa</li>
+<li><strong>Dependency Injection</strong>: gestione automatica delle dipendenze</li>
+<li><strong>Moduli / Standalone</strong>: organizzazione del codice</li>
+</ul>
+<h3>Angular vs AngularJS</h3>
+<table class="ref"><tr><th></th><th>AngularJS (1.x)</th><th>Angular (2+)</th></tr><tr><td>Linguaggio</td><td>JavaScript</td><td>TypeScript</td></tr><tr><td>Architettura</td><td>MVC</td><td>Componenti</td></tr><tr><td>Performance</td><td>Buona</td><td>Eccellente</td></tr></table>
+<h3>Prerequisiti</h3>
+<ul>
+<li>Conoscenza di <strong>HTML</strong> e <strong>CSS</strong></li>
+<li>Basi di <strong>JavaScript</strong> e <strong>TypeScript</strong></li>
+<li>Concetti di programmazione a oggetti</li>
+</ul>
+      </article>
+
+      <article class="lesson" id="get-started">
+<h2>Iniziare con Angular</h2>
+<p>Per sviluppare con Angular servono <strong>Node.js</strong> e la <strong>Angular CLI</strong>.</p>
+<h3>Installazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+# Verifica Node.js (versione 18+ consigliata)
+node --version
+
+# Installa la Angular CLI globalmente
+npm install -g @angular/cli
+
+# Verifica l'installazione
+ng version
+</script></div>
+<h3>Crea un nuovo progetto</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+ng new mia-app
+cd mia-app
+ng serve --open
+</script></div>
+<p>Il comando <code class="inline">ng serve</code> avvia il server di sviluppo su <strong>http://localhost:4200</strong> con ricarica automatica.</p>
+<h3>Struttura del progetto</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-none"></code></pre><script type="text/plain" class="code">
+mia-app/
+  src/
+    app/
+      app.component.ts      <- logica del componente
+      app.component.html    <- template
+      app.component.css     <- stili
+    main.ts                 <- punto di ingresso
+    index.html
+  angular.json              <- configurazione
+  package.json
+</script></div>
+      </article>
+
+      <article class="lesson" id="first-app">
+<h2>La Prima App Angular</h2>
+<p>Creiamo un semplice componente che mostra un saluto dinamico.</p>
+<h3>Il componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <h1>{{ titolo }}</h1>
+    <p>Benvenuto, {{ nome }}!</p>
+  `
+})
+export class AppComponent {
+  titolo = 'La mia prima app Angular';
+  nome = 'studente';
+}
+</script></div>
+<h3>Il punto di ingresso (main.ts)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent);
+</script></div>
+<h3>Standalone Components</h3>
+<p>Dalle versioni recenti, Angular usa i <strong>componenti standalone</strong>: non serve più dichiararli in un <code class="inline">NgModule</code>. Si importano direttamente dove servono, semplificando la struttura del progetto.</p>
+      </article>
+
+      <article class="lesson" id="templates">
+<h2>Template in Angular</h2>
+<p>Il <strong>template</strong> è l'HTML del componente arricchito con la sintassi Angular.</p>
+<h3>Interpolazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- Mostra il valore di una proprietà -->
+<h1>{{ titolo }}</h1>
+<p>Risultato: {{ 2 + 2 }}</p>
+<p>{{ nome.toUpperCase() }}</p>
+</script></div>
+<h3>Template inline vs file esterno</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+// Inline (per template piccoli)
+@Component({
+  selector: 'app-root',
+  template: '<h1>{{ titolo }}</h1>'
+})
+
+// File esterno (per template grandi)
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+</script></div>
+<h3>Espressioni nei template</h3>
+<p>Nei template puoi usare espressioni, ma <strong>non</strong> istruzioni complesse:</p>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p>{{ prezzo * quantita }}</p>
+<p>{{ attivo ? 'Sì' : 'No' }}</p>
+<p>{{ messaggio || 'Nessun messaggio' }}</p>
+</script></div>
+      </article>
+
+      <article class="lesson" id="components">
+<h2>Componenti Angular</h2>
+<p>I <strong>componenti</strong> sono i blocchi fondamentali di un'app Angular. Ognuno controlla una porzione di schermo.</p>
+<h3>Anatomia di un componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-card',        // nome del tag HTML
+  standalone: true,
+  templateUrl: './card.html',  // template
+  styleUrl: './card.css'       // stili
+})
+export class CardComponent {
+  titolo = 'Una card';
+}
+</script></div>
+<h3>Usare un componente in un altro</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+import { CardComponent } from './card.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CardComponent],   // importa il componente figlio
+  template: '<app-card></app-card>'
+})
+export class AppComponent {}
+</script></div>
+<h3>Generare un componente con la CLI</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+ng generate component card
+# oppure abbreviato:
+ng g c card
+</script></div>
+      </article>
+
+      <article class="lesson" id="data-binding">
+<h2>Data Binding in Angular</h2>
+<p>Il <strong>data binding</strong> sincronizza i dati tra la classe del componente e il template. Angular offre quattro tipi.</p>
+<h3>1. Interpolazione (classe → template)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p>{{ messaggio }}</p>
+</script></div>
+<h3>2. Property binding (classe → template)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<img [src]="urlImmagine">
+<button [disabled]="bloccato">Invia</button>
+</script></div>
+<h3>3. Event binding (template → classe)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<button (click)="saluta()">Cliccami</button>
+<input (input)="aggiorna($event)">
+</script></div>
+<h3>4. Two-way binding (bidirezionale)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- Richiede FormsModule -->
+<input [(ngModel)]="nome">
+<p>Ciao, {{ nome }}!</p>
+</script></div>
+<p>La sintassi <code class="inline">[(ngModel)]</code> è chiamata "banana in a box" 🍌📦: combina property binding <code class="inline">[ ]</code> ed event binding <code class="inline">( )</code>.</p>
+      </article>
+
+      <article class="lesson" id="directives">
+<h2>Direttive Angular</h2>
+<p>Le <strong>direttive</strong> estendono o modificano gli elementi HTML. Ci sono tre tipi.</p>
+<h3>Direttive strutturali (cambiano il DOM)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- *ngIf: mostra/nasconde -->
+<p *ngIf="visibile">Sono visibile</p>
+
+<!-- *ngFor: ripete -->
+<li *ngFor="let item of lista">{{ item }}</li>
+
+<!-- *ngSwitch -->
+<div [ngSwitch]="ruolo">
+  <p *ngSwitchCase="'admin'">Amministratore</p>
+  <p *ngSwitchDefault>Utente</p>
+</div>
+</script></div>
+<h3>Direttive di attributo (cambiano l'aspetto)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div [ngClass]="{ attivo: isAttivo }">...</div>
+<div [ngStyle]="{ color: colore }">...</div>
+</script></div>
+<h3>Direttive personalizzate</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appEvidenzia]',
+  standalone: true
+})
+export class EvidenziaDirective {
+  constructor(el: ElementRef) {
+    el.nativeElement.style.background = 'yellow';
+  }
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="events">
+<h2>Eventi in Angular</h2>
+<p>Angular gestisce gli eventi del DOM con la sintassi <strong>event binding</strong> <code class="inline">(evento)</code>.</p>
+<h3>Eventi comuni</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<button (click)="onClick()">Click</button>
+<input (input)="onInput($event)">
+<input (keyup)="onKey($event)">
+<form (submit)="onSubmit()">...</form>
+<div (mouseover)="onHover()">Passa sopra</div>
+</script></div>
+<h3>L'oggetto $event</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: '<input (input)="aggiorna($event)"><p>{{ testo }}</p>'
+})
+export class AppComponent {
+  testo = '';
+  aggiorna(event: Event) {
+    this.testo = (event.target as HTMLInputElement).value;
+  }
+}
+</script></div>
+<h3>Key events specifici</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- Si attiva solo con il tasto Invio -->
+<input (keyup.enter)="invia()">
+<input (keyup.escape)="annulla()">
+</script></div>
+      </article>
+
+      <article class="lesson" id="conditional">
+<h2>Rendering Condizionale</h2>
+<p>Angular permette di mostrare contenuto in base a condizioni.</p>
+<h3>*ngIf</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p *ngIf="loggato">Benvenuto!</p>
+<p *ngIf="!loggato">Effettua l'accesso</p>
+</script></div>
+<h3>*ngIf con else</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div *ngIf="loggato; else nonLoggato">
+  Area riservata
+</div>
+<ng-template #nonLoggato>
+  <p>Accedi per continuare</p>
+</ng-template>
+</script></div>
+<h3>Nuovo control flow @if (Angular 17+)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+@if (punteggio >= 60) {
+  <p>Promosso ✅</p>
+} @else if (punteggio >= 40) {
+  <p>Recupero ⚠️</p>
+} @else {
+  <p>Bocciato ❌</p>
+}
+</script></div>
+<h3>[hidden] vs *ngIf</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- [hidden]: nasconde con CSS, resta nel DOM -->
+<div [hidden]="!visibile">...</div>
+
+<!-- *ngIf: rimuove dal DOM -->
+<div *ngIf="visibile">...</div>
+</script></div>
+      </article>
+
+      <article class="lesson" id="lists">
+<h2>Liste in Angular</h2>
+<p>Per renderizzare liste si usa la direttiva <code class="inline">*ngFor</code>.</p>
+<h3>*ngFor di base</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<ul>
+  <li *ngFor="let corso of corsi">{{ corso }}</li>
+</ul>
+</script></div>
+<h3>Con indice e variabili</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<li *ngFor="let corso of corsi; let i = index; let primo = first">
+  {{ i + 1 }}. {{ corso }} {{ primo ? '(primo!)' : '' }}
+</li>
+</script></div>
+<h3>trackBy per le performance</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+// Aiuta Angular a tracciare gli elementi e a non ricrearli inutilmente
+trackById(index: number, item: any) {
+  return item.id;
+}
+</script></div>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<li *ngFor="let u of utenti; trackBy: trackById">{{ u.nome }}</li>
+</script></div>
+<h3>Nuovo control flow @for (Angular 17+)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+@for (corso of corsi; track corso) {
+  <li>{{ corso }}</li>
+} @empty {
+  <li>Nessun corso disponibile</li>
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="forms">
+<h2>Form in Angular</h2>
+<p>Angular offre due approcci ai form: <strong>Template-driven</strong> e <strong>Reactive</strong>.</p>
+<h3>Template-driven (con ngModel)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule],
+  template: `
+    <input [(ngModel)]="nome" placeholder="Nome">
+    <p>Ciao, {{ nome }}!</p>
+  `
+})
+export class AppComponent {
+  nome = '';
+}
+</script></div>
+<h3>Reactive Forms (più potenti)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  template: `
+    <form [formGroup]="form">
+      <input formControlName="email">
+    </form>
+  `
+})
+export class AppComponent {
+  form = new FormGroup({
+    email: new FormControl('')
+  });
+}
+</script></div>
+<p>Usa i <strong>Reactive Forms</strong> per form complessi con validazione avanzata.</p>
+      </article>
+
+      <article class="lesson" id="router">
+<h2>Routing in Angular</h2>
+<p>Il <strong>Router</strong> gestisce la navigazione tra le viste in una SPA.</p>
+<h3>Configurazione delle rotte</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home.component';
+import { CorsiComponent } from './corsi.component';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'corsi', component: CorsiComponent },
+  { path: 'corso/:id', component: DettaglioComponent },
+  { path: '**', component: NotFoundComponent }  // 404
+];
+</script></div>
+<h3>Router outlet e link</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/corsi">Corsi</a>
+</nav>
+
+<!-- Qui viene mostrato il componente della rotta attiva -->
+<router-outlet></router-outlet>
+</script></div>
+<h3>Navigazione da codice</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Router } from '@angular/router';
+
+constructor(private router: Router) {}
+
+vaiAiCorsi() {
+  this.router.navigate(['/corsi']);
+}
+</script></div>
+<h3>Leggere i parametri</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) {}
+ngOnInit() {
+  const id = this.route.snapshot.paramMap.get('id');
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="services">
+<h2>Servizi e Dependency Injection</h2>
+<p>I <strong>servizi</strong> contengono logica riutilizzabile (es. accesso ai dati). La <strong>Dependency Injection (DI)</strong> li fornisce automaticamente ai componenti.</p>
+<h3>Creare un servizio</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'   // singleton disponibile in tutta l'app
+})
+export class CorsiService {
+  private corsi = ['HTML', 'CSS', 'Angular'];
+
+  getCorsi() {
+    return this.corsi;
+  }
+}
+</script></div>
+<h3>Iniettare un servizio in un componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, inject } from '@angular/core';
+import { CorsiService } from './corsi.service';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: '<li *ngFor="let c of corsi">{{ c }}</li>'
+})
+export class AppComponent {
+  private corsiService = inject(CorsiService);
+  corsi = this.corsiService.getCorsi();
+}
+</script></div>
+<h3>Generare un servizio con la CLI</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+ng generate service corsi
+# abbreviato:
+ng g s corsi
+</script></div>
+      </article>
+
+      <article class="lesson" id="http">
+<h2>HTTP Client in Angular</h2>
+<p>L'<strong>HttpClient</strong> permette di comunicare con API e server remoti.</p>
+<h3>Configurazione (main.ts)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideHttpClient()]
+});
+</script></div>
+<h3>Richiesta GET</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({ /* ... */ })
+export class AppComponent {
+  private http = inject(HttpClient);
+  utenti: any[] = [];
+
+  ngOnInit() {
+    this.http.get<any[]>('https://api.example.com/utenti')
+      .subscribe(dati => this.utenti = dati);
+  }
+}
+</script></div>
+<h3>POST, PUT, DELETE</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+// Creare
+this.http.post('/api/utenti', nuovoUtente).subscribe();
+
+// Aggiornare
+this.http.put('/api/utenti/1', utente).subscribe();
+
+// Eliminare
+this.http.delete('/api/utenti/1').subscribe();
+</script></div>
+<p>Le richieste HTTP restituiscono <strong>Observable</strong> (RxJS): ci si iscrive con <code class="inline">.subscribe()</code>.</p>
+      </article>
+
+      <article class="lesson" id="pipes">
+<h2>Pipe in Angular</h2>
+<p>Le <strong>pipe</strong> trasformano i dati direttamente nel template, con la sintassi <code class="inline">valore | pipe</code>.</p>
+<h3>Pipe integrate</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p>{{ nome | uppercase }}</p>          <!-- MARIO -->
+<p>{{ nome | lowercase }}</p>          <!-- mario -->
+<p>{{ nome | titlecase }}</p>          <!-- Mario Rossi -->
+<p>{{ oggi | date:'dd/MM/yyyy' }}</p>  <!-- 11/06/2026 -->
+<p>{{ prezzo | currency:'EUR' }}</p>   <!-- €19.99 -->
+<p>{{ valore | number:'1.2-2' }}</p>   <!-- 3.14 -->
+<p>{{ oggetto | json }}</p>            <!-- {"a":1} -->
+</script></div>
+<h3>Concatenare pipe</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p>{{ nome | uppercase | slice:0:3 }}</p>
+</script></div>
+<h3>Pipe personalizzata</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'raddoppia', standalone: true })
+export class RaddoppiaPipe implements PipeTransform {
+  transform(valore: number): number {
+    return valore * 2;
+  }
+}
+</script></div>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<p>{{ 5 | raddoppia }}</p>  <!-- 10 -->
+</script></div>
+      </article>
+
+      <article class="lesson" id="lifecycle">
+<h2>Lifecycle Hooks</h2>
+<p>I <strong>lifecycle hooks</strong> sono metodi chiamati da Angular in momenti precisi della vita del componente.</p>
+<h3>I principali hook</h3>
+<table class="ref"><tr><th>Hook</th><th>Quando viene chiamato</th></tr><tr><td><code class="inline">ngOnInit</code></td><td>Dopo l'inizializzazione del componente</td></tr><tr><td><code class="inline">ngOnChanges</code></td><td>Quando cambiano gli @Input</td></tr><tr><td><code class="inline">ngDoCheck</code></td><td>A ogni change detection</td></tr><tr><td><code class="inline">ngAfterViewInit</code></td><td>Dopo l'init della vista</td></tr><tr><td><code class="inline">ngOnDestroy</code></td><td>Prima della distruzione</td></tr></table>
+<h3>Esempio</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+@Component({ /* ... */ })
+export class AppComponent implements OnInit, OnDestroy {
+
+  ngOnInit() {
+    console.log('Componente inizializzato');
+    // Caricare dati, avviare sottoscrizioni...
+  }
+
+  ngOnDestroy() {
+    console.log('Componente distrutto');
+    // Pulire timer e sottoscrizioni
+  }
+}
+</script></div>
+<p><code class="inline">ngOnInit</code> è l'hook più usato: è il posto giusto per <strong>caricare i dati iniziali</strong> (es. chiamate HTTP).</p>
+      </article>
+
+      <article class="lesson" id="styling">
+<h2>Styling in Angular</h2>
+<p>Angular incapsula gli stili: i CSS di un componente valgono <strong>solo</strong> per quel componente.</p>
+<h3>Stili del componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+@Component({
+  selector: 'app-card',
+  template: '<div class="card">...</div>',
+  styles: [`
+    .card { border: 1px solid #ddd; padding: 1rem; }
+  `]
+})
+</script></div>
+<h3>File di stile esterno</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+@Component({
+  selector: 'app-card',
+  templateUrl: './card.html',
+  styleUrl: './card.css'   // incapsulato automaticamente
+})
+</script></div>
+<h3>Binding dinamico di classi e stili</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- Classe condizionale -->
+<div [class.attivo]="isAttivo">...</div>
+<div [ngClass]="{ attivo: isAttivo, errore: hasErrore }">...</div>
+
+<!-- Stile inline -->
+<div [style.color]="colore">...</div>
+<div [ngStyle]="{ 'font-size': dimensione + 'px' }">...</div>
+</script></div>
+<h3>View Encapsulation</h3>
+<p>Per impostazione predefinita Angular usa <code class="inline">ViewEncapsulation.Emulated</code>: aggiunge attributi unici per isolare i CSS, evitando conflitti tra componenti.</p>
+      </article>
+
+      <article class="lesson" id="bootstrap">
+<h2>App Bootstrap</h2>
+<p>Il <strong>bootstrap</strong> è il processo che avvia l'applicazione Angular.</p>
+<h3>main.ts — il punto di ingresso</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch(err => console.error(err));
+</script></div>
+<h3>app.config.ts — configurazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient()
+  ]
+};
+</script></div>
+<h3>index.html</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<body>
+  <app-root></app-root>  <!-- il componente radice viene montato qui -->
+</body>
+</script></div>
+<p>Con i componenti standalone, <code class="inline">bootstrapApplication()</code> ha sostituito il vecchio approccio basato su <code class="inline">NgModule</code> e <code class="inline">platformBrowserDynamic()</code>.</p>
+      </article>
+
+      <article class="lesson" id="control-flow">
+<h2>Control Flow (Angular 17+)</h2>
+<p>Dalla versione 17, Angular introduce un nuovo <strong>control flow</strong> integrato nel template, più leggibile delle direttive <code class="inline">*ngIf</code> e <code class="inline">*ngFor</code>.</p>
+<h3>@if / @else</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+@if (utente.loggato) {
+  <p>Benvenuto, {{ utente.nome }}</p>
+} @else {
+  <p>Effettua l'accesso</p>
+}
+</script></div>
+<h3>@for</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+@for (corso of corsi; track corso.id) {
+  <li>{{ corso.nome }}</li>
+} @empty {
+  <li>Nessun corso</li>
+}
+</script></div>
+<p>L'espressione <code class="inline">track</code> è <strong>obbligatoria</strong> e migliora le performance.</p>
+<h3>@switch</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+@switch (ruolo) {
+  @case ('admin') { <p>Amministratore</p> }
+  @case ('editor') { <p>Editor</p> }
+  @default { <p>Utente</p> }
+}
+</script></div>
+<h3>Vantaggi</h3>
+<ul>
+<li>Sintassi più chiara e vicina a JavaScript</li>
+<li>Migliori performance (non servono direttive)</li>
+<li><code class="inline">track</code> ed <code class="inline">@empty</code> integrati</li>
+</ul>
+      </article>
+
+      <article class="lesson" id="signals">
+<h2>Signals</h2>
+<p>I <strong>Signals</strong> (Angular 16+) sono il nuovo sistema di reattività: contenitori di valori che notificano automaticamente i cambiamenti.</p>
+<h3>Creare e leggere un signal</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { signal } from '@angular/core';
+
+const conta = signal(0);
+
+console.log(conta());   // legge il valore: 0
+conta.set(5);           // imposta un nuovo valore
+conta.update(n => n + 1); // aggiorna in base al precedente
+</script></div>
+<h3>Signal in un componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <p>Contatore: {{ conta() }}</p>
+    <button (click)="incrementa()">+1</button>
+  `
+})
+export class AppComponent {
+  conta = signal(0);
+  incrementa() {
+    this.conta.update(n => n + 1);
+  }
+}
+</script></div>
+<h3>Computed signals</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { signal, computed } from '@angular/core';
+
+const prezzo = signal(100);
+const tasse = computed(() => prezzo() * 0.22);
+// tasse() si aggiorna automaticamente quando prezzo cambia
+</script></div>
+<p>I Signals rendono il <strong>change detection</strong> molto più efficiente.</p>
+      </article>
+
+      <article class="lesson" id="change-detection">
+<h2>Change Detection</h2>
+<p>Il <strong>change detection</strong> è il meccanismo con cui Angular aggiorna il DOM quando i dati cambiano.</p>
+<h3>Come funziona</h3>
+<p>Angular controlla i componenti e, se rileva cambiamenti nei dati, aggiorna la vista. Di default usa la strategia <code class="inline">Default</code>, che controlla tutto l'albero dei componenti.</p>
+<h3>Strategia OnPush</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+@Component({
+  selector: 'app-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '...'
+})
+export class CardComponent {}
+</script></div>
+<p>Con <code class="inline">OnPush</code>, Angular controlla il componente solo quando:</p>
+<ul>
+<li>Cambia un riferimento di un <code class="inline">@Input</code></li>
+<li>Si verifica un evento nel componente</li>
+<li>Cambia un Signal usato nel template</li>
+</ul>
+<h3>Controllo manuale</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { ChangeDetectorRef } from '@angular/core';
+
+constructor(private cdr: ChangeDetectorRef) {}
+
+aggiorna() {
+  this.cdr.markForCheck();   // segna per il controllo
+  // this.cdr.detectChanges(); // forza subito
+}
+</script></div>
+<p><code class="inline">OnPush</code> + <strong>Signals</strong> è la combinazione consigliata per le massime performance.</p>
+      </article>
+
+      <article class="lesson" id="dynamic-comp">
+<h2>Componenti Dinamici</h2>
+<p>I <strong>componenti dinamici</strong> vengono creati e inseriti a runtime, non in modo statico nel template.</p>
+<h3>Con NgComponentOutlet</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<ng-container *ngComponentOutlet="componenteCorrente">
+</ng-container>
+</script></div>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+import { NgComponentOutlet } from '@angular/common';
+import { GraficoComponent } from './grafico.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NgComponentOutlet],
+  template: '<ng-container *ngComponentOutlet="comp"></ng-container>'
+})
+export class AppComponent {
+  comp = GraficoComponent;
+}
+</script></div>
+<h3>Con ViewContainerRef</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, ViewContainerRef, inject } from '@angular/core';
+import { AvvisoComponent } from './avviso.component';
+
+@Component({ /* ... */ })
+export class AppComponent {
+  private vcr = inject(ViewContainerRef);
+
+  creaComponente() {
+    const ref = this.vcr.createComponent(AvvisoComponent);
+    ref.instance.messaggio = 'Creato dinamicamente!';
+  }
+}
+</script></div>
+<p>Utili per <strong>modali</strong>, <strong>widget configurabili</strong> e contenuti caricati in base ai dati.</p>
+      </article>
+
+      <article class="lesson" id="advanced-di">
+<h2>Dependency Injection Avanzata</h2>
+<p>La <strong>DI</strong> di Angular è molto flessibile e supporta token, provider personalizzati e gerarchie.</p>
+<h3>InjectionToken</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { InjectionToken } from '@angular/core';
+
+export const API_URL = new InjectionToken<string>('api.url');
+
+// Nella configurazione:
+providers: [
+  { provide: API_URL, useValue: 'https://api.example.com' }
+]
+</script></div>
+<h3>Tipi di provider</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+providers: [
+  // useClass: fornisce una classe
+  { provide: Logger, useClass: ConsoleLogger },
+
+  // useValue: fornisce un valore
+  { provide: CONFIG, useValue: { debug: true } },
+
+  // useFactory: fornisce tramite funzione
+  { provide: Service, useFactory: () => new Service() },
+
+  // useExisting: alias di un altro provider
+  { provide: OldApi, useExisting: NewApi }
+]
+</script></div>
+<h3>Iniettare con inject()</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { inject } from '@angular/core';
+
+export class AppComponent {
+  apiUrl = inject(API_URL);
+  logger = inject(Logger);
+}
+</script></div>
+<h3>DI gerarchica</h3>
+<p>Un provider definito in un componente è disponibile solo per quel componente e i suoi figli, sovrascrivendo eventuali provider di livello superiore.</p>
+      </article>
+
+      <article class="lesson" id="router-advanced">
+<h2>Router Avanzato</h2>
+<p>Funzionalità avanzate del Router per app complesse.</p>
+<h3>Lazy loading</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+export const routes: Routes = [
+  {
+    path: 'admin',
+    loadComponent: () => import('./admin.component')
+      .then(m => m.AdminComponent)
+  },
+  {
+    path: 'shop',
+    loadChildren: () => import('./shop.routes')
+      .then(m => m.SHOP_ROUTES)
+  }
+];
+</script></div>
+<p>Il lazy loading carica il codice <strong>solo quando serve</strong>, riducendo il bundle iniziale.</p>
+<h3>Route Guards</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+
+export const authGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const loggato = !!localStorage.getItem('token');
+  return loggato ? true : router.parseUrl('/login');
+};
+
+// Uso nella rotta:
+{ path: 'privata', component: PrivataComponent, canActivate: [authGuard] }
+</script></div>
+<h3>Resolver (precarica dati)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { ResolveFn } from '@angular/router';
+
+export const corsiResolver: ResolveFn<Corso[]> = () => {
+  return inject(CorsiService).getCorsi();
+};
+</script></div>
+<h3>Query params</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+this.router.navigate(['/cerca'], {
+  queryParams: { q: 'angular', pagina: 1 }
+});
+</script></div>
+      </article>
+
+      <article class="lesson" id="interceptors">
+<h2>HTTP Interceptors</h2>
+<p>Gli <strong>interceptor</strong> intercettano tutte le richieste e risposte HTTP, ideali per autenticazione, logging e gestione errori.</p>
+<h3>Creare un interceptor (funzionale)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { HttpInterceptorFn } from '@angular/common/http';
+
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const token = localStorage.getItem('token');
+
+  // Clona la richiesta aggiungendo l'header di autorizzazione
+  const reqAuth = req.clone({
+    setHeaders: { Authorization: `Bearer ${token}` }
+  });
+
+  return next(reqAuth);
+};
+</script></div>
+<h3>Registrare l'interceptor</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
+});
+</script></div>
+<h3>Interceptor per gestione errori</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { catchError } from 'rxjs';
+
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+  return next(req).pipe(
+    catchError(err => {
+      console.error('Errore HTTP:', err.status);
+      throw err;
+    })
+  );
+};
+</script></div>
+<p>Gli interceptor si eseguono in ordine per ogni richiesta uscente.</p>
+      </article>
+
+      <article class="lesson" id="forms-advanced">
+<h2>Form Avanzati</h2>
+<p>I <strong>Reactive Forms</strong> permettono validazione complessa, form dinamici e controllo totale.</p>
+<h3>FormBuilder e validatori</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, inject } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  templateUrl: './form.html'
+})
+export class AppComponent {
+  private fb = inject(FormBuilder);
+
+  form = this.fb.group({
+    nome: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+    eta: [18, [Validators.min(0), Validators.max(120)]]
+  });
+
+  invia() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+  }
+}
+</script></div>
+<h3>Mostrare gli errori</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<input formControlName="email">
+@if (form.get('email')?.invalid && form.get('email')?.touched) {
+  <small>Email non valida</small>
+}
+</script></div>
+<h3>FormArray (campi dinamici)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+hobbies = this.fb.array([]);
+
+aggiungiHobby() {
+  this.hobbies.push(this.fb.control(''));
+}
+</script></div>
+<h3>Validatore personalizzato</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+function pariValidator(control: AbstractControl) {
+  return control.value % 2 === 0 ? null : { nonPari: true };
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="state-management">
+<h2>State Management</h2>
+<p>La <strong>gestione dello stato</strong> centralizza i dati condivisi tra componenti.</p>
+<h3>Stato con un servizio + Signals</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Injectable, signal, computed } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class CarrelloStore {
+  private articoli = signal<Articolo[]>([]);
+
+  // Selettori (sola lettura)
+  readonly items = this.articoli.asReadonly();
+  readonly totale = computed(() =>
+    this.articoli().reduce((s, a) => s + a.prezzo, 0)
+  );
+
+  // Azioni
+  aggiungi(articolo: Articolo) {
+    this.articoli.update(lista => [...lista, articolo]);
+  }
+  rimuovi(id: number) {
+    this.articoli.update(lista => lista.filter(a => a.id !== id));
+  }
+}
+</script></div>
+<h3>Usare lo store</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component, inject } from '@angular/core';
+import { CarrelloStore } from './carrello.store';
+
+@Component({ /* ... */ })
+export class CarrelloComponent {
+  store = inject(CarrelloStore);
+  // template: {{ store.totale() }}
+}
+</script></div>
+<h3>Librerie dedicate</h3>
+<p>Per app molto grandi si usano librerie come <strong>NgRx</strong> (pattern Redux) o <strong>NGXS</strong>. Per la maggior parte dei casi, un servizio con Signals è sufficiente.</p>
+      </article>
+
+      <article class="lesson" id="animations">
+<h2>Animazioni in Angular</h2>
+<p>Angular offre un sistema di animazioni dichiarativo basato su stati e transizioni.</p>
+<h3>Configurazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideAnimations()]
+});
+</script></div>
+<h3>Definire un'animazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { Component } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  animations: [
+    trigger('apertura', [
+      state('chiuso', style({ height: '0', opacity: 0 })),
+      state('aperto', style({ height: '*', opacity: 1 })),
+      transition('chiuso <=> aperto', animate('300ms ease'))
+    ])
+  ],
+  template: `
+    <button (click)="toggle()">Toggle</button>
+    <div [@apertura]="stato">Contenuto animato</div>
+  `
+})
+export class AppComponent {
+  stato = 'chiuso';
+  toggle() {
+    this.stato = this.stato === 'chiuso' ? 'aperto' : 'chiuso';
+  }
+}
+</script></div>
+<h3>Animazioni di lista</h3>
+<p>Con <code class="inline">query()</code> e <code class="inline">stagger()</code> si animano gli elementi di una lista in sequenza, per effetti fluidi all'ingresso.</p>
+      </article>
+
+      <article class="lesson" id="testing">
+<h2>Testing in Angular</h2>
+<p>Angular include strumenti per i test: <strong>Jasmine</strong> (framework) e <strong>Karma</strong> o <strong>Vitest</strong> (test runner).</p>
+<h3>Test di un componente</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [AppComponent]
+    });
+  });
+
+  it('dovrebbe creare il componente', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it('dovrebbe mostrare il titolo', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const h1 = fixture.nativeElement.querySelector('h1');
+    expect(h1.textContent).toContain('Angular');
+  });
+});
+</script></div>
+<h3>Test di un servizio</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+it('dovrebbe restituire i corsi', () => {
+  const service = TestBed.inject(CorsiService);
+  expect(service.getCorsi().length).toBeGreaterThan(0);
+});
+</script></div>
+<h3>Eseguire i test</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+ng test
+</script></div>
+<p>Si usano anche <strong>end-to-end test</strong> con strumenti come Playwright o Cypress.</p>
+      </article>
+
+      <article class="lesson" id="security">
+<h2>Sicurezza in Angular</h2>
+<p>Angular include protezioni integrate contro le vulnerabilità web più comuni.</p>
+<h3>Protezione XSS automatica</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+// Angular "sanitizza" automaticamente i valori interpolati
+@Component({
+  template: '<div>{{ contenutoUtente }}</div>'
+})
+export class AppComponent {
+  // Anche se contiene <script>, viene reso innocuo
+  contenutoUtente = '<script>alert("hack")</script>';
+}
+</script></div>
+<h3>innerHTML e sanitizzazione</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { DomSanitizer } from '@angular/platform-browser';
+
+constructor(private sanitizer: DomSanitizer) {}
+
+// Solo se ti fidi del contenuto!
+htmlSicuro = this.sanitizer.bypassSecurityTrustHtml(html);
+</script></div>
+<h3>Buone pratiche di sicurezza</h3>
+<ul>
+<li>✅ Non usare <code class="inline">bypassSecurityTrust...</code> su input non fidati</li>
+<li>✅ Validare sempre i dati lato server (non solo nel client)</li>
+<li>✅ Usare <strong>HttpClient</strong> che protegge da XSRF/CSRF</li>
+<li>✅ Usare la <strong>Content Security Policy (CSP)</strong></li>
+<li>✅ Mantenere Angular e le dipendenze aggiornate</li>
+</ul>
+<h3>Protezione XSRF</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+provideHttpClient(withXsrfConfiguration({
+  cookieName: 'XSRF-TOKEN',
+  headerName: 'X-XSRF-TOKEN'
+}))
+</script></div>
+      </article>
+
+      <article class="lesson" id="ssr">
+<h2>SSR e Hydration</h2>
+<p>Il <strong>Server-Side Rendering (SSR)</strong> genera l'HTML sul server, migliorando SEO e velocità di caricamento iniziale.</p>
+<h3>Aggiungere SSR a un progetto</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+ng add @angular/ssr
+</script></div>
+<p>Questo configura il rendering lato server con un server Express.</p>
+<h3>Vantaggi dell'SSR</h3>
+<ul>
+<li>🔍 <strong>SEO migliore</strong>: i motori di ricerca vedono l'HTML completo</li>
+<li>⚡ <strong>First Contentful Paint</strong> più veloce</li>
+<li>📱 <strong>Performance</strong> su dispositivi lenti</li>
+</ul>
+<h3>Hydration</h3>
+<p>La <strong>hydration</strong> è il processo con cui Angular "riprende" sul client l'HTML generato dal server, senza ricostruirlo da zero.</p>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+import { provideClientHydration } from '@angular/platform-browser';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideClientHydration()]
+});
+</script></div>
+<h3>Incremental Hydration (Angular 19+)</h3>
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<!-- Idrata il componente solo quando diventa visibile -->
+@defer (hydrate on viewport) {
+  <app-grafico-pesante />
+}
+</script></div>
+<p>L'SSR con hydration combina i vantaggi del rendering server (SEO, velocità) con l'interattività di una SPA.</p>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice Angular</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note &amp; risorse</div>
+        <iframe id="ed-preview" title="Note sul codice Angular"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="js/main.js?v=4"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+    function ensureCM(){
+      if (!cm && window.CodeMirror){
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'text/typescript',lineNumbers:true,lineWrapping:false,tabSize:2,indentUnit:2,theme:'default'}); }
+        catch(e){ cm=null; }
+      }
+      return cm;
+    }
+    function note(){
+      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        +'<h3 style="margin:0 0 .6rem;color:#1e293b">🅰️ Codice Angular</h3>'
+        +'<p>Angular usa TypeScript e si compila con la Angular CLI. Per eseguire davvero il codice:</p>'
+        +'<ul><li><a href="https://stackblitz.com/fork/angular" target="_blank">StackBlitz — Angular</a>: crea un progetto Angular nel browser, senza installare nulla</li>'
+        +'<li><a href="https://angular.dev/playground" target="_blank">Angular Playground</a>: prova Angular online sul sito ufficiale</li>'
+        +'<li><a href="https://angular.dev/tutorials/learn-angular" target="_blank">Learn Angular</a>: il tutorial interattivo ufficiale</li></ul>'
+        +'<h3 style="margin:1rem 0 .4rem;color:#1e293b">📚 Documentazione</h3>'
+        +'<ul><li><a href="https://angular.dev" target="_blank">angular.dev — sito ufficiale</a></li>'
+        +'<li><a href="https://angular.dev/cli" target="_blank">Angular CLI — riferimento comandi</a></li></ul>'
+        +'<h3 style="margin:1rem 0 .4rem;color:#1e293b">💻 In locale</h3>'
+        +'<p><code>npm install -g @angular/cli</code> &rarr; <code>ng new mia-app</code> &rarr; <code>ng serve</code>, poi apri <b>http://localhost:4200</b></p>'
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+    }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.classList.add('editor-open');
+      document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      var editor=ensureCM();
+      if(editor){ editor.setValue(code); }
+      else { ta.value=code; }
+      note();
+      setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; document.removeEventListener('touchmove', preventTouch); }
+    document.getElementById('ed-close').addEventListener('click',closeEditor);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeEditor(); });
+    function dedent(text){
+      var lines=text.split('\n'),min=Infinity;
+      for(var i=1;i<lines.length;i++){
+        if(!lines[i].trim()) continue;
+        var m=lines[i].match(/^ */)[0].length;
+        if(m<min) min=m;
+      }
+      if(min===Infinity||min===0) return lines.join('\n');
+      for(var j=1;j<lines.length;j++) lines[j]=lines[j].slice(min);
+      return lines.join('\n');
+    }
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeScript=ex.querySelector('.code');
+      var codeEl=ex.querySelector('.codeview code');
+      if(!codeScript||!codeEl){ return; }
+      var raw=dedent(codeScript.textContent.replace(/^\n/,'').replace(/\s+$/,''));
+      codeEl.textContent=raw;
+      if(window.Prism){ Prism.highlightElement(codeEl); }
+      var btn=ex.querySelector('.btn-try');
+      if(btn){ btn.addEventListener('click',function(){ openEditor(raw); }); }
+    });
+  })();
+</script>
+</body>
+</html>
