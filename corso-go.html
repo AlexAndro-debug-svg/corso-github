@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Go (Golang) in italiano completo e gratuito — sintassi, slice, map, struct e funzioni da zero | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Go (Golang) italiano completo e gratuito: sintassi, variabili, tipi di dato, array, slice, map, struct, funzioni, cicli e condizioni. Con editor Provalo tu, quiz, esercizi, piano di studio e certificazione. Spiegato da un docente.">
+  <meta name="keywords" content="corso go italiano, golang tutorial italiano, imparare go, go da zero, linguaggio go, go slice map struct, go funzioni, go per principianti, programmazione backend go, quiz go, esercizi go, certificazione golang, go playground">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Go (Golang) in italiano completo e gratuito — Backend moderno da zero | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Go (Golang) da zero in italiano: sintassi, slice, map, struct, funzioni e concorrenza. Editor, quiz ed esercizi. Tutorial completo e gratuito.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment, .codeview .token.doctype, .codeview .token.prolog { color: #94a3b8; font-style: italic; }
+    .codeview .token.tag, .codeview .token.keyword, .codeview .token.selector { color: #f472b6; }
+    .codeview .token.tag .token.punctuation { color: #94a3b8; }
+    .codeview .token.punctuation, .codeview .token.operator { color: #94a3b8; }
+    .codeview .token.attr-name, .codeview .token.function, .codeview .token.property { color: #5eead4; }
+    .codeview .token.attr-value, .codeview .token.string, .codeview .token.char { color: #93c5fd; }
+    .codeview .token.attr-value .token.punctuation { color: #93c5fd; }
+    .codeview .token.number, .codeview .token.boolean, .codeview .token.entity { color: #fbbf24; }
+    .codeview .token.class-name, .codeview .token.builtin { color: #c4b5fd; }
+    .codeview .token.parameter, .codeview .token.variable { color: #fda4af; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1200; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
+    .ed-btn:hover { background: var(--bg-soft); }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: #f8fafc; border-bottom: 1px solid var(--border); padding: .35rem .9rem; font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } .editor-panes { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-go.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-go.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Go (Golang) in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Go completo in italiano: sintassi, slice, map, struct, funzioni, quiz e certificazione.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Go (Golang) in italiano","description":"Corso Go italiano completo e gratuito: sintassi, variabili, tipi, array, slice, map, struct, funzioni, cicli e condizioni. Editor, quiz, esercizi e certificazione.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-go.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html" class="active">GO</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito · Interattivo</span>
+    <h1>Corso Go (Golang) in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara da zero il linguaggio di Google: sintassi pulita, slice, map, struct e funzioni per costruire software backend veloce e moderno.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Go Tutorial</h4>
+      <a href="#home">Introduzione</a>
+      <a href="#intro">Cos'è Go</a>
+      <a href="#get-started">Per iniziare</a>
+      <a href="#syntax">Sintassi</a>
+      <a href="#comments">Commenti</a>
+      <a href="#variables">Variabili</a>
+      <a href="#constants">Costanti</a>
+      <a href="#output">Output</a>
+      <a href="#data-types">Tipi di dato</a>
+      <a href="#arrays">Array</a>
+      <a href="#slices">Slice</a>
+      <a href="#operators">Operatori</a>
+      <a href="#conditions">Condizioni</a>
+      <a href="#switch">Switch</a>
+      <a href="#loops">Cicli</a>
+      <a href="#functions">Funzioni</a>
+      <a href="#struct">Struct</a>
+      <a href="#maps">Map</a>
+      <h4>Go Cert</h4>
+      <a href="#certificazione">Certificazione</a>
+      <h4>Go Exercises</h4>
+      <a href="#editor-online">Compilatore online</a>
+      <a href="#esercizi">Esercizi</a>
+      <a href="#compiler">Come compila Go</a>
+      <a href="#programma">Programma</a>
+      <a href="#piano-studio">Piano di studio</a>
+      <a href="#colloquio">Domande da colloquio</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+      <article class="lesson" id="home">
+        <h2>Cos'è Go</h2>
+<p><strong>Go</strong> (chiamato anche <strong>Golang</strong>) è un linguaggio di programmazione moderno, creato da <strong>Google</strong> nel 2009. È <strong>compilato</strong>, veloce come il C ma semplice da leggere come Python, ed è pensato per costruire software efficiente e scalabile.</p>
+<h3>Perché imparare Go</h3><ul><li>⚡ <strong>Veloce</strong>: compila in codice macchina nativo</li><li>🧹 <strong>Semplice</strong>: poche parole chiave, sintassi pulita e leggibile</li><li>🔀 <strong>Concorrenza nativa</strong>: le <em>goroutine</em> rendono facile fare più cose insieme</li><li>☁️ <strong>Cloud e backend</strong>: è il linguaggio di Docker, Kubernetes e moltissimi servizi web</li><li>💼 <strong>Richiestissimo</strong>: tra i linguaggi meglio pagati sul mercato</li></ul>
+<div class="example"><div class="codehead"><span>Il classico "Hello World" in Go</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Ciao, mondo!")
+}
+</script></div>
+<div class="note-box">📘 Premi <strong>▶ Provalo tu</strong> su ogni esempio per leggere e modificare il codice con la sintassi colorata. Per eseguirlo davvero useremo il <strong>Go Playground</strong>, indicato nel pannello.</div>
+      </article>
+
+      <article class="lesson" id="intro">
+        <h2>Introduzione a Go</h2>
+<p>Go è nato per risolvere problemi reali di Google: compilazione lenta, codice difficile da mantenere e gestione complicata della concorrenza. Il risultato è un linguaggio <strong>minimale ma potente</strong>.</p>
+<h3>Caratteristiche principali</h3><ul><li><strong>Tipizzazione statica</strong>: gli errori di tipo si scoprono già in compilazione</li><li><strong>Garbage collector</strong>: gestisce la memoria automaticamente</li><li><strong>Libreria standard ricca</strong>: web server, JSON, crittografia inclusi</li><li><strong>Un solo eseguibile</strong>: il programma compilato non ha dipendenze esterne</li></ul>
+<h3>Dove si usa Go</h3><p>Backend di servizi web e API, strumenti per il cloud (Docker, Kubernetes, Terraform sono scritti in Go), microservizi, strumenti da riga di comando e sistemi ad alte prestazioni.</p>
+<div class="tip-box">💡 Go è un ottimo <strong>secondo linguaggio</strong>: se conosci già le basi (magari da <a href="corso-python.html">Python</a> o <a href="corso-c.html">C</a>), lo impari in pochissimo tempo.</div>
+      </article>
+
+      <article class="lesson" id="get-started">
+        <h2>Iniziare con Go</h2>
+<p>Per programmare in Go sul tuo computer scarica il compilatore da <a href="https://go.dev/dl/" target="_blank" rel="noreferrer">go.dev/dl</a>. In alternativa, per esercitarti subito senza installare nulla, usa il <a href="https://go.dev/play/" target="_blank" rel="noreferrer">Go Playground</a> online.</p>
+<h3>Struttura di un programma Go</h3><p>Ogni programma Go inizia con un <strong>package</strong>. Il programma eseguibile usa <code class="inline">package main</code> e una funzione <code class="inline">main()</code>, il punto di partenza.</p>
+<div class="example"><div class="codehead"><span>Il tuo primo programma, spiegato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main          // ogni eseguibile sta nel package "main"
+
+import "fmt"           // importa il pacchetto per stampare a schermo
+
+func main() {          // main() e' il punto di partenza del programma
+    fmt.Println("Benvenuto in Go!")
+}
+</script></div>
+<h3>Compilare ed eseguire (nel terminale)</h3>
+<div class="example"><div class="codehead"><span>Comandi del terminale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+# Esegue direttamente il file
+go run main.go
+
+# Compila un eseguibile e poi lo lancia
+go build main.go
+./main
+</script></div>
+      </article>
+
+      <article class="lesson" id="syntax">
+        <h2>La sintassi di Go</h2>
+<p>Il codice Go è organizzato in modo rigoroso e pulito. Ecco gli elementi che ritroverai in ogni programma.</p>
+<ul><li><code class="inline">package</code> — dichiara a quale pacchetto appartiene il file</li><li><code class="inline">import</code> — importa altri pacchetti</li><li><code class="inline">func</code> — definisce una funzione</li><li>Le <strong>parentesi graffe</strong> <code class="inline">{ }</code> delimitano i blocchi</li></ul>
+<div class="example"><div class="codehead"><span>Anatomia del codice Go</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    // Questa riga stampa un messaggio
+    fmt.Println("Imparo la sintassi di Go")
+}
+</script></div>
+<div class="note-box">📘 In Go il <strong>punto e virgola</strong> a fine riga non si scrive: lo aggiunge il compilatore. La parentesi graffa di apertura <code class="inline">{</code> deve stare <strong>sulla stessa riga</strong> di <code class="inline">func</code>.</div>
+      </article>
+
+      <article class="lesson" id="comments">
+        <h2>I commenti</h2>
+<p>I <strong>commenti</strong> sono note ignorate dal compilatore, utili a spiegare il codice. Go ha due forme, identiche a C, Java e JavaScript.</p>
+<div class="example"><div class="codehead"><span>Commenti su una riga e su più righe</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    // Questo e' un commento su una sola riga
+
+    /* Questo e' un commento
+       che si estende
+       su piu' righe */
+
+    fmt.Println("I commenti non vengono eseguiti")
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="variables">
+        <h2>Le variabili</h2>
+<p>Una <strong>variabile</strong> è un contenitore con un nome per un valore. In Go si dichiara con <code class="inline">var</code> oppure, dentro una funzione, con la forma breve <code class="inline">:=</code>.</p>
+<div class="example"><div class="codehead"><span>Dichiarare variabili</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    var nome string = "Anna"   // dichiarazione esplicita
+    var eta int = 25
+    citta := "Roma"            // forma breve (tipo dedotto)
+
+    fmt.Println(nome, eta, citta)
+
+    eta = 26                   // si puo' riassegnare
+    fmt.Println("Nuova eta':", eta)
+}
+</script></div>
+<div class="note-box">📘 La forma breve <code class="inline">:=</code> funziona <strong>solo dentro le funzioni</strong> e deduce il tipo dal valore. A livello globale usa sempre <code class="inline">var</code>.</div>
+<div class="warn-box">⚠️ Go è severo: una variabile dichiarata ma <strong>mai usata</strong> provoca un errore di compilazione. Niente codice morto!</div>
+      </article>
+
+      <article class="lesson" id="constants">
+        <h2>Le costanti</h2>
+<p>Una <strong>costante</strong> è un valore che non può cambiare dopo essere stato definito. Si dichiara con <code class="inline">const</code>.</p>
+<div class="example"><div class="codehead"><span>Definire costanti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+const Pi = 3.14159
+const Saluto = "Ciao"
+
+func main() {
+    const giorniSettimana = 7
+    fmt.Println(Saluto, Pi, giorniSettimana)
+
+    // giorniSettimana = 8  // ERRORE: non si puo' modificare
+}
+</script></div>
+<div class="tip-box">💡 Usa le costanti per valori fissi (aliquote, limiti, messaggi): rendono il codice più chiaro e impediscono modifiche accidentali.</div>
+      </article>
+
+      <article class="lesson" id="output">
+        <h2>Stampare a schermo</h2>
+<p>Il pacchetto <code class="inline">fmt</code> offre tre funzioni principali per stampare a schermo.</p>
+<table class="ref"><tr><th>Funzione</th><th>Cosa fa</th></tr><tr><td><code class="inline">Print</code></td><td>Stampa senza andare a capo</td></tr><tr><td><code class="inline">Println</code></td><td>Stampa e va a capo, con spazi tra i valori</td></tr><tr><td><code class="inline">Printf</code></td><td>Stampa con formattazione (segnaposto)</td></tr></table>
+<div class="example"><div class="codehead"><span>Le tre funzioni di stampa</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Print("A", "B", "C")          // ABC (tutto attaccato)
+    fmt.Println()                     // riga vuota
+    fmt.Println("Riga", "con", "spazi")
+
+    nome := "Luca"
+    eta := 30
+    fmt.Printf("%s ha %d anni\n", nome, eta)  // segnaposto
+}
+</script></div>
+<div class="note-box">📘 I segnaposto di <code class="inline">Printf</code>: <code class="inline">%s</code> per le stringhe, <code class="inline">%d</code> per gli interi, <code class="inline">%f</code> per i decimali, <code class="inline">%v</code> per qualsiasi valore.</div>
+      </article>
+
+      <article class="lesson" id="data-types">
+        <h2>I tipi di dato</h2>
+<p>Go è <strong>tipizzato staticamente</strong>: ogni variabile ha un tipo preciso. Ecco i tipi fondamentali.</p>
+<table class="ref"><tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr><tr><td><code class="inline">int</code></td><td>Numeri interi</td><td>42, -7</td></tr><tr><td><code class="inline">float64</code></td><td>Numeri decimali</td><td>3.14</td></tr><tr><td><code class="inline">string</code></td><td>Testo</td><td>"ciao"</td></tr><tr><td><code class="inline">bool</code></td><td>Vero/falso</td><td>true, false</td></tr></table>
+<div class="example"><div class="codehead"><span>I tipi fondamentali</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    var intero int = 42
+    var decimale float64 = 3.14
+    var testo string = "Go"
+    var vero bool = true
+
+    fmt.Println(intero, decimale, testo, vero)
+    fmt.Printf("Tipo di intero: %T\n", intero)  // %T mostra il tipo
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="arrays">
+        <h2>Gli array</h2>
+<p>Un <strong>array</strong> è una collezione di elementi <strong>dello stesso tipo</strong> con dimensione <strong>fissa</strong>, decisa alla creazione.</p>
+<div class="example"><div class="codehead"><span>Creare e usare array</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    var numeri [3]int            // array di 3 interi (tutti 0)
+    numeri[0] = 10
+    numeri[1] = 20
+    numeri[2] = 30
+
+    // Dichiarazione e valori insieme
+    citta := [2]string{"Roma", "Milano"}
+
+    fmt.Println(numeri)          // [10 20 30]
+    fmt.Println(citta[0])        // Roma
+    fmt.Println("Lunghezza:", len(numeri))  // 3
+}
+</script></div>
+<div class="warn-box">⚠️ La dimensione di un array fa parte del suo tipo e <strong>non può cambiare</strong>. Per collezioni che crescono si usano le <em>slice</em> (prossima lezione).</div>
+      </article>
+
+      <article class="lesson" id="slices">
+        <h2>Le slice</h2>
+<p>Una <strong>slice</strong> è come un array ma di dimensione <strong>dinamica</strong>: può crescere e rimpicciolirsi. È la struttura più usata in Go.</p>
+<div class="example"><div class="codehead"><span>Slice e append</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    frutta := []string{"mela", "pera"}  // niente numero = slice
+
+    frutta = append(frutta, "banana")    // aggiunge un elemento
+    fmt.Println(frutta)                  // [mela pera banana]
+    fmt.Println("Lunghezza:", len(frutta))
+
+    // Sotto-slice: dall'indice 0 (incluso) al 2 (escluso)
+    fmt.Println(frutta[0:2])             // [mela pera]
+}
+</script></div>
+<div class="tip-box">💡 Regola pratica: usa <strong>sempre le slice</strong> a meno che tu non abbia un motivo specifico per una dimensione fissa. <code class="inline">append</code> è il tuo strumento quotidiano.</div>
+      </article>
+
+      <article class="lesson" id="operators">
+        <h2>Gli operatori</h2>
+<p>Gli <strong>operatori</strong> eseguono operazioni su valori: calcoli, confronti e logica.</p>
+<table class="ref"><tr><th>Categoria</th><th>Operatori</th></tr><tr><td>Aritmetici</td><td><code class="inline">+ - * / %</code></td></tr><tr><td>Confronto</td><td><code class="inline">== != &gt; &lt; &gt;= &lt;=</code></td></tr><tr><td>Logici</td><td><code class="inline">&amp;&amp; || !</code></td></tr></table>
+<div class="example"><div class="codehead"><span>Operatori in azione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    a, b := 10, 3
+
+    fmt.Println(a + b)    // 13
+    fmt.Println(a / b)    // 3 (divisione tra interi)
+    fmt.Println(a % b)    // 1 (resto)
+    fmt.Println(a > b)    // true
+    fmt.Println(a > 5 && b < 5)  // true
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="conditions">
+        <h2>Le condizioni (if/else)</h2>
+<p>Le <strong>condizioni</strong> eseguono blocchi di codice diversi a seconda che una condizione sia vera o falsa, con <code class="inline">if</code>, <code class="inline">else if</code> ed <code class="inline">else</code>.</p>
+<div class="example"><div class="codehead"><span>if / else if / else</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    voto := 75
+
+    if voto >= 90 {
+        fmt.Println("Ottimo")
+    } else if voto >= 60 {
+        fmt.Println("Sufficiente")
+    } else {
+        fmt.Println("Insufficiente")
+    }
+
+    // if con istruzione iniziale (idioma comune in Go)
+    if n := 8; n%2 == 0 {
+        fmt.Println(n, "e' pari")
+    }
+}
+</script></div>
+<div class="note-box">📘 In Go la condizione <strong>non va tra parentesi</strong> e le graffe sono <strong>obbligatorie</strong>, anche per una sola riga.</div>
+      </article>
+
+      <article class="lesson" id="switch">
+        <h2>Lo switch</h2>
+<p>Lo <strong>switch</strong> sceglie tra molti casi in modo più leggibile di tanti <code class="inline">else if</code>. In Go non serve il <code class="inline">break</code>: ogni caso si ferma da solo.</p>
+<div class="example"><div class="codehead"><span>Switch su un valore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    giorno := 3
+
+    switch giorno {
+    case 1:
+        fmt.Println("Lunedi'")
+    case 6, 7:                      // piu' valori nello stesso caso
+        fmt.Println("Weekend")
+    default:
+        fmt.Println("Giorno feriale")
+    }
+}
+</script></div>
+<div class="tip-box">💡 A differenza di altri linguaggi, in Go i casi <strong>non "cadono"</strong> sul successivo: niente <code class="inline">break</code> da ricordare. Per il comportamento opposto esiste <code class="inline">fallthrough</code>.</div>
+      </article>
+
+      <article class="lesson" id="loops">
+        <h2>I cicli (for)</h2>
+<p>Go ha <strong>un solo costrutto di ciclo</strong>: <code class="inline">for</code>. Ma è flessibile e copre tutti i casi (incluso il classico <em>while</em> di altri linguaggi).</p>
+<div class="example"><div class="codehead"><span>Le forme del for</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    // 1. for classico
+    for i := 1; i <= 3; i++ {
+        fmt.Println("Giro", i)
+    }
+
+    // 2. for come "while"
+    n := 0
+    for n < 3 {
+        n++
+    }
+
+    // 3. for-range: scorre una slice
+    frutta := []string{"mela", "pera", "kiwi"}
+    for indice, valore := range frutta {
+        fmt.Println(indice, valore)
+    }
+}
+</script></div>
+<div class="note-box">📘 Il <code class="inline">for ... range</code> è il modo idiomatico di scorrere slice, array e map: restituisce indice e valore di ogni elemento.</div>
+      </article>
+
+      <article class="lesson" id="functions">
+        <h2>Le funzioni</h2>
+<p>Una <strong>funzione</strong> raggruppa istruzioni riutilizzabili. In Go i tipi dei parametri e del valore restituito si dichiarano esplicitamente.</p>
+<div class="example"><div class="codehead"><span>Definire e usare funzioni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+// funzione con due parametri int che restituisce un int
+func somma(a int, b int) int {
+    return a + b
+}
+
+// Go puo' restituire piu' valori contemporaneamente
+func dividi(a, b int) (int, int) {
+    return a / b, a % b   // quoziente e resto
+}
+
+func main() {
+    fmt.Println(somma(3, 4))        // 7
+
+    q, r := dividi(17, 5)
+    fmt.Println("Quoziente:", q, "Resto:", r)
+}
+</script></div>
+<div class="tip-box">💡 La possibilità di <strong>restituire più valori</strong> è una caratteristica amata di Go: si usa moltissimo per restituire un risultato <em>e</em> un eventuale errore.</div>
+      </article>
+
+      <article class="lesson" id="struct">
+        <h2>Le struct</h2>
+<p>Una <strong>struct</strong> raggruppa più campi correlati in un unico tipo personalizzato: è il modo di Go per rappresentare "oggetti" come una persona, un prodotto, un punto.</p>
+<div class="example"><div class="codehead"><span>Definire e usare una struct</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+type Persona struct {
+    Nome string
+    Eta  int
+}
+
+func main() {
+    p := Persona{Nome: "Sara", Eta: 28}
+
+    fmt.Println(p.Nome)      // Sara
+    fmt.Println(p.Eta)       // 28
+
+    p.Eta = 29               // modifica un campo
+    fmt.Println(p)           // {Sara 29}
+}
+</script></div>
+<div class="note-box">📘 Le struct sono il cuore di Go: non c'è la parola <code class="inline">class</code>, ma combinando struct e <em>metodi</em> si ottiene tutto ciò che serve della programmazione a oggetti.</div>
+      </article>
+
+      <article class="lesson" id="maps">
+        <h2>Le map</h2>
+<p>Una <strong>map</strong> associa <strong>chiavi a valori</strong> (come un dizionario): perfetta per cercare un valore tramite un nome.</p>
+<div class="example"><div class="codehead"><span>Creare e usare una map</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    // map da string a int
+    eta := map[string]int{
+        "Anna": 25,
+        "Luca": 30,
+    }
+
+    fmt.Println(eta["Anna"])     // 25
+
+    eta["Sara"] = 28             // aggiunge una coppia
+    delete(eta, "Luca")          // rimuove una chiave
+
+    // Verifica se una chiave esiste
+    valore, esiste := eta["Mario"]
+    fmt.Println(valore, esiste)  // 0 false
+}
+</script></div>
+<div class="tip-box">💡 La forma <code class="inline">valore, esiste := mappa[chiave]</code> è il modo sicuro di controllare se una chiave c'è prima di usarla.</div>
+      </article>
+
+      <article class="lesson" id="certificazione">
+        <h2>Certificazione Go</h2>
+<p>Una certificazione su Go attesta la tua capacità di scrivere software backend efficiente e moderno: una competenza molto richiesta e ben pagata, soprattutto unita a un portfolio di progetti reali.</p>
+<table class="ref"><tr><th>Certificazione</th><th>Ente</th><th>Note</th></tr><tr><td>Go Certificate</td><td>W3Schools</td><td>Base, ottima per il CV</td></tr><tr><td>Google Cloud (Go)</td><td>Google</td><td>Per backend e cloud su GCP</td></tr><tr><td>Il tuo portfolio</td><td>—</td><td>Progetti su GitHub valgono piu' di ogni badge</td></tr></table>
+<h3>Come prepararsi</h3><ul><li>📐 Padroneggia slice, map, struct e funzioni a piu' valori di ritorno</li><li>🔀 Approfondisci goroutine e canali (la concorrenza di Go)</li><li>🛠️ Costruisci una piccola API web con la libreria standard <code class="inline">net/http</code></li><li>🟩 Pubblica i tuoi progetti su <a href="corso-git.html">GitHub</a></li></ul>
+      </article>
+
+      <article class="lesson" id="editor-online">
+        <h2>Compilatore Go online</h2>
+<p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor dove leggere e modificare il codice con la sintassi colorata. Per <strong>compilarlo ed eseguirlo davvero</strong>, usa uno di questi strumenti gratuiti.</p>
+<h3>Dove eseguire il codice Go</h3><ul><li>🎮 <strong><a href="https://go.dev/play/" target="_blank" rel="noreferrer">Go Playground</a></strong> — scrivi ed esegui Go nel browser, senza installare nulla: il modo più rapido per esercitarti</li><li>💻 <strong><a href="https://go.dev/dl/" target="_blank" rel="noreferrer">Go ufficiale</a></strong> — installa il compilatore sul tuo computer per i progetti veri</li><li>📚 <strong><a href="https://go.dev/tour/" target="_blank" rel="noreferrer">A Tour of Go</a></strong> — il tutorial interattivo ufficiale</li></ul>
+<div class="example"><div class="codehead"><span>Copia questo nel Go Playground</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+package main
+
+import "fmt"
+
+func main() {
+    for i := 1; i <= 5; i++ {
+        fmt.Printf("%d al quadrato = %d\n", i, i*i)
+    }
+}
+</script></div>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi Go</h2>
+<p>Esercizi pratici progressivi. Svolgili nell'editor <strong>Provalo tu</strong> e poi eseguili sul Go Playground.</p>
+<h3>Livello base</h3><ol><li>Stampa il tuo nome e la tua età con <code class="inline">Printf</code></li><li>Dichiara due numeri e stampa somma, differenza e prodotto</li><li>Crea una slice di 3 città e stampala con un ciclo for-range</li><li>Scrivi un if che dica se un numero è pari o dispari</li></ol>
+<h3>Livello intermedio</h3><ol><li>Scrivi una funzione che restituisce il maggiore tra due numeri</li><li>Usa una map per associare 3 nomi alle loro età</li><li>Scrivi uno switch che traduca un numero da 1 a 7 nel giorno della settimana</li><li>Crea una struct <code class="inline">Prodotto</code> con nome e prezzo, e stampane una</li></ol>
+<h3>Livello avanzato</h3><ol><li>Scrivi una funzione che restituisce quoziente e resto di una divisione</li><li>Calcola la media dei valori di una slice di interi</li><li>Conta quante volte ogni parola appare in una slice, usando una map</li><li>Crea una slice di struct <code class="inline">Persona</code> e stampa solo i maggiorenni</li></ol>
+<div class="challenge-box"><span class="challenge-label">🎯 Sfida</span><p>Scrivi un piccolo programma "rubrica": usa una <code class="inline">map[string]string</code> per associare nomi a numeri di telefono, con funzioni per aggiungere, cercare ed eliminare un contatto. È un ottimo modo per mettere insieme map, funzioni e cicli.</p></div>
+      </article>
+
+      <article class="lesson" id="compiler">
+        <h2>Come funziona il compilatore Go</h2>
+<p>A differenza di Python o JavaScript (interpretati), Go è <strong>compilato</strong>: il codice sorgente viene tradotto in un <strong>eseguibile</strong> in codice macchina, velocissimo e senza dipendenze esterne.</p>
+<div class="example"><div class="codehead"><span>I comandi del compilatore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+# Esegue al volo (compila in memoria e lancia)
+go run main.go
+
+# Crea un eseguibile autonomo
+go build main.go
+
+# Formatta automaticamente il codice secondo lo standard Go
+go fmt main.go
+
+# Scarica le dipendenze e crea il file dei moduli
+go mod init mioprogetto
+</script></div>
+<div class="note-box">📘 <code class="inline">go fmt</code> riformatta il codice secondo lo stile ufficiale: in Go non si discute di stile, è uno solo per tutti. Un grande vantaggio per i team.</div>
+      </article>
+
+      <article class="lesson" id="programma">
+        <h2>Programma del corso</h2>
+<p>La mappa completa di ciò che copre questo corso, dalle basi alle strutture dati.</p>
+<ul><li><strong>Fondamenti</strong>: sintassi, package, commenti, variabili, costanti, output</li><li><strong>Tipi e dati</strong>: tipi di base, array, slice, map, struct</li><li><strong>Logica</strong>: operatori, condizioni, switch, cicli for</li><li><strong>Organizzazione</strong>: funzioni e valori di ritorno multipli</li></ul>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di studio</h2>
+<p>Go si impara in fretta, soprattutto se conosci già un altro linguaggio. Questo piano ti porta da zero all'autonomia in 2-3 settimane.</p>
+<table class="ref"><tr><th>Periodo</th><th>Obiettivo</th></tr><tr><td>Giorni 1-3</td><td>Installazione/Playground, sintassi, variabili, output</td></tr><tr><td>Giorni 4-6</td><td>Tipi di dato, operatori, condizioni, switch</td></tr><tr><td>Giorni 7-9</td><td>Cicli for, array, slice</td></tr><tr><td>Giorni 10-12</td><td>Funzioni, map, struct</td></tr><tr><td>Settimana 3</td><td>Progetto pratico + primo sguardo a goroutine e net/http</td></tr></table>
+<div class="tip-box">💡 Affianca al corso <a href="https://go.dev/tour/" target="_blank" rel="noreferrer">A Tour of Go</a>: è interattivo e copre gli stessi argomenti con altri esempi, ottimo per consolidare.</div>
+      </article>
+
+      <article class="lesson" id="colloquio">
+        <h2>Domande da colloquio</h2>
+<p>Go è sempre più richiesto per ruoli backend e cloud. Queste sono le domande più frequenti ai colloqui.</p>
+<ul><li>🔹 Qual è la differenza tra un array e una slice?</li><li>🔹 Cosa significa che Go è compilato e tipizzato staticamente?</li><li>🔹 Come si restituiscono più valori da una funzione?</li><li>🔹 Cosa sono le goroutine e i canali?</li><li>🔹 Perché in Go non c'è la parola chiave <code class="inline">class</code>?</li><li>🔹 Come si gestiscono gli errori in Go (il pattern <code class="inline">value, err</code>)?</li><li>🔹 Cosa fa <code class="inline">go fmt</code> e perché è importante?</li><li>🔹 Differenza tra <code class="inline">var</code> e <code class="inline">:=</code></li></ul>
+<div class="tip-box">💡 Punto chiave: Go nasce per la <strong>semplicità e la concorrenza</strong>. Saper spiegare goroutine e canali, e il pattern di gestione degli errori, fa un'ottima impressione.</div>
+      </article>
+
+      <article class="lesson" id="quiz">
+        <h2>Quiz Go</h2>
+<p>Verifica le tue conoscenze. Le risposte sono in fondo.</p>
+<ol><li>Quale package deve avere un programma eseguibile in Go?</li><li>Qual è la differenza tra <code class="inline">var</code> e <code class="inline">:=</code>?</li><li>Cosa succede se dichiari una variabile e non la usi?</li><li>Qual è la differenza tra array e slice?</li><li>Quale funzione aggiunge un elemento a una slice?</li><li>Quanti costrutti di ciclo ha Go?</li><li>Serve il <code class="inline">break</code> nei casi di uno switch?</li><li>Come si restituiscono due valori da una funzione?</li><li>Cosa raggruppa una struct?</li><li>Come si controlla se una chiave esiste in una map?</li></ol>
+<div class="note-box">📘 <strong>Risposte:</strong> 1) <code>package main</code>. 2) <code>var</code> funziona ovunque ed è esplicito; <code>:=</code> è la forma breve solo dentro le funzioni, con tipo dedotto. 3) Errore di compilazione. 4) L'array ha dimensione fissa, la slice è dinamica. 5) <code>append</code>. 6) Uno solo: <code>for</code>. 7) No, ogni caso si ferma da solo. 8) Dichiarando due tipi di ritorno, es. <code>(int, int)</code>. 9) Più campi correlati in un tipo personalizzato. 10) Con <code>valore, esiste := mappa[chiave]</code>.</div>
+      </article>
+
+      <article class="lesson" id="fine" style="border-bottom:none">
+        <h2>Conclusione — E ora?</h2>
+<p>Hai completato il corso Go! Ora conosci sintassi, tipi, slice, map, struct, funzioni e tutto ciò che serve per scrivere programmi reali in uno dei linguaggi più moderni e richiesti.</p>
+<h3>I tuoi prossimi passi</h3><ul><li>🔀 <strong>Concorrenza</strong>: impara goroutine e canali, il vero superpotere di Go</li><li>🌐 <strong>Web</strong>: costruisci la tua prima API REST con il pacchetto <code class="inline">net/http</code></li><li>🐳 <strong>Cloud</strong>: Go è il linguaggio di Docker e Kubernetes, esploralo in quel mondo</li><li>🟩 <strong>Portfolio</strong>: pubblica i tuoi progetti su <a href="corso-git.html">GitHub</a></li></ul>
+<div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Scrivi un programma da riga di comando completo: un "gestore di attività" (to-do list) che permette di aggiungere, elencare e completare attività, salvandole in una slice di struct. Aggiungi un menu con uno switch e funzioni separate per ogni azione. Pubblicalo su GitHub: sarà il primo progetto Go del tuo portfolio.</p></div>
+<div class="hero-actions"><a href="corsi.html" class="btn btn-primary">🚀 Esplora gli altri corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
+      </article>
+
+
+    </main>
+  </div>
+</section>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice Go</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note sul codice Go"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/go/go.min.js"></script>
+<script src="js/main.js?v=4"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var ta = document.getElementById('ed-code');
+    var cm = null;
+    function ensureCM(){
+      if (!cm && window.CodeMirror){
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'go',lineNumbers:true,lineWrapping:false,tabSize:4,indentUnit:4,theme:'default'}); }
+        catch(e){ cm=null; }
+      }
+      return cm;
+    }
+    function note(){
+      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        +'<h3 style="margin:0 0 .6rem;color:#1e293b">🐹 Codice Go</h3>'
+        +'<p>Go è un linguaggio compilato. Per eseguire davvero questo codice:</p>'
+        +'<ul><li><a href="https://go.dev/play/" target="_blank">Go Playground</a> — scrivi ed esegui Go nel browser, senza installare nulla</li>'
+        +'<li><a href="https://go.dev/dl/" target="_blank">Go ufficiale</a> — installa il compilatore sul tuo computer</li>'
+        +'<li><a href="https://go.dev/tour/" target="_blank">A Tour of Go</a> — il tutorial interattivo ufficiale</li></ul>'
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+    }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.classList.add('editor-open');
+      document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      var editor=ensureCM();
+      if(editor){ editor.setValue(code); }
+      else { ta.value=code; }
+      note();
+      setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; document.removeEventListener('touchmove', preventTouch); }
+    document.getElementById('ed-close').addEventListener('click',closeEditor);
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeEditor(); });
+    function dedent(text){
+      var lines=text.split('\n'),min=Infinity;
+      for(var i=1;i<lines.length;i++){
+        if(!lines[i].trim()) continue;
+        var m=lines[i].match(/^ */)[0].length;
+        if(m<min) min=m;
+      }
+      if(min===Infinity||min===0) return lines.join('\n');
+      for(var j=1;j<lines.length;j++) lines[j]=lines[j].slice(min);
+      return lines.join('\n');
+    }
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeScript=ex.querySelector('.code');
+      var codeEl=ex.querySelector('.codeview code');
+      if(!codeScript||!codeEl){ return; }
+      var raw=dedent(codeScript.textContent.replace(/^\n/,'').replace(/\s+$/,'').replace(/<\\\/script>/g,'<\/script>'));
+      codeEl.textContent=raw;
+      if(window.Prism){ Prism.highlightElement(codeEl); }
+      var btn=ex.querySelector('.btn-try');
+      if(btn){ btn.addEventListener('click',function(){ openEditor(raw); }); }
+    });
+  })();
+</script>
+</body>
+</html>
