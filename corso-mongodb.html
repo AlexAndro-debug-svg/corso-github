@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso MongoDB in italiano completo e gratuito — da zero a NoSQL con Atlas e Node.js | AlessandroSimone.it</title>
+  <meta name="description" content="Corso MongoDB italiano completo e gratuito: documenti, collezioni, CRUD, query operators, aggregation pipeline, indici, schema validation, transazioni ACID e integrazione Node.js. Con esempi pratici ed esercizi.">
+  <meta name="keywords" content="corso mongodb italiano, mongodb tutorial italiano, imparare mongodb, mongodb da zero, nosql italiano, aggregation pipeline mongodb, mongodb atlas, mongoose nodejs, mongodb query operators, mongodb indici, mongodb node.js, corso nosql italiano">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso MongoDB in italiano completo e gratuito — NoSQL, Atlas e Node.js | AlessandroSimone.it">
+  <meta property="og:description" content="Impara MongoDB da zero in italiano: CRUD, query operators, aggregation pipeline, indici, schema validation e integrazione Node.js. Tutorial completo e gratuito.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword, .codeview .token.tag { color: #f472b6; }
+    .codeview .token.string, .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.function, .codeview .token.property, .codeview .token.attr-name { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-mongodb.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-mongodb.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso MongoDB in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial MongoDB completo in italiano: CRUD, aggregation pipeline, indici, validation, transazioni e Node.js. Con esempi ed esercizi.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso MongoDB in italiano","description":"Corso MongoDB italiano completo e gratuito: documenti, collezioni, CRUD, query operators, aggregation pipeline, indici, schema validation, transazioni ACID e integrazione Node.js.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-mongodb.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html" class="active">MONGODB</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso MongoDB in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara da zero il database NoSQL più popolare al mondo: documenti JSON, CRUD, aggregation pipeline, indici, schema validation e integrazione con Node.js. Con esempi pratici ed esercizi.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>MongoDB Tutorial</h4>
+      <a href="#home">Introduzione</a>
+      <a href="#get-started">Per Iniziare</a>
+      <a href="#query-api">Query API</a>
+      <a href="#create-db">Create DB</a>
+      <a href="#collection">Collection</a>
+      <a href="#insert">Insert</a>
+      <a href="#find">Find</a>
+      <a href="#update">Update</a>
+      <a href="#delete">Delete</a>
+      <a href="#query-operators">Query Operators</a>
+      <a href="#update-operators">Update Operators</a>
+      <a href="#aggregations">Aggregations</a>
+      <a href="#indexing">Indexing &amp; Search</a>
+      <a href="#validation">Validation</a>
+      <a href="#data-api">Data API</a>
+      <a href="#drivers">Drivers</a>
+      <a href="#nodejs-driver">Node.js Driver</a>
+      <a href="#charts">MongoDB Charts</a>
+      <h4>Esercizi</h4>
+      <a href="#esercizi">Esercizi MongoDB</a>
+      <a href="#piano-studio">Piano di Studio</a>
+      <h4>Conclusione</h4>
+      <a href="#fine">E ora?</a>
+    </aside>
+
+    <main>
+      <article class="lesson" id="home">
+        <h2>Introduzione a MongoDB</h2>
+<p><strong>MongoDB</strong> è il database NoSQL più diffuso al mondo: invece di tabelle e righe usa <strong>documenti JSON</strong> (chiamati BSON internamente) organizzati in <strong>collezioni</strong>. È schemaless, orizzontalmente scalabile e progettato per dati flessibili e ad alta velocità.</p>
+<p>A differenza di MySQL o PostgreSQL, in MongoDB non devi definire uno schema rigido in anticipo: ogni documento può avere campi diversi, ideale per dati variabili, log, cataloghi di prodotti e applicazioni real-time.</p>
+<h3>Perché usare MongoDB?</h3>
+<ul><li><strong>Flessibilità</strong> — nessuno schema obbligatorio, i documenti evolvono nel tempo</li><li><strong>Performance</strong> — letture e scritture molto veloci su grandi volumi di dati</li><li><strong>Scalabilità orizzontale</strong> — sharding nativo per distribuire i dati su più server</li><li><strong>Dati annidati</strong> — array e oggetti dentro i documenti, senza JOIN</li><li><strong>Cloud-native</strong> — MongoDB Atlas disponibile su AWS, Azure e GCP</li></ul>
+<h3>Terminologia SQL ↔ MongoDB</h3>
+<table class="ref"><thead><tr><th>SQL</th><th>MongoDB</th></tr></thead><tbody>
+<tr><td>Database</td><td>Database</td></tr>
+<tr><td>Tabella</td><td>Collection</td></tr>
+<tr><td>Riga</td><td>Document</td></tr>
+<tr><td>Colonna</td><td>Field</td></tr>
+<tr><td>Primary Key</td><td>_id (ObjectId)</td></tr>
+<tr><td>JOIN</td><td>$lookup / dati annidati</td></tr>
+<tr><td>SELECT</td><td>find()</td></tr>
+<tr><td>INSERT</td><td>insertOne() / insertMany()</td></tr>
+<tr><td>UPDATE</td><td>updateOne() / updateMany()</td></tr>
+<tr><td>DELETE</td><td>deleteOne() / deleteMany()</td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Esempio documento MongoDB</span></div>
+<pre class="codeview"><code class="language-javascript">{
+  "_id": ObjectId("64a1f2c3e8b7a3d0c9f12345"),
+  "nome": "Mario Rossi",
+  "eta": 28,
+  "email": "mario@example.com",
+  "indirizzo": {
+    "via": "Via Roma 10",
+    "citta": "Milano",
+    "cap": "20100"
+  },
+  "hobbies": ["programmazione", "lettura", "ciclismo"],
+  "attivo": true
+}</code></pre>
+</div>
+<div class="note-box">💡 <strong>Ambiente consigliato</strong>: usa <a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener noreferrer">MongoDB Atlas</a> (cloud gratuito) o <a href="https://www.mongodb.com/products/compass" target="_blank" rel="noopener noreferrer">MongoDB Compass</a> per interfaccia grafica. Per la shell usa <code class="inline">mongosh</code>. Puoi esercitarti online su <a href="https://mongoplayground.net/" target="_blank" rel="noopener noreferrer">MongoDB Playground</a>.</div>
+      </article>
+
+      <article class="lesson" id="get-started">
+        <h2>MongoDB — Per Iniziare</h2>
+<p>Puoi usare MongoDB in tre modi: <strong>localmente</strong> (installa MongoDB Community), <strong>nel cloud</strong> (MongoDB Atlas, cluster gratuito M0), o <strong>via Docker</strong>. Per chi inizia, Atlas è la scelta più rapida.</p>
+<h3>MongoDB Atlas (cloud) — setup in 5 minuti</h3>
+<ul><li>Vai su <a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener noreferrer">mongodb.com/atlas</a> e crea un account gratuito</li><li>Crea un <strong>cluster M0</strong> (gratuito, 512 MB)</li><li>Aggiungi il tuo IP alla whitelist Network Access</li><li>Crea un utente database (username + password)</li><li>Ottieni la <strong>connection string</strong>: <code class="inline">mongodb+srv://user:pass@cluster.mongodb.net/</code></li></ul>
+<h3>Installazione locale (Ubuntu/Debian)</h3>
+<div class="example">
+<div class="codehead"><span>Installa MongoDB Community</span></div>
+<pre class="codeview"><code class="language-bash"># Importa la chiave GPG
+wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
+
+# Aggiungi il repository
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" | \
+  sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+# Installa
+sudo apt-get update &amp;&amp; sudo apt-get install -y mongodb-org
+
+# Avvia il servizio
+sudo systemctl start mongod
+sudo systemctl enable mongod</code></pre>
+</div>
+<h3>Installazione con Docker</h3>
+<div class="example">
+<div class="codehead"><span>MongoDB con Docker</span></div>
+<pre class="codeview"><code class="language-bash"># Avvia MongoDB in un container
+docker run -d \
+  --name mongodb \
+  -p 27017:27017 \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=secret \
+  mongo:7.0
+
+# Accedi alla shell MongoDB
+docker exec -it mongodb mongosh -u admin -p secret</code></pre>
+</div>
+<h3>Primi comandi in mongosh</h3>
+<div class="example">
+<div class="codehead"><span>Primi passi con mongosh</span></div>
+<pre class="codeview"><code class="language-javascript">// Mostra tutti i database
+show dbs
+
+// Usa (o crea) un database
+use negozio
+
+// Mostra le collezioni
+show collections
+
+// Inserisci un documento
+db.prodotti.insertOne({ nome: "Laptop", prezzo: 999, stock: 50 })
+
+// Leggi tutti i documenti
+db.prodotti.find()
+
+// Leggi con formattazione
+db.prodotti.find().pretty()</code></pre>
+</div>
+<div class="tip-box">🚀 <strong>Scorciatoia</strong>: <code class="inline">use nomedb</code> crea automaticamente il database la prima volta che inserisci un documento — non serve un comando separato "CREATE DATABASE".</div>
+      </article>
+
+      <article class="lesson" id="query-api">
+        <h2>MongoDB Query API</h2>
+<p>La <strong>Query API</strong> di MongoDB è il linguaggio con cui interroghi, filtri e trasformi i documenti. Tutte le operazioni si esprimono con oggetti JavaScript/JSON passati ai metodi della collezione.</p>
+<h3>Struttura base di una query</h3>
+<div class="example">
+<div class="codehead"><span>Struttura Query API</span></div>
+<pre class="codeview"><code class="language-javascript">// Sintassi generale
+db.collezione.metodo(filtro, opzioni)
+
+// Esempi
+db.utenti.find({ eta: 25 })                    // età = 25
+db.utenti.find({ citta: "Roma" })              // città = Roma
+db.utenti.find({ eta: { $gt: 18 } })           // età &gt; 18
+db.utenti.find({ $and: [{ attivo: true }, { eta: { $lt: 30 } }] })</code></pre>
+</div>
+<h3>Projection — scegliere i campi</h3>
+<div class="example">
+<div class="codehead"><span>Projection (include/escludi campi)</span></div>
+<pre class="codeview"><code class="language-javascript">// Include solo nome ed email (1 = includi, 0 = escludi)
+db.utenti.find(
+  { attivo: true },
+  { nome: 1, email: 1, _id: 0 }   // _id escluso esplicitamente
+)
+
+// Escludi solo un campo
+db.utenti.find({}, { password: 0 })</code></pre>
+</div>
+<h3>Cursori e metodi di cursore</h3>
+<div class="example">
+<div class="codehead"><span>Metodi del cursore</span></div>
+<pre class="codeview"><code class="language-javascript">// Limita i risultati
+db.prodotti.find().limit(10)
+
+// Salta i primi N documenti (paginazione)
+db.prodotti.find().skip(20).limit(10)   // pagina 3 da 10
+
+// Ordina: 1 = crescente, -1 = decrescente
+db.prodotti.find().sort({ prezzo: -1 })  // più caro prima
+
+// Conta i documenti
+db.prodotti.countDocuments({ stock: { $gt: 0 } })
+
+// Conta approssimato (velocissimo)
+db.prodotti.estimatedDocumentCount()</code></pre>
+</div>
+<h3>Metodi utili</h3>
+<table class="ref"><thead><tr><th>Metodo</th><th>Descrizione</th></tr></thead><tbody>
+<tr><td><code>find(filtro)</code></td><td>Restituisce cursore con tutti i match</td></tr>
+<tr><td><code>findOne(filtro)</code></td><td>Restituisce il primo documento match</td></tr>
+<tr><td><code>countDocuments(filtro)</code></td><td>Conta i documenti con il filtro</td></tr>
+<tr><td><code>distinct(campo)</code></td><td>Valori unici di un campo</td></tr>
+<tr><td><code>find().limit(n)</code></td><td>Limita a N risultati</td></tr>
+<tr><td><code>find().sort(ord)</code></td><td>Ordina i risultati</td></tr>
+<tr><td><code>find().skip(n)</code></td><td>Salta i primi N documenti</td></tr>
+</tbody></table>
+<div class="note-box">📌 <code class="inline">find()</code> restituisce un <strong>cursore</strong> (non tutti i documenti in memoria). Itera con <code class="inline">forEach()</code>, <code class="inline">toArray()</code> o in un loop <code class="inline">for...of</code> in Node.js per lavorare con i risultati.</div>
+      </article>
+
+      <article class="lesson" id="create-db">
+        <h2>MongoDB — Creare un Database</h2>
+<p>In MongoDB i database e le collezioni sono <strong>creati implicitamente</strong> al primo inserimento di un documento. Non esiste un comando <code class="inline">CREATE DATABASE</code> separato come in SQL.</p>
+<h3>Creare e selezionare un database</h3>
+<div class="example">
+<div class="codehead"><span>use — crea o seleziona un database</span></div>
+<pre class="codeview"><code class="language-javascript">// Seleziona il database (lo crea se non esiste)
+use scuola
+
+// Il database viene creato fisicamente solo dopo il primo insert
+db.studenti.insertOne({ nome: "Luca", eta: 20 })
+
+// Ora il database "scuola" esiste
+show dbs    // mostra scuola nell'elenco
+
+// Vedi il database corrente
+db</code></pre>
+</div>
+<h3>Creare una collezione esplicitamente</h3>
+<div class="example">
+<div class="codehead"><span>createCollection()</span></div>
+<pre class="codeview"><code class="language-javascript">// Crea una collezione vuota (facoltativo)
+db.createCollection("corsi")
+
+// Con opzioni: capped collection (dimensione fissa, circolare)
+db.createCollection("log", {
+  capped: true,
+  size: 1000000,   // max 1 MB
+  max: 5000        // max 5000 documenti
+})
+
+// Con schema validation (JSON Schema)
+db.createCollection("prodotti", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["nome", "prezzo"],
+      properties: {
+        nome:   { bsonType: "string" },
+        prezzo: { bsonType: "number", minimum: 0 }
+      }
+    }
+  }
+})</code></pre>
+</div>
+<h3>Eliminare un database</h3>
+<div class="example">
+<div class="codehead"><span>dropDatabase()</span></div>
+<pre class="codeview"><code class="language-javascript">// Seleziona il database da eliminare
+use testdb
+
+// Elimina il database corrente (IRREVERSIBILE)
+db.dropDatabase()</code></pre>
+</div>
+<div class="warn-box">⚠️ <code class="inline">dropDatabase()</code> elimina <strong>tutti i dati</strong> del database corrente in modo irreversibile. In produzione proteggi questa operazione con permessi appropriati.</div>
+<div class="tip-box">💡 Convenzione: i nomi dei database MongoDB sono <strong>case-sensitive</strong> su Linux ma non su Windows. Usa sempre nomi in minuscolo con trattini o underscore per coerenza cross-platform.</div>
+      </article>
+
+      <article class="lesson" id="collection">
+        <h2>MongoDB Collections</h2>
+<p>Una <strong>collection</strong> (collezione) è il contenitore dei documenti, equivalente a una tabella in SQL. A differenza delle tabelle, non richiede uno schema: ogni documento nella stessa collezione può avere campi completamente diversi.</p>
+<h3>Operazioni sulle collezioni</h3>
+<div class="example">
+<div class="codehead"><span>Gestione collezioni</span></div>
+<pre class="codeview"><code class="language-javascript">// Crea collezione implicitamente
+db.articoli.insertOne({ titolo: "Primo articolo" })
+
+// Lista collezioni del database corrente
+show collections
+// oppure
+db.getCollectionNames()
+
+// Info su una collezione
+db.articoli.stats()
+
+// Rinomina una collezione
+db.articoli.renameCollection("posts")
+
+// Elimina una collezione e tutti i suoi dati
+db.posts.drop()</code></pre>
+</div>
+<h3>Capped Collections</h3>
+<p>Le <strong>capped collections</strong> hanno dimensione fissa: quando piena, sovrascrive i documenti più vecchi (circolare). Perfette per log e dati temporali.</p>
+<div class="example">
+<div class="codehead"><span>Capped collection per log</span></div>
+<pre class="codeview"><code class="language-javascript">db.createCollection("access_log", {
+  capped: true,
+  size: 5242880,  // 5 MB
+  max: 10000      // max 10.000 documenti
+})
+
+// I documenti vengono inseriti in ordine naturale (velocissimo)
+db.access_log.insertOne({
+  ip: "192.168.1.1",
+  url: "/api/users",
+  timestamp: new Date()
+})</code></pre>
+</div>
+<h3>Time Series Collections</h3>
+<div class="example">
+<div class="codehead"><span>Time Series (MongoDB 5.0+)</span></div>
+<pre class="codeview"><code class="language-javascript">// Ottimizzate per dati temporali (IoT, metriche)
+db.createCollection("temperatura", {
+  timeseries: {
+    timeField: "timestamp",     // campo data obbligatorio
+    metaField:  "sensore",      // campo metadati (facoltativo)
+    granularity: "minutes"      // seconds | minutes | hours
+  }
+})
+
+db.temperatura.insertOne({
+  timestamp: new Date(),
+  sensore: "sala-server",
+  valore: 22.5
+})</code></pre>
+</div>
+<div class="note-box">📌 MongoDB gestisce automaticamente l'<strong>_id</strong> di ogni documento: un <code class="inline">ObjectId</code> da 12 byte che include timestamp, machine ID e un contatore. Puoi sovrascriverlo con un valore custom: <code class="inline">{ _id: "custom-id", ... }</code></div>
+      </article>
+
+      <article class="lesson" id="insert">
+        <h2>MongoDB — Insert</h2>
+<p>Per inserire documenti in una collezione si usano <code class="inline">insertOne()</code> (un documento) e <code class="inline">insertMany()</code> (array di documenti). Entrambi restituiscono i nuovi <code class="inline">_id</code> generati.</p>
+<h3>insertOne()</h3>
+<div class="example">
+<div class="codehead"><span>Inserisci un documento</span></div>
+<pre class="codeview"><code class="language-javascript">// Inserisce un singolo documento
+const result = db.prodotti.insertOne({
+  nome: "Smartphone XZ",
+  marca: "TechBrand",
+  prezzo: 699.99,
+  categorie: ["elettronica", "mobile"],
+  specifiche: {
+    ram: "8GB",
+    storage: "256GB",
+    colori: ["nero", "argento", "blu"]
+  },
+  disponibile: true,
+  creato: new Date()
+})
+
+// L'_id generato
+print(result.insertedId)  // ObjectId("64a1...")</code></pre>
+</div>
+<h3>insertMany()</h3>
+<div class="example">
+<div class="codehead"><span>Inserisci più documenti</span></div>
+<pre class="codeview"><code class="language-javascript">// Inserisce un array di documenti
+const result = db.studenti.insertMany([
+  { nome: "Anna",  voto: 28, corso: "Informatica" },
+  { nome: "Marco", voto: 30, corso: "Matematica"  },
+  { nome: "Sofia", voto: 25, corso: "Informatica" },
+  { nome: "Luca",  voto: 27, corso: "Fisica"      }
+])
+
+// IDs generati
+print(result.insertedCount)  // 4
+print(result.insertedIds)    // { 0: ObjectId, 1: ObjectId, ... }</code></pre>
+</div>
+<h3>Ordered vs Unordered Insert</h3>
+<div class="example">
+<div class="codehead"><span>Insert non ordinato (più performante)</span></div>
+<pre class="codeview"><code class="language-javascript">// Per default insertMany è "ordered": si ferma al primo errore
+// Con ordered:false continua anche in caso di errori parziali
+db.prodotti.insertMany(
+  [
+    { _id: 1, nome: "A" },
+    { _id: 1, nome: "B" },   // _id duplicato → errore
+    { _id: 2, nome: "C" }
+  ],
+  { ordered: false }           // inserisce A e C, salta B
+)</code></pre>
+</div>
+<h3>_id personalizzato</h3>
+<div class="example">
+<div class="codehead"><span>Usare _id custom</span></div>
+<pre class="codeview"><code class="language-javascript">// Puoi usare qualsiasi valore come _id
+db.paesi.insertMany([
+  { _id: "IT", nome: "Italia",   capitale: "Roma"   },
+  { _id: "FR", nome: "Francia",  capitale: "Parigi" },
+  { _id: "DE", nome: "Germania", capitale: "Berlino"}
+])
+
+// Ricerca per _id custom
+db.paesi.findOne({ _id: "IT" })</code></pre>
+</div>
+<div class="tip-box">⚡ <code class="inline">insertMany()</code> con <code class="inline">ordered: false</code> è più veloce in bulk insert perché MongoDB non deve aspettare la conferma di ogni documento prima di inserire il successivo.</div>
+      </article>
+
+      <article class="lesson" id="find">
+        <h2>MongoDB — Find</h2>
+<p>I metodi <code class="inline">find()</code> e <code class="inline">findOne()</code> sono usati per interrogare i documenti. Il primo argomento è il <strong>filtro</strong> (oggetto query), il secondo è la <strong>projection</strong> (campi da includere/escludere).</p>
+<h3>Find base</h3>
+<div class="example">
+<div class="codehead"><span>find() e findOne()</span></div>
+<pre class="codeview"><code class="language-javascript">// Tutti i documenti
+db.prodotti.find()
+
+// Filtro esatto
+db.prodotti.find({ marca: "Apple" })
+
+// findOne() — restituisce un solo documento (o null)
+db.prodotti.findOne({ _id: ObjectId("64a1f2c3...") })
+
+// Filtro su campo annidato (dot notation)
+db.prodotti.find({ "indirizzo.citta": "Milano" })
+
+// Filtro su elemento di array
+db.prodotti.find({ categorie: "elettronica" })</code></pre>
+</div>
+<h3>Operatori di confronto nei filtri</h3>
+<table class="ref"><thead><tr><th>Operatore</th><th>Significato</th><th>Esempio</th></tr></thead><tbody>
+<tr><td><code>$eq</code></td><td>Uguale</td><td><code>{ eta: { $eq: 25 } }</code></td></tr>
+<tr><td><code>$ne</code></td><td>Diverso</td><td><code>{ stato: { $ne: "inattivo" } }</code></td></tr>
+<tr><td><code>$gt</code></td><td>Maggiore</td><td><code>{ prezzo: { $gt: 100 } }</code></td></tr>
+<tr><td><code>$gte</code></td><td>Maggiore o uguale</td><td><code>{ voto: { $gte: 18 } }</code></td></tr>
+<tr><td><code>$lt</code></td><td>Minore</td><td><code>{ eta: { $lt: 30 } }</code></td></tr>
+<tr><td><code>$lte</code></td><td>Minore o uguale</td><td><code>{ eta: { $lte: 65 } }</code></td></tr>
+<tr><td><code>$in</code></td><td>In un insieme</td><td><code>{ citta: { $in: ["Roma","Milano"] } }</code></td></tr>
+<tr><td><code>$nin</code></td><td>Non in un insieme</td><td><code>{ stato: { $nin: ["banned","deleted"] } }</code></td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Esempi con operatori di confronto</span></div>
+<pre class="codeview"><code class="language-javascript">// Prodotti tra 50 e 200 euro
+db.prodotti.find({ prezzo: { $gte: 50, $lte: 200 } })
+
+// Utenti di Roma o Milano
+db.utenti.find({ citta: { $in: ["Roma", "Milano"] } })
+
+// Studenti con voto 28, 29 o 30
+db.studenti.find({ voto: { $in: [28, 29, 30] } })
+
+// Tutto tranne gli eliminati
+db.utenti.find({ stato: { $nin: ["eliminato", "bannato"] } })</code></pre>
+</div>
+<h3>Operatori logici</h3>
+<div class="example">
+<div class="codehead"><span>$and, $or, $not, $nor</span></div>
+<pre class="codeview"><code class="language-javascript">// $and implicito (default con più campi)
+db.prodotti.find({ disponibile: true, prezzo: { $lt: 100 } })
+
+// $or
+db.prodotti.find({
+  $or: [{ marca: "Apple" }, { marca: "Samsung" }]
+})
+
+// $and esplicito (quando serve sullo stesso campo)
+db.prodotti.find({
+  $and: [
+    { prezzo: { $gte: 100 } },
+    { prezzo: { $lte: 500 } }
+  ]
+})
+
+// $not
+db.prodotti.find({ prezzo: { $not: { $gt: 1000 } } })</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="update">
+        <h2>MongoDB — Update</h2>
+<p>Per modificare documenti si usano <code class="inline">updateOne()</code>, <code class="inline">updateMany()</code> e <code class="inline">replaceOne()</code>. Le modifiche si specificano con <strong>update operators</strong> che iniziano con <code class="inline">$</code>.</p>
+<h3>updateOne() e updateMany()</h3>
+<div class="example">
+<div class="codehead"><span>Aggiorna documenti</span></div>
+<pre class="codeview"><code class="language-javascript">// updateOne — modifica il primo documento che matcha
+db.prodotti.updateOne(
+  { nome: "Laptop Pro" },          // filtro
+  { $set: { prezzo: 1199.99 } }    // aggiornamento
+)
+
+// updateMany — modifica tutti i documenti che matchano
+db.prodotti.updateMany(
+  { disponibile: false },
+  { $set: { stock: 0 } }
+)
+
+// Risultato
+// { matchedCount: 3, modifiedCount: 3 }</code></pre>
+</div>
+<h3>Operatori $set, $unset, $inc</h3>
+<div class="example">
+<div class="codehead"><span>Operatori di update comuni</span></div>
+<pre class="codeview"><code class="language-javascript">// $set — imposta il valore di un campo
+db.utenti.updateOne(
+  { email: "mario@example.com" },
+  { $set: { citta: "Torino", aggiornato: new Date() } }
+)
+
+// $unset — rimuove un campo dal documento
+db.utenti.updateOne(
+  { email: "mario@example.com" },
+  { $unset: { vecchioIndirizzo: "" } }
+)
+
+// $inc — incrementa/decrementa un valore numerico
+db.prodotti.updateOne(
+  { nome: "Tastiera" },
+  { $inc: { stock: -1, vendite: 1 } }  // -1 stock, +1 vendite
+)
+
+// $rename — rinomina un campo
+db.utenti.updateMany({}, { $rename: { "nome": "firstName" } })</code></pre>
+</div>
+<h3>upsert — aggiorna o inserisci</h3>
+<div class="example">
+<div class="codehead"><span>upsert: true</span></div>
+<pre class="codeview"><code class="language-javascript">// Se il documento non esiste lo crea (insert + update)
+db.impostazioni.updateOne(
+  { chiave: "tema" },
+  { $set: { valore: "scuro", aggiornato: new Date() } },
+  { upsert: true }           // crea se non trovato
+)</code></pre>
+</div>
+<h3>replaceOne()</h3>
+<div class="example">
+<div class="codehead"><span>Sostituisci un documento intero</span></div>
+<pre class="codeview"><code class="language-javascript">// Sostituisce l'INTERO documento (mantiene solo _id)
+db.prodotti.replaceOne(
+  { _id: ObjectId("64a1...") },
+  {
+    nome: "Laptop Pro Max",
+    prezzo: 1499,
+    marca: "Apple",
+    aggiornato: new Date()
+  }
+)</code></pre>
+</div>
+<div class="note-box">📌 <strong>Differenza chiave</strong>: <code class="inline">updateOne/Many</code> modifica <strong>solo i campi specificati</strong> con gli operatori <code class="inline">$</code>; <code class="inline">replaceOne</code> sostituisce <strong>l'intero documento</strong> (eccetto <code class="inline">_id</code>).</div>
+      </article>
+
+      <article class="lesson" id="delete">
+        <h2>MongoDB — Delete</h2>
+<p>Per eliminare documenti si usano <code class="inline">deleteOne()</code> (il primo match) e <code class="inline">deleteMany()</code> (tutti i match). Usa sempre un filtro preciso in produzione per evitare eliminazioni accidentali.</p>
+<div class="example">
+<div class="codehead"><span>deleteOne() e deleteMany()</span></div>
+<pre class="codeview"><code class="language-javascript">// Elimina il primo documento che matcha
+db.prodotti.deleteOne({ nome: "Prodotto Obsoleto" })
+
+// Elimina tutti i documenti che matchano
+db.prodotti.deleteMany({ disponibile: false, stock: 0 })
+
+// Elimina per _id (modo più sicuro)
+db.ordini.deleteOne({ _id: ObjectId("64a1f2c3e8b7a3d0c9f12345") })
+
+// ATTENZIONE: elimina TUTTI i documenti della collezione
+db.temp_data.deleteMany({})
+
+// Risultato
+// { deletedCount: 3 }</code></pre>
+</div>
+<h3>findOneAndDelete()</h3>
+<div class="example">
+<div class="codehead"><span>Cancella e restituisce il documento</span></div>
+<pre class="codeview"><code class="language-javascript">// Elimina e restituisce il documento eliminato in una sola operazione
+const eliminato = db.sessioni.findOneAndDelete(
+  { scaduta: true },
+  { sort: { creata: 1 } }   // elimina la più vecchia
+)
+
+print(eliminato)  // il documento eliminato</code></pre>
+</div>
+<h3>Svuotare una collezione vs eliminarla</h3>
+<div class="example">
+<div class="codehead"><span>Drop vs deleteMany</span></div>
+<pre class="codeview"><code class="language-javascript">// Elimina tutti i documenti (mantiene la collezione e gli indici)
+db.cache.deleteMany({})
+
+// Elimina la collezione e tutti i suoi indici (più veloce)
+db.cache.drop()</code></pre>
+</div>
+<div class="warn-box">⚠️ Non esiste un <code class="inline">ROLLBACK</code> in MongoDB per le delete (a meno di usare transazioni). Prima di un <code class="inline">deleteMany</code> in produzione, fai sempre un <code class="inline">find()</code> con lo stesso filtro per verificare cosa stai cancellando.</div>
+<div class="tip-box">🛡️ <strong>Best practice</strong>: in applicazioni reali usa la tecnica del <strong>soft delete</strong> — aggiungi un campo <code class="inline">{ eliminato: true, eliminatoIl: new Date() }</code> invece di cancellare fisicamente i dati.</div>
+      </article>
+
+      <article class="lesson" id="query-operators">
+        <h2>MongoDB Query Operators</h2>
+<p>Gli <strong>operatori di query</strong> permettono di costruire filtri complessi: confronti, logica booleana, ricerca in array, espressioni regolari e molto altro.</p>
+<h3>Operatori su elementi</h3>
+<div class="example">
+<div class="codehead"><span>$exists, $type</span></div>
+<pre class="codeview"><code class="language-javascript">// $exists — il campo esiste
+db.utenti.find({ telefono: { $exists: true } })
+db.utenti.find({ telefono: { $exists: false } })
+
+// $type — tipo BSON del campo
+db.dati.find({ valore: { $type: "string" } })
+db.dati.find({ valore: { $type: "number" } })
+db.dati.find({ valore: { $type: ["string", "null"] } })</code></pre>
+</div>
+<h3>Operatori su array</h3>
+<div class="example">
+<div class="codehead"><span>$all, $elemMatch, $size</span></div>
+<pre class="codeview"><code class="language-javascript">// $all — contiene TUTTI gli elementi specificati
+db.prodotti.find({ tags: { $all: ["sale", "nuovo"] } })
+
+// $elemMatch — almeno un elemento soddisfa tutte le condizioni
+db.studenti.find({
+  voti: { $elemMatch: { $gte: 28, $lte: 30 } }
+})
+
+// $size — array di esattamente N elementi
+db.ordini.find({ prodotti: { $size: 3 } })
+
+// Accesso per indice (primo elemento dell'array)
+db.studenti.find({ "voti.0": { $gte: 27 } })</code></pre>
+</div>
+<h3>Operatori di valutazione</h3>
+<div class="example">
+<div class="codehead"><span>$regex, $expr, $where</span></div>
+<pre class="codeview"><code class="language-javascript">// $regex — espressione regolare (case-insensitive con $options)
+db.prodotti.find({ nome: { $regex: "phone", $options: "i" } })
+db.utenti.find({ email: { $regex: "@gmail\.com$" } })
+
+// $expr — confronta campi dello stesso documento
+db.ordini.find({
+  $expr: { $gt: ["$totale", "$budget"] }  // totale &gt; budget
+})
+
+// $mod — modulo aritmetico
+db.numeri.find({ valore: { $mod: [4, 0] } })  // multipli di 4</code></pre>
+</div>
+<h3>Operatori geospaziali (cenni)</h3>
+<div class="example">
+<div class="codehead"><span>Query geospaziali</span></div>
+<pre class="codeview"><code class="language-javascript">// Crea indice 2dsphere per coordinate GPS
+db.ristoranti.createIndex({ posizione: "2dsphere" })
+
+// Trova ristoranti entro 1km da un punto
+db.ristoranti.find({
+  posizione: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [12.4924, 41.8902] },
+      $maxDistance: 1000   // metri
+    }
+  }
+})</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="update-operators">
+        <h2>MongoDB Update Operators</h2>
+<p>Gli <strong>operatori di update</strong> definiscono come modificare i documenti. Si dividono in operatori su campi, su array e su bit.</p>
+<h3>Operatori su campi</h3>
+<table class="ref"><thead><tr><th>Operatore</th><th>Azione</th></tr></thead><tbody>
+<tr><td><code>$set</code></td><td>Imposta il valore di un campo</td></tr>
+<tr><td><code>$unset</code></td><td>Rimuove un campo</td></tr>
+<tr><td><code>$inc</code></td><td>Incrementa/decrementa</td></tr>
+<tr><td><code>$mul</code></td><td>Moltiplica per un valore</td></tr>
+<tr><td><code>$rename</code></td><td>Rinomina un campo</td></tr>
+<tr><td><code>$min</code></td><td>Aggiorna solo se minore del valore attuale</td></tr>
+<tr><td><code>$max</code></td><td>Aggiorna solo se maggiore del valore attuale</td></tr>
+<tr><td><code>$currentDate</code></td><td>Imposta la data corrente</td></tr>
+<tr><td><code>$setOnInsert</code></td><td>Imposta valore solo in caso di upsert insert</td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Operatori su campi — esempi</span></div>
+<pre class="codeview"><code class="language-javascript">// $mul — moltiplica
+db.prodotti.updateMany({ saldo: true }, { $mul: { prezzo: 0.9 } })  // -10%
+
+// $min / $max — aggiorna condizionalmente
+db.punteggi.updateOne(
+  { _id: userId },
+  { $max: { highScore: 9500 } }  // aggiorna solo se 9500 &gt; highScore attuale
+)
+
+// $currentDate — imposta timestamp corrente
+db.ordini.updateOne(
+  { _id: orderId },
+  { $currentDate: { ultimaModifica: true } }
+)</code></pre>
+</div>
+<h3>Operatori su array</h3>
+<table class="ref"><thead><tr><th>Operatore</th><th>Azione</th></tr></thead><tbody>
+<tr><td><code>$push</code></td><td>Aggiunge elemento in fondo</td></tr>
+<tr><td><code>$pop</code></td><td>Rimuove primo (-1) o ultimo (1) elemento</td></tr>
+<tr><td><code>$pull</code></td><td>Rimuove elementi che matchano una condizione</td></tr>
+<tr><td><code>$pullAll</code></td><td>Rimuove tutti i valori specificati</td></tr>
+<tr><td><code>$addToSet</code></td><td>Aggiunge solo se non già presente (no duplicati)</td></tr>
+<tr><td><code>$each</code></td><td>Usato con $push per aggiungere più elementi</td></tr>
+<tr><td><code>$sort</code></td><td>Ordina l'array dopo $push</td></tr>
+<tr><td><code>$slice</code></td><td>Mantiene solo gli ultimi N elementi</td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Operatori su array — esempi</span></div>
+<pre class="codeview"><code class="language-javascript">// $push — aggiunge tag
+db.articoli.updateOne(
+  { _id: id },
+  { $push: { tags: "mongodb" } }
+)
+
+// $addToSet — aggiunge solo se non esiste già
+db.utenti.updateOne(
+  { email: "user@example.com" },
+  { $addToSet: { ruoli: "admin" } }
+)
+
+// $pull — rimuove elementi specifici
+db.articoli.updateOne(
+  { _id: id },
+  { $pull: { tags: "bozza" } }
+)
+
+// $push + $each + $slice — mantieni solo ultimi 5 log
+db.sessioni.updateOne(
+  { userId: uid },
+  {
+    $push: {
+      log: {
+        $each:  [{ evento: "login", ts: new Date() }],
+        $sort:  { ts: -1 },
+        $slice: 5
+      }
+    }
+  }
+)</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="aggregations">
+        <h2>MongoDB Aggregations</h2>
+<p>L'<strong>Aggregation Pipeline</strong> è la funzionalità più potente di MongoDB: permette di trasformare e analizzare documenti attraverso una sequenza di <strong>stage</strong> (fasi), ognuna con un compito specifico.</p>
+<h3>Struttura della pipeline</h3>
+<div class="example">
+<div class="codehead"><span>Struttura base della pipeline</span></div>
+<pre class="codeview"><code class="language-javascript">// La pipeline è un array di stage
+db.collezione.aggregate([
+  { $match: /* filtro */ },
+  { $group: /* raggruppa */ },
+  { $sort:  /* ordina */  },
+  { $limit: /* limita */  },
+  { $project: /* seleziona campi */ }
+])</code></pre>
+</div>
+<h3>Stage principali</h3>
+<table class="ref"><thead><tr><th>Stage</th><th>Funzione</th></tr></thead><tbody>
+<tr><td><code>$match</code></td><td>Filtra documenti (come WHERE in SQL)</td></tr>
+<tr><td><code>$group</code></td><td>Raggruppa e aggrega (come GROUP BY)</td></tr>
+<tr><td><code>$project</code></td><td>Seleziona/trasforma campi (come SELECT)</td></tr>
+<tr><td><code>$sort</code></td><td>Ordina i documenti</td></tr>
+<tr><td><code>$limit</code></td><td>Limita il numero di documenti</td></tr>
+<tr><td><code>$skip</code></td><td>Salta i primi N documenti</td></tr>
+<tr><td><code>$lookup</code></td><td>JOIN tra collezioni</td></tr>
+<tr><td><code>$unwind</code></td><td>Espande un campo array in più documenti</td></tr>
+<tr><td><code>$addFields</code></td><td>Aggiunge campi calcolati</td></tr>
+<tr><td><code>$count</code></td><td>Conta i documenti</td></tr>
+<tr><td><code>$facet</code></td><td>Pipeline multiple in parallelo</td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Aggregazione — vendite per categoria</span></div>
+<pre class="codeview"><code class="language-javascript">db.ordini.aggregate([
+  // Stage 1: filtra solo ordini completati
+  { $match: { stato: "completato" } },
+
+  // Stage 2: raggruppa per categoria, somma il totale
+  { $group: {
+    _id:      "$categoria",
+    totaleVendite: { $sum: "$importo" },
+    numOrdini:     { $count: {} },
+    mediaOrdine:   { $avg: "$importo" }
+  }},
+
+  // Stage 3: ordina per totale decrescente
+  { $sort: { totaleVendite: -1 } },
+
+  // Stage 4: rinomina _id in categoria
+  { $project: {
+    _id: 0,
+    categoria: "$_id",
+    totaleVendite: 1,
+    numOrdini: 1,
+    mediaOrdine: { $round: ["$mediaOrdine", 2] }
+  }}
+])</code></pre>
+</div>
+<h3>$lookup — JOIN tra collezioni</h3>
+<div class="example">
+<div class="codehead"><span>$lookup (equivalente JOIN)</span></div>
+<pre class="codeview"><code class="language-javascript">// Unisce utenti con i loro ordini
+db.utenti.aggregate([
+  {
+    $lookup: {
+      from:         "ordini",      // collezione esterna
+      localField:   "_id",         // campo locale
+      foreignField: "userId",      // campo in ordini
+      as:           "ordiniUtente" // nome del campo risultante
+    }
+  },
+  // Filtra utenti con almeno un ordine
+  { $match: { "ordiniUtente.0": { $exists: true } } }
+])</code></pre>
+</div>
+<h3>$unwind — espandi array</h3>
+<div class="example">
+<div class="codehead"><span>$unwind</span></div>
+<pre class="codeview"><code class="language-javascript">// Ogni prodotto di ogni ordine diventa un documento separato
+db.ordini.aggregate([
+  { $unwind: "$prodotti" },
+  { $group: {
+    _id:    "$prodotti.nome",
+    totQty: { $sum: "$prodotti.quantita" }
+  }},
+  { $sort: { totQty: -1 } },
+  { $limit: 5 }   // top 5 prodotti più venduti
+])</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="indexing">
+        <h2>MongoDB Indexing &amp; Search</h2>
+<p>Gli <strong>indici</strong> sono fondamentali per le performance: senza di essi MongoDB fa una <strong>collection scan</strong> (legge tutti i documenti). Con un indice su un campo, le query su quel campo diventano logaritmicamente veloci.</p>
+<h3>Tipi di indice</h3>
+<table class="ref"><thead><tr><th>Tipo</th><th>Uso</th></tr></thead><tbody>
+<tr><td><code>Single field</code></td><td>Indice su un singolo campo</td></tr>
+<tr><td><code>Compound</code></td><td>Indice su più campi (ordine importante)</td></tr>
+<tr><td><code>Multikey</code></td><td>Indice su campo array (automatico)</td></tr>
+<tr><td><code>Text</code></td><td>Ricerca full-text su stringhe</td></tr>
+<tr><td><code>2dsphere</code></td><td>Query geospaziali su coordinate GPS</td></tr>
+<tr><td><code>Hashed</code></td><td>Sharding su hash del campo</td></tr>
+<tr><td><code>Wildcard</code></td><td>Indice su tutti i campi (schema flessibile)</td></tr>
+<tr><td><code>Partial</code></td><td>Indice solo su documenti che rispettano un filtro</td></tr>
+<tr><td><code>TTL</code></td><td>Scadenza automatica dei documenti</td></tr>
+</tbody></table>
+<div class="example">
+<div class="codehead"><span>Creare e gestire indici</span></div>
+<pre class="codeview"><code class="language-javascript">// Indice singolo campo (1 = asc, -1 = desc)
+db.utenti.createIndex({ email: 1 })
+
+// Indice unico (nessun duplicato)
+db.utenti.createIndex({ email: 1 }, { unique: true })
+
+// Indice composto
+db.prodotti.createIndex({ categoria: 1, prezzo: -1 })
+
+// Indice text per ricerca full-text
+db.articoli.createIndex({ titolo: "text", contenuto: "text" })
+
+// TTL — elimina documenti dopo 3600 secondi
+db.sessioni.createIndex(
+  { creata: 1 },
+  { expireAfterSeconds: 3600 }
+)
+
+// Lista indici
+db.utenti.getIndexes()
+
+// Elimina un indice
+db.utenti.dropIndex({ email: 1 })</code></pre>
+</div>
+<h3>EXPLAIN — analizza le query</h3>
+<div class="example">
+<div class="codehead"><span>explain() per ottimizzare</span></div>
+<pre class="codeview"><code class="language-javascript">// Analizza come MongoDB esegue la query
+db.prodotti.find({ categoria: "elettronica" }).explain("executionStats")
+
+// Cerca "IXSCAN" (usa indice) vs "COLLSCAN" (scansione totale)
+// totalDocsExamined deve essere vicino a nReturned per essere efficiente</code></pre>
+</div>
+<h3>Atlas Search — full-text avanzato</h3>
+<div class="example">
+<div class="codehead"><span>Ricerca full-text con Atlas Search</span></div>
+<pre class="codeview"><code class="language-javascript">// Con Atlas Search (solo MongoDB Atlas)
+db.articoli.aggregate([
+  {
+    $search: {
+      index: "default",
+      text: {
+        query: "mongodb tutorial italiano",
+        path: ["titolo", "contenuto"],
+        fuzzy: { maxEdits: 1 }  // tolleranza errori di battitura
+      }
+    }
+  },
+  { $limit: 10 },
+  { $project: { titolo: 1, score: { $meta: "searchScore" } } }
+])</code></pre>
+</div>
+<div class="tip-box">⚡ Regola d'oro: crea indici sui campi usati in <code class="inline">find()</code>, <code class="inline">sort()</code>, <code class="inline">$match</code> e <code class="inline">$lookup</code>. Un indice composto <code class="inline">{ a: 1, b: 1 }</code> copre anche query su solo <code class="inline">a</code>, ma non su solo <code class="inline">b</code>.</div>
+      </article>
+
+      <article class="lesson" id="validation">
+        <h2>MongoDB Validation</h2>
+<p>MongoDB è schemaless per natura, ma puoi definire <strong>schema validation</strong> per imporre regole sui documenti: tipi obbligatori, valori consentiti, range numerici. Si usa il formato <strong>JSON Schema</strong>.</p>
+<h3>Aggiungere validation a una collezione</h3>
+<div class="example">
+<div class="codehead"><span>JSON Schema Validation</span></div>
+<pre class="codeview"><code class="language-javascript">db.createCollection("utenti", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["nome", "email", "eta"],
+      properties: {
+        nome: {
+          bsonType: "string",
+          minLength: 2,
+          maxLength: 100,
+          description: "Nome obbligatorio, stringa 2-100 caratteri"
+        },
+        email: {
+          bsonType: "string",
+          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+          description: "Email valida obbligatoria"
+        },
+        eta: {
+          bsonType: "int",
+          minimum: 0,
+          maximum: 120
+        },
+        ruolo: {
+          bsonType: "string",
+          enum: ["utente", "admin", "moderatore"],
+          description: "Deve essere uno dei valori consentiti"
+        }
+      }
+    }
+  },
+  validationAction: "error",   // error | warn
+  validationLevel:  "strict"   // strict | moderate | off
+})</code></pre>
+</div>
+<h3>Aggiornare la validation esistente</h3>
+<div class="example">
+<div class="codehead"><span>collMod — modifica validazione</span></div>
+<pre class="codeview"><code class="language-javascript">// Aggiorna la validazione di una collezione esistente
+db.runCommand({
+  collMod: "utenti",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["nome", "email"],
+      properties: {
+        nome:  { bsonType: "string" },
+        email: { bsonType: "string" }
+      }
+    }
+  },
+  validationLevel: "moderate"  // valida solo i nuovi documenti
+})</code></pre>
+</div>
+<h3>Tipi BSON supportati</h3>
+<table class="ref"><thead><tr><th>bsonType</th><th>Descrizione</th></tr></thead><tbody>
+<tr><td><code>string</code></td><td>Stringa di testo</td></tr>
+<tr><td><code>int</code></td><td>Intero 32-bit</td></tr>
+<tr><td><code>long</code></td><td>Intero 64-bit</td></tr>
+<tr><td><code>double</code></td><td>Numero decimale</td></tr>
+<tr><td><code>decimal</code></td><td>Decimale ad alta precisione</td></tr>
+<tr><td><code>bool</code></td><td>true / false</td></tr>
+<tr><td><code>date</code></td><td>Data/ora</td></tr>
+<tr><td><code>objectId</code></td><td>ObjectId MongoDB</td></tr>
+<tr><td><code>array</code></td><td>Array</td></tr>
+<tr><td><code>object</code></td><td>Oggetto/documento annidato</td></tr>
+<tr><td><code>null</code></td><td>Null</td></tr>
+</tbody></table>
+      </article>
+
+      <article class="lesson" id="data-api">
+        <h2>MongoDB Data API</h2>
+<p>La <strong>MongoDB Data API</strong> (disponibile su Atlas) permette di interagire con i dati via <strong>HTTP REST</strong> senza installare driver. Ideale per applicazioni serverless, edge functions e webhook.</p>
+<h3>Abilitare la Data API su Atlas</h3>
+<ul><li>In Atlas, vai su <strong>App Services</strong> → <strong>Data API</strong></li><li>Abilita la Data API per il cluster desiderato</li><li>Genera una <strong>API Key</strong> dalla scheda Auth</li><li>Usa l'endpoint base: <code class="inline">https://data.mongodb-api.com/app/&lt;app-id&gt;/endpoint/data/v1</code></li></ul>
+<h3>Operazioni via HTTP</h3>
+<div class="example">
+<div class="codehead"><span>Find — HTTP POST</span></div>
+<pre class="codeview"><code class="language-javascript">// Trova documenti via REST
+fetch("https://data.mongodb-api.com/app/APP-ID/endpoint/data/v1/action/find", {
+  method: "POST",
+  headers: {
+    "Content-Type":   "application/json",
+    "api-key":        "TUA_API_KEY"
+  },
+  body: JSON.stringify({
+    collection: "prodotti",
+    database:   "negozio",
+    dataSource: "Cluster0",
+    filter:     { disponibile: true },
+    projection: { nome: 1, prezzo: 1, _id: 0 },
+    sort:       { prezzo: 1 },
+    limit:      10
+  })
+})
+.then(r =&gt; r.json())
+.then(data =&gt; console.log(data.documents))</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>InsertOne via REST</span></div>
+<pre class="codeview"><code class="language-javascript">fetch(".../action/insertOne", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", "api-key": "KEY" },
+  body: JSON.stringify({
+    collection: "ordini",
+    database:   "negozio",
+    dataSource: "Cluster0",
+    document: {
+      prodotto: "Laptop",
+      quantita: 1,
+      totale:   999.99,
+      data:     { $date: { $numberLong: Date.now().toString() } }
+    }
+  })
+})</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>UpdateOne via REST</span></div>
+<pre class="codeview"><code class="language-javascript">fetch(".../action/updateOne", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", "api-key": "KEY" },
+  body: JSON.stringify({
+    collection: "prodotti",
+    database:   "negozio",
+    dataSource: "Cluster0",
+    filter: { _id: { "$oid": "64a1f2c3e8b7a3d0c9f12345" } },
+    update: { $inc: { stock: -1 } }
+  })
+})</code></pre>
+</div>
+<div class="note-box">📌 La Data API è ottima per <strong>prototipazione rapida</strong> e ambienti serverless. Per applicazioni ad alto volume (&gt;1000 req/s) usa i driver nativi: sono significativamente più veloci grazie al connection pooling.</div>
+      </article>
+
+      <article class="lesson" id="drivers">
+        <h2>MongoDB Drivers</h2>
+<p>I <strong>driver ufficiali MongoDB</strong> sono disponibili per tutti i principali linguaggi di programmazione. Gestiscono automaticamente connection pooling, riconnessioni e conversione dei tipi BSON.</p>
+<h3>Driver disponibili</h3>
+<table class="ref"><thead><tr><th>Linguaggio</th><th>Pacchetto</th><th>Installazione</th></tr></thead><tbody>
+<tr><td>Node.js</td><td>mongodb</td><td><code>npm install mongodb</code></td></tr>
+<tr><td>Python</td><td>pymongo</td><td><code>pip install pymongo</code></td></tr>
+<tr><td>Java</td><td>mongodb-driver-sync</td><td>Maven/Gradle</td></tr>
+<tr><td>C#/.NET</td><td>MongoDB.Driver</td><td><code>dotnet add package MongoDB.Driver</code></td></tr>
+<tr><td>Go</td><td>mongo-driver</td><td><code>go get go.mongodb.org/mongo-driver</code></td></tr>
+<tr><td>PHP</td><td>mongodb</td><td><code>composer require mongodb/mongodb</code></td></tr>
+<tr><td>Rust</td><td>mongodb</td><td><code>cargo add mongodb</code></td></tr>
+</tbody></table>
+<h3>Python — PyMongo</h3>
+<div class="example">
+<div class="codehead"><span>PyMongo — operazioni base</span></div>
+<pre class="codeview"><code class="language-python">from pymongo import MongoClient
+from datetime import datetime
+
+# Connessione
+client = MongoClient("mongodb+srv://user:pass@cluster.mongodb.net/")
+db = client["negozio"]
+col = db["prodotti"]
+
+# Insert
+col.insert_one({"nome": "Mouse", "prezzo": 29.99, "stock": 100})
+
+# Find
+for doc in col.find({"prezzo": {"$lt": 50}}, {"_id": 0, "nome": 1, "prezzo": 1}):
+    print(doc)
+
+# Update
+col.update_one({"nome": "Mouse"}, {"$inc": {"stock": -1}})
+
+# Delete
+col.delete_one({"stock": 0})
+
+client.close()</code></pre>
+</div>
+<h3>C# — MongoDB.Driver</h3>
+<div class="example">
+<div class="codehead"><span>C# Driver — operazioni base</span></div>
+<pre class="codeview"><code class="language-csharp">using MongoDB.Driver;
+using MongoDB.Bson;
+
+var client = new MongoClient("mongodb+srv://user:pass@cluster/");
+var db     = client.GetDatabase("negozio");
+var col    = db.GetCollection&lt;BsonDocument&gt;("prodotti");
+
+// Insert
+await col.InsertOneAsync(new BsonDocument {
+    { "nome",    "Tastiera"   },
+    { "prezzo",  49.99        },
+    { "stock",   75           }
+});
+
+// Find
+var filtro = Builders&lt;BsonDocument&gt;.Filter.Gt("prezzo", 20);
+var docs   = await col.Find(filtro).ToListAsync();
+
+// Update
+var update = Builders&lt;BsonDocument&gt;.Update.Inc("stock", -1);
+await col.UpdateOneAsync(
+    Builders&lt;BsonDocument&gt;.Filter.Eq("nome", "Tastiera"), update);</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="nodejs-driver">
+        <h2>MongoDB Node.js Driver</h2>
+<p>Il driver Node.js ufficiale di MongoDB è <code class="inline">mongodb</code>. È la base di <strong>Mongoose</strong> (ODM più popolare) ma può essere usato direttamente per massime performance e controllo.</p>
+<h3>Installazione e connessione</h3>
+<div class="example">
+<div class="codehead"><span>Setup con Node.js</span></div>
+<pre class="codeview"><code class="language-javascript">// Installazione
+// npm install mongodb
+
+const { MongoClient, ObjectId } = require("mongodb")
+
+const URI = process.env.MONGODB_URI || "mongodb://localhost:27017"
+const client = new MongoClient(URI, {
+  maxPoolSize: 10,          // connection pool
+  serverSelectionTimeoutMS: 5000
+})
+
+async function main() {
+  await client.connect()
+  const db  = client.db("negozio")
+  const col = db.collection("prodotti")
+
+  // CRUD
+  await col.insertOne({ nome: "Monitor", prezzo: 349 })
+
+  const prodotti = await col.find({ prezzo: { $lt: 400 } }).toArray()
+  console.log(prodotti)
+
+  await col.updateOne({ nome: "Monitor" }, { $set: { stock: 20 } })
+  await col.deleteOne({ stock: 0 })
+}
+
+main().finally(() =&gt; client.close())</code></pre>
+</div>
+<h3>Mongoose — ODM per Node.js</h3>
+<div class="example">
+<div class="codehead"><span>Mongoose — Schema e Model</span></div>
+<pre class="codeview"><code class="language-javascript">// npm install mongoose
+const mongoose = require("mongoose")
+
+mongoose.connect("mongodb+srv://user:pass@cluster/negozio")
+
+// Definisci uno Schema
+const prodottoSchema = new mongoose.Schema({
+  nome:        { type: String,  required: true, trim: true },
+  prezzo:      { type: Number,  required: true, min: 0     },
+  stock:       { type: Number,  default: 0                 },
+  categorie:   [String],
+  creato:      { type: Date,    default: Date.now          }
+})
+
+// Aggiungi un metodo virtuale
+prodottoSchema.virtual("disponibile").get(function() {
+  return this.stock &gt; 0
+})
+
+// Crea il Model
+const Prodotto = mongoose.model("Prodotto", prodottoSchema)
+
+// Usa il model
+const laptop = new Prodotto({
+  nome: "Laptop Dev", prezzo: 1299, stock: 15, categorie: ["informatica"]
+})
+await laptop.save()
+
+// Query con Mongoose
+const economici = await Prodotto.find({ prezzo: { $lt: 200 } })
+                                .sort({ prezzo: 1 })
+                                .limit(10)
+                                .select("nome prezzo -_id")</code></pre>
+</div>
+<h3>Transazioni (sessioni ACID)</h3>
+<div class="example">
+<div class="codehead"><span>Transazioni multi-documento</span></div>
+<pre class="codeview"><code class="language-javascript">// Le transazioni garantiscono atomicità su più collezioni
+const session = client.startSession()
+try {
+  await session.withTransaction(async () =&gt; {
+    const ordini  = db.collection("ordini")
+    const magazzino = db.collection("magazzino")
+
+    // Crea ordine e decrementa stock atomicamente
+    await ordini.insertOne(
+      { prodotto: "Laptop", qty: 1, totale: 1299 },
+      { session }
+    )
+    await magazzino.updateOne(
+      { nome: "Laptop" },
+      { $inc: { stock: -1 } },
+      { session }
+    )
+  })
+  console.log("Transazione completata")
+} catch (err) {
+  console.error("Rollback automatico:", err.message)
+} finally {
+  await session.endSession()
+}</code></pre>
+</div>
+<div class="note-box">📌 <strong>Mongoose vs driver nativo</strong>: Mongoose aggiunge validazione schema lato app, middleware (pre/post hooks), populate (equivalent $lookup semplificato) e metodi virtuali. Il driver nativo è più veloce ma più verboso.</div>
+      </article>
+
+      <article class="lesson" id="charts">
+        <h2>MongoDB Charts</h2>
+<p><strong>MongoDB Charts</strong> è lo strumento di visualizzazione dati integrato in Atlas: crea dashboard e grafici direttamente dai tuoi dati MongoDB, senza esportare o trasformare nulla.</p>
+<h3>Tipi di grafico disponibili</h3>
+<ul><li><strong>Bar / Column</strong> — confronto categorie</li><li><strong>Line / Area</strong> — serie temporali e trend</li><li><strong>Scatter / Bubble</strong> — correlazione tra variabili</li><li><strong>Heatmap</strong> — distribuzione su griglia</li><li><strong>Geo Map</strong> — dati geospaziali su mappa</li><li><strong>Donut / Pie</strong> — proporzioni</li><li><strong>Table</strong> — dati tabulari</li><li><strong>Number</strong> — KPI singolo valore</li><li><strong>Word Cloud</strong> — frequenza di termini testuali</li></ul>
+<h3>Creare un grafico in Atlas</h3>
+<div class="example">
+<div class="codehead"><span>Pipeline di aggregazione per Charts</span></div>
+<pre class="codeview"><code class="language-javascript">// MongoDB Charts esegue aggregations automaticamente,
+// ma puoi anche inserire pipeline personalizzate.
+
+// Esempio: vendite mensili per categoria
+[
+  { $match:  { stato: "completato" } },
+  { $group: {
+    _id: {
+      mese:     { $month: "$data" },
+      anno:     { $year:  "$data" },
+      categoria: "$prodotto.categoria"
+    },
+    totale: { $sum: "$importo" }
+  }},
+  { $sort: { "_id.anno": 1, "_id.mese": 1 } }
+]</code></pre>
+</div>
+<h3>Embedding di Charts in app esterne</h3>
+<div class="example">
+<div class="codehead"><span>Embed un grafico Charts via SDK</span></div>
+<pre class="codeview"><code class="language-html">&lt;!-- Aggiungi lo script SDK --&gt;
+&lt;script src="https://charts.mongodb.com/charts-project/embeddings/charts-sdk.umd.min.js"&gt;&lt;/script&gt;
+
+&lt;div id="chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const sdk = ChartsEmbedSDK({
+  baseUrl: "https://charts.mongodb.com/charts-project"
+})
+
+const chart = sdk.createChart({
+  chartId:   "your-chart-id",
+  height:    "500px",
+  theme:     "dark",
+  showAttribution: false
+})
+
+chart.render(document.getElementById("chart"))
+
+// Filtro dinamico
+chart.setFilter({ citta: "Milano" })
+&lt;/script&gt;</code></pre>
+</div>
+<div class="tip-box">📊 MongoDB Charts si aggiorna in <strong>tempo reale</strong> (o con refresh configurabile). È ideale per dashboard operative, monitoraggio vendite, analytics di app mobile e report aziendali senza dover usare strumenti BI separati.</div>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi MongoDB</h2>
+<p>Metti alla prova le tue conoscenze con questi esercizi pratici. Usa <a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener noreferrer">MongoDB Atlas</a> o un ambiente locale con <code class="inline">mongosh</code> per eseguirli.</p>
+<h3>Esercizio 1 — Libreria digitale</h3>
+<div class="challenge-box"><span class="challenge-label">📚 Base</span>
+<p>Crea un database <code>libreria</code> con una collezione <code>libri</code>. Inserisci almeno 5 libri con i campi: <code>titolo</code>, <code>autore</code>, <code>anno</code>, <code>genere</code> (array), <code>prezzo</code>, <code>disponibile</code> (bool).</p>
+<ul><li>Trova tutti i libri disponibili</li><li>Trova i libri pubblicati dopo il 2000 ordinati per anno decrescente</li><li>Trova i libri del genere "fantasy" che costano meno di 20€</li><li>Aggiorna il prezzo di un libro con <code>$inc</code></li><li>Aggiungi un nuovo genere a un libro con <code>$addToSet</code></li></ul></div>
+<h3>Esercizio 2 — Aggregation</h3>
+<div class="challenge-box"><span class="challenge-label">📊 Intermedio</span>
+<p>Usando la collezione <code>libri</code> dell'esercizio precedente, scrivi pipeline di aggregazione per:</p>
+<ul><li>Conta quanti libri ci sono per ogni genere</li><li>Calcola il prezzo medio per autore</li><li>Trova i 3 generi con il prezzo medio più alto</li><li>Elenca tutti i generi unici presenti (usa <code>$unwind</code>)</li></ul></div>
+<h3>Esercizio 3 — E-commerce</h3>
+<div class="challenge-box"><span class="challenge-label">🛒 Avanzato</span>
+<p>Progetta un mini e-commerce con le collezioni: <code>prodotti</code>, <code>utenti</code>, <code>ordini</code>.</p>
+<ul><li>Crea schema validation per <code>prodotti</code> (nome, prezzo > 0, stock >= 0)</li><li>Scrivi una transazione che crea un ordine e decrementa lo stock atomicamente</li><li>Usa <code>$lookup</code> per ottenere gli ordini con i dati dell'utente allegati</li><li>Crea un indice TTL che elimina i carrelli abbandonati dopo 24 ore</li><li>Scrivi una pipeline che calcola le top 5 categorie per fatturato</li></ul></div>
+      </article>
+
+      <article class="lesson" id="piano-studio">
+        <h2>Piano di Studio MongoDB</h2>
+<p>Segui questo percorso strutturato per padroneggiare MongoDB partendo da zero, con stima dei tempi per ogni fase.</p>
+<table class="ref"><thead><tr><th>Settimana</th><th>Argomenti</th><th>Obiettivo</th></tr></thead><tbody>
+<tr><td>1</td><td>Intro, Atlas setup, mongosh, CRUD base</td><td>Inserire, leggere, modificare ed eliminare documenti</td></tr>
+<tr><td>2</td><td>Query operators, projection, cursori</td><td>Scrivere query complesse con filtri avanzati</td></tr>
+<tr><td>3</td><td>Aggregation pipeline, $group, $lookup, $unwind</td><td>Analizzare e trasformare i dati con le pipeline</td></tr>
+<tr><td>4</td><td>Indici, explain(), performance</td><td>Ottimizzare le query con gli indici giusti</td></tr>
+<tr><td>5</td><td>Schema design, validation, transazioni</td><td>Progettare schemi robusti per applicazioni reali</td></tr>
+<tr><td>6</td><td>Node.js driver, Mongoose, progetto finale</td><td>Integrare MongoDB in un'applicazione Node.js completa</td></tr>
+</tbody></table>
+<h3>Risorse consigliate</h3>
+<ul><li><a href="https://learn.mongodb.com/" target="_blank" rel="noopener noreferrer">MongoDB University</a> — corsi ufficiali gratuiti con certificazione</li><li><a href="https://mongoplayground.net/" target="_blank" rel="noopener noreferrer">MongoDB Playground</a> — testa query online senza installare nulla</li><li><a href="https://www.mongodb.com/products/compass" target="_blank" rel="noopener noreferrer">MongoDB Compass</a> — GUI visuale per esplorare i dati</li><li><a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener noreferrer">Documentazione ufficiale</a> — riferimento completo sempre aggiornato</li><li><a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener noreferrer">MongoDB Atlas</a> — cluster cloud gratuito per praticare</li></ul>
+      </article>
+
+      <article class="lesson" id="fine">
+        <h2>Conclusione — E ora?</h2>
+<p>Complimenti! 🎉 Hai completato il <strong>corso MongoDB completo e gratuito in italiano</strong>: dall'installazione e i primi passi con <code class="inline">mongosh</code>, al CRUD completo, agli operatori di query e update, all'Aggregation Pipeline, agli indici, alla validation, alle transazioni ACID e all'integrazione con Node.js.</p>
+<p>MongoDB è oggi uno dei database più richiesti nel mondo del lavoro: ogni azienda che gestisce dati flessibili, applicazioni real-time o grandi volumi di informazioni lo usa. Ora hai le basi per costruire applicazioni professionali con MongoDB.</p>
+<h3>E ora?</h3>
+<p>Hai già lavorato con Node.js e MongoDB: il passo successivo naturale è imparare <strong>PostgreSQL</strong> per confrontare il mondo NoSQL con un database relazionale potente, oppure approfondire il backend con <strong>Node.js</strong> per costruire API REST complete. Se vuoi un percorso guidato personalizzato, posso seguirti con ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+<div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span><p>Costruisci un'API REST con <strong>Node.js + Express + MongoDB</strong>: un sistema di gestione libri con endpoint per creare, leggere, aggiornare ed eliminare libri. Aggiungi paginazione, ricerca full-text e uno schema Mongoose con validation. Deployala su Railway o Render con MongoDB Atlas come database. Sarà il progetto portfolio perfetto per dimostrare le tue competenze backend.</p></div>
+<div class="hero-actions">
+          <a href="corso-nodejs.html" class="btn btn-primary">🟩 Continua con Node.js</a>
+          <a href="corsi.html" class="btn btn-primary">🚀 Torna ai Corsi</a>
+          <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><h4>Alessandro Simone</h4><p>Docente di informatica e sviluppatore web a Roma. Corsi gratuiti, ripetizioni in presenza e online.</p></div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Corsi</h4><a href="corsi.html">Tutti i corsi</a><a href="corso-mongodb.html">MongoDB</a><a href="corso-nodejs.html">Node.js</a><a href="corso-python.html">Python</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="container footer-bottom"><p>© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</p></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="js/main.js?v=4"></script>
+</body>
+</html>
