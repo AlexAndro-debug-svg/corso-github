@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Sass/SCSS in italiano completo e gratuito — variabili, mixin, nesting e funzioni | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Sass SCSS italiano completo e gratuito: variabili, nesting, @use, @forward, @mixin, @extend, placeholder e funzioni built-in per colori, stringhe, mappe e numeri. Con esempi SCSS → CSS compilato.">
+  <meta name="keywords" content="corso sass italiano, scss tutorial italiano, imparare sass, sass da zero, scss mixin, sass variabili, sass nesting, sass funzioni, sass color functions, sass map, sass @extend, preprocessore css italiano">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Sass/SCSS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Sass/SCSS da zero in italiano: variabili, nesting, mixin, extend, moduli e funzioni color. Tutorial completo e gratuito con esempi SCSS → CSS.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword, .codeview .token.atrule { color: #f472b6; }
+    .codeview .token.string, .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.function, .codeview .token.property, .codeview .token.attr-name { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean, .codeview .token.unit { color: #fbbf24; }
+    .codeview .token.class-name, .codeview .token.selector { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.variable { color: #fb923c; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+</style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-sass.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-sass.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Sass/SCSS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Sass/SCSS completo in italiano: variabili, nesting, mixin, extend e funzioni built-in. Con esempi SCSS → CSS compilato.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Sass/SCSS in italiano","description":"Corso Sass/SCSS italiano completo e gratuito: variabili, nesting, @use, @forward, @mixin, @extend, placeholder e funzioni built-in per colori, stringhe, mappe e numeri.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-sass.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html" class="active">SASS</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Sass / SCSS in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Impara il preprocessore CSS più popolare al mondo: variabili, nesting, mixin, moduli e funzioni avanzate. Ogni lezione mostra il codice SCSS affiancato al CSS compilato risultante.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Sass Tutorial</h4>
+      <a href="#home">Introduzione</a>
+      <a href="#intro">Sass Intro</a>
+      <a href="#install">Installazione</a>
+      <a href="#variables">Variabili</a>
+      <a href="#nesting">Nesting</a>
+      <a href="#import">@use e @forward</a>
+      <a href="#mixin">@mixin</a>
+      <a href="#extend">@extend</a>
+      <h4>Sass Functions</h4>
+      <a href="#string">String Functions</a>
+      <a href="#numeric">Numeric Functions</a>
+      <a href="#list">List Functions</a>
+      <a href="#map">Map Functions</a>
+      <a href="#selector">Selector Functions</a>
+      <a href="#introspection">Introspection</a>
+      <a href="#color">Color Functions</a>
+      <h4>Esercizi</h4>
+      <a href="#esercizi">Esercizi Sass</a>
+      <h4>Conclusione</h4>
+      <a href="#fine">E ora?</a>
+    </aside>
+
+    <main>
+      <article class="lesson" id="home">
+        <h2>Introduzione a SASS</h2>
+<p><strong>Sass</strong> (Syntactically Awesome Style Sheets) è il preprocessore CSS più popolare al mondo. Aggiunge al CSS funzionalità mancanti come <strong>variabili</strong>, <strong>nesting</strong>, <strong>mixin</strong>, <strong>funzioni</strong> e <strong>moduli</strong>, permettendo di scrivere fogli di stile più organizzati, riutilizzabili e manutenibili.</p>
+<p>Sass viene <strong>compilato</strong> in CSS standard: scrivi codice Sass, esegui il compilatore e ottieni un file <code class="inline">.css</code> pronto per il browser. Questo significa zero dipendenze a runtime — il browser riceve CSS normale.</p>
+<h3>Perché usare Sass?</h3>
+<ul><li><strong>Variabili</strong> — definisci colori, font e dimensioni una volta sola e riusali ovunque</li><li><strong>Nesting</strong> — specchia la struttura HTML nel CSS, elimina la ripetizione dei selettori</li><li><strong>Mixin</strong> — blocchi di stile riutilizzabili con parametri (come funzioni nel CSS)</li><li><strong>@extend</strong> — condividi regole tra selettori senza duplicare il codice</li><li><strong>Moduli</strong> — dividi i tuoi stili in file separati organizzati per componente</li><li><strong>Funzioni built-in</strong> — manipola colori, stringhe, numeri e liste direttamente in Sass</li><li><strong>Operatori</strong> — calcola dimensioni e valori con espressioni matematiche</li></ul>
+<h3>SCSS vs Sass (sintassi indented)</h3>
+<table class="ref"><thead><tr><th></th><th>SCSS</th><th>Sass (indented)</th></tr></thead><tbody><tr><td>Estensione</td><td>.scss</td><td>.sass</td></tr><tr><td>Sintassi</td><td>Come CSS + superset</td><td>Indentazione, senza {}</td></tr><tr><td>Compatibilità CSS</td><td>100% — qualsiasi CSS è SCSS valido</td><td>No — sintassi diversa</td></tr><tr><td>Popolarità</td><td>🥇 Standard de facto</td><td>Meno comune</td></tr></tbody></table>
+<div class="example">
+<div class="codehead"><span>Prima differenza SCSS vs Sass</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// SCSS — simile al CSS
+$primary: #4f46e5;
+
+.card {
+  background: $primary;
+  border-radius: 8px;
+
+  h2 {
+    color: white;
+    font-size: 1.5rem;
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+  background: #4f46e5;
+  border-radius: 8px;
+}
+.card h2 {
+  color: white;
+  font-size: 1.5rem;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="note-box">💡 <strong>Sass vs SCSS</strong>: in questo corso usiamo <strong>SCSS</strong> (la sintassi moderna con le parentesi graffe), che è lo standard adottato da tutti i framework CSS moderni come Bootstrap, Tailwind e Angular Material.</div>
+      </article>
+
+      <article class="lesson" id="intro">
+        <h2>Sass — Introduzione</h2>
+<p>Sass è stato creato nel 2006 da <strong>Hampton Catlin</strong> e <strong>Natalie Weizenbaum</strong>. Oggi è mantenuto da un team attivo e ha diventato lo standard per la gestione avanzata degli stili in progetti frontend di medie e grandi dimensioni.</p>
+<h3>Come funziona la compilazione</h3>
+<ul><li>1️⃣ Scrivi i tuoi stili in file <code class="inline">.scss</code></li><li>2️⃣ Il compilatore Sass legge i file e risolve variabili, mixin, nesting ecc.</li><li>3️⃣ Produce uno o più file <code class="inline">.css</code> standard</li><li>4️⃣ Il browser carica il CSS compilato — non conosce Sass</li></ul>
+<div class="example">
+<div class="codehead"><span>Flusso di lavoro Sass</span></div>
+<pre class="codeview"><code class="language-scss">// styles.scss (scrivi tu)
+$brand-color: #4f46e5;
+$radius: 8px;
+
+.button {
+  background: $brand-color;
+  border-radius: $radius;
+  padding: .6rem 1.2rem;
+  color: white;
+
+  &amp;:hover {
+    background: darken($brand-color, 10%);
+  }
+}</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>styles.css (generato automaticamente)</span></div>
+<pre class="codeview"><code class="language-css">.button {
+  background: #4f46e5;
+  border-radius: 8px;
+  padding: .6rem 1.2rem;
+  color: white;
+}
+.button:hover {
+  background: #3730a3;
+}</code></pre>
+</div>
+<h3>Dove viene usato Sass</h3>
+<ul><li><strong>Bootstrap 5</strong> — tutto il framework è scritto in SCSS</li><li><strong>Angular</strong> — usa SCSS di default per i component styles</li><li><strong>Vue CLI / Vite</strong> — supporto SCSS integrato con un semplice plugin</li><li><strong>Create React App / Vite</strong> — <code class="inline">npm install sass</code> e sei pronto</li><li><strong>WordPress</strong> — i temi professionali usano SCSS per la manutenibilità</li><li><strong>Design system</strong> — Salesforce Lightning, IBM Carbon, Material Design tutti usano Sass</li></ul>
+<div class="tip-box">🚀 <strong>Ambiente per esercitarsi</strong>: usa <a href="https://www.sassmeister.com/" target="_blank" rel="noopener noreferrer">SassMeister</a> per provare il codice Sass online senza installare nulla — vedi subito il CSS compilato.</div>
+      </article>
+
+      <article class="lesson" id="install">
+        <h2>Sass — Installazione</h2>
+<p>Puoi installare Sass in tre modi principali: tramite <strong>npm</strong> (il più comune nei progetti moderni), tramite il <strong>package standalone</strong> o tramite <strong>Homebrew</strong> su macOS.</p>
+<h3>Via npm (consigliato)</h3>
+<div class="example">
+<div class="codehead"><span>Installa Sass con npm</span></div>
+<pre class="codeview"><code class="language-bash"># Installa Sass globalmente
+npm install -g sass
+
+# Verifica l'installazione
+sass --version
+# Dart Sass 1.x.x
+
+# Oppure installalo nel progetto (dipendenza di sviluppo)
+npm install --save-dev sass</code></pre>
+</div>
+<h3>Compila un file SCSS</h3>
+<div class="example">
+<div class="codehead"><span>Compilazione da riga di comando</span></div>
+<pre class="codeview"><code class="language-bash"># Compila una volta sola
+sass input.scss output.css
+
+# Modalità watch (ricompila automaticamente ad ogni salvataggio)
+sass --watch input.scss output.css
+
+# Watch su cartella intera
+sass --watch scss/:css/
+
+# Con source map (per il debug in browser DevTools)
+sass --watch --source-map scss/:css/
+
+# Output compresso (produzione)
+sass --style=compressed input.scss output.min.css</code></pre>
+</div>
+<h3>Integrazione con Vite (React/Vue)</h3>
+<div class="example">
+<div class="codehead"><span>Sass in un progetto Vite</span></div>
+<pre class="codeview"><code class="language-bash"># Crea progetto Vite
+npm create vite@latest my-app -- --template react
+
+cd my-app
+npm install
+
+# Aggiungi Sass (nessuna configurazione aggiuntiva necessaria!)
+npm install --save-dev sass
+
+# Ora puoi importare file .scss direttamente nei componenti
+# In React:
+# import './styles.scss'
+
+# In Vue SFC:
+# &lt;style lang="scss"&gt;
+#   .card { color: $primary; }
+# &lt;/style&gt;</code></pre>
+</div>
+<h3>VS Code — estensioni utili</h3>
+<ul><li><strong>Live Sass Compiler</strong> — compila automaticamente i file SCSS al salvataggio</li><li><strong>SCSS IntelliSense</strong> — autocompletamento per variabili, mixin e funzioni Sass</li><li><strong>Sass</strong> — syntax highlighting per file .sass e .scss</li></ul>
+<div class="note-box">📌 <strong>Dart Sass vs LibSass</strong>: il compilatore ufficiale attuale è <strong>Dart Sass</strong>. LibSass (C++) è deprecato dal 2020. Alcuni strumenti vecchi usavano <code class="inline">node-sass</code> (basato su LibSass): se lo vedi in un progetto, aggiornalo a <code class="inline">sass</code> (Dart Sass).</div>
+      </article>
+
+      <article class="lesson" id="variables">
+        <h2>Sass — Variabili</h2>
+<p>Le <strong>variabili Sass</strong> iniziano con <code class="inline">$</code> e permettono di definire valori riutilizzabili — colori, font, spaziature, breakpoint — in un unico posto. Se cambi una variabile, l'intera UI si aggiorna automaticamente.</p>
+<div class="example">
+<div class="codehead"><span>Variabili base</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Definizione variabili
+$primary:    #4f46e5;
+$secondary:  #06b6d4;
+$accent:     #f59e0b;
+$gray-100:   #f8fafc;
+$gray-900:   #0f172a;
+
+$font-base:  'Inter', sans-serif;
+$font-head:  'Poppins', sans-serif;
+
+$radius-sm:  4px;
+$radius-md:  8px;
+$radius-lg:  16px;
+
+$shadow:     0 4px 6px -1px rgba(0,0,0,.1);
+
+// Utilizzo
+.card {
+  background:    $gray-100;
+  border-radius: $radius-md;
+  box-shadow:    $shadow;
+  font-family:   $font-base;
+}
+
+.btn-primary {
+  background: $primary;
+  color:      white;
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+  background: #f8fafc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
+  font-family: "Inter", sans-serif;
+}
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>Scope delle variabili</h3>
+<div class="example">
+<div class="codehead"><span>Variabili locali vs globali</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">$colore: blue;     // globale
+
+.elemento {
+  $colore: red;    // locale — non sovrascrive la globale
+  color: $colore;  // red
+}
+
+.altro {
+  color: $colore;  // blue — usa la globale
+}
+
+// !global forza la sovrascrittura globale
+.modifica {
+  $colore: green !global;
+}
+.dopo {
+  color: $colore;  // green
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.elemento {
+  color: red;
+}
+.altro {
+  color: blue;
+}
+.dopo {
+  color: green;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>Default con !default</h3>
+<div class="example">
+<div class="codehead"><span>!default — valori sovrascrivibili (design system)</span></div>
+<pre class="codeview"><code class="language-scss">// _config.scss — valori di default modificabili
+$primary:   #4f46e5 !default;
+$radius:    8px     !default;
+
+// main.scss — personalizza PRIMA di importare
+$primary: #e11d48;   // sovrascrive il default
+@use 'config';       // usa $primary = #e11d48, $radius = 8px (default)</code></pre>
+</div>
+<div class="tip-box">💡 <strong>Best practice</strong>: crea un file <code class="inline">_variables.scss</code> (o <code class="inline">_tokens.scss</code>) con tutte le variabili del progetto. Il trattino iniziale segnala che il file non deve essere compilato direttamente — viene importato dagli altri.</div>
+      </article>
+
+      <article class="lesson" id="nesting">
+        <h2>Sass — Nesting</h2>
+<p>Il <strong>nesting</strong> (annidamento) permette di scrivere selettori CSS figli all'interno del selettore genitore, rispecchiando la struttura HTML. Elimina la ripetizione dei selettori e rende il codice più leggibile.</p>
+<div class="example">
+<div class="codehead"><span>Nesting base</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">nav {
+  background: #1e293b;
+  padding: 1rem;
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: .4rem .8rem;
+    border-radius: 6px;
+
+    &amp;:hover {
+      background: rgba(255,255,255,.15);
+    }
+
+    &amp;.active {
+      background: #4f46e5;
+    }
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">nav {
+  background: #1e293b;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: .4rem .8rem;
+  border-radius: 6px;
+}
+nav a:hover {
+  background: rgba(255,255,255,.15);
+}
+nav a.active {
+  background: #4f46e5;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>L'operatore &amp; (parent selector)</h3>
+<div class="example">
+<div class="codehead"><span>&amp; — selettore padre</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// &amp; sostituisce il selettore genitore
+.btn {
+  background: #4f46e5;
+
+  &amp;:hover  { background: #4338ca; }   // .btn:hover
+  &amp;:focus  { outline: 2px solid #4f46e5; }
+  &amp;:active { transform: scale(.97); }
+
+  &amp;--primary { background: #4f46e5; } // .btn--primary (BEM)
+  &amp;--danger  { background: #dc2626; } // .btn--danger
+  &amp;--sm      { font-size: .85rem; }   // .btn--sm
+
+  // &amp; dopo: selettore genitore in contesto diverso
+  .dark-mode &amp; {
+    background: #818cf8;              // .dark-mode .btn
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.btn { background: #4f46e5; }
+.btn:hover  { background: #4338ca; }
+.btn:focus  { outline: 2px solid #4f46e5; }
+.btn:active { transform: scale(.97); }
+.btn--primary { background: #4f46e5; }
+.btn--danger  { background: #dc2626; }
+.btn--sm      { font-size: .85rem; }
+.dark-mode .btn { background: #818cf8; }</code></pre>
+</div>
+</div>
+</div>
+<h3>Nesting delle proprietà</h3>
+<div class="example">
+<div class="codehead"><span>Property nesting (namespace)</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Raggruppa proprietà con lo stesso prefisso
+.testo {
+  font: {
+    family: 'Inter', sans-serif;
+    size: 1rem;
+    weight: 600;
+    style: italic;
+  }
+  border: {
+    top: 2px solid #e2e8f0;
+    bottom: 2px solid #e2e8f0;
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.testo {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  border-top: 2px solid #e2e8f0;
+  border-bottom: 2px solid #e2e8f0;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="warn-box">⚠️ <strong>Non annidare troppo!</strong> Massimo 3-4 livelli di profondità. Annidamenti profondi generano selettori CSS troppo specifici (alta specificity) e difficili da mantenere. Segui la regola: se lo scrivi in CSS non lo annideresti, in Sass neanche.</div>
+      </article>
+
+      <article class="lesson" id="import">
+        <h2>Sass — @use, @forward e @import</h2>
+<p>Sass permette di dividere i tuoi stili in più file (chiamati <strong>partial</strong>) e combinarli. La regola moderna è <code class="inline">@use</code> (sostituisce il vecchio <code class="inline">@import</code>). I file partial iniziano con <code class="inline">_</code> per indicare che non devono essere compilati da soli.</p>
+<h3>@use — la regola moderna</h3>
+<div class="example">
+<div class="codehead"><span>@use — importa un modulo Sass</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// _colors.scss
+$primary: #4f46e5;
+$accent:  #f59e0b;
+$muted:   #64748b;
+
+// _spacing.scss
+$xs: .25rem;
+$sm: .5rem;
+$md: 1rem;
+$lg: 2rem;
+
+// main.scss
+@use 'colors';   // accede con colors.$primary
+@use 'spacing';
+
+.card {
+  color:   colors.$primary;
+  padding: spacing.$md;
+  margin:  spacing.$lg;
+}
+
+// Alias per nomi più corti
+@use 'colors' as c;
+@use 'spacing' as s;
+
+.btn {
+  background: c.$primary;
+  padding: s.$sm s.$md;
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+  color: #4f46e5;
+  padding: 1rem;
+  margin: 2rem;
+}
+.btn {
+  background: #4f46e5;
+  padding: .5rem 1rem;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>@forward — esponi moduli</h3>
+<div class="example">
+<div class="codehead"><span>@forward — crea un punto di accesso unico</span></div>
+<pre class="codeview"><code class="language-scss">// _index.scss (barrel file)
+@forward 'colors';
+@forward 'spacing';
+@forward 'typography';
+@forward 'mixins';
+
+// In qualsiasi altro file, importi tutto in una riga:
+@use 'index' as *;   // oppure: @use '.' as *;
+
+.elemento {
+  color: $primary;    // da colors
+  padding: $md;       // da spacing
+}</code></pre>
+</div>
+<h3>Struttura di un progetto Sass (7-1 pattern)</h3>
+<div class="example">
+<div class="codehead"><span>Architettura Sass consigliata</span></div>
+<pre class="codeview"><code class="language-bash">// Struttura 7-1 (7 cartelle + 1 main)
+sass/
+  abstracts/
+    _variables.scss   // variabili, tokens
+    _mixins.scss      // mixin riutilizzabili
+    _functions.scss   // funzioni custom
+    _index.scss       // @forward di tutti gli abstracts
+
+  base/
+    _reset.scss       // CSS reset
+    _typography.scss  // stili tipografici
+
+  components/
+    _button.scss
+    _card.scss
+    _navbar.scss
+
+  layout/
+    _header.scss
+    _footer.scss
+    _grid.scss
+
+  pages/
+    _home.scss
+    _about.scss
+
+  themes/
+    _dark.scss
+
+  vendors/
+    _normalize.scss   // librerie terze
+
+  main.scss           // importa tutto con @use</code></pre>
+</div>
+<div class="warn-box">⚠️ <strong><code class="inline">@import</code> è deprecato</strong>: dal 2022 <code class="inline">@import</code> è ufficialmente deprecato in Sass e verrà rimosso in futuro. Usa sempre <code class="inline">@use</code> e <code class="inline">@forward</code> nei nuovi progetti. La differenza principale: <code class="inline">@use</code> crea uno scope isolato (no variabili globali tra file).</div>
+      </article>
+
+      <article class="lesson" id="mixin">
+        <h2>Sass — @mixin</h2>
+<p>I <strong>mixin</strong> sono blocchi di stile riutilizzabili che puoi includere in qualsiasi selettore con <code class="inline">@include</code>. Supportano <strong>argomenti</strong> (con valori di default), <code class="inline">@content</code> per blocchi annidati e sono il cuore della riusabilità in Sass.</p>
+<div class="example">
+<div class="codehead"><span>Mixin base</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Definizione mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin truncate($width: 100%) {
+  width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Utilizzo
+.hero {
+  @include flex-center;
+  min-height: 100vh;
+}
+
+.card-title {
+  @include truncate(250px);
+}
+
+.label {
+  @include truncate;   // usa il default: 100%
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.card-title {
+  width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.label {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>Mixin con argomenti multipli e default</h3>
+<div class="example">
+<div class="codehead"><span>Mixin responsive breakpoint</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Mixin per media query responsive
+@mixin respond-to($bp) {
+  @if $bp == sm {
+    @media (min-width: 640px)  { @content; }
+  } @else if $bp == md {
+    @media (min-width: 768px)  { @content; }
+  } @else if $bp == lg {
+    @media (min-width: 1024px) { @content; }
+  } @else if $bp == xl {
+    @media (min-width: 1280px) { @content; }
+  }
+}
+
+// Utilizzo con @content
+.container {
+  padding: 1rem;
+
+  @include respond-to(md) {
+    padding: 2rem;
+    max-width: 768px;
+  }
+
+  @include respond-to(lg) {
+    padding: 3rem;
+    max-width: 1024px;
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.container {
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem;
+    max-width: 1024px;
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>Mixin avanzati — variadic args</h3>
+<div class="example">
+<div class="codehead"><span>Mixin con argomenti variadic e @content</span></div>
+<pre class="codeview"><code class="language-scss">// Argomenti multipli con ...
+@mixin transition($properties...) {
+  transition: $properties;
+}
+
+.btn {
+  @include transition(background .2s, transform .15s, box-shadow .2s);
+}
+
+// Mixin che genera utility class
+@mixin generate-colors($colors) {
+  @each $name, $value in $colors {
+    .bg-#{$name}   { background: $value; }
+    .text-#{$name} { color: $value; }
+    .border-#{$name} { border-color: $value; }
+  }
+}
+
+$palette: (
+  primary: #4f46e5,
+  danger:  #dc2626,
+  success: #16a34a,
+);
+
+@include generate-colors($palette);
+// Genera: .bg-primary, .text-primary, .border-primary, .bg-danger, ...</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="extend">
+        <h2>Sass — @extend e %placeholder</h2>
+<p><code class="inline">@extend</code> permette a un selettore di <strong>ereditare</strong> le regole di un altro. I <strong>placeholder</strong> (<code class="inline">%nome</code>) sono selettori speciali che esistono solo per essere estesi — non vengono compilati nel CSS se non usati.</p>
+<div class="example">
+<div class="codehead"><span>@extend base</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Classe base
+.message {
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+  font-size: .95rem;
+  border-left: 4px solid;
+}
+
+// Estensioni
+.success {
+  @extend .message;
+  border-color: #16a34a;
+  background:   #f0fdf4;
+  color:        #15803d;
+}
+
+.error {
+  @extend .message;
+  border-color: #dc2626;
+  background:   #fef2f2;
+  color:        #b91c1c;
+}
+
+.warning {
+  @extend .message;
+  border-color: #d97706;
+  background:   #fffbeb;
+  color:        #92400e;
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.message,
+.success,
+.error,
+.warning {
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+  font-size: .95rem;
+  border-left: 4px solid;
+}
+.success {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  color: #15803d;
+}
+.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+.warning {
+  border-color: #d97706;
+  background: #fffbeb;
+  color: #92400e;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>%placeholder — estensioni silenziose</h3>
+<div class="example">
+<div class="codehead"><span>%placeholder</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// %placeholder non genera CSS da solo
+%card-base {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
+  padding: 1.5rem;
+}
+
+%visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0,0,0,0);
+  overflow: hidden;
+}
+
+// Solo quando viene esteso appare nel CSS
+.product-card { @extend %card-base; }
+.user-card    { @extend %card-base; }
+
+.sr-only { @extend %visually-hidden; }</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.product-card,
+.user-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
+  padding: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0,0,0,0);
+  overflow: hidden;
+}</code></pre>
+</div>
+</div>
+</div>
+<h3>@extend vs @mixin — quando usare quale</h3>
+<table class="ref"><thead><tr><th></th><th>@extend / %placeholder</th><th>@mixin</th></tr></thead><tbody><tr><td>Quando usare</td><td>Selettori che condividono identiche regole</td><td>Blocchi con variazione (parametri)</td></tr><tr><td>Output CSS</td><td>Raggruppa selettori (,)</td><td>Duplica le regole in ogni classe</td></tr><tr><td>Argomenti</td><td>No</td><td>Sì</td></tr><tr><td>@content</td><td>No</td><td>Sì</td></tr><tr><td>Best for</td><td>Alert, tag, badge, stati</td><td>Media query, flex helpers, animazioni</td></tr></tbody></table>
+      </article>
+
+      <article class="lesson" id="string">
+        <h2>Sass — Funzioni String</h2>
+<p>Sass offre un set di <strong>funzioni built-in per le stringhe</strong> nel modulo <code class="inline">sass:string</code>. Permettono di manipolare testo, costruire selettori dinamici e generare nomi di classi.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni String principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:string";
+
+// string.quote / string.unquote
+$valore: string.quote(rosso);      // "rosso"
+$senza:  string.unquote("Inter");  // Inter (senza virgolette)
+
+// string.length — lunghezza in caratteri
+$len: string.length("Sass");       // 4
+
+// string.to-upper-case / to-lower-case
+$up:  string.to-upper-case("hello");  // "HELLO"
+$low: string.to-lower-case("WORLD");  // "world"
+
+// string.slice(str, start, end) — sottostringa (1-based)
+$sub: string.slice("Sass CSS", 1, 4); // "Sass"
+$end: string.slice("Sass CSS", 6);    // "CSS"
+
+// string.index — trova la posizione
+$pos: string.index("Sass CSS", "CSS"); // 6 (o null se non trovato)
+
+// string.insert — inserisce in una posizione
+$ins: string.insert("SaCSS", "ss ", 3); // "Sass CSS"
+
+// string.split — divide una stringa (Dart Sass 1.57+)
+$parts: string.split("uno,due,tre", ","); // ["uno", "due", "tre"]</code></pre>
+</div>
+<h3>Interpolazione di stringhe</h3>
+<div class="example">
+<div class="codehead"><span>Interpolazione #{} — costruisci selettori dinamicamente</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">$tema: "dark";
+$componente: "card";
+
+// #{} inserisce un valore nella stringa
+.#{$tema}-#{$componente} {
+  background: #1e293b;
+  color: white;
+}
+
+// Genera classi utility dinamicamente
+$sizes: (sm: .5rem, md: 1rem, lg: 2rem, xl: 3rem);
+
+@each $name, $value in $sizes {
+  .p-#{$name}  { padding: $value; }
+  .m-#{$name}  { margin: $value; }
+  .gap-#{$name}{ gap: $value; }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.dark-card {
+  background: #1e293b;
+  color: white;
+}
+.p-sm  { padding: .5rem; }
+.p-md  { padding: 1rem; }
+.p-lg  { padding: 2rem; }
+.p-xl  { padding: 3rem; }
+.m-sm  { margin: .5rem; }
+/* ... e così via */</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="numeric">
+        <h2>Sass — Funzioni Numeric</h2>
+<p>Il modulo <code class="inline">sass:math</code> fornisce funzioni matematiche e permette operazioni numeriche avanzate. Sass supporta anche gli <strong>operatori aritmetici</strong> direttamente nelle regole CSS.</p>
+<div class="example">
+<div class="codehead"><span>Operatori aritmetici in Sass</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:math";
+
+// Sass supporta +, -, *, /, % con unità compatibili
+$base: 16px;
+$scale: 1.25;
+
+h1 { font-size: $base * $scale * $scale * $scale; }  // 31.25px
+h2 { font-size: $base * $scale * $scale; }            // 25px
+h3 { font-size: $base * $scale; }                     // 20px
+
+// Divisione — usa math.div() (non / che è riservato in CSS)
+.colonna {
+  width: math.div(100%, 3);    // 33.333%
+  padding: math.div(2rem, 2);  // 1rem
+}
+
+// Percentuali
+.progress[data-value="75"] {
+  width: math.div(75, 100) * 100%;  // 75%
+}</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>Funzioni math principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:math";
+
+// Arrotondamento
+math.ceil(4.2)   // 5
+math.floor(4.8)  // 4
+math.round(4.5)  // 5
+math.clamp(0, 5, 10)  // 5 (min, value, max)
+
+// Valore assoluto e segno
+math.abs(-15px)  // 15px
+math.sign(-3)    // -1
+
+// Potenza e logaritmo
+math.pow(2, 10)  // 1024
+math.sqrt(144)   // 12
+math.log(100, 10) // 2
+
+// Trigonometria (Dart Sass 1.65+)
+math.sin(math.$pi * 0.5)  // 1
+math.cos(0deg)             // 1
+
+// Costanti
+math.$pi     // 3.1415...
+math.$e      // 2.7182...</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>Generatore di scala tipografica</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:math";
+
+$base: 1rem;
+$ratio: 1.25;   // Major Third
+
+// Genera scale tipografica modulare
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: $base * math.pow($ratio, 7 - $i);
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">h1 { font-size: 3.052rem; }
+h2 { font-size: 2.441rem; }
+h3 { font-size: 1.953rem; }
+h4 { font-size: 1.563rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="list">
+        <h2>Sass — Funzioni List</h2>
+<p>Le <strong>liste</strong> in Sass sono sequenze di valori separati da spazio o virgola. Il modulo <code class="inline">sass:list</code> fornisce funzioni per accedere, modificare e iterare le liste.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni List principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:list";
+
+$shadow-layers: 0 1px 3px rgba(0,0,0,.12),
+                0 1px 2px rgba(0,0,0,.24);
+
+// list.length — numero di elementi
+list.length($shadow-layers)  // 2
+
+// list.nth — accedi a un elemento (1-based, o negativo da fine)
+list.nth($shadow-layers, 1)  // 0 1px 3px rgba(0,0,0,.12)
+list.nth($shadow-layers, -1) // ultimo elemento
+
+// list.index — trova la posizione
+$font-stack: 'Inter', 'Roboto', sans-serif;
+list.index($font-stack, 'Roboto')  // 2
+
+// list.append — aggiunge un elemento
+$new: list.append($font-stack, monospace);  // aggiunge in fondo
+
+// list.join — unisce due liste
+$a: 1px 2px;
+$b: 3px 4px;
+list.join($a, $b)             // 1px 2px 3px 4px
+list.join($a, $b, $separator: comma)  // 1px, 2px, 3px, 4px
+
+// list.zip — crea lista di liste
+list.zip(a b c, 1 2 3)  // (a 1), (b 2), (c 3)</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>@each su liste — genera CSS</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Lista di bordi per lati
+$sides: top right bottom left;
+
+@each $side in $sides {
+  .border-#{$side} {
+    border-#{$side}: 1px solid #e2e8f0;
+  }
+}
+
+// Lista di breakpoint
+$bp-list: (sm 640px) (md 768px) (lg 1024px) (xl 1280px);
+
+@each $name, $width in $bp-list {
+  .container-#{$name} {
+    max-width: $width;
+    margin: 0 auto;
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.border-top    { border-top:    1px solid #e2e8f0; }
+.border-right  { border-right:  1px solid #e2e8f0; }
+.border-bottom { border-bottom: 1px solid #e2e8f0; }
+.border-left   { border-left:   1px solid #e2e8f0; }
+
+.container-sm  { max-width: 640px; margin: 0 auto; }
+.container-md  { max-width: 768px; margin: 0 auto; }
+.container-lg  { max-width: 1024px; margin: 0 auto; }
+.container-xl  { max-width: 1280px; margin: 0 auto; }</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="map">
+        <h2>Sass — Funzioni Map</h2>
+<p>Le <strong>mappe</strong> (<code class="inline">map</code>) in Sass sono coppie chiave-valore, simili agli oggetti JavaScript. Sono perfette per design token — colori, spaziature, breakpoint — e per generare classi utility sistematicamente.</p>
+<div class="example">
+<div class="codehead"><span>Definizione e accesso alle mappe</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:map";
+
+// Definizione mappa (design tokens)
+$colors: (
+  primary:   #4f46e5,
+  secondary: #06b6d4,
+  success:   #16a34a,
+  warning:   #d97706,
+  danger:    #dc2626,
+  muted:     #64748b,
+);
+
+$spacing: (
+  xs: .25rem,
+  sm: .5rem,
+  md: 1rem,
+  lg: 1.5rem,
+  xl: 2rem,
+  2xl: 3rem,
+);
+
+// Accesso con map.get
+$p: map.get($colors, primary);   // #4f46e5
+$m: map.get($spacing, md);       // 1rem
+
+// map.has-key — verifica esistenza
+map.has-key($colors, "purple")   // false
+
+// map.keys e map.values
+map.keys($colors)    // primary secondary success warning danger muted
+map.values($spacing) // .25rem .5rem 1rem 1.5rem 2rem 3rem
+
+// map.merge — unisce due mappe
+$extra: (accent: #f59e0b, dark: #0f172a);
+$all-colors: map.merge($colors, $extra);
+
+// map.remove — rimuove una chiave
+$no-muted: map.remove($colors, muted);</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>Genera utility classes da mappe</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:map";
+
+$colors: (primary:#4f46e5, success:#16a34a, danger:#dc2626);
+$spacing: (sm:.5rem, md:1rem, lg:2rem);
+
+// Genera bg-, text- per ogni colore
+@each $name, $value in $colors {
+  .bg-#{$name}   { background-color: $value; }
+  .text-#{$name} { color: $value; }
+}
+
+// Genera p-, m- per ogni spaziatura
+@each $name, $value in $spacing {
+  .p-#{$name} { padding: $value; }
+  .m-#{$name} { margin: $value; }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.bg-primary    { background-color: #4f46e5; }
+.text-primary  { color: #4f46e5; }
+.bg-success    { background-color: #16a34a; }
+.text-success  { color: #16a34a; }
+.bg-danger     { background-color: #dc2626; }
+.text-danger   { color: #dc2626; }
+.p-sm { padding: .5rem; }
+.p-md { padding: 1rem; }
+.p-lg { padding: 2rem; }
+/* ... */</code></pre>
+</div>
+</div>
+</div>
+<div class="example">
+<div class="codehead"><span>map.deep-get — accesso annidato</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:map";
+
+// Mappa annidata (design system complesso)
+$theme: (
+  colors: (
+    brand: #4f46e5,
+    text: (
+      primary: #0f172a,
+      muted:   #64748b,
+    ),
+  ),
+  spacing: (base: 1rem, scale: 1.25),
+);
+
+// Accesso annidato
+$brand: map.get(map.get($theme, colors), brand);          // #4f46e5
+$muted: map.deep-get($theme, colors, text, muted);         // #64748b (Sass 1.x)</code></pre>
+</div>
+      </article>
+
+      <article class="lesson" id="selector">
+        <h2>Sass — Funzioni Selector</h2>
+<p>Il modulo <code class="inline">sass:selector</code> permette di <strong>analizzare e manipolare selettori CSS</strong> in modo programmatico. Utile per creare mixin avanzati che gestiscono la specificity o costruiscono selettori complessi.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni Selector principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:selector";
+
+// selector.nest — annida selettori
+selector.nest(".parent", ".child")
+// → .parent .child
+
+selector.nest(".list", "li", "a")
+// → .list li a
+
+// selector.append — aggiunge senza spazio (concatena)
+selector.append(".btn", ":hover")
+// → .btn:hover
+
+selector.append(".icon-", "star", "-lg")
+// → .icon-star-lg (non standard, per illustrazione)
+
+// selector.extend — equivalente di @extend
+selector.extend(".a, .b", ".b", ".c")
+// → .a, .b, .c
+
+// selector.replace — sostituisce un componente
+selector.replace("a.disabled", "a", ".link")
+// → .link.disabled
+
+// selector.unify — combina due selettori
+selector.unify("a", ".active")
+// → a.active
+
+// selector.is-superselector — verifica se un sel. è più generico
+selector.is-superselector("div", "div.active")  // true
+// "div" è un superselector di "div.active</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>Mixin che usa selector functions</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:selector";
+
+// Mixin che applica stili a :hover e :focus insieme
+@mixin on-interact($selector: "&amp;") {
+  $hover: selector.append($selector, ":hover");
+  $focus: selector.append($selector, ":focus-visible");
+
+  #{$hover}, #{$focus} {
+    @content;
+  }
+}
+
+.btn {
+  background: #4f46e5;
+
+  @include on-interact {
+    background: #4338ca;
+    outline: 2px solid #4f46e5;
+  }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.btn {
+  background: #4f46e5;
+}
+.btn:hover,
+.btn:focus-visible {
+  background: #4338ca;
+  outline: 2px solid #4f46e5;
+}</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="introspection">
+        <h2>Sass — Funzioni Introspection</h2>
+<p>Le funzioni di <strong>introspection</strong> del modulo <code class="inline">sass:meta</code> permettono di interrogare il tipo di un valore, verificare se una variabile o mixin esiste, e ottenere informazioni sul contesto di compilazione.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni Introspection principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:meta";
+
+// meta.type-of — tipo del valore
+meta.type-of(42)           // number
+meta.type-of("ciao")       // string
+meta.type-of(true)         // bool
+meta.type-of(#ff0000)      // color
+meta.type-of(1rem 2rem)    // list
+meta.type-of((a: 1))       // map
+meta.type-of(null)         // null
+
+// meta.inspect — rappresentazione come stringa
+meta.inspect(1rem 2rem 3rem)  // "1rem 2rem 3rem"
+
+// meta.variable-exists — controlla se $var è definita
+meta.variable-exists(primary)  // true/false (senza $)
+
+// meta.mixin-exists
+meta.mixin-exists(flex-center)  // true/false
+
+// meta.function-exists
+meta.function-exists(darken, sass:color)  // true
+
+// meta.module-variables — tutte le variabili di un modulo
+@use "sass:color";
+meta.module-variables(color)  // mappa con tutte le variabili di sass:color
+
+// meta.content-exists (dentro un mixin)
+@mixin wrapper {
+  @if meta.content-exists() {
+    .wrapper { @content; }
+  }
+}</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>@if con type-of — validazione degli argomenti</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:meta";
+
+// Mixin con validazione del tipo
+@mixin padding($value) {
+  @if meta.type-of($value) != number {
+    @error "padding richiede un numero, ricevuto: #{meta.type-of($value)}";
+  }
+  @if not unitless($value) and unit($value) == "px" {
+    // converte px in rem
+    padding: $value / 16px * 1rem;
+  } @else {
+    padding: $value;
+  }
+}
+
+.card {
+  @include padding(24px);   // → 1.5rem
+}
+.btn {
+  @include padding(1rem);   // → 1rem
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+  padding: 1.5rem;
+}
+.btn {
+  padding: 1rem;
+}</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="color">
+        <h2>Sass — Funzioni Color</h2>
+<p>Il modulo <code class="inline">sass:color</code> offre funzioni potenti per <strong>manipolare i colori</strong> — schiarire, scurire, saturare, mescolare, trasparenza — rendendo facile creare scale di colori e variazioni di tema.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni Color principali</span></div>
+<pre class="codeview"><code class="language-scss">@use "sass:color";
+
+$primary: #4f46e5;
+
+// Schiarisce / scurisce (0-100%)
+color.lighten($primary, 20%)   // #8b84ef
+color.darken($primary, 15%)    // #302a99
+
+// Aumenta / riduce la saturazione
+color.saturate($primary, 20%)
+color.desaturate($primary, 20%)
+
+// Opacità (mix con trasparente)
+color.transparentize($primary, 0.5)  // rgba(79,70,229, 0.5)
+color.opacify($primary, 0.3)
+
+// Imposta o regola i componenti HSL
+color.adjust($primary, $lightness: 10%, $saturation: -5%)
+color.change($primary, $hue: 200deg)    // cambia solo l'hue
+color.scale($primary, $lightness: 20%)  // scala in modo percentuale
+
+// Mescola due colori
+color.mix($primary, white, 80%)   // 80% primary + 20% white
+color.mix($primary, black, 90%)   // quasi primary, lievemente più scuro
+
+// Complementare / inverso
+color.complement($primary)         // colore complementare
+color.invert($primary)             // colore invertito
+
+// Canali HSL e RGB
+color.hue($primary)         // 243deg
+color.saturation($primary)  // 73.7%
+color.lightness($primary)   // 58.6%
+color.red($primary)         // 79
+color.green($primary)       // 70
+color.blue($primary)        // 229
+color.alpha($primary)       // 1</code></pre>
+</div>
+<div class="example">
+<div class="codehead"><span>Genera una color palette automatica</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:color";
+
+$brand: #4f46e5;
+
+// Crea scala di colori automaticamente
+$palette: (
+  50:  color.mix($brand, white, 10%),
+  100: color.mix($brand, white, 20%),
+  200: color.mix($brand, white, 40%),
+  300: color.mix($brand, white, 60%),
+  400: color.mix($brand, white, 80%),
+  500: $brand,
+  600: color.mix($brand, black, 85%),
+  700: color.mix($brand, black, 70%),
+  800: color.mix($brand, black, 55%),
+  900: color.mix($brand, black, 40%),
+);
+
+@each $shade, $value in $palette {
+  .brand-#{$shade} { background: $value; }
+}</code></pre>
+</div>
+<div>
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
+<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.brand-50  { background: #eceafe; }
+.brand-100 { background: #d9d8fc; }
+.brand-200 { background: #b4b1f9; }
+.brand-300 { background: #8e8af6; }
+.brand-400 { background: #6963ec; }
+.brand-500 { background: #4f46e5; }
+.brand-600 { background: #433cca; }
+.brand-700 { background: #3730a3; }
+.brand-800 { background: #2b267e; }
+.brand-900 { background: #1e1b58; }</code></pre>
+</div>
+</div>
+</div>
+      </article>
+
+      <article class="lesson" id="esercizi">
+        <h2>Esercizi Sass</h2>
+<p>Metti alla prova le tue conoscenze con questi esercizi pratici. Usa <a href="https://www.sassmeister.com/" target="_blank" rel="noopener noreferrer">SassMeister</a> online oppure un progetto locale con <code class="inline">sass --watch</code>.</p>
+<h3>Esercizio 1 — Design Tokens</h3>
+<div class="challenge-box"><span class="challenge-label">🟢 Base</span>
+<p>Crea un file <code>_tokens.scss</code> con:</p>
+<ul>
+<li>Una mappa <code>$colors</code> con almeno 6 colori (primary, secondary, success, warning, danger, muted)</li>
+<li>Una mappa <code>$spacing</code> con 6 valori (xs, sm, md, lg, xl, 2xl)</li>
+<li>Variabili per font-family, border-radius e box-shadow</li>
+<li>Un loop <code>@each</code> che genera le classi <code>.bg-*</code>, <code>.text-*</code> da <code>$colors</code></li>
+<li>Un loop che genera <code>.p-*</code> e <code>.m-*</code> da <code>$spacing</code></li>
+</ul></div>
+<h3>Esercizio 2 — Componenti con Mixin</h3>
+<div class="challenge-box"><span class="challenge-label">🟡 Intermedio</span>
+<ul>
+<li>Scrivi un mixin <code>respond-to($bp)</code> con i breakpoint sm/md/lg/xl</li>
+<li>Crea un componente <code>.card</code> responsive: 1 colonna su mobile, 2 su md, 3 su lg</li>
+<li>Scrivi un mixin <code>button-variant($bg, $text)</code> che genera tutti gli stati (:hover, :focus, :active, :disabled) di un bottone calcolando i colori con le funzioni color</li>
+<li>Usa il mixin per creare <code>.btn-primary</code>, <code>.btn-success</code> e <code>.btn-danger</code></li>
+</ul></div>
+<h3>Esercizio 3 — Sistema completo</h3>
+<div class="challenge-box"><span class="challenge-label">🔴 Avanzato</span>
+<ul>
+<li>Struttura il progetto con l'architettura 7-1: <code>abstracts/</code>, <code>base/</code>, <code>components/</code>, <code>layout/</code></li>
+<li>Usa <code>@use</code> e <code>@forward</code> per un barrel file <code>abstracts/_index.scss</code></li>
+<li>Genera una scala tipografica modulare (ratio 1.25) con un <code>@for</code> loop</li>
+<li>Crea un <code>%placeholder</code> per ogni tipo di alert (info, success, warning, error) e usalo con <code>@extend</code></li>
+<li>Implementa un sistema di dark mode: variabili CSS custom generate da mappe Sass, con <code>.dark</code> class toggle</li>
+</ul></div>
+      </article>
+
+      <article class="lesson" id="fine">
+        <h2>Conclusione — E ora?</h2>
+<p>Complimenti! 🎉 Hai completato il <strong>corso Sass completo e gratuito in italiano</strong>: dalla sintassi SCSS e le variabili, al nesting e i moduli, fino ai mixin, @extend, placeholder e alle funzioni built-in per stringhe, numeri, liste, mappe, selettori, introspection e colori.</p>
+<p>Sass è uno strumento che migliora <strong>immediatamente</strong> la qualità del tuo CSS: codice più organizzato, meno ripetizioni, design token centralizzati. Tutti i framework CSS moderni lo usano — imparare Sass significa leggere e contribuire a Bootstrap, Angular Material, Foundation e centinaia di altri progetti.</p>
+<h3>E ora?</h3>
+<p>Ora che sai scrivere CSS avanzato con Sass, il passo successivo naturale è <strong>Bootstrap</strong> — il framework CSS più usato al mondo, scritto interamente in SCSS e configurabile tramite le sue variabili Sass. In alternativa, approfondisci il <strong>CSS</strong> puro per capire le basi su cui Sass si costruisce. Se vuoi un percorso guidato personalizzato, posso seguirti con ripetizioni di informatica <strong>in presenza a Roma</strong>.</p>
+<div class="challenge-box"><span class="challenge-label">🎯 La tua sfida finale</span>
+<p>Costruisci da zero un <strong>design system in Sass</strong>: un file <code>_tokens.scss</code> con tutte le variabili, mixin per la tipografia e il layout responsive, palette di colori generata automaticamente con le funzioni color, e componenti (button, card, alert, badge, form) usando <code>@extend</code> e <code>@mixin</code>. Poi usalo per ricreare la UI di un sito che conosci. Pubblicalo su GitHub Pages: sarà una dimostrazione pratica e concreta delle tue competenze frontend avanzate.</p></div>
+<div class="hero-actions">
+          <a href="corso-bootstrap.html" class="btn btn-primary">🅱️ Continua con Bootstrap</a>
+          <a href="corsi.html" class="btn btn-primary">🚀 Torna ai Corsi</a>
+          <a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="js/main.js?v=4"></script>
+</body>
+</html>
