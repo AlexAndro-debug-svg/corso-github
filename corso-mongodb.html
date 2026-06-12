@@ -54,6 +54,25 @@
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
     .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-mongodb.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -182,7 +201,7 @@
 <tr><td>DELETE</td><td>deleteOne() / deleteMany()</td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Esempio documento MongoDB</span></div>
+<div class="codehead"><span>Esempio documento MongoDB</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">{
   "_id": ObjectId("64a1f2c3e8b7a3d0c9f12345"),
   "nome": "Mario Rossi",
@@ -207,7 +226,7 @@
 <ul><li>Vai su <a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener noreferrer">mongodb.com/atlas</a> e crea un account gratuito</li><li>Crea un <strong>cluster M0</strong> (gratuito, 512 MB)</li><li>Aggiungi il tuo IP alla whitelist Network Access</li><li>Crea un utente database (username + password)</li><li>Ottieni la <strong>connection string</strong>: <code class="inline">mongodb+srv://user:pass@cluster.mongodb.net/</code></li></ul>
 <h3>Installazione locale (Ubuntu/Debian)</h3>
 <div class="example">
-<div class="codehead"><span>Installa MongoDB Community</span></div>
+<div class="codehead"><span>Installa MongoDB Community</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Importa la chiave GPG
 wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
 
@@ -224,7 +243,7 @@ sudo systemctl enable mongod</code></pre>
 </div>
 <h3>Installazione con Docker</h3>
 <div class="example">
-<div class="codehead"><span>MongoDB con Docker</span></div>
+<div class="codehead"><span>MongoDB con Docker</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Avvia MongoDB in un container
 docker run -d \
   --name mongodb \
@@ -238,7 +257,7 @@ docker exec -it mongodb mongosh -u admin -p secret</code></pre>
 </div>
 <h3>Primi comandi in mongosh</h3>
 <div class="example">
-<div class="codehead"><span>Primi passi con mongosh</span></div>
+<div class="codehead"><span>Primi passi con mongosh</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Mostra tutti i database
 show dbs
 
@@ -265,7 +284,7 @@ db.prodotti.find().pretty()</code></pre>
 <p>La <strong>Query API</strong> di MongoDB è il linguaggio con cui interroghi, filtri e trasformi i documenti. Tutte le operazioni si esprimono con oggetti JavaScript/JSON passati ai metodi della collezione.</p>
 <h3>Struttura base di una query</h3>
 <div class="example">
-<div class="codehead"><span>Struttura Query API</span></div>
+<div class="codehead"><span>Struttura Query API</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Sintassi generale
 db.collezione.metodo(filtro, opzioni)
 
@@ -277,7 +296,7 @@ db.utenti.find({ $and: [{ attivo: true }, { eta: { $lt: 30 } }] })</code></pre>
 </div>
 <h3>Projection — scegliere i campi</h3>
 <div class="example">
-<div class="codehead"><span>Projection (include/escludi campi)</span></div>
+<div class="codehead"><span>Projection (include/escludi campi)</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Include solo nome ed email (1 = includi, 0 = escludi)
 db.utenti.find(
   { attivo: true },
@@ -289,7 +308,7 @@ db.utenti.find({}, { password: 0 })</code></pre>
 </div>
 <h3>Cursori e metodi di cursore</h3>
 <div class="example">
-<div class="codehead"><span>Metodi del cursore</span></div>
+<div class="codehead"><span>Metodi del cursore</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Limita i risultati
 db.prodotti.find().limit(10)
 
@@ -323,7 +342,7 @@ db.prodotti.estimatedDocumentCount()</code></pre>
 <p>In MongoDB i database e le collezioni sono <strong>creati implicitamente</strong> al primo inserimento di un documento. Non esiste un comando <code class="inline">CREATE DATABASE</code> separato come in SQL.</p>
 <h3>Creare e selezionare un database</h3>
 <div class="example">
-<div class="codehead"><span>use — crea o seleziona un database</span></div>
+<div class="codehead"><span>use — crea o seleziona un database</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Seleziona il database (lo crea se non esiste)
 use scuola
 
@@ -338,7 +357,7 @@ db</code></pre>
 </div>
 <h3>Creare una collezione esplicitamente</h3>
 <div class="example">
-<div class="codehead"><span>createCollection()</span></div>
+<div class="codehead"><span>createCollection()</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Crea una collezione vuota (facoltativo)
 db.createCollection("corsi")
 
@@ -365,7 +384,7 @@ db.createCollection("prodotti", {
 </div>
 <h3>Eliminare un database</h3>
 <div class="example">
-<div class="codehead"><span>dropDatabase()</span></div>
+<div class="codehead"><span>dropDatabase()</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Seleziona il database da eliminare
 use testdb
 
@@ -381,7 +400,7 @@ db.dropDatabase()</code></pre>
 <p>Una <strong>collection</strong> (collezione) è il contenitore dei documenti, equivalente a una tabella in SQL. A differenza delle tabelle, non richiede uno schema: ogni documento nella stessa collezione può avere campi completamente diversi.</p>
 <h3>Operazioni sulle collezioni</h3>
 <div class="example">
-<div class="codehead"><span>Gestione collezioni</span></div>
+<div class="codehead"><span>Gestione collezioni</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Crea collezione implicitamente
 db.articoli.insertOne({ titolo: "Primo articolo" })
 
@@ -402,7 +421,7 @@ db.posts.drop()</code></pre>
 <h3>Capped Collections</h3>
 <p>Le <strong>capped collections</strong> hanno dimensione fissa: quando piena, sovrascrive i documenti più vecchi (circolare). Perfette per log e dati temporali.</p>
 <div class="example">
-<div class="codehead"><span>Capped collection per log</span></div>
+<div class="codehead"><span>Capped collection per log</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">db.createCollection("access_log", {
   capped: true,
   size: 5242880,  // 5 MB
@@ -418,7 +437,7 @@ db.access_log.insertOne({
 </div>
 <h3>Time Series Collections</h3>
 <div class="example">
-<div class="codehead"><span>Time Series (MongoDB 5.0+)</span></div>
+<div class="codehead"><span>Time Series (MongoDB 5.0+)</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Ottimizzate per dati temporali (IoT, metriche)
 db.createCollection("temperatura", {
   timeseries: {
@@ -442,7 +461,7 @@ db.temperatura.insertOne({
 <p>Per inserire documenti in una collezione si usano <code class="inline">insertOne()</code> (un documento) e <code class="inline">insertMany()</code> (array di documenti). Entrambi restituiscono i nuovi <code class="inline">_id</code> generati.</p>
 <h3>insertOne()</h3>
 <div class="example">
-<div class="codehead"><span>Inserisci un documento</span></div>
+<div class="codehead"><span>Inserisci un documento</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Inserisce un singolo documento
 const result = db.prodotti.insertOne({
   nome: "Smartphone XZ",
@@ -463,7 +482,7 @@ print(result.insertedId)  // ObjectId("64a1...")</code></pre>
 </div>
 <h3>insertMany()</h3>
 <div class="example">
-<div class="codehead"><span>Inserisci più documenti</span></div>
+<div class="codehead"><span>Inserisci più documenti</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Inserisce un array di documenti
 const result = db.studenti.insertMany([
   { nome: "Anna",  voto: 28, corso: "Informatica" },
@@ -478,7 +497,7 @@ print(result.insertedIds)    // { 0: ObjectId, 1: ObjectId, ... }</code></pre>
 </div>
 <h3>Ordered vs Unordered Insert</h3>
 <div class="example">
-<div class="codehead"><span>Insert non ordinato (più performante)</span></div>
+<div class="codehead"><span>Insert non ordinato (più performante)</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Per default insertMany è "ordered": si ferma al primo errore
 // Con ordered:false continua anche in caso di errori parziali
 db.prodotti.insertMany(
@@ -492,7 +511,7 @@ db.prodotti.insertMany(
 </div>
 <h3>_id personalizzato</h3>
 <div class="example">
-<div class="codehead"><span>Usare _id custom</span></div>
+<div class="codehead"><span>Usare _id custom</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Puoi usare qualsiasi valore come _id
 db.paesi.insertMany([
   { _id: "IT", nome: "Italia",   capitale: "Roma"   },
@@ -511,7 +530,7 @@ db.paesi.findOne({ _id: "IT" })</code></pre>
 <p>I metodi <code class="inline">find()</code> e <code class="inline">findOne()</code> sono usati per interrogare i documenti. Il primo argomento è il <strong>filtro</strong> (oggetto query), il secondo è la <strong>projection</strong> (campi da includere/escludere).</p>
 <h3>Find base</h3>
 <div class="example">
-<div class="codehead"><span>find() e findOne()</span></div>
+<div class="codehead"><span>find() e findOne()</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Tutti i documenti
 db.prodotti.find()
 
@@ -539,7 +558,7 @@ db.prodotti.find({ categorie: "elettronica" })</code></pre>
 <tr><td><code>$nin</code></td><td>Non in un insieme</td><td><code>{ stato: { $nin: ["banned","deleted"] } }</code></td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Esempi con operatori di confronto</span></div>
+<div class="codehead"><span>Esempi con operatori di confronto</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Prodotti tra 50 e 200 euro
 db.prodotti.find({ prezzo: { $gte: 50, $lte: 200 } })
 
@@ -554,7 +573,7 @@ db.utenti.find({ stato: { $nin: ["eliminato", "bannato"] } })</code></pre>
 </div>
 <h3>Operatori logici</h3>
 <div class="example">
-<div class="codehead"><span>$and, $or, $not, $nor</span></div>
+<div class="codehead"><span>$and, $or, $not, $nor</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $and implicito (default con più campi)
 db.prodotti.find({ disponibile: true, prezzo: { $lt: 100 } })
 
@@ -581,7 +600,7 @@ db.prodotti.find({ prezzo: { $not: { $gt: 1000 } } })</code></pre>
 <p>Per modificare documenti si usano <code class="inline">updateOne()</code>, <code class="inline">updateMany()</code> e <code class="inline">replaceOne()</code>. Le modifiche si specificano con <strong>update operators</strong> che iniziano con <code class="inline">$</code>.</p>
 <h3>updateOne() e updateMany()</h3>
 <div class="example">
-<div class="codehead"><span>Aggiorna documenti</span></div>
+<div class="codehead"><span>Aggiorna documenti</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// updateOne — modifica il primo documento che matcha
 db.prodotti.updateOne(
   { nome: "Laptop Pro" },          // filtro
@@ -599,7 +618,7 @@ db.prodotti.updateMany(
 </div>
 <h3>Operatori $set, $unset, $inc</h3>
 <div class="example">
-<div class="codehead"><span>Operatori di update comuni</span></div>
+<div class="codehead"><span>Operatori di update comuni</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $set — imposta il valore di un campo
 db.utenti.updateOne(
   { email: "mario@example.com" },
@@ -623,7 +642,7 @@ db.utenti.updateMany({}, { $rename: { "nome": "firstName" } })</code></pre>
 </div>
 <h3>upsert — aggiorna o inserisci</h3>
 <div class="example">
-<div class="codehead"><span>upsert: true</span></div>
+<div class="codehead"><span>upsert: true</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Se il documento non esiste lo crea (insert + update)
 db.impostazioni.updateOne(
   { chiave: "tema" },
@@ -633,7 +652,7 @@ db.impostazioni.updateOne(
 </div>
 <h3>replaceOne()</h3>
 <div class="example">
-<div class="codehead"><span>Sostituisci un documento intero</span></div>
+<div class="codehead"><span>Sostituisci un documento intero</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Sostituisce l'INTERO documento (mantiene solo _id)
 db.prodotti.replaceOne(
   { _id: ObjectId("64a1...") },
@@ -652,7 +671,7 @@ db.prodotti.replaceOne(
         <h2>MongoDB — Delete</h2>
 <p>Per eliminare documenti si usano <code class="inline">deleteOne()</code> (il primo match) e <code class="inline">deleteMany()</code> (tutti i match). Usa sempre un filtro preciso in produzione per evitare eliminazioni accidentali.</p>
 <div class="example">
-<div class="codehead"><span>deleteOne() e deleteMany()</span></div>
+<div class="codehead"><span>deleteOne() e deleteMany()</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Elimina il primo documento che matcha
 db.prodotti.deleteOne({ nome: "Prodotto Obsoleto" })
 
@@ -670,7 +689,7 @@ db.temp_data.deleteMany({})
 </div>
 <h3>findOneAndDelete()</h3>
 <div class="example">
-<div class="codehead"><span>Cancella e restituisce il documento</span></div>
+<div class="codehead"><span>Cancella e restituisce il documento</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Elimina e restituisce il documento eliminato in una sola operazione
 const eliminato = db.sessioni.findOneAndDelete(
   { scaduta: true },
@@ -681,7 +700,7 @@ print(eliminato)  // il documento eliminato</code></pre>
 </div>
 <h3>Svuotare una collezione vs eliminarla</h3>
 <div class="example">
-<div class="codehead"><span>Drop vs deleteMany</span></div>
+<div class="codehead"><span>Drop vs deleteMany</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Elimina tutti i documenti (mantiene la collezione e gli indici)
 db.cache.deleteMany({})
 
@@ -697,7 +716,7 @@ db.cache.drop()</code></pre>
 <p>Gli <strong>operatori di query</strong> permettono di costruire filtri complessi: confronti, logica booleana, ricerca in array, espressioni regolari e molto altro.</p>
 <h3>Operatori su elementi</h3>
 <div class="example">
-<div class="codehead"><span>$exists, $type</span></div>
+<div class="codehead"><span>$exists, $type</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $exists — il campo esiste
 db.utenti.find({ telefono: { $exists: true } })
 db.utenti.find({ telefono: { $exists: false } })
@@ -709,7 +728,7 @@ db.dati.find({ valore: { $type: ["string", "null"] } })</code></pre>
 </div>
 <h3>Operatori su array</h3>
 <div class="example">
-<div class="codehead"><span>$all, $elemMatch, $size</span></div>
+<div class="codehead"><span>$all, $elemMatch, $size</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $all — contiene TUTTI gli elementi specificati
 db.prodotti.find({ tags: { $all: ["sale", "nuovo"] } })
 
@@ -726,7 +745,7 @@ db.studenti.find({ "voti.0": { $gte: 27 } })</code></pre>
 </div>
 <h3>Operatori di valutazione</h3>
 <div class="example">
-<div class="codehead"><span>$regex, $expr, $where</span></div>
+<div class="codehead"><span>$regex, $expr, $where</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $regex — espressione regolare (case-insensitive con $options)
 db.prodotti.find({ nome: { $regex: "phone", $options: "i" } })
 db.utenti.find({ email: { $regex: "@gmail\.com$" } })
@@ -741,7 +760,7 @@ db.numeri.find({ valore: { $mod: [4, 0] } })  // multipli di 4</code></pre>
 </div>
 <h3>Operatori geospaziali (cenni)</h3>
 <div class="example">
-<div class="codehead"><span>Query geospaziali</span></div>
+<div class="codehead"><span>Query geospaziali</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Crea indice 2dsphere per coordinate GPS
 db.ristoranti.createIndex({ posizione: "2dsphere" })
 
@@ -773,7 +792,7 @@ db.ristoranti.find({
 <tr><td><code>$setOnInsert</code></td><td>Imposta valore solo in caso di upsert insert</td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Operatori su campi — esempi</span></div>
+<div class="codehead"><span>Operatori su campi — esempi</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $mul — moltiplica
 db.prodotti.updateMany({ saldo: true }, { $mul: { prezzo: 0.9 } })  // -10%
 
@@ -801,7 +820,7 @@ db.ordini.updateOne(
 <tr><td><code>$slice</code></td><td>Mantiene solo gli ultimi N elementi</td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Operatori su array — esempi</span></div>
+<div class="codehead"><span>Operatori su array — esempi</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// $push — aggiunge tag
 db.articoli.updateOne(
   { _id: id },
@@ -841,7 +860,7 @@ db.sessioni.updateOne(
 <p>L'<strong>Aggregation Pipeline</strong> è la funzionalità più potente di MongoDB: permette di trasformare e analizzare documenti attraverso una sequenza di <strong>stage</strong> (fasi), ognuna con un compito specifico.</p>
 <h3>Struttura della pipeline</h3>
 <div class="example">
-<div class="codehead"><span>Struttura base della pipeline</span></div>
+<div class="codehead"><span>Struttura base della pipeline</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// La pipeline è un array di stage
 db.collezione.aggregate([
   { $match: /* filtro */ },
@@ -866,7 +885,7 @@ db.collezione.aggregate([
 <tr><td><code>$facet</code></td><td>Pipeline multiple in parallelo</td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Aggregazione — vendite per categoria</span></div>
+<div class="codehead"><span>Aggregazione — vendite per categoria</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">db.ordini.aggregate([
   // Stage 1: filtra solo ordini completati
   { $match: { stato: "completato" } },
@@ -894,7 +913,7 @@ db.collezione.aggregate([
 </div>
 <h3>$lookup — JOIN tra collezioni</h3>
 <div class="example">
-<div class="codehead"><span>$lookup (equivalente JOIN)</span></div>
+<div class="codehead"><span>$lookup (equivalente JOIN)</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Unisce utenti con i loro ordini
 db.utenti.aggregate([
   {
@@ -911,7 +930,7 @@ db.utenti.aggregate([
 </div>
 <h3>$unwind — espandi array</h3>
 <div class="example">
-<div class="codehead"><span>$unwind</span></div>
+<div class="codehead"><span>$unwind</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Ogni prodotto di ogni ordine diventa un documento separato
 db.ordini.aggregate([
   { $unwind: "$prodotti" },
@@ -941,7 +960,7 @@ db.ordini.aggregate([
 <tr><td><code>TTL</code></td><td>Scadenza automatica dei documenti</td></tr>
 </tbody></table>
 <div class="example">
-<div class="codehead"><span>Creare e gestire indici</span></div>
+<div class="codehead"><span>Creare e gestire indici</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Indice singolo campo (1 = asc, -1 = desc)
 db.utenti.createIndex({ email: 1 })
 
@@ -968,7 +987,7 @@ db.utenti.dropIndex({ email: 1 })</code></pre>
 </div>
 <h3>EXPLAIN — analizza le query</h3>
 <div class="example">
-<div class="codehead"><span>explain() per ottimizzare</span></div>
+<div class="codehead"><span>explain() per ottimizzare</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Analizza come MongoDB esegue la query
 db.prodotti.find({ categoria: "elettronica" }).explain("executionStats")
 
@@ -977,7 +996,7 @@ db.prodotti.find({ categoria: "elettronica" }).explain("executionStats")
 </div>
 <h3>Atlas Search — full-text avanzato</h3>
 <div class="example">
-<div class="codehead"><span>Ricerca full-text con Atlas Search</span></div>
+<div class="codehead"><span>Ricerca full-text con Atlas Search</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Con Atlas Search (solo MongoDB Atlas)
 db.articoli.aggregate([
   {
@@ -1002,7 +1021,7 @@ db.articoli.aggregate([
 <p>MongoDB è schemaless per natura, ma puoi definire <strong>schema validation</strong> per imporre regole sui documenti: tipi obbligatori, valori consentiti, range numerici. Si usa il formato <strong>JSON Schema</strong>.</p>
 <h3>Aggiungere validation a una collezione</h3>
 <div class="example">
-<div class="codehead"><span>JSON Schema Validation</span></div>
+<div class="codehead"><span>JSON Schema Validation</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">db.createCollection("utenti", {
   validator: {
     $jsonSchema: {
@@ -1039,7 +1058,7 @@ db.articoli.aggregate([
 </div>
 <h3>Aggiornare la validation esistente</h3>
 <div class="example">
-<div class="codehead"><span>collMod — modifica validazione</span></div>
+<div class="codehead"><span>collMod — modifica validazione</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Aggiorna la validazione di una collezione esistente
 db.runCommand({
   collMod: "utenti",
@@ -1079,7 +1098,7 @@ db.runCommand({
 <ul><li>In Atlas, vai su <strong>App Services</strong> → <strong>Data API</strong></li><li>Abilita la Data API per il cluster desiderato</li><li>Genera una <strong>API Key</strong> dalla scheda Auth</li><li>Usa l'endpoint base: <code class="inline">https://data.mongodb-api.com/app/&lt;app-id&gt;/endpoint/data/v1</code></li></ul>
 <h3>Operazioni via HTTP</h3>
 <div class="example">
-<div class="codehead"><span>Find — HTTP POST</span></div>
+<div class="codehead"><span>Find — HTTP POST</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Trova documenti via REST
 fetch("https://data.mongodb-api.com/app/APP-ID/endpoint/data/v1/action/find", {
   method: "POST",
@@ -1101,7 +1120,7 @@ fetch("https://data.mongodb-api.com/app/APP-ID/endpoint/data/v1/action/find", {
 .then(data =&gt; console.log(data.documents))</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>InsertOne via REST</span></div>
+<div class="codehead"><span>InsertOne via REST</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">fetch(".../action/insertOne", {
   method: "POST",
   headers: { "Content-Type": "application/json", "api-key": "KEY" },
@@ -1119,7 +1138,7 @@ fetch("https://data.mongodb-api.com/app/APP-ID/endpoint/data/v1/action/find", {
 })</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>UpdateOne via REST</span></div>
+<div class="codehead"><span>UpdateOne via REST</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">fetch(".../action/updateOne", {
   method: "POST",
   headers: { "Content-Type": "application/json", "api-key": "KEY" },
@@ -1150,7 +1169,7 @@ fetch("https://data.mongodb-api.com/app/APP-ID/endpoint/data/v1/action/find", {
 </tbody></table>
 <h3>Python — PyMongo</h3>
 <div class="example">
-<div class="codehead"><span>PyMongo — operazioni base</span></div>
+<div class="codehead"><span>PyMongo — operazioni base</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from pymongo import MongoClient
 from datetime import datetime
 
@@ -1176,7 +1195,7 @@ client.close()</code></pre>
 </div>
 <h3>C# — MongoDB.Driver</h3>
 <div class="example">
-<div class="codehead"><span>C# Driver — operazioni base</span></div>
+<div class="codehead"><span>C# Driver — operazioni base</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-csharp">using MongoDB.Driver;
 using MongoDB.Bson;
 
@@ -1207,7 +1226,7 @@ await col.UpdateOneAsync(
 <p>Il driver Node.js ufficiale di MongoDB è <code class="inline">mongodb</code>. È la base di <strong>Mongoose</strong> (ODM più popolare) ma può essere usato direttamente per massime performance e controllo.</p>
 <h3>Installazione e connessione</h3>
 <div class="example">
-<div class="codehead"><span>Setup con Node.js</span></div>
+<div class="codehead"><span>Setup con Node.js</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Installazione
 // npm install mongodb
 
@@ -1238,7 +1257,7 @@ main().finally(() =&gt; client.close())</code></pre>
 </div>
 <h3>Mongoose — ODM per Node.js</h3>
 <div class="example">
-<div class="codehead"><span>Mongoose — Schema e Model</span></div>
+<div class="codehead"><span>Mongoose — Schema e Model</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// npm install mongoose
 const mongoose = require("mongoose")
 
@@ -1275,7 +1294,7 @@ const economici = await Prodotto.find({ prezzo: { $lt: 200 } })
 </div>
 <h3>Transazioni (sessioni ACID)</h3>
 <div class="example">
-<div class="codehead"><span>Transazioni multi-documento</span></div>
+<div class="codehead"><span>Transazioni multi-documento</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// Le transazioni garantiscono atomicità su più collezioni
 const session = client.startSession()
 try {
@@ -1311,7 +1330,7 @@ try {
 <ul><li><strong>Bar / Column</strong> — confronto categorie</li><li><strong>Line / Area</strong> — serie temporali e trend</li><li><strong>Scatter / Bubble</strong> — correlazione tra variabili</li><li><strong>Heatmap</strong> — distribuzione su griglia</li><li><strong>Geo Map</strong> — dati geospaziali su mappa</li><li><strong>Donut / Pie</strong> — proporzioni</li><li><strong>Table</strong> — dati tabulari</li><li><strong>Number</strong> — KPI singolo valore</li><li><strong>Word Cloud</strong> — frequenza di termini testuali</li></ul>
 <h3>Creare un grafico in Atlas</h3>
 <div class="example">
-<div class="codehead"><span>Pipeline di aggregazione per Charts</span></div>
+<div class="codehead"><span>Pipeline di aggregazione per Charts</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-javascript">// MongoDB Charts esegue aggregations automaticamente,
 // ma puoi anche inserire pipeline personalizzate.
 
@@ -1331,7 +1350,7 @@ try {
 </div>
 <h3>Embedding di Charts in app esterne</h3>
 <div class="example">
-<div class="codehead"><span>Embed un grafico Charts via SDK</span></div>
+<div class="codehead"><span>Embed un grafico Charts via SDK</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-html">&lt;!-- Aggiungi lo script SDK --&gt;
 &lt;script src="https://charts.mongodb.com/charts-project/embeddings/charts-sdk.umd.min.js"&gt;&lt;/script&gt;
 
@@ -1408,6 +1427,24 @@ chart.setFilter({ citta: "Milano" })
   </div>
 </section>
 
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — leggi e modifica il codice MongoDB</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note MongoDB"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -1426,5 +1463,63 @@ chart.setFilter({ citta: "Milano" })
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = null;
+
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
+        + '<h3 style="margin:0 0 .6rem;color:#1e293b">🌿 Comandi MongoDB</h3>'
+        + '<p>I comandi MongoDB vengono eseguiti nella <b>MongoDB Shell</b> (<code>mongosh</code>) '
+        + 'oppure tramite il driver del tuo linguaggio (Node.js, Python, ecc.).</p>'
+        + '<p>Puoi <b>leggere e modificare</b> i comandi qui con la sintassi colorata, '
+        + 'poi copiarli in <b>mongosh</b> o in <b>MongoDB Compass</b> per eseguirli.</p>'
+        + '<p style="color:#64748b;font-size:.9rem">💡 Suggerimento: puoi anche usare '
+        + '<b>MongoDB Atlas</b> (cloud gratuito) per testare le query online senza installare nulla.</p>'
+        + '</body>';
+    }
+
+    function ensureCM(mode){
+      if (!cm && window.CodeMirror) {
+        try {
+          cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+            mode: mode || 'javascript', lineNumbers: true, lineWrapping: false,
+            tabSize: 2, indentUnit: 2, theme: 'default'
+          });
+        } catch(e){ cm = null; }
+      }
+    }
+
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code, mode){
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      ensureCM(mode);
+      if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
+      else { document.getElementById('ed-code').value = code; }
+      note();
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeEl) return;
+      var raw = codeEl.textContent;
+      // Scegli il modo CodeMirror in base al linguaggio
+      var cls = codeEl.className || '';
+      var mode = cls.indexOf('bash') > -1 ? 'shell' : 'javascript';
+      var btn = ex.querySelector('.btn-try');
+      if (btn) btn.addEventListener('click', function(){ openEditor(raw, mode); });
+    });
+  })();
+</script>
 </body>
 </html>
