@@ -64,6 +64,8 @@
     .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
     .ed-close { background: #e2e8f0; color: #334155; }
     .ed-close:hover { background: #cbd5e1; }
+    .ed-run { background: #04AA6D; color: #fff; }
+    .ed-run:hover { background: #038a59; }
     .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
     .code-editor { flex: 1; overflow: hidden; }
     .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
@@ -687,16 +689,17 @@ print(f&quot;Distanza: {dist:.3f}&quot;)</code></pre>
 <div id="editor" class="editor-overlay">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>&#x270F;&#xFE0F; Provalo tu &mdash; leggi e modifica il codice SciPy</strong>
+      <strong>&#x270F;&#xFE0F; Provalo tu &mdash; scrivi ed esegui Python (SciPy)</strong>
       <div class="ed-actions">
-        <button id="ed-close" class="ed-btn ed-close">&times; Chiudi</button>
+        <button class="ed-btn ed-run" id="ed-run">&#x25B6; Esegui</button>
+        <button class="ed-btn ed-close" id="ed-close">&times; Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
-      <div class="code-editor"><textarea id="ed-code"></textarea></div>
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">NOTE</div>
-        <iframe id="ed-preview" sandbox="allow-scripts"></iframe>
+        <div class="preview-label">Risultato</div>
+        <iframe id="ed-preview" title="Output del codice Python"></iframe>
       </div>
     </div>
   </div>
@@ -710,60 +713,104 @@ print(f&quot;Distanza: {dist:.3f}&quot;)</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
-    var cm = null;
 
-    function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#e2e8f0;padding:1.4rem;line-height:1.6;background:#1e293b">'
-        + '<h3 style="margin:0 0 .6rem;color:#ffffff">&#x1F52C; Codice SciPy</h3>'
-        + '<p>Il codice SciPy viene eseguito in <b>Python</b>. Assicurati di avere SciPy '
-        + 'installato con <code>pip install scipy</code> (richiede anche NumPy).</p>'
-        + '<p>Puoi <b>leggere e modificare</b> il codice qui con la sintassi colorata, '
-        + 'poi eseguirlo nel tuo ambiente Python, in un <b>Jupyter Notebook</b> o in <b>VS Code</b>.</p>'
-        + '<p style="color:#cbd5e1;font-size:.9rem">&#x1F4A1; Suggerimento: puoi provare il codice online '
-        + 'con <b>Google Colab</b> o <b>JupyterLite</b> senza installare nulla.</p>'
-        + '</body>';
+    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+      mode: 'python', lineNumbers: true, lineWrapping: false,
+      tabSize: 4, indentUnit: 4, theme: 'default'
+    });
+
+    var pyodide = null, pyLoading = false, pkgsLoaded = false;
+
+    function shell(body){
+      return '<body style="margin:0;font-family:Consolas,Monaco,monospace;font-size:.9rem;'
+        + 'line-height:1.55;background:#1e293b;color:#e2e8f0;padding:1.1rem;white-space:pre-wrap">'
+        + body + '</body>';
+    }
+    function escapeHtml(s){
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    function ensureCM(mode){
-      if (!cm && window.CodeMirror) {
+    async function ensurePyodide(){
+      if (pyodide && pkgsLoaded) return pyodide;
+      pyLoading = true;
+      if (!pyodide) {
+        preview.srcdoc = shell('<span style="color:#7dd3fc">\u23F3 Avvio dell\'interprete Python e caricamento di NumPy/SciPy in corso\u2026</span>\n<span style="color:#94a3b8">(solo la prima volta, pu\u00f2 richiedere qualche secondo)</span>');
+        pyodide = await loadPyodide();
+      }
+      if (!pkgsLoaded) {
+        await pyodide.loadPackage(['numpy','scipy']);
+        pkgsLoaded = true;
+      }
+      pyLoading = false;
+      return pyodide;
+    }
+
+    async function run(){
+      if (pyLoading) return;
+      var code = cm.getValue();
+      try {
+        var py = await ensurePyodide();
+        py.globals.set('__js_prompt', function(msg){ return window.prompt(msg || '') || ''; });
+        await py.runPythonAsync(
+          'import builtins, sys, io\n' +
+          'builtins.input = lambda prompt="": __js_prompt(prompt)\n' +
+          '__buf = io.StringIO()\n' +
+          'sys.stdout = __buf\n' +
+          'sys.stderr = __buf\n'
+        );
         try {
-          cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-            mode: mode || 'python', lineNumbers: true, lineWrapping: false,
-            tabSize: 4, indentUnit: 4, theme: 'default', readOnly: true
-          });
-        } catch(e){ cm = null; }
+          await py.runPythonAsync(code);
+        } catch (err) {
+          await py.runPythonAsync('import traceback; print(traceback.format_exc())');
+        }
+        var out = py.runPython('__buf.getvalue()');
+        await py.runPythonAsync('sys.stdout = sys.__stdout__\nsys.stderr = sys.__stderr__');
+        preview.srcdoc = shell(out ? escapeHtml(out)
+          : '<span style="color:#94a3b8">(nessun output \u2014 usa print() per mostrare un risultato)</span>');
+      } catch (e) {
+        preview.srcdoc = shell('<span style="color:#fca5a5">Errore: ' + escapeHtml(String(e)) + '</span>');
       }
     }
 
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
-    function openEditor(code, mode){
+    function openEditor(code){
       overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
       document.body.classList.add('editor-open');
+      document.body.style.overflow = 'hidden';
       document.addEventListener('touchmove', preventTouch, {passive:false});
-      ensureCM(mode);
-      if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
-      else { document.getElementById('ed-code').value = code; }
-      note();
+      cm.setValue(code);
+      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
+      preview.srcdoc = shell('<span style="color:#94a3b8">Premi \u25B6 Esegui (in alto) per lanciare il codice Python.</span>');
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
 
+    document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEditor(); });
+
+    function dedent(text){
+      var lines = text.split('\n'), min = Infinity;
+      for (var i = 1; i < lines.length; i++){
+        if (!lines[i].trim()) continue;
+        var m = lines[i].match(/^ */)[0].length;
+        if (m < min) min = m;
+      }
+      if (min === Infinity || min === 0) return lines.join('\n');
+      for (var j = 1; j < lines.length; j++){ lines[j] = lines[j].slice(min); }
+      return lines.join('\n');
+    }
 
     document.querySelectorAll('.example').forEach(function(ex){
       var btn = ex.querySelector('.btn-try');
       if (!btn) return;
       btn.addEventListener('click', function(){
         var codeEl = ex.querySelector('code');
-        var code = codeEl ? codeEl.textContent : '';
-        var lang = codeEl && codeEl.className.indexOf('bash') !== -1 ? 'shell' : 'python';
-        openEditor(code, lang);
+        openEditor(dedent(codeEl ? codeEl.textContent : ''));
       });
     });
   })();
