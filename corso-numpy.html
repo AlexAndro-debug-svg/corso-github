@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso NumPy in italiano completo e gratuito — array, broadcasting, random e ufunc | AlessandroSimone.it</title>
+  <meta name="description" content="Corso NumPy completo in italiano: ndarray, indexing, slicing, reshape, broadcasting, random, distribuzioni statistiche e universal functions. Tutorial gratuito con esempi pratici.">
+  <meta name="keywords" content="corso numpy italiano, numpy tutorial italiano, imparare numpy, numpy array, numpy broadcasting, numpy random, numpy ufunc, data science python, calcolo scientifico python">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso NumPy in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara NumPy da zero in italiano: array N-dimensionali, broadcasting, random, distribuzioni e universal functions. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.builtin { color: #fb923c; }
+    .codeview .token.decorator { color: #f472b6; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: 1px solid #334155; }
+    @media (max-width: 700px){ .example div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: none; border-top: 1px solid #334155; } }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-numpy.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-numpy.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso NumPy in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial NumPy completo in italiano: array, broadcasting, random, distribuzioni e ufunc. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso NumPy in italiano","description":"Corso NumPy italiano completo e gratuito: ndarray, indexing, slicing, reshape, broadcasting, random, distribuzioni statistiche e universal functions.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-numpy.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html" class="active">NUMPY</a>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="course-wrap">
+      <aside class="course-side">
+        <h4>NumPy Tutorial</h4>
+<a href="#home">NumPy Home</a>
+<a href="#intro">Introduzione</a>
+<a href="#install">Installazione</a>
+<a href="#arrays">Creare Array</a>
+<a href="#indexing">Indicizzazione</a>
+<a href="#slicing">Slicing</a>
+<a href="#dtypes">Tipi di dato</a>
+<a href="#copyview">Copy vs View</a>
+<a href="#shape">Shape</a>
+<a href="#reshape">Reshape</a>
+<a href="#iterate">Iterazione</a>
+<a href="#join">Join e Split</a>
+<a href="#search">Ricerca e Ordinamento</a>
+<a href="#filter">Filtro</a>
+<h4>NumPy Random</h4>
+<a href="#random">Numeri casuali</a>
+<a href="#distributions">Distribuzioni</a>
+<h4>NumPy ufunc</h4>
+<a href="#ufunc">Universal Functions</a>
+<a href="#arith">Aritmetica</a>
+<a href="#mathfunc">Funzioni matematiche</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+      </aside>
+      <main>
+        <article class="lesson" id="home">
+<h2>NumPy — Guida completa in italiano</h2>
+<p><strong>NumPy</strong> (Numerical Python) è la libreria fondamentale per il calcolo scientifico in Python. Fornisce array multidimensionali ad alte prestazioni e una grande collezione di funzioni matematiche per operare su di essi.</p>
+<p>È la base di tutto l'ecosistema scientifico Python: <strong>Pandas</strong>, <strong>Matplotlib</strong>, <strong>SciPy</strong> e <strong>Scikit-learn</strong> sono tutti costruiti sopra NumPy.</p>
+<table class="ref">
+<tr><th>Caratteristica</th><th>Python list</th><th>NumPy array</th></tr>
+<tr><td>Velocità</td><td>Lenta (oggetti Python)</td><td>Molto veloce (C sotto)</td></tr>
+<tr><td>Memoria</td><td>Elevata</td><td>Compatta e contigua</td></tr>
+<tr><td>Operazioni vettoriali</td><td>Richiede cicli</td><td>Broadcast nativo</td></tr>
+<tr><td>Tipo dati</td><td>Misto</td><td>Omogeneo</td></tr>
+<tr><td>Dimensioni</td><td>Solo 1D (di fatto)</td><td>nD (matrici, tensori)</td></tr>
+</table>
+<div class="note-box">💡 NumPy è il punto di partenza per <strong>Data Science</strong>, <strong>Machine Learning</strong> e <strong>analisi numerica</strong> con Python.</div>
+</article>
+<article class="lesson" id="intro">
+<h2>Introduzione a NumPy</h2>
+<p>Un <strong>array NumPy</strong> (chiamato <code class="inline">ndarray</code>) è una tabella di elementi dello stesso tipo, indicizzata da una tupla di interi non negativi. Il numero di dimensioni è detto <strong>rank</strong>; la forma (shape) è una tupla che indica la dimensione di ogni asse.</p>
+<div class="example">
+<div class="codehead"><span>Il tuo primo array NumPy</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Array 1D (vettore)
+a = np.array([1, 2, 3, 4, 5])
+print(a)          # [1 2 3 4 5]
+print(type(a))    # &lt;class &#x27;numpy.ndarray&#x27;&gt;
+print(a.dtype)    # int64
+print(a.shape)    # (5,)
+print(a.ndim)     # 1
+
+# Array 2D (matrice)
+m = np.array([[1, 2, 3],
+              [4, 5, 6]])
+print(m.shape)    # (2, 3)
+print(m.ndim)     # 2</code></pre>
+</div>
+<h3>Attributi principali di ndarray</h3>
+<table class="ref">
+<tr><th>Attributo</th><th>Descrizione</th><th>Esempio</th></tr>
+<tr><td><code class="inline">ndim</code></td><td>Numero di dimensioni</td><td><code class="inline">a.ndim → 2</code></td></tr>
+<tr><td><code class="inline">shape</code></td><td>Forma (tupla)</td><td><code class="inline">a.shape → (3, 4)</code></td></tr>
+<tr><td><code class="inline">size</code></td><td>Numero totale di elementi</td><td><code class="inline">a.size → 12</code></td></tr>
+<tr><td><code class="inline">dtype</code></td><td>Tipo di dato degli elementi</td><td><code class="inline">a.dtype → float64</code></td></tr>
+<tr><td><code class="inline">itemsize</code></td><td>Byte per elemento</td><td><code class="inline">a.itemsize → 8</code></td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Array 0D, 1D, 2D, 3D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a0 = np.array(42)              # 0D (scalare)
+a1 = np.array([1, 2, 3])       # 1D (vettore)
+a2 = np.array([[1,2],[3,4]])   # 2D (matrice)
+a3 = np.array([[[1,2],[3,4]],  # 3D (tensore)
+               [[5,6],[7,8]]])
+
+print(a0.ndim, a1.ndim, a2.ndim, a3.ndim)  # 0 1 2 3</code></pre>
+</div>
+</article>
+<article class="lesson" id="install">
+<h2>Installazione e importazione</h2>
+<p>NumPy viene incluso automaticamente in distribuzioni come Anaconda. Se stai usando Python puro, installalo con pip:</p>
+<div class="example">
+<div class="codehead"><span>Installazione</span></div>
+<pre class="codeview"><code class="language-bash"># Nel terminale
+pip install numpy
+
+# In un notebook Jupyter
+!pip install numpy</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Importazione standard</span></div>
+<pre class="codeview"><code class="language-python"># Convenzione universale: importa numpy come np
+import numpy as np
+
+# Verifica versione
+print(np.__version__)   # es. 1.26.4</code></pre>
+</div>
+<div class="note-box">💡 L'alias <code class="inline">np</code> è una convenzione adottata da tutti. Usarla ti permette di leggere qualsiasi codice NumPy trovato online.</div>
+<h3>NumPy vs Python puro — velocità</h3>
+<div class="example">
+<div class="codehead"><span>Benchmark: somma di 1 milione di numeri</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+import time
+
+n = 1_000_000
+
+# Python list
+lst = list(range(n))
+t0 = time.time()
+s = sum(lst)
+print(f&quot;Python list:  {(time.time()-t0)*1000:.2f} ms&quot;)
+
+# NumPy array
+arr = np.arange(n)
+t0 = time.time()
+s = arr.sum()
+print(f&quot;NumPy array:  {(time.time()-t0)*1000:.2f} ms&quot;)
+# NumPy è tipicamente 10-100x più veloce</code></pre>
+</div>
+</article>
+<article class="lesson" id="arrays">
+<h2>Creare Array</h2>
+<p>NumPy offre molte funzioni per creare array senza digitare ogni elemento.</p>
+<h3>Funzioni di creazione principali</h3>
+<div class="example">
+<div class="codehead"><span>Array da lista / tuple</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Da lista Python
+a = np.array([1, 2, 3])
+
+# Specificando il tipo
+b = np.array([1.0, 2.0, 3.0], dtype=np.float32)
+
+# Da tupla
+c = np.array((10, 20, 30))</code></pre>
+</div><div class="example">
+<div class="codehead"><span>np.zeros, np.ones, np.full</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+z = np.zeros((3, 4))          # matrice 3x4 di zeri float64
+o = np.ones((2, 3))           # matrice 2x3 di uni float64
+f = np.full((2, 2), 7)        # matrice 2x2 riempita con 7
+e = np.empty((3, 3))          # non inizializzato (valori casuali)
+i = np.eye(3)                 # matrice identità 3x3
+
+print(z)
+print(f)
+print(i)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>np.arange e np.linspace</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# arange: come range() ma restituisce array
+a = np.arange(0, 10, 2)       # [0 2 4 6 8]
+b = np.arange(1.0, 2.0, 0.1)  # [1.0 1.1 1.2 ... 1.9]
+
+# linspace: n punti equidistanti tra start e stop
+c = np.linspace(0, 1, 5)      # [0.   0.25 0.5  0.75 1.  ]
+d = np.linspace(0, 10, 100)   # 100 punti tra 0 e 10
+
+print(a)
+print(c)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Array casuali</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Float uniformi in [0, 1)
+r1 = np.random.rand(3, 4)
+
+# Interi casuali
+r2 = np.random.randint(0, 100, size=(3, 3))
+
+# Distribuzione normale (media=0, std=1)
+r3 = np.random.randn(5)
+
+print(r2)</code></pre>
+</div>
+<table class="ref">
+<tr><th>Funzione</th><th>Descrizione</th></tr>
+<tr><td><code class="inline">np.zeros(shape)</code></td><td>Array di zeri</td></tr>
+<tr><td><code class="inline">np.ones(shape)</code></td><td>Array di uni</td></tr>
+<tr><td><code class="inline">np.full(shape, val)</code></td><td>Array riempito con val</td></tr>
+<tr><td><code class="inline">np.eye(n)</code></td><td>Matrice identità n×n</td></tr>
+<tr><td><code class="inline">np.arange(start, stop, step)</code></td><td>Sequenza con passo</td></tr>
+<tr><td><code class="inline">np.linspace(start, stop, n)</code></td><td>n punti equidistanti</td></tr>
+<tr><td><code class="inline">np.random.rand(shape)</code></td><td>Float casuali [0,1)</td></tr>
+<tr><td><code class="inline">np.random.randint(low, high, size)</code></td><td>Interi casuali</td></tr>
+</table>
+</article>
+<article class="lesson" id="indexing">
+<h2>Indicizzazione degli Array</h2>
+<p>L'indicizzazione NumPy parte da 0. Puoi usare indici negativi per accedere agli elementi dalla fine.</p>
+<div class="example">
+<div class="codehead"><span>Indicizzazione 1D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([10, 20, 30, 40, 50])
+
+print(a[0])   # 10  — primo elemento
+print(a[-1])  # 50  — ultimo elemento
+print(a[-2])  # 40  — penultimo
+
+# Modifica
+a[2] = 99
+print(a)      # [10 20 99 40 50]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Indicizzazione 2D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+m = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+
+print(m[0, 0])  # 1   — riga 0, col 0
+print(m[1, 2])  # 6   — riga 1, col 2
+print(m[-1, 1]) # 8   — ultima riga, col 1
+
+# Seleziona tutta la riga 1
+print(m[1])     # [4 5 6]
+
+# Seleziona tutta la colonna 0
+print(m[:, 0])  # [1 4 7]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Indicizzazione fancy (array di indici)</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([10, 20, 30, 40, 50])
+
+# Seleziona elementi agli indici [0, 2, 4]
+idx = [0, 2, 4]
+print(a[idx])   # [10 30 50]
+
+# Utile per riordinare
+print(a[[4, 3, 2, 1, 0]])  # [50 40 30 20 10]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Indicizzazione booleana</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([5, 10, 15, 20, 25])
+
+mask = a &gt; 12
+print(mask)     # [False False  True  True  True]
+print(a[mask])  # [15 20 25]
+
+# In un passaggio solo
+print(a[a % 10 == 0])  # [10 20]</code></pre>
+</div>
+<div class="tip-box">🎯 <strong>Indicizzazione booleana</strong>: è il modo più idiomatico per filtrare dati in NumPy e Pandas. Usala spesso!</div>
+</article>
+<article class="lesson" id="slicing">
+<h2>Slicing degli Array</h2>
+<p>La sintassi di slicing è <code class="inline">[start:stop:step]</code>. Come in Python, <code class="inline">stop</code> è escluso.</p>
+<div class="example">
+<div class="codehead"><span>Slicing 1D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([0, 10, 20, 30, 40, 50, 60])
+
+print(a[1:4])     # [10 20 30]   — indici 1,2,3
+print(a[:3])      # [ 0 10 20]   — primi 3
+print(a[4:])      # [40 50 60]   — dal 4° in poi
+print(a[::2])     # [ 0 20 40 60] — ogni 2
+print(a[::-1])    # [60 50 40 30 20 10  0] — invertito</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Slicing 2D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+m = np.array([[1, 2, 3, 4],
+              [5, 6, 7, 8],
+              [9,10,11,12]])
+
+# Sottomatrice: righe 0:2, colonne 1:3
+print(m[0:2, 1:3])
+# [[2 3]
+#  [6 7]]
+
+# Tutte le righe, colonne pari
+print(m[:, ::2])
+# [[ 1  3]
+#  [ 5  7]
+#  [ 9 11]]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Importante: lo slice è una VIEW</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+s = a[1:4]        # s è una VIEW di a
+
+s[0] = 99         # modifica anche a!
+print(a)          # [ 1 99  3  4  5]
+
+# Per avere una copia indipendente usa .copy()
+s2 = a[1:4].copy()
+s2[0] = 0
+print(a)          # invariato</code></pre>
+</div>
+<div class="warn-box">⚠️ <strong>Attenzione</strong>: lo slicing NumPy restituisce una <em>view</em>, non una copia! Modificare la slice modifica l'array originale. Usa <code class="inline">.copy()</code> se vuoi dati indipendenti.</div>
+</article>
+<article class="lesson" id="dtypes">
+<h2>Tipi di dato (dtype)</h2>
+<p>Ogni array NumPy ha un tipo di dato omogeneo (<code class="inline">dtype</code>) che determina quanta memoria occupa ogni elemento e come viene interpretato.</p>
+<table class="ref">
+<tr><th>dtype</th><th>Descrizione</th><th>Byte</th></tr>
+<tr><td><code class="inline">int8, int16, int32, int64</code></td><td>Interi con segno</td><td>1, 2, 4, 8</td></tr>
+<tr><td><code class="inline">uint8, uint16, uint32, uint64</code></td><td>Interi senza segno</td><td>1, 2, 4, 8</td></tr>
+<tr><td><code class="inline">float16, float32, float64</code></td><td>Virgola mobile</td><td>2, 4, 8</td></tr>
+<tr><td><code class="inline">complex64, complex128</code></td><td>Numeri complessi</td><td>8, 16</td></tr>
+<tr><td><code class="inline">bool</code></td><td>Booleano</td><td>1</td></tr>
+<tr><td><code class="inline">object</code></td><td>Oggetto Python</td><td>variabile</td></tr>
+<tr><td><code class="inline">str_</code></td><td>Stringa Unicode fissa</td><td>variabile</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Specificare e controllare dtype</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3], dtype=np.float32)
+print(a.dtype)    # float32
+print(a.itemsize) # 4
+
+b = np.array([1.7, 2.9, 3.1], dtype=np.int32)
+print(b)          # [1 2 3] — troncato!
+
+# Creare con tipo specifico
+z = np.zeros((3, 3), dtype=np.uint8)
+print(z.dtype)    # uint8</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Conversione con astype</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1.6, 2.7, 3.9])
+print(a.dtype)    # float64
+
+b = a.astype(int)         # tronca la parte decimale
+print(b)          # [1 2 3]
+print(b.dtype)    # int64 (o int32 su Windows)
+
+c = b.astype(str)
+print(c)          # [&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27;]
+print(c.dtype)    # &lt;U21</code></pre>
+</div>
+<div class="note-box">💡 Per il Machine Learning usa <code class="inline">float32</code> invece di <code class="inline">float64</code>: dimezza la memoria e accelera i calcoli su GPU, con perdita trascurabile di precisione.</div>
+</article>
+<article class="lesson" id="copyview">
+<h2>Copy vs View</h2>
+<p>Capire la differenza tra copia e vista è fondamentale per evitare bug silenziosi in NumPy.</p>
+<div class="example">
+<div class="codehead"><span>View: le modifiche si propagano</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">Codice</div>
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-python">import numpy as np
+
+orig = np.array([1, 2, 3, 4, 5])
+vista = orig.view()
+
+print(vista.base is orig)  # True — condivide i dati
+
+vista[0] = 99
+print(orig)   # [99  2  3  4  5]  ← modificato!</code></pre>
+</div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">Copia: dati indipendenti</div>
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-python">import numpy as np
+
+orig = np.array([1, 2, 3, 4, 5])
+copia = orig.copy()
+
+print(copia.base is None)  # True — copia indipendente
+
+copia[0] = 99
+print(orig)   # [1 2 3 4 5]  ← invariato
+print(copia)  # [99  2  3  4  5]</code></pre>
+</div>
+</div>
+</div><div class="example">
+<div class="codehead"><span>Come verificare</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3])
+
+# slice → view
+s = a[1:]
+print(s.base is a)   # True  → è una view
+
+# copy() → copia
+c = a.copy()
+print(c.base is None) # True  → è una copia
+
+# reshape può restituire view o copia
+r = a.reshape(3, 1)
+print(r.base is a)    # True  → view (reshape preferisce view)</code></pre>
+</div>
+<div class="tip-box">🎯 <strong>Regola pratica</strong>: usa <code class="inline">.copy()</code> ogni volta che vuoi modificare un sottoarray senza toccare l'originale. Se non sei sicuro, verifica con <code class="inline">array.base</code>.</div>
+</article>
+<article class="lesson" id="shape">
+<h2>Shape e dimensioni</h2>
+<p>La <strong>shape</strong> di un array è una tupla che descrive il numero di elementi in ogni dimensione.</p>
+<div class="example">
+<div class="codehead"><span>Leggere e modificare shape</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+print(a.shape)    # (2, 3)  — 2 righe, 3 colonne
+print(a.ndim)     # 2
+print(a.size)     # 6
+
+# Modificare la shape (cambia la forma, non i dati)
+a.shape = (3, 2)
+print(a)
+# [[1 2]
+#  [3 4]
+#  [5 6]]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>np.squeeze e np.expand_dims</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# expand_dims: aggiunge un asse
+a = np.array([1, 2, 3])       # shape (3,)
+b = np.expand_dims(a, axis=0) # shape (1, 3)
+c = np.expand_dims(a, axis=1) # shape (3, 1)
+print(b.shape, c.shape)       # (1, 3) (3, 1)
+
+# squeeze: rimuove assi di dimensione 1
+d = np.array([[[1, 2, 3]]])   # shape (1, 1, 3)
+e = np.squeeze(d)
+print(e.shape)                # (3,)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Confronto tra forme diverse</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# shape (3,) — 1D
+v = np.array([1, 2, 3])
+
+# shape (1, 3) — riga
+row = v[np.newaxis, :]
+print(row.shape)   # (1, 3)
+
+# shape (3, 1) — colonna
+col = v[:, np.newaxis]
+print(col.shape)   # (3, 1)
+
+# Utile per il broadcasting
+print(col + row)
+# [[2 3 4]
+#  [3 4 5]
+#  [4 5 6]]</code></pre>
+</div>
+</article>
+<article class="lesson" id="reshape">
+<h2>Reshape — rimodellare gli Array</h2>
+<p><code class="inline">reshape()</code> cambia la forma di un array mantenendo gli stessi dati. Il numero totale di elementi deve rimanere invariato.</p>
+<div class="example">
+<div class="codehead"><span>Reshape di base</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.arange(12)       # [0 1 2 ... 11]
+print(a.shape)          # (12,)
+
+# Da 1D a 2D
+b = a.reshape(3, 4)
+print(b)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
+
+# Da 1D a 3D
+c = a.reshape(2, 2, 3)
+print(c.shape)          # (2, 2, 3)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Il valore -1 (calcolo automatico)</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.arange(24)
+
+# -1 lascia che NumPy calcoli quella dimensione
+b = a.reshape(4, -1)    # NumPy calcola 24/4 = 6
+print(b.shape)          # (4, 6)
+
+c = a.reshape(-1, 6)    # NumPy calcola 24/6 = 4
+print(c.shape)          # (4, 6)
+
+# Appiattire un array multidimensionale
+m = np.array([[1,2,3],[4,5,6]])
+flat = m.reshape(-1)    # stesso di m.flatten() ma è view
+print(flat)             # [1 2 3 4 5 6]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>flatten vs ravel</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+m = np.array([[1,2,3],[4,5,6]])
+
+# flatten() → restituisce sempre una COPIA 1D
+f = m.flatten()
+f[0] = 99
+print(m[0,0])  # 1 — invariato
+
+# ravel() → restituisce VIEW se possibile
+r = m.ravel()
+r[0] = 99
+print(m[0,0])  # 99 — modificato!</code></pre>
+</div>
+<div class="note-box">💡 Il Machine Learning usa <code class="inline">reshape(-1, 1)</code> o <code class="inline">reshape(1, -1)</code> continuamente per adattare i vettori alle API di Scikit-learn.</div>
+</article>
+<article class="lesson" id="iterate">
+<h2>Iterazione sugli Array</h2>
+<p>Iterare su array NumPy con cicli Python è lento. Quando possibile, usa le operazioni vettorizzate. Quando devi iterare, conosci gli strumenti giusti.</p>
+<div class="example">
+<div class="codehead"><span>Iterazione di base</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3, 4])
+
+# 1D: itera sugli elementi
+for x in a:
+    print(x)
+
+# 2D: itera sulle righe
+m = np.array([[1,2,3],[4,5,6]])
+for row in m:
+    print(row)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>np.nditer — iteratore universale</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+m = np.array([[1,2,3],[4,5,6]])
+
+# Itera su tutti gli elementi (ordine C, riga per riga)
+for x in np.nditer(m):
+    print(x, end=&#x27; &#x27;)
+# 1 2 3 4 5 6
+
+# Con indice
+for idx, x in np.ndenumerate(m):
+    print(idx, x)
+# (0,0) 1  (0,1) 2  (0,2) 3 ...</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Meglio: operazioni vettorizzate</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.arange(1_000_000, dtype=float)
+
+# Lento (ciclo Python)
+# for i in range(len(a)): a[i] = a[i] ** 2
+
+# Veloce (operazione vettorizzata)
+b = a ** 2           # tutto in C, senza cicli
+c = np.sqrt(a)       # radice quadrata
+d = np.where(a &gt; 500_000, 1, 0)  # condizionale</code></pre>
+</div>
+<div class="tip-box">🎯 <strong>Regola d'oro NumPy</strong>: se ti ritrovi a scrivere un <code class="inline">for</code> su un array NumPy, fermati e chiediti se esiste un'operazione vettorizzata equivalente. Quasi sempre esiste.</div>
+</article>
+<article class="lesson" id="join">
+<h2>Join e Split degli Array</h2>
+<h3>Concatenare array</h3>
+<div class="example">
+<div class="codehead"><span>np.concatenate</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+# 1D
+c = np.concatenate([a, b])
+print(c)  # [1 2 3 4 5 6]
+
+# 2D: axis=0 (lungo le righe)
+m1 = np.array([[1,2],[3,4]])
+m2 = np.array([[5,6],[7,8]])
+print(np.concatenate([m1, m2], axis=0))
+# [[1 2]
+#  [3 4]
+#  [5 6]
+#  [7 8]]
+
+# axis=1 (lungo le colonne)
+print(np.concatenate([m1, m2], axis=1))
+# [[1 2 5 6]
+#  [3 4 7 8]]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>np.stack, np.vstack, np.hstack</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+# stack: crea un nuovo asse
+print(np.stack([a, b]))         # shape (2, 3)
+print(np.stack([a, b], axis=1)) # shape (3, 2)
+
+# vstack: impila verticalmente
+print(np.vstack([a, b]))        # shape (2, 3)
+
+# hstack: impila orizzontalmente
+print(np.hstack([a, b]))        # shape (6,)</code></pre>
+</div>
+<h3>Dividere array</h3>
+<div class="example">
+<div class="codehead"><span>np.split, np.hsplit, np.vsplit</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.arange(12)
+
+# split in 3 parti uguali
+parti = np.split(a, 3)
+print(parti)  # [array([0,1,2,3]), array([4,5,6,7]), ...]
+
+# split in posizioni specifiche
+parti2 = np.split(a, [3, 7])  # split a indice 3 e 7
+print(parti2)
+
+# Matrice
+m = np.arange(16).reshape(4, 4)
+righe = np.vsplit(m, 2)    # 2 metà orizzontali
+cols  = np.hsplit(m, 2)    # 2 metà verticali</code></pre>
+</div>
+</article>
+<article class="lesson" id="search">
+<h2>Ricerca e Ordinamento</h2>
+<h3>Ricerca</h3>
+<div class="example">
+<div class="codehead"><span>np.where e np.searchsorted</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 8, 3, 7, 2, 9, 4])
+
+# Dove la condizione è vera → restituisce tupla di indici
+idx = np.where(a &gt; 5)
+print(idx)        # (array([1, 3, 5]),)
+print(a[idx])     # [8 7 9]
+
+# Sostituisce elementi: where(cond, val_se_vero, val_se_falso)
+b = np.where(a &gt; 5, a, 0)
+print(b)          # [0 8 0 7 0 9 0]
+
+# searchsorted: posizione di inserimento in array ordinato
+s = np.array([10, 20, 30, 40, 50])
+pos = np.searchsorted(s, 25)
+print(pos)        # 2  (inserire prima di indice 2)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>argmax, argmin, argsort</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([5, 3, 8, 1, 9, 2])
+
+print(np.argmax(a))  # 4 — indice del max (9)
+print(np.argmin(a))  # 3 — indice del min (1)
+print(np.max(a))     # 9
+print(np.min(a))     # 1
+
+# argsort: indici che ordinerebbero l&#x27;array
+idx_sort = np.argsort(a)
+print(idx_sort)      # [3 5 1 0 2 4]
+print(a[idx_sort])   # [1 2 3 5 8 9]</code></pre>
+</div>
+<h3>Ordinamento</h3>
+<div class="example">
+<div class="codehead"><span>np.sort</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([5, 3, 8, 1, 9, 2])
+
+# sort() restituisce una COPIA ordinata
+print(np.sort(a))    # [1 2 3 5 8 9]
+print(a)             # [5 3 8 1 9 2] — invariato
+
+# a.sort() ordina IN-PLACE
+a.sort()
+print(a)             # [1 2 3 5 8 9]
+
+# Ordinamento 2D (axis=0: colonne, axis=1: righe)
+m = np.array([[3,2,1],[6,5,4]])
+print(np.sort(m, axis=1))   # ordina ogni riga
+# [[1 2 3]
+#  [4 5 6]]</code></pre>
+</div>
+</article>
+<article class="lesson" id="filter">
+<h2>Filtro degli Array</h2>
+<p>Filtrare significa selezionare elementi che soddisfano una condizione. NumPy offre due approcci: indicizzazione booleana e <code class="inline">np.where</code>.</p>
+<div class="example">
+<div class="codehead"><span>Filtro con maschera booleana</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([10, 15, 20, 25, 30, 35, 40])
+
+# Crea maschera
+maschera = a &gt; 22
+print(maschera)   # [False False False  True  True  True  True]
+
+# Applica maschera
+filtrato = a[maschera]
+print(filtrato)   # [25 30 35 40]
+
+# In un passaggio solo
+print(a[a % 10 == 0])   # [10 20 30 40]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Filtro con np.where</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([10, -5, 20, -3, 15, -8, 30])
+
+# Dove negativo, metti 0
+b = np.where(a &lt; 0, 0, a)
+print(b)   # [10  0 20  0 15  0 30]
+
+# Sostituisci con valore alternativo
+c = np.where(a &gt; 0, a, -a)   # valore assoluto!
+print(c)   # [10  5 20  3 15  8 30]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Broadcasting e filtro combinato</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+prezzi = np.array([9.99, 24.99, 5.50, 49.99, 12.00, 3.99])
+vendite = np.array([100, 45, 200, 20, 80, 300])
+
+# Revenue per prodotto
+revenue = prezzi * vendite
+
+# Prodotti con revenue &gt; 1000
+print(prezzi[revenue &gt; 1000])
+# [ 9.99  5.5   3.99]
+
+# Statistiche su sottoinsieme
+alto = vendite[vendite &gt; 100]
+print(f&quot;Media vendite alte: {alto.mean():.1f}&quot;)</code></pre>
+</div>
+<div class="note-box">💡 Queste tecniche di filtro sono identiche a come funzionano i <strong>filtri su Series e DataFrame in Pandas</strong>. Padroneggiare NumPy rende Pandas molto più intuitivo.</div>
+</article>
+<article class="lesson" id="random">
+<h2>NumPy Random — Numeri casuali</h2>
+<p>Il modulo <code class="inline">numpy.random</code> (e la nuova API <code class="inline">numpy.random.Generator</code>) offre generatori di numeri pseudo-casuali molto più efficienti di quelli del modulo <code class="inline">random</code> di Python.</p>
+<div class="example">
+<div class="codehead"><span>API moderna: np.random.default_rng()</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Seed → risultati riproducibili
+rng = np.random.default_rng(seed=42)
+
+# Float in [0, 1)
+r = rng.random(5)
+print(r)
+
+# Interi
+i = rng.integers(0, 100, size=10)
+print(i)
+
+# Scelta casuale
+scelte = rng.choice([&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;], size=5)
+print(scelte)
+
+# Permutazione
+a = np.arange(10)
+rng.shuffle(a)
+print(a)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>API classica (ancora usata)</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+np.random.seed(42)            # riproducibilità
+
+r1 = np.random.rand(3, 3)    # float uniformi [0,1)
+r2 = np.random.randn(3, 3)   # normale standard
+r3 = np.random.randint(1, 7, size=10)  # dado a 6 facce
+
+print(&quot;Dado:&quot;, r3)
+
+# Campionamento senza sostituzione
+pop = np.arange(100)
+campione = np.random.choice(pop, size=10, replace=False)
+print(&quot;Campione:&quot;, campione)</code></pre>
+</div>
+</article>
+<article class="lesson" id="distributions">
+<h2>Distribuzioni statistiche</h2>
+<p>NumPy permette di campionare da distribuzioni di probabilità fondamentali, utili per simulazioni, test e inizializzazione di modelli ML.</p>
+<table class="ref">
+<tr><th>Distribuzione</th><th>Funzione</th><th>Parametri</th><th>Uso tipico</th></tr>
+<tr><td>Normale (Gaussiana)</td><td><code class="inline">rng.normal()</code></td><td>loc, scale, size</td><td>Rumori, pesi ML</td></tr>
+<tr><td>Uniforme</td><td><code class="inline">rng.uniform()</code></td><td>low, high, size</td><td>Inizializzazione</td></tr>
+<tr><td>Binomiale</td><td><code class="inline">rng.binomial()</code></td><td>n, p, size</td><td>Esperimenti sì/no</td></tr>
+<tr><td>Poisson</td><td><code class="inline">rng.poisson()</code></td><td>lam, size</td><td>Conteggi rari</td></tr>
+<tr><td>Esponenziale</td><td><code class="inline">rng.exponential()</code></td><td>scale, size</td><td>Tempi di attesa</td></tr>
+<tr><td>Chi-quadrato</td><td><code class="inline">rng.chisquare()</code></td><td>df, size</td><td>Test statistici</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Distribuzione normale</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+rng = np.random.default_rng(0)
+
+# media=170, dev.std=10 — altezze simulate
+altezze = rng.normal(loc=170, scale=10, size=1000)
+
+print(f&quot;Media:  {altezze.mean():.2f} cm&quot;)
+print(f&quot;Std:    {altezze.std():.2f} cm&quot;)
+print(f&quot;Min:    {altezze.min():.2f} cm&quot;)
+print(f&quot;Max:    {altezze.max():.2f} cm&quot;)
+
+# ~68% tra 160 e 180
+in_range = ((altezze &gt;= 160) &amp; (altezze &lt;= 180)).sum()
+print(f&quot;Tra 160-180: {in_range/10:.1f}%&quot;)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Binomiale, Poisson, Esponenziale</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+rng = np.random.default_rng(1)
+
+# Binomiale: 10 lanci di moneta, p=0.5 — quante teste?
+moneta = rng.binomial(n=10, p=0.5, size=100)
+print(&quot;Teste medie:&quot;, moneta.mean())   # ≈ 5
+
+# Poisson: media 3 email/ora
+email = rng.poisson(lam=3, size=1000)
+print(&quot;Email medie:&quot;, email.mean())    # ≈ 3
+
+# Esponenziale: tempo tra chiamate (media 5 min)
+tempi = rng.exponential(scale=5, size=500)
+print(&quot;Attesa media:&quot;, tempi.mean(), &quot;min&quot;)  # ≈ 5</code></pre>
+</div>
+</article>
+<article class="lesson" id="ufunc">
+<h2>Universal Functions (ufunc)</h2>
+<p>Le <strong>ufunc</strong> (Universal Functions) sono funzioni NumPy che operano <em>elemento per elemento</em> su array, usando codice C compilato. Sono la ragione principale per cui NumPy è così veloce.</p>
+<p>Ogni operazione aritmetica come <code class="inline">a + b</code> è in realtà una chiamata a una ufunc (<code class="inline">np.add(a, b)</code>).</p>
+<div class="example">
+<div class="codehead"><span>ufunc di base</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1, 4, 9, 16, 25])
+
+print(np.sqrt(a))    # [1. 2. 3. 4. 5.]
+print(np.square(a))  # [  1  16  81 256 625]
+print(np.abs(np.array([-1, -2, 3])))  # [1 2 3]
+print(np.log(a))     # logaritmo naturale
+print(np.log10(a))   # logaritmo base 10
+print(np.exp(np.array([0, 1, 2])))  # [1. 2.718 7.389]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Creare una ufunc personalizzata</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Funzione Python normale
+def aggiungi_n(a, b):
+    return a + b
+
+# Convertila in ufunc
+ufunc_add = np.frompyfunc(aggiungi_n, 2, 1)
+
+a = np.array([1, 2, 3])
+b = np.array([10, 20, 30])
+print(ufunc_add(a, b))   # [11 22 33]
+
+# Più utile per funzioni custom complesse
+def clip_e_normalizza(x):
+    return max(0, min(1, x))
+
+vfunc = np.vectorize(clip_e_normalizza)
+print(vfunc(np.array([-0.5, 0.3, 1.2, 0.8])))
+# [0.  0.3 1.  0.8]</code></pre>
+</div>
+<div class="note-box">💡 <code class="inline">np.vectorize</code> è comoda ma non vera ufunc (non è più veloce dei cicli Python). Per performance usa le ufunc native NumPy o scrivi estensioni C/Cython.</div>
+</article>
+<article class="lesson" id="arith">
+<h2>Aritmetica e Broadcasting</h2>
+<p>Le operazioni aritmetica sono applicate elemento per elemento. Il <strong>broadcasting</strong> permette operazioni tra array di forma diversa seguendo regole precise.</p>
+<div class="example">
+<div class="codehead"><span>Operazioni elemento per elemento</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([10, 20, 30])
+b = np.array([1, 2, 3])
+
+print(a + b)     # [11 22 33]
+print(a - b)     # [ 9 18 27]
+print(a * b)     # [10 40 90]
+print(a / b)     # [10. 10. 10.]
+print(a // b)    # [10 10 10]  — divisione intera
+print(a % b)     # [0 0 0]     — modulo
+print(a ** 2)    # [100 400 900]
+print(np.add(a, b))       # equivalente a a + b
+print(np.multiply(a, b))  # equivalente a a * b</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Broadcasting</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+# Scalare x array
+a = np.array([1, 2, 3, 4])
+print(a * 10)    # [10 20 30 40]
+
+# (3,) + (3,1) → (3,3)
+v = np.array([1, 2, 3])
+col = np.array([[10], [20], [30]])
+print(v + col)
+# [[11 12 13]
+#  [21 22 23]
+#  [31 32 33]]
+
+# Pratico: centrare i dati (zero-mean)
+dati = np.array([[1.,2.,3.],[4.,5.,6.]])
+media = dati.mean(axis=0)   # shape (3,)
+centrati = dati - media     # broadcasting (2,3) - (3,)
+print(centrati)</code></pre>
+</div>
+<div class="tip-box">🎯 <strong>Regola broadcasting</strong>: due dimensioni sono compatibili se sono uguali, oppure una di esse è 1. NumPy "espande" il lato con 1 per far combaciare le forme.</div>
+<div class="example">
+<div class="codehead"><span>Prodotto tra matrici</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Prodotto elemento per elemento (NON prodotto matriciale)
+print(A * B)
+# [[ 5 12]
+#  [21 32]]
+
+# Prodotto matriciale (dot product)
+print(A @ B)          # oppure np.dot(A, B)
+# [[19 22]
+#  [43 50]]
+
+# Trasposta
+print(A.T)
+# [[1 3]
+#  [2 4]]</code></pre>
+</div>
+</article>
+<article class="lesson" id="mathfunc">
+<h2>Funzioni matematiche e statistiche</h2>
+<p>NumPy include decine di funzioni per somme, medie, varianze, round e molto altro.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni di aggregazione</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+m = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]], dtype=float)
+
+print(m.sum())           # 45.0  — somma totale
+print(m.sum(axis=0))     # [ 12.  15.  18.] — somma colonne
+print(m.sum(axis=1))     # [ 6.  15.  24.] — somma righe
+print(m.mean())          # 5.0
+print(m.mean(axis=0))    # [4. 5. 6.]
+print(m.std())           # deviazione standard
+print(m.var())           # varianza
+print(m.min(), m.max())  # 1.0  9.0
+print(m.cumsum())        # somma cumulativa</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Arrotondamento e trigonometria</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+a = np.array([1.234, 2.567, 3.891])
+
+print(np.round(a, 1))    # [1.2 2.6 3.9]
+print(np.floor(a))       # [1. 2. 3.]
+print(np.ceil(a))        # [2. 3. 4.]
+print(np.trunc(a))       # [1. 2. 3.]
+
+# Trigonometria (angoli in radianti)
+angoli = np.array([0, np.pi/6, np.pi/4, np.pi/3, np.pi/2])
+print(np.sin(angoli).round(4))
+print(np.cos(angoli).round(4))
+
+# Conversione gradi ↔ radianti
+gradi = np.array([0, 30, 45, 90, 180])
+print(np.radians(gradi))
+print(np.degrees(np.pi))  # 180.0</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Algebra lineare con np.linalg</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+A = np.array([[2., 1.],
+              [5., 3.]])
+
+# Determinante
+print(np.linalg.det(A))     # 1.0
+
+# Matrice inversa
+inv = np.linalg.inv(A)
+print(inv)
+print(A @ inv)              # ≈ matrice identità
+
+# Risolvi Ax = b
+b = np.array([4., 7.])
+x = np.linalg.solve(A, b)
+print(x)                    # soluzione del sistema
+
+# Autovalori e autovettori
+vals, vecs = np.linalg.eig(A)
+print(&quot;Autovalori:&quot;, vals)</code></pre>
+</div>
+</article>
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 1 — Statistiche su dati reali</span>
+<p>Crea un array NumPy con 50 temperature simulate (distribuzione normale, media=20°C, std=5°C). Calcola: media, mediana, deviazione standard, percentuale di valori sotto i 15°C e sopra i 25°C.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+rng = np.random.default_rng(42)
+temp = rng.normal(loc=20, scale=5, size=50)
+
+print(f&quot;Media:    {temp.mean():.2f} °C&quot;)
+print(f&quot;Mediana:  {np.median(temp):.2f} °C&quot;)
+print(f&quot;Std:      {temp.std():.2f} °C&quot;)
+print(f&quot;&lt; 15°C:   {(temp &lt; 15).sum()} ({(temp &lt; 15).mean()*100:.1f}%)&quot;)
+print(f&quot;&gt; 25°C:   {(temp &gt; 25).sum()} ({(temp &gt; 25).mean()*100:.1f}%)&quot;)</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 2 — Moltiplicazione di matrici</span>
+<p>Crea due matrici 3×3 con valori interi casuali tra 1 e 10. Calcola il loro prodotto matriciale, la trasposta del risultato e verifica che <code class="inline">(AB)ᵀ = BᵀAᵀ</code>.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+rng = np.random.default_rng(7)
+A = rng.integers(1, 10, size=(3,3))
+B = rng.integers(1, 10, size=(3,3))
+
+AB = A @ B
+print(&quot;A @ B =&quot;)
+print(AB)
+
+ABt = AB.T
+BtAt = B.T @ A.T
+
+print(&quot;(AB)ᵀ == BᵀAᵀ:&quot;, np.array_equal(ABt, BtAt))  # True</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 3 — Normalizzazione Min-Max</span>
+<p>Dato un array 2D (5×4) con valori casuali, normalizza ogni colonna nell'intervallo [0, 1] usando la formula: <code class="inline">x_norm = (x - min) / (max - min)</code>. Verifica che ogni colonna abbia min=0 e max=1.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+
+rng = np.random.default_rng(99)
+X = rng.uniform(10, 100, size=(5, 4))
+
+col_min = X.min(axis=0)   # shape (4,)
+col_max = X.max(axis=0)   # shape (4,)
+
+X_norm = (X - col_min) / (col_max - col_min)
+
+print(&quot;Min per colonna:&quot;, X_norm.min(axis=0).round(10))
+print(&quot;Max per colonna:&quot;, X_norm.max(axis=0).round(10))
+# Tutti 0.0 e 1.0</code></pre>
+</div>
+</div>
+</article>
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Hai completato il corso NumPy! Ora conosci gli strumenti fondamentali per lavorare con dati numerici in Python ad alte prestazioni. Il passo naturale successivo è <strong>Pandas</strong>, che costruisce sopra NumPy per gestire dati tabulari e serie temporali.</p>
+<div class="note-box">
+<strong>Cosa hai imparato:</strong>
+<ul>
+<li>Creare e manipolare array N-dimensionali</li>
+<li>Indicizzazione, slicing e filtro booleano</li>
+<li>Tipi di dato, copy vs view, shape e reshape</li>
+<li>Generatori di numeri casuali e distribuzioni statistiche</li>
+<li>Universal functions, broadcasting e algebra lineare</li>
+</ul>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+<a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a>
+<a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a>
+<a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+</article>
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="font-size:1.2rem;font-weight:800;margin-bottom:.7rem">Alessandro<span style="color:var(--primary)">Simone</span>.it</div>
+        <p style="color:var(--muted);font-size:.93rem">Corsi di programmazione gratuiti in italiano. Impara a programmare da zero con guide pratiche ed esempi reali.</p>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Link rapidi</h4>
+        <a href="index.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Home</a>
+        <a href="corsi.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Corsi</a>
+        <a href="blog.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Blog</a>
+        <a href="chi-sono.html" style="display:block;color:var(--muted);font-size:.93rem">Chi sono</a>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Contatti</h4>
+        <a href="prenota.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">📅 Prenota una lezione</a>
+        <a href="contatti.html" style="display:block;color:var(--muted);font-size:.93rem">✉️ Contattami</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AlessandroSimone.it — Tutti i diritti riservati</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
