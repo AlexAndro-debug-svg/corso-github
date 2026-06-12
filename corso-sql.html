@@ -292,7 +292,7 @@
         <p>Con SQL puoi <strong>leggere</strong> dati (SELECT), <strong>inserirli</strong> (INSERT), <strong>modificarli</strong> (UPDATE), <strong>eliminarli</strong> (DELETE) e <strong>definire</strong> la struttura del database (CREATE, ALTER, DROP). È una competenza richiestissima per chi lavora con i dati, il web e le applicazioni.</p>
         <div class="note-box">💡 In questo corso puoi <strong>eseguire SQL reale direttamente nel browser</strong>. È già pronto un database di esempio con le tabelle <code class="inline">studenti</code> (id, nome, voto, classe, classe_id, citta) e <code class="inline">classi</code> (id, aula, classe). Ogni esecuzione riparte dai dati di esempio.</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT * FROM studenti;</script>
         </div>
@@ -310,7 +310,7 @@
           <tr><td><code class="inline">CREATE / ALTER / DROP</code></td><td>Gestisce le tabelle</td></tr>
         </table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">-- I commenti iniziano con due trattini
 SELECT nome, voto FROM studenti;</script>
@@ -321,7 +321,7 @@ SELECT nome, voto FROM studenti;</script>
         <h2>Leggere i dati: SELECT</h2>
         <p><code class="inline">SELECT</code> è il comando più usato: seleziona le colonne da una tabella. L'asterisco <code class="inline">*</code> indica “tutte le colonne”. Per scegliere colonne specifiche le elenchi separate da virgola.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT * FROM studenti;
 
@@ -333,7 +333,7 @@ SELECT nome, voto FROM studenti;</script>
         <h2>Valori unici: SELECT DISTINCT</h2>
         <p><code class="inline">SELECT DISTINCT</code> restituisce solo i valori <strong>diversi</strong>, eliminando i duplicati. Utile, ad esempio, per sapere quali classi o città compaiono nella tabella.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT DISTINCT classe FROM studenti;
 
@@ -345,7 +345,7 @@ SELECT DISTINCT citta FROM studenti;</script>
         <h2>Filtrare le righe: WHERE</h2>
         <p>La clausola <code class="inline">WHERE</code> filtra le righe in base a una condizione: vengono restituite solo quelle che la soddisfano.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto FROM studenti
 WHERE voto >= 8;
@@ -366,7 +366,7 @@ WHERE citta = 'Roma';</script>
           <tr><td><code class="inline">&gt;=</code> <code class="inline">&lt;=</code></td><td>Maggiore-uguale / minore-uguale</td></tr>
         </table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto FROM studenti
 WHERE voto <> 6;</script>
@@ -377,7 +377,7 @@ WHERE voto <> 6;</script>
         <h2>AND, OR e NOT</h2>
         <p>Puoi combinare più condizioni con <code class="inline">AND</code> (tutte vere), <code class="inline">OR</code> (almeno una vera) e <code class="inline">NOT</code> (negazione). Usa le parentesi per controllare la priorità.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT * FROM studenti
 WHERE voto >= 7 AND citta = 'Roma';
@@ -394,7 +394,7 @@ WHERE NOT citta = 'Roma';</script>
         <h2>Ordinare i risultati: ORDER BY</h2>
         <p><code class="inline">ORDER BY</code> ordina le righe in base a una o più colonne. <code class="inline">ASC</code> è crescente (predefinito), <code class="inline">DESC</code> decrescente.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto FROM studenti
 ORDER BY voto DESC;
@@ -408,7 +408,7 @@ ORDER BY classe ASC, voto DESC;</script>
         <h2>Inserire dati: INSERT INTO</h2>
         <p><code class="inline">INSERT INTO</code> aggiunge una nuova riga. Si specificano le colonne e poi i valori corrispondenti con <code class="inline">VALUES</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">INSERT INTO studenti (nome, voto, classe, classe_id, citta)
 VALUES ('Anna', 9, '3A', 1, 'Milano');
@@ -421,7 +421,7 @@ SELECT * FROM studenti;</script>
         <h2>I valori NULL</h2>
         <p><code class="inline">NULL</code> rappresenta un valore <strong>mancante o sconosciuto</strong>, diverso da 0 o dalla stringa vuota. Per testarlo si usa <code class="inline">IS NULL</code> o <code class="inline">IS NOT NULL</code> (mai <code class="inline">= NULL</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">INSERT INTO studenti (nome, voto, classe) VALUES ('Senza Citta', 7, '3B');
 
@@ -434,7 +434,7 @@ SELECT nome FROM studenti WHERE citta IS NOT NULL;</script>
         <h2>Modificare dati: UPDATE</h2>
         <p><code class="inline">UPDATE</code> modifica righe esistenti. <strong>Usa sempre WHERE</strong>: senza, modifichi tutte le righe della tabella!</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">UPDATE studenti
 SET voto = 10
@@ -448,7 +448,7 @@ SELECT nome, voto FROM studenti WHERE nome = 'Marco';</script>
         <h2>Cancellare dati: DELETE</h2>
         <p><code class="inline">DELETE</code> elimina righe. Anche qui il <code class="inline">WHERE</code> è fondamentale per non svuotare l'intera tabella.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">DELETE FROM studenti
 WHERE voto < 6;
@@ -461,7 +461,7 @@ SELECT * FROM studenti;</script>
         <h2>Limitare i risultati: LIMIT</h2>
         <p><code class="inline">LIMIT</code> restituisce solo un numero massimo di righe. È utile per le “top N” o per la paginazione. (In SQL Server si usa <code class="inline">TOP</code>, in Oracle <code class="inline">ROWNUM</code>.)</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto FROM studenti
 ORDER BY voto DESC
@@ -473,7 +473,7 @@ LIMIT 3;</script>
         <h2>MIN e MAX</h2>
         <p>Le funzioni <code class="inline">MIN()</code> e <code class="inline">MAX()</code> restituiscono il valore minimo e massimo di una colonna.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT MIN(voto) AS voto_minimo,
        MAX(voto) AS voto_massimo
@@ -485,7 +485,7 @@ FROM studenti;</script>
         <h2>COUNT, AVG e SUM</h2>
         <p>Le funzioni di aggregazione calcolano un valore su più righe: <code class="inline">COUNT()</code> conta, <code class="inline">AVG()</code> fa la media, <code class="inline">SUM()</code> somma.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT COUNT(*) AS totale_studenti FROM studenti;
 
@@ -499,7 +499,7 @@ SELECT SUM(voto) AS somma_voti FROM studenti;</script>
         <h2>Ricerche con LIKE</h2>
         <p><code class="inline">LIKE</code> cerca un pattern nel testo usando i caratteri jolly: <code class="inline">%</code> (qualsiasi sequenza) e <code class="inline">_</code> (un singolo carattere).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">-- Nomi che iniziano con 'M'
 SELECT nome FROM studenti WHERE nome LIKE 'M%';
@@ -513,7 +513,7 @@ SELECT nome FROM studenti WHERE nome LIKE '%ar%';</script>
         <h2>L'operatore IN</h2>
         <p><code class="inline">IN</code> verifica se un valore è presente in un elenco, in modo più compatto rispetto a tanti <code class="inline">OR</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, citta FROM studenti
 WHERE citta IN ('Roma', 'Milano');</script>
@@ -524,7 +524,7 @@ WHERE citta IN ('Roma', 'Milano');</script>
         <h2>L'operatore BETWEEN</h2>
         <p><code class="inline">BETWEEN</code> seleziona i valori in un intervallo (estremi inclusi). Funziona con numeri, testo e date.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto FROM studenti
 WHERE voto BETWEEN 7 AND 9;</script>
@@ -535,7 +535,7 @@ WHERE voto BETWEEN 7 AND 9;</script>
         <h2>Gli alias (AS)</h2>
         <p>Gli <strong>alias</strong> assegnano un nome temporaneo a una colonna o a una tabella con <code class="inline">AS</code>, rendendo i risultati più leggibili.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome AS studente,
        voto AS valutazione
@@ -548,7 +548,7 @@ FROM studenti;</script>
         <p>Il <code class="inline">JOIN</code> combina righe di due o più tabelle collegate da una colonna comune (di solito una chiave). Nel nostro database, <code class="inline">studenti.classe_id</code> punta a <code class="inline">classi.id</code>.</p>
         <div class="note-box">📊 Tabella <code class="inline">classi</code>: id, aula, classe. Es. (1, 'A12', '3A'), (2, 'B05', '3B').</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT studenti.nome, classi.aula
 FROM studenti
@@ -560,7 +560,7 @@ JOIN classi ON studenti.classe_id = classi.id;</script>
         <h2>INNER JOIN</h2>
         <p>L'<code class="inline">INNER JOIN</code> (il JOIN “standard”) restituisce solo le righe che hanno corrispondenza in <strong>entrambe</strong> le tabelle. Gli studenti senza una classe collegata vengono esclusi.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT s.nome, c.classe, c.aula
 FROM studenti AS s
@@ -572,7 +572,7 @@ INNER JOIN classi AS c ON s.classe_id = c.id;</script>
         <h2>LEFT JOIN</h2>
         <p>Il <code class="inline">LEFT JOIN</code> restituisce <strong>tutte</strong> le righe della tabella di sinistra, anche quelle senza corrispondenza a destra (riempite con NULL). Esistono anche <code class="inline">RIGHT JOIN</code> e <code class="inline">FULL JOIN</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT s.nome, c.aula
 FROM studenti AS s
@@ -584,7 +584,7 @@ LEFT JOIN classi AS c ON s.classe_id = c.id;</script>
         <h2>UNION</h2>
         <p><code class="inline">UNION</code> unisce i risultati di due SELECT (con lo stesso numero di colonne), eliminando i duplicati. <code class="inline">UNION ALL</code> li mantiene.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT citta FROM studenti WHERE voto >= 8
 UNION
@@ -596,7 +596,7 @@ SELECT citta FROM studenti WHERE classe = '3A';</script>
         <h2>Raggruppare: GROUP BY</h2>
         <p><code class="inline">GROUP BY</code> raggruppa le righe con lo stesso valore e permette di calcolare aggregati per gruppo (ad esempio la media voti per classe).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT classe,
        COUNT(*) AS quanti,
@@ -610,7 +610,7 @@ GROUP BY classe;</script>
         <h2>Filtrare i gruppi: HAVING</h2>
         <p><code class="inline">HAVING</code> filtra i gruppi creati da <code class="inline">GROUP BY</code> (mentre <code class="inline">WHERE</code> filtra le righe <em>prima</em> del raggruppamento). Serve per condizioni sugli aggregati.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT classe, AVG(voto) AS media
 FROM studenti
@@ -623,7 +623,7 @@ HAVING AVG(voto) >= 7;</script>
         <h2>Le subquery (query annidate)</h2>
         <p>Una <strong>subquery</strong> è una query dentro un'altra query. Si usa, ad esempio, per confrontare un valore con un risultato calcolato (come la media generale).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">-- Studenti con voto sopra la media
 SELECT nome, voto FROM studenti
@@ -637,7 +637,7 @@ WHERE voto > (SELECT AVG(voto) FROM studenti);</script>
         <h2>Creare una tabella: CREATE TABLE</h2>
         <p><code class="inline">CREATE TABLE</code> definisce una nuova tabella, le sue colonne e i tipi di dato (INTEGER, TEXT, REAL, VARCHAR, DATE...).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">CREATE TABLE prof (
   id INTEGER PRIMARY KEY,
@@ -662,7 +662,7 @@ SELECT * FROM prof;</script>
           <tr><td><code class="inline">FOREIGN KEY</code></td><td>Collega a un'altra tabella</td></tr>
         </table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">CREATE TABLE utenti (
   id INTEGER PRIMARY KEY,
@@ -679,7 +679,7 @@ SELECT * FROM utenti;</script>
         <h2>Modificare una tabella: ALTER TABLE</h2>
         <p><code class="inline">ALTER TABLE</code> cambia la struttura di una tabella esistente, ad esempio aggiungendo una colonna.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">ALTER TABLE studenti ADD COLUMN email TEXT;
 
@@ -693,7 +693,7 @@ SELECT nome, email FROM studenti;</script>
         <h2>Eliminare una tabella: DROP TABLE</h2>
         <p><code class="inline">DROP TABLE</code> elimina definitivamente una tabella e tutti i suoi dati. <code class="inline">TRUNCATE</code> invece svuota la tabella mantenendone la struttura. Attenzione: sono operazioni irreversibili!</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">CREATE TABLE temporanea (id INTEGER, nota TEXT);
 INSERT INTO temporanea VALUES (1, 'prova');
@@ -708,7 +708,7 @@ DROP TABLE temporanea;
         <h2>Le viste (VIEW)</h2>
         <p>Una <strong>vista</strong> è una “tabella virtuale” basata sul risultato di una query. Si crea con <code class="inline">CREATE VIEW</code> e si interroga come una normale tabella: utile per semplificare query complesse e riutilizzarle.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">CREATE VIEW bravi AS
 SELECT nome, voto FROM studenti WHERE voto >= 8;
@@ -721,7 +721,7 @@ SELECT * FROM bravi;</script>
         <h2>Gli indici (INDEX)</h2>
         <p>Un <strong>indice</strong> velocizza le ricerche su una colonna, un po' come l'indice analitico di un libro. Si crea con <code class="inline">CREATE INDEX</code>. Migliora le SELECT ma rallenta leggermente gli inserimenti: vanno usati con criterio sulle colonne più cercate.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">CREATE INDEX idx_citta ON studenti(citta);
 
@@ -735,7 +735,7 @@ SELECT nome FROM studenti WHERE citta = 'Roma';</script>
         <h2>SQL Funzioni di aggregazione</h2>
         <p>Le <strong>funzioni di aggregazione</strong> calcolano un singolo valore a partire da un insieme di righe: <code class="inline">COUNT()</code>, <code class="inline">SUM()</code>, <code class="inline">AVG()</code>, <code class="inline">MIN()</code> e <code class="inline">MAX()</code>. Sono la base dei report e delle statistiche su un database.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT COUNT(*) AS totale, AVG(voto) AS media, MAX(voto) AS migliore
 FROM studenti;</script>
@@ -755,7 +755,7 @@ FROM studenti;</script>
           </tbody>
         </table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome FROM studenti
 WHERE nome LIKE 'M%';</script>
@@ -827,7 +827,7 @@ WHERE voto &gt;= 6;</code></pre>
         <h2>SQL CASE</h2>
         <p>L'espressione <strong>CASE</strong> è l'equivalente dell'<em>if/else</em> in SQL: restituisce valori diversi a seconda delle condizioni. Perfetta per creare colonne calcolate.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT nome, voto,
   CASE
@@ -995,9 +995,9 @@ SELECT * FROM utenti WHERE nome = ? AND password = ?;</code></pre>
       <!-- ===== ESEMPI & PRATICA ===== -->
       <article class="lesson" id="esempi">
         <h2>Esempi SQL pronti da copiare</h2>
-        <p>Il modo migliore per imparare SQL è partire da <strong>query già funzionanti</strong>: copiale, aprile nell'editor “Prova tu” ed eseguile sul database di esempio. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
+        <p>Il modo migliore per imparare SQL è partire da <strong>query già funzionanti</strong>: copiale, aprile nell'editor “Provalo tu” ed eseguile sul database di esempio. Ogni esempio di questo corso è anche un piccolo esercizio.</p>
         <div class="example">
-          <div class="codehead"><span>Classifica per media voto</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Classifica per media voto</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-sql"></code></pre>
           <script type="text/plain" class="code">SELECT classe, AVG(voto) AS media
 FROM studenti
@@ -1007,10 +1007,10 @@ ORDER BY media DESC;</script>
       </article>
 
       <article class="lesson" id="editor-online">
-        <h2>Editor SQL online (Prova tu)</h2>
-        <p>Su questo corso hai un <strong>editor SQL online gratuito</strong> integrato, basato su SQLite: esegui query reali direttamente nel browser, senza installare nulla. Ogni esempio ha il pulsante <strong>“Prova tu ▶”</strong>.</p>
+        <h2>Editor SQL online (Provalo tu)</h2>
+        <p>Su questo corso hai un <strong>editor SQL online gratuito</strong> integrato, basato su SQLite: esegui query reali direttamente nel browser, senza installare nulla. Ogni esempio ha il pulsante <strong>“Provalo tu ▶”</strong>.</p>
         <ol class="lista-num">
-          <li>Clicca <strong>“Prova tu”</strong> su un esempio.</li>
+          <li>Clicca <strong>“Provalo tu”</strong> su un esempio.</li>
           <li>Modifica la query SQL nell'editor.</li>
           <li>Premi <strong>▶ Esegui</strong> e guarda subito la tabella dei risultati.</li>
         </ol>
@@ -1068,7 +1068,7 @@ FROM studenti
 GROUP BY classe
 HAVING COUNT(*) &gt; 1;</pre></details>
         </div>
-        <div class="tip-box">⭐ Esegui ogni soluzione nell'editor “Prova tu” e modificala: cambiare le condizioni è il modo migliore per capire come funziona SQL.</div>
+        <div class="tip-box">⭐ Esegui ogni soluzione nell'editor “Provalo tu” e modificala: cambiare le condizioni è il modo migliore per capire come funziona SQL.</div>
       </article>
 
       <article class="lesson" id="sfide">
@@ -1122,7 +1122,7 @@ HAVING COUNT(*) &gt; 1;</pre></details>
         <p>Un <strong>bootcamp SQL</strong> condensa la teoria nella pratica continua. Per imparare velocemente, alterna ogni argomento con una query da scrivere subito:</p>
         <ul class="lista-check">
           <li>✅ <strong>Studia</strong> un comando (max 20 minuti).</li>
-          <li>✅ <strong>Esegui</strong> l'esempio nell'editor “Prova tu”.</li>
+          <li>✅ <strong>Esegui</strong> l'esempio nell'editor “Provalo tu”.</li>
           <li>✅ <strong>Risolvi</strong> un esercizio collegato senza guardare la soluzione.</li>
           <li>✅ <strong>Ripeti</strong> con il comando successivo.</li>
         </ul>
@@ -1226,7 +1226,7 @@ LIMIT    n;</code></pre>
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — scrivi ed esegui SQL</strong>
+      <strong>✏️ Provalo tu — scrivi ed esegui SQL</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>

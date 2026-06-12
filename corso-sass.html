@@ -56,28 +56,7 @@
     .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: 1px solid #334155; }
     @media (max-width: 700px){ .example div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: none; border-top: 1px solid #334155; } }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
-
-    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
-    .btn-try:hover { background: #0b7c71; }
-    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
-    .editor-overlay.open { display: flex; }
-    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
-    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
-    .editor-top .ed-actions { display: flex; gap: .6rem; }
-    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
-    .ed-close { background: #e2e8f0; color: #334155; }
-    .ed-close:hover { background: #cbd5e1; }
-    .ed-run { background: #04AA6D; color: #fff; }
-    .ed-run:hover { background: #038a59; }
-    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
-    .code-editor { flex: 1; overflow: hidden; }
-    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
-    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
-    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    #ed-preview { flex: 1; border: none; background: #1e293b; }
-    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
-  </style>
+</style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-sass.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -191,7 +170,7 @@
 <h3>SCSS vs Sass (sintassi indented)</h3>
 <table class="ref"><thead><tr><th></th><th>SCSS</th><th>Sass (indented)</th></tr></thead><tbody><tr><td>Estensione</td><td>.scss</td><td>.sass</td></tr><tr><td>Sintassi</td><td>Come CSS + superset</td><td>Indentazione, senza {}</td></tr><tr><td>Compatibilità CSS</td><td>100% — qualsiasi CSS è SCSS valido</td><td>No — sintassi diversa</td></tr><tr><td>Popolarità</td><td>🥇 Standard de facto</td><td>Meno comune</td></tr></tbody></table>
 <div class="example">
-<div class="codehead"><span>Prima differenza SCSS vs Sass</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Prima differenza SCSS vs Sass</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -230,7 +209,7 @@ $primary: #4f46e5;
 <h3>Come funziona la compilazione</h3>
 <ul><li>1️⃣ Scrivi i tuoi stili in file <code class="inline">.scss</code></li><li>2️⃣ Il compilatore Sass legge i file e risolve variabili, mixin, nesting ecc.</li><li>3️⃣ Produce uno o più file <code class="inline">.css</code> standard</li><li>4️⃣ Il browser carica il CSS compilato — non conosce Sass</li></ul>
 <div class="example">
-<div class="codehead"><span>Flusso di lavoro Sass</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Flusso di lavoro Sass</span></div>
 <pre class="codeview"><code class="language-scss">// styles.scss (scrivi tu)
 $brand-color: #4f46e5;
 $radius: 8px;
@@ -247,7 +226,7 @@ $radius: 8px;
 }</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>styles.css (generato automaticamente)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>styles.css (generato automaticamente)</span></div>
 <pre class="codeview"><code class="language-css">.button {
   background: #4f46e5;
   border-radius: 8px;
@@ -268,7 +247,7 @@ $radius: 8px;
 <p>Puoi installare Sass in tre modi principali: tramite <strong>npm</strong> (il più comune nei progetti moderni), tramite il <strong>package standalone</strong> o tramite <strong>Homebrew</strong> su macOS.</p>
 <h3>Via npm (consigliato)</h3>
 <div class="example">
-<div class="codehead"><span>Installa Sass con npm</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Installa Sass con npm</span></div>
 <pre class="codeview"><code class="language-bash"># Installa Sass globalmente
 npm install -g sass
 
@@ -281,7 +260,7 @@ npm install --save-dev sass</code></pre>
 </div>
 <h3>Compila un file SCSS</h3>
 <div class="example">
-<div class="codehead"><span>Compilazione da riga di comando</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Compilazione da riga di comando</span></div>
 <pre class="codeview"><code class="language-bash"># Compila una volta sola
 sass input.scss output.css
 
@@ -299,7 +278,7 @@ sass --style=compressed input.scss output.min.css</code></pre>
 </div>
 <h3>Integrazione con Vite (React/Vue)</h3>
 <div class="example">
-<div class="codehead"><span>Sass in un progetto Vite</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Sass in un progetto Vite</span></div>
 <pre class="codeview"><code class="language-bash"># Crea progetto Vite
 npm create vite@latest my-app -- --template react
 
@@ -327,7 +306,7 @@ npm install --save-dev sass
         <h2>Sass — Variabili</h2>
 <p>Le <strong>variabili Sass</strong> iniziano con <code class="inline">$</code> e permettono di definire valori riutilizzabili — colori, font, spaziature, breakpoint — in un unico posto. Se cambi una variabile, l'intera UI si aggiorna automaticamente.</p>
 <div class="example">
-<div class="codehead"><span>Variabili base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Variabili base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -377,7 +356,7 @@ $shadow:     0 4px 6px -1px rgba(0,0,0,.1);
 </div>
 <h3>Scope delle variabili</h3>
 <div class="example">
-<div class="codehead"><span>Variabili locali vs globali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Variabili locali vs globali</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -416,7 +395,7 @@ $shadow:     0 4px 6px -1px rgba(0,0,0,.1);
 </div>
 <h3>Default con !default</h3>
 <div class="example">
-<div class="codehead"><span>!default — valori sovrascrivibili (design system)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>!default — valori sovrascrivibili (design system)</span></div>
 <pre class="codeview"><code class="language-scss">// _config.scss — valori di default modificabili
 $primary:   #4f46e5 !default;
 $radius:    8px     !default;
@@ -432,7 +411,7 @@ $primary: #e11d48;   // sovrascrive il default
         <h2>Sass — Nesting</h2>
 <p>Il <strong>nesting</strong> (annidamento) permette di scrivere selettori CSS figli all'interno del selettore genitore, rispecchiando la struttura HTML. Elimina la ripetizione dei selettori e rende il codice più leggibile.</p>
 <div class="example">
-<div class="codehead"><span>Nesting base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Nesting base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -490,7 +469,7 @@ nav a.active {
 </div>
 <h3>L'operatore &amp; (parent selector)</h3>
 <div class="example">
-<div class="codehead"><span>&amp; — selettore padre</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>&amp; — selettore padre</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -527,7 +506,7 @@ nav a.active {
 </div>
 <h3>Nesting delle proprietà</h3>
 <div class="example">
-<div class="codehead"><span>Property nesting (namespace)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Property nesting (namespace)</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -566,7 +545,7 @@ nav a.active {
 <p>Sass permette di dividere i tuoi stili in più file (chiamati <strong>partial</strong>) e combinarli. La regola moderna è <code class="inline">@use</code> (sostituisce il vecchio <code class="inline">@import</code>). I file partial iniziano con <code class="inline">_</code> per indicare che non devono essere compilati da soli.</p>
 <h3>@use — la regola moderna</h3>
 <div class="example">
-<div class="codehead"><span>@use — importa un modulo Sass</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>@use — importa un modulo Sass</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -616,7 +595,7 @@ $lg: 2rem;
 </div>
 <h3>@forward — esponi moduli</h3>
 <div class="example">
-<div class="codehead"><span>@forward — crea un punto di accesso unico</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>@forward — crea un punto di accesso unico</span></div>
 <pre class="codeview"><code class="language-scss">// _index.scss (barrel file)
 @forward 'colors';
 @forward 'spacing';
@@ -633,7 +612,7 @@ $lg: 2rem;
 </div>
 <h3>Struttura di un progetto Sass (7-1 pattern)</h3>
 <div class="example">
-<div class="codehead"><span>Architettura Sass consigliata</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Architettura Sass consigliata</span></div>
 <pre class="codeview"><code class="language-bash">// Struttura 7-1 (7 cartelle + 1 main)
 sass/
   abstracts/
@@ -675,7 +654,7 @@ sass/
         <h2>Sass — @mixin</h2>
 <p>I <strong>mixin</strong> sono blocchi di stile riutilizzabili che puoi includere in qualsiasi selettore con <code class="inline">@include</code>. Supportano <strong>argomenti</strong> (con valori di default), <code class="inline">@content</code> per blocchi annidati e sono il cuore della riusabilità in Sass.</p>
 <div class="example">
-<div class="codehead"><span>Mixin base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Mixin base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -732,7 +711,7 @@ sass/
 </div>
 <h3>Mixin con argomenti multipli e default</h3>
 <div class="example">
-<div class="codehead"><span>Mixin responsive breakpoint</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Mixin responsive breakpoint</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -786,7 +765,7 @@ sass/
 </div>
 <h3>Mixin avanzati — variadic args</h3>
 <div class="example">
-<div class="codehead"><span>Mixin con argomenti variadic e @content</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Mixin con argomenti variadic e @content</span></div>
 <pre class="codeview"><code class="language-scss">// Argomenti multipli con ...
 @mixin transition($properties...) {
   transition: $properties;
@@ -820,7 +799,7 @@ $palette: (
         <h2>Sass — @extend e %placeholder</h2>
 <p><code class="inline">@extend</code> permette a un selettore di <strong>ereditare</strong> le regole di un altro. I <strong>placeholder</strong> (<code class="inline">%nome</code>) sono selettori speciali che esistono solo per essere estesi — non vengono compilati nel CSS se non usati.</p>
 <div class="example">
-<div class="codehead"><span>@extend base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>@extend base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -885,7 +864,7 @@ $palette: (
 </div>
 <h3>%placeholder — estensioni silenziose</h3>
 <div class="example">
-<div class="codehead"><span>%placeholder</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>%placeholder</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -938,7 +917,7 @@ $palette: (
         <h2>Sass — Funzioni String</h2>
 <p>Sass offre un set di <strong>funzioni built-in per le stringhe</strong> nel modulo <code class="inline">sass:string</code>. Permettono di manipolare testo, costruire selettori dinamici e generare nomi di classi.</p>
 <div class="example">
-<div class="codehead"><span>Funzioni String principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni String principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:string";
 
 // string.quote / string.unquote
@@ -967,7 +946,7 @@ $parts: string.split("uno,due,tre", ","); // ["uno", "due", "tre"]</code></pre>
 </div>
 <h3>Interpolazione di stringhe</h3>
 <div class="example">
-<div class="codehead"><span>Interpolazione #{} — costruisci selettori dinamicamente</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Interpolazione #{} — costruisci selettori dinamicamente</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1010,7 +989,7 @@ $sizes: (sm: .5rem, md: 1rem, lg: 2rem, xl: 3rem);
         <h2>Sass — Funzioni Numeric</h2>
 <p>Il modulo <code class="inline">sass:math</code> fornisce funzioni matematiche e permette operazioni numeriche avanzate. Sass supporta anche gli <strong>operatori aritmetici</strong> direttamente nelle regole CSS.</p>
 <div class="example">
-<div class="codehead"><span>Operatori aritmetici in Sass</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Operatori aritmetici in Sass</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:math";
 
 // Sass supporta +, -, *, /, % con unità compatibili
@@ -1033,7 +1012,7 @@ h3 { font-size: $base * $scale; }                     // 20px
 }</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Funzioni math principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni math principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:math";
 
 // Arrotondamento
@@ -1060,7 +1039,7 @@ math.$pi     // 3.1415...
 math.$e      // 2.7182...</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Generatore di scala tipografica</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Generatore di scala tipografica</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1093,7 +1072,7 @@ h6 { font-size: 1rem; }</code></pre>
         <h2>Sass — Funzioni List</h2>
 <p>Le <strong>liste</strong> in Sass sono sequenze di valori separati da spazio o virgola. Il modulo <code class="inline">sass:list</code> fornisce funzioni per accedere, modificare e iterare le liste.</p>
 <div class="example">
-<div class="codehead"><span>Funzioni List principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni List principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:list";
 
 $shadow-layers: 0 1px 3px rgba(0,0,0,.12),
@@ -1123,7 +1102,7 @@ list.join($a, $b, $separator: comma)  // 1px, 2px, 3px, 4px
 list.zip(a b c, 1 2 3)  // (a 1), (b 2), (c 3)</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>@each su liste — genera CSS</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>@each su liste — genera CSS</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1166,7 +1145,7 @@ $bp-list: (sm 640px) (md 768px) (lg 1024px) (xl 1280px);
         <h2>Sass — Funzioni Map</h2>
 <p>Le <strong>mappe</strong> (<code class="inline">map</code>) in Sass sono coppie chiave-valore, simili agli oggetti JavaScript. Sono perfette per design token — colori, spaziature, breakpoint — e per generare classi utility sistematicamente.</p>
 <div class="example">
-<div class="codehead"><span>Definizione e accesso alle mappe</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Definizione e accesso alle mappe</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:map";
 
 // Definizione mappa (design tokens)
@@ -1207,7 +1186,7 @@ $all-colors: map.merge($colors, $extra);
 $no-muted: map.remove($colors, muted);</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Genera utility classes da mappe</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Genera utility classes da mappe</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1244,7 +1223,7 @@ $spacing: (sm:.5rem, md:1rem, lg:2rem);
 </div>
 </div>
 <div class="example">
-<div class="codehead"><span>map.deep-get — accesso annidato</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>map.deep-get — accesso annidato</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:map";
 
 // Mappa annidata (design system complesso)
@@ -1269,7 +1248,7 @@ $muted: map.deep-get($theme, colors, text, muted);         // #64748b (Sass 1.x)
         <h2>Sass — Funzioni Selector</h2>
 <p>Il modulo <code class="inline">sass:selector</code> permette di <strong>analizzare e manipolare selettori CSS</strong> in modo programmatico. Utile per creare mixin avanzati che gestiscono la specificity o costruiscono selettori complessi.</p>
 <div class="example">
-<div class="codehead"><span>Funzioni Selector principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni Selector principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:selector";
 
 // selector.nest — annida selettori
@@ -1303,7 +1282,7 @@ selector.is-superselector("div", "div.active")  // true
 // "div" è un superselector di "div.active</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Mixin che usa selector functions</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Mixin che usa selector functions</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1347,7 +1326,7 @@ selector.is-superselector("div", "div.active")  // true
         <h2>Sass — Funzioni Introspection</h2>
 <p>Le funzioni di <strong>introspection</strong> del modulo <code class="inline">sass:meta</code> permettono di interrogare il tipo di un valore, verificare se una variabile o mixin esiste, e ottenere informazioni sul contesto di compilazione.</p>
 <div class="example">
-<div class="codehead"><span>Funzioni Introspection principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni Introspection principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:meta";
 
 // meta.type-of — tipo del valore
@@ -1383,7 +1362,7 @@ meta.module-variables(color)  // mappa con tutte le variabili di sass:color
 }</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>@if con type-of — validazione degli argomenti</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>@if con type-of — validazione degli argomenti</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1426,7 +1405,7 @@ meta.module-variables(color)  // mappa con tutte le variabili di sass:color
         <h2>Sass — Funzioni Color</h2>
 <p>Il modulo <code class="inline">sass:color</code> offre funzioni potenti per <strong>manipolare i colori</strong> — schiarire, scurire, saturare, mescolare, trasparenza — rendendo facile creare scale di colori e variazioni di tema.</p>
 <div class="example">
-<div class="codehead"><span>Funzioni Color principali</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni Color principali</span></div>
 <pre class="codeview"><code class="language-scss">@use "sass:color";
 
 $primary: #4f46e5;
@@ -1466,7 +1445,7 @@ color.blue($primary)        // 229
 color.alpha($primary)       // 1</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Genera una color palette automatica</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Genera una color palette automatica</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
@@ -1560,24 +1539,6 @@ $palette: (
   </div>
 </section>
 
-<div class="editor-overlay" id="editor">
-  <div class="editor-box">
-    <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice SASS</strong>
-      <div class="ed-actions">
-        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
-      </div>
-    </div>
-    <div class="editor-panes">
-      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
-      <div class="preview-wrap">
-        <div class="preview-label">Note</div>
-        <iframe id="ed-preview" title="Note SASS"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -1595,39 +1556,5 @@ $palette: (
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script src="js/main.js?v=4"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script>
-  (function(){
-    var overlay = document.getElementById('editor');
-    var preview = document.getElementById('ed-preview');
-    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-      mode: "text/x-scss", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default', readOnly: false
-    });
-    function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6"><h3 style="margin:0 0 .6rem;color:#1e293b">💅 Codice SASS / SCSS</h3><p>SASS è un preprocessore CSS: il codice SCSS viene <b>compilato</b> in CSS con il comando <code>sass input.scss output.css</code>.</p><p>Puoi <b>leggere e modificare</b> il codice qui, poi testarlo con Sass installato o in un progetto Vite/webpack.</p></body>';
-    }
-    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
-    function openEditor(code){
-      overlay.classList.add('open');
-      document.body.style.overflow='hidden';
-      document.addEventListener('touchmove', preventTouch, {passive:false});
-      cm.setValue(code);
-      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      note();
-    }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
-    document.getElementById('ed-close').addEventListener('click', closeEditor);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
-    document.querySelectorAll('.example').forEach(function(ex){
-      var codeEl = ex.querySelector('.codeview code');
-      if (!codeEl) return;
-      var raw = codeEl.textContent;
-      var btn = ex.querySelector('.btn-try');
-      if (btn) btn.addEventListener('click', function(){ openEditor(raw); });
-    });
-  })();
-</script>
 </body>
 </html>

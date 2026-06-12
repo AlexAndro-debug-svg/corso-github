@@ -294,7 +294,7 @@
   <li>🚀 <strong>Ideale per</strong>: API REST, microservizi, app real-time, streaming, tool CLI</li>
 </ul>
 <div class="note-box">📘 Node.js non è un linguaggio né un framework: è un <strong>runtime</strong>. Il linguaggio resta JavaScript. Se non conosci ancora JS, segui prima il <a href="corso-javascript.html">corso JavaScript</a>.</div>
-<div class="example"><div class="codehead"><span>Il primo programma Node.js</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il primo programma Node.js</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // hello.js — esegui con:  node hello.js
 console.log("Ciao da Node.js!");
 
@@ -310,7 +310,7 @@ console.log("Cartella corrente:", process.cwd());
 <p>Per usare Node.js devi prima installarlo. Scarica la versione <strong>LTS</strong> (Long Term Support) da <a href="https://nodejs.org" target="_blank" rel="noreferrer">nodejs.org</a>: è la più stabile e consigliata per la produzione.</p>
 <h3>Verifica l'installazione</h3>
 <p>Dopo l'installazione, apri il terminale e controlla che <code class="inline">node</code> e <code class="inline">npm</code> siano disponibili.</p>
-<div class="example"><div class="codehead"><span>Verifica e primo script</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Verifica e primo script</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Verifica le versioni installate
 node --version    # es. v22.11.0
 npm --version     # es. 10.9.0
@@ -341,7 +341,7 @@ node app.js
   <tr><td>async/await</td><td>Codice asincrono leggibile</td></tr>
   <tr><td>Moduli (import/require)</td><td>Organizzare il codice in file</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Le basi JS che userai in Node</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Le basi JS che userai in Node</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Destructuring — usatissimo nei moduli
 const { readFile } = require("fs");
 
@@ -376,7 +376,7 @@ console.log(`Ciao, ${nome}!`);
         <h2>Node da riga di comando</h2>
         
 <p>Node si controlla principalmente dal terminale. Conoscere i comandi e gli argomenti della CLI è essenziale per lo sviluppo quotidiano.</p>
-<div class="example"><div class="codehead"><span>Argomenti e variabili d'ambiente</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Argomenti e variabili d'ambiente</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // args.js — leggere argomenti passati allo script
 // node args.js ciao mondo
 const argomenti = process.argv.slice(2);
@@ -435,7 +435,7 @@ if (argomenti.length === 0) {
         <h2>L'Event Loop</h2>
         
 <p>L'<strong>Event Loop</strong> è il meccanismo che permette a Node, pur essendo single-threaded, di eseguire operazioni non bloccanti. Quando avvii un'operazione asincrona (es. leggere un file), Node la delega a libuv e continua a eseguire il resto del codice; quando l'operazione finisce, la sua callback viene messa in coda ed eseguita.</p>
-<div class="example"><div class="codehead"><span>L'ordine di esecuzione asincrono</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>L'ordine di esecuzione asincrono</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 console.log("1 — Inizio");
 
 setTimeout(() => {
@@ -471,7 +471,7 @@ console.log("2 — Fine sincrono");
         
 <p>L'asincronia è il concetto più importante di Node.js. Invece di <em>bloccare</em> il programma in attesa che un'operazione lenta finisca (leggere un file, interrogare un database), Node continua a lavorare e gestisce il risultato quando è pronto, tramite una <strong>callback</strong>.</p>
 <h3>Bloccante vs non bloccante</h3>
-<div class="example"><div class="codehead"><span>Sincrono (bloccante) vs asincrono</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Sincrono (bloccante) vs asincrono</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs");
 
 // ❌ SINCRONO — blocca tutto finché il file non è letto
@@ -494,7 +494,7 @@ console.log("Questo viene eseguito SUBITO, senza aspettare");
         <h2>Le Promise</h2>
         
 <p>Le <strong>Promise</strong> rappresentano un valore che sarà disponibile in futuro. Risolvono il problema del "callback hell" (callback annidate illeggibili) permettendo di concatenare operazioni asincrone con <code class="inline">.then()</code> e <code class="inline">.catch()</code>.</p>
-<div class="example"><div class="codehead"><span>Creare e usare una Promise</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e usare una Promise</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs").promises;
 
 // La versione promises dei moduli core evita le callback
@@ -518,7 +518,7 @@ attendi(1000).then(() => console.log("Passato 1 secondo"));
         <h2>Async / Await</h2>
         
 <p><code class="inline">async/await</code> è la sintassi moderna per gestire le Promise: rende il codice asincrono <strong>leggibile come se fosse sincrono</strong>. Una funzione <code>async</code> restituisce sempre una Promise, e <code>await</code> ne attende il risultato.</p>
-<div class="example"><div class="codehead"><span>Riscrivere le Promise con async/await</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Riscrivere le Promise con async/await</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs").promises;
 
 async function leggiFile() {
@@ -549,7 +549,7 @@ async function inParallelo() {
         <h2>Gestione degli errori</h2>
         
 <p>Gestire correttamente gli errori è cruciale in Node: un errore non catturato può <strong>crashare l'intero processo</strong>. Le strategie cambiano a seconda che il codice sia sincrono, basato su callback o su Promise.</p>
-<div class="example"><div class="codehead"><span>Le tre strategie di error handling</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Le tre strategie di error handling</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // 1) Sincrono → try/catch
 try {
   JSON.parse("non valido");
@@ -586,7 +586,7 @@ process.on("uncaughtException", err => {
         <h2>I moduli in Node.js</h2>
         
 <p>I <strong>moduli</strong> permettono di dividere il codice in file riutilizzabili. Node usa storicamente il sistema <strong>CommonJS</strong>: si esporta con <code class="inline">module.exports</code> e si importa con <code class="inline">require()</code>.</p>
-<div class="example"><div class="codehead"><span>Creare e importare un modulo (CommonJS)</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e importare un modulo (CommonJS)</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // math.js — il modulo
 function somma(a, b) { return a + b; }
 function moltiplica(a, b) { return a * b; }
@@ -609,7 +609,7 @@ console.log(somma(10, 5)); // 15
         <h2>ES Modules</h2>
         
 <p>Gli <strong>ES Modules</strong> (ESM) sono lo standard ufficiale di JavaScript per i moduli, con <code class="inline">import</code> ed <code class="inline">export</code>. Node li supporta pienamente: basta usare l'estensione <code class="inline">.mjs</code> oppure impostare <code class="inline">"type": "module"</code> nel package.json.</p>
-<div class="example"><div class="codehead"><span>Sintassi ES Modules</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Sintassi ES Modules</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // math.mjs
 export function somma(a, b) { return a + b; }
 export const PI = 3.14159;
@@ -638,7 +638,7 @@ const modulo = await import("./math.mjs");
         <h2>NPM — il gestore di pacchetti</h2>
         
 <p><strong>NPM</strong> (Node Package Manager) è il gestore di pacchetti di Node e il più grande registro di software open-source al mondo (oltre 2 milioni di pacchetti). Lo usi per installare librerie, gestire dipendenze ed eseguire script.</p>
-<div class="example"><div class="codehead"><span>I comandi NPM essenziali</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>I comandi NPM essenziali</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Inizializza un nuovo progetto (crea package.json)
 npm init -y
 
@@ -666,7 +666,7 @@ npm uninstall express
         <h2>Il file package.json</h2>
         
 <p>Il <strong>package.json</strong> è il "documento d'identità" del tuo progetto: contiene nome, versione, dipendenze, script e metadati. È il primo file che npm legge.</p>
-<div class="example"><div class="codehead"><span>Struttura di un package.json</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Struttura di un package.json</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 {
   "name": "mia-app",
   "version": "1.0.0",
@@ -694,7 +694,7 @@ npm uninstall express
         <h2>Gli script NPM</h2>
         
 <p>Gli <strong>script NPM</strong>, definiti nella sezione <code class="inline">"scripts"</code> del package.json, automatizzano i comandi ricorrenti: avviare il server, eseguire i test, fare il build. Si lanciano con <code class="inline">npm run nome</code>.</p>
-<div class="example"><div class="codehead"><span>Definire ed eseguire script</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Definire ed eseguire script</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // package.json
 {
   "scripts": {
@@ -721,7 +721,7 @@ npm uninstall express
         <h2>Gestire le dipendenze</h2>
         
 <p>Mantenere le dipendenze aggiornate e sicure è parte essenziale della manutenzione di un progetto. NPM offre strumenti per controllare versioni obsolete e vulnerabilità.</p>
-<div class="example"><div class="codehead"><span>Controllo e sicurezza delle dipendenze</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Controllo e sicurezza delle dipendenze</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Elenca i pacchetti obsoleti
 npm outdated
 
@@ -751,7 +751,7 @@ npm install
         <h2>Pubblicare pacchetti su NPM</h2>
         
 <p>Puoi pubblicare le tue librerie sul registro pubblico di NPM perché chiunque possa installarle. Serve un account gratuito su <a href="https://npmjs.com" target="_blank" rel="noreferrer">npmjs.com</a>.</p>
-<div class="example"><div class="codehead"><span>Pubblicare un pacchetto</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Pubblicare un pacchetto</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # 1) Effettua il login
 npm login
 
@@ -777,7 +777,7 @@ npm publish
         <h2>Modulo HTTP</h2>
         
 <p>Il modulo <strong>http</strong> permette di creare server web e gestire richieste/risposte senza alcuna libreria esterna. È la base su cui sono costruiti framework come Express.</p>
-<div class="example"><div class="codehead"><span>Un server HTTP minimale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Un server HTTP minimale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const http = require("http");
 
 const server = http.createServer((req, res) => {
@@ -797,7 +797,7 @@ server.listen(3000, () => {
         <h2>Modulo HTTPS</h2>
         
 <p>Il modulo <strong>https</strong> è la versione sicura di http: cifra la comunicazione con TLS/SSL. In produzione di solito il TLS è gestito da un reverse proxy (Nginx) o dalla piattaforma di hosting, ma è utile saperlo configurare.</p>
-<div class="example"><div class="codehead"><span>Server HTTPS con certificato</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server HTTPS con certificato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const https = require("https");
 const fs = require("fs");
 
@@ -822,7 +822,7 @@ https.get("https://api.github.com", res => {
         <h2>File System (fs)</h2>
         
 <p>Il modulo <strong>fs</strong> permette di leggere, scrivere, modificare ed eliminare file e cartelle. Offre versioni sincrone, con callback e basate su Promise.</p>
-<div class="example"><div class="codehead"><span>Operazioni sui file</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Operazioni sui file</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs").promises;
 
 async function esempioFile() {
@@ -856,7 +856,7 @@ esempioFile();
         <h2>Modulo Path</h2>
         
 <p>Il modulo <strong>path</strong> gestisce i percorsi di file e cartelle in modo indipendente dal sistema operativo (Windows usa <code class="inline">\</code>, Linux/Mac usano <code class="inline">/</code>).</p>
-<div class="example"><div class="codehead"><span>Manipolare i percorsi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Manipolare i percorsi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const path = require("path");
 
 const file = "/utenti/mario/documenti/report.pdf";
@@ -883,7 +883,7 @@ console.log(path.parse(file));
         <h2>Modulo OS</h2>
         
 <p>Il modulo <strong>os</strong> fornisce informazioni sul sistema operativo e sull'hardware su cui gira Node: CPU, memoria, rete, utente.</p>
-<div class="example"><div class="codehead"><span>Informazioni di sistema</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Informazioni di sistema</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const os = require("os");
 
 console.log("Piattaforma:", os.platform());   // linux, win32, darwin
@@ -901,7 +901,7 @@ console.log("Uptime:", (os.uptime() / 3600).toFixed(1), "ore");
         <h2>Modulo URL</h2>
         
 <p>Il modulo <strong>url</strong> (e la classe globale <code class="inline">URL</code>) serve ad analizzare e costruire indirizzi web, estraendo host, percorso, parametri della query.</p>
-<div class="example"><div class="codehead"><span>Analizzare un URL</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Analizzare un URL</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const indirizzo = "https://sito.it:8080/prodotti?categoria=libri&pagina=2#recensioni";
 const url = new URL(indirizzo);
 
@@ -924,7 +924,7 @@ console.log(url.href);
         <h2>Modulo Events</h2>
         
 <p>Il modulo <strong>events</strong> implementa il pattern publish/subscribe tramite la classe <code class="inline">EventEmitter</code>. Gran parte di Node (stream, server HTTP, processi) è costruita su di esso.</p>
-<div class="example"><div class="codehead"><span>Emettere e ascoltare eventi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Emettere e ascoltare eventi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const EventEmitter = require("events");
 
 class Ordine extends EventEmitter {}
@@ -953,7 +953,7 @@ ordine.emit("pagato"); // ignorato
         <h2>Modulo Stream</h2>
         
 <p>Gli <strong>stream</strong> permettono di elaborare dati a pezzi (<em>chunk</em>) invece di caricarli tutti in memoria. Sono ideali per file grandi, video, upload e qualsiasi flusso di dati continuo.</p>
-<div class="example"><div class="codehead"><span>Copiare un file con gli stream</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Copiare un file con gli stream</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs");
 
 // Senza stream: carica tutto in RAM (rischioso con file grandi)
@@ -981,7 +981,7 @@ lettura.on("error", err => console.error(err));
         <h2>Modulo Buffer</h2>
         
 <p>Un <strong>Buffer</strong> è un'area di memoria che contiene dati binari grezzi. Serve quando si lavora con file, immagini, protocolli di rete o dati non testuali, prima che JavaScript supportasse nativamente i binari.</p>
-<div class="example"><div class="codehead"><span>Lavorare con i Buffer</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Lavorare con i Buffer</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Creare un buffer da una stringa
 const buf = Buffer.from("Ciao", "utf8");
 console.log(buf);            // <Buffer 43 69 61 6f>
@@ -1003,7 +1003,7 @@ console.log(Buffer.from(base64, "base64").toString()); // Node.js
         <h2>Modulo Crypto</h2>
         
 <p>Il modulo <strong>crypto</strong> fornisce funzioni crittografiche: hashing, cifratura, firme digitali e generazione di valori casuali sicuri. Fondamentale per la sicurezza (password, token, integrità dei dati).</p>
-<div class="example"><div class="codehead"><span>Hashing e valori casuali</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Hashing e valori casuali</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const crypto = require("crypto");
 
 // Hash SHA-256 (per integrità, NON per password)
@@ -1032,7 +1032,7 @@ crypto.scrypt("password", "salt", 64, (err, derived) => {
         <h2>Modulo Timers</h2>
         
 <p>I <strong>timer</strong> permettono di eseguire codice dopo un ritardo o a intervalli regolari. Sono globali (non serve require) e sono gestiti dall'event loop.</p>
-<div class="example"><div class="codehead"><span>setTimeout, setInterval, setImmediate</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>setTimeout, setInterval, setImmediate</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Esegue una volta dopo 1 secondo
 const t = setTimeout(() => console.log("Dopo 1s"), 1000);
 clearTimeout(t); // annulla se necessario
@@ -1057,7 +1057,7 @@ await sleep(1000); // attende 1s con async/await
         <h2>Modulo DNS</h2>
         
 <p>Il modulo <strong>dns</strong> risolve i nomi di dominio in indirizzi IP e viceversa, interrogando i server DNS. Utile per diagnostica di rete e validazione.</p>
-<div class="example"><div class="codehead"><span>Risoluzione DNS</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Risoluzione DNS</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const dns = require("dns").promises;
 
 async function risolvi() {
@@ -1085,7 +1085,7 @@ risolvi();
         <h2>Modulo Assert</h2>
         
 <p>Il modulo <strong>assert</strong> fornisce funzioni per verificare che le condizioni siano vere. Se un'asserzione fallisce, lancia un errore. È la base dei test e dei controlli di invarianti nel codice.</p>
-<div class="example"><div class="codehead"><span>Asserzioni</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Asserzioni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const assert = require("assert");
 
 // Verifica che un valore sia vero
@@ -1115,7 +1115,7 @@ await assert.rejects(async () => {
         <h2>Modulo Util</h2>
         
 <p>Il modulo <strong>util</strong> raccoglie funzioni di utilità per il debugging, la formattazione e la conversione tra stili di codice asincrono.</p>
-<div class="example"><div class="codehead"><span>Utility più usate</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Utility più usate</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const util = require("util");
 
 // Convertire una funzione callback in una basata su Promise
@@ -1139,7 +1139,7 @@ const vecchia = util.deprecate(() => {}, "Usa la nuova API");
         <h2>Modulo Readline</h2>
         
 <p>Il modulo <strong>readline</strong> legge l'input dell'utente dal terminale riga per riga. È la base per creare interfacce a riga di comando interattive.</p>
-<div class="example"><div class="codehead"><span>Input interattivo da terminale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Input interattivo da terminale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -1169,7 +1169,7 @@ lettore.on("line", (riga) => console.log("Riga:", riga));
         <h2>Node ES6+ e funzionalità moderne</h2>
         
 <p>Node.js supporta tutte le funzionalità moderne di JavaScript (ES6 e successive) grazie all'aggiornamento costante del motore V8. Ecco quelle che userai di più nel codice server.</p>
-<div class="example"><div class="codehead"><span>Funzionalità ES moderne in Node</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Funzionalità ES moderne in Node</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Optional chaining e nullish coalescing
 const config = { db: { host: "localhost" } };
 const porta = config.db?.porta ?? 5432;
@@ -1195,7 +1195,7 @@ const adulti = utenti.filter(u => u.eta >= 18).map(u => u.nome);
         <h2>L'oggetto Process</h2>
         
 <p>L'oggetto globale <strong>process</strong> fornisce informazioni e controllo sul processo Node corrente: argomenti, variabili d'ambiente, input/output standard, segnali ed eventi del ciclo di vita.</p>
-<div class="example"><div class="codehead"><span>Usare process</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Usare process</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Variabili d'ambiente
 console.log(process.env.NODE_ENV);
 console.log(process.env.PORT || 3000);
@@ -1225,7 +1225,7 @@ process.exit(1);
         <h2>Node con TypeScript</h2>
         
 <p>Usare <strong>TypeScript</strong> con Node aggiunge la tipizzazione statica al backend: meno bug, autocompletamento migliore e refactoring sicuro. Dalle versioni recenti, Node può eseguire TypeScript anche direttamente.</p>
-<div class="example"><div class="codehead"><span>Setup di Node + TypeScript</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Setup di Node + TypeScript</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Installa TypeScript e i tipi di Node
 npm install --save-dev typescript @types/node
 
@@ -1257,7 +1257,7 @@ node --experimental-strip-types server.ts
         <h2>Node con TypeScript avanzato</h2>
         
 <p>In progetti backend reali, TypeScript brilla nel tipizzare richieste, risposte, modelli di dati e configurazioni. Ecco i pattern più utili con Node ed Express.</p>
-<div class="example"><div class="codehead"><span>Tipizzare Express e i dati</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Tipizzare Express e i dati</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 import express, { Request, Response, NextFunction } from "express";
 
 interface Utente {
@@ -1290,7 +1290,7 @@ app.use(logger);
         <h2>Lint e formattazione</h2>
         
 <p><strong>ESLint</strong> analizza il codice per trovare errori e applicare convenzioni; <strong>Prettier</strong> formatta automaticamente per uno stile coerente. Insieme tengono il codice pulito e uniforme in tutto il team.</p>
-<div class="example"><div class="codehead"><span>Configurare ESLint e Prettier</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Configurare ESLint e Prettier</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Installazione
 npm install --save-dev eslint prettier
 
@@ -1342,7 +1342,7 @@ npm run format
         <h2>Express.js</h2>
         
 <p><strong>Express</strong> è il framework web più popolare per Node. Semplifica la creazione di server, la definizione delle rotte e la gestione di richieste e risposte.</p>
-<div class="example"><div class="codehead"><span>Un'app Express completa</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Un'app Express completa</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const express = require("express");
 const app = express();
 
@@ -1373,7 +1373,7 @@ app.listen(3000, () => console.log("Server su porta 3000"));
         <h2>Il concetto di Middleware</h2>
         
 <p>Un <strong>middleware</strong> è una funzione che si inserisce nel ciclo richiesta-risposta. Riceve <code class="inline">req</code>, <code class="inline">res</code> e <code class="inline">next</code>, può modificare la richiesta, terminarla o passarla al middleware successivo chiamando <code class="inline">next()</code>.</p>
-<div class="example"><div class="codehead"><span>Middleware in Express</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Middleware in Express</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const express = require("express");
 const app = express();
 
@@ -1408,7 +1408,7 @@ app.use((err, req, res, next) => {
         <h2>Progettare API REST</h2>
         
 <p>Un'<strong>API REST</strong> espone risorse tramite URL e usa i metodi HTTP per le operazioni CRUD (Create, Read, Update, Delete). È lo standard per la comunicazione tra client e server.</p>
-<div class="example"><div class="codehead"><span>CRUD REST con Express</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>CRUD REST con Express</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -1459,7 +1459,7 @@ app.listen(3000);
         <h2>Autenticazione delle API</h2>
         
 <p>Proteggere le API significa verificare l'identità di chi le chiama. Il metodo più diffuso nelle API REST è il <strong>JWT</strong> (JSON Web Token): il server emette un token firmato che il client invia a ogni richiesta.</p>
-<div class="example"><div class="codehead"><span>Autenticazione con JWT</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Autenticazione con JWT</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const jwt = require("jsonwebtoken");
 const SEGRETO = process.env.JWT_SECRET;
 
@@ -1496,7 +1496,7 @@ app.get("/profilo", autentica, (req, res) => {
         <h2>Node.js con il Frontend</h2>
         
 <p>Node può servire file statici (HTML, CSS, JS) e fornire le API che il frontend consuma. È il cuore dello stack moderno: backend Node + frontend React/Vue/Angular.</p>
-<div class="example"><div class="codehead"><span>Servire file statici e API</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Servire file statici e API</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -1527,7 +1527,7 @@ app.listen(3000);
         <h2>MySQL — Iniziare</h2>
         
 <p>Node si connette a <strong>MySQL</strong> tramite il pacchetto <code class="inline">mysql2</code>. Permette di eseguire query SQL e gestire i risultati in modo asincrono.</p>
-<div class="example"><div class="codehead"><span>Connessione a MySQL</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Connessione a MySQL</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const mysql = require("mysql2/promise");
 
 const db = await mysql.createConnection({
@@ -1550,7 +1550,7 @@ console.log(righe); // [{ risultato: 2 }]
         <h2>MySQL — Creare un database</h2>
         
 <p>Puoi creare database e gestirli direttamente da Node eseguendo i comandi SQL appropriati.</p>
-<div class="example"><div class="codehead"><span>Creare un database</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare un database</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const mysql = require("mysql2/promise");
 
 const conn = await mysql.createConnection({
@@ -1570,7 +1570,7 @@ console.log(db);
         <h2>MySQL — Creare una tabella</h2>
         
 <p>Le tabelle definiscono la struttura dei dati. Si creano con <code class="inline">CREATE TABLE</code> specificando colonne e tipi.</p>
-<div class="example"><div class="codehead"><span>Creare una tabella</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare una tabella</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 await db.query(`
   CREATE TABLE IF NOT EXISTS clienti (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -1587,7 +1587,7 @@ console.log("Tabella 'clienti' creata!");
         <h2>MySQL — Insert Into</h2>
         
 <p>Per inserire dati usa <code class="inline">INSERT INTO</code>. Usa sempre i <strong>placeholder</strong> <code class="inline">?</code> per prevenire SQL injection.</p>
-<div class="example"><div class="codehead"><span>Inserire dati in sicurezza</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Inserire dati in sicurezza</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Inserimento singolo con placeholder (sicuro!)
 const [esito] = await db.query(
   "INSERT INTO clienti (nome, email) VALUES (?, ?)",
@@ -1609,7 +1609,7 @@ await db.query(
         <h2>MySQL — Select From</h2>
         
 <p><code class="inline">SELECT</code> recupera i dati. I risultati arrivano come array di oggetti.</p>
-<div class="example"><div class="codehead"><span>Selezionare dati</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Selezionare dati</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Tutte le righe
 const [clienti] = await db.query("SELECT * FROM clienti");
 console.log(clienti);
@@ -1629,7 +1629,7 @@ console.log(uno[0]);
         <h2>MySQL — Where</h2>
         
 <p>La clausola <code class="inline">WHERE</code> filtra le righe in base a condizioni.</p>
-<div class="example"><div class="codehead"><span>Filtrare con WHERE</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Filtrare con WHERE</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Uguaglianza
 const [r1] = await db.query(
   "SELECT * FROM clienti WHERE nome = ?", ["Mario Rossi"]
@@ -1652,7 +1652,7 @@ const [r3] = await db.query(
         <h2>MySQL — Order By</h2>
         
 <p><code class="inline">ORDER BY</code> ordina i risultati per una o più colonne, in ordine crescente (<code>ASC</code>) o decrescente (<code>DESC</code>).</p>
-<div class="example"><div class="codehead"><span>Ordinare i risultati</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Ordinare i risultati</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Ordine alfabetico crescente
 const [asc] = await db.query(
   "SELECT * FROM clienti ORDER BY nome ASC"
@@ -1674,7 +1674,7 @@ const [multi] = await db.query(
         <h2>MySQL — Delete</h2>
         
 <p><code class="inline">DELETE</code> rimuove righe. Usa <strong>sempre</strong> una clausola WHERE, altrimenti cancelli l'intera tabella.</p>
-<div class="example"><div class="codehead"><span>Eliminare righe</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eliminare righe</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const [esito] = await db.query(
   "DELETE FROM clienti WHERE id = ?", [10]
 );
@@ -1688,7 +1688,7 @@ console.log("Righe eliminate:", esito.affectedRows);
         <h2>MySQL — Drop Table</h2>
         
 <p><code class="inline">DROP TABLE</code> elimina completamente una tabella, struttura e dati. Operazione irreversibile.</p>
-<div class="example"><div class="codehead"><span>Eliminare una tabella</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eliminare una tabella</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 await db.query("DROP TABLE IF EXISTS clienti");
 console.log("Tabella eliminata");
 
@@ -1701,7 +1701,7 @@ await db.query("TRUNCATE TABLE ordini");
         <h2>MySQL — Update</h2>
         
 <p><code class="inline">UPDATE</code> modifica righe esistenti. Anche qui WHERE è essenziale per non aggiornare tutto.</p>
-<div class="example"><div class="codehead"><span>Aggiornare righe</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Aggiornare righe</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const [esito] = await db.query(
   "UPDATE clienti SET email = ? WHERE id = ?",
   ["nuova@email.it", 5]
@@ -1720,7 +1720,7 @@ await db.query(
         <h2>MySQL — Limit</h2>
         
 <p><code class="inline">LIMIT</code> restringe il numero di righe restituite. Con <code class="inline">OFFSET</code> realizza la paginazione.</p>
-<div class="example"><div class="codehead"><span>Limitare e paginare</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Limitare e paginare</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Prime 10 righe
 const [primi] = await db.query(
   "SELECT * FROM clienti LIMIT 10"
@@ -1739,7 +1739,7 @@ const [paginati] = await db.query(
         <h2>MySQL — Join</h2>
         
 <p>Le <strong>JOIN</strong> combinano righe da più tabelle in base a una relazione, di solito una chiave esterna.</p>
-<div class="example"><div class="codehead"><span>Unire tabelle con JOIN</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Unire tabelle con JOIN</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // INNER JOIN: solo le righe con corrispondenza
 const [ordini] = await db.query(`
   SELECT ordini.id, clienti.nome, ordini.totale
@@ -1763,7 +1763,7 @@ const [tutti] = await db.query(`
         <h2>MongoDB — Iniziare</h2>
         
 <p><strong>MongoDB</strong> è un database NoSQL che memorizza i dati come <strong>documenti</strong> JSON-like (BSON), senza schema fisso. Node vi si connette con il driver ufficiale <code class="inline">mongodb</code> o con l'ODM <strong>Mongoose</strong>.</p>
-<div class="example"><div class="codehead"><span>Connessione a MongoDB</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Connessione a MongoDB</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { MongoClient } = require("mongodb");
 
 const client = new MongoClient("mongodb://localhost:27017");
@@ -1781,7 +1781,7 @@ const clienti = db.collection("clienti");
         <h2>MongoDB — Creare un database</h2>
         
 <p>In MongoDB database e collezioni vengono creati automaticamente al primo inserimento di dati: non serve definirli in anticipo.</p>
-<div class="example"><div class="codehead"><span>Selezionare database e collezione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Selezionare database e collezione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const db = client.db("negozio");        // creato al primo inserimento
 const collezione = db.collection("prodotti");
 
@@ -1798,7 +1798,7 @@ console.log(lista.databases);
         <h2>MongoDB — Collezioni</h2>
         
 <p>Una <strong>collezione</strong> è l'equivalente di una tabella: un gruppo di documenti. I documenti nella stessa collezione non devono avere la stessa struttura.</p>
-<div class="example"><div class="codehead"><span>Gestire le collezioni</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Gestire le collezioni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const db = client.db("negozio");
 
 // Creare esplicitamente una collezione (opzionale)
@@ -1817,7 +1817,7 @@ await db.collection("vecchia").drop();
         <h2>MongoDB — Insert</h2>
         
 <p>Si inseriscono documenti con <code class="inline">insertOne</code> (singolo) o <code class="inline">insertMany</code> (multipli). MongoDB genera automaticamente un campo <code class="inline">_id</code> univoco.</p>
-<div class="example"><div class="codehead"><span>Inserire documenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Inserire documenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Singolo
@@ -1838,7 +1838,7 @@ await prodotti.insertMany([
         <h2>MongoDB — Find</h2>
         
 <p><code class="inline">find</code> recupera più documenti, <code class="inline">findOne</code> uno solo. Senza filtro restituiscono tutto.</p>
-<div class="example"><div class="codehead"><span>Trovare documenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Trovare documenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Tutti
@@ -1859,7 +1859,7 @@ console.log(nomi);
         <h2>MongoDB — Query</h2>
         
 <p>MongoDB usa operatori speciali per le query: <code class="inline">$gt</code>, <code class="inline">$lt</code>, <code class="inline">$in</code>, <code class="inline">$and</code>, <code class="inline">$or</code> e altri.</p>
-<div class="example"><div class="codehead"><span>Query con operatori</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Query con operatori</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Prezzo maggiore di 50
@@ -1882,7 +1882,7 @@ await prodotti.find({
         <h2>MongoDB — Sort</h2>
         
 <p><code class="inline">sort</code> ordina i risultati: <code class="inline">1</code> per crescente, <code class="inline">-1</code> per decrescente.</p>
-<div class="example"><div class="codehead"><span>Ordinare i documenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Ordinare i documenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Prezzo crescente
@@ -1900,7 +1900,7 @@ await prodotti.find().sort({ categoria: 1, prezzo: -1 }).toArray();
         <h2>MongoDB — Delete</h2>
         
 <p><code class="inline">deleteOne</code> elimina il primo documento che corrisponde, <code class="inline">deleteMany</code> tutti quelli che corrispondono.</p>
-<div class="example"><div class="codehead"><span>Eliminare documenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eliminare documenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Uno
@@ -1918,7 +1918,7 @@ console.log("Eliminati:", esito.deletedCount);
         <h2>MongoDB — Drop Collection</h2>
         
 <p><code class="inline">drop</code> elimina un'intera collezione con tutti i suoi documenti.</p>
-<div class="example"><div class="codehead"><span>Eliminare una collezione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eliminare una collezione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const esito = await db.collection("prodotti").drop();
 console.log("Collezione eliminata:", esito); // true
 </script></div>
@@ -1928,7 +1928,7 @@ console.log("Collezione eliminata:", esito); // true
         <h2>MongoDB — Update</h2>
         
 <p>Si aggiorna con <code class="inline">updateOne</code> / <code class="inline">updateMany</code> usando operatori come <code class="inline">$set</code> (imposta valori) e <code class="inline">$inc</code> (incrementa).</p>
-<div class="example"><div class="codehead"><span>Aggiornare documenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Aggiornare documenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Modificare un campo
@@ -1962,7 +1962,7 @@ await prodotti.updateOne(
         <h2>MongoDB — Limit</h2>
         
 <p><code class="inline">limit</code> restringe il numero di documenti; con <code class="inline">skip</code> si realizza la paginazione.</p>
-<div class="example"><div class="codehead"><span>Limitare e paginare</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Limitare e paginare</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const prodotti = db.collection("prodotti");
 
 // Primi 5
@@ -1981,7 +1981,7 @@ await prodotti.find()
         <h2>MongoDB — Join ($lookup)</h2>
         
 <p>MongoDB realizza le "join" tramite l'operatore <code class="inline">$lookup</code> nella pipeline di aggregazione, combinando documenti di collezioni diverse.</p>
-<div class="example"><div class="codehead"><span>Join con $lookup</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Join con $lookup</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const ordini = db.collection("ordini");
 
 const risultato = await ordini.aggregate([
@@ -2006,7 +2006,7 @@ console.log(risultato);
         <h2>GraphQL con Node</h2>
         
 <p><strong>GraphQL</strong> è un'alternativa alle API REST: il client specifica <em>esattamente</em> quali dati vuole in un'unica richiesta, evitando over-fetching e under-fetching. Con Node si usa con <code class="inline">graphql</code> o server come Apollo.</p>
-<div class="example"><div class="codehead"><span>Server GraphQL minimale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server GraphQL minimale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { ApolloServer } = require("@apollo/server");
 const { startStandaloneServer } = require("@apollo/server/standalone");
 
@@ -2033,7 +2033,7 @@ console.log("GraphQL su", url);
         <h2>Socket.IO</h2>
         
 <p><strong>Socket.IO</strong> abilita la comunicazione bidirezionale in tempo reale tra server e client, ideale per chat, notifiche e dashboard live. Gestisce automaticamente i fallback se i WebSocket non sono disponibili.</p>
-<div class="example"><div class="codehead"><span>Chat in tempo reale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Chat in tempo reale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Server } = require("socket.io");
 const http = require("http");
 
@@ -2061,7 +2061,7 @@ server.listen(3000);
         <h2>WebSockets</h2>
         
 <p>I <strong>WebSocket</strong> sono il protocollo standard per una connessione persistente e bidirezionale tra browser e server. Socket.IO li usa sotto il cofano, ma puoi usarli direttamente con il pacchetto <code class="inline">ws</code>.</p>
-<div class="example"><div class="codehead"><span>Server WebSocket con ws</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server WebSocket con ws</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { WebSocketServer } = require("ws");
 
 const wss = new WebSocketServer({ port: 8080 });
@@ -2088,7 +2088,7 @@ wss.on("connection", (ws) => {
         <h2>Debugging avanzato</h2>
         
 <p>Oltre ai <code class="inline">console.log</code>, Node offre un <strong>debugger</strong> completo integrato, utilizzabile da terminale o tramite Chrome DevTools e VS Code.</p>
-<div class="example"><div class="codehead"><span>Debugging con --inspect</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Debugging con --inspect</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Avvia con il debugger e ferma alla prima riga
 node --inspect-brk app.js
 
@@ -2113,7 +2113,7 @@ node inspect app.js
         <h2>Testare le applicazioni</h2>
         
 <p>I <strong>test automatici</strong> verificano che il codice funzioni e continui a funzionare dopo le modifiche. Node ha un test runner integrato (<code class="inline">node --test</code>) da Node 18+.</p>
-<div class="example"><div class="codehead"><span>Test con il runner nativo</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Test con il runner nativo</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // math.test.js
 const { test } = require("node:test");
 const assert = require("node:assert");
@@ -2149,7 +2149,7 @@ test("operazione async", async () => {
   <tr><td><strong>Mocha + Chai</strong></td><td>Flessibile e configurabile, storico</td></tr>
   <tr><td><strong>Supertest</strong></td><td>Per testare le API HTTP/Express</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Test di un'API con Jest e Supertest</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Test di un'API con Jest e Supertest</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const request = require("supertest");
 const app = require("./app");
 
@@ -2174,7 +2174,7 @@ describe("API prodotti", () => {
         <h2>Il Test Runner di Node</h2>
         
 <p>Il <strong>test runner integrato</strong> di Node è stabile da Node 20 e non richiede dipendenze. Supporta suite, hook, mock e report di coverage.</p>
-<div class="example"><div class="codehead"><span>Funzionalità del runner nativo</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Funzionalità del runner nativo</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { test, describe, before, after, mock } = require("node:test");
 const assert = require("node:assert");
 
@@ -2204,7 +2204,7 @@ describe("Suite utenti", () => {
         <h2>Variabili d'ambiente</h2>
         
 <p>Le <strong>variabili d'ambiente</strong> separano la configurazione dal codice: credenziali, chiavi API e URL del database non vanno mai scritti nel codice sorgente.</p>
-<div class="example"><div class="codehead"><span>Gestire la configurazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Gestire la configurazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Node 20+ carica i file .env nativamente
 // node --env-file=.env app.js
 
@@ -2233,7 +2233,7 @@ if (!process.env.JWT_SECRET) {
         <h2>Sviluppo vs Produzione</h2>
         
 <p>L'ambiente di <strong>sviluppo</strong> privilegia velocità di iterazione e debug; quello di <strong>produzione</strong> privilegia stabilità, sicurezza e performance. La variabile <code class="inline">NODE_ENV</code> distingue i due.</p>
-<div class="example"><div class="codehead"><span>Comportamento per ambiente</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Comportamento per ambiente</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const inProd = process.env.NODE_ENV === "production";
 
 // Logging dettagliato solo in sviluppo
@@ -2262,7 +2262,7 @@ app.use((err, req, res, next) => {
         <h2>CI/CD</h2>
         
 <p><strong>CI/CD</strong> (Continuous Integration / Continuous Deployment) automatizza test e rilascio: a ogni push, una pipeline esegue lint, test e deploy. GitHub Actions è la soluzione più immediata.</p>
-<div class="example"><div class="codehead"><span>Pipeline GitHub Actions</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Pipeline GitHub Actions</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # .github/workflows/ci.yml
 name: CI
 on: [push, pull_request]
@@ -2296,7 +2296,7 @@ jobs:
   <li>🔑 Hash delle password con <strong>bcrypt</strong>, mai in chiaro</li>
   <li>📦 Esegui <code>npm audit</code> regolarmente</li>
 </ul>
-<div class="example"><div class="codehead"><span>Hardening di base con Express</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Hardening di base con Express</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -2328,7 +2328,7 @@ app.use(express.json({ limit: "10kb" }));
   <tr><td><strong>AWS / DigitalOcean</strong></td><td>Controllo completo, VPS</td></tr>
   <tr><td><strong>Docker</strong></td><td>Ambiente riproducibile ovunque</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Dockerfile e PM2</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Dockerfile e PM2</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Dockerfile
 FROM node:22-alpine
 WORKDIR /app
@@ -2349,7 +2349,7 @@ CMD ["node", "server.js"]
         <h2>Logging</h2>
         
 <p>Un buon <strong>logging</strong> è fondamentale per capire cosa succede in produzione. I log strutturati (JSON) sono facili da cercare e analizzare con strumenti come Grafana o Datadog.</p>
-<div class="example"><div class="codehead"><span>Logging strutturato con Pino</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Logging strutturato con Pino</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const pino = require("pino");
 const log = pino();
 
@@ -2369,7 +2369,7 @@ log.error({ err }, "Connessione al database fallita");
         <h2>Monitoraggio</h2>
         
 <p>Il <strong>monitoraggio</strong> osserva la salute dell'app in tempo reale: tempi di risposta, uso di CPU/memoria, tassi di errore. Permette di reagire ai problemi prima degli utenti.</p>
-<div class="example"><div class="codehead"><span>Health check ed esposizione metriche</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Health check ed esposizione metriche</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Endpoint di health check (usato da load balancer e uptime monitor)
 app.get("/health", (req, res) => {
   res.json({
@@ -2401,7 +2401,7 @@ app.get("/metrics", async (req, res) => {
   <li>🔁 Usa <strong>connection pooling</strong> per i database</li>
   <li>📊 Profila con <code>--prof</code> e il modulo <code>perf_hooks</code></li>
 </ul>
-<div class="example"><div class="codehead"><span>Compressione e cache</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Compressione e cache</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const compression = require("compression");
 app.use(compression()); // gzip automatico delle risposte
 
@@ -2421,7 +2421,7 @@ app.get("/dati", async (req, res) => {
         <h2>Modulo Child Process</h2>
         
 <p>Il modulo <strong>child_process</strong> permette di eseguire altri programmi o comandi di sistema da Node, creando processi figli separati.</p>
-<div class="example"><div class="codehead"><span>Eseguire processi esterni</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eseguire processi esterni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { exec, spawn } = require("child_process");
 
 // exec: per comandi brevi, raccoglie tutto l'output
@@ -2443,7 +2443,7 @@ ping.on("close", (codice) => console.log("Uscito con", codice));
         <h2>Modulo Cluster</h2>
         
 <p>Node usa un solo core per default. Il modulo <strong>cluster</strong> crea più processi worker (uno per core CPU) che condividono la stessa porta, moltiplicando la capacità di gestire richieste.</p>
-<div class="example"><div class="codehead"><span>Sfruttare tutti i core</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Sfruttare tutti i core</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const cluster = require("cluster");
 const os = require("os");
 const http = require("http");
@@ -2473,7 +2473,7 @@ if (cluster.isPrimary) {
         <h2>Worker Threads</h2>
         
 <p>I <strong>worker threads</strong> eseguono codice JavaScript in thread paralleli reali, condividendo memoria. Sono la soluzione per le operazioni <strong>CPU-intensive</strong> (calcoli pesanti, elaborazione immagini) senza bloccare l'event loop principale.</p>
-<div class="example"><div class="codehead"><span>Calcolo pesante in un thread separato</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Calcolo pesante in un thread separato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // main.js
 const { Worker } = require("worker_threads");
 
@@ -2513,7 +2513,7 @@ parentPort.postMessage(fib(workerData.numero));
         <h2>WebAssembly in Node</h2>
         
 <p><strong>WebAssembly</strong> (Wasm) permette di eseguire in Node codice compilato da linguaggi come C, C++ o Rust, a velocità quasi nativa. Utile per algoritmi critici per le prestazioni.</p>
-<div class="example"><div class="codehead"><span>Eseguire un modulo Wasm</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eseguire un modulo Wasm</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const fs = require("fs");
 
 // Caricare ed eseguire un modulo WebAssembly
@@ -2532,7 +2532,7 @@ console.log(risultato); // 12
         <h2>Modulo HTTP/2</h2>
         
 <p>Il modulo <strong>http2</strong> implementa il protocollo HTTP/2, che migliora le performance con multiplexing (più richieste su una connessione), compressione degli header e server push.</p>
-<div class="example"><div class="codehead"><span>Server HTTP/2</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server HTTP/2</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const http2 = require("http2");
 const fs = require("fs");
 
@@ -2557,7 +2557,7 @@ server.listen(8443);
         <h2>Modulo Perf Hooks</h2>
         
 <p>Il modulo <strong>perf_hooks</strong> fornisce strumenti di misurazione delle prestazioni ad alta precisione, basati sulla Performance Timing API del browser.</p>
-<div class="example"><div class="codehead"><span>Misurare i tempi di esecuzione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Misurare i tempi di esecuzione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { performance, PerformanceObserver } = require("perf_hooks");
 
 // Misurazione semplice
@@ -2583,7 +2583,7 @@ obs.observe({ entryTypes: ["measure"] });
         <h2>Modulo VM</h2>
         
 <p>Il modulo <strong>vm</strong> esegue codice JavaScript in un contesto isolato (sandbox). Utile per eseguire codice dinamico, ma da usare con grande cautela per motivi di sicurezza.</p>
-<div class="example"><div class="codehead"><span>Eseguire codice in una sandbox</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eseguire codice in una sandbox</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const vm = require("vm");
 
 const contesto = { x: 10, risultato: null };
@@ -2602,7 +2602,7 @@ console.log(contesto.risultato); // 20
         <h2>Modulo TLS/SSL</h2>
         
 <p>Il modulo <strong>tls</strong> implementa i protocolli TLS/SSL per comunicazioni cifrate e autenticate. È la base di https e di qualsiasi connessione sicura.</p>
-<div class="example"><div class="codehead"><span>Server TLS</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server TLS</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const tls = require("tls");
 const fs = require("fs");
 
@@ -2625,7 +2625,7 @@ server.listen(8000);
         <h2>Modulo Net</h2>
         
 <p>Il modulo <strong>net</strong> fornisce API per creare server e client TCP, alla base di molti protocolli di rete. Lavora a un livello più basso di http.</p>
-<div class="example"><div class="codehead"><span>Server e client TCP</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Server e client TCP</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const net = require("net");
 
 // Server TCP
@@ -2651,7 +2651,7 @@ client.on("data", (dati) => console.log(dati.toString()));
         <h2>Modulo Zlib</h2>
         
 <p>Il modulo <strong>zlib</strong> fornisce compressione e decompressione (Gzip, Deflate, Brotli). Riduce la dimensione di file e risposte HTTP, risparmiando banda.</p>
-<div class="example"><div class="codehead"><span>Comprimere dati e file</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Comprimere dati e file</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const zlib = require("zlib");
 const fs = require("fs");
 
@@ -2695,7 +2695,7 @@ fs.createReadStream("grande.txt")
         <h2>Raspberry Pi con Node.js</h2>
         
 <p>Node.js gira benissimo sul <strong>Raspberry Pi</strong>, il mini-computer perfetto per progetti IoT. Puoi controllare LED, sensori e motori direttamente da JavaScript.</p>
-<div class="example"><div class="codehead"><span>Setup su Raspberry Pi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Setup su Raspberry Pi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 # Installa Node.js sul Raspberry Pi (Raspberry Pi OS)
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 sudo apt install -y nodejs
@@ -2714,7 +2714,7 @@ npm install onoff
         <h2>Introduzione al GPIO</h2>
         
 <p>I pin <strong>GPIO</strong> sono l'interfaccia tra il Raspberry Pi e i componenti elettronici. Ogni pin può essere configurato come <strong>output</strong> (per controllare) o <strong>input</strong> (per leggere).</p>
-<div class="example"><div class="codehead"><span>Controllare un pin GPIO</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Controllare un pin GPIO</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Gpio } = require("onoff");
 
 // Pin 17 come output
@@ -2736,7 +2736,7 @@ setTimeout(() => {
         <h2>LED lampeggiante</h2>
         
 <p>Il classico "Hello World" dell'elettronica: far lampeggiare un LED. Combina GPIO e timer.</p>
-<div class="example"><div class="codehead"><span>LED che lampeggia</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>LED che lampeggia</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Gpio } = require("onoff");
 const led = new Gpio(17, "out");
 
@@ -2760,7 +2760,7 @@ process.on("SIGINT", () => {
         <h2>LED e pulsante</h2>
         
 <p>Leggere un input (pulsante) e reagire controllando un output (LED): la base dell'interazione fisica.</p>
-<div class="example"><div class="codehead"><span>Accendere un LED con un pulsante</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Accendere un LED con un pulsante</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Gpio } = require("onoff");
 
 const led = new Gpio(17, "out");
@@ -2783,7 +2783,7 @@ process.on("SIGINT", () => {
         <h2>LED in sequenza</h2>
         
 <p>Controllare più LED in sequenza per creare un effetto "luce che scorre", gestendo un array di pin.</p>
-<div class="example"><div class="codehead"><span>Effetto luci scorrevoli</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Effetto luci scorrevoli</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Gpio } = require("onoff");
 
 const pin = [17, 27, 22, 23];
@@ -2806,7 +2806,7 @@ process.on("SIGINT", () => {
         <h2>RasPi e WebSocket</h2>
         
 <p>Combinando GPIO e WebSocket puoi controllare l'hardware <strong>da remoto</strong>, in tempo reale, da una pagina web o un'app.</p>
-<div class="example"><div class="codehead"><span>Controllo remoto di un LED</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Controllo remoto di un LED</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { WebSocketServer } = require("ws");
 const { Gpio } = require("onoff");
 
@@ -2829,7 +2829,7 @@ wss.on("connection", (ws) => {
         <h2>LED RGB via WebSocket</h2>
         
 <p>Un LED RGB combina tre colori (rosso, verde, blu). Con il PWM puoi regolarne l'intensità e creare qualsiasi colore, controllabile da remoto.</p>
-<div class="example"><div class="codehead"><span>Controllo colore RGB</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Controllo colore RGB</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 const { Gpio } = require("pigpio").Gpio;
 
 // Tre pin con PWM per i tre colori
@@ -2870,7 +2870,7 @@ impostaColore(255, 0, 128); // rosa
       <article class="lesson" id="editor-online">
         <h2>Editor Node.js online</h2>
         
-<p>Ogni esempio di questo corso ha il pulsante <strong>▶ Prova tu</strong>: si apre un editor dove puoi <strong>leggere e modificare</strong> il codice con la sintassi colorata. Poiché Node gira sul server, per <em>eseguirlo</em> usa uno degli ambienti qui sotto.</p>
+<p>Ogni esempio di questo corso ha il pulsante <strong>▶ Provalo tu</strong>: si apre un editor dove puoi <strong>leggere e modificare</strong> il codice con la sintassi colorata. Poiché Node gira sul server, per <em>eseguirlo</em> usa uno degli ambienti qui sotto.</p>
 <h3>Dove eseguire Node.js online</h3>
 <ul>
   <li>🟢 <strong><a href="https://stackblitz.com" target="_blank" rel="noreferrer">StackBlitz</a></strong> — ambiente Node.js completo nel browser, avvio istantaneo</li>
@@ -2878,7 +2878,7 @@ impostaColore(255, 0, 128); // rosa
   <li>🟣 <strong><a href="https://codesandbox.io" target="_blank" rel="noreferrer">CodeSandbox</a></strong> — ideale per progetti Express e API</li>
   <li>💻 <strong>Locale</strong> — installa Node da <a href="https://nodejs.org" target="_blank" rel="noreferrer">nodejs.org</a> e lancia <code class="inline">node file.js</code></li>
 </ul>
-<div class="example"><div class="codehead"><span>Prova questo nel tuo editor</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Prova questo nel tuo editor</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-javascript"></code></pre><script type="text/plain" class="code">
 // Un mini-server che puoi avviare ed eseguire su StackBlitz o in locale
 const http = require("http");
 
@@ -3091,7 +3091,7 @@ server.listen(3000, () => {
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice Node.js</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice Node.js</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

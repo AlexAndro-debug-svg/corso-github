@@ -274,7 +274,7 @@
         <p>Con PHP puoi creare <strong>siti dinamici</strong>, gestire i dati inviati dai form, dialogare con database come MySQL, gestire login, sessioni e cookie. È facile da imparare e si integra direttamente nell'HTML.</p>
         <div class="note-box">📌 PHP <strong>non si esegue nel browser</strong>: ha bisogno di un server con interprete PHP (es. XAMPP in locale, oppure un hosting). In questo corso gli esempi si <strong>leggono e si modificano</strong> con la sintassi colorata.</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 echo "Ciao mondo!";
@@ -292,7 +292,7 @@ echo "Ciao mondo!";
         <h2>La sintassi di PHP</h2>
         <p>Il codice PHP si scrive tra i tag <code class="inline">&lt;?php</code> e <code class="inline">?&gt;</code> e può essere inserito ovunque dentro una pagina HTML. Ogni istruzione termina con il punto e virgola <code class="inline">;</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><!DOCTYPE html>
 <html>
@@ -310,7 +310,7 @@ echo "Ciao mondo!";
         <h2>Stampare: echo e print</h2>
         <p><code class="inline">echo</code> e <code class="inline">print</code> mostrano contenuti nella pagina. <code class="inline">echo</code> è leggermente più veloce e può stampare più valori separati da virgola.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 echo "Ciao ", "mondo", "!";
@@ -324,7 +324,7 @@ print "Anche print funziona";
         <h2>I commenti</h2>
         <p>PHP supporta commenti su una riga con <code class="inline">//</code> o <code class="inline">#</code>, e su più righe con <code class="inline">/* ... */</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Commento su una riga
@@ -340,7 +340,7 @@ echo "I commenti sono ignorati";
         <h2>Le variabili</h2>
         <p>In PHP le variabili iniziano sempre con il simbolo <strong>dollaro</strong> <code class="inline">$</code>. Non serve dichiarare il tipo: viene dedotto dal valore. Sono case-sensitive.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $nome = "Alessandro";
@@ -356,7 +356,7 @@ echo "$nome ha $eta anni";
         <h2>I tipi di dato</h2>
         <p>I tipi principali in PHP sono: <code class="inline">string</code> (testo), <code class="inline">int</code> (interi), <code class="inline">float</code> (decimali), <code class="inline">bool</code> (true/false), <code class="inline">array</code>, <code class="inline">object</code> e <code class="inline">NULL</code>. La funzione <code class="inline">gettype()</code> mostra il tipo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $testo = "ciao";
@@ -375,7 +375,7 @@ echo gettype($vero);
         <h2>Le stringhe</h2>
         <p>Le stringhe si concatenano con il <strong>punto</strong> <code class="inline">.</code> e offrono molte funzioni: <code class="inline">strlen()</code>, <code class="inline">strtoupper()</code>, <code class="inline">str_replace()</code>, <code class="inline">substr()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $testo = "PHP è potente";
@@ -392,7 +392,7 @@ echo "Ciao " . "mondo";
         <h2>Numeri e funzioni matematiche</h2>
         <p>PHP gestisce interi e decimali e offre funzioni matematiche come <code class="inline">abs()</code>, <code class="inline">round()</code>, <code class="inline">sqrt()</code>, <code class="inline">pow()</code>, <code class="inline">rand()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 echo sqrt(144) . "<br>";
@@ -407,7 +407,7 @@ echo rand(1, 100);
         <h2>Le costanti</h2>
         <p>Una <strong>costante</strong> è un valore che non cambia. Si definisce con <code class="inline">define()</code> o con <code class="inline">const</code> e, per convenzione, si scrive in MAIUSCOLO. Non usa il <code class="inline">$</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 define("SITO", "AlessandroSimone.it");
@@ -423,7 +423,7 @@ echo "IVA: " . (IVA * 100) . "%";
         <h2>Gli operatori</h2>
         <p>PHP offre operatori aritmetici (<code class="inline">+ - * / %</code>), di confronto (<code class="inline">== === != &gt; &lt;</code>) e logici (<code class="inline">&amp;&amp; || !</code>). Attenzione: <code class="inline">==</code> confronta i valori, <code class="inline">===</code> confronta valore E tipo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 var_dump(5 == "5");   // true (solo valore)
@@ -437,7 +437,7 @@ echo (10 > 3 && 3 > 0) ? "Vero" : "Falso";
         <h2>Le condizioni: if, elseif, else</h2>
         <p>Eseguono codice diverso a seconda di una condizione. Esiste anche l'operatore ternario <code class="inline">?:</code> per le scelte rapide.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $voto = 7;
@@ -457,7 +457,7 @@ if ($voto >= 8) {
         <h2>Il costrutto switch</h2>
         <p>Lo <code class="inline">switch</code> confronta una variabile con più casi, alternativa più leggibile a tanti <code class="inline">elseif</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $giorno = "lun";
@@ -478,7 +478,7 @@ switch ($giorno) {
         <h2>Il ciclo while</h2>
         <p>Il <code class="inline">while</code> ripete un blocco finché la condizione è vera.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $n = 1;
@@ -494,7 +494,7 @@ while ($n <= 5) {
         <h2>Il ciclo for</h2>
         <p>Il <code class="inline">for</code> è adatto quando conosci il numero di ripetizioni.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 for ($i = 1; $i <= 5; $i++) {
@@ -508,7 +508,7 @@ for ($i = 1; $i <= 5; $i++) {
         <h2>Le funzioni</h2>
         <p>Una <strong>funzione</strong> raggruppa codice riutilizzabile. Si definisce con <code class="inline">function</code>, può avere parametri (anche con valore di default) e restituire un valore con <code class="inline">return</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 function saluta($nome, $saluto = "Ciao") {
@@ -525,7 +525,7 @@ echo saluta("Giulia", "Buongiorno");
         <h2>Gli array</h2>
         <p>Un <strong>array</strong> contiene più valori. In quello <em>indicizzato</em> si accede con un numero (da 0). Si crea con <code class="inline">array()</code> o <code class="inline">[]</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $frutta = ["mela", "pera", "kiwi"];
@@ -541,7 +541,7 @@ echo "Quanti: " . count($frutta);
         <h2>Gli array associativi</h2>
         <p>Negli array <strong>associativi</strong> ogni valore ha una <strong>chiave</strong> testuale, come un dizionario. Perfetti per rappresentare dati strutturati.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $studente = [
@@ -559,7 +559,7 @@ echo $studente["nome"] . " - " . $studente["classe"];
         <h2>Il ciclo foreach</h2>
         <p>Il <code class="inline">foreach</code> scorre tutti gli elementi di un array, anche associativo (con chiave e valore).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $voti = ["Marco" => 8, "Giulia" => 9, "Luca" => 6];
@@ -575,7 +575,7 @@ foreach ($voti as $nome => $voto) {
         <h2>Le date</h2>
         <p>La funzione <code class="inline">date()</code> formatta la data e l'ora correnti del server secondo uno schema di caratteri (Y = anno, m = mese, d = giorno, H:i:s = ora).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 echo "Oggi è il " . date("d/m/Y") . "<br>";
@@ -589,7 +589,7 @@ echo "Anno: " . date("Y");
         <h2>Include e require</h2>
         <p><code class="inline">include</code> e <code class="inline">require</code> inseriscono il contenuto di un altro file PHP: utilissimi per riusare header, footer e menu su tutte le pagine. La differenza: se il file manca, <code class="inline">require</code> blocca lo script, <code class="inline">include</code> dà solo un avviso.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // include "header.php";
@@ -606,7 +606,7 @@ echo " definiti una volta sola in un file a parte.";
         <h2>Espressione match</h2>
         <p>Introdotto in PHP 8, <code class="inline">match</code> è una versione moderna e più sicura di <code class="inline">switch</code>: usa il confronto stretto (<code class="inline">===</code>), restituisce un valore e non richiede <code class="inline">break</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $voto = 8;
@@ -642,7 +642,7 @@ echo match($giorno) {
           <tr><td><code>__NAMESPACE__</code></td><td>Namespace corrente</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 echo "Riga: " . __LINE__ . "\n";
@@ -667,7 +667,7 @@ saluta(); // Funzione: saluta
           <tr><td><code>preg_split()</code></td><td>Divide una stringa con un pattern</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Validazione email
@@ -693,7 +693,7 @@ print_r($risultati[0]); // [3, 5]
         <h2>Gestire i form: $_POST</h2>
         <p>PHP riceve i dati inviati da un form HTML tramite le <strong>superglobali</strong> <code class="inline">$_POST</code> (metodo POST) e <code class="inline">$_GET</code> (metodo GET). Il valore di <code class="inline">name</code> di ogni campo diventa la chiave.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><!-- modulo.html -->
 <form method="post" action="invia.php">
@@ -713,7 +713,7 @@ echo "Ciao $nome, modulo ricevuto!";
         <h2>I parametri nell'URL: $_GET</h2>
         <p>Con il metodo GET i dati viaggiano nell'URL (es. <code class="inline">pagina.php?id=5</code>) e si leggono da <code class="inline">$_GET</code>. È adatto a ricerche e link, ma non a dati sensibili (sono visibili nell'URL).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // URL: prodotto.php?id=5&categoria=libri
@@ -729,7 +729,7 @@ echo "Prodotto $id nella categoria $categoria";
         <h2>La validazione dei dati</h2>
         <p><strong>Non fidarti mai dei dati dell'utente!</strong> Vanno sempre controllati e ripuliti per sicurezza. Funzioni utili: <code class="inline">empty()</code>, <code class="inline">isset()</code>, <code class="inline">htmlspecialchars()</code> (contro gli attacchi XSS) e <code class="inline">filter_var()</code> per validare email.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $email = "mario@example.com";
@@ -750,7 +750,7 @@ if (empty($email)) {
         <h2>Campi obbligatori nei form</h2>
         <p>Per rendere obbligatori alcuni campi, in PHP si verifica che non siano vuoti e si mostra un messaggio d'errore accanto al campo mancante.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $nomeErr = $emailErr = "";
@@ -779,7 +779,7 @@ echo $nomeErr ?: "Nome OK: $nome";
         <h2>Validare URL ed E-mail</h2>
         <p>PHP fornisce i <strong>filtri</strong> <code class="inline">filter_var()</code> per validare facilmente email, URL, interi e altri formati comuni.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $email = "mario.rossi@scuola.it";
@@ -802,7 +802,7 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
         <h2>Form completo: esempio pratico</h2>
         <p>Un modulo di contatto completo che combina validazione, campi obbligatori, controllo email e protezione XSS — uno schema riutilizzabile per progetti reali.</p>
         <div class="example">
-          <div class="codehead"><span>Form di contatto</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Form di contatto</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 function pulisci($dato) {
@@ -835,7 +835,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Sessioni e cookie</h2>
         <p>Le <strong>sessioni</strong> conservano dati lato server tra una pagina e l'altra (es. per il login). I <strong>cookie</strong> salvano dati nel browser dell'utente. Una sessione si avvia con <code class="inline">session_start()</code> e si usa l'array <code class="inline">$_SESSION</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 session_start();
@@ -870,7 +870,7 @@ setcookie("tema", "scuro", time() + 3600);
         <h2>Aprire e leggere file</h2>
         <p>Per leggere un intero file la via più rapida è <code class="inline">file_get_contents()</code>. Per leggere riga per riga si usa <code class="inline">fopen()</code> + <code class="inline">fgets()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Leggere tutto in una volta
@@ -897,7 +897,7 @@ foreach ($righe as $r) echo $r;
         <h2>Creare e scrivere file</h2>
         <p>Con <code class="inline">fwrite()</code> si scrive su un file aperto in modalità <code class="inline">w</code> (sovrascrive) o <code class="inline">a</code> (aggiunge). La scorciatoia <code class="inline">file_put_contents()</code> fa tutto in una riga.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Scrittura con fopen/fwrite
@@ -919,7 +919,7 @@ echo "File scritto con successo!";
         <h2>Upload di file</h2>
         <p>PHP gestisce l'upload tramite la superglobale <code class="inline">$_FILES</code>. Il form HTML deve avere <code class="inline">enctype="multipart/form-data"</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["foto"])) {
@@ -956,7 +956,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["foto"])) {
           <tr><td><code>FILTER_SANITIZE_SPECIAL_CHARS</code></td><td>Codifica caratteri speciali HTML</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $eta = "25";
@@ -976,7 +976,7 @@ echo filter_var($input, FILTER_SANITIZE_SPECIAL_CHARS);
         <h2>Funzioni callback</h2>
         <p>Una <strong>callback</strong> è una funzione passata come argomento a un'altra funzione. Molte funzioni PHP (come <code class="inline">array_map</code> e <code class="inline">usort</code>) accettano callback.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $numeri = [1, 2, 3, 4, 5];
@@ -1004,7 +1004,7 @@ print_r($parole); // [kiwi, mela, banana]
         <h2>JSON in PHP</h2>
         <p><strong>JSON</strong> è il formato standard per scambiare dati tra server e client (es. con JavaScript e API). PHP converte con <code class="inline">json_encode()</code> e <code class="inline">json_decode()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // PHP array → JSON
@@ -1030,7 +1030,7 @@ echo $dati["citta"]; // Roma
         <h2>Gestione delle eccezioni</h2>
         <p>Le <strong>eccezioni</strong> gestiscono gli errori in modo controllato con i blocchi <code class="inline">try</code>, <code class="inline">catch</code> e <code class="inline">finally</code>, senza interrompere bruscamente il programma.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 function dividi($a, $b) {
@@ -1058,7 +1058,7 @@ try {
         <h2>OOP: classi e oggetti</h2>
         <p>PHP supporta la <strong>programmazione a oggetti</strong>. Una <strong>classe</strong> definisce proprietà e metodi; con <code class="inline">new</code> si crea un oggetto. Il costruttore <code class="inline">__construct()</code> inizializza l'oggetto; <code class="inline">$this</code> indica l'oggetto corrente.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Studente {
@@ -1086,7 +1086,7 @@ echo $s->descrivi();
         <h2>Classi, oggetti e proprietà</h2>
         <p>Una <strong>classe</strong> è il modello da cui si creano gli <strong>oggetti</strong>. Le <strong>proprietà</strong> sono le variabili della classe, i <strong>metodi</strong> le sue funzioni. Si accede con l'operatore <code class="inline">-&gt;</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Auto {
@@ -1114,7 +1114,7 @@ echo $a->info(); // Fiat a 50 km/h
         <h2>Costruttore e distruttore</h2>
         <p>Il <strong>costruttore</strong> <code class="inline">__construct()</code> viene chiamato automaticamente alla creazione dell'oggetto. Il <strong>distruttore</strong> <code class="inline">__destruct()</code> quando l'oggetto viene eliminato.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Connessione {
@@ -1144,7 +1144,7 @@ echo "Lavoro in corso...\n";
           <tr><td><code>private</code></td><td>Solo dalla classe stessa</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class ContoBancario {
@@ -1170,7 +1170,7 @@ echo $conto->getSaldo(); // 100
         <h2>L'ereditarietà</h2>
         <p>Con <code class="inline">extends</code> una classe eredita proprietà e metodi da un'altra. I modificatori <code class="inline">public</code>, <code class="inline">private</code> e <code class="inline">protected</code> controllano la visibilità (incapsulamento).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Animale {
@@ -1196,7 +1196,7 @@ echo $c->respira() . " " . $c->abbaia();
         <h2>Classi astratte</h2>
         <p>Una <strong>classe astratta</strong> (<code class="inline">abstract</code>) non può essere istanziata: serve da modello per le sottoclassi. I metodi astratti definiscono solo la firma, l'implementazione è obbligatoria nelle classi figlie.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 abstract class Forma {
@@ -1225,7 +1225,7 @@ echo $r->descrivi(); // Area: 15
         <h2>Interfacce</h2>
         <p>Un'<strong>interfaccia</strong> definisce un contratto: un insieme di metodi che le classi devono implementare. Una classe può implementare più interfacce con <code class="inline">implements</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 interface Animale {
@@ -1252,7 +1252,7 @@ echo $c->nome() . " dice " . $c->verso(); // Rex dice Bau!
         <h2>Traits</h2>
         <p>I <strong>traits</strong> permettono di riutilizzare gruppi di metodi in più classi, superando il limite dell'ereditarietà singola di PHP.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 trait Salutabile {
@@ -1283,7 +1283,7 @@ $u->log("Login effettuato");
         <h2>Metodi e proprietà statiche</h2>
         <p>I membri <code class="inline">static</code> appartengono alla classe, non agli oggetti. Si accede con l'operatore <code class="inline">::</code> senza creare un'istanza.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Contatore {
@@ -1311,7 +1311,7 @@ echo "\n" . MathUtil::quadrato(6); // 36
         <h2>Namespace</h2>
         <p>I <strong>namespace</strong> organizzano il codice ed evitano i conflitti di nome tra classi/funzioni con lo stesso nome (es. provenienti da librerie diverse).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 namespace App\Modelli;
@@ -1334,7 +1334,7 @@ echo $u->nome; // Marco
         <h2>Iterables e generatori</h2>
         <p>Un <strong>iterable</strong> è qualsiasi cosa percorribile con <code class="inline">foreach</code> (array o oggetti <code>Traversable</code>). I <strong>generatori</strong> (<code class="inline">yield</code>) producono valori on-demand, risparmiando memoria.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Generatore: non crea tutto l'array in memoria
@@ -1365,7 +1365,7 @@ echo "\n" . somma([10, 20, 30]); // 60
         <h2>PHP e MySQL</h2>
         <p>La combinazione PHP + MySQL è alla base dei siti dinamici: PHP si connette al database, esegue query e mostra i risultati. Il modo moderno e sicuro è <strong>PDO</strong>, che protegge dalle SQL injection con i <em>prepared statement</em>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // Connessione al database con PDO
@@ -1388,7 +1388,7 @@ foreach ($stmt as $riga) {
         <h2>Creare database e tabelle</h2>
         <p>Con PDO puoi eseguire qualsiasi comando SQL, inclusi <code class="inline">CREATE DATABASE</code> e <code class="inline">CREATE TABLE</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $pdo = new PDO("mysql:host=localhost", "root", "");
@@ -1415,7 +1415,7 @@ echo "Database e tabella creati!";
         <h2>Inserire dati</h2>
         <p>Per inserire dati in modo sicuro si usano i <strong>prepared statement</strong>, che separano la query dai valori prevenendo le SQL injection.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
@@ -1438,7 +1438,7 @@ echo "Ultimo ID inserito: " . $pdo->lastInsertId();
         <h2>Leggere dati</h2>
         <p>La query <code class="inline">SELECT</code> recupera i dati. Con <code class="inline">fetch()</code> leggi una riga, con <code class="inline">fetchAll()</code> tutte le righe.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
@@ -1464,7 +1464,7 @@ echo "Totale studenti: $totale";
         <h2>Aggiornare ed eliminare dati</h2>
         <p><code class="inline">UPDATE</code> modifica i record esistenti, <code class="inline">DELETE</code> li elimina. Usa sempre <code class="inline">WHERE</code> per non agire su tutta la tabella!</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $pdo = new PDO("mysql:host=localhost;dbname=scuola", "root", "");
@@ -1488,7 +1488,7 @@ echo "Righe eliminate: " . $stmt->rowCount();
         <h2>Leggere XML con SimpleXML</h2>
         <p><strong>SimpleXML</strong> è il modo più semplice per leggere documenti XML in PHP, trasformandoli in oggetti navigabili.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $xmlStr = '<?xml version="1.0"?>
@@ -1511,7 +1511,7 @@ foreach ($xml->libro as $libro) {
         <h2>AJAX con PHP</h2>
         <p><strong>AJAX</strong> permette di scambiare dati con il server senza ricaricare la pagina. JavaScript invia una richiesta a uno script PHP, che risponde (spesso in JSON).</p>
         <div class="example">
-          <div class="codehead"><span>Lato server: api.php</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Lato server: api.php</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 // api.php — risponde in JSON
@@ -1538,7 +1538,7 @@ echo json_encode($risposta);
         <p>Esempi completi e riutilizzabili per consolidare PHP nel contesto web reale.</p>
         <h3>Contatore di visite con file</h3>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $file = "contatore.txt";
@@ -1550,7 +1550,7 @@ echo "Questa pagina è stata visitata $visite volte.";
         </div>
         <h3>Tabella HTML dinamica da array</h3>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $studenti = [
@@ -1608,7 +1608,7 @@ for ($i = 1; $i <= 5; $i++) {
 
         <h3>Esercizio 1 — FizzBuzz</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 for ($i = 1; $i <= 20; $i++) {
@@ -1622,7 +1622,7 @@ for ($i = 1; $i <= 20; $i++) {
 
         <h3>Esercizio 2 — Conta vocali</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 function contaVocali($str) {
@@ -1634,7 +1634,7 @@ echo contaVocali("Programmazione PHP"); // 7
 
         <h3>Esercizio 3 — Array associativo e media</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 $voti = ["Italiano" => 7, "Mate" => 8, "Storia" => 6, "Info" => 9];
@@ -1649,7 +1649,7 @@ foreach ($voti as $materia => $v) {
 
         <h3>Esercizio 4 — Palindromo</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 function isPalindromo($str) {
@@ -1663,7 +1663,7 @@ var_dump(isPalindromo("PHP rocks"));   // false
 
         <h3>Esercizio 5 — Classe Carrello</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
           <pre class="codeview"><code class="language-php"></code></pre>
           <script type="text/plain" class="code"><?php
 class Carrello {
@@ -1887,7 +1887,7 @@ echo "Totale: " . $c->totale() . "€"; // Totale: 22€
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice PHP</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice PHP</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

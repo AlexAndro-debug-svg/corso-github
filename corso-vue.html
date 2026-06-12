@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corso Vue.js in italiano completo e gratuito — direttive, componenti, props, Composition API da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso Vue.js 3 italiano completo e gratuito: direttive v-bind v-if v-for v-model, eventi, computed, watcher, componenti, props, slot, lifecycle hooks e Composition API. Editor live interattivo Prova tu.">
+  <meta name="description" content="Corso Vue.js 3 italiano completo e gratuito: direttive v-bind v-if v-for v-model, eventi, computed, watcher, componenti, props, slot, lifecycle hooks e Composition API. Editor live interattivo Provalo tu.">
   <meta name="keywords" content="corso vue italiano, vue.js tutorial italiano, imparare vue, vue da zero, vue 3 italiano, vue direttive, vue componenti, vue props, vue v-model, vue computed, vue watcher, vue lifecycle hooks, composition api, vue per principianti">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso Vue.js 3 in italiano completo e gratuito — componenti, direttive e Composition API da zero | AlessandroSimone.it">
@@ -209,8 +209,8 @@
 <li>📖 <strong>Facile da imparare</strong>: sintassi vicina a HTML e JavaScript puro</li>
 <li>🔧 <strong>Ricco di strumenti</strong>: router, store, devtools già pronti</li>
 </ul>
-<div class="note-box">📘 Premi <strong>▶ Prova tu</strong> su ogni esempio per vedere il codice in azione e modificarlo in tempo reale.</div>
-<div class="example"><div class="codehead"><span>Il tuo primo componente Vue</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="note-box">📘 Premi <strong>▶ Provalo tu</strong> su ogni esempio per vedere il codice in azione e modificarlo in tempo reale.</div>
+<div class="example"><div class="codehead"><span>Il tuo primo componente Vue</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h2>{{ titolo }}</h2>
   <p>Benvenuto nel corso Vue, {{ nome }}!</p>
@@ -247,7 +247,7 @@ createApp({
 <p>Per iniziare subito basta includere lo script CDN nell'HTML:</p>
 <div class="example"><div class="codehead"><span>Inclusione via CDN</span></div><pre class="codeview"><code class="language-html">&lt;script src="https://unpkg.com/vue@3/dist/vue.global.js"&gt;&lt;/script&gt;</code></pre></div>
 <p>Il tag <code class="inline">&lt;div id="app"&gt;</code> è il <strong>punto di montaggio</strong> dell'applicazione Vue.</p>
-<div class="example"><div class="codehead"><span>Vue reattivo — modifica il nome</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Vue reattivo — modifica il nome</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h2>Inserisci il tuo nome</h2>
   <input v-model="nome" placeholder="Scrivi qui...">
@@ -278,7 +278,7 @@ createApp({
 <tr><td><code class="inline">v-for</code></td><td>Renderizza una lista</td></tr>
 <tr><td><code class="inline">v-on</code></td><td>Ascolta eventi (shortcut: @)</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Direttive in azione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Direttive in azione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <p v-bind:style="{ color: colore }">Testo colorato con v-bind</p>
   <p v-if="mostra">Questo testo appare con v-if</p>
@@ -319,7 +319,7 @@ createApp({
 &lt;img :src="urlImmagine"&gt;
 &lt;a :href="link"&gt;Clicca&lt;/a&gt;</code></pre></div>
 <p>Con <code class="inline">v-bind</code> si possono collegare <strong>src</strong>, <strong>href</strong>, <strong>class</strong>, <strong>style</strong>, <strong>disabled</strong> e qualsiasi altro attributo.</p>
-<div class="example"><div class="codehead"><span>v-bind: collega attributi dinamicamente</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-bind: collega attributi dinamicamente</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <img :src="img" :alt="descrizione" style="max-width:180px;border-radius:8px">
   <p><a :href="link" target="_blank">Visita: {{ link }}</a></p>
@@ -354,7 +354,7 @@ createApp({
 &lt;p v-else-if="guest"&gt;Sei un ospite&lt;/p&gt;
 &lt;p v-else&gt;Accedi per continuare&lt;/p&gt;</code></pre></div>
 <div class="tip-box">💡 Usa <code class="inline">v-if</code> quando l'elemento non serve spesso. Usa <code class="inline">v-show</code> quando l'elemento si nasconde e riappare frequentemente.</div>
-<div class="example"><div class="codehead"><span>v-if con punteggio</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-if con punteggio</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Punteggio: {{ punteggio }}</h3>
   <p v-if="punteggio >= 90">🏆 Ottimo!</p>
@@ -386,7 +386,7 @@ createApp({
 &lt;!-- v-if: rimuove/aggiunge l'elemento al DOM --&gt;
 &lt;div v-if="visibile"&gt;Sono qui!&lt;/div&gt;</code></pre></div>
 <p><strong>Quando usare v-show</strong>: quando l'elemento si alterna frequentemente, perché evita di ricostruire il DOM ogni volta.</p>
-<div class="example"><div class="codehead"><span>v-show: pannello toggle</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-show: pannello toggle</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <button @click="aperto = !aperto">
     {{ aperto ? 'Chiudi' : 'Apri' }} pannello
@@ -420,7 +420,7 @@ createApp({
 &lt;li v-for="corso in corsi" :key="corso.id"&gt;
   {{ corso.nome }}
 &lt;/li&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>v-for: lista dinamica con aggiunta</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-for: lista dinamica con aggiunta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <input v-model="nuovoItem" placeholder="Aggiungi elemento..." @keyup.enter="aggiungi">
   <button @click="aggiungi">Aggiungi</button>
@@ -468,7 +468,7 @@ createApp({
 &lt;!-- submit form --&gt;
 &lt;form @submit.prevent="invia"&gt;...&lt;/form&gt;</code></pre></div>
 <p>Il modificatore <code class="inline">.prevent</code> chiama automaticamente <code class="inline">event.preventDefault()</code>.</p>
-<div class="example"><div class="codehead"><span>Vari tipi di eventi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Vari tipi di eventi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <p>Click: {{ clicks }} volte</p>
   <button @click="clicks++">Cliccami</button>
@@ -506,7 +506,7 @@ createApp({
 
 &lt;!-- Con argomento dell'evento --&gt;
 &lt;input @input="gestisci($event)"&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>v-on con più eventi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-on con più eventi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <div
     @mouseenter="dentro = true"
@@ -552,7 +552,7 @@ createApp({
 }).mount('#app')
 &lt;/script&gt;</code></pre></div>
 <p>All'interno dei methods si usa <code class="inline">this</code> per accedere ai dati del componente.</p>
-<div class="example"><div class="codehead"><span>Calcolatrice semplice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Calcolatrice semplice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Risultato: {{ risultato }}</h3>
   <input v-model.number="a" type="number" style="width:70px">
@@ -594,7 +594,7 @@ createApp({
 <tr><td><code class="inline">.self</code></td><td>Solo se cliccato l'elemento stesso</td></tr>
 <tr><td><code class="inline">.enter</code></td><td>Tasto Invio (key modifier)</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Modificatori in pratica</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Modificatori in pratica</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <form @submit.prevent="invia">
     <input v-model="testo" @keyup.enter="invia" placeholder="Premi Invio o Submit">
@@ -635,7 +635,7 @@ createApp({
 &lt;input type="radio" value="A" v-model="scelta"&gt;
 &lt;select v-model="selezionato"&gt;...&lt;/select&gt;</code></pre></div>
 <p>Modificatori utili: <code class="inline">v-model.trim</code> (rimuove spazi), <code class="inline">v-model.number</code> (converte in numero), <code class="inline">v-model.lazy</code> (aggiorna al blur).</p>
-<div class="example"><div class="codehead"><span>Form con v-model</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Form con v-model</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <label>Nome: <input v-model.trim="form.nome"></label><br><br>
   <label>Età: <input v-model.number="form.eta" type="number" style="width:70px"></label><br><br>
@@ -674,7 +674,7 @@ createApp({
 
 &lt;!-- Stile inline --&gt;
 &lt;div :style="{ color: colore, fontSize: dimensione + 'px' }"&gt;&lt;/div&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>CSS Binding dinamico</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>CSS Binding dinamico</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   .box { padding: 1rem; border-radius: 8px; margin: .5rem 0; transition: all .3s; }
   .rosso { background: #fee2e2; color: #991b1b; }
@@ -725,7 +725,7 @@ methods: {
   }
 }
 &lt;/script&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Ricerca con computed</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Ricerca con computed</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <input v-model="ricerca" placeholder="🔍 Cerca un corso...">
   <p>{{ risultatiFiltrati.length }} risultati su {{ corsi.length }}</p>
@@ -769,7 +769,7 @@ watch: {
 }
 &lt;/script&gt;</code></pre></div>
 <div class="tip-box">💡 Usa <strong>computed</strong> per valori derivati, <strong>watch</strong> per reazioni a cambiamenti (chiamate HTTP, animazioni, ecc.).</div>
-<div class="example"><div class="codehead"><span>Watcher per validazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Watcher per validazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <label>Username: <input v-model="username"></label>
   <p :style="{ color: stato.colore }">{{ stato.msg }}</p>
@@ -815,7 +815,7 @@ createApp({
 &lt;p&gt;{{ numero * 2 }}&lt;/p&gt;
 &lt;p&gt;{{ ok ? 'Sì' : 'No' }}&lt;/p&gt;
 &lt;p&gt;{{ testo.split(' ').reverse().join(' ') }}&lt;/p&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Template e interpolazioni</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Template e interpolazioni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <p>{{ messaggio }}</p>
   <p>Doppio: {{ numero * 2 }}</p>
@@ -846,7 +846,7 @@ npm install
 npm run dev</code></pre></div>
 <p>Vite avvia un server locale su <strong>http://localhost:5173</strong> con hot-reload automatico.</p>
 <div class="note-box">📘 Per fare pratica subito senza build, tutti gli esempi di questo corso usano la versione CDN di Vue 3.</div>
-<div class="example"><div class="codehead"><span>CDN vs Vite: stessa sintassi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>CDN vs Vite: stessa sintassi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>{{ titolo }}</h3>
   <p>In produzione con Vite useresti un file <code>.vue</code>.</p>
@@ -897,7 +897,7 @@ export default {
 h2 { color: #42b883; }
 &lt;/style&gt;</code></pre></div>
 <p>L'attributo <code class="inline">scoped</code> limita i CSS solo a quel componente, evitando conflitti.</p>
-<div class="example"><div class="codehead"><span>Simula un SFC con CDN</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Simula un SFC con CDN</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   /* Questo sarebbe il <style scoped> dell'SFC */
   .sfc-card { background: #f0fdf4; border: 2px solid #42b883; border-radius: 12px; padding: 1.5rem; }
@@ -936,7 +936,7 @@ app.component('MioBottone', {
 
 app.mount('#app')</code></pre></div>
 <p>Con CDN si definiscono i componenti come oggetti e si registrano con <code class="inline">app.component()</code>.</p>
-<div class="example"><div class="codehead"><span>Componente contatore riutilizzabile</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Componente contatore riutilizzabile</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Tre contatori indipendenti:</h3>
   <contatore></contatore>
@@ -984,7 +984,7 @@ export default {
 &lt;!-- Nel componente padre --&gt;
 &lt;carta titolo="HTML" colore="red"&gt;&lt;/carta&gt;
 &lt;carta :titolo="dinamico" :colore="c"&gt;&lt;/carta&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Props: carta corso</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Props: carta corso</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <corso-card
     v-for="c in corsi" :key="c.nome"
@@ -1029,7 +1029,7 @@ app.mount('#app')
   :testo="item.testo"
 &gt;&lt;/lista-item&gt;</code></pre></div>
 <div class="tip-box">💡 La prop <code class="inline">:key</code> è obbligatoria con <code class="inline">v-for</code> sui componenti: aiuta Vue a identificare e riutilizzare efficientemente gli elementi.</div>
-<div class="example"><div class="codehead"><span>Lista di componenti con v-for</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Lista di componenti con v-for</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <input v-model="nuovo" @keyup.enter="aggiungi" placeholder="Aggiungi un compito...">
   <button @click="aggiungi">+</button>
@@ -1098,7 +1098,7 @@ export default {
 
 &lt;!-- Padre --&gt;
 &lt;figlio @aumenta="totale += $event"&gt;&lt;/figlio&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>$emit: comunicazione figlio→padre</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>$emit: comunicazione figlio→padre</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Totale: {{ totale }}</h3>
   <pulsanti @aggiungi="totale += $event" @reset="totale = 0"></pulsanti>
@@ -1135,7 +1135,7 @@ app.mount('#app')
 &lt;button&gt;Click&lt;/button&gt;
 &lt;!-- Risultato: &lt;button class="grande" id="btn1"&gt;Click&lt;/button&gt; --&gt;</code></pre></div>
 <p>Per disabilitare questo comportamento: <code class="inline">inheritAttrs: false</code> e <code class="inline">v-bind="$attrs"</code> manualmente.</p>
-<div class="example"><div class="codehead"><span>Fallthrough in azione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Fallthrough in azione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   .grande { font-size: 1.3rem; padding: .6rem 1.4rem; }
   .rosso-btn { background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; }
@@ -1166,7 +1166,7 @@ h2 { color: green; }
 .card { border: 1px solid #e2e8f0; }
 &lt;/style&gt;</code></pre></div>
 <p>Vue aggiunge un attributo unico come <code class="inline">data-v-f3f3eg9</code> a ogni elemento e al selettore CSS, isolando gli stili.</p>
-<div class="example"><div class="codehead"><span>Simula stili scoped con componenti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Simula stili scoped con componenti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <tema-chiaro></tema-chiaro>
   <tema-scuro></tema-scuro>
@@ -1211,7 +1211,7 @@ export default {
 }
 &lt;/script&gt;</code></pre></div>
 <p>La registrazione locale è preferita perché <strong>riduce il bundle</strong> finale: un componente non usato non viene incluso.</p>
-<div class="example"><div class="codehead"><span>Componenti locali</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Componenti locali</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <app-root></app-root>
 </div>
@@ -1262,7 +1262,7 @@ app.mount('#app')
   &lt;h2&gt;Titolo personalizzato&lt;/h2&gt;
   &lt;p&gt;Testo personalizzato&lt;/p&gt;
 &lt;/card&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Slot: contenuto flessibile</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Slot: contenuto flessibile</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <riquadro>
     <h3>Primo riquadro</h3>
@@ -1305,7 +1305,7 @@ app.mount('#app')
   &lt;p&gt;Corpo principale&lt;/p&gt;
   &lt;template #footer&gt;Footer&lt;/template&gt;
 &lt;/card&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Slot con nome: layout flessibile</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Slot con nome: layout flessibile</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <layout-card>
     <template v-slot:header>
@@ -1352,7 +1352,7 @@ app.mount('#app')
 &lt;lista-componente v-slot="{ item }"&gt;
   &lt;span&gt;{{ item.nome }}&lt;/span&gt;
 &lt;/lista-componente&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Scoped slot: lista flessibile</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Scoped slot: lista flessibile</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h4>Vista compatta:</h4>
   <lista-flessibile :items="corsi" v-slot="{ item }">
@@ -1397,7 +1397,7 @@ app.mount('#app')
 &lt;keep-alive&gt;
   &lt;component :is="tab"&gt;&lt;/component&gt;
 &lt;/keep-alive&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Tab con componenti dinamici</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Tab con componenti dinamici</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <div style="display:flex;gap:.5rem;margin-bottom:1rem">
     <button
@@ -1438,7 +1438,7 @@ app.mount('#app')
   &lt;/div&gt;
 &lt;/Teleport&gt;</code></pre></div>
 <p>Utile per <strong>modali</strong>, <strong>tooltip</strong> e <strong>notifiche</strong> che devono stare in cima allo stack (z-index) senza problemi di overflow.</p>
-<div class="example"><div class="codehead"><span>Modale semplice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Modale semplice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   .overlay { position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:1000 }
   .modale { background:white;border-radius:12px;padding:2rem;max-width:320px;width:90%;text-align:center }
@@ -1482,7 +1482,7 @@ export default {
   }
 }
 &lt;/script&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Fetch API con Vue</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Fetch API con Vue</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <button @click="carica" :disabled="loading">
     {{ loading ? 'Caricamento...' : 'Carica utenti da API' }}
@@ -1530,7 +1530,7 @@ mounted() {
 }
 &lt;/script&gt;</code></pre></div>
 <p>I ref sono disponibili solo dopo che il componente è montato (<code class="inline">mounted()</code>). Prima il valore è <code class="inline">null</code>.</p>
-<div class="example"><div class="codehead"><span>Template ref: focus automatico</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Template ref: focus automatico</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Cerca un corso</h3>
   <input ref="searchInput" v-model="q" placeholder="Scrivi il nome del corso...">
@@ -1563,7 +1563,7 @@ createApp({
 <tr><td><code class="inline">updated</code></td><td>Dopo ogni aggiornamento del DOM</td></tr>
 <tr><td><code class="inline">unmounted</code></td><td>Dopo la rimozione dal DOM</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Lifecycle hooks in azione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Lifecycle hooks in azione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Log del lifecycle:</h3>
   <ul>
@@ -1602,7 +1602,7 @@ export default {
   inject: ['temaColore', 'utente']
 }</code></pre></div>
 <p>È utile per evitare il <em>prop drilling</em> (passare props attraverso molti livelli di componenti).</p>
-<div class="example"><div class="codehead"><span>Provide/Inject: tema globale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Provide/Inject: tema globale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <app-root></app-root>
 </div>
@@ -1662,7 +1662,7 @@ const router = createRouter({
 })
 export default router
 &lt;/script&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Simula il routing Vue</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Simula il routing Vue</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <nav style="display:flex;gap:.5rem;margin-bottom:1rem">
     <button @click="pagina='home'" :style="{ background: pagina==='home'?'#42b883':'#e2e8f0', color: pagina==='home'?'white':'inherit', border:'none', padding:'.35rem .8rem', borderRadius:'6px', cursor:'pointer' }">Home</button>
@@ -1690,7 +1690,7 @@ createApp({ data() { return { pagina: 'home' } } }).mount('#app')
 &lt;input type="radio" value="a" v-model="radio"&gt;
 &lt;select v-model="selezione"&gt;...&lt;/select&gt;
 &lt;textarea v-model="area"&gt;&lt;/textarea&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Form completo con v-model</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Form completo con v-model</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <form @submit.prevent style="max-width:350px">
     <div style="margin:.5rem 0"><label>Nome: <input v-model.trim="f.nome" style="margin-left:.5rem"></label></div>
@@ -1739,7 +1739,7 @@ createApp({
 .sfuma-leave-active { transition: opacity .5s; }
 .sfuma-leave-to { opacity: 0; }
 &lt;/style&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>Transizioni Vue</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Transizioni Vue</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   .sfuma-enter-active, .sfuma-leave-active { transition: all .4s ease; }
   .sfuma-enter-from, .sfuma-leave-to { opacity: 0; transform: translateY(-15px); }
@@ -1784,7 +1784,7 @@ createApp({ data() { return { mostra: true, mostra2: true } } }).mount('#app')
 .lista-enter-from, .lista-leave-to { opacity:0; transform:translateX(30px); }
 .lista-move { transition: transform .3s; }
 &lt;/style&gt;</code></pre></div>
-<div class="example"><div class="codehead"><span>TransitionGroup su lista</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>TransitionGroup su lista</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
   .lista-enter-active, .lista-leave-active { transition: all .4s ease; }
   .lista-enter-from, .lista-leave-to { opacity: 0; transform: translateX(40px); }
@@ -1839,7 +1839,7 @@ npm run build
 npm run preview</code></pre></div>
 <p>La build produce una cartella <code class="inline">dist/</code> con HTML, CSS e JS ottimizzati, pronti per essere caricati su qualsiasi hosting statico.</p>
 <div class="tip-box">💡 Puoi pubblicare un'app Vue gratuitamente su <strong>Netlify</strong>, <strong>Vercel</strong> o <strong>GitHub Pages</strong> in pochi minuti.</div>
-<div class="example"><div class="codehead"><span>Struttura di un progetto Vue/Vite</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Struttura di un progetto Vue/Vite</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Struttura tipica di un progetto Vue + Vite:</h3>
   <div v-for="item in struttura" :key="item.nome"
@@ -1896,7 +1896,7 @@ export default {
     return { conta, incrementa }
   }
 }</code></pre></div>
-<div class="example"><div class="codehead"><span>Composition API con setup()</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Composition API con setup()</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <h3>Contatore: {{ conta }}</h3>
   <button @click="incrementa">+1</button>
@@ -1944,7 +1944,7 @@ createApp({
 <tr><td><code class="inline">ref</code></td><td>Riferimento diretto all'elemento DOM o al componente</td></tr>
 <tr><td><code class="inline">is</code></td><td>Specifica il componente in <code class="inline">&lt;component :is="..."&gt;</code></td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Attributo :key in v-for</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Attributo :key in v-for</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <p>Con <strong>:key corretto</strong> Vue animerà correttamente gli elementi:</p>
   <button @click="mescola">Mescola lista</button>
@@ -1984,7 +1984,7 @@ createApp({
 <tr><td><code class="inline">&lt;Teleport&gt;</code></td><td>Sposta contenuto in un altro nodo del DOM</td></tr>
 <tr><td><code class="inline">&lt;Suspense&gt;</code></td><td>Gestisce componenti asincroni con fallback</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>KeepAlive: preserva lo stato</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>KeepAlive: preserva lo stato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <button @click="tab = 'A'" :style="{ background: tab==='A'?'#42b883':'#e2e8f0',color:tab==='A'?'white':'inherit',border:'none',padding:'.3rem .7rem',borderRadius:'5px',cursor:'pointer' }">Tab A</button>
   <button @click="tab = 'B'" :style="{ background: tab==='B'?'#42b883':'#e2e8f0',color:tab==='B'?'white':'inherit',border:'none',padding:'.3rem .7rem',borderRadius:'5px',cursor:'pointer',marginLeft:'.5rem' }">Tab B</button>
@@ -2032,7 +2032,7 @@ app.mount('#app')
 <tr><td><code class="inline">v-memo</code></td><td>Memoizza il sotto-albero</td></tr>
 <tr><td><code class="inline">v-cloak</code></td><td>Nasconde fino al montaggio</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>v-text, v-html, v-once, v-pre</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>v-text, v-html, v-once, v-pre</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="app">
   <p v-text="testo"></p>
   <p v-html="htmlCont"></p>
@@ -2075,7 +2075,7 @@ createApp({
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — Vue.js live</strong>
+      <strong>✏️ Provalo tu — Vue.js live</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>

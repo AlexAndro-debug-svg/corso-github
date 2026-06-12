@@ -205,7 +205,7 @@
 <li>⚡ <strong>Reattività moderna</strong>: con i Signals e il change detection ottimizzato</li>
 </ul>
 <h3>Un componente Angular</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 
 @Component({
@@ -245,7 +245,7 @@ export class AppComponent {
 <h2>Iniziare con Angular</h2>
 <p>Per sviluppare con Angular servono <strong>Node.js</strong> e la <strong>Angular CLI</strong>.</p>
 <h3>Installazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Verifica Node.js (versione 18+ consigliata)
 node --version
 
@@ -256,14 +256,14 @@ npm install -g @angular/cli
 ng version
 </script></div>
 <h3>Crea un nuovo progetto</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 ng new mia-app
 cd mia-app
 ng serve --open
 </script></div>
 <p>Il comando <code class="inline">ng serve</code> avvia il server di sviluppo su <strong>http://localhost:4200</strong> con ricarica automatica.</p>
 <h3>Struttura del progetto</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-none"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-none"></code></pre><script type="text/plain" class="code">
 mia-app/
   src/
     app/
@@ -281,7 +281,7 @@ mia-app/
 <h2>La Prima App Angular</h2>
 <p>Creiamo un semplice componente che mostra un saluto dinamico.</p>
 <h3>Il componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 
 @Component({
@@ -298,7 +298,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Il punto di ingresso (main.ts)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 
@@ -312,14 +312,14 @@ bootstrapApplication(AppComponent);
 <h2>Template in Angular</h2>
 <p>Il <strong>template</strong> è l'HTML del componente arricchito con la sintassi Angular.</p>
 <h3>Interpolazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- Mostra il valore di una proprietà -->
 <h1>{{ titolo }}</h1>
 <p>Risultato: {{ 2 + 2 }}</p>
 <p>{{ nome.toUpperCase() }}</p>
 </script></div>
 <h3>Template inline vs file esterno</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 // Inline (per template piccoli)
 @Component({
   selector: 'app-root',
@@ -334,7 +334,7 @@ bootstrapApplication(AppComponent);
 </script></div>
 <h3>Espressioni nei template</h3>
 <p>Nei template puoi usare espressioni, ma <strong>non</strong> istruzioni complesse:</p>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p>{{ prezzo * quantita }}</p>
 <p>{{ attivo ? 'Sì' : 'No' }}</p>
 <p>{{ messaggio || 'Nessun messaggio' }}</p>
@@ -345,7 +345,7 @@ bootstrapApplication(AppComponent);
 <h2>Componenti Angular</h2>
 <p>I <strong>componenti</strong> sono i blocchi fondamentali di un'app Angular. Ognuno controlla una porzione di schermo.</p>
 <h3>Anatomia di un componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 
 @Component({
@@ -359,7 +359,7 @@ export class CardComponent {
 }
 </script></div>
 <h3>Usare un componente in un altro</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 import { CardComponent } from './card.component';
 
@@ -372,7 +372,7 @@ import { CardComponent } from './card.component';
 export class AppComponent {}
 </script></div>
 <h3>Generare un componente con la CLI</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 ng generate component card
 # oppure abbreviato:
 ng g c card
@@ -383,21 +383,21 @@ ng g c card
 <h2>Data Binding in Angular</h2>
 <p>Il <strong>data binding</strong> sincronizza i dati tra la classe del componente e il template. Angular offre quattro tipi.</p>
 <h3>1. Interpolazione (classe → template)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p>{{ messaggio }}</p>
 </script></div>
 <h3>2. Property binding (classe → template)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <img [src]="urlImmagine">
 <button [disabled]="bloccato">Invia</button>
 </script></div>
 <h3>3. Event binding (template → classe)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <button (click)="saluta()">Cliccami</button>
 <input (input)="aggiorna($event)">
 </script></div>
 <h3>4. Two-way binding (bidirezionale)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- Richiede FormsModule -->
 <input [(ngModel)]="nome">
 <p>Ciao, {{ nome }}!</p>
@@ -409,7 +409,7 @@ ng g c card
 <h2>Direttive Angular</h2>
 <p>Le <strong>direttive</strong> estendono o modificano gli elementi HTML. Ci sono tre tipi.</p>
 <h3>Direttive strutturali (cambiano il DOM)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- *ngIf: mostra/nasconde -->
 <p *ngIf="visibile">Sono visibile</p>
 
@@ -423,12 +423,12 @@ ng g c card
 </div>
 </script></div>
 <h3>Direttive di attributo (cambiano l'aspetto)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <div [ngClass]="{ attivo: isAttivo }">...</div>
 <div [ngStyle]="{ color: colore }">...</div>
 </script></div>
 <h3>Direttive personalizzate</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
@@ -447,7 +447,7 @@ export class EvidenziaDirective {
 <h2>Eventi in Angular</h2>
 <p>Angular gestisce gli eventi del DOM con la sintassi <strong>event binding</strong> <code class="inline">(evento)</code>.</p>
 <h3>Eventi comuni</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <button (click)="onClick()">Click</button>
 <input (input)="onInput($event)">
 <input (keyup)="onKey($event)">
@@ -455,7 +455,7 @@ export class EvidenziaDirective {
 <div (mouseover)="onHover()">Passa sopra</div>
 </script></div>
 <h3>L'oggetto $event</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 
 @Component({
@@ -471,7 +471,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Key events specifici</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- Si attiva solo con il tasto Invio -->
 <input (keyup.enter)="invia()">
 <input (keyup.escape)="annulla()">
@@ -482,12 +482,12 @@ export class AppComponent {
 <h2>Rendering Condizionale</h2>
 <p>Angular permette di mostrare contenuto in base a condizioni.</p>
 <h3>*ngIf</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p *ngIf="loggato">Benvenuto!</p>
 <p *ngIf="!loggato">Effettua l'accesso</p>
 </script></div>
 <h3>*ngIf con else</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <div *ngIf="loggato; else nonLoggato">
   Area riservata
 </div>
@@ -496,7 +496,7 @@ export class AppComponent {
 </ng-template>
 </script></div>
 <h3>Nuovo control flow @if (Angular 17+)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 @if (punteggio >= 60) {
   <p>Promosso ✅</p>
 } @else if (punteggio >= 40) {
@@ -506,7 +506,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>[hidden] vs *ngIf</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- [hidden]: nasconde con CSS, resta nel DOM -->
 <div [hidden]="!visibile">...</div>
 
@@ -519,29 +519,29 @@ export class AppComponent {
 <h2>Liste in Angular</h2>
 <p>Per renderizzare liste si usa la direttiva <code class="inline">*ngFor</code>.</p>
 <h3>*ngFor di base</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <ul>
   <li *ngFor="let corso of corsi">{{ corso }}</li>
 </ul>
 </script></div>
 <h3>Con indice e variabili</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <li *ngFor="let corso of corsi; let i = index; let primo = first">
   {{ i + 1 }}. {{ corso }} {{ primo ? '(primo!)' : '' }}
 </li>
 </script></div>
 <h3>trackBy per le performance</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 // Aiuta Angular a tracciare gli elementi e a non ricrearli inutilmente
 trackById(index: number, item: any) {
   return item.id;
 }
 </script></div>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <li *ngFor="let u of utenti; trackBy: trackById">{{ u.nome }}</li>
 </script></div>
 <h3>Nuovo control flow @for (Angular 17+)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 @for (corso of corsi; track corso) {
   <li>{{ corso }}</li>
 } @empty {
@@ -554,7 +554,7 @@ trackById(index: number, item: any) {
 <h2>Form in Angular</h2>
 <p>Angular offre due approcci ai form: <strong>Template-driven</strong> e <strong>Reactive</strong>.</p>
 <h3>Template-driven (con ngModel)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -572,7 +572,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Reactive Forms (più potenti)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
@@ -599,7 +599,7 @@ export class AppComponent {
 <h2>Routing in Angular</h2>
 <p>Il <strong>Router</strong> gestisce la navigazione tra le viste in una SPA.</p>
 <h3>Configurazione delle rotte</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { CorsiComponent } from './corsi.component';
@@ -612,7 +612,7 @@ export const routes: Routes = [
 ];
 </script></div>
 <h3>Router outlet e link</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <nav>
   <a routerLink="/">Home</a>
   <a routerLink="/corsi">Corsi</a>
@@ -622,7 +622,7 @@ export const routes: Routes = [
 <router-outlet></router-outlet>
 </script></div>
 <h3>Navigazione da codice</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Router } from '@angular/router';
 
 constructor(private router: Router) {}
@@ -632,7 +632,7 @@ vaiAiCorsi() {
 }
 </script></div>
 <h3>Leggere i parametri</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { ActivatedRoute } from '@angular/router';
 
 constructor(private route: ActivatedRoute) {}
@@ -646,7 +646,7 @@ ngOnInit() {
 <h2>Servizi e Dependency Injection</h2>
 <p>I <strong>servizi</strong> contengono logica riutilizzabile (es. accesso ai dati). La <strong>Dependency Injection (DI)</strong> li fornisce automaticamente ai componenti.</p>
 <h3>Creare un servizio</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -661,7 +661,7 @@ export class CorsiService {
 }
 </script></div>
 <h3>Iniettare un servizio in un componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, inject } from '@angular/core';
 import { CorsiService } from './corsi.service';
 
@@ -676,7 +676,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Generare un servizio con la CLI</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 ng generate service corsi
 # abbreviato:
 ng g s corsi
@@ -687,7 +687,7 @@ ng g s corsi
 <h2>HTTP Client in Angular</h2>
 <p>L'<strong>HttpClient</strong> permette di comunicare con API e server remoti.</p>
 <h3>Configurazione (main.ts)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
@@ -697,7 +697,7 @@ bootstrapApplication(AppComponent, {
 });
 </script></div>
 <h3>Richiesta GET</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -713,7 +713,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>POST, PUT, DELETE</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 // Creare
 this.http.post('/api/utenti', nuovoUtente).subscribe();
 
@@ -730,7 +730,7 @@ this.http.delete('/api/utenti/1').subscribe();
 <h2>Pipe in Angular</h2>
 <p>Le <strong>pipe</strong> trasformano i dati direttamente nel template, con la sintassi <code class="inline">valore | pipe</code>.</p>
 <h3>Pipe integrate</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p>{{ nome | uppercase }}</p>          <!-- MARIO -->
 <p>{{ nome | lowercase }}</p>          <!-- mario -->
 <p>{{ nome | titlecase }}</p>          <!-- Mario Rossi -->
@@ -740,11 +740,11 @@ this.http.delete('/api/utenti/1').subscribe();
 <p>{{ oggetto | json }}</p>            <!-- {"a":1} -->
 </script></div>
 <h3>Concatenare pipe</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p>{{ nome | uppercase | slice:0:3 }}</p>
 </script></div>
 <h3>Pipe personalizzata</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'raddoppia', standalone: true })
@@ -754,7 +754,7 @@ export class RaddoppiaPipe implements PipeTransform {
   }
 }
 </script></div>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <p>{{ 5 | raddoppia }}</p>  <!-- 10 -->
 </script></div>
       </article>
@@ -765,7 +765,7 @@ export class RaddoppiaPipe implements PipeTransform {
 <h3>I principali hook</h3>
 <table class="ref"><tr><th>Hook</th><th>Quando viene chiamato</th></tr><tr><td><code class="inline">ngOnInit</code></td><td>Dopo l'inizializzazione del componente</td></tr><tr><td><code class="inline">ngOnChanges</code></td><td>Quando cambiano gli @Input</td></tr><tr><td><code class="inline">ngDoCheck</code></td><td>A ogni change detection</td></tr><tr><td><code class="inline">ngAfterViewInit</code></td><td>Dopo l'init della vista</td></tr><tr><td><code class="inline">ngOnDestroy</code></td><td>Prima della distruzione</td></tr></table>
 <h3>Esempio</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({ /* ... */ })
@@ -789,7 +789,7 @@ export class AppComponent implements OnInit, OnDestroy {
 <h2>Styling in Angular</h2>
 <p>Angular incapsula gli stili: i CSS di un componente valgono <strong>solo</strong> per quel componente.</p>
 <h3>Stili del componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 @Component({
   selector: 'app-card',
   template: '<div class="card">...</div>',
@@ -799,7 +799,7 @@ export class AppComponent implements OnInit, OnDestroy {
 })
 </script></div>
 <h3>File di stile esterno</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 @Component({
   selector: 'app-card',
   templateUrl: './card.html',
@@ -807,7 +807,7 @@ export class AppComponent implements OnInit, OnDestroy {
 })
 </script></div>
 <h3>Binding dinamico di classi e stili</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- Classe condizionale -->
 <div [class.attivo]="isAttivo">...</div>
 <div [ngClass]="{ attivo: isAttivo, errore: hasErrore }">...</div>
@@ -824,7 +824,7 @@ export class AppComponent implements OnInit, OnDestroy {
 <h2>App Bootstrap</h2>
 <p>Il <strong>bootstrap</strong> è il processo che avvia l'applicazione Angular.</p>
 <h3>main.ts — il punto di ingresso</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
@@ -833,7 +833,7 @@ bootstrapApplication(AppComponent, appConfig)
   .catch(err => console.error(err));
 </script></div>
 <h3>app.config.ts — configurazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
@@ -847,7 +847,7 @@ export const appConfig: ApplicationConfig = {
 };
 </script></div>
 <h3>index.html</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <body>
   <app-root></app-root>  <!-- il componente radice viene montato qui -->
 </body>
@@ -859,7 +859,7 @@ export const appConfig: ApplicationConfig = {
 <h2>Control Flow (Angular 17+)</h2>
 <p>Dalla versione 17, Angular introduce un nuovo <strong>control flow</strong> integrato nel template, più leggibile delle direttive <code class="inline">*ngIf</code> e <code class="inline">*ngFor</code>.</p>
 <h3>@if / @else</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 @if (utente.loggato) {
   <p>Benvenuto, {{ utente.nome }}</p>
 } @else {
@@ -867,7 +867,7 @@ export const appConfig: ApplicationConfig = {
 }
 </script></div>
 <h3>@for</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 @for (corso of corsi; track corso.id) {
   <li>{{ corso.nome }}</li>
 } @empty {
@@ -876,7 +876,7 @@ export const appConfig: ApplicationConfig = {
 </script></div>
 <p>L'espressione <code class="inline">track</code> è <strong>obbligatoria</strong> e migliora le performance.</p>
 <h3>@switch</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 @switch (ruolo) {
   @case ('admin') { <p>Amministratore</p> }
   @case ('editor') { <p>Editor</p> }
@@ -895,7 +895,7 @@ export const appConfig: ApplicationConfig = {
 <h2>Signals</h2>
 <p>I <strong>Signals</strong> (Angular 16+) sono il nuovo sistema di reattività: contenitori di valori che notificano automaticamente i cambiamenti.</p>
 <h3>Creare e leggere un signal</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { signal } from '@angular/core';
 
 const conta = signal(0);
@@ -905,7 +905,7 @@ conta.set(5);           // imposta un nuovo valore
 conta.update(n => n + 1); // aggiorna in base al precedente
 </script></div>
 <h3>Signal in un componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, signal } from '@angular/core';
 
 @Component({
@@ -924,7 +924,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Computed signals</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { signal, computed } from '@angular/core';
 
 const prezzo = signal(100);
@@ -940,7 +940,7 @@ const tasse = computed(() => prezzo() * 0.22);
 <h3>Come funziona</h3>
 <p>Angular controlla i componenti e, se rileva cambiamenti nei dati, aggiorna la vista. Di default usa la strategia <code class="inline">Default</code>, che controlla tutto l'albero dei componenti.</p>
 <h3>Strategia OnPush</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -957,7 +957,7 @@ export class CardComponent {}
 <li>Cambia un Signal usato nel template</li>
 </ul>
 <h3>Controllo manuale</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { ChangeDetectorRef } from '@angular/core';
 
 constructor(private cdr: ChangeDetectorRef) {}
@@ -974,11 +974,11 @@ aggiorna() {
 <h2>Componenti Dinamici</h2>
 <p>I <strong>componenti dinamici</strong> vengono creati e inseriti a runtime, non in modo statico nel template.</p>
 <h3>Con NgComponentOutlet</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <ng-container *ngComponentOutlet="componenteCorrente">
 </ng-container>
 </script></div>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
 import { GraficoComponent } from './grafico.component';
@@ -994,7 +994,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>Con ViewContainerRef</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, ViewContainerRef, inject } from '@angular/core';
 import { AvvisoComponent } from './avviso.component';
 
@@ -1015,7 +1015,7 @@ export class AppComponent {
 <h2>Dependency Injection Avanzata</h2>
 <p>La <strong>DI</strong> di Angular è molto flessibile e supporta token, provider personalizzati e gerarchie.</p>
 <h3>InjectionToken</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { InjectionToken } from '@angular/core';
 
 export const API_URL = new InjectionToken<string>('api.url');
@@ -1026,7 +1026,7 @@ providers: [
 ]
 </script></div>
 <h3>Tipi di provider</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 providers: [
   // useClass: fornisce una classe
   { provide: Logger, useClass: ConsoleLogger },
@@ -1042,7 +1042,7 @@ providers: [
 ]
 </script></div>
 <h3>Iniettare con inject()</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { inject } from '@angular/core';
 
 export class AppComponent {
@@ -1058,7 +1058,7 @@ export class AppComponent {
 <h2>Router Avanzato</h2>
 <p>Funzionalità avanzate del Router per app complesse.</p>
 <h3>Lazy loading</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 export const routes: Routes = [
   {
     path: 'admin',
@@ -1074,7 +1074,7 @@ export const routes: Routes = [
 </script></div>
 <p>Il lazy loading carica il codice <strong>solo quando serve</strong>, riducendo il bundle iniziale.</p>
 <h3>Route Guards</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 
@@ -1088,7 +1088,7 @@ export const authGuard: CanActivateFn = () => {
 { path: 'privata', component: PrivataComponent, canActivate: [authGuard] }
 </script></div>
 <h3>Resolver (precarica dati)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { ResolveFn } from '@angular/router';
 
 export const corsiResolver: ResolveFn<Corso[]> = () => {
@@ -1096,7 +1096,7 @@ export const corsiResolver: ResolveFn<Corso[]> = () => {
 };
 </script></div>
 <h3>Query params</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 this.router.navigate(['/cerca'], {
   queryParams: { q: 'angular', pagina: 1 }
 });
@@ -1107,7 +1107,7 @@ this.router.navigate(['/cerca'], {
 <h2>HTTP Interceptors</h2>
 <p>Gli <strong>interceptor</strong> intercettano tutte le richieste e risposte HTTP, ideali per autenticazione, logging e gestione errori.</p>
 <h3>Creare un interceptor (funzionale)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
@@ -1122,7 +1122,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 };
 </script></div>
 <h3>Registrare l'interceptor</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
@@ -1132,7 +1132,7 @@ bootstrapApplication(AppComponent, {
 });
 </script></div>
 <h3>Interceptor per gestione errori</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { catchError } from 'rxjs';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
@@ -1151,7 +1151,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 <h2>Form Avanzati</h2>
 <p>I <strong>Reactive Forms</strong> permettono validazione complessa, form dinamici e controllo totale.</p>
 <h3>FormBuilder e validatori</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
@@ -1178,14 +1178,14 @@ export class AppComponent {
 }
 </script></div>
 <h3>Mostrare gli errori</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <input formControlName="email">
 @if (form.get('email')?.invalid && form.get('email')?.touched) {
   <small>Email non valida</small>
 }
 </script></div>
 <h3>FormArray (campi dinamici)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 hobbies = this.fb.array([]);
 
 aggiungiHobby() {
@@ -1193,7 +1193,7 @@ aggiungiHobby() {
 }
 </script></div>
 <h3>Validatore personalizzato</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 function pariValidator(control: AbstractControl) {
   return control.value % 2 === 0 ? null : { nonPari: true };
 }
@@ -1204,7 +1204,7 @@ function pariValidator(control: AbstractControl) {
 <h2>State Management</h2>
 <p>La <strong>gestione dello stato</strong> centralizza i dati condivisi tra componenti.</p>
 <h3>Stato con un servizio + Signals</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Injectable, signal, computed } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
@@ -1227,7 +1227,7 @@ export class CarrelloStore {
 }
 </script></div>
 <h3>Usare lo store</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component, inject } from '@angular/core';
 import { CarrelloStore } from './carrello.store';
 
@@ -1245,7 +1245,7 @@ export class CarrelloComponent {
 <h2>Animazioni in Angular</h2>
 <p>Angular offre un sistema di animazioni dichiarativo basato su stati e transizioni.</p>
 <h3>Configurazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
@@ -1253,7 +1253,7 @@ bootstrapApplication(AppComponent, {
 });
 </script></div>
 <h3>Definire un'animazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -1287,7 +1287,7 @@ export class AppComponent {
 <h2>Testing in Angular</h2>
 <p>Angular include strumenti per i test: <strong>Jasmine</strong> (framework) e <strong>Karma</strong> o <strong>Vitest</strong> (test runner).</p>
 <h3>Test di un componente</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -1313,14 +1313,14 @@ describe('AppComponent', () => {
 });
 </script></div>
 <h3>Test di un servizio</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 it('dovrebbe restituire i corsi', () => {
   const service = TestBed.inject(CorsiService);
   expect(service.getCorsi().length).toBeGreaterThan(0);
 });
 </script></div>
 <h3>Eseguire i test</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 ng test
 </script></div>
 <p>Si usano anche <strong>end-to-end test</strong> con strumenti come Playwright o Cypress.</p>
@@ -1330,7 +1330,7 @@ ng test
 <h2>Sicurezza in Angular</h2>
 <p>Angular include protezioni integrate contro le vulnerabilità web più comuni.</p>
 <h3>Protezione XSS automatica</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 // Angular "sanitizza" automaticamente i valori interpolati
 @Component({
   template: '<div>{{ contenutoUtente }}</div>'
@@ -1341,7 +1341,7 @@ export class AppComponent {
 }
 </script></div>
 <h3>innerHTML e sanitizzazione</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { DomSanitizer } from '@angular/platform-browser';
 
 constructor(private sanitizer: DomSanitizer) {}
@@ -1358,7 +1358,7 @@ htmlSicuro = this.sanitizer.bypassSecurityTrustHtml(html);
 <li>✅ Mantenere Angular e le dipendenze aggiornate</li>
 </ul>
 <h3>Protezione XSRF</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 provideHttpClient(withXsrfConfiguration({
   cookieName: 'XSRF-TOKEN',
   headerName: 'X-XSRF-TOKEN'
@@ -1370,7 +1370,7 @@ provideHttpClient(withXsrfConfiguration({
 <h2>SSR e Hydration</h2>
 <p>Il <strong>Server-Side Rendering (SSR)</strong> genera l'HTML sul server, migliorando SEO e velocità di caricamento iniziale.</p>
 <h3>Aggiungere SSR a un progetto</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 ng add @angular/ssr
 </script></div>
 <p>Questo configura il rendering lato server con un server Express.</p>
@@ -1382,7 +1382,7 @@ ng add @angular/ssr
 </ul>
 <h3>Hydration</h3>
 <p>La <strong>hydration</strong> è il processo con cui Angular "riprende" sul client l'HTML generato dal server, senza ricostruirlo da zero.</p>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-typescript"></code></pre><script type="text/plain" class="code">
 import { provideClientHydration } from '@angular/platform-browser';
 
 bootstrapApplication(AppComponent, {
@@ -1390,7 +1390,7 @@ bootstrapApplication(AppComponent, {
 });
 </script></div>
 <h3>Incremental Hydration (Angular 19+)</h3>
-<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <!-- Idrata il componente solo quando diventa visibile -->
 @defer (hydrate on viewport) {
   <app-grafico-pesante />
@@ -1419,7 +1419,7 @@ bootstrapApplication(AppComponent, {
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice Angular</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice Angular</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

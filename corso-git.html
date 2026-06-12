@@ -237,7 +237,7 @@
 <h3>Git e GitHub non sono la stessa cosa</h3>
 <p><strong>Git</strong> è il programma che gira sul tuo computer. <strong>GitHub</strong> è un servizio online che ospita i repository Git e aggiunge collaborazione, pull request, issue e molto altro. Esistono alternative a GitHub (GitLab, Bitbucket), ma Git è sempre lo stesso.</p>
 <div class="note-box">📘 Questo sito che stai leggendo è ospitato proprio su <strong>GitHub Pages</strong>: imparerai a pubblicare il tuo sito allo stesso modo nella sezione GitHub.</div>
-<div class="example"><div class="codehead"><span>Il flusso di lavoro Git in 4 comandi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il flusso di lavoro Git in 4 comandi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Il ciclo fondamentale che ripeterai migliaia di volte:
 
 git status     # 1. Guarda cosa è cambiato
@@ -251,7 +251,7 @@ git push       # 4. Invia al server remoto (GitHub)
         <h2>Installare Git</h2>
         
 <p>Git è gratuito e disponibile per Windows, macOS e Linux. Scaricalo da <a href="https://git-scm.com" target="_blank" rel="noreferrer">git-scm.com</a>.</p>
-<div class="example"><div class="codehead"><span>Installazione per sistema operativo</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Installazione per sistema operativo</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Windows
 # Scarica l'installer da https://git-scm.com/download/win
 # Include "Git Bash", un terminale con tutti i comandi Unix
@@ -278,7 +278,7 @@ git --version
         <h2>Configurare Git</h2>
         
 <p>Prima del primo commit devi dire a Git chi sei: nome ed email vengono registrati in ogni commit che fai. La configurazione si gestisce con <code class="inline">git config</code>.</p>
-<div class="example"><div class="codehead"><span>Configurazione iniziale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Configurazione iniziale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Identità (obbligatoria, usata in ogni commit)
 git config --global user.name "Mario Rossi"
 git config --global user.email "mario@esempio.it"
@@ -303,7 +303,7 @@ git config user.name
         <h2>Get Started — il primo repository</h2>
         
 <p>Un <strong>repository</strong> (o "repo") è la cartella del tuo progetto sotto il controllo di Git. Si crea con <code class="inline">git init</code>, che aggiunge una sottocartella nascosta <code class="inline">.git</code> dove Git salva tutta la storia.</p>
-<div class="example"><div class="codehead"><span>Creare il primo repository</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare il primo repository</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Crea una cartella e entraci
 mkdir mio-progetto
 cd mio-progetto
@@ -332,7 +332,7 @@ git status
         <h2>Aggiungere nuovi file</h2>
         
 <p>Quando crei un file in un repository, Git lo vede ma non lo traccia automaticamente: è <strong>untracked</strong>. Devi dirgli esplicitamente di seguirlo con <code class="inline">git add</code>.</p>
-<div class="example"><div class="codehead"><span>Tracciare nuovi file</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Tracciare nuovi file</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Crea un file
 echo "# Il mio progetto" > README.md
 
@@ -361,7 +361,7 @@ git status
         <h2>La Staging Area</h2>
         
 <p>La <strong>staging area</strong> (o "index") è lo spazio intermedio dove prepari il prossimo commit. Ti permette di scegliere <em>esattamente</em> quali modifiche includere, anche solo alcuni file tra i tanti modificati.</p>
-<div class="example"><div class="codehead"><span>Gestire la staging area</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Gestire la staging area</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Aggiungere un file specifico
 git add index.html
 
@@ -391,7 +391,7 @@ git restore --staged index.html
         <h2>Il Commit</h2>
         
 <p>Il <strong>commit</strong> è una fotografia del progetto in un preciso momento, salvata per sempre nella storia. Ogni commit ha un identificatore univoco (hash SHA), un autore, una data e un <strong>messaggio</strong> che descrive la modifica.</p>
-<div class="example"><div class="codehead"><span>Creare commit</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare commit</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Commit con messaggio
 git commit -m "Aggiunge la pagina di login"
 
@@ -422,7 +422,7 @@ git log --oneline
         <h2>I Tag</h2>
         
 <p>I <strong>tag</strong> sono etichette permanenti su commit specifici, usate tipicamente per marcare le versioni rilasciate del software (v1.0.0, v2.1.3...).</p>
-<div class="example"><div class="codehead"><span>Creare e gestire i tag</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e gestire i tag</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Tag annotato (consigliato per le release: ha autore, data, messaggio)
 git tag -a v1.0.0 -m "Prima versione stabile"
 
@@ -453,7 +453,7 @@ git tag -d v1.0.1
         <h2>Git Stash</h2>
         
 <p><code class="inline">git stash</code> mette da parte temporaneamente le modifiche non committate, lasciando la working directory pulita. Perfetto quando devi cambiare branch al volo ma il lavoro non è pronto per un commit.</p>
-<div class="example"><div class="codehead"><span>Accantonare e recuperare modifiche</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Accantonare e recuperare modifiche</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Metti da parte le modifiche correnti
 git stash
 
@@ -485,7 +485,7 @@ git stash clear
         <h2>Esplorare la storia</h2>
         
 <p><code class="inline">git log</code> e i comandi collegati ti permettono di esplorare l'intera storia del progetto: chi ha cambiato cosa, quando e perché.</p>
-<div class="example"><div class="codehead"><span>Interrogare la storia</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Interrogare la storia</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Storia completa
 git log
 
@@ -518,7 +518,7 @@ git blame style.css
         <h2>Ottenere aiuto</h2>
         
 <p>Git ha una documentazione integrata completa per ogni comando, consultabile direttamente dal terminale.</p>
-<div class="example"><div class="codehead"><span>I comandi di aiuto</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>I comandi di aiuto</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Manuale completo di un comando
 git help commit
 git commit --help     # equivalente
@@ -544,7 +544,7 @@ git help tutorial
         <h2>I Branch</h2>
         
 <p>Un <strong>branch</strong> (ramo) è una linea di sviluppo indipendente. Il branch principale si chiama <code class="inline">main</code>; per ogni nuova funzionalità o correzione crei un branch separato, lavori in isolamento, e quando è pronto lo unisci (merge) a main.</p>
-<div class="example"><div class="codehead"><span>Lavorare con i branch</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Lavorare con i branch</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Elencare i branch (l'asterisco indica quello attivo)
 git branch
 
@@ -575,7 +575,7 @@ git branch -D esperimento-fallito
         <h2>Il Merge</h2>
         
 <p>Il <strong>merge</strong> unisce le modifiche di un branch in un altro. Tipicamente: finisci il lavoro sul tuo branch, torni su <code class="inline">main</code> e fai il merge del branch.</p>
-<div class="example"><div class="codehead"><span>Unire i branch</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Unire i branch</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # 1) Finisci il lavoro sul branch
 git switch fix-login
 git commit -am "Corregge il bug del login"
@@ -609,7 +609,7 @@ git branch -d fix-login
   <tr><td><strong>Git Flow</strong></td><td>Branch strutturati: develop, release, hotfix</td><td>Software con versioni pianificate</td></tr>
   <tr><td><strong>Trunk-based</strong></td><td>Tutti committano su main, branch brevissimi</td><td>Team esperti con CI solida</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Il ciclo feature-branch completo</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il ciclo feature-branch completo</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # 1) Parti aggiornato
 git switch main
 git pull
@@ -686,7 +686,7 @@ git branch -d feature/carrello
   <li>Decidi se pubblico o privato</li>
   <li>Clicca <strong>Create repository</strong></li>
 </ol>
-<div class="example"><div class="codehead"><span>Collegare il repo locale a GitHub</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Collegare il repo locale a GitHub</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Se parti da un progetto locale esistente:
 git remote add origin https://github.com/tuonome/mio-progetto.git
 git push -u origin main
@@ -710,7 +710,7 @@ cd mio-progetto
   <li>🔓 La <strong>chiave pubblica</strong> la carichi su GitHub</li>
   <li>🤝 A ogni connessione, GitHub verifica matematicamente che possiedi la chiave privata corrispondente</li>
 </ul>
-<div class="example"><div class="codehead"><span>Generare una coppia di chiavi SSH</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Generare una coppia di chiavi SSH</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Genera la coppia di chiavi (algoritmo moderno ed25519)
 ssh-keygen -t ed25519 -C "mario@esempio.it"
 
@@ -729,7 +729,7 @@ ssh-keygen -t ed25519 -C "mario@esempio.it"
         <h2>Aggiungere la chiave SSH a GitHub</h2>
         
 <p>Una volta generata la coppia di chiavi, carichi quella <strong>pubblica</strong> su GitHub e da quel momento push e pull non chiederanno più credenziali.</p>
-<div class="example"><div class="codehead"><span>Caricare la chiave e testare</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Caricare la chiave e testare</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # 1) Copia la chiave PUBBLICA
 cat ~/.ssh/id_ed25519.pub
 # ssh-ed25519 AAAA... mario@esempio.it
@@ -752,7 +752,7 @@ git clone git@github.com:tuonome/mio-progetto.git
         <h2>Impostare il Remote</h2>
         
 <p>Un <strong>remote</strong> è il collegamento a una copia del repository su un server. Il remote principale si chiama per convenzione <code class="inline">origin</code>.</p>
-<div class="example"><div class="codehead"><span>Gestire i remote</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Gestire i remote</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Vedere i remote configurati
 git remote -v
 # origin  git@github.com:tuonome/progetto.git (fetch)
@@ -793,7 +793,7 @@ git remote add upstream git@github.com:autore-originale/progetto.git
         <h2>Pull da GitHub</h2>
         
 <p><code class="inline">git pull</code> scarica le novità dal remote e le integra nel tuo branch locale. È la combinazione di due operazioni: <code class="inline">git fetch</code> (scarica) + <code class="inline">git merge</code> (integra).</p>
-<div class="example"><div class="codehead"><span>Scaricare le modifiche</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Scaricare le modifiche</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Scarica e integra in un colpo solo
 git pull
 
@@ -816,7 +816,7 @@ git log main..origin/main --oneline
         <h2>Push su GitHub</h2>
         
 <p><code class="inline">git push</code> invia i tuoi commit locali al repository remoto, rendendoli visibili a tutti i collaboratori.</p>
-<div class="example"><div class="codehead"><span>Inviare le modifiche</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Inviare le modifiche</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Push del branch corrente
 git push
 
@@ -846,7 +846,7 @@ git push origin --tags
   <li>Digita il nome del nuovo branch</li>
   <li>Clicca <strong>Create branch: nome from main</strong></li>
 </ol>
-<div class="example"><div class="codehead"><span>Vedere i branch remoti dal terminale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Vedere i branch remoti dal terminale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Branch locali
 git branch
 
@@ -866,7 +866,7 @@ git fetch --prune
         <h2>Scaricare un branch da GitHub</h2>
         
 <p>Quando un collega (o tu da un altro PC) crea un branch su GitHub, puoi scaricarlo e lavorarci in locale.</p>
-<div class="example"><div class="codehead"><span>Recuperare un branch remoto</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Recuperare un branch remoto</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # 1) Aggiorna l'elenco di cio' che esiste sul remoto
 git fetch
 
@@ -888,7 +888,7 @@ git pull
         <h2>Pubblicare un branch su GitHub</h2>
         
 <p>Un branch creato in locale non esiste su GitHub finché non lo pubblichi con il push. È il passaggio che precede l'apertura di una pull request.</p>
-<div class="example"><div class="codehead"><span>Pubblicare un branch</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Pubblicare un branch</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Crea e lavora su un branch locale
 git switch -c feature/recensioni
 git add .
@@ -933,7 +933,7 @@ git push origin --delete feature/recensioni
   <li>In <strong>Source</strong> scegli il branch (di solito <code class="inline">main</code>) e la cartella (<code class="inline">/</code> root)</li>
   <li>Salva: il sito sarà su <code class="inline">https://tuonome.github.io/nome-repo/</code></li>
 </ol>
-<div class="example"><div class="codehead"><span>Pubblicare un sito in 5 comandi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Pubblicare un sito in 5 comandi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Crea il sito
 mkdir mio-sito && cd mio-sito
 git init
@@ -978,7 +978,7 @@ git push -u origin main
   <li>Clicca il pulsante <strong>Fork</strong> in alto a destra</li>
   <li>GitHub crea <code class="inline">tuonome/nome-progetto</code>: una copia completa di cui sei proprietario</li>
 </ol>
-<div class="example"><div class="codehead"><span>Tenere il fork aggiornato</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Tenere il fork aggiornato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Clona il TUO fork
 git clone git@github.com:tuonome/progetto.git
 cd progetto
@@ -1000,7 +1000,7 @@ git push origin main
         <h2>Clonare da GitHub</h2>
         
 <p><code class="inline">git clone</code> scarica una copia completa di un repository remoto: tutti i file, tutta la storia, tutti i branch. È il primo comando che esegui quando inizi a lavorare su un progetto esistente.</p>
-<div class="example"><div class="codehead"><span>Clonare un repository</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Clonare un repository</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Clone via SSH (consigliato se hai configurato le chiavi)
 git clone git@github.com:tuonome/progetto.git
 
@@ -1026,7 +1026,7 @@ git branch -a        # e anche tutti i branch
         <h2>Inviare una Pull Request</h2>
         
 <p>La <strong>Pull Request</strong> (PR) è il cuore della collaborazione su GitHub: proponi le tue modifiche, gli altri le rivedono, ne discutete e — quando tutto è a posto — vengono integrate. È anche il principale strumento di <em>code review</em> nei team.</p>
-<div class="example"><div class="codehead"><span>Il flusso completo di una PR open-source</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il flusso completo di una PR open-source</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # 1) Fork del progetto su GitHub, poi:
 git clone git@github.com:tuonome/progetto.git
 cd progetto
@@ -1060,7 +1060,7 @@ git push    # la PR si aggiorna automaticamente
         <h2>Git Revert</h2>
         
 <p><code class="inline">git revert</code> annulla un commit creando un <strong>nuovo commit</strong> che ne inverte le modifiche. La storia resta intatta: è il metodo <strong>sicuro</strong> per annullare, l'unico consigliato sui branch condivisi.</p>
-<div class="example"><div class="codehead"><span>Annullare in sicurezza</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Annullare in sicurezza</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Annulla l'ultimo commit (ne crea uno nuovo "inverso")
 git revert HEAD
 
@@ -1082,7 +1082,7 @@ git commit -m "Annulla le ultime due modifiche"
         <h2>Git Reset</h2>
         
 <p><code class="inline">git reset</code> sposta il branch indietro a un commit precedente, <strong>eliminando</strong> dalla storia i commit successivi. Potente ma pericoloso: usalo solo su commit non ancora pushati.</p>
-<div class="example"><div class="codehead"><span>I tre tipi di reset</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>I tre tipi di reset</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # --soft: torna indietro, le modifiche restano IN STAGING
 git reset --soft HEAD~1
 # (perfetto per rifare un commit sbagliato)
@@ -1107,7 +1107,7 @@ git restore index.html
         <h2>Git Amend</h2>
         
 <p><code class="inline">git commit --amend</code> <strong>sostituisce</strong> l'ultimo commit: per correggere il messaggio o aggiungere file dimenticati senza creare un commit "fix" separato.</p>
-<div class="example"><div class="codehead"><span>Correggere l'ultimo commit</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Correggere l'ultimo commit</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Correggere solo il messaggio
 git commit --amend -m "Messaggio corretto"
 
@@ -1127,7 +1127,7 @@ git commit --amend --author="Mario Rossi <mario@esempio.it>"
         <h2>Git Rebase</h2>
         
 <p><code class="inline">git rebase</code> "rigioca" i commit del tuo branch sopra un'altra base, tipicamente l'ultima versione di main. Il risultato è una storia <strong>lineare e pulita</strong>, senza merge commit.</p>
-<div class="example"><div class="codehead"><span>Rebase del branch su main</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Rebase del branch su main</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Sei su feature/carrello, main e' andato avanti:
 git switch feature/carrello
 git rebase main
@@ -1155,7 +1155,7 @@ git rebase -i HEAD~3
         <h2>Git Reflog</h2>
         
 <p>Il <strong>reflog</strong> è il diario segreto di Git: registra <em>ogni</em> spostamento di HEAD (commit, reset, rebase, switch...) degli ultimi 90 giorni. È la tua rete di salvataggio quando pensi di aver perso qualcosa.</p>
-<div class="example"><div class="codehead"><span>Consultare il reflog</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Consultare il reflog</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 git reflog
 # a1b2c3d HEAD@{0}: reset: moving to HEAD~1
 # e4f5g6h HEAD@{1}: commit: Aggiunge il carrello
@@ -1177,7 +1177,7 @@ git reset --hard e4f5g6h
         <h2>Recuperare lavoro perso</h2>
         
 <p>Le situazioni di "ho perso tutto!" più comuni e come uscirne. Quasi sempre la soluzione passa dal reflog.</p>
-<div class="example"><div class="codehead"><span>Scenari di recupero</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Scenari di recupero</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # SCENARIO 1: reset --hard per errore
 git reflog                  # trova il commit perso
 git reset --hard HEAD@{1}   # torna li'
@@ -1205,7 +1205,7 @@ git reset --hard HEAD~1     # rimuovilo da dove non doveva stare
         <h2>Il file .gitignore</h2>
         
 <p>Il file <strong>.gitignore</strong> elenca file e cartelle che Git deve <strong>ignorare</strong>: dipendenze, build, file temporanei, segreti. Si mette nella radice del repository e si committa come un file normale.</p>
-<div class="example"><div class="codehead"><span>Un .gitignore tipico</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Un .gitignore tipico</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Dipendenze
 node_modules/
 vendor/
@@ -1240,7 +1240,7 @@ Thumbs.db
         <h2>Il file .gitattributes</h2>
         
 <p>Il file <strong>.gitattributes</strong> definisce come Git tratta specifici file: fine riga, file binari, diff personalizzati, regole LFS. Risolve i classici problemi di collaborazione tra Windows e Linux/Mac.</p>
-<div class="example"><div class="codehead"><span>Un .gitattributes tipico</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Un .gitattributes tipico</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Normalizza i fine riga automaticamente
 * text=auto
 
@@ -1268,7 +1268,7 @@ Thumbs.db
         <h2>Git Large File Storage (LFS)</h2>
         
 <p>Git è ottimizzato per il testo, non per file grandi: video, PSD, dataset e binari gonfiano il repository per sempre (ogni versione resta nella storia). <strong>Git LFS</strong> risolve: nel repo va solo un puntatore, il file vero sta su un server dedicato.</p>
-<div class="example"><div class="codehead"><span>Usare Git LFS</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Usare Git LFS</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Installazione (una volta sola per macchina)
 git lfs install
 
@@ -1296,7 +1296,7 @@ git lfs ls-files
         <h2>Firmare commit e tag</h2>
         
 <p>La <strong>firma crittografica</strong> dei commit prova che sei davvero tu l'autore: chiunque può impostare nome ed email altrui nella config, ma non può falsificare la tua firma. Su GitHub i commit firmati mostrano il badge <strong>Verified</strong>.</p>
-<div class="example"><div class="codehead"><span>Firmare con GPG o SSH</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Firmare con GPG o SSH</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # OPZIONE A — Firma con chiave SSH (piu' semplice, Git 2.34+)
 git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_ed25519.pub
@@ -1326,7 +1326,7 @@ git tag -s v1.0.0 -m "Release firmata"
         <h2>Cherry-pick e Patch</h2>
         
 <p><code class="inline">git cherry-pick</code> copia un singolo commit da un branch a un altro: utile per portare una correzione su più versioni. Le <strong>patch</strong> esportano commit come file, condivisibili anche senza un server comune.</p>
-<div class="example"><div class="codehead"><span>Cherry-pick e patch</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Cherry-pick e patch</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # CHERRY-PICK: porta un commit specifico sul branch corrente
 git switch release-1.0
 git cherry-pick a1b2c3d
@@ -1355,7 +1355,7 @@ git apply modifiche.diff
         <h2>Risolvere i conflitti di merge</h2>
         
 <p>Un <strong>conflitto</strong> nasce quando due branch modificano le <em>stesse righe</em> dello stesso file: Git non può decidere da solo e ti chiede di scegliere. Niente panico: è normale e si risolve in pochi passaggi.</p>
-<div class="example"><div class="codehead"><span>Anatomia e risoluzione di un conflitto</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Anatomia e risoluzione di un conflitto</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 git merge feature/nuovo-menu
 # CONFLICT (content): Merge conflict in index.html
 
@@ -1388,7 +1388,7 @@ git status
         <h2>Git e CI/CD</h2>
         
 <p>La <strong>CI/CD</strong> collega Git all'automazione: a ogni push o pull request, una pipeline esegue automaticamente test, lint e deploy. Su GitHub si usa <strong>GitHub Actions</strong>, configurato con file YAML nel repository.</p>
-<div class="example"><div class="codehead"><span>Una GitHub Action di base</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Una GitHub Action di base</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # .github/workflows/ci.yml
 name: CI
 
@@ -1427,7 +1427,7 @@ jobs:
         <h2>Git Hooks</h2>
         
 <p>Gli <strong>hook</strong> sono script che Git esegue automaticamente in momenti precisi: prima di un commit, prima di un push, dopo un merge. Servono a imporre controlli di qualità in locale.</p>
-<div class="example"><div class="codehead"><span>Un hook pre-commit</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Un hook pre-commit</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Gli hook vivono in .git/hooks/
 # Crea .git/hooks/pre-commit (ed eseguilo: chmod +x)
 
@@ -1458,7 +1458,7 @@ echo "npm test" > .husky/pre-commit
         <h2>Git Submodules</h2>
         
 <p>I <strong>submodule</strong> includono un repository dentro un altro: utile quando un progetto dipende da una libreria che versioni separatamente. Il repo padre registra solo il <em>commit esatto</em> del submodule.</p>
-<div class="example"><div class="codehead"><span>Gestire i submodule</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Gestire i submodule</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Aggiungere un submodule
 git submodule add https://github.com/team/libreria-comune.git lib/comune
 
@@ -1482,7 +1482,7 @@ git submodule status
         <h2>Remote avanzati</h2>
         
 <p>Tecniche avanzate per lavorare con più remote e scenari complessi: più server, mirror, push selettivi.</p>
-<div class="example"><div class="codehead"><span>Scenari multi-remote</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Scenari multi-remote</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Piu' remote sullo stesso repo (es. GitHub + GitLab)
 git remote add github git@github.com:tuonome/progetto.git
 git remote add gitlab git@gitlab.com:tuonome/progetto.git
@@ -1510,7 +1510,7 @@ git push --mirror git@github.com:nuovo/repo.git
       <article class="lesson" id="editor-online">
         <h2>Praticare Git online</h2>
         
-<p>Ogni esempio del corso ha il pulsante <strong>▶ Prova tu</strong>: apre un editor dove puoi <strong>leggere e modificare</strong> i comandi con la sintassi colorata. Per eseguirli davvero, usa il terminale del tuo computer o uno di questi ambienti.</p>
+<p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor dove puoi <strong>leggere e modificare</strong> i comandi con la sintassi colorata. Per eseguirli davvero, usa il terminale del tuo computer o uno di questi ambienti.</p>
 <h3>Dove esercitarti</h3>
 <ul>
   <li>🎮 <strong><a href="https://learngitbranching.js.org/?locale=it_IT" target="_blank" rel="noreferrer">Learn Git Branching</a></strong> — simulatore visuale di branch, merge e rebase, in italiano: il miglior modo di capire i branch</li>
@@ -1518,7 +1518,7 @@ git push --mirror git@github.com:nuovo/repo.git
   <li>🐙 <strong><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a></strong> — account gratuito per repository, PR e Pages</li>
   <li>📚 <strong><a href="https://ohmygit.org" target="_blank" rel="noreferrer">Oh My Git!</a></strong> — un videogioco open-source per imparare Git</li>
 </ul>
-<div class="example"><div class="codehead"><span>La sessione di pratica perfetta</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>La sessione di pratica perfetta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-bash"></code></pre><script type="text/plain" class="code">
 # Crea un repository "palestra" e sperimenta senza paura:
 mkdir palestra-git && cd palestra-git
 git init
@@ -1713,7 +1713,7 @@ git log --oneline --graph --all
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica i comandi Git</strong>
+      <strong>✏️ Provalo tu — leggi e modifica i comandi Git</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

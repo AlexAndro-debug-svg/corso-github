@@ -263,7 +263,7 @@
         </ul>
         <div class="note-box">⚛️ React non è un framework completo: gestisce solo la <strong>view</strong> (la UI). Per routing, state globale e altro si usano librerie aggiuntive dell'ecosistema React.</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Il tuo primo componente React
@@ -290,7 +290,7 @@ function App() {
         <p>Il modo più rapido per iniziare con React oggi è usare <strong>Vite</strong>, uno strumento di build moderno che crea in pochi secondi un progetto React pronto all'uso.</p>
         <h3>Creare un progetto React con Vite</h3>
         <div class="example">
-          <div class="codehead"><span>Terminale</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Terminale</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 # Crea il progetto (richiede Node.js installato)
@@ -318,7 +318,7 @@ npm run dev
         <h2>Prima applicazione React</h2>
         <p>Il file <code class="inline">main.jsx</code> è il punto di ingresso: monta il componente radice nell'elemento HTML con <code class="inline">id="root"</code>.</p>
         <div class="example">
-          <div class="codehead"><span>main.jsx</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>main.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import React from 'react';
@@ -334,7 +334,7 @@ root.render(
           </script>
         </div>
         <div class="example">
-          <div class="codehead"><span>App.jsx</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>App.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function App() {
@@ -357,7 +357,7 @@ export default App;
         <h2>Render HTML</h2>
         <p>React renderizza i componenti nel DOM reale attraverso il <strong>Virtual DOM</strong>: una rappresentazione in memoria dell'interfaccia. Quando lo stato cambia, React calcola solo le differenze (diff) e aggiorna solo ciò che è necessario, rendendo le app molto performanti.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio — ReactDOM.createRoot</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Esempio — ReactDOM.createRoot</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import ReactDOM from 'react-dom/client';
@@ -383,7 +383,7 @@ root.render(<h1>Ciao dal Virtual DOM! ⚛️</h1>);
         <h2>Upgrade — React 18</h2>
         <p>React 18 (2022) ha introdotto importanti novità rispetto alle versioni precedenti. La più visibile è la nuova API <code class="inline">createRoot</code> che sostituisce il vecchio <code class="inline">ReactDOM.render</code>.</p>
         <div class="example">
-          <div class="codehead"><span>React 17 (vecchio) vs React 18 (nuovo)</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>React 17 (vecchio) vs React 18 (nuovo)</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // ❌ React 17 — deprecato
@@ -410,7 +410,7 @@ root.render(<App />);
         <h2>ES6 in React</h2>
         <p>React fa ampio uso delle funzionalità moderne di JavaScript (ES6+). Conoscerle è fondamentale per scrivere codice React idiomatico.</p>
         <div class="example">
-          <div class="codehead"><span>Arrow functions, destructuring, spread</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Arrow functions, destructuring, spread</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Arrow function
@@ -442,7 +442,7 @@ export default function App() { return <div />; }
         <h2>JSX — Introduzione</h2>
         <p><strong>JSX</strong> (JavaScript XML) è un'estensione della sintassi JavaScript che permette di scrivere markup simile all'HTML direttamente nel codice JS. Babel lo compila in chiamate <code class="inline">React.createElement()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>JSX vs createElement</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>JSX vs createElement</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Con JSX (leggibile)
@@ -470,7 +470,7 @@ const elemento = React.createElement(
         <h2>JSX — Espressioni</h2>
         <p>In JSX puoi inserire qualsiasi <strong>espressione JavaScript</strong> tra parentesi graffe <code class="inline">{}</code>. Puoi usare variabili, operazioni matematiche, chiamate a funzioni e operatori ternari.</p>
         <div class="example">
-          <div class="codehead"><span>Espressioni JSX</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Espressioni JSX</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function Profilo() {
@@ -498,7 +498,7 @@ function Profilo() {
         <h2>JSX — Attributi</h2>
         <p>Gli attributi JSX seguono la convenzione <strong>camelCase</strong>. Molti attributi HTML hanno nomi diversi in JSX per evitare conflitti con parole riservate JavaScript.</p>
         <div class="example">
-          <div class="codehead"><span>Attributi JSX</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Attributi JSX</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function Esempio() {
@@ -543,7 +543,7 @@ function Esempio() {
         <h2>JSX — If Statements</h2>
         <p>In JSX non puoi usare direttamente <code class="inline">if</code> dentro le parentesi graffe, ma hai tre alternative comuni:</p>
         <div class="example">
-          <div class="codehead"><span>Condizioni in JSX</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Condizioni in JSX</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function Accesso({ utente }) {
@@ -584,7 +584,7 @@ function Stato({ livello }) {
         <h2>Componenti</h2>
         <p>I <strong>componenti</strong> sono i mattoncini di React. Ogni componente è una funzione (o classe) che riceve dati in input (<strong>props</strong>) e restituisce JSX. I componenti si compongono tra loro per costruire interfacce complesse.</p>
         <div class="example">
-          <div class="codehead"><span>Componenti funzionali</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Componenti funzionali</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Componente semplice (nessuna prop)
@@ -622,7 +622,7 @@ function App() {
         <h2>Class Components</h2>
         <p>Prima degli hook (React 16.8), i componenti con stato dovevano essere scritti come <strong>classi</strong>. Oggi si preferiscono i componenti funzionali con hook, ma è importante conoscere le classi per lavorare su codice legacy.</p>
         <div class="example">
-          <div class="codehead"><span>Class Component</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Class Component</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import React, { Component } from 'react';
@@ -668,7 +668,7 @@ export default Contatore;
         <h2>Props</h2>
         <p>Le <strong>props</strong> (proprietà) sono il meccanismo con cui un componente genitore passa dati a un componente figlio. Le props sono <strong>immutabili</strong>: il figlio può leggerle ma non modificarle.</p>
         <div class="example">
-          <div class="codehead"><span>Passare e ricevere props</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Passare e ricevere props</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Componente figlio — riceve props
@@ -695,7 +695,7 @@ function App() {
         <h2>Props — Destructuring</h2>
         <p>Il destructuring ES6 rende il codice più pulito: invece di scrivere <code class="inline">props.nome</code>, puoi estrarre le proprietà direttamente nei parametri della funzione.</p>
         <div class="example">
-          <div class="codehead"><span>Destructuring delle props</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Destructuring delle props</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // ❌ Senza destructuring
@@ -728,7 +728,7 @@ function Profilo(props) {
         <h2>Props — Children</h2>
         <p>La prop speciale <code class="inline">children</code> contiene tutto ciò che viene scritto <strong>tra i tag di apertura e chiusura</strong> del componente. Permette di creare componenti "contenitore" generici.</p>
         <div class="example">
-          <div class="codehead"><span>Props children</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Props children</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // Componente contenitore con children
@@ -759,7 +759,7 @@ function App() {
         <h2>Eventi</h2>
         <p>In React gli eventi si gestiscono con attributi camelCase e si passa una <strong>funzione handler</strong> (non una stringa). React utilizza un sistema di <strong>eventi sintetici</strong> che normalizza il comportamento cross-browser.</p>
         <div class="example">
-          <div class="codehead"><span>Gestire eventi</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Gestire eventi</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -803,7 +803,7 @@ function ContatoreClic() {
         <h2>Rendering condizionale</h2>
         <p>React permette di mostrare o nascondere elementi in base a condizioni. Le tecniche principali sono l'operatore ternario, l'operatore <code class="inline">&&</code> e le variabili JSX.</p>
         <div class="example">
-          <div class="codehead"><span>Rendering condizionale</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Rendering condizionale</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -836,7 +836,7 @@ function Pannello() {
         <h2>Liste</h2>
         <p>Per renderizzare liste di elementi si usa il metodo <code class="inline">.map()</code>. Ogni elemento della lista deve avere una prop <code class="inline">key</code> unica per aiutare React a identificare gli elementi nel Virtual DOM.</p>
         <div class="example">
-          <div class="codehead"><span>Renderizzare una lista</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Renderizzare una lista</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function ListaFrutti() {
@@ -866,7 +866,7 @@ function ListaFrutti() {
         <h2>Form</h2>
         <p>In React i form si gestiscono con i <strong>componenti controllati</strong>: il valore dell'input è legato allo state, e ogni modifica aggiorna lo state tramite <code class="inline">onChange</code>. React diventa così la "fonte di verità" per i dati del form.</p>
         <div class="example">
-          <div class="codehead"><span>Input controllato</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Input controllato</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -897,7 +897,7 @@ function FormNome() {
         <h2>Form — Submit</h2>
         <p>Per gestire l'invio del form si usa l'evento <code class="inline">onSubmit</code>. È importante chiamare <code class="inline">e.preventDefault()</code> per impedire il ricaricamento della pagina.</p>
         <div class="example">
-          <div class="codehead"><span>Form con submit</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Form con submit</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -933,7 +933,7 @@ function FormLogin() {
         <h2>Form — Textarea</h2>
         <p>In React, <code class="inline">&lt;textarea&gt;</code> funziona come un input normale: il valore è gestito tramite la prop <code class="inline">value</code> e <code class="inline">onChange</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Textarea controllata</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Textarea controllata</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -964,7 +964,7 @@ function FormMessaggio() {
         <h2>Form — Select</h2>
         <p>Un <code class="inline">&lt;select&gt;</code> controllato usa la prop <code class="inline">value</code> sul tag <code class="inline">select</code> (non <code>selected</code> sull'option).</p>
         <div class="example">
-          <div class="codehead"><span>Select controllata</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Select controllata</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -998,7 +998,7 @@ function SceltaLinguaggio() {
         <h2>Form — Input multipli</h2>
         <p>Con più input puoi gestire lo stato con un unico oggetto. Usa l'attributo <code class="inline">name</code> per identificare ogni campo e aggiornare la proprietà corrispondente nello state.</p>
         <div class="example">
-          <div class="codehead"><span>Form con input multipli</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Form con input multipli</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -1029,7 +1029,7 @@ function FormRegistrazione() {
         <h2>Form — Checkbox</h2>
         <p>Per le checkbox si usa la prop <code class="inline">checked</code> (booleano) invece di <code>value</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Checkbox controllata</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Checkbox controllata</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -1060,7 +1060,7 @@ function AccettaTermini() {
         <h2>Form — Radio</h2>
         <p>I radio button si gestiscono confrontando il valore dello state con il <code class="inline">value</code> di ogni radio.</p>
         <div class="example">
-          <div class="codehead"><span>Radio button controllato</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Radio button controllato</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -1095,7 +1095,7 @@ function SceltaSpedizione() {
         <h2>Portals</h2>
         <p>I <strong>React Portals</strong> permettono di renderizzare un componente figlio in un nodo DOM diverso dal genitore. Sono utili per modali, tooltip e dropdown che devono "uscire" dal flusso DOM normale.</p>
         <div class="example">
-          <div class="codehead"><span>ReactDOM.createPortal</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>ReactDOM.createPortal</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import ReactDOM from 'react-dom';
@@ -1130,7 +1130,7 @@ function App() {
         <h2>Suspense</h2>
         <p><strong>React.Suspense</strong> permette di mostrare un contenuto di fallback (es. uno spinner) mentre un componente figlio viene caricato in modo asincrono. È usato con <code class="inline">React.lazy()</code> per il code splitting.</p>
         <div class="example">
-          <div class="codehead"><span>React.lazy e Suspense</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>React.lazy e Suspense</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import React, { Suspense, lazy } from 'react';
@@ -1159,7 +1159,7 @@ function App() {
         <h2>CSS Styling in React</h2>
         <p>React offre diversi approcci per aggiungere stili ai componenti. Ogni approccio ha i suoi punti di forza.</p>
         <div class="example">
-          <div class="codehead"><span>Stili inline con oggetto</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Stili inline con oggetto</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 function Bottone({ primario }) {
@@ -1192,7 +1192,7 @@ function Bottone({ primario }) {
         <h2>CSS Modules</h2>
         <p>I <strong>CSS Modules</strong> sono file CSS normali con l'estensione <code class="inline">.module.css</code>. Vite e Create React App li supportano nativamente. I nomi delle classi vengono trasformati in identificatori univoci, eliminando i conflitti.</p>
         <div class="example">
-          <div class="codehead"><span>Bottone.module.css + Bottone.jsx</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Bottone.module.css + Bottone.jsx</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 /* Bottone.module.css */
@@ -1226,7 +1226,7 @@ function Bottone({ testo }) {
         <h2>CSS-in-JS</h2>
         <p>Le librerie CSS-in-JS come <strong>styled-components</strong> e <strong>Emotion</strong> permettono di scrivere CSS direttamente nel file JavaScript, con pieno supporto a props dinamiche, temi e pseudo-classi.</p>
         <div class="example">
-          <div class="codehead"><span>styled-components</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>styled-components</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // npm install styled-components
@@ -1264,7 +1264,7 @@ function App() {
         <h2>React Router</h2>
         <p><strong>React Router</strong> è la libreria standard per il routing nelle app React. Permette di navigare tra "pagine" senza ricaricare il browser (Single Page Application).</p>
         <div class="example">
-          <div class="codehead"><span>React Router v6 — Setup base</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>React Router v6 — Setup base</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // npm install react-router-dom
@@ -1299,7 +1299,7 @@ function App() {
         <h2>Transitions — useTransition</h2>
         <p>L'hook <code class="inline">useTransition</code> (React 18) permette di marcare alcuni aggiornamenti di stato come "non urgenti". React dà priorità agli aggiornamenti urgenti (input utente) e posticipa quelli secondari, mantenendo l'interfaccia reattiva.</p>
         <div class="example">
-          <div class="codehead"><span>useTransition</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useTransition</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState, useTransition } from 'react';
@@ -1340,7 +1340,7 @@ function RicercaLenta() {
         <h2>Forward Ref</h2>
         <p><code class="inline">React.forwardRef</code> permette a un componente figlio di esporre un riferimento DOM al genitore. Utile per componenti di input personalizzati che devono essere controllati dall'esterno.</p>
         <div class="example">
-          <div class="codehead"><span>forwardRef</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>forwardRef</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { forwardRef, useRef } from 'react';
@@ -1382,7 +1382,7 @@ function Form() {
         <h2>Higher-Order Components (HOC)</h2>
         <p>Un <strong>HOC</strong> è una funzione che riceve un componente e ne restituisce uno nuovo con funzionalità aggiuntive. È un pattern per il riuso della logica tra componenti (oggi spesso sostituito dagli hook).</p>
         <div class="example">
-          <div class="codehead"><span>HOC — withAuth</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>HOC — withAuth</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // HOC: aggiunge protezione autenticazione
@@ -1419,7 +1419,7 @@ function App() {
         <h2>Sass in React</h2>
         <p><strong>Sass</strong> è un pre-processore CSS che aggiunge variabili, nesting, mixin e funzioni al CSS. In Vite basta installare il pacchetto <code class="inline">sass</code> e usare l'estensione <code class="inline">.scss</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Sass con React</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Sass con React</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 // npm install sass
@@ -1464,7 +1464,7 @@ function App() {
         <h2>Hook — useState</h2>
         <p><code class="inline">useState</code> è l'hook più fondamentale: permette di aggiungere <strong>stato locale</strong> a un componente funzionale. Restituisce il valore corrente e una funzione per aggiornarlo.</p>
         <div class="example">
-          <div class="codehead"><span>useState — Contatore</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useState — Contatore</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -1496,7 +1496,7 @@ function Contatore() {
         <h2>Hook — useEffect</h2>
         <p><code class="inline">useEffect</code> gestisce gli <strong>effetti collaterali</strong>: fetch di dati, sottoscrizioni a eventi, aggiornamento del DOM. Sostituisce <code>componentDidMount</code>, <code>componentDidUpdate</code> e <code>componentWillUnmount</code>.</p>
         <div class="example">
-          <div class="codehead"><span>useEffect — fetch dati</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useEffect — fetch dati</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState, useEffect } from 'react';
@@ -1543,7 +1543,7 @@ function Utenti() {
         <h2>Hook — useContext</h2>
         <p><code class="inline">useContext</code> consente di condividere dati tra componenti senza passare props a ogni livello (<strong>prop drilling</strong>). Il <strong>Context</strong> è ideale per temi, lingua, utente autenticato.</p>
         <div class="example">
-          <div class="codehead"><span>useContext — Tema</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useContext — Tema</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { createContext, useContext, useState } from 'react';
@@ -1584,7 +1584,7 @@ function Pagina() {
         <h2>Hook — useRef</h2>
         <p><code class="inline">useRef</code> restituisce un oggetto mutabile con una proprietà <code class="inline">.current</code>. È usato per accedere direttamente agli elementi DOM e per conservare valori che <strong>non devono causare un re-render</strong> quando cambiano.</p>
         <div class="example">
-          <div class="codehead"><span>useRef — DOM e timer</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useRef — DOM e timer</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useRef, useEffect, useState } from 'react';
@@ -1627,7 +1627,7 @@ function CronometroRef() {
         <h2>Hook — useReducer</h2>
         <p><code class="inline">useReducer</code> è un'alternativa a <code class="inline">useState</code> per stato complesso. Si ispira al pattern Redux: un <strong>reducer</strong> riceve lo stato corrente e un'azione, e restituisce il nuovo stato.</p>
         <div class="example">
-          <div class="codehead"><span>useReducer — Contatore avanzato</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useReducer — Contatore avanzato</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useReducer } from 'react';
@@ -1664,7 +1664,7 @@ function Contatore() {
         <h2>Hook — useCallback</h2>
         <p><code class="inline">useCallback</code> restituisce una versione <strong>memoizzata</strong> di una funzione callback. È utile per ottimizzare le performance quando si passa una callback a componenti figli profondi: evita che il figlio si re-renderizzi inutilmente ad ogni render del genitore.</p>
         <div class="example">
-          <div class="codehead"><span>useCallback</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useCallback</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState, useCallback, memo } from 'react';
@@ -1700,7 +1700,7 @@ function Genitore() {
         <h2>Hook — useMemo</h2>
         <p><code class="inline">useMemo</code> memoizza il <strong>risultato di un calcolo</strong> costoso: lo ricalcola solo quando le dipendenze cambiano. È utile per filtrare/ordinare grandi liste o calcoli pesanti.</p>
         <div class="example">
-          <div class="codehead"><span>useMemo — Filtro lista</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>useMemo — Filtro lista</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState, useMemo } from 'react';
@@ -1742,7 +1742,7 @@ function ListaProdotti() {
         <h2>Custom Hooks</h2>
         <p>I <strong>Custom Hook</strong> sono funzioni JavaScript che iniziano con <code class="inline">use</code> e possono chiamare altri hook. Permettono di estrarre e riutilizzare logica stateful tra più componenti.</p>
         <div class="example">
-          <div class="codehead"><span>Custom Hook — useFetch</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Custom Hook — useFetch</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState, useEffect } from 'react';
@@ -1819,7 +1819,7 @@ function ListaPost() {
         <h3>Esercizio 1 — Lista della spesa</h3>
         <p>Crea un'app dove l'utente può aggiungere elementi a una lista e rimuoverli con un clic.</p>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
           <pre class="codeview"><code class="language-jsx"></code></pre>
           <script type="text/plain" class="code">
 import { useState } from 'react';
@@ -1995,7 +1995,7 @@ function ListaSpesa() {
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice React (JSX)</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice React (JSX)</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

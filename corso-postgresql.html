@@ -53,28 +53,7 @@
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
     .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
-
-    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
-    .btn-try:hover { background: #0b7c71; }
-    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
-    .editor-overlay.open { display: flex; }
-    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
-    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
-    .editor-top .ed-actions { display: flex; gap: .6rem; }
-    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
-    .ed-close { background: #e2e8f0; color: #334155; }
-    .ed-close:hover { background: #cbd5e1; }
-    .ed-run { background: #04AA6D; color: #fff; }
-    .ed-run:hover { background: #038a59; }
-    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
-    .code-editor { flex: 1; overflow: hidden; }
-    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
-    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
-    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    #ed-preview { flex: 1; border: none; background: #1e293b; }
-    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
-  </style>
+</style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-postgresql.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -226,7 +205,7 @@
 <ul><li><strong>Processo postmaster</strong> — il processo padre che accetta le connessioni</li><li><strong>Backend process</strong> — un processo separato per ogni connessione client</li><li><strong>Shared buffers</strong> — cache condivisa in memoria (parametro <code class="inline">shared_buffers</code>)</li><li><strong>WAL (Write-Ahead Log)</strong> — log delle transazioni per durabilità e replica</li><li><strong>Background workers</strong> — autovacuum, checkpointer, wal writer, stats collector</li></ul>
 <h3>Struttura di un database PostgreSQL</h3>
 <div class="example">
-<div class="codehead"><span>Gerarchia degli oggetti</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Gerarchia degli oggetti</span></div>
 <pre class="codeview"><code class="language-sql">-- PostgreSQL cluster
 --   └── Database (es. "myapp")
 --         └── Schema (es. "public", "auth", "analytics")
@@ -250,7 +229,7 @@ SET search_path TO myschema, public;</code></pre>
 <p>PostgreSQL è disponibile per tutti i principali sistemi operativi. Puoi installarlo localmente, usarlo via Docker oppure affidarti a un servizio cloud come Neon, Supabase o Amazon RDS.</p>
 <h3>Ubuntu / Debian</h3>
 <div class="example">
-<div class="codehead"><span>Installa PostgreSQL su Ubuntu</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Installa PostgreSQL su Ubuntu</span></div>
 <pre class="codeview"><code class="language-bash"># Aggiungi il repository ufficiale PostgreSQL
 sudo apt install -y curl ca-certificates
 sudo install -d /usr/share/postgresql-common/pgdg
@@ -271,7 +250,7 @@ psql --version</code></pre>
 </div>
 <h3>macOS (Homebrew)</h3>
 <div class="example">
-<div class="codehead"><span>Installa PostgreSQL su macOS</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Installa PostgreSQL su macOS</span></div>
 <pre class="codeview"><code class="language-bash">brew install postgresql@16
 brew services start postgresql@16
 
@@ -283,7 +262,7 @@ psql --version</code></pre>
 </div>
 <h3>Docker (consigliato per sviluppo)</h3>
 <div class="example">
-<div class="codehead"><span>PostgreSQL con Docker</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>PostgreSQL con Docker</span></div>
 <pre class="codeview"><code class="language-bash"># Avvia un container PostgreSQL
 docker run -d \
   --name postgres \
@@ -322,7 +301,7 @@ docker compose up -d</code></pre>
 <p>Una volta installato PostgreSQL, il punto d'ingresso principale è <strong><code class="inline">psql</code></strong> — la shell interattiva a riga di comando. Da qui puoi eseguire query, gestire database, utenti e configurare il server.</p>
 <h3>Accesso con psql</h3>
 <div class="example">
-<div class="codehead"><span>Comandi base psql</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Comandi base psql</span></div>
 <pre class="codeview"><code class="language-bash"># Accedi come utente postgres (superuser)
 sudo -u postgres psql
 
@@ -344,7 +323,7 @@ psql -U admin -d myapp -h localhost -p 5432
 </div>
 <h3>Crea il tuo primo database e utente</h3>
 <div class="example">
-<div class="codehead"><span>Setup database e utente</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Setup database e utente</span></div>
 <pre class="codeview"><code class="language-sql">-- Connesso come superuser (postgres)
 
 -- Crea un utente con password
@@ -364,7 +343,7 @@ SELECT current_user, current_database();</code></pre>
 </div>
 <h3>Eseguire query SQL</h3>
 <div class="example">
-<div class="codehead"><span>Prima query PostgreSQL</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Prima query PostgreSQL</span></div>
 <pre class="codeview"><code class="language-sql">-- Crea uno schema
 CREATE SCHEMA IF NOT EXISTS negozio;
 SET search_path TO negozio, public;
@@ -387,7 +366,7 @@ SELECT * FROM clienti;</code></pre>
 </div>
 <h3>Connection string</h3>
 <div class="example">
-<div class="codehead"><span>URI di connessione PostgreSQL</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>URI di connessione PostgreSQL</span></div>
 <pre class="codeview"><code class="language-bash">-- Formato URI standard
 postgresql://utente:password@host:porta/database
 
@@ -416,7 +395,7 @@ psql  # usa automaticamente le variabili</code></pre>
 <h3>Funzionalità principali</h3>
 <ul><li><strong>Query Tool</strong> — editor SQL con autocompletamento, evidenziazione sintassi e visualizzazione risultati</li><li><strong>Schema Browser</strong> — esplora tabelle, indici, funzioni, trigger e viste graficamente</li><li><strong>EXPLAIN Visualizer</strong> — visualizza il piano di esecuzione delle query con grafico interattivo</li><li><strong>Backup/Restore</strong> — interfaccia grafica per <code class="inline">pg_dump</code> e <code class="inline">pg_restore</code></li><li><strong>Server Monitor</strong> — statistiche su connessioni, lock, blocchi, utilizzo CPU/memoria</li><li><strong>ERD (Entity Relationship Diagram)</strong> — genera diagrammi ER dalle tabelle esistenti</li></ul>
 <div class="example">
-<div class="codehead"><span>Connessione a PostgreSQL in pgAdmin</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Connessione a PostgreSQL in pgAdmin</span></div>
 <pre class="codeview"><code class="language-sql">/* In pgAdmin 4:
    1. File → Add New Server (o click destro su "Servers")
    2. Scheda "General": dai un nome al server (es. "Local Dev")
@@ -441,7 +420,7 @@ psql  # usa automaticamente le variabili</code></pre>
         <h2>PostgreSQL — CREATE TABLE</h2>
 <p>Il comando <code class="inline">CREATE TABLE</code> definisce una nuova tabella specificando nome, colonne, tipi di dato e vincoli. In PostgreSQL è uno dei comandi DDL (Data Definition Language) più ricchi di opzioni.</p>
 <div class="example">
-<div class="codehead"><span>CREATE TABLE base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CREATE TABLE base</span></div>
 <pre class="codeview"><code class="language-sql">CREATE TABLE prodotti (
   id          SERIAL PRIMARY KEY,
   nome        VARCHAR(200)   NOT NULL,
@@ -456,7 +435,7 @@ psql  # usa automaticamente le variabili</code></pre>
 <h3>Vincoli principali</h3>
 <table class="ref"><thead><tr><th>Vincolo</th><th>Descrizione</th></tr></thead><tbody><tr><td><code class="inline">PRIMARY KEY</code></td><td>Identifica univocamente ogni riga</td></tr><tr><td><code class="inline">NOT NULL</code></td><td>Il campo non può essere NULL</td></tr><tr><td><code class="inline">UNIQUE</code></td><td>Nessun duplicato (permette un solo NULL)</td></tr><tr><td><code class="inline">DEFAULT valore</code></td><td>Valore predefinito se non specificato</td></tr><tr><td><code class="inline">CHECK (cond)</code></td><td>La condizione deve essere vera per ogni riga</td></tr><tr><td><code class="inline">REFERENCES</code></td><td>Chiave esterna (FOREIGN KEY)</td></tr></tbody></table>
 <div class="example">
-<div class="codehead"><span>Tabella con chiave esterna e vincoli avanzati</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Tabella con chiave esterna e vincoli avanzati</span></div>
 <pre class="codeview"><code class="language-sql">-- Tabella categorie
 CREATE TABLE categorie (
   id   SERIAL PRIMARY KEY,
@@ -479,7 +458,7 @@ CREATE TABLE prodotti (
 \d prodotti</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Tabella con chiave primaria composta</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Tabella con chiave primaria composta</span></div>
 <pre class="codeview"><code class="language-sql">-- Tabella molti-a-molti
 CREATE TABLE ordine_prodotti (
   ordine_id   INTEGER REFERENCES ordini(id)   ON DELETE CASCADE,
@@ -496,7 +475,7 @@ CREATE TABLE ordine_prodotti (
         <h2>PostgreSQL — INSERT INTO</h2>
 <p><code class="inline">INSERT INTO</code> aggiunge nuovi record a una tabella. PostgreSQL estende lo standard SQL con la clausola <strong><code class="inline">RETURNING</code></strong> che restituisce i valori delle righe inserite, molto utile per ottenere gli ID generati.</p>
 <div class="example">
-<div class="codehead"><span>INSERT base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INSERT base</span></div>
 <pre class="codeview"><code class="language-sql">-- Inserisce una riga (specifica tutte le colonne)
 INSERT INTO clienti (nome, email, citta)
 VALUES ('Mario Rossi', 'mario@example.com', 'Roma');
@@ -508,7 +487,7 @@ INSERT INTO clienti (nome, email, citta) VALUES
   ('Sofia Esposito','sofia@example.com',  'Napoli');</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>INSERT ... RETURNING</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INSERT ... RETURNING</span></div>
 <pre class="codeview"><code class="language-sql">-- Restituisce l''id generato
 INSERT INTO prodotti (nome, prezzo, stock)
 VALUES ('Laptop Pro', 1299.99, 10)
@@ -525,7 +504,7 @@ VALUES ('Elettronica')
 RETURNING *;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>INSERT ... ON CONFLICT (upsert)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INSERT ... ON CONFLICT (upsert)</span></div>
 <pre class="codeview"><code class="language-sql">-- ON CONFLICT DO NOTHING — ignora i duplicati
 INSERT INTO tag (nome, slug)
 VALUES ('javascript', 'javascript')
@@ -543,7 +522,7 @@ DO UPDATE SET
 -- EXCLUDED riferisce ai valori che si voleva inserire</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>INSERT da SELECT</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INSERT da SELECT</span></div>
 <pre class="codeview"><code class="language-sql">-- Copia dati da un''altra tabella
 INSERT INTO archivio_ordini (ordine_id, cliente_id, totale, data_archiviazione)
 SELECT id, cliente_id, totale, NOW()
@@ -557,7 +536,7 @@ WHERE  stato = 'completato'
         <h2>PostgreSQL — Fetch Data (SELECT)</h2>
 <p><code class="inline">SELECT</code> è il comando per leggere i dati. PostgreSQL offre un set ricchissimo di clausole per filtrare, ordinare, raggruppare, limitare e trasformare i risultati.</p>
 <div class="example">
-<div class="codehead"><span>SELECT base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SELECT base</span></div>
 <pre class="codeview"><code class="language-sql">-- Tutte le colonne
 SELECT * FROM prodotti;
 
@@ -576,7 +555,7 @@ FROM prodotti;
 SELECT 2 + 3 AS somma, NOW() AS ora, VERSION() AS versione;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>WHERE, ORDER BY, LIMIT, OFFSET</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>WHERE, ORDER BY, LIMIT, OFFSET</span></div>
 <pre class="codeview"><code class="language-sql">-- Filtra con WHERE
 SELECT nome, prezzo
 FROM   prodotti
@@ -596,7 +575,7 @@ ORDER BY creato DESC
 FETCH FIRST 5 ROWS ONLY;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Funzioni di stringa e testo</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni di stringa e testo</span></div>
 <pre class="codeview"><code class="language-sql">SELECT
   UPPER(nome)          AS nome_maiuscolo,
   LENGTH(email)        AS lunghezza_email,
@@ -607,7 +586,7 @@ FETCH FIRST 5 ROWS ONLY;</code></pre>
 FROM clienti;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Funzioni di data e ora</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Funzioni di data e ora</span></div>
 <pre class="codeview"><code class="language-sql">SELECT
   NOW()                        AS adesso,
   CURRENT_DATE                 AS oggi,
@@ -625,7 +604,7 @@ FROM clienti;</code></pre>
         <h2>PostgreSQL — ADD COLUMN</h2>
 <p><code class="inline">ALTER TABLE ... ADD COLUMN</code> aggiunge una o più colonne a una tabella esistente senza perdere i dati presenti. La nuova colonna viene aggiunta in fondo (PostgreSQL non supporta l'inserimento in posizione specifica senza ricreare la tabella).</p>
 <div class="example">
-<div class="codehead"><span>ADD COLUMN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ADD COLUMN</span></div>
 <pre class="codeview"><code class="language-sql">-- Aggiungi una colonna
 ALTER TABLE clienti ADD COLUMN telefono TEXT;
 
@@ -642,7 +621,7 @@ ALTER TABLE utenti
   ADD COLUMN verificato BOOLEAN NOT NULL DEFAULT FALSE;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>ADD COLUMN con vincoli</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ADD COLUMN con vincoli</span></div>
 <pre class="codeview"><code class="language-sql">-- Colonna con CHECK
 ALTER TABLE prodotti
   ADD COLUMN sconto_percent NUMERIC(5,2)
@@ -665,7 +644,7 @@ ALTER TABLE prodotti
         <h2>PostgreSQL — UPDATE</h2>
 <p><code class="inline">UPDATE</code> modifica i valori in una o più righe esistenti. PostgreSQL estende lo standard con <code class="inline">UPDATE ... FROM</code> (simile a un JOIN) e <code class="inline">RETURNING</code> per ottenere le righe modificate.</p>
 <div class="example">
-<div class="codehead"><span>UPDATE base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>UPDATE base</span></div>
 <pre class="codeview"><code class="language-sql">-- Aggiorna tutte le righe (ATTENZIONE: senza WHERE aggiorna tutto!)
 UPDATE prodotti SET disponibile = FALSE;
 
@@ -682,7 +661,7 @@ WHERE  id = 42
 RETURNING id, nome, citta;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>UPDATE ... FROM (join tra tabelle)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>UPDATE ... FROM (join tra tabelle)</span></div>
 <pre class="codeview"><code class="language-sql">-- Aggiorna usando dati da un''altra tabella
 UPDATE prodotti AS p
 SET    prezzo = pc.nuovo_prezzo,
@@ -698,7 +677,7 @@ WHERE  p.id = op.prodotto_id
   AND  op.ordine_id = 1001;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>UPDATE con subquery</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>UPDATE con subquery</span></div>
 <pre class="codeview"><code class="language-sql">-- Aggiorna basandosi su una subquery
 UPDATE utenti
 SET    livello = ''premium''
@@ -716,7 +695,7 @@ WHERE  id IN (
         <h2>PostgreSQL — ALTER COLUMN</h2>
 <p><code class="inline">ALTER TABLE ... ALTER COLUMN</code> permette di modificare le proprietà di una colonna esistente: tipo di dato, valore di default, vincolo NOT NULL e altro.</p>
 <div class="example">
-<div class="codehead"><span>Cambia il tipo di dato</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Cambia il tipo di dato</span></div>
 <pre class="codeview"><code class="language-sql">-- Cambia il tipo (PostgreSQL usa SET DATA TYPE)
 ALTER TABLE prodotti
   ALTER COLUMN prezzo SET DATA TYPE NUMERIC(12,2);
@@ -732,7 +711,7 @@ ALTER TABLE log
   USING timestamp_str::TIMESTAMPTZ;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>SET DEFAULT, DROP DEFAULT, NOT NULL</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SET DEFAULT, DROP DEFAULT, NOT NULL</span></div>
 <pre class="codeview"><code class="language-sql">-- Imposta un valore di default
 ALTER TABLE prodotti
   ALTER COLUMN stock SET DEFAULT 0;
@@ -751,7 +730,7 @@ ALTER TABLE clienti
   ALTER COLUMN telefono DROP NOT NULL;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Rinomina colonna e tabella</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Rinomina colonna e tabella</span></div>
 <pre class="codeview"><code class="language-sql">-- Rinomina una colonna
 ALTER TABLE clienti RENAME COLUMN citta TO city;
 
@@ -768,7 +747,7 @@ ALTER TABLE prodotti
         <h2>PostgreSQL — DROP COLUMN</h2>
 <p><code class="inline">ALTER TABLE ... DROP COLUMN</code> rimuove una colonna da una tabella. Attenzione: l'operazione è <strong>irreversibile</strong> e rimuove anche tutti gli indici, i default e i vincoli associati a quella colonna.</p>
 <div class="example">
-<div class="codehead"><span>DROP COLUMN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DROP COLUMN</span></div>
 <pre class="codeview"><code class="language-sql">-- Rimuove una colonna
 ALTER TABLE clienti DROP COLUMN fax;
 
@@ -781,7 +760,7 @@ ALTER TABLE utenti
   DROP COLUMN altro_campo_inutile;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>CASCADE — rimuovi le dipendenze</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CASCADE — rimuovi le dipendenze</span></div>
 <pre class="codeview"><code class="language-sql">-- Se la colonna è referenziata da altre tabelle o viste,
 -- DROP COLUMN normale darà errore. Usa CASCADE:
 ALTER TABLE categorie DROP COLUMN codice CASCADE;
@@ -810,7 +789,7 @@ WHERE  source_table.relname = 'nome_tabella'
         <h2>PostgreSQL — DELETE</h2>
 <p><code class="inline">DELETE FROM</code> rimuove righe da una tabella. Come <code class="inline">UPDATE</code>, PostgreSQL supporta <code class="inline">DELETE ... USING</code> (join) e <code class="inline">RETURNING</code> per ottenere le righe eliminate.</p>
 <div class="example">
-<div class="codehead"><span>DELETE base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DELETE base</span></div>
 <pre class="codeview"><code class="language-sql">-- Elimina righe specifiche
 DELETE FROM sessioni WHERE scaduta = TRUE;
 
@@ -824,7 +803,7 @@ WHERE utente_id = 42 AND scaduto = TRUE
 RETURNING prodotto_id, quantita;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>DELETE ... USING (join)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DELETE ... USING (join)</span></div>
 <pre class="codeview"><code class="language-sql">-- Elimina prodotti senza ordini (usando USING)
 DELETE FROM prodotti AS p
 USING  categorie AS c
@@ -840,7 +819,7 @@ WHERE id IN (
 );</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>TRUNCATE — svuota velocemente</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>TRUNCATE — svuota velocemente</span></div>
 <pre class="codeview"><code class="language-sql">-- TRUNCATE è molto più veloce di DELETE per svuotare una tabella
 TRUNCATE prodotti;
 
@@ -860,7 +839,7 @@ TRUNCATE clienti CASCADE;
         <h2>PostgreSQL — DROP TABLE</h2>
 <p><code class="inline">DROP TABLE</code> rimuove una tabella e tutti i suoi dati in modo <strong>irreversibile</strong>. Usa <code class="inline">IF EXISTS</code> per evitare errori se la tabella non esiste, e <code class="inline">CASCADE</code> per gestire le dipendenze.</p>
 <div class="example">
-<div class="codehead"><span>DROP TABLE</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DROP TABLE</span></div>
 <pre class="codeview"><code class="language-sql">-- Elimina una tabella
 DROP TABLE temp_import;
 
@@ -878,7 +857,7 @@ DROP TABLE IF EXISTS
   temp_c;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>DROP SCHEMA e DATABASE</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DROP SCHEMA e DATABASE</span></div>
 <pre class="codeview"><code class="language-sql">-- Elimina uno schema e tutto il suo contenuto
 DROP SCHEMA analytics CASCADE;
 
@@ -899,7 +878,7 @@ DROP DATABASE IF EXISTS test_db;</code></pre>
         <h2>Database Demo — Northwind</h2>
 <p>Per tutti gli esempi pratici useremo un database demo ispirato al classico <strong>Northwind</strong> di Microsoft, adattato per PostgreSQL. Contiene tabelle di clienti, prodotti, ordini e spedizioni.</p>
 <div class="example">
-<div class="codehead"><span>Schema Northwind per PostgreSQL</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Schema Northwind per PostgreSQL</span></div>
 <pre class="codeview"><code class="language-sql">-- Crea il database demo
 CREATE TABLE categorie (
   id   SERIAL PRIMARY KEY,
@@ -949,7 +928,7 @@ CREATE TABLE ordine_dettagli (
 );</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Popola il database demo</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Popola il database demo</span></div>
 <pre class="codeview"><code class="language-sql">-- Categorie
 INSERT INTO categorie (nome) VALUES
   (''Elettronica''),('Abbigliamento'),('Alimentari'),('Libri'),('Sport'');
@@ -988,7 +967,7 @@ INSERT INTO ordini (cliente_id, data_ordine, totale, stato) VALUES
 <h3>Operatori di confronto</h3>
 <table class="ref"><thead><tr><th>Operatore</th><th>Descrizione</th></tr></thead><tbody><tr><td><code class="inline">=</code></td><td>Uguale</td></tr><tr><td><code class="inline">&lt;&gt;</code> o <code class="inline">!=</code></td><td>Diverso</td></tr><tr><td><code class="inline">&lt;</code></td><td>Minore</td></tr><tr><td><code class="inline">&gt;</code></td><td>Maggiore</td></tr><tr><td><code class="inline">&lt;=</code></td><td>Minore o uguale</td></tr><tr><td><code class="inline">&gt;=</code></td><td>Maggiore o uguale</td></tr><tr><td><code class="inline">IS NULL</code></td><td>Il valore è NULL</td></tr><tr><td><code class="inline">IS NOT NULL</code></td><td>Il valore non è NULL</td></tr><tr><td><code class="inline">IS DISTINCT FROM</code></td><td>Diverso (gestisce NULL come valore)</td></tr></tbody></table>
 <div class="example">
-<div class="codehead"><span>Operatori in pratica</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Operatori in pratica</span></div>
 <pre class="codeview"><code class="language-sql">-- Confronto NULL-safe
 SELECT * FROM prodotti WHERE categoria_id IS NULL;
 SELECT * FROM prodotti WHERE discontinuato IS NOT TRUE;
@@ -1006,7 +985,7 @@ WHERE  data_ordine BETWEEN ''2024-01-01'' AND ''2024-12-31'';</code></pre>
 </div>
 <h3>Operatori stringa</h3>
 <div class="example">
-<div class="codehead"><span>Operatori su stringhe</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Operatori su stringhe</span></div>
 <pre class="codeview"><code class="language-sql">-- Concatenazione
 SELECT ''Hello'' || '' '' || ''World'' AS saluto;
 
@@ -1026,7 +1005,7 @@ SELECT * FROM email_list WHERE email ~* ''^mario'';  -- i = case-insensitive</co
 </div>
 <h3>Operatori numerici e speciali</h3>
 <div class="example">
-<div class="codehead"><span>Operatori numerici e JSON</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Operatori numerici e JSON</span></div>
 <pre class="codeview"><code class="language-sql">-- Aritmetica
 SELECT 17 / 5,       -- 3 (divisione intera)
        17.0 / 5,     -- 3.4 (decimale)
@@ -1051,7 +1030,7 @@ SELECT ARRAY[1,2,3] @&gt; ARRAY[2,3] AS contiene,    -- TRUE
         <h2>PostgreSQL — SELECT</h2>
 <p><code class="inline">SELECT</code> è il comando più usato in PostgreSQL. Supporta espressioni, funzioni, alias, valori calcolati, e si combina con molte clausole per costruire query complesse.</p>
 <div class="example">
-<div class="codehead"><span>SELECT avanzato</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SELECT avanzato</span></div>
 <pre class="codeview"><code class="language-sql">-- SELECT con espressioni e funzioni
 SELECT
   id,
@@ -1069,7 +1048,7 @@ WHERE NOT discontinuato
 ORDER BY prezzo DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>SELECT DISTINCT su più colonne</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SELECT DISTINCT su più colonne</span></div>
 <pre class="codeview"><code class="language-sql">-- Combinazioni uniche di paese e citta
 SELECT DISTINCT paese, citta
 FROM clienti
@@ -1080,7 +1059,7 @@ SELECT COUNT(DISTINCT categoria_id) AS num_categorie_usate
 FROM prodotti;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Subquery in SELECT</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Subquery in SELECT</span></div>
 <pre class="codeview"><code class="language-sql">-- Subquery scalare (restituisce un valore)
 SELECT
   nome,
@@ -1103,7 +1082,7 @@ WHERE EXISTS (
         <h2>PostgreSQL — SELECT DISTINCT</h2>
 <p><code class="inline">SELECT DISTINCT</code> elimina i duplicati dai risultati, restituendo solo le righe uniche. Si può applicare a una o più colonne.</p>
 <div class="example">
-<div class="codehead"><span>SELECT DISTINCT</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SELECT DISTINCT</span></div>
 <pre class="codeview"><code class="language-sql">-- Valori unici di una colonna
 SELECT DISTINCT paese FROM clienti ORDER BY paese;
 
@@ -1118,7 +1097,7 @@ ORDER BY cliente_id, data_ordine DESC;
 -- Restituisce l''ultimo ordine di ogni cliente</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>DISTINCT vs GROUP BY</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>DISTINCT vs GROUP BY</span></div>
 <pre class="codeview"><code class="language-sql">-- Questi due producono lo stesso risultato:
 
 -- Con DISTINCT
@@ -1137,7 +1116,7 @@ ORDER BY categoria_id;</code></pre>
         <h2>PostgreSQL — WHERE</h2>
 <p>La clausola <code class="inline">WHERE</code> filtra le righe restituite da <code class="inline">SELECT</code>, <code class="inline">UPDATE</code> o <code class="inline">DELETE</code>. Supporta qualsiasi espressione booleana, incluse subquery, funzioni e operatori speciali.</p>
 <div class="example">
-<div class="codehead"><span>WHERE con operatori vari</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>WHERE con operatori vari</span></div>
 <pre class="codeview"><code class="language-sql">-- Confronto semplice
 SELECT * FROM prodotti WHERE prezzo &gt; 100;
 
@@ -1164,7 +1143,7 @@ SELECT * FROM prodotti
 WHERE  prezzo BETWEEN 10 AND 100;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>WHERE con NULL e LIKE</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>WHERE con NULL e LIKE</span></div>
 <pre class="codeview"><code class="language-sql">-- Filtra NULL
 SELECT * FROM clienti WHERE telefono IS NULL;
 SELECT * FROM prodotti WHERE descrizione IS NOT NULL;
@@ -1190,7 +1169,7 @@ WHERE  id IN (
         <h2>PostgreSQL — ORDER BY</h2>
 <p><code class="inline">ORDER BY</code> definisce l'ordinamento dei risultati. PostgreSQL permette di ordinare per colonne, espressioni, alias, numero di colonna e di gestire i valori NULL in modo esplicito.</p>
 <div class="example">
-<div class="codehead"><span>ORDER BY</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ORDER BY</span></div>
 <pre class="codeview"><code class="language-sql">-- Ascendente (default)
 SELECT * FROM prodotti ORDER BY nome;
 SELECT * FROM prodotti ORDER BY prezzo ASC;
@@ -1210,7 +1189,7 @@ ORDER BY prezzo_iva DESC;
 SELECT nome, prezzo FROM prodotti ORDER BY 2 DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>NULLS FIRST / NULLS LAST</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>NULLS FIRST / NULLS LAST</span></div>
 <pre class="codeview"><code class="language-sql">-- Default: ASC mette NULL in fondo, DESC li mette in testa
 
 -- Metti i NULL sempre in fondo
@@ -1220,7 +1199,7 @@ SELECT * FROM prodotti ORDER BY fornitore_id ASC NULLS LAST;
 SELECT * FROM prodotti ORDER BY fornitore_id DESC NULLS FIRST;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>ORDER BY con espressioni</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ORDER BY con espressioni</span></div>
 <pre class="codeview"><code class="language-sql">-- Ordina per la lunghezza del nome
 SELECT nome FROM clienti ORDER BY LENGTH(nome);
 
@@ -1238,7 +1217,7 @@ SELECT * FROM prodotti ORDER BY LOWER(nome);</code></pre>
         <h2>PostgreSQL — LIMIT</h2>
 <p><code class="inline">LIMIT</code> restringe il numero di righe restituite. Combinato con <code class="inline">OFFSET</code> permette la <strong>paginazione</strong>. PostgreSQL supporta anche la sintassi SQL standard <code class="inline">FETCH FIRST</code>.</p>
 <div class="example">
-<div class="codehead"><span>LIMIT e OFFSET</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>LIMIT e OFFSET</span></div>
 <pre class="codeview"><code class="language-sql">-- Prendi solo le prime 10 righe
 SELECT * FROM prodotti ORDER BY prezzo DESC LIMIT 10;
 
@@ -1254,7 +1233,7 @@ OFFSET 20;   -- salta le prime 20 righe (pagine 1 e 2)
 -- Pagina 3: LIMIT 10 OFFSET 20</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>FETCH FIRST (SQL standard)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>FETCH FIRST (SQL standard)</span></div>
 <pre class="codeview"><code class="language-sql">-- Equivalente a LIMIT
 SELECT * FROM prodotti
 ORDER BY prezzo DESC
@@ -1273,7 +1252,7 @@ FETCH NEXT 5 ROWS ONLY;</code></pre>
         <h2>PostgreSQL — MIN e MAX</h2>
 <p><code class="inline">MIN()</code> e <code class="inline">MAX()</code> sono <strong>funzioni aggregate</strong> che restituiscono rispettivamente il valore minimo e massimo di una colonna. Funzionano su numeri, stringhe (ordine alfabetico) e date.</p>
 <div class="example">
-<div class="codehead"><span>MIN e MAX</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>MIN e MAX</span></div>
 <pre class="codeview"><code class="language-sql">-- Prezzo minimo e massimo
 SELECT MIN(prezzo) AS prezzo_min,
        MAX(prezzo) AS prezzo_max
@@ -1296,7 +1275,7 @@ GROUP BY c.nome
 ORDER BY range_prezzi DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>GREATEST e LEAST (su colonne multiple)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>GREATEST e LEAST (su colonne multiple)</span></div>
 <pre class="codeview"><code class="language-sql">-- GREATEST e LEAST confrontano valori su più colonne (non aggregate)
 SELECT
   nome,
@@ -1314,7 +1293,7 @@ FROM clienti;</code></pre>
         <h2>PostgreSQL — COUNT</h2>
 <p><code class="inline">COUNT()</code> conta il numero di righe o valori non-NULL. È la funzione aggregata più comune e si combina con <code class="inline">GROUP BY</code> e <code class="inline">HAVING</code> per analisi raggruppate.</p>
 <div class="example">
-<div class="codehead"><span>COUNT</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>COUNT</span></div>
 <pre class="codeview"><code class="language-sql">-- Conta tutte le righe
 SELECT COUNT(*) AS totale_prodotti FROM prodotti;
 
@@ -1333,7 +1312,7 @@ SELECT
 FROM prodotti;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>COUNT con GROUP BY</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>COUNT con GROUP BY</span></div>
 <pre class="codeview"><code class="language-sql">-- Numero di prodotti per categoria
 SELECT c.nome AS categoria, COUNT(p.id) AS num_prodotti
 FROM   categorie c
@@ -1354,7 +1333,7 @@ ORDER BY num_ordini DESC;</code></pre>
         <h2>PostgreSQL — SUM</h2>
 <p><code class="inline">SUM()</code> calcola la somma dei valori di una colonna numerica. Ignora i valori NULL. Restituisce NULL se non ci sono righe (usa <code class="inline">COALESCE(SUM(...), 0)</code> per restituire 0).</p>
 <div class="example">
-<div class="codehead"><span>SUM</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SUM</span></div>
 <pre class="codeview"><code class="language-sql">-- Totale stock
 SELECT SUM(stock) AS stock_totale FROM prodotti;
 
@@ -1378,7 +1357,7 @@ SELECT
 FROM ordini;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Running total con window function</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Running total con window function</span></div>
 <pre class="codeview"><code class="language-sql">-- Totale cumulativo (somma progressiva)
 SELECT
   data_ordine,
@@ -1393,7 +1372,7 @@ ORDER BY data_ordine;</code></pre>
         <h2>PostgreSQL — AVG</h2>
 <p><code class="inline">AVG()</code> calcola la media aritmetica dei valori non-NULL di una colonna. Restituisce <code class="inline">DOUBLE PRECISION</code> per valori interi e <code class="inline">NUMERIC</code> per tipo <code class="inline">NUMERIC</code>.</p>
 <div class="example">
-<div class="codehead"><span>AVG</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>AVG</span></div>
 <pre class="codeview"><code class="language-sql">-- Media prezzi
 SELECT AVG(prezzo) AS prezzo_medio FROM prodotti;
 
@@ -1419,7 +1398,7 @@ GROUP BY p.id, p.nome, p.prezzo
 ORDER BY diff DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>AVG con window function</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>AVG con window function</span></div>
 <pre class="codeview"><code class="language-sql">-- Media mobile (3 ordini precedenti)
 SELECT
   data_ordine,
@@ -1437,7 +1416,7 @@ ORDER BY data_ordine;</code></pre>
         <h2>PostgreSQL — LIKE</h2>
 <p><code class="inline">LIKE</code> filtra le stringhe con pattern. Il simbolo <code class="inline">%</code> corrisponde a qualsiasi sequenza di caratteri, <code class="inline">_</code> a un singolo carattere. <code class="inline">ILIKE</code> è la versione case-insensitive (estensione PostgreSQL).</p>
 <div class="example">
-<div class="codehead"><span>LIKE e ILIKE</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>LIKE e ILIKE</span></div>
 <pre class="codeview"><code class="language-sql">-- Inizia con "Lap"
 SELECT * FROM prodotti WHERE nome LIKE ''Lap%'';
 
@@ -1457,7 +1436,7 @@ SELECT * FROM prodotti WHERE nome NOT LIKE ''%obsoleto%'';
 SELECT * FROM prezzi WHERE codice LIKE ''100\%'' ESCAPE '''';</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>SIMILAR TO e regex POSIX</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>SIMILAR TO e regex POSIX</span></div>
 <pre class="codeview"><code class="language-sql">-- SIMILAR TO (regex SQL standard, più limitato)
 SELECT * FROM prodotti WHERE ean SIMILAR TO ''[0-9]{13}'';
 
@@ -1477,7 +1456,7 @@ WHERE to_tsvector(''italian'', contenuto) @@ to_tsquery(''italian'', ''database'
         <h2>PostgreSQL — IN</h2>
 <p><code class="inline">IN</code> verifica se un valore appartiene a un insieme di valori o ai risultati di una subquery. <code class="inline">NOT IN</code> esclude i valori dell'insieme.</p>
 <div class="example">
-<div class="codehead"><span>IN con lista e subquery</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>IN con lista e subquery</span></div>
 <pre class="codeview"><code class="language-sql">-- IN con lista di valori
 SELECT * FROM clienti WHERE citta IN (''Roma'', ''Milano'', ''Torino'');
 SELECT * FROM ordini  WHERE stato IN (''spedito'', ''consegnato'');
@@ -1497,7 +1476,7 @@ WHERE  id IN (
 SELECT * FROM prodotti WHERE id = ANY(ARRAY[1, 5, 10]);</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>IN vs EXISTS — quando usare quale</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>IN vs EXISTS — quando usare quale</span></div>
 <pre class="codeview"><code class="language-sql">-- IN: il set di valori è piccolo, la subquery è veloce
 SELECT * FROM prodotti
 WHERE categoria_id IN (SELECT id FROM categorie WHERE attiva = TRUE);
@@ -1523,7 +1502,7 @@ WHERE NOT EXISTS (
         <h2>PostgreSQL — BETWEEN</h2>
 <p><code class="inline">BETWEEN</code> verifica se un valore è compreso tra due limiti (<strong>inclusivi</strong>). Funziona con numeri, date, stringhe e qualsiasi tipo ordinabile.</p>
 <div class="example">
-<div class="codehead"><span>BETWEEN su numeri, date e stringhe</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>BETWEEN su numeri, date e stringhe</span></div>
 <pre class="codeview"><code class="language-sql">-- Numeri (inclusi i limiti)
 SELECT * FROM prodotti WHERE prezzo BETWEEN 50 AND 200;
 
@@ -1550,7 +1529,7 @@ SELECT * FROM prodotti WHERE nome BETWEEN ''A'' AND ''M'';</code></pre>
         <h2>PostgreSQL — AS (Alias)</h2>
 <p><code class="inline">AS</code> assegna un <strong>alias</strong> (nome temporaneo) a colonne, espressioni o tabelle all'interno di una query. Rende i risultati più leggibili e permette di fare riferimento a espressioni complesse in modo più semplice.</p>
 <div class="example">
-<div class="codehead"><span>Alias su colonne</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Alias su colonne</span></div>
 <pre class="codeview"><code class="language-sql">-- Alias per colonne
 SELECT
   nome         AS "Nome Prodotto",
@@ -1566,7 +1545,7 @@ SELECT nome "Nome", prezzo "Prezzo €" FROM prodotti;
 SELECT nome AS "Nome del Prodotto" FROM prodotti;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Alias su tabelle (table alias)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Alias su tabelle (table alias)</span></div>
 <pre class="codeview"><code class="language-sql">-- Alias per le tabelle (utile nei JOIN)
 SELECT p.nome, c.nome AS categoria, f.nome AS fornitore
 FROM   prodotti p
@@ -1579,7 +1558,7 @@ FROM   dipendenti d
 JOIN   dipendenti m ON d.manager_id = m.id;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>CTE (Common Table Expression) — alias di subquery</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CTE (Common Table Expression) — alias di subquery</span></div>
 <pre class="codeview"><code class="language-sql">-- WITH definisce una query "con nome" (CTE)
 WITH ordini_grandi AS (
   SELECT cliente_id, SUM(totale) AS totale_speso
@@ -1601,7 +1580,7 @@ ORDER BY og.totale_speso DESC;</code></pre>
 <h3>Tipi di JOIN</h3>
 <table class="ref"><thead><tr><th>Tipo</th><th>Righe restituite</th></tr></thead><tbody><tr><td><code class="inline">INNER JOIN</code></td><td>Solo le righe con corrispondenza in entrambe le tabelle</td></tr><tr><td><code class="inline">LEFT JOIN</code></td><td>Tutte le righe della tabella sinistra + corrispondenze (NULL se assente)</td></tr><tr><td><code class="inline">RIGHT JOIN</code></td><td>Tutte le righe della tabella destra + corrispondenze (NULL se assente)</td></tr><tr><td><code class="inline">FULL JOIN</code></td><td>Tutte le righe di entrambe le tabelle (NULL dove mancano corrispondenze)</td></tr><tr><td><code class="inline">CROSS JOIN</code></td><td>Prodotto cartesiano (ogni riga con ogni riga)</td></tr></tbody></table>
 <div class="example">
-<div class="codehead"><span>JOIN — panoramica</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>JOIN — panoramica</span></div>
 <pre class="codeview"><code class="language-sql">-- Schema: prodotti → categorie (FK: categoria_id)
 --         ordini    → clienti  (FK: cliente_id)
 --         ordini    → ordine_dettagli (FK: ordine_id)
@@ -1626,7 +1605,7 @@ ORDER BY o.id;</code></pre>
         <h2>PostgreSQL — INNER JOIN</h2>
 <p><code class="inline">INNER JOIN</code> (o semplicemente <code class="inline">JOIN</code>) restituisce solo le righe dove esiste una corrispondenza in <strong>entrambe</strong> le tabelle. Le righe senza corrispondenza vengono escluse.</p>
 <div class="example">
-<div class="codehead"><span>INNER JOIN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INNER JOIN</span></div>
 <pre class="codeview"><code class="language-sql">-- Prodotti con la loro categoria (esclude prodotti senza categoria)
 SELECT p.nome, p.prezzo, c.nome AS categoria
 FROM   prodotti p
@@ -1644,7 +1623,7 @@ WHERE  o.stato = ''consegnato''
 ORDER BY o.id;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>JOIN con aggregazioni</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>JOIN con aggregazioni</span></div>
 <pre class="codeview"><code class="language-sql">-- Fatturato per categoria (solo categorie con ordini)
 SELECT c.nome AS categoria,
        COUNT(DISTINCT o.id)   AS num_ordini,
@@ -1663,7 +1642,7 @@ ORDER BY fatturato DESC;</code></pre>
         <h2>PostgreSQL — LEFT JOIN</h2>
 <p><code class="inline">LEFT JOIN</code> restituisce <strong>tutte le righe</strong> della tabella sinistra, più le colonne della tabella destra dove esiste una corrispondenza. Se non c'è corrispondenza, le colonne destre sono <code class="inline">NULL</code>.</p>
 <div class="example">
-<div class="codehead"><span>LEFT JOIN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>LEFT JOIN</span></div>
 <pre class="codeview"><code class="language-sql">-- Tutte le categorie, con il numero di prodotti (anche 0)
 SELECT c.nome AS categoria, COUNT(p.id) AS num_prodotti
 FROM   categorie c
@@ -1680,7 +1659,7 @@ GROUP BY c.id, c.nome
 ORDER BY totale_speso DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Anti-join con LEFT JOIN (trova le eccezioni)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>Anti-join con LEFT JOIN (trova le eccezioni)</span></div>
 <pre class="codeview"><code class="language-sql">-- Clienti che NON hanno mai ordinato
 SELECT c.nome, c.email
 FROM   clienti c
@@ -1699,7 +1678,7 @@ WHERE  od.ordine_id IS NULL;</code></pre>
         <h2>PostgreSQL — RIGHT JOIN</h2>
 <p><code class="inline">RIGHT JOIN</code> è lo speculare di <code class="inline">LEFT JOIN</code>: restituisce <strong>tutte le righe</strong> della tabella destra, più le colonne della tabella sinistra dove esiste una corrispondenza. Nella pratica si usa raramente — di solito si preferisce un <code class="inline">LEFT JOIN</code> con l'ordine delle tabelle invertito.</p>
 <div class="example">
-<div class="codehead"><span>RIGHT JOIN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>RIGHT JOIN</span></div>
 <pre class="codeview"><code class="language-sql">-- Equivalente: tutti i fornitori, anche senza prodotti
 -- (RIGHT JOIN con prodotti a sinistra e fornitori a destra)
 SELECT f.nome AS fornitore, COUNT(p.id) AS num_prodotti
@@ -1722,7 +1701,7 @@ ORDER BY num_prodotti DESC;</code></pre>
         <h2>PostgreSQL — FULL JOIN</h2>
 <p><code class="inline">FULL JOIN</code> (o <code class="inline">FULL OUTER JOIN</code>) combina i risultati di <code class="inline">LEFT JOIN</code> e <code class="inline">RIGHT JOIN</code>: restituisce tutte le righe di entrambe le tabelle, con <code class="inline">NULL</code> dove non c'è corrispondenza.</p>
 <div class="example">
-<div class="codehead"><span>FULL JOIN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>FULL JOIN</span></div>
 <pre class="codeview"><code class="language-sql">-- Tutte le categorie E tutti i prodotti
 -- (mostra anche categorie senza prodotti e prodotti senza categoria)
 SELECT c.nome AS categoria, p.nome AS prodotto
@@ -1740,7 +1719,7 @@ GROUP BY p.id, p.nome, p.stock
 ORDER BY p.nome;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>FULL JOIN per trovare differenze tra tabelle</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>FULL JOIN per trovare differenze tra tabelle</span></div>
 <pre class="codeview"><code class="language-sql">-- Trova differenze tra due tabelle (utile per sincronizzazione)
 SELECT
   COALESCE(a.id, b.id)     AS id,
@@ -1761,7 +1740,7 @@ WHERE a.id IS NULL OR b.id IS NULL;   -- solo le differenze</code></pre>
         <h2>PostgreSQL — CROSS JOIN</h2>
 <p><code class="inline">CROSS JOIN</code> produce il <strong>prodotto cartesiano</strong> di due tabelle: ogni riga della prima combinata con ogni riga della seconda. N righe × M righe = N×M righe di output. Raramente usato direttamente, ma utile per generare combinazioni.</p>
 <div class="example">
-<div class="codehead"><span>CROSS JOIN</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CROSS JOIN</span></div>
 <pre class="codeview"><code class="language-sql">-- Ogni colore con ogni taglia
 SELECT colori.nome AS colore, taglie.nome AS taglia
 FROM (VALUES (''Rosso''),(''Blu''),(''Verde'')) AS colori(nome)
@@ -1782,7 +1761,7 @@ ORDER BY d, c.nome;</code></pre>
         <h2>PostgreSQL — UNION</h2>
 <p><code class="inline">UNION</code> combina i risultati di due o più query in un unico set. Le query devono avere lo stesso numero di colonne e tipi compatibili. <code class="inline">UNION</code> rimuove i duplicati; <code class="inline">UNION ALL</code> li mantiene (più veloce).</p>
 <div class="example">
-<div class="codehead"><span>UNION e UNION ALL</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>UNION e UNION ALL</span></div>
 <pre class="codeview"><code class="language-sql">-- Unisce clienti da due fonti diverse
 SELECT nome, email, ''online''  AS canale FROM clienti_web
 UNION
@@ -1805,7 +1784,7 @@ SELECT ''Costi'', -SUM(costo)
 FROM spese;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>INTERSECT e EXCEPT</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>INTERSECT e EXCEPT</span></div>
 <pre class="codeview"><code class="language-sql">-- INTERSECT — solo le righe presenti in entrambe
 SELECT email FROM newsletter_iscritti
 INTERSECT
@@ -1822,7 +1801,7 @@ SELECT email FROM clienti;  -- iscritti che non sono ancora clienti</code></pre>
         <h2>PostgreSQL — GROUP BY</h2>
 <p><code class="inline">GROUP BY</code> raggruppa le righe con valori uguali nelle colonne specificate, permettendo di applicare funzioni aggregate (<code class="inline">COUNT</code>, <code class="inline">SUM</code>, <code class="inline">AVG</code>, <code class="inline">MIN</code>, <code class="inline">MAX</code>) a ogni gruppo.</p>
 <div class="example">
-<div class="codehead"><span>GROUP BY base</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>GROUP BY base</span></div>
 <pre class="codeview"><code class="language-sql">-- Numero di prodotti per categoria
 SELECT categoria_id, COUNT(*) AS num_prodotti
 FROM   prodotti
@@ -1842,7 +1821,7 @@ GROUP BY c.id, c.nome
 ORDER BY num_prodotti DESC;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>GROUPING SETS, ROLLUP, CUBE</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>GROUPING SETS, ROLLUP, CUBE</span></div>
 <pre class="codeview"><code class="language-sql">-- ROLLUP — subtotali gerarchici
 SELECT categoria_id, fornitore_id, SUM(stock) AS stock_tot
 FROM   prodotti
@@ -1869,7 +1848,7 @@ GROUP BY GROUPING SETS (
         <h2>PostgreSQL — HAVING</h2>
 <p><code class="inline">HAVING</code> filtra i <strong>gruppi</strong> dopo l'aggregazione (come <code class="inline">WHERE</code> filtra le righe prima). Si usa sempre insieme a <code class="inline">GROUP BY</code> e può contenere funzioni aggregate.</p>
 <div class="example">
-<div class="codehead"><span>HAVING</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>HAVING</span></div>
 <pre class="codeview"><code class="language-sql">-- Categorie con più di 3 prodotti
 SELECT categoria_id, COUNT(*) AS num_prodotti
 FROM   prodotti
@@ -1897,7 +1876,7 @@ ORDER BY prezzo_medio DESC;</code></pre>
 </div>
 <table class="ref"><thead><tr><th>Clausola</th><th>Quando filtra</th><th>Può usare aggregate?</th></tr></thead><tbody><tr><td><code class="inline">WHERE</code></td><td>Prima del GROUP BY (su righe singole)</td><td>No</td></tr><tr><td><code class="inline">HAVING</code></td><td>Dopo il GROUP BY (su gruppi)</td><td>Sì</td></tr></tbody></table>
 <div class="example">
-<div class="codehead"><span>WHERE + HAVING insieme</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>WHERE + HAVING insieme</span></div>
 <pre class="codeview"><code class="language-sql">-- WHERE filtra prima del raggruppamento,
 -- HAVING filtra dopo
 SELECT c.nome AS categoria,
@@ -1916,7 +1895,7 @@ ORDER BY stock_totale DESC;</code></pre>
         <h2>PostgreSQL — EXISTS</h2>
 <p><code class="inline">EXISTS</code> verifica se una subquery restituisce <strong>almeno una riga</strong>. È spesso più efficiente di <code class="inline">IN</code> su subquery correlate perché si ferma alla prima corrispondenza trovata.</p>
 <div class="example">
-<div class="codehead"><span>EXISTS e NOT EXISTS</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>EXISTS e NOT EXISTS</span></div>
 <pre class="codeview"><code class="language-sql">-- Clienti che hanno fatto almeno un ordine
 SELECT c.nome, c.email
 FROM   clienti c
@@ -1942,7 +1921,7 @@ WHERE  EXISTS (
 );</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>EXISTS vs IN — differenza importante</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>EXISTS vs IN — differenza importante</span></div>
 <pre class="codeview"><code class="language-sql">-- IN: pericoloso con NULL nella subquery!
 -- Se la subquery restituisce anche un NULL, NOT IN restituisce ZERO righe
 SELECT * FROM a WHERE id NOT IN (SELECT id FROM b);  -- ATTENZIONE se b.id ha NULL!
@@ -1960,7 +1939,7 @@ SELECT * FROM a WHERE NOT EXISTS (SELECT 1 FROM b WHERE b.id = a.id);
         <h2>PostgreSQL — ANY</h2>
 <p><code class="inline">ANY</code> (alias <code class="inline">SOME</code>) confronta un valore con i risultati di una subquery o un array: restituisce TRUE se il confronto è vero per <strong>almeno un valore</strong> del set.</p>
 <div class="example">
-<div class="codehead"><span>ANY con operatori</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ANY con operatori</span></div>
 <pre class="codeview"><code class="language-sql">-- Prodotti con prezzo maggiore di ALMENO uno dei prodotti economici
 SELECT nome, prezzo
 FROM   prodotti
@@ -1988,7 +1967,7 @@ WHERE stock &lt; ANY (SELECT stock_minimo FROM soglie_alert);</code></pre>
         <h2>PostgreSQL — ALL</h2>
 <p><code class="inline">ALL</code> confronta un valore con tutti i risultati di una subquery: restituisce TRUE solo se il confronto è vero per <strong>tutti i valori</strong> del set.</p>
 <div class="example">
-<div class="codehead"><span>ALL con operatori</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>ALL con operatori</span></div>
 <pre class="codeview"><code class="language-sql">-- Prodotto più caro di TUTTI i prodotti della categoria 2
 SELECT nome, prezzo
 FROM   prodotti
@@ -2017,7 +1996,7 @@ WHERE categoria_id != ALL (ARRAY[1, 2, 5]);</code></pre>
         <h2>PostgreSQL — CASE</h2>
 <p><code class="inline">CASE</code> è l'espressione condizionale di SQL: equivale a if/else e può essere usata in <code class="inline">SELECT</code>, <code class="inline">WHERE</code>, <code class="inline">ORDER BY</code>, <code class="inline">GROUP BY</code> e nei parametri delle funzioni aggregate.</p>
 <div class="example">
-<div class="codehead"><span>CASE semplice e ricercato</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CASE semplice e ricercato</span></div>
 <pre class="codeview"><code class="language-sql">-- CASE semplice (confronto con un valore)
 SELECT nome,
   CASE categoria_id
@@ -2040,7 +2019,7 @@ FROM prodotti
 ORDER BY prezzo;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>CASE nelle aggregazioni</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>CASE nelle aggregazioni</span></div>
 <pre class="codeview"><code class="language-sql">-- Pivot manuale con CASE + SUM
 SELECT
   EXTRACT(MONTH FROM data_ordine) AS mese,
@@ -2064,7 +2043,7 @@ ORDER BY
   END;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>COALESCE e NULLIF (scorciatoie)</span><button class="btn-try">Prova tu ▶</button></div>
+<div class="codehead"><span>COALESCE e NULLIF (scorciatoie)</span></div>
 <pre class="codeview"><code class="language-sql">-- COALESCE restituisce il primo valore non-NULL
 SELECT nome, COALESCE(telefono, email, ''N/D'') AS contatto
 FROM clienti;
@@ -2140,24 +2119,6 @@ FROM ordini;</code></pre>
   </div>
 </section>
 
-<div class="editor-overlay" id="editor">
-  <div class="editor-box">
-    <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice PostgreSQL</strong>
-      <div class="ed-actions">
-        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
-      </div>
-    </div>
-    <div class="editor-panes">
-      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
-      <div class="preview-wrap">
-        <div class="preview-label">Note</div>
-        <iframe id="ed-preview" title="Note PostgreSQL"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -2174,39 +2135,5 @@ FROM ordini;</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script src="js/main.js?v=4"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
-<script>
-  (function(){
-    var overlay = document.getElementById('editor');
-    var preview = document.getElementById('ed-preview');
-    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
-      mode: "text/x-pgsql", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default', readOnly: false
-    });
-    function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6"><h3 style="margin:0 0 .6rem;color:#1e293b">🐘 Query PostgreSQL</h3><p>Le query PostgreSQL vengono eseguite nel <b>terminale psql</b> o in <b>pgAdmin</b>. Puoi <b>leggere e modificare</b> le query qui.</p><p>Per testarle: installa PostgreSQL, avvia <code>psql</code> e incolla la query.</p></body>';
-    }
-    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
-    function openEditor(code){
-      overlay.classList.add('open');
-      document.body.style.overflow='hidden';
-      document.addEventListener('touchmove', preventTouch, {passive:false});
-      cm.setValue(code);
-      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      note();
-    }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
-    document.getElementById('ed-close').addEventListener('click', closeEditor);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
-    document.querySelectorAll('.example').forEach(function(ex){
-      var codeEl = ex.querySelector('.codeview code');
-      if (!codeEl) return;
-      var raw = codeEl.textContent;
-      var btn = ex.querySelector('.btn-try');
-      if (btn) btn.addEventListener('click', function(){ openEditor(raw); });
-    });
-  })();
-</script>
 </body>
 </html>

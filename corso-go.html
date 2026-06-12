@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corso Go (Golang) in italiano completo e gratuito — sintassi, slice, map, struct e funzioni da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso Go (Golang) italiano completo e gratuito: sintassi, variabili, tipi di dato, array, slice, map, struct, funzioni, cicli e condizioni. Con editor Prova tu, quiz, esercizi, piano di studio e certificazione. Spiegato da un docente.">
+  <meta name="description" content="Corso Go (Golang) italiano completo e gratuito: sintassi, variabili, tipi di dato, array, slice, map, struct, funzioni, cicli e condizioni. Con editor Provalo tu, quiz, esercizi, piano di studio e certificazione. Spiegato da un docente.">
   <meta name="keywords" content="corso go italiano, golang tutorial italiano, imparare go, go da zero, linguaggio go, go slice map struct, go funzioni, go per principianti, programmazione backend go, quiz go, esercizi go, certificazione golang, go playground">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso Go (Golang) in italiano completo e gratuito — Backend moderno da zero | AlessandroSimone.it">
@@ -191,7 +191,7 @@
         <h2>Cos'è Go</h2>
 <p><strong>Go</strong> (chiamato anche <strong>Golang</strong>) è un linguaggio di programmazione moderno, creato da <strong>Google</strong> nel 2009. È <strong>compilato</strong>, veloce come il C ma semplice da leggere come Python, ed è pensato per costruire software efficiente e scalabile.</p>
 <h3>Perché imparare Go</h3><ul><li>⚡ <strong>Veloce</strong>: compila in codice macchina nativo</li><li>🧹 <strong>Semplice</strong>: poche parole chiave, sintassi pulita e leggibile</li><li>🔀 <strong>Concorrenza nativa</strong>: le <em>goroutine</em> rendono facile fare più cose insieme</li><li>☁️ <strong>Cloud e backend</strong>: è il linguaggio di Docker, Kubernetes e moltissimi servizi web</li><li>💼 <strong>Richiestissimo</strong>: tra i linguaggi meglio pagati sul mercato</li></ul>
-<div class="example"><div class="codehead"><span>Il classico "Hello World" in Go</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il classico "Hello World" in Go</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -200,7 +200,7 @@ func main() {
     fmt.Println("Ciao, mondo!")
 }
 </script></div>
-<div class="note-box">📘 Premi <strong>▶ Prova tu</strong> su ogni esempio per leggere e modificare il codice con la sintassi colorata. Per eseguirlo davvero useremo il <strong>Go Playground</strong>, indicato nel pannello.</div>
+<div class="note-box">📘 Premi <strong>▶ Provalo tu</strong> su ogni esempio per leggere e modificare il codice con la sintassi colorata. Per eseguirlo davvero useremo il <strong>Go Playground</strong>, indicato nel pannello.</div>
       </article>
 
       <article class="lesson" id="intro">
@@ -215,7 +215,7 @@ func main() {
         <h2>Iniziare con Go</h2>
 <p>Per programmare in Go sul tuo computer scarica il compilatore da <a href="https://go.dev/dl/" target="_blank" rel="noreferrer">go.dev/dl</a>. In alternativa, per esercitarti subito senza installare nulla, usa il <a href="https://go.dev/play/" target="_blank" rel="noreferrer">Go Playground</a> online.</p>
 <h3>Struttura di un programma Go</h3><p>Ogni programma Go inizia con un <strong>package</strong>. Il programma eseguibile usa <code class="inline">package main</code> e una funzione <code class="inline">main()</code>, il punto di partenza.</p>
-<div class="example"><div class="codehead"><span>Il tuo primo programma, spiegato</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il tuo primo programma, spiegato</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main          // ogni eseguibile sta nel package "main"
 
 import "fmt"           // importa il pacchetto per stampare a schermo
@@ -225,7 +225,7 @@ func main() {          // main() e' il punto di partenza del programma
 }
 </script></div>
 <h3>Compilare ed eseguire (nel terminale)</h3>
-<div class="example"><div class="codehead"><span>Comandi del terminale</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Comandi del terminale</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 # Esegue direttamente il file
 go run main.go
 
@@ -239,7 +239,7 @@ go build main.go
         <h2>La sintassi di Go</h2>
 <p>Il codice Go è organizzato in modo rigoroso e pulito. Ecco gli elementi che ritroverai in ogni programma.</p>
 <ul><li><code class="inline">package</code> — dichiara a quale pacchetto appartiene il file</li><li><code class="inline">import</code> — importa altri pacchetti</li><li><code class="inline">func</code> — definisce una funzione</li><li>Le <strong>parentesi graffe</strong> <code class="inline">{ }</code> delimitano i blocchi</li></ul>
-<div class="example"><div class="codehead"><span>Anatomia del codice Go</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Anatomia del codice Go</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -255,7 +255,7 @@ func main() {
       <article class="lesson" id="comments">
         <h2>I commenti</h2>
 <p>I <strong>commenti</strong> sono note ignorate dal compilatore, utili a spiegare il codice. Go ha due forme, identiche a C, Java e JavaScript.</p>
-<div class="example"><div class="codehead"><span>Commenti su una riga e su più righe</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Commenti su una riga e su più righe</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -275,7 +275,7 @@ func main() {
       <article class="lesson" id="variables">
         <h2>Le variabili</h2>
 <p>Una <strong>variabile</strong> è un contenitore con un nome per un valore. In Go si dichiara con <code class="inline">var</code> oppure, dentro una funzione, con la forma breve <code class="inline">:=</code>.</p>
-<div class="example"><div class="codehead"><span>Dichiarare variabili</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Dichiarare variabili</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -298,7 +298,7 @@ func main() {
       <article class="lesson" id="constants">
         <h2>Le costanti</h2>
 <p>Una <strong>costante</strong> è un valore che non può cambiare dopo essere stato definito. Si dichiara con <code class="inline">const</code>.</p>
-<div class="example"><div class="codehead"><span>Definire costanti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Definire costanti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -320,7 +320,7 @@ func main() {
         <h2>Stampare a schermo</h2>
 <p>Il pacchetto <code class="inline">fmt</code> offre tre funzioni principali per stampare a schermo.</p>
 <table class="ref"><tr><th>Funzione</th><th>Cosa fa</th></tr><tr><td><code class="inline">Print</code></td><td>Stampa senza andare a capo</td></tr><tr><td><code class="inline">Println</code></td><td>Stampa e va a capo, con spazi tra i valori</td></tr><tr><td><code class="inline">Printf</code></td><td>Stampa con formattazione (segnaposto)</td></tr></table>
-<div class="example"><div class="codehead"><span>Le tre funzioni di stampa</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Le tre funzioni di stampa</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -342,7 +342,7 @@ func main() {
         <h2>I tipi di dato</h2>
 <p>Go è <strong>tipizzato staticamente</strong>: ogni variabile ha un tipo preciso. Ecco i tipi fondamentali.</p>
 <table class="ref"><tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr><tr><td><code class="inline">int</code></td><td>Numeri interi</td><td>42, -7</td></tr><tr><td><code class="inline">float64</code></td><td>Numeri decimali</td><td>3.14</td></tr><tr><td><code class="inline">string</code></td><td>Testo</td><td>"ciao"</td></tr><tr><td><code class="inline">bool</code></td><td>Vero/falso</td><td>true, false</td></tr></table>
-<div class="example"><div class="codehead"><span>I tipi fondamentali</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>I tipi fondamentali</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -362,7 +362,7 @@ func main() {
       <article class="lesson" id="arrays">
         <h2>Gli array</h2>
 <p>Un <strong>array</strong> è una collezione di elementi <strong>dello stesso tipo</strong> con dimensione <strong>fissa</strong>, decisa alla creazione.</p>
-<div class="example"><div class="codehead"><span>Creare e usare array</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e usare array</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -387,7 +387,7 @@ func main() {
       <article class="lesson" id="slices">
         <h2>Le slice</h2>
 <p>Una <strong>slice</strong> è come un array ma di dimensione <strong>dinamica</strong>: può crescere e rimpicciolirsi. È la struttura più usata in Go.</p>
-<div class="example"><div class="codehead"><span>Slice e append</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Slice e append</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -410,7 +410,7 @@ func main() {
         <h2>Gli operatori</h2>
 <p>Gli <strong>operatori</strong> eseguono operazioni su valori: calcoli, confronti e logica.</p>
 <table class="ref"><tr><th>Categoria</th><th>Operatori</th></tr><tr><td>Aritmetici</td><td><code class="inline">+ - * / %</code></td></tr><tr><td>Confronto</td><td><code class="inline">== != &gt; &lt; &gt;= &lt;=</code></td></tr><tr><td>Logici</td><td><code class="inline">&amp;&amp; || !</code></td></tr></table>
-<div class="example"><div class="codehead"><span>Operatori in azione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Operatori in azione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -430,7 +430,7 @@ func main() {
       <article class="lesson" id="conditions">
         <h2>Le condizioni (if/else)</h2>
 <p>Le <strong>condizioni</strong> eseguono blocchi di codice diversi a seconda che una condizione sia vera o falsa, con <code class="inline">if</code>, <code class="inline">else if</code> ed <code class="inline">else</code>.</p>
-<div class="example"><div class="codehead"><span>if / else if / else</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>if / else if / else</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -458,7 +458,7 @@ func main() {
       <article class="lesson" id="switch">
         <h2>Lo switch</h2>
 <p>Lo <strong>switch</strong> sceglie tra molti casi in modo più leggibile di tanti <code class="inline">else if</code>. In Go non serve il <code class="inline">break</code>: ogni caso si ferma da solo.</p>
-<div class="example"><div class="codehead"><span>Switch su un valore</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Switch su un valore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -482,7 +482,7 @@ func main() {
       <article class="lesson" id="loops">
         <h2>I cicli (for)</h2>
 <p>Go ha <strong>un solo costrutto di ciclo</strong>: <code class="inline">for</code>. Ma è flessibile e copre tutti i casi (incluso il classico <em>while</em> di altri linguaggi).</p>
-<div class="example"><div class="codehead"><span>Le forme del for</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Le forme del for</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -512,7 +512,7 @@ func main() {
       <article class="lesson" id="functions">
         <h2>Le funzioni</h2>
 <p>Una <strong>funzione</strong> raggruppa istruzioni riutilizzabili. In Go i tipi dei parametri e del valore restituito si dichiarano esplicitamente.</p>
-<div class="example"><div class="codehead"><span>Definire e usare funzioni</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Definire e usare funzioni</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -540,7 +540,7 @@ func main() {
       <article class="lesson" id="struct">
         <h2>Le struct</h2>
 <p>Una <strong>struct</strong> raggruppa più campi correlati in un unico tipo personalizzato: è il modo di Go per rappresentare "oggetti" come una persona, un prodotto, un punto.</p>
-<div class="example"><div class="codehead"><span>Definire e usare una struct</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Definire e usare una struct</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -566,7 +566,7 @@ func main() {
       <article class="lesson" id="maps">
         <h2>Le map</h2>
 <p>Una <strong>map</strong> associa <strong>chiavi a valori</strong> (come un dizionario): perfetta per cercare un valore tramite un nome.</p>
-<div class="example"><div class="codehead"><span>Creare e usare una map</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e usare una map</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -600,9 +600,9 @@ func main() {
 
       <article class="lesson" id="editor-online">
         <h2>Compilatore Go online</h2>
-<p>Ogni esempio del corso ha il pulsante <strong>▶ Prova tu</strong>: apre un editor dove leggere e modificare il codice con la sintassi colorata. Per <strong>compilarlo ed eseguirlo davvero</strong>, usa uno di questi strumenti gratuiti.</p>
+<p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor dove leggere e modificare il codice con la sintassi colorata. Per <strong>compilarlo ed eseguirlo davvero</strong>, usa uno di questi strumenti gratuiti.</p>
 <h3>Dove eseguire il codice Go</h3><ul><li>🎮 <strong><a href="https://go.dev/play/" target="_blank" rel="noreferrer">Go Playground</a></strong> — scrivi ed esegui Go nel browser, senza installare nulla: il modo più rapido per esercitarti</li><li>💻 <strong><a href="https://go.dev/dl/" target="_blank" rel="noreferrer">Go ufficiale</a></strong> — installa il compilatore sul tuo computer per i progetti veri</li><li>📚 <strong><a href="https://go.dev/tour/" target="_blank" rel="noreferrer">A Tour of Go</a></strong> — il tutorial interattivo ufficiale</li></ul>
-<div class="example"><div class="codehead"><span>Copia questo nel Go Playground</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Copia questo nel Go Playground</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 package main
 
 import "fmt"
@@ -617,7 +617,7 @@ func main() {
 
       <article class="lesson" id="esercizi">
         <h2>Esercizi Go</h2>
-<p>Esercizi pratici progressivi. Svolgili nell'editor <strong>Prova tu</strong> e poi eseguili sul Go Playground.</p>
+<p>Esercizi pratici progressivi. Svolgili nell'editor <strong>Provalo tu</strong> e poi eseguili sul Go Playground.</p>
 <h3>Livello base</h3><ol><li>Stampa il tuo nome e la tua età con <code class="inline">Printf</code></li><li>Dichiara due numeri e stampa somma, differenza e prodotto</li><li>Crea una slice di 3 città e stampala con un ciclo for-range</li><li>Scrivi un if che dica se un numero è pari o dispari</li></ol>
 <h3>Livello intermedio</h3><ol><li>Scrivi una funzione che restituisce il maggiore tra due numeri</li><li>Usa una map per associare 3 nomi alle loro età</li><li>Scrivi uno switch che traduca un numero da 1 a 7 nel giorno della settimana</li><li>Crea una struct <code class="inline">Prodotto</code> con nome e prezzo, e stampane una</li></ol>
 <h3>Livello avanzato</h3><ol><li>Scrivi una funzione che restituisce quoziente e resto di una divisione</li><li>Calcola la media dei valori di una slice di interi</li><li>Conta quante volte ogni parola appare in una slice, usando una map</li><li>Crea una slice di struct <code class="inline">Persona</code> e stampa solo i maggiorenni</li></ol>
@@ -627,7 +627,7 @@ func main() {
       <article class="lesson" id="compiler">
         <h2>Come funziona il compilatore Go</h2>
 <p>A differenza di Python o JavaScript (interpretati), Go è <strong>compilato</strong>: il codice sorgente viene tradotto in un <strong>eseguibile</strong> in codice macchina, velocissimo e senza dipendenze esterne.</p>
-<div class="example"><div class="codehead"><span>I comandi del compilatore</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>I comandi del compilatore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-go"></code></pre><script type="text/plain" class="code">
 # Esegue al volo (compila in memoria e lancia)
 go run main.go
 
@@ -686,7 +686,7 @@ go mod init mioprogetto
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Prova tu — leggi e modifica il codice Go</strong>
+      <strong>✏️ Provalo tu — leggi e modifica il codice Go</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
