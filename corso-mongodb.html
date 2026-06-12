@@ -57,7 +57,7 @@
 
     .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
     .btn-try:hover { background: #0b7c71; }
-    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    .editor-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 3000; }
     body.editor-open { overflow: hidden; }
     .editor-overlay.open { display: flex; }
     .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
@@ -1474,12 +1474,12 @@ chart.setFilter({ citta: "Milano" })
 
     function note(){
       preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#e2e8f0;padding:1.4rem;line-height:1.6">'
-        + '<h3 style="margin:0 0 .6rem;color:#1e293b">🌿 Comandi MongoDB</h3>'
+        + '<h3 style="margin:0 0 .6rem;color:#ffffff">🌿 Comandi MongoDB</h3>'
         + '<p>I comandi MongoDB vengono eseguiti nella <b>MongoDB Shell</b> (<code>mongosh</code>) '
         + 'oppure tramite il driver del tuo linguaggio (Node.js, Python, ecc.).</p>'
         + '<p>Puoi <b>leggere e modificare</b> i comandi qui con la sintassi colorata, '
         + 'poi copiarli in <b>mongosh</b> o in <b>MongoDB Compass</b> per eseguirli.</p>'
-        + '<p style="color:#64748b;font-size:.9rem">💡 Suggerimento: puoi anche usare '
+        + '<p style="color:#cbd5e1;font-size:.9rem">💡 Suggerimento: puoi anche usare '
         + '<b>MongoDB Atlas</b> (cloud gratuito) per testare le query online senza installare nulla.</p>'
         + '</body>';
     }
