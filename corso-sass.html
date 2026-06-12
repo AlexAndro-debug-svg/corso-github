@@ -53,6 +53,8 @@
     .codeview .token.variable { color: #fb923c; }
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
     .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: 1px solid #334155; }
+    @media (max-width: 700px){ .example div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: none; border-top: 1px solid #334155; } }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
 </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-sass.html">
@@ -163,9 +165,9 @@
 <div class="example">
 <div class="codehead"><span>Prima differenza SCSS vs Sass</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// SCSS — simile al CSS
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// SCSS — simile al CSS
 $primary: #4f46e5;
 
 .card {
@@ -178,9 +180,9 @@ $primary: #4f46e5;
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.card {
   background: #4f46e5;
   border-radius: 8px;
 }
@@ -299,9 +301,9 @@ npm install --save-dev sass
 <div class="example">
 <div class="codehead"><span>Variabili base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Definizione variabili
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Definizione variabili
 $primary:    #4f46e5;
 $secondary:  #06b6d4;
 $accent:     #f59e0b;
@@ -330,9 +332,9 @@ $shadow:     0 4px 6px -1px rgba(0,0,0,.1);
   color:      white;
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.card {
   background: #f8fafc;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
@@ -349,9 +351,9 @@ $shadow:     0 4px 6px -1px rgba(0,0,0,.1);
 <div class="example">
 <div class="codehead"><span>Variabili locali vs globali</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">$colore: blue;     // globale
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">$colore: blue;     // globale
 
 .elemento {
   $colore: red;    // locale — non sovrascrive la globale
@@ -370,9 +372,9 @@ $shadow:     0 4px 6px -1px rgba(0,0,0,.1);
   color: $colore;  // green
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.elemento {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.elemento {
   color: red;
 }
 .altro {
@@ -404,9 +406,9 @@ $primary: #e11d48;   // sovrascrive il default
 <div class="example">
 <div class="codehead"><span>Nesting base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">nav {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">nav {
   background: #1e293b;
   padding: 1rem;
 
@@ -432,9 +434,9 @@ $primary: #e11d48;   // sovrascrive il default
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">nav {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">nav {
   background: #1e293b;
   padding: 1rem;
 }
@@ -462,9 +464,9 @@ nav a.active {
 <div class="example">
 <div class="codehead"><span>&amp; — selettore padre</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// &amp; sostituisce il selettore genitore
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// &amp; sostituisce il selettore genitore
 .btn {
   background: #4f46e5;
 
@@ -482,9 +484,9 @@ nav a.active {
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.btn { background: #4f46e5; }
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.btn { background: #4f46e5; }
 .btn:hover  { background: #4338ca; }
 .btn:focus  { outline: 2px solid #4f46e5; }
 .btn:active { transform: scale(.97); }
@@ -499,9 +501,9 @@ nav a.active {
 <div class="example">
 <div class="codehead"><span>Property nesting (namespace)</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Raggruppa proprietà con lo stesso prefisso
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Raggruppa proprietà con lo stesso prefisso
 .testo {
   font: {
     family: 'Inter', sans-serif;
@@ -515,9 +517,9 @@ nav a.active {
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.testo {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.testo {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -538,9 +540,9 @@ nav a.active {
 <div class="example">
 <div class="codehead"><span>@use — importa un modulo Sass</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// _colors.scss
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// _colors.scss
 $primary: #4f46e5;
 $accent:  #f59e0b;
 $muted:   #64748b;
@@ -570,9 +572,9 @@ $lg: 2rem;
   padding: s.$sm s.$md;
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.card {
   color: #4f46e5;
   padding: 1rem;
   margin: 2rem;
@@ -647,9 +649,9 @@ sass/
 <div class="example">
 <div class="codehead"><span>Mixin base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Definizione mixin
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Definizione mixin
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -677,9 +679,9 @@ sass/
   @include truncate;   // usa il default: 100%
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.hero {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.hero {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -704,9 +706,9 @@ sass/
 <div class="example">
 <div class="codehead"><span>Mixin responsive breakpoint</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Mixin per media query responsive
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Mixin per media query responsive
 @mixin respond-to($bp) {
   @if $bp == sm {
     @media (min-width: 640px)  { @content; }
@@ -734,9 +736,9 @@ sass/
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.container {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.container {
   padding: 1rem;
 }
 @media (min-width: 768px) {
@@ -792,9 +794,9 @@ $palette: (
 <div class="example">
 <div class="codehead"><span>@extend base</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Classe base
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Classe base
 .message {
   padding: 1rem 1.4rem;
   border-radius: 8px;
@@ -824,9 +826,9 @@ $palette: (
   color:        #92400e;
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.message,
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.message,
 .success,
 .error,
 .warning {
@@ -857,9 +859,9 @@ $palette: (
 <div class="example">
 <div class="codehead"><span>%placeholder</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// %placeholder non genera CSS da solo
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// %placeholder non genera CSS da solo
 %card-base {
   background: white;
   border-radius: 12px;
@@ -881,9 +883,9 @@ $palette: (
 
 .sr-only { @extend %visually-hidden; }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.product-card,
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.product-card,
 .user-card {
   background: white;
   border-radius: 12px;
@@ -939,9 +941,9 @@ $parts: string.split("uno,due,tre", ","); // ["uno", "due", "tre"]</code></pre>
 <div class="example">
 <div class="codehead"><span>Interpolazione #{} — costruisci selettori dinamicamente</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">$tema: "dark";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">$tema: "dark";
 $componente: "card";
 
 // #{} inserisce un valore nella stringa
@@ -959,9 +961,9 @@ $sizes: (sm: .5rem, md: 1rem, lg: 2rem, xl: 3rem);
   .gap-#{$name}{ gap: $value; }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.dark-card {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.dark-card {
   background: #1e293b;
   color: white;
 }
@@ -1032,9 +1034,9 @@ math.$e      // 2.7182...</code></pre>
 <div class="example">
 <div class="codehead"><span>Generatore di scala tipografica</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:math";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">@use "sass:math";
 
 $base: 1rem;
 $ratio: 1.25;   // Major Third
@@ -1046,9 +1048,9 @@ $ratio: 1.25;   // Major Third
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">h1 { font-size: 3.052rem; }
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">h1 { font-size: 3.052rem; }
 h2 { font-size: 2.441rem; }
 h3 { font-size: 1.953rem; }
 h4 { font-size: 1.563rem; }
@@ -1095,9 +1097,9 @@ list.zip(a b c, 1 2 3)  // (a 1), (b 2), (c 3)</code></pre>
 <div class="example">
 <div class="codehead"><span>@each su liste — genera CSS</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">// Lista di bordi per lati
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">// Lista di bordi per lati
 $sides: top right bottom left;
 
 @each $side in $sides {
@@ -1116,9 +1118,9 @@ $bp-list: (sm 640px) (md 768px) (lg 1024px) (xl 1280px);
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.border-top    { border-top:    1px solid #e2e8f0; }
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.border-top    { border-top:    1px solid #e2e8f0; }
 .border-right  { border-right:  1px solid #e2e8f0; }
 .border-bottom { border-bottom: 1px solid #e2e8f0; }
 .border-left   { border-left:   1px solid #e2e8f0; }
@@ -1179,9 +1181,9 @@ $no-muted: map.remove($colors, muted);</code></pre>
 <div class="example">
 <div class="codehead"><span>Genera utility classes da mappe</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:map";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">@use "sass:map";
 
 $colors: (primary:#4f46e5, success:#16a34a, danger:#dc2626);
 $spacing: (sm:.5rem, md:1rem, lg:2rem);
@@ -1198,9 +1200,9 @@ $spacing: (sm:.5rem, md:1rem, lg:2rem);
   .m-#{$name} { margin: $value; }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.bg-primary    { background-color: #4f46e5; }
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.bg-primary    { background-color: #4f46e5; }
 .text-primary  { color: #4f46e5; }
 .bg-success    { background-color: #16a34a; }
 .text-success  { color: #16a34a; }
@@ -1275,9 +1277,9 @@ selector.is-superselector("div", "div.active")  // true
 <div class="example">
 <div class="codehead"><span>Mixin che usa selector functions</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:selector";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">@use "sass:selector";
 
 // Mixin che applica stili a :hover e :focus insieme
 @mixin on-interact($selector: "&amp;") {
@@ -1298,9 +1300,9 @@ selector.is-superselector("div", "div.active")  // true
   }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.btn {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.btn {
   background: #4f46e5;
 }
 .btn:hover,
@@ -1355,9 +1357,9 @@ meta.module-variables(color)  // mappa con tutte le variabili di sass:color
 <div class="example">
 <div class="codehead"><span>@if con type-of — validazione degli argomenti</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:meta";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">@use "sass:meta";
 
 // Mixin con validazione del tipo
 @mixin padding($value) {
@@ -1379,9 +1381,9 @@ meta.module-variables(color)  // mappa con tutte le variabili di sass:color
   @include padding(1rem);   // → 1rem
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.card {
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.card {
   padding: 1.5rem;
 }
 .btn {
@@ -1438,9 +1440,9 @@ color.alpha($primary)       // 1</code></pre>
 <div class="example">
 <div class="codehead"><span>Genera una color palette automatica</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">SCSS</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-scss">@use "sass:color";
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-scss">@use "sass:color";
 
 $brand: #4f46e5;
 
@@ -1462,9 +1464,9 @@ $palette: (
   .brand-#{$shade} { background: $value; }
 }</code></pre>
 </div>
-<div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">CSS compilato</div>
-<pre class="codeview" style="margin:0;border-radius:0"><code class="language-css">.brand-50  { background: #eceafe; }
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-css">.brand-50  { background: #eceafe; }
 .brand-100 { background: #d9d8fc; }
 .brand-200 { background: #b4b1f9; }
 .brand-300 { background: #8e8af6; }
