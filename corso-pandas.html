@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Pandas in italiano completo e gratuito — DataFrame, pulizia dati, groupby e merge | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Pandas completo in italiano: Series, DataFrame, lettura CSV/JSON, pulizia dati, valori mancanti, groupby, merge, correlazioni e grafici. Tutorial gratuito con esempi pratici.">
+  <meta name="keywords" content="corso pandas italiano, pandas tutorial italiano, imparare pandas, pandas dataframe, pandas groupby, pandas merge, pulizia dati python, data analysis python, analisi dati pandas">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Pandas in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Pandas da zero in italiano: DataFrame, pulizia dati, groupby, merge, correlazioni e grafici. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.builtin { color: #fb923c; }
+    .codeview .token.decorator { color: #f472b6; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: 1px solid #334155; }
+    @media (max-width: 700px){ .example div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } .example div[style*="grid-template-columns:1fr 1fr"] > div + div { border-left: none; border-top: 1px solid #334155; } }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-pandas.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-pandas.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Pandas in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Pandas completo in italiano: DataFrame, pulizia dati, groupby, merge e grafici. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Pandas in italiano","description":"Corso Pandas italiano completo e gratuito: Series, DataFrame, lettura CSV/JSON, pulizia dati, groupby, merge, correlazioni e grafici.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-pandas.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html" class="active">PANDAS</a>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="course-wrap">
+      <aside class="course-side">
+        <h4>Pandas Tutorial</h4>
+<a href="#home">Pandas Home</a>
+<a href="#intro">Introduzione</a>
+<a href="#install">Installazione</a>
+<a href="#series">Series</a>
+<a href="#dataframes">DataFrame</a>
+<a href="#readcsv">Leggere CSV</a>
+<a href="#readjson">Leggere JSON</a>
+<a href="#analyze">Analizzare i dati</a>
+<h4>Pulizia dati</h4>
+<a href="#cleaning">Pulizia dati</a>
+<a href="#empty">Celle vuote</a>
+<a href="#format">Formato sbagliato</a>
+<a href="#wrong">Dati errati</a>
+<a href="#duplicates">Duplicati</a>
+<h4>Analisi</h4>
+<a href="#select">Selezione e filtro</a>
+<a href="#groupby">GroupBy</a>
+<a href="#merge">Merge e Join</a>
+<a href="#correlations">Correlazioni</a>
+<a href="#plotting">Grafici</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+      </aside>
+      <main>
+        <article class="lesson" id="home">
+<h2>Pandas — Guida completa in italiano</h2>
+<p><strong>Pandas</strong> è la libreria Python di riferimento per l'<strong>analisi e manipolazione dei dati</strong>. Costruita sopra NumPy, fornisce due strutture dati potentissime: la <code class="inline">Series</code> (1D) e il <code class="inline">DataFrame</code> (2D, come un foglio Excel o una tabella SQL).</p>
+<p>Il nome deriva da <em>"Panel Data"</em>, un termine econometrico per dataset multidimensionali. È lo strumento numero uno per data scientist, analisti e chiunque lavori con dati strutturati in Python.</p>
+<table class="ref">
+<tr><th>Cosa puoi fare con Pandas</th></tr>
+<tr><td>📥 Leggere/scrivere CSV, Excel, JSON, SQL, Parquet</td></tr>
+<tr><td>🧹 Pulire dati: valori mancanti, duplicati, formati errati</td></tr>
+<tr><td>🔍 Filtrare, ordinare, raggruppare e aggregare</td></tr>
+<tr><td>🔗 Unire (merge/join) più tabelle</td></tr>
+<tr><td>📊 Calcolare statistiche e correlazioni</td></tr>
+<tr><td>📈 Creare grafici con un solo metodo</td></tr>
+</table>
+<div class="note-box">💡 Se hai già seguito il corso <strong>NumPy</strong>, Pandas ti sembrerà familiare: molte operazioni di indicizzazione e filtro funzionano allo stesso modo.</div>
+</article>
+<article class="lesson" id="intro">
+<h2>Introduzione a Pandas</h2>
+<p>Pandas ruota attorno a due strutture dati fondamentali:</p>
+<table class="ref">
+<tr><th>Struttura</th><th>Dimensioni</th><th>Descrizione</th></tr>
+<tr><td><code class="inline">Series</code></td><td>1D</td><td>Colonna di dati con un indice etichettato</td></tr>
+<tr><td><code class="inline">DataFrame</code></td><td>2D</td><td>Tabella: insieme di Series che condividono lo stesso indice</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Il tuo primo DataFrame</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+dati = {
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;],
+    &quot;eta&quot;: [28, 34, 45],
+    &quot;citta&quot;: [&quot;Roma&quot;, &quot;Milano&quot;, &quot;Napoli&quot;]
+}
+
+df = pd.DataFrame(dati)
+print(df)
+#     nome  eta   citta
+# 0   Anna   28    Roma
+# 1   Luca   34  Milano
+# 2  Marco   45  Napoli
+
+print(df.shape)     # (3, 3)
+print(df.columns)   # Index([&#x27;nome&#x27;, &#x27;eta&#x27;, &#x27;citta&#x27;], ...)</code></pre>
+</div>
+<div class="note-box">💡 La convenzione universale è importare Pandas come <code class="inline">pd</code> e NumPy come <code class="inline">np</code>.</div>
+</article>
+<article class="lesson" id="install">
+<h2>Installazione e importazione</h2>
+<div class="example">
+<div class="codehead"><span>Installazione</span></div>
+<pre class="codeview"><code class="language-bash"># Nel terminale
+pip install pandas
+
+# In un notebook Jupyter
+!pip install pandas
+
+# Spesso si installano insieme
+pip install pandas numpy matplotlib</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Importazione e versione</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+import numpy as np
+
+print(pd.__version__)   # es. 2.2.0
+
+# Crea una Series di prova
+s = pd.Series([1, 3, 5, 7, 9])
+print(s)</code></pre>
+</div>
+<div class="tip-box">🎯 Per lavorare comodamente, usa <strong>Jupyter Notebook</strong> o <strong>Google Colab</strong>: i DataFrame vengono visualizzati come tabelle HTML eleganti invece che come testo.</div>
+</article>
+<article class="lesson" id="series">
+<h2>Pandas Series</h2>
+<p>Una <strong>Series</strong> è un array 1D etichettato, capace di contenere qualsiasi tipo di dato. Ogni elemento ha un'<strong>etichetta</strong> (l'indice).</p>
+<div class="example">
+<div class="codehead"><span>Creare una Series</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+# Da lista — indice automatico 0,1,2...
+s = pd.Series([10, 20, 30, 40])
+print(s)
+# 0    10
+# 1    20
+# 2    30
+# 3    40
+# dtype: int64
+
+# Con indice personalizzato
+voti = pd.Series([7, 8, 6], index=[&quot;mat&quot;, &quot;ita&quot;, &quot;sci&quot;])
+print(voti[&quot;ita&quot;])    # 8
+
+# Da dizionario
+prezzi = pd.Series({&quot;pane&quot;: 1.5, &quot;latte&quot;: 1.2, &quot;uova&quot;: 2.8})
+print(prezzi[&quot;latte&quot;]) # 1.2</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Operazioni sulle Series</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+s = pd.Series([10, 20, 30, 40, 50])
+
+print(s.sum())    # 150
+print(s.mean())   # 30.0
+print(s.max())    # 50
+print(s * 2)      # raddoppia ogni valore
+
+# Filtro booleano (come in NumPy)
+print(s[s &gt; 25])
+# 2    30
+# 3    40
+# 4    50
+
+# Metodi utili
+print(s.describe())   # statistiche riassuntive</code></pre>
+</div>
+</article>
+<article class="lesson" id="dataframes">
+<h2>Pandas DataFrame</h2>
+<p>Il <strong>DataFrame</strong> è la struttura più usata: una tabella 2D con righe e colonne etichettate. Puoi pensarla come un dizionario di Series che condividono lo stesso indice.</p>
+<div class="example">
+<div class="codehead"><span>Creare DataFrame in vari modi</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+# Da dizionario di liste
+df = pd.DataFrame({
+    &quot;prodotto&quot;: [&quot;Mela&quot;, &quot;Pane&quot;, &quot;Latte&quot;],
+    &quot;prezzo&quot;: [0.5, 1.2, 1.0],
+    &quot;quantita&quot;: [100, 50, 80]
+})
+
+# Da lista di dizionari
+df2 = pd.DataFrame([
+    {&quot;nome&quot;: &quot;Anna&quot;, &quot;eta&quot;: 28},
+    {&quot;nome&quot;: &quot;Luca&quot;, &quot;eta&quot;: 34}
+])
+
+print(df)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Ispezionare un DataFrame</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;prodotto&quot;: [&quot;Mela&quot;, &quot;Pane&quot;, &quot;Latte&quot;, &quot;Uova&quot;],
+    &quot;prezzo&quot;: [0.5, 1.2, 1.0, 2.8],
+    &quot;quantita&quot;: [100, 50, 80, 30]
+})
+
+print(df.head(2))      # prime 2 righe
+print(df.tail(2))      # ultime 2 righe
+print(df.info())       # tipi e memoria
+print(df.describe())   # statistiche numeriche
+print(df.shape)        # (4, 3)
+print(df.dtypes)       # tipo di ogni colonna</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Accedere a righe e colonne</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;],
+    &quot;eta&quot;: [28, 34, 45]
+}, index=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+
+# Una colonna → Series
+print(df[&quot;nome&quot;])
+
+# Più colonne → DataFrame
+print(df[[&quot;nome&quot;, &quot;eta&quot;]])
+
+# loc: per etichetta
+print(df.loc[&quot;b&quot;])        # riga con indice &quot;b&quot;
+print(df.loc[&quot;b&quot;, &quot;eta&quot;]) # 34
+
+# iloc: per posizione
+print(df.iloc[0])         # prima riga
+print(df.iloc[0, 1])      # 28</code></pre>
+</div>
+<div class="note-box">💡 <strong>loc vs iloc</strong>: <code class="inline">loc</code> usa le <em>etichette</em> dell'indice, <code class="inline">iloc</code> usa le <em>posizioni</em> numeriche (come negli array). Ricordare questa differenza evita molti errori.</div>
+</article>
+<article class="lesson" id="readcsv">
+<h2>Leggere file CSV</h2>
+<p>Il formato <strong>CSV</strong> (Comma-Separated Values) è il più comune per i dataset. Pandas lo legge con una sola riga.</p>
+<div class="example">
+<div class="codehead"><span>read_csv e to_csv</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+# Leggere un CSV
+df = pd.read_csv(&quot;dati.csv&quot;)
+
+# Opzioni comuni
+df = pd.read_csv(
+    &quot;dati.csv&quot;,
+    sep=&quot;;&quot;,            # separatore (default &quot;,&quot;)
+    encoding=&quot;utf-8&quot;,
+    decimal=&quot;,&quot;,        # virgola decimale (formato IT)
+    nrows=1000,         # leggi solo le prime 1000 righe
+    usecols=[&quot;nome&quot;, &quot;prezzo&quot;]  # solo alcune colonne
+)
+
+# Salvare un DataFrame come CSV
+df.to_csv(&quot;output.csv&quot;, index=False)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Esplorare un dataset appena letto</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.read_csv(&quot;vendite.csv&quot;)
+
+print(df.head())          # prime 5 righe
+print(df.info())          # struttura
+print(df.describe())      # statistiche
+print(df.columns.tolist())# lista colonne
+print(len(df))            # numero righe
+print(df[&quot;categoria&quot;].unique())   # valori distinti
+print(df[&quot;categoria&quot;].value_counts())  # conteggi</code></pre>
+</div>
+<div class="tip-box">🎯 <code class="inline">pd.read_csv()</code> può leggere anche direttamente da un <strong>URL</strong>: <code class="inline">pd.read_csv("https://.../dati.csv")</code></div>
+</article>
+<article class="lesson" id="readjson">
+<h2>Leggere file JSON</h2>
+<p>Pandas legge anche <strong>JSON</strong>, formato comune nelle API web. La struttura viene convertita automaticamente in DataFrame.</p>
+<div class="example">
+<div class="codehead"><span>read_json e to_json</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+# Da file JSON
+df = pd.read_json(&quot;dati.json&quot;)
+
+# Da una stringa JSON
+import io
+json_str = &#x27;&#x27;&#x27;[
+    {&quot;nome&quot;: &quot;Anna&quot;, &quot;eta&quot;: 28},
+    {&quot;nome&quot;: &quot;Luca&quot;, &quot;eta&quot;: 34}
+]&#x27;&#x27;&#x27;
+df = pd.read_json(io.StringIO(json_str))
+print(df)
+
+# Salvare come JSON
+df.to_json(&quot;output.json&quot;, orient=&quot;records&quot;, indent=2)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>JSON annidato con json_normalize</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+dati = [
+    {&quot;nome&quot;: &quot;Anna&quot;, &quot;indirizzo&quot;: {&quot;citta&quot;: &quot;Roma&quot;, &quot;cap&quot;: &quot;00100&quot;}},
+    {&quot;nome&quot;: &quot;Luca&quot;, &quot;indirizzo&quot;: {&quot;citta&quot;: &quot;Milano&quot;, &quot;cap&quot;: &quot;20100&quot;}}
+]
+
+# Appiattisce le strutture annidate
+df = pd.json_normalize(dati)
+print(df)
+#    nome indirizzo.citta indirizzo.cap
+# 0  Anna            Roma         00100
+# 1  Luca          Milano         20100</code></pre>
+</div>
+</article>
+<article class="lesson" id="analyze">
+<h2>Analizzare i dati</h2>
+<p>Pandas offre metodi rapidi per ottenere una panoramica statistica del tuo dataset.</p>
+<div class="example">
+<div class="codehead"><span>Metodi di analisi rapida</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;venditore&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Anna&quot;, &quot;Marco&quot;, &quot;Luca&quot;],
+    &quot;vendite&quot;: [250, 180, 320, 150, 290],
+    &quot;regione&quot;: [&quot;Nord&quot;, &quot;Sud&quot;, &quot;Nord&quot;, &quot;Centro&quot;, &quot;Sud&quot;]
+})
+
+print(df.describe())           # statistiche numeriche
+print(df[&quot;vendite&quot;].sum())     # 1190
+print(df[&quot;vendite&quot;].mean())    # 238.0
+print(df[&quot;vendite&quot;].median())  # 250.0
+print(df[&quot;vendite&quot;].std())     # deviazione standard
+print(df[&quot;venditore&quot;].value_counts())
+# Anna     2
+# Luca     2
+# Marco    1</code></pre>
+</div><div class="example">
+<div class="codehead"><span>apply, map e funzioni custom</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;anna&quot;, &quot;luca&quot;, &quot;marco&quot;],
+    &quot;stipendio&quot;: [25000, 32000, 45000]
+})
+
+# Applica una funzione a una colonna
+df[&quot;nome&quot;] = df[&quot;nome&quot;].apply(str.capitalize)
+
+# Crea una nuova colonna calcolata
+df[&quot;stipendio_netto&quot;] = df[&quot;stipendio&quot;] * 0.73
+
+# Categorizza con una funzione
+def fascia(s):
+    if s &lt; 30000: return &quot;Junior&quot;
+    elif s &lt; 40000: return &quot;Mid&quot;
+    return &quot;Senior&quot;
+
+df[&quot;fascia&quot;] = df[&quot;stipendio&quot;].apply(fascia)
+print(df)</code></pre>
+</div>
+</article>
+<article class="lesson" id="cleaning">
+<h2>Pulizia dei dati</h2>
+<p>I dati reali sono <em>sporchi</em>: contengono celle vuote, formati incoerenti, valori errati e duplicati. La <strong>pulizia dei dati</strong> (data cleaning) è spesso l'80% del lavoro di un data scientist.</p>
+<table class="ref">
+<tr><th>Problema</th><th>Soluzione Pandas</th></tr>
+<tr><td>Celle vuote (NaN)</td><td><code class="inline">dropna()</code>, <code class="inline">fillna()</code></td></tr>
+<tr><td>Formato sbagliato</td><td><code class="inline">to_datetime()</code>, <code class="inline">astype()</code></td></tr>
+<tr><td>Dati errati</td><td>filtro booleano, <code class="inline">replace()</code></td></tr>
+<tr><td>Duplicati</td><td><code class="inline">drop_duplicates()</code></td></tr>
+</table>
+<div class="note-box">💡 Prima di pulire, esplora sempre con <code class="inline">df.info()</code> e <code class="inline">df.isnull().sum()</code> per capire dove sono i problemi.</div>
+</article>
+<article class="lesson" id="empty">
+<h2>Celle vuote (valori mancanti)</h2>
+<p>I valori mancanti appaiono come <code class="inline">NaN</code> (Not a Number). Hai due strategie: rimuoverli o sostituirli.</p>
+<div class="example">
+<div class="codehead"><span>Trovare i valori mancanti</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, None, &quot;Marco&quot;],
+    &quot;eta&quot;: [28, np.nan, 45, 33],
+    &quot;citta&quot;: [&quot;Roma&quot;, &quot;Milano&quot;, &quot;Napoli&quot;, None]
+})
+
+print(df.isnull())          # True dove manca
+print(df.isnull().sum())    # conteggio per colonna
+# nome     1
+# eta      1
+# citta    1
+print(df.isnull().sum().sum())  # 3 totali</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Rimuovere vs Riempire</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">dropna() — rimuove</div>
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    &quot;a&quot;: [1, 2, np.nan, 4],
+    &quot;b&quot;: [5, np.nan, 7, 8]
+})
+
+# Rimuove righe con almeno un NaN
+print(df.dropna())
+#      a    b
+# 0  1.0  5.0
+# 3  4.0  8.0
+
+# Rimuove colonne con NaN
+print(df.dropna(axis=1))</code></pre>
+</div>
+<div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
+<div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#5eead4;text-transform:uppercase;letter-spacing:.5px">fillna() — riempie</div>
+<pre class="codeview" style="margin:0;border-radius:0;flex:1"><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    &quot;a&quot;: [1, 2, np.nan, 4],
+    &quot;b&quot;: [5, np.nan, 7, 8]
+})
+
+# Riempi con un valore fisso
+print(df.fillna(0))
+
+# Riempi con la media della colonna
+df[&quot;a&quot;] = df[&quot;a&quot;].fillna(df[&quot;a&quot;].mean())
+
+# Propaga l&#x27;ultimo valore valido
+print(df.ffill())</code></pre>
+</div>
+</div>
+</div>
+<div class="tip-box">🎯 Sostituire i NaN con la <strong>media</strong> o la <strong>mediana</strong> è una tecnica comune (imputation). Per dati ordinati nel tempo, <code class="inline">ffill()</code>/<code class="inline">bfill()</code> sono spesso più sensati.</div>
+</article>
+<article class="lesson" id="format">
+<h2>Formato dei dati sbagliato</h2>
+<p>Spesso le date sono stringhe e i numeri sono testo. Convertirli al tipo corretto è essenziale per l'analisi.</p>
+<div class="example">
+<div class="codehead"><span>Convertire le date</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;data&quot;: [&quot;2024-01-15&quot;, &quot;2024/02/20&quot;, &quot;15-03-2024&quot;],
+    &quot;valore&quot;: [100, 200, 300]
+})
+
+# Converte stringhe in datetime
+df[&quot;data&quot;] = pd.to_datetime(df[&quot;data&quot;], format=&quot;mixed&quot;)
+print(df[&quot;data&quot;].dtype)   # datetime64[ns]
+
+# Ora puoi estrarre componenti
+df[&quot;anno&quot;] = df[&quot;data&quot;].dt.year
+df[&quot;mese&quot;] = df[&quot;data&quot;].dt.month
+df[&quot;giorno_settimana&quot;] = df[&quot;data&quot;].dt.day_name()
+print(df)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Convertire i tipi numerici</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;prezzo&quot;: [&quot;10,50&quot;, &quot;20,00&quot;, &quot;abc&quot;],
+    &quot;qta&quot;: [&quot;5&quot;, &quot;10&quot;, &quot;15&quot;]
+})
+
+# Virgola → punto, poi a numero
+df[&quot;prezzo&quot;] = df[&quot;prezzo&quot;].str.replace(&quot;,&quot;, &quot;.&quot;)
+# errors=&quot;coerce&quot;: valori non validi → NaN
+df[&quot;prezzo&quot;] = pd.to_numeric(df[&quot;prezzo&quot;], errors=&quot;coerce&quot;)
+
+df[&quot;qta&quot;] = df[&quot;qta&quot;].astype(int)
+
+print(df)
+print(df.dtypes)</code></pre>
+</div>
+</article>
+<article class="lesson" id="wrong">
+<h2>Dati errati</h2>
+<p>A volte i dati sono nel formato giusto ma contengono valori impossibili: un'età di 300 anni, un prezzo negativo, un refuso. Vanno corretti o rimossi.</p>
+<div class="example">
+<div class="codehead"><span>Correggere valori fuori range</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;, &quot;Sara&quot;],
+    &quot;eta&quot;: [28, 350, 45, -5]      # 350 e -5 sono errori
+})
+
+# Strategia 1: correggi un valore specifico
+df.loc[1, &quot;eta&quot;] = 35
+
+# Strategia 2: imposta limiti sensati
+df.loc[df[&quot;eta&quot;] &gt; 120, &quot;eta&quot;] = df[&quot;eta&quot;].median()
+df.loc[df[&quot;eta&quot;] &lt; 0, &quot;eta&quot;] = df[&quot;eta&quot;].median()
+
+# Strategia 3: rimuovi le righe errate
+# df = df[(df[&quot;eta&quot;] &gt;= 0) &amp; (df[&quot;eta&quot;] &lt;= 120)]
+
+print(df)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>replace per correzioni multiple</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;citta&quot;: [&quot;Roma&quot;, &quot;MILANO&quot;, &quot;roma&quot;, &quot;Napli&quot;, &quot;Milano&quot;]
+})
+
+# Uniforma maiuscole/minuscole
+df[&quot;citta&quot;] = df[&quot;citta&quot;].str.capitalize()
+
+# Correggi refusi specifici
+df[&quot;citta&quot;] = df[&quot;citta&quot;].replace({&quot;Napli&quot;: &quot;Napoli&quot;})
+
+print(df[&quot;citta&quot;].value_counts())
+# Roma      2
+# Milano    2
+# Napoli    1</code></pre>
+</div>
+</article>
+<article class="lesson" id="duplicates">
+<h2>Rimuovere i duplicati</h2>
+<p>Le righe duplicate falsano le statistiche. Pandas le individua e rimuove facilmente.</p>
+<div class="example">
+<div class="codehead"><span>Trovare e rimuovere duplicati</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Anna&quot;, &quot;Marco&quot;, &quot;Luca&quot;],
+    &quot;eta&quot;: [28, 34, 28, 45, 34]
+})
+
+# Quali righe sono duplicate?
+print(df.duplicated())
+# 0    False
+# 1    False
+# 2     True   ← duplicato di riga 0
+# 3    False
+# 4     True   ← duplicato di riga 1
+
+print(df.duplicated().sum())   # 2 duplicati
+
+# Rimuovi i duplicati (tiene la prima occorrenza)
+df_pulito = df.drop_duplicates()
+print(df_pulito)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Duplicati su colonne specifiche</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;email&quot;: [&quot;a@x.it&quot;, &quot;b@x.it&quot;, &quot;a@x.it&quot;],
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Bruno&quot;, &quot;Anna R.&quot;],
+    &quot;iscrizione&quot;: [&quot;2024-01&quot;, &quot;2024-02&quot;, &quot;2024-03&quot;]
+})
+
+# Duplicati basati solo sull&#x27;email
+# keep=&quot;last&quot; tiene l&#x27;ultima occorrenza
+df_pulito = df.drop_duplicates(subset=&quot;email&quot;, keep=&quot;last&quot;)
+print(df_pulito)
+
+# Reset dell&#x27;indice dopo la rimozione
+df_pulito = df_pulito.reset_index(drop=True)
+print(df_pulito)</code></pre>
+</div>
+</article>
+<article class="lesson" id="select">
+<h2>Selezione e filtro</h2>
+<p>Selezionare sottoinsiemi di dati è l'operazione più frequente in Pandas. Funziona in modo simile all'indicizzazione booleana di NumPy.</p>
+<div class="example">
+<div class="codehead"><span>Filtro con condizioni</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;, &quot;Sara&quot;, &quot;Elena&quot;],
+    &quot;eta&quot;: [28, 34, 45, 22, 39],
+    &quot;citta&quot;: [&quot;Roma&quot;, &quot;Milano&quot;, &quot;Roma&quot;, &quot;Napoli&quot;, &quot;Milano&quot;],
+    &quot;stipendio&quot;: [25000, 38000, 52000, 21000, 41000]
+})
+
+# Una condizione
+print(df[df[&quot;eta&quot;] &gt; 30])
+
+# Più condizioni: &amp; (and), | (or), ~ (not)
+print(df[(df[&quot;eta&quot;] &gt; 30) &amp; (df[&quot;stipendio&quot;] &gt; 40000)])
+
+# isin: appartenenza a una lista
+print(df[df[&quot;citta&quot;].isin([&quot;Roma&quot;, &quot;Napoli&quot;])])
+
+# query: sintassi più leggibile
+print(df.query(&quot;eta &gt; 30 and stipendio &gt; 40000&quot;))</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Ordinare i dati</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;, &quot;Sara&quot;],
+    &quot;eta&quot;: [28, 34, 45, 22],
+    &quot;stipendio&quot;: [25000, 38000, 52000, 21000]
+})
+
+# Ordina per una colonna
+print(df.sort_values(&quot;eta&quot;))
+
+# Decrescente
+print(df.sort_values(&quot;stipendio&quot;, ascending=False))
+
+# Ordina per più colonne
+print(df.sort_values([&quot;citta&quot;, &quot;eta&quot;]) if &quot;citta&quot; in df else df)
+
+# Top 3 stipendi
+print(df.nlargest(3, &quot;stipendio&quot;))</code></pre>
+</div>
+<div class="warn-box">⚠️ Usa <code class="inline">&amp;</code> e <code class="inline">|</code> (non <code class="inline">and</code>/<code class="inline">or</code>) per combinare condizioni, e racchiudi ogni condizione tra <strong>parentesi</strong>: <code class="inline">(df["a"] > 1) &amp; (df["b"] < 5)</code>.</div>
+</article>
+<article class="lesson" id="groupby">
+<h2>GroupBy — raggruppare e aggregare</h2>
+<p><code class="inline">groupby()</code> applica lo schema <strong>split-apply-combine</strong>: divide i dati in gruppi, applica una funzione a ciascun gruppo, ricombina i risultati. È l'equivalente del <code class="inline">GROUP BY</code> di SQL.</p>
+<div class="example">
+<div class="codehead"><span>GroupBy di base</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;regione&quot;: [&quot;Nord&quot;, &quot;Sud&quot;, &quot;Nord&quot;, &quot;Sud&quot;, &quot;Centro&quot;],
+    &quot;venditore&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;, &quot;Sara&quot;, &quot;Elena&quot;],
+    &quot;vendite&quot;: [250, 180, 320, 150, 290]
+})
+
+# Somma vendite per regione
+print(df.groupby(&quot;regione&quot;)[&quot;vendite&quot;].sum())
+# regione
+# Centro    290
+# Nord      570
+# Sud       330
+
+# Media
+print(df.groupby(&quot;regione&quot;)[&quot;vendite&quot;].mean())
+
+# Conteggio
+print(df.groupby(&quot;regione&quot;).size())</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Aggregazioni multiple con agg</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;categoria&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;],
+    &quot;vendite&quot;: [100, 200, 150, 250, 120],
+    &quot;profitto&quot;: [20, 50, 30, 60, 25]
+})
+
+# Più statistiche in una volta
+print(df.groupby(&quot;categoria&quot;).agg(
+    vendite_tot=(&quot;vendite&quot;, &quot;sum&quot;),
+    vendite_media=(&quot;vendite&quot;, &quot;mean&quot;),
+    profitto_max=(&quot;profitto&quot;, &quot;max&quot;),
+    n=(&quot;vendite&quot;, &quot;count&quot;)
+))
+#            vendite_tot  vendite_media  profitto_max  n
+# categoria
+# A                  370     123.333333            30  3
+# B                  450     225.000000            60  2</code></pre>
+</div>
+<div class="note-box">💡 GroupBy è uno degli strumenti più potenti di Pandas. Padroneggiarlo ti permette di rispondere a quasi ogni domanda analitica sui tuoi dati.</div>
+</article>
+<article class="lesson" id="merge">
+<h2>Merge e Join</h2>
+<p>Spesso i dati sono divisi in più tabelle. <code class="inline">merge()</code> le unisce in base a una colonna comune, esattamente come i <strong>JOIN</strong> di SQL.</p>
+<div class="example">
+<div class="codehead"><span>merge tra due DataFrame</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+clienti = pd.DataFrame({
+    &quot;id_cliente&quot;: [1, 2, 3],
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;]
+})
+
+ordini = pd.DataFrame({
+    &quot;id_ordine&quot;: [101, 102, 103, 104],
+    &quot;id_cliente&quot;: [1, 2, 1, 3],
+    &quot;totale&quot;: [50, 80, 30, 120]
+})
+
+# Inner join sulla colonna comune
+df = pd.merge(clienti, ordini, on=&quot;id_cliente&quot;)
+print(df)
+#    id_cliente   nome  id_ordine  totale
+# 0           1   Anna        101      50
+# 1           1   Anna        103      30
+# 2           2   Luca        102      80
+# 3           3  Marco        104     120</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Tipi di join e concat</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+a = pd.DataFrame({&quot;k&quot;: [1, 2, 3], &quot;x&quot;: [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]})
+b = pd.DataFrame({&quot;k&quot;: [2, 3, 4], &quot;y&quot;: [&quot;B&quot;, &quot;C&quot;, &quot;D&quot;]})
+
+# inner (default): solo chiavi comuni
+print(pd.merge(a, b, on=&quot;k&quot;, how=&quot;inner&quot;))
+
+# left: tutte le righe di a
+print(pd.merge(a, b, on=&quot;k&quot;, how=&quot;left&quot;))
+
+# outer: tutte le righe di entrambi
+print(pd.merge(a, b, on=&quot;k&quot;, how=&quot;outer&quot;))
+
+# concat: impila DataFrame
+df1 = pd.DataFrame({&quot;x&quot;: [1, 2]})
+df2 = pd.DataFrame({&quot;x&quot;: [3, 4]})
+print(pd.concat([df1, df2], ignore_index=True))</code></pre>
+</div>
+<table class="ref">
+<tr><th>how</th><th>Risultato</th></tr>
+<tr><td><code class="inline">inner</code></td><td>Solo le chiavi presenti in entrambi</td></tr>
+<tr><td><code class="inline">left</code></td><td>Tutte le righe di sinistra + match</td></tr>
+<tr><td><code class="inline">right</code></td><td>Tutte le righe di destra + match</td></tr>
+<tr><td><code class="inline">outer</code></td><td>Tutte le righe di entrambi</td></tr>
+</table>
+</article>
+<article class="lesson" id="correlations">
+<h2>Correlazioni</h2>
+<p>Il metodo <code class="inline">corr()</code> calcola la <strong>correlazione</strong> tra le colonne numeriche: un valore tra -1 e 1 che misura quanto due variabili si muovono insieme.</p>
+<div class="example">
+<div class="codehead"><span>Matrice di correlazione</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;ore_studio&quot;: [1, 2, 3, 4, 5, 6, 7],
+    &quot;voto&quot;: [4, 5, 5, 6, 7, 8, 9],
+    &quot;ore_social&quot;: [6, 5, 5, 4, 3, 2, 1]
+})
+
+# Matrice di correlazione
+print(df.corr())
+#              ore_studio      voto  ore_social
+# ore_studio     1.000000  0.981981   -1.000000
+# voto           0.981981  1.000000   -0.981981
+# ore_social    -1.000000 -0.981981    1.000000
+
+# Correlazione tra due colonne specifiche
+print(df[&quot;ore_studio&quot;].corr(df[&quot;voto&quot;]))  # 0.98</code></pre>
+</div>
+<table class="ref">
+<tr><th>Valore di corr</th><th>Interpretazione</th></tr>
+<tr><td>vicino a +1</td><td>Forte correlazione positiva (crescono insieme)</td></tr>
+<tr><td>vicino a 0</td><td>Nessuna correlazione lineare</td></tr>
+<tr><td>vicino a -1</td><td>Forte correlazione negativa (una sale, l'altra scende)</td></tr>
+</table>
+<div class="warn-box">⚠️ <strong>Correlazione non implica causalità!</strong> Due variabili possono essere correlate per pura coincidenza o per via di un terzo fattore nascosto.</div>
+</article>
+<article class="lesson" id="plotting">
+<h2>Grafici con Pandas</h2>
+<p>Pandas integra <strong>Matplotlib</strong>: ogni DataFrame ha un metodo <code class="inline">.plot()</code> per visualizzare i dati con una sola riga.</p>
+<div class="example">
+<div class="codehead"><span>Grafici di base</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    &quot;mese&quot;: [&quot;Gen&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;Mag&quot;],
+    &quot;vendite&quot;: [120, 135, 160, 145, 190],
+    &quot;costi&quot;: [80, 85, 90, 88, 100]
+})
+df = df.set_index(&quot;mese&quot;)
+
+# Grafico a linee
+df.plot(kind=&quot;line&quot;, marker=&quot;o&quot;)
+plt.title(&quot;Vendite vs Costi&quot;)
+plt.ylabel(&quot;Euro&quot;)
+plt.savefig(&quot;grafico.png&quot;)
+plt.show()</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Tipi di grafico</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    &quot;categoria&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;],
+    &quot;valore&quot;: [25, 40, 30, 55]
+}).set_index(&quot;categoria&quot;)
+
+df.plot(kind=&quot;bar&quot;)       # barre verticali
+df.plot(kind=&quot;barh&quot;)      # barre orizzontali
+df.plot(kind=&quot;pie&quot;, y=&quot;valore&quot;)  # torta
+
+# Istogramma e scatter (su dati numerici)
+serie = pd.Series([1,2,2,3,3,3,4,4,5])
+serie.plot(kind=&quot;hist&quot;, bins=5)
+
+plt.show()</code></pre>
+</div>
+<table class="ref">
+<tr><th>kind</th><th>Tipo di grafico</th></tr>
+<tr><td><code class="inline">line</code></td><td>Linee (serie temporali)</td></tr>
+<tr><td><code class="inline">bar</code> / <code class="inline">barh</code></td><td>Barre verticali/orizzontali</td></tr>
+<tr><td><code class="inline">hist</code></td><td>Istogramma (distribuzioni)</td></tr>
+<tr><td><code class="inline">scatter</code></td><td>Dispersione (relazioni)</td></tr>
+<tr><td><code class="inline">pie</code></td><td>Torta (proporzioni)</td></tr>
+<tr><td><code class="inline">box</code></td><td>Box plot (quartili)</td></tr>
+</table>
+</article>
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 1 — Analisi vendite</span>
+<p>Crea un DataFrame con le vendite di 5 venditori in 3 regioni. Trova: il totale vendite per regione, il venditore con più vendite, e la media vendite generale.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+df = pd.DataFrame({
+    &quot;venditore&quot;: [&quot;Anna&quot;,&quot;Luca&quot;,&quot;Marco&quot;,&quot;Sara&quot;,&quot;Elena&quot;],
+    &quot;regione&quot;: [&quot;Nord&quot;,&quot;Sud&quot;,&quot;Nord&quot;,&quot;Centro&quot;,&quot;Sud&quot;],
+    &quot;vendite&quot;: [250, 180, 320, 150, 290]
+})
+
+# Totale per regione
+print(df.groupby(&quot;regione&quot;)[&quot;vendite&quot;].sum())
+
+# Venditore top
+top = df.loc[df[&quot;vendite&quot;].idxmax()]
+print(f&quot;Top: {top[&#x27;venditore&#x27;]} con {top[&#x27;vendite&#x27;]}&quot;)
+
+# Media generale
+print(f&quot;Media: {df[&#x27;vendite&#x27;].mean():.1f}&quot;)</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 2 — Pulizia dataset</span>
+<p>Dato un DataFrame con valori mancanti e duplicati, puliscilo: rimuovi i duplicati, riempi le età mancanti con la media e converti i nomi in formato corretto (prima lettera maiuscola).</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    &quot;nome&quot;: [&quot;anna&quot;,&quot;LUCA&quot;,&quot;anna&quot;,&quot;marco&quot;],
+    &quot;eta&quot;: [28, np.nan, 28, 45]
+})
+
+# 1. Rimuovi duplicati
+df = df.drop_duplicates()
+
+# 2. Riempi età mancanti con la media
+df[&quot;eta&quot;] = df[&quot;eta&quot;].fillna(df[&quot;eta&quot;].mean())
+
+# 3. Formatta i nomi
+df[&quot;nome&quot;] = df[&quot;nome&quot;].str.capitalize()
+
+df = df.reset_index(drop=True)
+print(df)</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 3 — Merge e analisi</span>
+<p>Hai due tabelle: clienti (id, nome) e ordini (id_cliente, totale). Uniscile e calcola la spesa totale di ogni cliente, ordinando dal più alto.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<pre class="codeview"><code class="language-python">import pandas as pd
+
+clienti = pd.DataFrame({
+    &quot;id&quot;: [1, 2, 3],
+    &quot;nome&quot;: [&quot;Anna&quot;, &quot;Luca&quot;, &quot;Marco&quot;]
+})
+ordini = pd.DataFrame({
+    &quot;id_cliente&quot;: [1, 2, 1, 3, 2],
+    &quot;totale&quot;: [50, 80, 30, 120, 45]
+})
+
+# Merge
+df = pd.merge(clienti, ordini,
+              left_on=&quot;id&quot;, right_on=&quot;id_cliente&quot;)
+
+# Spesa totale per cliente
+spesa = (df.groupby(&quot;nome&quot;)[&quot;totale&quot;].sum()
+           .sort_values(ascending=False))
+print(spesa)
+# nome
+# Marco    120
+# Luca     125
+# Anna      80</code></pre>
+</div>
+</div>
+</article>
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso Pandas e ora sai leggere, pulire, analizzare e visualizzare dati reali in Python. Pandas è lo strumento quotidiano di ogni data analyst e data scientist.</p>
+<div class="note-box">
+<strong>Cosa hai imparato:</strong>
+<ul>
+<li>Series e DataFrame: le strutture dati fondamentali</li>
+<li>Leggere/scrivere CSV e JSON</li>
+<li>Pulizia dati: valori mancanti, formati, duplicati</li>
+<li>Selezione, filtro, ordinamento e query</li>
+<li>GroupBy, merge/join e correlazioni</li>
+<li>Visualizzazione con .plot()</li>
+</ul>
+</div>
+<p>Il passo successivo? Approfondisci con il corso completo di <strong>Data Science</strong>, dove userai Pandas insieme a NumPy e Matplotlib su progetti reali.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+<a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a>
+<a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a>
+<a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+</article>
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="font-size:1.2rem;font-weight:800;margin-bottom:.7rem">Alessandro<span style="color:var(--primary)">Simone</span>.it</div>
+        <p style="color:var(--muted);font-size:.93rem">Corsi di programmazione gratuiti in italiano. Impara a programmare da zero con guide pratiche ed esempi reali.</p>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Link rapidi</h4>
+        <a href="index.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Home</a>
+        <a href="corsi.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Corsi</a>
+        <a href="blog.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Blog</a>
+        <a href="chi-sono.html" style="display:block;color:var(--muted);font-size:.93rem">Chi sono</a>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Contatti</h4>
+        <a href="prenota.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">📅 Prenota una lezione</a>
+        <a href="contatti.html" style="display:block;color:var(--muted);font-size:.93rem">✉️ Contattami</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AlessandroSimone.it — Tutti i diritti riservati</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
