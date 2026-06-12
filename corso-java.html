@@ -290,7 +290,7 @@
         <p>Il suo motto è <em>“Write Once, Run Anywhere”</em>: il codice Java viene compilato in <strong>bytecode</strong> ed eseguito dalla <strong>JVM</strong> (Java Virtual Machine), perciò gira su qualsiasi sistema operativo senza modifiche. Java è fortemente tipizzato e segue rigorosamente il paradigma a oggetti.</p>
         <div class="note-box">📌 Java non si esegue nel browser: in questo corso gli esempi si <strong>leggono e si modificano</strong> con la sintassi colorata. Per eseguirli ti serve il JDK installato sul tuo computer (vedi “Installazione”).</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -306,7 +306,7 @@
         <h3>Compilare ed eseguire</h3>
         <p>Un file Java si salva con lo stesso nome della classe pubblica (es. <code class="inline">Main.java</code>). Dal terminale:</p>
         <div class="example">
-          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">// javac Main.java   -> compila e crea Main.class
 // java Main          -> esegue il programma</script>
@@ -317,7 +317,7 @@
         <h2>Sintassi e primo programma</h2>
         <p>Ogni programma Java è organizzato in <strong>classi</strong>. L'esecuzione parte dal metodo speciale <code class="inline">main</code>. Le istruzioni terminano con il punto e virgola <code class="inline">;</code> e i blocchi sono racchiusi tra parentesi graffe <code class="inline">{ }</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -332,7 +332,7 @@
         <h2>Output: System.out.println</h2>
         <p>Per stampare a schermo si usa <code class="inline">System.out.println()</code> (stampa e va a capo) oppure <code class="inline">System.out.print()</code> (senza andare a capo).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -350,7 +350,7 @@
         <h2>I commenti</h2>
         <p>I commenti spiegano il codice e non vengono eseguiti: su una riga con <code class="inline">//</code>, su più righe con <code class="inline">/* ... */</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">// Commento su una riga
 /* Commento
@@ -367,7 +367,7 @@ public class Main {
         <h2>Le variabili</h2>
         <p>In Java ogni variabile deve essere <strong>dichiarata con il suo tipo</strong> (tipizzazione statica). La sintassi è <code class="inline">tipo nome = valore;</code>. Con <code class="inline">final</code> si crea una costante non modificabile.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -394,7 +394,7 @@ public class Main {
           <tr><td><code class="inline">String</code></td><td>Testo (oggetto)</td><td>"ciao"</td></tr>
         </table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -412,7 +412,7 @@ public class Main {
         <h2>Il casting (conversione di tipo)</h2>
         <p>Il <strong>casting</strong> converte un tipo in un altro. Quello <em>widening</em> (es. int → double) è automatico; quello <em>narrowing</em> (es. double → int) va indicato esplicitamente fra parentesi.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -430,7 +430,7 @@ public class Main {
         <h2>Gli operatori</h2>
         <p>Java offre operatori aritmetici (<code class="inline">+ - * / %</code>), di confronto (<code class="inline">== != &gt; &lt;</code>), logici (<code class="inline">&amp;&amp;</code>, <code class="inline">||</code>, <code class="inline">!</code>) e di assegnazione (<code class="inline">= += -=</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -448,7 +448,7 @@ public class Main {
         <h2>Le stringhe</h2>
         <p>La classe <code class="inline">String</code> rappresenta il testo e offre molti metodi: <code class="inline">length()</code>, <code class="inline">toUpperCase()</code>, <code class="inline">substring()</code>, <code class="inline">indexOf()</code>. Le stringhe si concatenano con <code class="inline">+</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -466,7 +466,7 @@ public class Main {
         <h2>La classe Math</h2>
         <p>La classe <code class="inline">Math</code> fornisce funzioni matematiche: <code class="inline">Math.sqrt()</code>, <code class="inline">Math.pow()</code>, <code class="inline">Math.max()</code>, <code class="inline">Math.random()</code> e la costante <code class="inline">Math.PI</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -483,7 +483,7 @@ public class Main {
         <h2>L'input dell'utente</h2>
         <p>Per leggere dati dalla tastiera si usa la classe <code class="inline">Scanner</code> del package <code class="inline">java.util</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">import java.util.Scanner;
 
@@ -502,7 +502,7 @@ public class Main {
         <h2>Le condizioni: if, else if, else</h2>
         <p>Le istruzioni condizionali eseguono codice in base a una condizione booleana.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -523,7 +523,7 @@ public class Main {
         <h2>Il costrutto switch</h2>
         <p>Lo <code class="inline">switch</code> confronta una variabile con più valori (case). Usa <code class="inline">break</code> per uscire e <code class="inline">default</code> per il caso generale.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -542,7 +542,7 @@ public class Main {
         <h2>Il ciclo while</h2>
         <p>Il <code class="inline">while</code> ripete un blocco finché la condizione è vera. La variante <code class="inline">do...while</code> esegue almeno una volta.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -560,7 +560,7 @@ public class Main {
         <h2>Il ciclo for</h2>
         <p>Il <code class="inline">for</code> è ideale quando conosci il numero di ripetizioni. Esiste anche il <em>for-each</em> per scorrere array e collezioni.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -580,7 +580,7 @@ public class Main {
         <h2>Gli array</h2>
         <p>Un <strong>array</strong> contiene più valori dello stesso tipo, con dimensione fissa. Si accede con l'indice (parte da 0) e si ottiene la lunghezza con <code class="inline">.length</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -600,7 +600,7 @@ public class Main {
         <h2>I metodi</h2>
         <p>Un <strong>metodo</strong> è un blocco di codice riutilizzabile con un nome. <code class="inline">void</code> indica che non restituisce nulla; <code class="inline">static</code> permette di chiamarlo senza creare un oggetto.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     static void saluta() {
@@ -618,7 +618,7 @@ public class Main {
         <h2>Parametri e valore di ritorno</h2>
         <p>Un metodo può ricevere <strong>parametri</strong> e restituire un valore con <code class="inline">return</code>, indicandone il tipo al posto di <code class="inline">void</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     static int somma(int a, int b) {
@@ -644,7 +644,7 @@ public class Main {
         <h2>Classi e oggetti</h2>
         <p>Una <strong>classe</strong> definisce attributi (dati) e metodi (comportamenti). Con <code class="inline">new</code> si crea un <strong>oggetto</strong>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Cane {
     String nome;
@@ -667,7 +667,7 @@ public class Main {
         <h2>Gli attributi</h2>
         <p>Gli <strong>attributi</strong> (o campi) sono le variabili che descrivono lo stato di un oggetto. Ogni oggetto ha la propria copia.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Studente {
     String nome;
@@ -689,7 +689,7 @@ public class Main {
         <h2>I metodi di classe</h2>
         <p>I <strong>metodi</strong> definiscono il comportamento degli oggetti e possono usare i loro attributi.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Rettangolo {
     int base, altezza;
@@ -712,7 +712,7 @@ public class Main {
         <h2>I costruttori</h2>
         <p>Un <strong>costruttore</strong> è un metodo speciale (stesso nome della classe) chiamato automaticamente con <code class="inline">new</code> per inizializzare l'oggetto. La parola chiave <code class="inline">this</code> indica l'oggetto corrente.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Persona {
     String nome;
@@ -747,7 +747,7 @@ public class Main {
         <h2>L'incapsulamento</h2>
         <p>L'<strong>incapsulamento</strong> protegge i dati rendendo gli attributi <code class="inline">private</code> e fornendo metodi pubblici <strong>getter</strong> e <strong>setter</strong> per leggerli e modificarli in modo controllato.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Conto {
     private double saldo;
@@ -773,7 +773,7 @@ public class Main {
         <h2>L'ereditarietà</h2>
         <p>Con <code class="inline">extends</code> una classe (figlia) eredita attributi e metodi da un'altra (genitore), riutilizzando il codice. <code class="inline">super</code> richiama il genitore.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Animale {
     void respira() {
@@ -801,7 +801,7 @@ public class Main {
         <h2>Il polimorfismo</h2>
         <p>Il <strong>polimorfismo</strong> permette di usare lo stesso metodo con comportamenti diversi a seconda dell'oggetto. Con l'<strong>override</strong> una sottoclasse ridefinisce un metodo del genitore.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">class Animale {
     String verso() { return "..."; }
@@ -828,7 +828,7 @@ public class Main {
         <h2>Le interfacce</h2>
         <p>Un'<strong>interfaccia</strong> definisce un “contratto” di metodi che le classi devono implementare con <code class="inline">implements</code>. È il modo di Java per l'astrazione e per ottenere una forma di ereditarietà multipla.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">interface Figura {
     double area();
@@ -855,7 +855,7 @@ public class Main {
         <h2>ArrayList e collezioni</h2>
         <p>L'<code class="inline">ArrayList</code> è una lista dinamica (a dimensione variabile), parte del <em>Collections Framework</em>. A differenza degli array può crescere e ridursi.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">import java.util.ArrayList;
 
@@ -876,7 +876,7 @@ public class Main {
         <h2>La gestione delle eccezioni</h2>
         <p>Le <strong>eccezioni</strong> sono errori che si verificano durante l'esecuzione. Si gestiscono con <code class="inline">try ... catch</code> (e l'opzionale <code class="inline">finally</code>) per evitare che il programma vada in crash.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">public class Main {
     public static void main(String[] args) {
@@ -897,7 +897,7 @@ public class Main {
         <h2>Booleans in Java</h2>
         <p>Un tipo booleano (<code class="inline">boolean</code>) può assumere solo due valori: <code class="inline">true</code> o <code class="inline">false</code>. È il tipo restituito da tutte le espressioni di confronto.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 boolean isOnline = true;
@@ -917,7 +917,7 @@ System.out.println(isOnline || isLoggedIn); // true
         <h2>Break e Continue</h2>
         <p><code class="inline">break</code> interrompe immediatamente il ciclo (o lo <code class="inline">switch</code>). <code class="inline">continue</code> salta l'iterazione corrente e passa alla successiva.</p>
         <div class="example">
-          <div class="codehead"><span>Break</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Break</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 for (int i = 0; i < 10; i++) {
@@ -927,7 +927,7 @@ for (int i = 0; i < 10; i++) {
           </script>
         </div>
         <div class="example">
-          <div class="codehead"><span>Continue</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Continue</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 for (int i = 0; i < 8; i++) {
@@ -943,7 +943,7 @@ for (int i = 0; i < 8; i++) {
         <h2>Overloading dei metodi</h2>
         <p>Java permette di definire più metodi con lo <strong>stesso nome</strong> ma parametri diversi (tipo o numero). Questo si chiama <em>method overloading</em>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 static int somma(int a, int b) { return a + b; }
@@ -965,7 +965,7 @@ public static void main(String[] args) {
         <h2>Scope delle variabili</h2>
         <p>Lo <strong>scope</strong> (ambito) di una variabile determina dove può essere usata. In Java le variabili dichiarate dentro un blocco <code class="inline">{ }</code> esistono solo all'interno di quel blocco.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 public static void main(String[] args) {
@@ -991,7 +991,7 @@ public static void main(String[] args) {
         <h2>Ricorsione</h2>
         <p>Un metodo <strong>ricorsivo</strong> è un metodo che chiama se stesso. Ogni chiamata ricorsiva deve avvicinarsi a un <em>caso base</em> che interrompe la ricorsione.</p>
         <div class="example">
-          <div class="codehead"><span>Fattoriale ricorsivo</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Fattoriale ricorsivo</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 static int fattoriale(int n) {
@@ -1012,7 +1012,7 @@ public static void main(String[] args) {
         <h2>Parola chiave <code class="inline">this</code></h2>
         <p><code class="inline">this</code> si riferisce all'istanza corrente della classe. Si usa per disambiguare attributi da parametri con lo stesso nome, o per chiamare un altro costruttore.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class Persona {
@@ -1041,7 +1041,7 @@ public class Main {
         <h2>Package e API Java</h2>
         <p>Un <strong>package</strong> è un raggruppamento di classi correlate, simile a una cartella. Java include una ricca libreria standard (<em>Java API</em>) organizzata in package.</p>
         <div class="example">
-          <div class="codehead"><span>Importare package</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Importare package</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.ArrayList;   // importa singola classe
@@ -1072,7 +1072,7 @@ public class Main {
         <h2>Parola chiave <code class="inline">super</code></h2>
         <p><code class="inline">super</code> fa riferimento alla classe padre (superclasse). Si usa per chiamare il costruttore o i metodi della superclasse.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class Animale {
@@ -1107,7 +1107,7 @@ public class Main {
         <h2>Classi interne (Inner Classes)</h2>
         <p>Una <strong>classe interna</strong> è una classe definita all'interno di un'altra classe. Ha accesso agli attributi privati della classe esterna.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class Esterna {
@@ -1134,7 +1134,7 @@ public class Main {
         <h2>Astrazione</h2>
         <p>L'<strong>astrazione</strong> nasconde i dettagli implementativi ed espone solo le funzionalità essenziali. Si realizza con <strong>classi astratte</strong> (<code class="inline">abstract</code>) e <strong>interfacce</strong>.</p>
         <div class="example">
-          <div class="codehead"><span>Classe astratta</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Classe astratta</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 abstract class Forma {
@@ -1165,7 +1165,7 @@ public class Main {
         <h2>Classi anonime</h2>
         <p>Una <strong>classe anonima</strong> è una classe senza nome, definita e istanziata in un'unica espressione. Utile per implementare interfacce o classi astratte al volo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 interface Saluta {
@@ -1191,7 +1191,7 @@ public class Main {
         <h2>Enum</h2>
         <p>Un <strong>enum</strong> (enumerazione) è un tipo speciale con un insieme fisso di costanti. Si usa per valori predefiniti come giorni, stati, direzioni.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 enum Giorno { LUN, MAR, MER, GIO, VEN, SAB, DOM }
@@ -1216,7 +1216,7 @@ public class Main {
         <h2>Date e ora in Java</h2>
         <p>Da Java 8 si usa il package <code class="inline">java.time</code> per gestire date e orari in modo sicuro e immutabile.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.time.LocalDate;
@@ -1265,7 +1265,7 @@ public class Main {
         <h2>Eccezioni multiple (multi-catch)</h2>
         <p>Java permette di catturare più tipi di eccezione nello stesso blocco <code class="inline">catch</code> usando <code class="inline">|</code>, oppure con più blocchi <code class="inline">catch</code> consecutivi.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 public class Main {
@@ -1299,7 +1299,7 @@ public class Main {
         <h2>Try-with-resources</h2>
         <p>Il <strong>try-with-resources</strong> (Java 7+) garantisce che le risorse (file, connessioni DB, stream) vengano chiuse automaticamente al termine del blocco, anche in caso di eccezione.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.*;
@@ -1328,7 +1328,7 @@ public class Main {
         <h2>Gestione file in Java</h2>
         <p>La classe <code class="inline">File</code> del package <code class="inline">java.io</code> permette di lavorare con file e directory: creare, leggere, scrivere, eliminare file e navigare il filesystem.</p>
         <div class="example">
-          <div class="codehead"><span>Info su un file</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Info su un file</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.File;
@@ -1352,7 +1352,7 @@ public class Main {
         <h2>Creare un file</h2>
         <p>Il metodo <code class="inline">createNewFile()</code> crea un nuovo file vuoto. Restituisce <code class="inline">true</code> se il file è stato creato, <code class="inline">false</code> se esiste già.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.File;
@@ -1381,7 +1381,7 @@ public class Main {
         <h2>Scrivere su file</h2>
         <p><code class="inline">FileWriter</code> scrive testo in un file. Con <code class="inline">true</code> come secondo parametro, aggiunge al file esistente (append mode).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.FileWriter;
@@ -1409,7 +1409,7 @@ public class Main {
         <h2>Leggere un file</h2>
         <p><code class="inline">Scanner</code> con <code class="inline">File</code> permette di leggere riga per riga un file di testo in modo semplice.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.File;
@@ -1440,7 +1440,7 @@ public class Main {
         <h2>Eliminare un file</h2>
         <p>Il metodo <code class="inline">delete()</code> della classe <code class="inline">File</code> elimina un file. Restituisce <code class="inline">true</code> in caso di successo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.File;
@@ -1464,7 +1464,7 @@ public class Main {
         <h2>FileInputStream e FileOutputStream</h2>
         <p>Per leggere e scrivere file <strong>binari</strong> (immagini, PDF, audio) si usano <code class="inline">FileInputStream</code> e <code class="inline">FileOutputStream</code> che operano sui byte.</p>
         <div class="example">
-          <div class="codehead"><span>FileInputStream</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>FileInputStream</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.*;
@@ -1492,7 +1492,7 @@ public class Main {
         <h2>BufferedReader e BufferedWriter</h2>
         <p><code class="inline">BufferedReader</code> e <code class="inline">BufferedWriter</code> aggiungono un buffer di memoria che riduce gli accessi al disco, rendendo la lettura/scrittura di file di testo molto più efficiente.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.io.*;
@@ -1538,7 +1538,7 @@ public class Main {
         <h2>LinkedList</h2>
         <p><code class="inline">LinkedList</code> implementa sia <code class="inline">List</code> che <code class="inline">Deque</code>. Ogni elemento è un nodo collegato al precedente e al successivo. Inserimento/cancellazione in testa o coda sono O(1), ma l'accesso casuale è O(n).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.LinkedList;
@@ -1564,7 +1564,7 @@ public class Main {
         <h2>HashSet</h2>
         <p><code class="inline">HashSet</code> è una collezione che non ammette duplicati e non garantisce nessun ordine. Usa una tabella hash internamente — operazioni di ricerca e inserimento sono O(1).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.HashSet;
@@ -1590,7 +1590,7 @@ public class Main {
         <h2>TreeSet</h2>
         <p><code class="inline">TreeSet</code> è un <code class="inline">Set</code> che mantiene gli elementi in <strong>ordine naturale crescente</strong> (o con un comparatore personalizzato). Usa un albero red-black internamente — operazioni O(log n).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.TreeSet;
@@ -1614,7 +1614,7 @@ public class Main {
         <h2>HashMap e TreeMap</h2>
         <p><code class="inline">HashMap</code> memorizza coppie <em>chiave → valore</em>. Le chiavi sono uniche; i valori possono ripetersi. <code class="inline">TreeMap</code> tiene le chiavi ordinate.</p>
         <div class="example">
-          <div class="codehead"><span>HashMap</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>HashMap</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.HashMap;
@@ -1641,7 +1641,7 @@ public class Main {
         <h2>TreeMap</h2>
         <p><code class="inline">TreeMap</code> è come <code class="inline">HashMap</code> ma mantiene le chiavi <strong>ordinate</strong>. Utile quando serve iterare in ordine alfabetico o numerico.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.TreeMap;
@@ -1666,7 +1666,7 @@ public class Main {
         <h2>Iterator</h2>
         <p>Un <code class="inline">Iterator</code> permette di scorrere una collezione in modo sicuro, potendo rimuovere elementi durante l'iterazione senza <code>ConcurrentModificationException</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -1691,7 +1691,7 @@ public class Main {
         <h2>Algoritmi di ordinamento e ricerca</h2>
         <p>La classe <code class="inline">Collections</code> fornisce algoritmi pronti per ordinare, cercare e manipolare collezioni. <code class="inline">Arrays</code> fa lo stesso per gli array.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -1730,7 +1730,7 @@ public class Main {
           <tr><td><code>long</code></td><td><code>Long</code></td><td><code>Long.MAX_VALUE</code></td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Autoboxing e unboxing</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Autoboxing e unboxing</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.ArrayList;
@@ -1757,7 +1757,7 @@ public class Main {
         <h2>Generics</h2>
         <p>I <strong>Generics</strong> permettono di scrivere classi e metodi che funzionano con qualsiasi tipo, garantendo la sicurezza a compile-time senza cast espliciti.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class Coppia<T, U> {
@@ -1795,7 +1795,7 @@ public class Main {
           <tr><td><code>@SafeVarargs</code></td><td>Sopprime avvisi per varargs generici</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio @Override</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio @Override</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class Veicolo {
@@ -1820,7 +1820,7 @@ public class Main {
         <h2>Espressioni regolari (RegEx)</h2>
         <p>Le <strong>espressioni regolari</strong> (regex) sono pattern per trovare, validare e manipolare testo. In Java si usa il package <code class="inline">java.util.regex</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.regex.*;
@@ -1850,7 +1850,7 @@ public class Main {
         <h2>Thread (Programmazione concorrente)</h2>
         <p>Un <strong>thread</strong> è un flusso di esecuzione indipendente. Java supporta la programmazione multi-thread nativamente, permettendo di eseguire più compiti in parallelo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 class MioThread extends Thread {
@@ -1882,7 +1882,7 @@ public class Main {
         <h2>Lambda (Java 8+)</h2>
         <p>Le <strong>espressioni lambda</strong> sono funzioni anonime compatte, usate principalmente con interfacce funzionali e le API Stream.</p>
         <div class="example">
-          <div class="codehead"><span>Lambda + forEach</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Lambda + forEach</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -1912,7 +1912,7 @@ public class Main {
         <p>Esempi reali e completi per consolidare la programmazione Java con OOP e strutture dati.</p>
         <h3>Gestione rubrica con HashMap</h3>
         <div class="example">
-          <div class="codehead"><span>Rubrica</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Rubrica</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -1940,7 +1940,7 @@ public class Main {
 
         <h3>Calcolo della media con ArrayList</h3>
         <div class="example">
-          <div class="codehead"><span>Media voti</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Media voti</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -2003,7 +2003,7 @@ public class Main {
 
         <h3>Esercizio 1 — Numeri pari tra 1 e 100</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 public class Main {
@@ -2019,7 +2019,7 @@ public class Main {
 
         <h3>Esercizio 2 — Verifica numero primo</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 public class Main {
@@ -2042,7 +2042,7 @@ public class Main {
 
         <h3>Esercizio 3 — Classe Studente con media</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.*;
@@ -2074,7 +2074,7 @@ public class Main {
 
         <h3>Esercizio 4 — Inversione di una stringa</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 public class Main {
@@ -2094,7 +2094,7 @@ public class Main {
 
         <h3>Esercizio 5 — Stack con LinkedList</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Provalo tu</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">▶ Prova tu</button></div>
           <pre class="codeview"><code class="language-java"></code></pre>
           <script type="text/plain" class="code">
 import java.util.LinkedList;
@@ -2357,7 +2357,7 @@ public class Main {
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — leggi e modifica il codice Java</strong>
+      <strong>✏️ Prova tu — leggi e modifica il codice Java</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

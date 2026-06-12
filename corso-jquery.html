@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corso jQuery in italiano completo e gratuito — selettori, eventi, effetti e AJAX da zero | AlessandroSimone.it</title>
-  <meta name="description" content="Corso jQuery italiano completo e gratuito: selettori, eventi, effetti (hide, fade, slide, animate), manipolazione HTML, traversing del DOM e AJAX. Con editor live Provalo tu, quiz, esercizi, piano di studio e certificazione.">
+  <meta name="description" content="Corso jQuery italiano completo e gratuito: selettori, eventi, effetti (hide, fade, slide, animate), manipolazione HTML, traversing del DOM e AJAX. Con editor live Prova tu, quiz, esercizi, piano di studio e certificazione.">
   <meta name="keywords" content="corso jquery italiano, jquery tutorial italiano, imparare jquery, jquery da zero, jquery selettori, jquery eventi, jquery effetti, jquery animate, jquery ajax, manipolazione dom jquery, jquery per principianti, quiz jquery, esercizi jquery, certificazione jquery">
   <meta name="author" content="Alessandro Simone">
   <meta property="og:title" content="Corso jQuery in italiano completo e gratuito — DOM, eventi ed effetti da zero | AlessandroSimone.it">
@@ -218,7 +218,7 @@
         <h2>Cos'è jQuery</h2>
 <p><strong>jQuery</strong> è una libreria <strong>JavaScript</strong> velocissima e leggera che semplifica enormemente la manipolazione delle pagine HTML, la gestione degli eventi, le animazioni e le chiamate AJAX. Il suo motto è: <em>"scrivi meno, fai di più"</em>.</p>
 <h3>Perché imparare jQuery</h3><ul><li>✍️ <strong>Conciso</strong>: una riga di jQuery sostituisce molte righe di JavaScript puro</li><li>🌍 <strong>Compatibile</strong>: nasconde le differenze tra i browser</li><li>🎬 <strong>Animazioni facili</strong>: effetti di fade, slide e animate pronti all'uso</li><li>📚 <strong>Diffusissimo</strong>: ancora presente in moltissimi siti e temi (es. WordPress)</li></ul>
-<div class="example"><div class="codehead"><span>Il primo effetto jQuery</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il primo effetto jQuery</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="bottone">Nascondi il testo</button>
 <p id="testo">Ciao! Cliccami per farmi sparire.</p>
 
@@ -228,7 +228,7 @@ $("#bottone").click(function(){
 });
 <\/script>
 </script></div>
-<div class="note-box">📘 Premi <strong>▶ Provalo tu</strong>: l'editor è già collegato a jQuery, quindi vedi subito il risultato e puoi modificarlo dal vivo. Conoscere le basi di <a href="corso-javascript.html">JavaScript</a> aiuta molto.</div>
+<div class="note-box">📘 Premi <strong>▶ Prova tu</strong>: l'editor è già collegato a jQuery, quindi vedi subito il risultato e puoi modificarlo dal vivo. Conoscere le basi di <a href="corso-javascript.html">JavaScript</a> aiuta molto.</div>
       </article>
 
       <article class="lesson" id="intro">
@@ -243,7 +243,7 @@ $("#bottone").click(function(){
 <p>Per usare jQuery basta includere la libreria dal <strong>CDN</strong>. Si mette nell'<code class="inline">&lt;head&gt;</code> o appena prima di <code class="inline">&lt;/body&gt;</code>.</p>
 <pre class="codeview"><code class="language-html">&lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;</code></pre>
 <h3>Il "document ready"</h3><p>Il codice jQuery va eseguito quando la pagina è pronta. Si usa <code class="inline">$(document).ready()</code> oppure la sua forma breve <code class="inline">$(function(){ ... })</code>.</p>
-<div class="example"><div class="codehead"><span>Document ready</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Document ready</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p id="msg">In attesa...</p>
 
 <script>
@@ -258,7 +258,7 @@ $(document).ready(function(){
       <article class="lesson" id="syntax">
         <h2>La sintassi di jQuery</h2>
 <p>La sintassi base di jQuery è: <code class="inline">$(selettore).azione()</code></p><ul><li><code class="inline">$</code> — indica jQuery</li><li><strong>selettore</strong> — trova gli elementi HTML (come in CSS)</li><li><strong>azione()</strong> — cosa fare su quegli elementi</li></ul>
-<div class="example"><div class="codehead"><span>La formula $(selettore).azione()</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>La formula $(selettore).azione()</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p>Primo paragrafo</p>
 <p>Secondo paragrafo</p>
 <button id="vai">Colora di blu</button>
@@ -274,7 +274,7 @@ $("#vai").click(function(){
       <article class="lesson" id="selectors">
         <h2>I selettori</h2>
 <p>I <strong>selettori</strong> servono a "trovare" gli elementi HTML da manipolare. Usano la stessa sintassi del CSS: per tag, per <code class="inline">#id</code> e per <code class="inline">.classe</code>.</p>
-<div class="example"><div class="codehead"><span>Selezionare in vari modi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Selezionare in vari modi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <h2>Titolo</h2>
 <p class="evidenzia">Paragrafo con classe</p>
 <p id="speciale">Paragrafo con id</p>
@@ -295,7 +295,7 @@ $("#b").click(function(){
         <h2>Gli eventi</h2>
 <p>Gli <strong>eventi</strong> sono le azioni dell'utente: click, passaggio del mouse, pressione di un tasto. jQuery permette di reagire a ciascuno con un metodo dedicato.</p>
 <table class="ref"><tr><th>Metodo</th><th>Reagisce a</th></tr><tr><td><code class="inline">click()</code></td><td>Clic del mouse</td></tr><tr><td><code class="inline">dblclick()</code></td><td>Doppio clic</td></tr><tr><td><code class="inline">hover()</code></td><td>Mouse sopra/fuori</td></tr><tr><td><code class="inline">keypress()</code></td><td>Tasto premuto</td></tr></table>
-<div class="example"><div class="codehead"><span>Reagire a click e hover</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Reagire a click e hover</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Cliccami</button>
 <p id="zona">Passa il mouse qui sopra</p>
 
@@ -315,7 +315,7 @@ $("#zona").hover(function(){
       <article class="lesson" id="hide-show">
         <h2>Nascondere e mostrare</h2>
 <p>I metodi <code class="inline">hide()</code>, <code class="inline">show()</code> e <code class="inline">toggle()</code> nascondono e mostrano gli elementi. Accettano una durata in millisecondi per animare la transizione.</p>
-<div class="example"><div class="codehead"><span>hide, show e toggle</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>hide, show e toggle</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="nascondi">Nascondi</button>
 <button id="mostra">Mostra</button>
 <button id="toggle">Toggle</button>
@@ -332,7 +332,7 @@ $("#toggle").click(function(){ $("#t").toggle(500); });
       <article class="lesson" id="fade">
         <h2>Le dissolvenze (fade)</h2>
 <p>Gli effetti <strong>fade</strong> fanno apparire e scomparire gli elementi con una dissolvenza: <code class="inline">fadeIn()</code>, <code class="inline">fadeOut()</code>, <code class="inline">fadeToggle()</code> e <code class="inline">fadeTo()</code>.</p>
-<div class="example"><div class="codehead"><span>fadeIn, fadeOut, fadeToggle</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>fadeIn, fadeOut, fadeToggle</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="in">Fade In</button>
 <button id="out">Fade Out</button>
 <button id="tog">Fade Toggle</button>
@@ -349,7 +349,7 @@ $("#tog").click(function(){ $("#box").fadeToggle(600); });
       <article class="lesson" id="slide">
         <h2>Gli scorrimenti (slide)</h2>
 <p>Gli effetti <strong>slide</strong> mostrano/nascondono un elemento facendolo scorrere: <code class="inline">slideDown()</code>, <code class="inline">slideUp()</code> e <code class="inline">slideToggle()</code>.</p>
-<div class="example"><div class="codehead"><span>slideToggle: un pannello a fisarmonica</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>slideToggle: un pannello a fisarmonica</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Apri / Chiudi</button>
 <div id="pannello" style="background:#dcfce7;padding:20px;display:none">
   Contenuto che scorre dall'alto verso il basso.
@@ -366,7 +366,7 @@ $("#b").click(function(){
       <article class="lesson" id="animate">
         <h2>Le animazioni (animate)</h2>
 <p>Il metodo <code class="inline">animate()</code> crea animazioni personalizzate modificando gradualmente le proprietà CSS numeriche.</p>
-<div class="example"><div class="codehead"><span>Muovere e ridimensionare un box</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Muovere e ridimensionare un box</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Anima!</button>
 <div id="box" style="width:60px;height:60px;background:#f59e0b;position:relative">
 </div>
@@ -388,7 +388,7 @@ $("#b").click(function(){
       <article class="lesson" id="stop">
         <h2>Fermare le animazioni</h2>
 <p>Il metodo <code class="inline">stop()</code> interrompe un'animazione in corso prima che finisca: utile, ad esempio, per i menu a scomparsa quando l'utente clicca rapidamente.</p>
-<div class="example"><div class="codehead"><span>Fermare uno slide a metà</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Fermare uno slide a metà</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="vai">Avvia</button>
 <button id="ferma">Ferma</button>
 <div id="box" style="width:100px;height:0;background:#0d9488;overflow:hidden"></div>
@@ -407,7 +407,7 @@ $("#ferma").click(function(){
       <article class="lesson" id="callback">
         <h2>Le funzioni callback</h2>
 <p>Una <strong>callback</strong> è una funzione eseguita <strong>quando l'animazione è finita</strong>. Serve per evitare che le azioni successive partano troppo presto.</p>
-<div class="example"><div class="codehead"><span>Eseguire codice a fine animazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Eseguire codice a fine animazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Nascondi e avvisa</button>
 <p id="t">Guardami sparire...</p>
 
@@ -424,7 +424,7 @@ $("#b").click(function(){
       <article class="lesson" id="chaining">
         <h2>Il concatenamento (chaining)</h2>
 <p>Il <strong>chaining</strong> permette di concatenare più azioni sullo stesso elemento in un'unica riga: jQuery le esegue una dopo l'altra.</p>
-<div class="example"><div class="codehead"><span>Più effetti in catena</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Più effetti in catena</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Sequenza di effetti</button>
 <div id="box" style="width:100px;height:100px;background:#4f46e5"></div>
 
@@ -443,7 +443,7 @@ $("#b").click(function(){
       <article class="lesson" id="get">
         <h2>Leggere contenuti (get)</h2>
 <p>jQuery legge i contenuti con <code class="inline">text()</code> (solo testo), <code class="inline">html()</code> (con i tag) e <code class="inline">val()</code> (valore dei campi di form).</p>
-<div class="example"><div class="codehead"><span>text(), html() e val()</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>text(), html() e val()</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p id="p">Ciao <b>mondo</b>!</p>
 <input id="campo" value="Scrivi qui">
 <button id="b">Leggi</button>
@@ -461,7 +461,7 @@ $("#b").click(function(){
       <article class="lesson" id="set">
         <h2>Impostare contenuti (set)</h2>
 <p>Gli stessi metodi <code class="inline">text()</code>, <code class="inline">html()</code> e <code class="inline">val()</code>, se ricevono un argomento, <strong>impostano</strong> il contenuto invece di leggerlo.</p>
-<div class="example"><div class="codehead"><span>Modificare testo, html e valore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Modificare testo, html e valore</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p id="p">Vecchio testo</p>
 <input id="campo" value="vecchio">
 <button id="b">Modifica</button>
@@ -478,7 +478,7 @@ $("#b").click(function(){
       <article class="lesson" id="add">
         <h2>Aggiungere elementi</h2>
 <p>Per <strong>aggiungere</strong> nuovi elementi: <code class="inline">append()</code> (alla fine), <code class="inline">prepend()</code> (all'inizio), <code class="inline">after()</code> e <code class="inline">before()</code> (fuori dall'elemento).</p>
-<div class="example"><div class="codehead"><span>append e prepend</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>append e prepend</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <ul id="lista">
   <li>Elemento esistente</li>
 </ul>
@@ -496,7 +496,7 @@ $("#b").click(function(){
       <article class="lesson" id="remove">
         <h2>Rimuovere elementi</h2>
 <p><code class="inline">remove()</code> elimina l'elemento (e tutto il suo contenuto); <code class="inline">empty()</code> svuota l'elemento ma lo lascia.</p>
-<div class="example"><div class="codehead"><span>remove() ed empty()</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>remove() ed empty()</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="contenitore" style="border:1px solid #ccc;padding:10px">
   <p>Paragrafo dentro il contenitore</p>
 </div>
@@ -513,7 +513,7 @@ $("#svuota").click(function(){ $("#contenitore").empty(); });
       <article class="lesson" id="css-classes">
         <h2>Le classi CSS</h2>
 <p>jQuery gestisce le classi con <code class="inline">addClass()</code>, <code class="inline">removeClass()</code> e <code class="inline">toggleClass()</code>: il modo migliore per cambiare aspetto a un elemento.</p>
-<div class="example"><div class="codehead"><span>Aggiungere e togliere una classe</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Aggiungere e togliere una classe</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <style>
 .importante { color: white; background: #dc2626; padding: 10px; }
 </style>
@@ -531,7 +531,7 @@ $("#b").click(function(){
       <article class="lesson" id="css">
         <h2>Il metodo css()</h2>
 <p>Il metodo <code class="inline">css()</code> legge e imposta direttamente le proprietà CSS di un elemento.</p>
-<div class="example"><div class="codehead"><span>Leggere e impostare il CSS</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Leggere e impostare il CSS</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p id="p">Testo da stilizzare</p>
 <button id="b">Applica stili</button>
 
@@ -551,7 +551,7 @@ $("#b").click(function(){
       <article class="lesson" id="dimensions">
         <h2>Le dimensioni</h2>
 <p>jQuery legge e imposta le dimensioni con <code class="inline">width()</code>, <code class="inline">height()</code>, <code class="inline">innerWidth()</code> (con il padding) e <code class="inline">outerWidth()</code> (con bordo).</p>
-<div class="example"><div class="codehead"><span>Misurare un elemento</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Misurare un elemento</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="box" style="width:150px;height:80px;padding:10px;border:5px solid #333;background:#fde68a"></div>
 <button id="b">Misura</button>
 
@@ -570,7 +570,7 @@ $("#b").click(function(){
         <h2>Navigare nel DOM</h2>
 <p>Il <strong>traversing</strong> ("attraversamento") significa muoversi nell'albero degli elementi HTML partendo da un elemento per raggiungerne altri: genitori, figli, fratelli.</p>
 <div class="note-box">📘 L'HTML è un albero: ogni elemento ha un <strong>genitore</strong> (parent), eventuali <strong>figli</strong> (children) e <strong>fratelli</strong> (siblings). jQuery offre metodi per spostarsi in ogni direzione.</div>
-<div class="example"><div class="codehead"><span>Trovare il genitore</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Trovare il genitore</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div style="border:2px solid #4f46e5;padding:10px">
   div genitore
   <p id="figlio">Sono il figlio. Cliccami il bottone.</p>
@@ -588,7 +588,7 @@ $("#b").click(function(){
       <article class="lesson" id="ancestors">
         <h2>Gli antenati (ancestors)</h2>
 <p>Gli <strong>antenati</strong> sono gli elementi "sopra": <code class="inline">parent()</code> (il genitore diretto), <code class="inline">parents()</code> (tutti gli antenati) e <code class="inline">closest()</code> (il primo antenato che corrisponde).</p>
-<div class="example"><div class="codehead"><span>parent e closest</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>parent e closest</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div class="nonno" style="border:2px solid #333;padding:15px">
   nonno
   <div style="border:2px solid #888;padding:15px">
@@ -609,7 +609,7 @@ $("#b").click(function(){
       <article class="lesson" id="descendants">
         <h2>I discendenti (descendants)</h2>
 <p>I <strong>discendenti</strong> sono gli elementi "sotto": <code class="inline">children()</code> (i figli diretti) e <code class="inline">find()</code> (tutti i discendenti che corrispondono).</p>
-<div class="example"><div class="codehead"><span>children e find</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>children e find</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="contenitore" style="border:2px solid #333;padding:10px">
   <p>Figlio 1</p>
   <p>Figlio 2</p>
@@ -628,7 +628,7 @@ $("#b").click(function(){
       <article class="lesson" id="siblings">
         <h2>I fratelli (siblings)</h2>
 <p>I <strong>fratelli</strong> condividono lo stesso genitore: <code class="inline">siblings()</code> (tutti), <code class="inline">next()</code> (il successivo) e <code class="inline">prev()</code> (il precedente).</p>
-<div class="example"><div class="codehead"><span>Evidenziare i fratelli</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Evidenziare i fratelli</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div style="padding:10px">
   <p>Primo</p>
   <p id="centro">Centro (cliccami il bottone)</p>
@@ -647,7 +647,7 @@ $("#b").click(function(){
       <article class="lesson" id="filtering">
         <h2>Il filtraggio (filtering)</h2>
 <p>Il <strong>filtraggio</strong> restringe una selezione: <code class="inline">first()</code>, <code class="inline">last()</code>, <code class="inline">eq(n)</code> (l'elemento all'indice n) e <code class="inline">filter()</code>.</p>
-<div class="example"><div class="codehead"><span>first, last ed eq</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>first, last ed eq</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <ul>
   <li>Uno</li>
   <li>Due</li>
@@ -676,7 +676,7 @@ $("#b").click(function(){
       <article class="lesson" id="load">
         <h2>Il metodo load()</h2>
 <p>Il metodo <code class="inline">load()</code> carica il contenuto di un file o di una URL <strong>dentro un elemento</strong> della pagina.</p>
-<div class="example"><div class="codehead"><span>Caricare un file in un div (codice)</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Caricare un file in un div (codice)</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <div id="contenuto">Il contenuto verra' caricato qui.</div>
 <button id="b">Carica</button>
 
@@ -695,7 +695,7 @@ $("#b").click(function(){
       <article class="lesson" id="get-post">
         <h2>I metodi get e post</h2>
 <p><code class="inline">$.get()</code> richiede dati al server (per <em>leggere</em>); <code class="inline">$.post()</code> invia dati al server (per <em>scrivere</em>, es. un form).</p>
-<div class="example"><div class="codehead"><span>$.get e $.post (codice)</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>$.get e $.post (codice)</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="leggi">Leggi (GET)</button>
 <button id="invia">Invia (POST)</button>
 
@@ -721,7 +721,7 @@ $("#invia").click(function(){
       <article class="lesson" id="noconflict">
         <h2>Il metodo noConflict()</h2>
 <p>Il simbolo <code class="inline">$</code> è usato anche da altre librerie. <code class="inline">$.noConflict()</code> libera il <code class="inline">$</code> per evitare conflitti, permettendoti di usare <code class="inline">jQuery</code> per esteso o un alias personalizzato.</p>
-<div class="example"><div class="codehead"><span>Evitare conflitti sul $</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Evitare conflitti sul $</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <p id="p">Testo</p>
 <button id="b">Cambia colore</button>
 
@@ -737,7 +737,7 @@ jq("#b").click(function(){
       <article class="lesson" id="filters">
         <h2>I filtri</h2>
 <p>I <strong>filtri</strong> selezionano elementi in base a criteri precisi usando pseudo-selettori come <code class="inline">:first</code>, <code class="inline">:last</code>, <code class="inline">:even</code>, <code class="inline">:odd</code> e <code class="inline">:contains()</code>.</p>
-<div class="example"><div class="codehead"><span>Filtri su una tabella</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Filtri su una tabella</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <table border="1" cellpadding="6">
   <tr><td>Riga 0</td></tr>
   <tr><td>Riga 1</td></tr>
@@ -764,8 +764,8 @@ $("#b").click(function(){
 
       <article class="lesson" id="editor-online">
         <h2>L'editor jQuery online</h2>
-<p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor con <strong>anteprima dal vivo</strong> già collegato a jQuery. Scrivi a sinistra, vedi il risultato a destra in tempo reale.</p>
-<div class="example"><div class="codehead"><span>Sperimenta liberamente</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
+<p>Ogni esempio del corso ha il pulsante <strong>▶ Prova tu</strong>: apre un editor con <strong>anteprima dal vivo</strong> già collegato a jQuery. Scrivi a sinistra, vedi il risultato a destra in tempo reale.</p>
+<div class="example"><div class="codehead"><span>Sperimenta liberamente</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-html"></code></pre><script type="text/plain" class="code">
 <button id="b">Magia jQuery!</button>
 <div id="box" style="width:100px;height:100px;background:#4f46e5;margin-top:10px"></div>
 
@@ -781,7 +781,7 @@ $("#b").click(function(){
 
       <article class="lesson" id="esercizi">
         <h2>Esercizi jQuery</h2>
-<p>Esercizi pratici progressivi. Svolgili nell'editor <strong>Provalo tu</strong>.</p>
+<p>Esercizi pratici progressivi. Svolgili nell'editor <strong>Prova tu</strong>.</p>
 <h3>Livello base</h3><ol><li>Crea un bottone che nasconde un paragrafo con un effetto fade</li><li>Cambia il colore di tutti i paragrafi al click</li><li>Aggiungi una voce a una lista con append()</li><li>Usa toggleClass per evidenziare un elemento</li></ol>
 <h3>Livello intermedio</h3><ol><li>Crea un pannello a fisarmonica con slideToggle()</li><li>Anima un box facendolo spostare e ingrandire</li><li>Evidenzia i fratelli di un elemento al click</li><li>Leggi il valore di un campo input e mostralo in un paragrafo</li></ol>
 <h3>Livello avanzato</h3><ol><li>Costruisci una lista "to-do": aggiungi voci da un input e rimuovile al click</li><li>Crea una galleria di immagini con effetti fade tra una e l'altra</li><li>Usa il chaining per concatenare almeno 4 effetti</li><li>Colora alternativamente le righe di una tabella con :even e :odd</li></ol>
@@ -831,7 +831,7 @@ $("#b").click(function(){
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
+      <strong>✏️ Prova tu — scrivi e guarda il risultato</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>

@@ -263,7 +263,7 @@
   <tr><td><strong>SciPy</strong></td><td>Statistica avanzata e calcolo scientifico</td></tr>
   <tr><td><strong>Scikit-learn</strong></td><td>Machine learning (regressione, classificazione...)</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Importare le librerie</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Importare le librerie</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 # Le importazioni standard della Data Science
 import pandas as pd          # tabelle di dati
 import numpy as np           # calcolo numerico
@@ -283,7 +283,7 @@ print("Minimo:", min(calorie))                       # 340
       <article class="lesson" id="dataframe">
         <h2>Il DataFrame di Pandas</h2>
         <p>Il <strong>DataFrame</strong> è la struttura dati centrale di Pandas: una tabella bidimensionale con righe e colonne etichettate. È come un foglio Excel programmabile.</p>
-<div class="example"><div class="codehead"><span>Creare e ispezionare un DataFrame</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Creare e ispezionare un DataFrame</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 
 # Creare un DataFrame da un dizionario
@@ -302,7 +302,7 @@ print(df.head(2))      # le prime 2 righe
 print(df.describe())   # statistiche riassuntive automatiche!
 </script></div>
 <h3>Caricare dati reali</h3>
-<div class="example"><div class="codehead"><span>Leggere un file CSV</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Leggere un file CSV</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 
 # Caricare un file CSV (il formato piu' comune per i dati)
@@ -321,7 +321,7 @@ print(df.tail())     # le ultime righe
       <article class="lesson" id="functions">
         <h2>Funzioni utili sui dati</h2>
         <p>Pandas offre decine di funzioni per <strong>esplorare e riassumere</strong> i dati con una riga di codice. Sono il pane quotidiano dell'analisi.</p>
-<div class="example"><div class="codehead"><span>Funzioni di analisi</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Funzioni di analisi</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 
 df = pd.DataFrame({
@@ -361,7 +361,7 @@ print(df.groupby("durata")["calorie"].mean())
   <li>🔤 <strong>Formato sbagliato</strong> (date come testo, numeri con la virgola)</li>
   <li>📏 <strong>Valori anomali</strong> (outlier: un'età di 300 anni)</li>
 </ul>
-<div class="example"><div class="codehead"><span>Pulire un DataFrame</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Pulire un DataFrame</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 import numpy as np
 
@@ -400,7 +400,7 @@ print(df)
   <li><strong>a</strong> è la <strong>pendenza</strong> (slope): di quanto cresce f(x) quando x aumenta di 1</li>
   <li><strong>b</strong> è l'<strong>intercetta</strong> (intercept): il valore di f(x) quando x = 0</li>
 </ul>
-<div class="example"><div class="codehead"><span>Una funzione lineare in Python</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Una funzione lineare in Python</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 # f(x) = 2x + 80
 # Esempio: stima delle calorie in base ai minuti di allenamento
 def f(x):
@@ -419,7 +419,7 @@ print(f(60))   # 200 -> piu' minuti, piu' calorie
       <article class="lesson" id="plotting">
         <h2>Disegnare le funzioni</h2>
         <p><strong>Visualizzare</strong> i dati è essenziale: un grafico comunica in un istante ciò che una tabella di numeri nasconde. In Python usiamo <strong>Matplotlib</strong>.</p>
-<div class="example"><div class="codehead"><span>Disegnare una funzione lineare</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Disegnare una funzione lineare</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -437,7 +437,7 @@ plt.grid(True)
 plt.show()
 </script></div>
 <h3>Il grafico a dispersione (scatter)</h3>
-<div class="example"><div class="codehead"><span>Scatter plot: dati reali vs retta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Scatter plot: dati reali vs retta</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import matplotlib.pyplot as plt
 
 durata  = [60, 60, 45, 45, 30, 30]
@@ -461,7 +461,7 @@ plt.show()
 <p style="text-align:center;font-size:1.1rem"><code class="inline">a = (y₂ − y₁) / (x₂ − x₁)</code></p>
 <h3>L'intercetta (intercept, <em>b</em>)</h3>
 <p>È il <strong>valore di y quando x = 0</strong>: il punto in cui la retta tocca l'asse verticale.</p>
-<div class="example"><div class="codehead"><span>Calcolare pendenza e intercetta</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Calcolare pendenza e intercetta</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 # Due punti noti: (30, 140) e (60, 200)
 x1, y1 = 30, 140
 x2, y2 = 60, 200
@@ -493,7 +493,7 @@ print(retta(45))   # 170 -> previsione per 45 minuti
   <tr><td><strong>Mediana</strong> (median)</td><td>Il valore centrale, ordinando i dati</td></tr>
   <tr><td><strong>Moda</strong> (mode)</td><td>Il valore che compare più spesso</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Media, mediana e moda</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Media, mediana e moda</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import numpy as np
 from scipy import stats
 
@@ -510,7 +510,7 @@ print("Moda:", stats.mode(eta, keepdims=False).mode)  # 25
         <h2>I percentili</h2>
         <p>Un <strong>percentile</strong> indica il valore sotto al quale cade una certa percentuale dei dati. Il 75° percentile è il valore sotto cui sta il 75% delle osservazioni.</p>
 <p>Sono utilissimi per capire la <strong>distribuzione</strong>: l'altezza al 90° percentile dei bambini di un'età è quella superata solo dal 10% più alto.</p>
-<div class="example"><div class="codehead"><span>Calcolare i percentili</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Calcolare i percentili</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import numpy as np
 
 eta = [5, 31, 43, 48, 50, 41, 7, 11, 15, 39,
@@ -531,7 +531,7 @@ print(np.percentile(eta, [25, 50, 75]))
       <article class="lesson" id="std">
         <h2>La deviazione standard</h2>
         <p>La <strong>deviazione standard</strong> misura quanto i dati sono <strong>sparpagliati</strong> attorno alla media. Bassa = i valori sono vicini alla media; alta = molto dispersi.</p>
-<div class="example"><div class="codehead"><span>Deviazione standard</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Deviazione standard</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import numpy as np
 
 # Due gruppi con la STESSA media (100) ma dispersione diversa
@@ -553,7 +553,7 @@ print("Media B:", np.mean(gruppo_b), "Std B:", np.std(gruppo_b))
         <h2>La varianza</h2>
         <p>La <strong>varianza</strong> è un'altra misura di dispersione, strettamente legata alla deviazione standard: la <strong>deviazione standard è la radice quadrata della varianza</strong>.</p>
 <p>Si calcola facendo la media dei <strong>quadrati delle distanze</strong> di ogni valore dalla media. Si eleva al quadrato per evitare che scarti positivi e negativi si annullino.</p>
-<div class="example"><div class="codehead"><span>Varianza e deviazione standard</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Varianza e deviazione standard</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import numpy as np
 
 dati = [32, 111, 138, 28, 59, 77, 97]
@@ -581,7 +581,7 @@ print("Varianza a mano:", np.mean(scarti_quadr))
   <li><strong>0</strong>: nessuna relazione lineare</li>
   <li><strong>−1</strong>: correlazione negativa perfetta (una cresce, l'altra cala)</li>
 </ul>
-<div class="example"><div class="codehead"><span>Calcolare la correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Calcolare la correlazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 
 df = pd.DataFrame({
@@ -601,7 +601,7 @@ print(df["durata"].corr(df["calorie"]))   # ~0.98 -> forte e positiva!
       <article class="lesson" id="corr-matrix">
         <h2>La matrice di correlazione</h2>
         <p>Quando le variabili sono molte, la <strong>matrice di correlazione</strong> mostra in un colpo d'occhio la correlazione tra <em>ogni coppia</em> di colonne.</p>
-<div class="example"><div class="codehead"><span>Matrice di correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Matrice di correlazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 
 df = pd.DataFrame({
@@ -617,7 +617,7 @@ print(df.corr())
 # I valori fuori diagonale mostrano le relazioni tra coppie
 </script></div>
 <h3>Visualizzarla: la heatmap</h3>
-<div class="example"><div class="codehead"><span>Heatmap della correlazione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Heatmap della correlazione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -656,7 +656,7 @@ plt.show()
       <article class="lesson" id="linear-regression">
         <h2>La regressione lineare</h2>
         <p>La <strong>regressione lineare</strong> è il modello predittivo più importante: trova la <strong>retta che meglio approssima</strong> la relazione tra una variabile di ingresso (x) e una di uscita (y), per poi <strong>fare previsioni</strong>.</p>
-<div class="example"><div class="codehead"><span>La tua prima regressione</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>La tua prima regressione</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 from scipy import stats
 
 # Durata dell'allenamento (x) e calorie bruciate (y)
@@ -682,7 +682,7 @@ print("50 min ->", prevedi(50), "calorie")
       <article class="lesson" id="regression-table">
         <h2>La tabella di regressione</h2>
         <p>Per analisi serie si usa <strong>statsmodels</strong>, che produce una <strong>tabella di regressione</strong> completa: non solo la previsione, ma anche quanto fidarsi del modello.</p>
-<div class="example"><div class="codehead"><span>Regressione con statsmodels</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Regressione con statsmodels</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import statsmodels.api as sm
 
 durata  = [30, 45, 45, 60, 60, 90]
@@ -721,7 +721,7 @@ print(model.summary())
   <tr><td><strong>const</strong> (intercetta)</td><td>Il valore previsto di y quando x = 0</td></tr>
   <tr><td><strong>x1</strong> (pendenza)</td><td>Di quanto cambia y per ogni unità di x in più</td></tr>
 </table>
-<div class="example"><div class="codehead"><span>Estrarre e usare i coefficienti</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Estrarre e usare i coefficienti</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import statsmodels.api as sm
 
 durata  = [30, 45, 45, 60, 60, 90]
@@ -750,7 +750,7 @@ print(f"Ogni minuto aggiunge {pendenza:.1f} calorie")
   <li><strong>P-value piccolo</strong> (&lt; 0,05): la variabile è <strong>statisticamente significativa</strong>, la relazione è probabilmente reale</li>
   <li><strong>P-value grande</strong> (&gt; 0,05): non abbiamo prove sufficienti, la relazione potrebbe essere casuale</li>
 </ul>
-<div class="example"><div class="codehead"><span>Leggere i P-value</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Leggere i P-value</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import statsmodels.api as sm
 
 durata  = [30, 45, 45, 60, 60, 90]
@@ -778,7 +778,7 @@ if model.pvalues["x1"] < 0.05:
   <li><strong>R² = 0,8</strong>: spiega l'80% — buon modello</li>
   <li><strong>R² = 0</strong>: il modello non spiega nulla</li>
 </ul>
-<div class="example"><div class="codehead"><span>Valutare il modello con R²</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Valutare il modello con R²</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import statsmodels.api as sm
 
 durata  = [30, 45, 45, 60, 60, 90]
@@ -799,7 +799,7 @@ print(f"Il modello spiega il {model.rsquared*100:.1f}% della variabilita'")
       <article class="lesson" id="regression-case">
         <h2>Caso pratico completo</h2>
         <p>Mettiamo tutto insieme in un <strong>caso completo</strong>: dalla preparazione dei dati alla previsione, con valutazione del modello e grafico finale.</p>
-<div class="example"><div class="codehead"><span>Progetto: prevedere le calorie</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Progetto: prevedere le calorie</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
@@ -841,7 +841,7 @@ plt.legend(); plt.show()
 
       <article class="lesson" id="editor-online">
         <h2>Praticare la Data Science online</h2>
-        <p>Ogni esempio del corso ha il pulsante <strong>▶ Provalo tu</strong>: apre un editor dove puoi <strong>leggere e modificare</strong> il codice Python con la sintassi colorata. Per <strong>eseguirlo davvero</strong> (con Pandas, NumPy e i grafici) usa uno di questi ambienti gratuiti.</p>
+        <p>Ogni esempio del corso ha il pulsante <strong>▶ Prova tu</strong>: apre un editor dove puoi <strong>leggere e modificare</strong> il codice Python con la sintassi colorata. Per <strong>eseguirlo davvero</strong> (con Pandas, NumPy e i grafici) usa uno di questi ambienti gratuiti.</p>
 <h3>Dove eseguire il codice</h3>
 <ul>
   <li>📓 <strong><a href="https://colab.research.google.com" target="_blank" rel="noreferrer">Google Colab</a></strong> — notebook Python nel browser, gratis, con Pandas/NumPy/Matplotlib già pronti: l'ideale per la Data Science</li>
@@ -849,7 +849,7 @@ plt.legend(); plt.show()
   <li>📊 <strong><a href="https://www.kaggle.com/code" target="_blank" rel="noreferrer">Kaggle Notebooks</a></strong> — notebook + migliaia di dataset reali pronti all'uso</li>
   <li>💻 <strong>Anaconda</strong> — la distribuzione Python con tutte le librerie, da installare sul tuo computer</li>
 </ul>
-<div class="example"><div class="codehead"><span>Il tuo primo notebook</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
+<div class="example"><div class="codehead"><span>Il tuo primo notebook</span><button class="btn-try">▶ Prova tu</button></div><pre class="codeview"><code class="language-python"></code></pre><script type="text/plain" class="code">
 # Incolla questo in una cella di Google Colab e premi Esegui:
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1023,7 +1023,7 @@ plt.show()
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — leggi e modifica il codice Python</strong>
+      <strong>✏️ Prova tu — leggi e modifica il codice Python</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

@@ -55,6 +55,27 @@
       .course-wrap { grid-template-columns: 1fr; }
       .course-side { position: static; max-height: none; }
     }
+  
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-run { background: #04AA6D; color: #fff; }
+    .ed-run:hover { background: #038a59; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-packet-tracer.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -245,7 +266,7 @@
         <h2>La CLI di Cisco IOS</h2>
         <p>Router e switch Cisco si configurano tramite la <strong>CLI</strong> (Command Line Interface) del sistema operativo <strong>IOS</strong>, dalla scheda <em>CLI</em> del dispositivo. Esistono diverse <strong>modalità</strong>, riconoscibili dal prompt:</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS — modalità</span></div>
+          <div class="codehead"><span>Cisco IOS — modalità</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code><span class="cmt">! Modalità utente (sola lettura)</span>
 Router&gt;
 <span class="cmt">! Modalità privilegiata (enable)</span>
@@ -261,7 +282,7 @@ Router(config)#</code></pre>
         <h2>Configurare uno switch</h2>
         <p>Una configurazione di base assegna un nome allo switch e protegge l'accesso con una password.</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS</span></div>
+          <div class="codehead"><span>Cisco IOS</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code>Switch&gt; <span class="cmd">enable</span>
 Switch# <span class="cmd">configure terminal</span>
 Switch(config)# <span class="cmd">hostname SW-Aula1</span>
@@ -275,7 +296,7 @@ SW-Aula1# <span class="cmd">write memory</span>   <span class="cmt">! salva la c
         <h2>Configurare un router</h2>
         <p>Il compito principale del router è dare un indirizzo IP alle sue interfacce, che faranno da <strong>gateway</strong> per le reti collegate.</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS</span></div>
+          <div class="codehead"><span>Cisco IOS</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code>Router&gt; <span class="cmd">enable</span>
 Router# <span class="cmd">configure terminal</span>
 Router(config)# <span class="cmd">hostname R1</span>
@@ -291,7 +312,7 @@ R1(config-if)# <span class="cmd">exit</span></code></pre>
         <h2>Le VLAN</h2>
         <p>Una <strong>VLAN</strong> (Virtual LAN) divide logicamente uno switch in più reti separate, anche se i dispositivi sono fisicamente connessi allo stesso switch. Migliora sicurezza e organizzazione (es. VLAN “Studenti” e VLAN “Docenti”).</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS</span></div>
+          <div class="codehead"><span>Cisco IOS</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code>SW(config)# <span class="cmd">vlan 10</span>
 SW(config-vlan)# <span class="cmd">name Studenti</span>
 SW(config-vlan)# <span class="cmd">exit</span>
@@ -305,7 +326,7 @@ SW(config-if)# <span class="cmd">switchport access vlan 10</span></code></pre>
         <h2>Il routing statico</h2>
         <p>Per far comunicare due reti diverse, il router deve sapere come raggiungerle. Con il <strong>routing statico</strong> l'amministratore inserisce manualmente le rotte. (In alternativa esistono i protocolli dinamici come OSPF e RIP.)</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS</span></div>
+          <div class="codehead"><span>Cisco IOS</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code><span class="cmt">! Per raggiungere la rete 192.168.2.0 passa dal router 10.0.0.2</span>
 R1(config)# <span class="cmd">ip route 192.168.2.0 255.255.255.0 10.0.0.2</span></code></pre>
         </div>
@@ -315,7 +336,7 @@ R1(config)# <span class="cmd">ip route 192.168.2.0 255.255.255.0 10.0.0.2</span>
         <h2>Il DHCP</h2>
         <p>Il <strong>DHCP</strong> (Dynamic Host Configuration Protocol) assegna automaticamente gli indirizzi IP ai dispositivi della rete, così non devi configurarli a mano uno per uno. Si può attivare sul router.</p>
         <div class="example">
-          <div class="codehead"><span>Cisco IOS</span></div>
+          <div class="codehead"><span>Cisco IOS</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code>R1(config)# <span class="cmd">ip dhcp pool LAN_AULA</span>
 R1(dhcp-config)# <span class="cmd">network 192.168.1.0 255.255.255.0</span>
 R1(dhcp-config)# <span class="cmd">default-router 192.168.1.1</span>
@@ -328,7 +349,7 @@ R1(dhcp-config)# <span class="cmd">dns-server 8.8.8.8</span></code></pre>
         <h2>Comandi di verifica</h2>
         <p>Per controllare che la rete funzioni, si usano comandi di diagnostica dai PC e dai dispositivi:</p>
         <div class="example">
-          <div class="codehead"><span>Comandi di test</span></div>
+          <div class="codehead"><span>Comandi di test</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeblock"><code><span class="cmt">! Dal prompt dei comandi di un PC:</span>
 <span class="cmd">ping 192.168.1.11</span>      <span class="cmt">! verifica la connettività</span>
 <span class="cmd">ipconfig</span>              <span class="cmt">! mostra la configurazione IP</span>
@@ -352,6 +373,24 @@ R1# <span class="cmd">show ip route</span>             <span class="cmt">! tabel
   </div>
 </section>
 
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Prova tu — leggi e modifica il codice Packet Tracer</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note Packet Tracer"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -365,5 +404,38 @@ R1# <span class="cmd">show ip route</span>             <span class="cmt">! tabel
 </footer>
 
 <script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+      mode: "shell", lineNumbers: true, lineWrapping: false,
+      tabSize: 2, indentUnit: 2, theme: 'default', readOnly: false
+    });
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6"><h3 style="margin:0 0 .6rem;color:#1e293b">🌐 Comandi Cisco IOS</h3><p>I comandi Cisco IOS vengono eseguiti su <b>router e switch Cisco reali</b> oppure nel simulatore <b>Cisco Packet Tracer</b>. Non possono essere eseguiti nel browser.</p><p>Puoi <b>leggere e modificare</b> i comandi qui, poi provarli in Packet Tracer.</p></body>';
+    }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      cm.setValue(code);
+      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
+      note();
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeEl) return;
+      var raw = codeEl.textContent;
+      var btn = ex.querySelector('.btn-try');
+      if (btn) btn.addEventListener('click', function(){ openEditor(raw); });
+    });
+  })();
+</script>
 </body>
 </html>

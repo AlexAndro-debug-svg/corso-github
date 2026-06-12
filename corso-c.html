@@ -266,7 +266,7 @@
         <p>C è un linguaggio <strong>compilato</strong>, <strong>procedurale</strong> e di “basso livello” rispetto ad altri: dà al programmatore il controllo diretto della memoria. È più severo e tecnico, ma capirlo ti fa comprendere davvero come funziona un computer.</p>
         <div class="note-box">📌 C non si esegue nel browser: serve un compilatore (es. GCC). In questo corso gli esempi si <strong>leggono e si modificano</strong> con la sintassi colorata.</div>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -281,7 +281,7 @@ int main() {
         <h2>Installare C (Get Started)</h2>
         <p>Per compilare codice C ti serve un <strong>compilatore</strong>. Il più diffuso è <strong>GCC</strong> (su Linux/macOS spesso già presente, su Windows tramite MinGW). Come editor si usano VS Code, Code::Blocks o Dev-C++.</p>
         <div class="example">
-          <div class="codehead"><span>Terminale</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Terminale</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">// gcc programma.c -o programma   -> compila
 // ./programma                     -> esegue (Linux/macOS)
@@ -293,7 +293,7 @@ int main() {
         <h2>Sintassi e primo programma</h2>
         <p>Ogni programma C parte dalla funzione <code class="inline">main()</code>. La direttiva <code class="inline">#include</code> importa librerie (qui <code class="inline">stdio.h</code> per l'input/output). Le istruzioni terminano con <code class="inline">;</code> e i blocchi sono tra <code class="inline">{ }</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -309,7 +309,7 @@ int main() {
         <h2>Output: la funzione printf</h2>
         <p><code class="inline">printf()</code> stampa testo a schermo. Usa gli <strong>specificatori di formato</strong> per inserire valori: <code class="inline">%d</code> (interi), <code class="inline">%f</code> (decimali), <code class="inline">%c</code> (caratteri), <code class="inline">%s</code> (stringhe). <code class="inline">\n</code> manda a capo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -327,7 +327,7 @@ int main() {
         <h2>I commenti</h2>
         <p>Commenti su una riga con <code class="inline">//</code>, su più righe con <code class="inline">/* ... */</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -345,7 +345,7 @@ int main() {
         <h2>Le variabili</h2>
         <p>In C ogni variabile va <strong>dichiarata con il suo tipo</strong> prima dell'uso: <code class="inline">tipo nome = valore;</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -377,7 +377,7 @@ int main() {
         <h2>Conversione di tipo (casting)</h2>
         <p>La <strong>conversione di tipo</strong> trasforma un valore da un tipo a un altro. Può essere <strong>implicita</strong> (automatica) o <strong>esplicita</strong> (cast manuale con <code class="inline">(tipo)</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -405,7 +405,7 @@ int main() {
         <h2>Le costanti</h2>
         <p>Una costante non può cambiare valore. Si dichiara con <code class="inline">const</code> oppure con la direttiva <code class="inline">#define</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #define PI 3.14159
@@ -423,7 +423,7 @@ int main() {
         <h2>Gli operatori</h2>
         <p>Aritmetici (<code class="inline">+ - * / %</code>), di confronto (<code class="inline">== != &gt; &lt;</code>) e logici (<code class="inline">&amp;&amp; || !</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -442,7 +442,7 @@ int main() {
         <h2>Booleans in C</h2>
         <p>C non aveva un tipo booleano nativo fino a C99. Includendo <code class="inline">stdbool.h</code> si possono usare <code class="inline">bool</code>, <code class="inline">true</code> e <code class="inline">false</code>. Senza la libreria, 0 è falso e qualsiasi altro valore è vero.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <stdbool.h>
@@ -467,7 +467,7 @@ int main() {
         <h2>Input: la funzione scanf</h2>
         <p><code class="inline">scanf()</code> legge dati dalla tastiera. Richiede l'operatore <code class="inline">&amp;</code> davanti al nome della variabile (indirizzo in memoria).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -484,7 +484,7 @@ int main() {
       <article class="lesson" id="ifelse">
         <h2>Le condizioni: if, else if, else</h2>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -505,7 +505,7 @@ int main() {
       <article class="lesson" id="switch">
         <h2>Il costrutto switch</h2>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -524,7 +524,7 @@ int main() {
       <article class="lesson" id="while">
         <h2>Il ciclo while</h2>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -542,7 +542,7 @@ int main() {
       <article class="lesson" id="for">
         <h2>Il ciclo for</h2>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -560,7 +560,7 @@ int main() {
         <h2>Break e Continue</h2>
         <p><code class="inline">break</code> interrompe immediatamente il ciclo; <code class="inline">continue</code> salta all'iterazione successiva.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -587,7 +587,7 @@ int main() {
         <h2>Gli array</h2>
         <p>Un <strong>array</strong> contiene più valori dello stesso tipo, con dimensione fissa. Si accede con l'indice (da 0).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -607,7 +607,7 @@ int main() {
         <h2>Le stringhe</h2>
         <p>In C una stringa è un <strong>array di caratteri</strong> che termina con il carattere nullo <code class="inline">'\0'</code>. La libreria <code class="inline">string.h</code> offre funzioni come <code class="inline">strlen()</code>, <code class="inline">strcpy()</code>, <code class="inline">strcat()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <string.h>
@@ -625,7 +625,7 @@ int main() {
         <h2>Le funzioni</h2>
         <p>Una <strong>funzione</strong> raggruppa codice riutilizzabile, con un tipo di ritorno, un nome e dei parametri. Si dichiara prima del <code class="inline">main</code> (o con un prototipo).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -645,7 +645,7 @@ int main() {
         <h2>Indirizzo di memoria</h2>
         <p>Ogni variabile è salvata in una cella di memoria con un proprio <strong>indirizzo</strong>. L'operatore <code class="inline">&amp;</code> restituisce l'indirizzo di una variabile, che si stampa con <code class="inline">%p</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -664,7 +664,7 @@ int main() {
         <h2>I puntatori</h2>
         <p>I <strong>puntatori</strong> sono la caratteristica più potente (e temuta) di C: una variabile che contiene l'<strong>indirizzo di memoria</strong> di un'altra variabile. Si dichiarano con <code class="inline">*</code> e si ottiene l'indirizzo con <code class="inline">&amp;</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -688,7 +688,7 @@ int main() {
         <h2>Parametri delle funzioni</h2>
         <p>Le funzioni ricevono dati tramite i <strong>parametri</strong>. In C il passaggio è <strong>per valore</strong>: la funzione riceve una copia. Per modificare l'originale si passa un puntatore (passaggio per riferimento).</p>
         <div class="example">
-          <div class="codehead"><span>Per valore vs riferimento</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Per valore vs riferimento</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -711,7 +711,7 @@ int main() {
         <h2>Scope delle variabili</h2>
         <p>Lo <strong>scope</strong> determina dove una variabile è visibile. Le variabili <strong>locali</strong> esistono solo nel blocco in cui sono dichiarate; le <strong>globali</strong> sono visibili ovunque.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -736,7 +736,7 @@ int main() {
         <h2>Dichiarazione di funzione (prototipi)</h2>
         <p>Un <strong>prototipo</strong> dichiara la firma di una funzione prima del suo uso, separando dichiarazione e definizione. Permette di definire le funzioni dopo <code class="inline">main()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -762,7 +762,7 @@ void saluta(void) { printf("Ciao!\n"); }</script>
         <h2>Funzioni matematiche</h2>
         <p>La libreria <code class="inline">math.h</code> offre funzioni matematiche avanzate. Ricorda di compilare con <code class="inline">-lm</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <math.h>
@@ -783,7 +783,7 @@ int main() {
         <h2>Funzioni inline</h2>
         <p>La parola chiave <code class="inline">inline</code> suggerisce al compilatore di inserire il corpo della funzione direttamente nel punto di chiamata, eliminando l'overhead della chiamata. Utile per funzioni piccole e frequenti.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -805,7 +805,7 @@ int main() {
         <h2>Ricorsione</h2>
         <p>Una funzione <strong>ricorsiva</strong> chiama se stessa. Serve sempre un <em>caso base</em> che ferma la ricorsione, altrimenti si ha uno stack overflow.</p>
         <div class="example">
-          <div class="codehead"><span>Fattoriale e potenza</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Fattoriale e potenza</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -832,7 +832,7 @@ int main() {
         <h2>Puntatori a funzione</h2>
         <p>Un <strong>puntatore a funzione</strong> memorizza l'indirizzo di una funzione, permettendo di passarla come argomento o sceglierla a runtime (callback).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -858,7 +858,7 @@ int main() {
         <h2>Creare file in C</h2>
         <p>Si apre (creandolo) un file con <code class="inline">fopen()</code> in modalità <code class="inline">"w"</code> (scrittura). Restituisce un puntatore <code class="inline">FILE*</code> da chiudere con <code class="inline">fclose()</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -886,7 +886,7 @@ int main() {
         <h2>Scrivere su file</h2>
         <p>Con <code class="inline">fprintf()</code> si scrive testo formattato in un file, esattamente come <code class="inline">printf()</code> su schermo.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -910,7 +910,7 @@ int main() {
         <h2>Leggere da file</h2>
         <p>Con <code class="inline">fgets()</code> si legge una riga alla volta finché non si raggiunge la fine del file (<code class="inline">EOF</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -937,7 +937,7 @@ int main() {
         <h2>Le struct</h2>
         <p>Una <strong>struct</strong> raggruppa più variabili (anche di tipo diverso) in un unico tipo personalizzato: è l'antenato degli oggetti.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -959,7 +959,7 @@ int main() {
         <h2>Struct annidate</h2>
         <p>Una struct può contenere altre struct come campi. Utile per modellare dati gerarchici (es. uno studente che contiene una data).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -985,7 +985,7 @@ int main() {
         <h2>Struct e puntatori</h2>
         <p>Con un puntatore a struct si accede ai campi con l'operatore freccia <code class="inline">-&gt;</code> invece del punto. È il modo più efficiente per passare struct alle funzioni.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1010,7 +1010,7 @@ int main() {
         <h2>Union</h2>
         <p>Una <strong>union</strong> è simile a una struct, ma tutti i campi condividono la stessa area di memoria. Occupa lo spazio del campo più grande e può contenere un solo valore alla volta.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1038,7 +1038,7 @@ int main() {
         <h2>typedef</h2>
         <p><code class="inline">typedef</code> crea un alias (un nuovo nome) per un tipo esistente. Si usa spesso per semplificare la sintassi delle struct.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1064,7 +1064,7 @@ int main() {
         <h2>Enum</h2>
         <p>Un <strong>enum</strong> definisce un insieme di costanti intere con nomi leggibili. Per default partono da 0 e incrementano di 1.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1090,7 +1090,7 @@ int main() {
         <h2>La gestione della memoria</h2>
         <p>In C il programmatore può allocare memoria dinamicamente con <code class="inline">malloc()</code> e liberarla con <code class="inline">free()</code> (libreria <code class="inline">stdlib.h</code>). È potente ma rischioso: dimenticare <code class="inline">free()</code> causa <em>memory leak</em>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <stdlib.h>
@@ -1112,7 +1112,7 @@ int main() {
         <h2>Gestione errori in C</h2>
         <p>C non ha le eccezioni: gli errori si gestiscono controllando i <strong>valori di ritorno</strong> delle funzioni e la variabile globale <code class="inline">errno</code> (libreria <code class="inline">errno.h</code>).</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <errno.h>
@@ -1148,7 +1148,7 @@ int main() {
         <h2>NULL e puntatori nulli</h2>
         <p><code class="inline">NULL</code> è un puntatore speciale che non punta a nulla. Si usa per indicare "nessun valore" e va sempre controllato prima di dereferenziare un puntatore.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <stdlib.h>
@@ -1178,7 +1178,7 @@ int main() {
         <h2>Validazione dell'input</h2>
         <p>Validare l'input dell'utente previene crash e comportamenti imprevisti. <code class="inline">scanf()</code> restituisce il numero di valori letti correttamente: controllalo sempre.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1205,7 +1205,7 @@ int main() {
         <h2>Data e ora</h2>
         <p>La libreria <code class="inline">time.h</code> fornisce funzioni per gestire data e ora di sistema.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <time.h>
@@ -1227,7 +1227,7 @@ int main() {
         <h2>Numeri casuali</h2>
         <p>Le funzioni <code class="inline">rand()</code> e <code class="inline">srand()</code> (libreria <code class="inline">stdlib.h</code>) generano numeri pseudo-casuali. Si inizializza il seme con <code class="inline">srand(time(NULL))</code>.</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <stdlib.h>
@@ -1251,7 +1251,7 @@ int main() {
         <h2>Macro e preprocessore</h2>
         <p>Le <strong>macro</strong> (<code class="inline">#define</code>) sono sostituzioni di testo effettuate dal preprocessore prima della compilazione. Si usano per costanti e piccole "funzioni".</p>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1279,7 +1279,7 @@ int main() {
           <tr><td><code>register</code></td><td>Suggerisce di tenere la variabile in un registro CPU</td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>static in azione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>static in azione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1311,7 +1311,7 @@ int main() {
           <tr><td><code>&gt;&gt;</code></td><td>Shift destra</td><td><code>5 &gt;&gt; 1 = 2</code></td></tr>
         </tbody></table>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1333,7 +1333,7 @@ int main() {
         <p>Esempi reali e completi per consolidare la programmazione in C.</p>
         <h3>Numeri primi fino a N</h3>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1351,7 +1351,7 @@ int main() {
         </div>
         <h3>Ordinamento bubble sort</h3>
         <div class="example">
-          <div class="codehead"><span>Esempio</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Esempio</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1414,7 +1414,7 @@ int main() {
 
         <h3>Esercizio 1 — Fattoriale</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1431,7 +1431,7 @@ int main() {
 
         <h3>Esercizio 2 — Inversione di una stringa</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <string.h>
@@ -1449,7 +1449,7 @@ int main() {
 
         <h3>Esercizio 3 — Massimo di un array</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1466,7 +1466,7 @@ int main() {
 
         <h3>Esercizio 4 — Conta vocali</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 #include <ctype.h>
@@ -1485,7 +1485,7 @@ int main() {
 
         <h3>Esercizio 5 — Serie di Fibonacci</h3>
         <div class="example">
-          <div class="codehead"><span>Soluzione</span><button class="btn-try">Provalo tu ▶</button></div>
+          <div class="codehead"><span>Soluzione</span><button class="btn-try">Prova tu ▶</button></div>
           <pre class="codeview"><code class="language-c"></code></pre>
           <script type="text/plain" class="code">#include <stdio.h>
 
@@ -1708,7 +1708,7 @@ int main() {
 <div class="editor-overlay" id="editor">
   <div class="editor-box">
     <div class="editor-top">
-      <strong>✏️ Provalo tu — leggi e modifica il codice C</strong>
+      <strong>✏️ Prova tu — leggi e modifica il codice C</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>

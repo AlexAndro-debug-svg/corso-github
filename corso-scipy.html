@@ -55,6 +55,27 @@
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
     .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-run { background: #04AA6D; color: #fff; }
+    .ed-run:hover { background: #038a59; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-scipy.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -174,7 +195,7 @@
 <article class="lesson" id="install">
 <h2>Installazione e importazione</h2>
 <div class="example">
-<div class="codehead"><span>Installazione</span></div>
+<div class="codehead"><span>Installazione</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Nel terminale
 pip install scipy
 
@@ -184,7 +205,7 @@ pip install scipy
 # Spesso insieme a NumPy (richiesto)
 pip install numpy scipy</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Importazione e versione</span></div>
+<div class="codehead"><span>Importazione e versione</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import scipy
 print(scipy.__version__)   # es. 1.13.0
 
@@ -200,7 +221,7 @@ print(constants.pi)        # 3.141592653589793</code></pre>
 <h2>Costanti SciPy</h2>
 <p>Il modulo <code class="inline">scipy.constants</code> offre un grande catalogo di costanti fisiche e matematiche, oltre a fattori di conversione tra unità di misura.</p>
 <div class="example">
-<div class="codehead"><span>Costanti principali</span></div>
+<div class="codehead"><span>Costanti principali</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy import constants
 
 print(constants.pi)          # 3.141592653589793
@@ -211,7 +232,7 @@ print(constants.G)           # costante gravitazionale
 print(constants.e)           # carica elementare
 print(constants.Avogadro)    # 6.022e23</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Fattori di conversione (unità)</span></div>
+<div class="codehead"><span>Fattori di conversione (unità)</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy import constants
 
 # Tempo (in secondi)
@@ -245,7 +266,7 @@ print(constants.unit(&quot;speed of light in vacuum&quot;))</code></pre>
 <p>Il modulo <code class="inline">scipy.optimize</code> offre algoritmi per <strong>trovare le radici</strong> di un'equazione e per <strong>minimizzare</strong> funzioni — operazioni centrali nel machine learning e nell'ingegneria.</p>
 <h3>Trovare le radici di un'equazione</h3>
 <div class="example">
-<div class="codehead"><span>root — risolvere f(x) = 0</span></div>
+<div class="codehead"><span>root — risolvere f(x) = 0</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy.optimize import root
 from math import cos
 
@@ -259,7 +280,7 @@ print(soluzione.fun)      # ~0  (valore di f nella soluzione)</code></pre>
 </div>
 <h3>Minimizzare una funzione</h3>
 <div class="example">
-<div class="codehead"><span>minimize — trovare il minimo</span></div>
+<div class="codehead"><span>minimize — trovare il minimo</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy.optimize import minimize
 
 # Minimizza  f(x) = x^2 + x + 2
@@ -290,7 +311,7 @@ print(ris2.x)        # [1.  2.5]</code></pre>
 <h2>Dati sparsi (sparse)</h2>
 <p>Una <strong>matrice sparsa</strong> è una matrice in cui la maggior parte degli elementi è zero. Memorizzare solo gli elementi non-zero risparmia enormi quantità di memoria — fondamentale in NLP, sistemi di raccomandazione e reti.</p>
 <div class="example">
-<div class="codehead"><span>Creare matrici sparse</span></div>
+<div class="codehead"><span>Creare matrici sparse</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.sparse import csr_matrix
 
@@ -308,7 +329,7 @@ print(sparse)
 print(sparse.data)          # [1 2 3]
 print(sparse.count_nonzero())  # 3</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Operazioni su matrici sparse</span></div>
+<div class="codehead"><span>Operazioni su matrici sparse</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.sparse import csr_matrix
 
@@ -342,7 +363,7 @@ print(s.sum())   # 4</code></pre>
 <h2>Grafi (csgraph)</h2>
 <p>Il modulo <code class="inline">scipy.sparse.csgraph</code> implementa algoritmi classici sui <strong>grafi</strong>, rappresentati come matrici di adiacenza sparse.</p>
 <div class="example">
-<div class="codehead"><span>Componenti connesse</span></div>
+<div class="codehead"><span>Componenti connesse</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components
@@ -359,7 +380,7 @@ n, etichette = connected_components(grafo)
 print(n)          # numero di componenti connesse
 print(etichette)  # a quale componente appartiene ogni nodo</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Cammino minimo (Dijkstra)</span></div>
+<div class="codehead"><span>Cammino minimo (Dijkstra)</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import dijkstra, floyd_warshall
@@ -393,7 +414,7 @@ print(floyd_warshall(grafo, directed=False))</code></pre>
 <h2>Dati spaziali (spatial)</h2>
 <p>Il modulo <code class="inline">scipy.spatial</code> gestisce dati nello spazio: calcolo di distanze, triangolazioni, inviluppi convessi e ricerche di vicinato efficienti con i KD-Tree.</p>
 <div class="example">
-<div class="codehead"><span>Distanze tra punti</span></div>
+<div class="codehead"><span>Distanze tra punti</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy.spatial.distance import euclidean, cityblock, cosine
 
 p1 = (1, 0, 0)
@@ -409,7 +430,7 @@ print(cityblock(p1, p2))   # 18
 print(cosine([1, 0], [0, 1]))   # 1.0 (ortogonali)
 print(cosine([1, 1], [1, 1]))   # 0.0 (identici)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Triangolazione e Convex Hull</span></div>
+<div class="codehead"><span>Triangolazione e Convex Hull</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.spatial import Delaunay, ConvexHull
 
@@ -428,7 +449,7 @@ print(hull.vertices)   # punti sul bordo esterno
 print(hull.area)       # perimetro
 print(hull.volume)     # area racchiusa</code></pre>
 </div><div class="example">
-<div class="codehead"><span>KD-Tree: ricerca del vicino più prossimo</span></div>
+<div class="codehead"><span>KD-Tree: ricerca del vicino più prossimo</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.spatial import KDTree
 
@@ -448,7 +469,7 @@ print(punti[idx])</code></pre>
 <h2>Array Matlab (io)</h2>
 <p>SciPy può leggere e scrivere file in formato <strong>Matlab</strong> (<code class="inline">.mat</code>), utile quando si collabora con chi usa Matlab o si riutilizzano dataset scientifici esistenti.</p>
 <div class="example">
-<div class="codehead"><span>Salvare e caricare file .mat</span></div>
+<div class="codehead"><span>Salvare e caricare file .mat</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy import io
 
@@ -471,7 +492,7 @@ print(contenuto[&quot;vettore&quot;].squeeze())  # [0 1 ... 9]</code></pre>
 <h2>Interpolazione (interpolate)</h2>
 <p>L'<strong>interpolazione</strong> stima nuovi valori "in mezzo" a punti dati noti. È usata per ricostruire curve, riempire dati mancanti o aumentare la risoluzione di un campionamento.</p>
 <div class="example">
-<div class="codehead"><span>Interpolazione 1D</span></div>
+<div class="codehead"><span>Interpolazione 1D</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.interpolate import interp1d
 
@@ -490,7 +511,7 @@ print(f([1.5, 4.5, 8.2]))  # valori interpolati
 f_cubica = interp1d(x, y, kind=&quot;cubic&quot;)
 print(f_cubica(2.5))</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Interpolazione con spline e dati rumorosi</span></div>
+<div class="codehead"><span>Interpolazione con spline e dati rumorosi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.interpolate import UnivariateSpline
 
@@ -523,7 +544,7 @@ print(y_smooth[:5])</code></pre>
 <li><strong>p-value</strong>: probabilità di osservare i dati se H₀ è vera. Se <code class="inline">p &lt; 0.05</code> si rifiuta H₀.</li>
 </ul>
 <div class="example">
-<div class="codehead"><span>T-test (confronto tra due gruppi)</span></div>
+<div class="codehead"><span>T-test (confronto tra due gruppi)</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy import stats
 
@@ -541,7 +562,7 @@ if p_value &lt; 0.05:
 else:
     print(&quot;Nessuna differenza significativa&quot;)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Statistica descrittiva e normalità</span></div>
+<div class="codehead"><span>Statistica descrittiva e normalità</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy import stats
 
@@ -575,7 +596,7 @@ print(f&quot;Normalità p-value: {p:.4f}&quot;)
 <span class="challenge-label">🏋️ Esercizio 1 — Trovare il minimo</span>
 <p>Usa <code class="inline">scipy.optimize.minimize</code> per trovare il punto di minimo della funzione <code class="inline">f(x) = (x - 3)² + 5</code>. Verifica che il minimo sia in x = 3 con valore 5.</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<div class="codehead"><span>Soluzione Esercizio 1</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">from scipy.optimize import minimize
 
 def f(x):
@@ -590,7 +611,7 @@ print(f&quot;Valore minimo = {ris.fun:.4f}&quot;)  # 5.0000</code></pre>
 <span class="challenge-label">🏋️ Esercizio 2 — T-test</span>
 <p>Due classi hanno svolto lo stesso esame. Verifica con un t-test se i voti delle due classi sono significativamente diversi (soglia p &lt; 0.05).</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<div class="codehead"><span>Soluzione Esercizio 2</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy import stats
 
@@ -610,7 +631,7 @@ else:
 <span class="challenge-label">🏋️ Esercizio 3 — Distanza e vicino più prossimo</span>
 <p>Dati 4 città su un piano cartesiano, costruisci un KD-Tree e trova quale città è più vicina al punto (3, 4).</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<div class="codehead"><span>Soluzione Esercizio 3</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import numpy as np
 from scipy.spatial import KDTree
 
@@ -652,6 +673,25 @@ print(f&quot;Distanza: {dist:.3f}&quot;)</code></pre>
   </div>
 </section>
 
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Prova tu — scrivi ed esegui Python</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Risultato</div>
+        <iframe id="ed-preview" title="Output del codice Python"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -668,5 +708,66 @@ print(f&quot;Distanza: {dist:.3f}&quot;)</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+      mode: "python", lineNumbers: true, lineWrapping: false,
+      tabSize: 4, indentUnit: 4, theme: 'default'
+    });
+    var pyodide = null, pyLoading = false;
+    function shell(body){
+      return '<body style="margin:0;font-family:Consolas,Monaco,monospace;font-size:.9rem;line-height:1.55;background:#1e293b;color:#e2e8f0;padding:1.1rem;white-space:pre-wrap">' + body + '</body>';
+    }
+    function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    async function ensurePyodide(){
+      if (pyodide) return pyodide;
+      pyLoading = true;
+      preview.srcdoc = shell('<span style="color:#7dd3fc">⏳ Avvio interprete Python...</span>\n<span style="color:#94a3b8">(solo la prima volta)</span>');
+      pyodide = await loadPyodide();
+      pyLoading = false;
+      return pyodide;
+    }
+    async function run(){
+      if (pyLoading) return;
+      var code = cm.getValue();
+      try {
+        var py = await ensurePyodide();
+        py.globals.set('__js_prompt', function(msg){ return window.prompt(msg||'')||''; });
+        await py.runPythonAsync('import builtins,sys,io\nbuiltins.input=lambda prompt="":__js_prompt(prompt)\n__buf=io.StringIO()\nsys.stdout=__buf\nsys.stderr=__buf\n');
+        try { await py.runPythonAsync(code); }
+        catch(err){ await py.runPythonAsync('import traceback; print(traceback.format_exc())'); }
+        var out = py.runPython('__buf.getvalue()');
+        await py.runPythonAsync('sys.stdout=sys.__stdout__\nsys.stderr=sys.__stderr__');
+        preview.srcdoc = shell(out ? escHtml(out) : '<span style="color:#94a3b8">(nessun output — usa print() per mostrare risultati)</span>');
+      } catch(e){ preview.srcdoc = shell('<span style="color:#fca5a5">Errore: '+escHtml(String(e))+'</span>'); }
+    }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      cm.setValue(code);
+      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
+      preview.srcdoc = shell('<span style="color:#94a3b8">Premi ▶ Esegui per lanciare il codice Python.</span>');
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+    document.getElementById('ed-run').addEventListener('click', run);
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeEl) return;
+      var raw = codeEl.textContent;
+      var btn = ex.querySelector('.btn-try');
+      if (btn) btn.addEventListener('click', function(){ openEditor(raw); });
+    });
+  })();
+</script>
 </body>
 </html>

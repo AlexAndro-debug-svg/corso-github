@@ -56,6 +56,27 @@
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
     .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
     @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-run { background: #04AA6D; color: #fff; }
+    .ed-run:hover { background: #038a59; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
   </style>
   <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-bash.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -188,7 +209,7 @@
 </table>
 <p>In questo corso imparerai i comandi fondamentali, il text processing, il monitoraggio del sistema, il networking, la gestione dei file e la scrittura di script Bash completi.</p>
 <div class="example">
-<div class="codehead"><span>Verifica la versione di Bash</span></div>
+<div class="codehead"><span>Verifica la versione di Bash</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">bash --version
 # GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)</code></pre>
 </div>
@@ -198,13 +219,13 @@
 <p>Il <strong>terminale</strong> è l'interfaccia dove digiti i comandi Bash. Su Linux puoi aprirlo con <kbd>Ctrl+Alt+T</kbd>; su macOS si trova in Applicazioni → Utility → Terminale.</p>
 <p>Il <strong>prompt</strong> mostra informazioni utili prima del cursore: il simbolo <code class="inline">$</code> indica un utente normale, mentre <code class="inline">#</code> indica il superutente (root).</p>
 <div class="example">
-<div class="codehead"><span>Il prompt e il primo comando</span></div>
+<div class="codehead"><span>Il prompt e il primo comando</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">utente@hostname:~/cartella$ echo &quot;Ciao, mondo!&quot;
 Ciao, mondo!</code></pre>
 </div>
 <p>Usa le frecce <kbd>↑</kbd> <kbd>↓</kbd> per scorrere i comandi precedenti, oppure <code class="inline">history</code> per l'elenco completo.</p>
 <div class="example">
-<div class="codehead"><span>Cronologia e aiuto</span></div>
+<div class="codehead"><span>Cronologia e aiuto</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">history | tail -10     # ultimi 10 comandi usati
 ls --help              # aiuto rapido di un comando
 man ls                 # manuale completo</code></pre>
@@ -213,7 +234,7 @@ man ls                 # manuale completo</code></pre>
 <h2>Comando ls</h2>
 <p><code class="inline">ls</code> elenca il contenuto di una directory. È uno dei comandi che userai più spesso.</p>
 <div class="example">
-<div class="codehead"><span>Utilizzo base di ls</span></div>
+<div class="codehead"><span>Utilizzo base di ls</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">ls          # directory corrente
 ls /etc     # directory specificata
 ls -l       # formato lungo (dettagliato)
@@ -225,12 +246,12 @@ ls -lS      # ordina per dimensione</code></pre>
 </div>
 <p>Nel formato lungo, le colonne rappresentano: permessi, numero di link, proprietario, gruppo, dimensione, data e nome.</p>
 <div class="example">
-<div class="codehead"><span>Output del formato lungo</span></div>
+<div class="codehead"><span>Output del formato lungo</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">-rw-r--r-- 1 user group  4096 Jun 12 10:00 file.txt
 drwxr-xr-x 2 user group  4096 Jun 12 09:00 cartella/</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Altre opzioni utili</span></div>
+<div class="codehead"><span>Altre opzioni utili</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">ls -R       # ricorsivo (include sottocartelle)
 ls *.txt    # solo i file .txt
 ls -1       # un file per riga</code></pre>
@@ -239,7 +260,7 @@ ls -1       # un file per riga</code></pre>
 <h2>Comando cd</h2>
 <p><code class="inline">cd</code> (change directory) cambia la directory di lavoro corrente.</p>
 <div class="example">
-<div class="codehead"><span>Navigare tra le directory</span></div>
+<div class="codehead"><span>Navigare tra le directory</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">cd /etc             # percorso assoluto
 cd documenti        # percorso relativo
 cd ..               # directory padre
@@ -259,7 +280,7 @@ cd -                # directory precedente</code></pre>
 <h2>Comando pwd</h2>
 <p><code class="inline">pwd</code> (print working directory) mostra il percorso assoluto della directory corrente.</p>
 <div class="example">
-<div class="codehead"><span>pwd e le sue opzioni</span></div>
+<div class="codehead"><span>pwd e le sue opzioni</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">pwd
 # /home/utente/documenti/progetto
 
@@ -268,7 +289,7 @@ pwd -P    # percorso fisico (risolve i symlink)</code></pre>
 </div>
 <p>È particolarmente utile negli script per salvare e ripristinare la posizione corrente.</p>
 <div class="example">
-<div class="codehead"><span>Salvare la directory corrente</span></div>
+<div class="codehead"><span>Salvare la directory corrente</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">DIR_CORRENTE=$(pwd)
 echo &quot;Sei in: $DIR_CORRENTE&quot;
 
@@ -280,7 +301,7 @@ cd &quot;$DIR_CORRENTE&quot;   # ritorna alla posizione di partenza</code></pre>
 <h2>Comando echo</h2>
 <p><code class="inline">echo</code> stampa testo o il valore di variabili sullo standard output.</p>
 <div class="example">
-<div class="codehead"><span>Stampare testo e variabili</span></div>
+<div class="codehead"><span>Stampare testo e variabili</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">echo &quot;Ciao, mondo!&quot;
 echo &#x27;Testo con virgolette singole&#x27;
 
@@ -290,13 +311,13 @@ echo &quot;Home: $HOME&quot;           # /home/utente
 echo &quot;Shell: $SHELL&quot;         # /bin/bash</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Opzioni e caratteri speciali</span></div>
+<div class="codehead"><span>Opzioni e caratteri speciali</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">echo -n &quot;senza newline&quot;      # non va a capo
 echo -e &quot;riga1\nriga2&quot;      # \n = nuova riga
 echo -e &quot;tab\tspazio&quot;       # \t = tabulazione</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Redirezione dell'output</span></div>
+<div class="codehead"><span>Redirezione dell'output</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">echo &quot;Contenuto&quot; &gt; file.txt      # scrive (sovrascrive)
 echo &quot;Altro&quot; &gt;&gt; file.txt         # aggiunge in fondo
 echo &quot;Errore&quot; &gt;&amp;2                # scrive su stderr</code></pre>
@@ -305,14 +326,14 @@ echo &quot;Errore&quot; &gt;&amp;2                # scrive su stderr</code></pre
 <h2>Comando cat</h2>
 <p><code class="inline">cat</code> (concatenate) visualizza il contenuto di file, li concatena e può creare file semplici.</p>
 <div class="example">
-<div class="codehead"><span>Visualizzare file</span></div>
+<div class="codehead"><span>Visualizzare file</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">cat file.txt              # mostra il contenuto
 cat file1.txt file2.txt   # mostra entrambi in sequenza
 cat -n file.txt           # con numeri di riga
 cat -A file.txt           # mostra caratteri non stampabili</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Creare e concatenare file</span></div>
+<div class="codehead"><span>Creare e concatenare file</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Creare un file (Ctrl+D per terminare)
 cat &gt; nuovo.txt
 Scrivi qui il contenuto.
@@ -322,7 +343,7 @@ cat parte1.txt parte2.txt &gt; completo.txt
 cat *.log &gt; tutti_i_log.txt</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Alternative per file lunghi</span></div>
+<div class="codehead"><span>Alternative per file lunghi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">less file.txt     # pagina per pagina (q per uscire)
 more file.txt     # simile a less
 head -20 file.txt # prime 20 righe
@@ -332,7 +353,7 @@ tail -20 file.txt # ultime 20 righe</code></pre>
 <h2>Comando cp</h2>
 <p><code class="inline">cp</code> copia file e directory. Sintassi: <code class="inline">cp [opzioni] sorgente destinazione</code>.</p>
 <div class="example">
-<div class="codehead"><span>Copiare file e directory</span></div>
+<div class="codehead"><span>Copiare file e directory</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">cp file.txt copia.txt              # copia con nuovo nome
 cp file.txt /tmp/                  # copia in altra directory
 cp file1.txt file2.txt /backup/    # copia più file
@@ -341,7 +362,7 @@ cp -r cartella/ backup/            # -r = ricorsivo (per le directory)
 cp -r src/ /tmp/src_backup/</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Opzioni utili</span></div>
+<div class="codehead"><span>Opzioni utili</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">cp -i file.txt dest.txt     # chiede conferma se dest esiste
 cp -u file.txt dest.txt     # copia solo se sorgente è più recente
 cp -v file.txt dest.txt     # verbose (mostra cosa fa)
@@ -352,7 +373,7 @@ cp -a cartella/ backup/     # archivio: -r + -p + symlink</code></pre>
 <h2>Comando mv</h2>
 <p><code class="inline">mv</code> sposta o rinomina file e directory. A differenza di <code class="inline">cp</code>, non serve <code class="inline">-r</code> per le directory.</p>
 <div class="example">
-<div class="codehead"><span>Rinominare e spostare</span></div>
+<div class="codehead"><span>Rinominare e spostare</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Rinominare
 mv vecchio.txt nuovo.txt
 mv vecchia_cartella/ nuova_cartella/
@@ -363,7 +384,7 @@ mv *.log /var/log/archivio/   # sposta tutti i .log
 mv file1.txt file2.txt /dest/ # sposta più file</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Opzioni e rinomina batch</span></div>
+<div class="codehead"><span>Opzioni e rinomina batch</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">mv -i src dest    # chiede conferma prima di sovrascrivere
 mv -n src dest    # non sovrascrive mai (no-clobber)
 mv -v src dest    # verbose
@@ -378,7 +399,7 @@ done</code></pre>
 <p><code class="inline">rm</code> elimina file e directory.</p>
 <div class="warn-box">⚠️ <strong>Attenzione:</strong> non esiste un cestino — l'eliminazione con <code class="inline">rm</code> è permanente. Non usare mai <code class="inline">rm -rf /</code> o <code class="inline">rm -rf *</code> senza la massima cautela.</div>
 <div class="example">
-<div class="codehead"><span>Eliminare file e directory</span></div>
+<div class="codehead"><span>Eliminare file e directory</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">rm file.txt
 rm file1.txt file2.txt
 rm *.tmp          # elimina tutti i .tmp
@@ -388,7 +409,7 @@ rm -r cartella/          # ricorsivo (anche con contenuto)
 rm -rf cartella/         # forza senza conferme</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Opzioni di sicurezza</span></div>
+<div class="codehead"><span>Opzioni di sicurezza</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">rm -i file.txt      # chiede conferma per ogni file
 rm -I *.txt        # chiede conferma una sola volta
 rm -v file.txt     # mostra cosa viene eliminato
@@ -401,7 +422,7 @@ mv file_da_eliminare.txt ~/cestino/</code></pre>
 <h2>Comandi touch e mkdir</h2>
 <p><code class="inline">touch</code> crea file vuoti o aggiorna il timestamp; <code class="inline">mkdir</code> crea directory.</p>
 <div class="example">
-<div class="codehead"><span>Creare file e directory</span></div>
+<div class="codehead"><span>Creare file e directory</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># touch — file vuoti
 touch file.txt              # crea un file vuoto
 touch file1.txt file2.txt   # crea più file
@@ -412,7 +433,7 @@ mkdir -p percorso/lungo/da/creare   # crea tutti i livelli
 mkdir -m 755 cartella               # con permessi specifici</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Struttura di un progetto</span></div>
+<div class="codehead"><span>Struttura di un progetto</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">mkdir -p progetto/{src,tests,docs,assets}
 touch progetto/README.md
 touch progetto/src/main.sh
@@ -423,14 +444,14 @@ ls -R progetto/</code></pre>
 <h2>Comandi man e alias</h2>
 <p><code class="inline">man</code> mostra il manuale di un comando; <code class="inline">alias</code> crea scorciatoie personalizzate.</p>
 <div class="example">
-<div class="codehead"><span>Consultare il manuale</span></div>
+<div class="codehead"><span>Consultare il manuale</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">man ls          # manuale di ls
 man man         # manuale di man stesso
 man -k keyword  # cerca per parola chiave
 # Navigazione: Spazio=avanti, b=indietro, /parola=cerca, q=esci</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Creare alias</span></div>
+<div class="codehead"><span>Creare alias</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">alias ll=&#x27;ls -lah&#x27;
 alias la=&#x27;ls -la&#x27;
 alias ..=&#x27;cd ..&#x27;
@@ -441,7 +462,7 @@ alias               # elenca gli alias attivi
 unalias ll          # rimuove un alias</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Rendere gli alias permanenti</span></div>
+<div class="codehead"><span>Rendere gli alias permanenti</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">echo &quot;alias ll=&#x27;ls -lah&#x27;&quot; &gt;&gt; ~/.bashrc
 source ~/.bashrc    # ricarica la configurazione</code></pre>
 </div>
@@ -450,13 +471,13 @@ source ~/.bashrc    # ricarica la configurazione</code></pre>
 <h2>Comando grep</h2>
 <p><code class="inline">grep</code> cerca pattern (espressioni regolari) all'interno di file o input. È uno dei comandi più potenti di Bash.</p>
 <div class="example">
-<div class="codehead"><span>Utilizzo base</span></div>
+<div class="codehead"><span>Utilizzo base</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">grep &quot;errore&quot; log.txt              # cerca &quot;errore&quot; in log.txt
 grep &quot;root&quot; /etc/passwd            # cerca l&#x27;utente root
 grep &quot;TODO&quot; *.py                   # cerca in tutti i .py</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Opzioni fondamentali</span></div>
+<div class="codehead"><span>Opzioni fondamentali</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">grep -i &quot;errore&quot; log.txt    # case-insensitive
 grep -r &quot;TODO&quot; ./src/       # ricorsivo nelle directory
 grep -n &quot;errore&quot; log.txt    # mostra il numero di riga
@@ -466,7 +487,7 @@ grep -l &quot;TODO&quot; *.py         # solo i nomi dei file
 grep -w &quot;log&quot; file.txt      # solo parole intere</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Espressioni regolari e pipe</span></div>
+<div class="codehead"><span>Espressioni regolari e pipe</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">grep &quot;^#&quot; script.sh          # righe che iniziano con #
 grep &quot;\.py$&quot; lista.txt       # righe che finiscono con .py
 grep -E &quot;err(ore|or)&quot; log.txt # pattern esteso
@@ -479,7 +500,7 @@ history | grep git           # comandi git usati</code></pre>
 <p><code class="inline">awk</code> è un linguaggio di elaborazione di testo orientato ai campi (colonne). Perfetto per file CSV, log e output di comandi.</p>
 <p>Variabili chiave: <code class="inline">$0</code> = riga intera, <code class="inline">$1</code> = primo campo, <code class="inline">NR</code> = numero di riga, <code class="inline">NF</code> = numero di campi.</p>
 <div class="example">
-<div class="codehead"><span>Estrarre campi</span></div>
+<div class="codehead"><span>Estrarre campi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">echo &quot;Mario Rossi 42&quot; | awk &#x27;{print $1}&#x27;    # Mario
 echo &quot;Mario Rossi 42&quot; | awk &#x27;{print $2}&#x27;    # Rossi
 echo &quot;Mario Rossi 42&quot; | awk &#x27;{print $NF}&#x27;   # 42 (ultimo campo)
@@ -488,7 +509,7 @@ awk -F: &#x27;{print $1}&#x27; /etc/passwd        # separatore :
 awk -F, &#x27;{print $1, $3}&#x27; dati.csv       # colonne 1 e 3 da CSV</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Filtri e calcoli</span></div>
+<div class="codehead"><span>Filtri e calcoli</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">awk &#x27;NR&gt;1&#x27; file.csv               # salta l&#x27;intestazione
 awk &#x27;$3 &gt; 100&#x27; vendite.txt        # righe dove col3 &gt; 100
 awk &#x27;/errore/ {print NR, $0}&#x27; log.txt
@@ -500,7 +521,7 @@ awk &#x27;END {print &quot;Righe:&quot;, NR}&#x27; file.txt</code></pre>
 <h2>Comando sed</h2>
 <p><code class="inline">sed</code> (stream editor) elabora e trasforma testo riga per riga. Ideale per sostituzioni in massa.</p>
 <div class="example">
-<div class="codehead"><span>Sostituzione di testo</span></div>
+<div class="codehead"><span>Sostituzione di testo</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">sed &#x27;s/vecchio/nuovo/&#x27; file.txt        # prima occorrenza per riga
 sed &#x27;s/vecchio/nuovo/g&#x27; file.txt       # tutte le occorrenze
 sed &#x27;s/vecchio/nuovo/gi&#x27; file.txt      # case-insensitive
@@ -508,7 +529,7 @@ sed -i &#x27;s/vecchio/nuovo/g&#x27; file.txt    # modifica il file
 sed -i.bak &#x27;s/foo/bar/g&#x27; file.txt      # salva backup .bak</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Eliminare e stampare righe</span></div>
+<div class="codehead"><span>Eliminare e stampare righe</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">sed &#x27;5d&#x27; file.txt            # elimina la riga 5
 sed &#x27;1,3d&#x27; file.txt          # elimina le righe 1-3
 sed &#x27;/^#/d&#x27; script.sh        # elimina i commenti
@@ -521,7 +542,7 @@ sed -n &#x27;/errore/p&#x27; log.txt  # stampa le righe con &quot;errore&quot;</
 <h2>Comandi cut, sort, head, tail</h2>
 <p>Questi comandi estraggono colonne, ordinano righe e mostrano porzioni di file. Combinati con le pipe diventano fortissimi.</p>
 <div class="example">
-<div class="codehead"><span>cut e sort</span></div>
+<div class="codehead"><span>cut e sort</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># cut — estrae colonne
 cut -d: -f1 /etc/passwd           # primo campo separato da :
 cut -d, -f2,4 dati.csv            # colonne 2 e 4 da CSV
@@ -535,7 +556,7 @@ sort -k2 tabella.txt        # ordina per seconda colonna
 sort -u file.txt            # rimuove i duplicati</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>head e tail</span></div>
+<div class="codehead"><span>head e tail</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">head file.txt          # prime 10 righe (default)
 head -n 20 file.txt    # prime 20 righe
 
@@ -544,7 +565,7 @@ tail -n 20 file.txt    # ultime 20 righe
 tail -f /var/log/syslog  # segue il file in tempo reale</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Pipeline combinata</span></div>
+<div class="codehead"><span>Pipeline combinata</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Top 5 processi per uso CPU
 ps aux | sort -k3 -rn | head -6 | awk &#x27;{print $1, $3&quot;%&quot;, $11}&#x27;</code></pre>
 </div></article>
@@ -552,7 +573,7 @@ ps aux | sort -k3 -rn | head -6 | awk &#x27;{print $1, $3&quot;%&quot;, $11}&#x2
 <h2>Monitoraggio del Sistema</h2>
 <p>Questi comandi mostrano lo stato dei processi, della memoria e dei dischi.</p>
 <div class="example">
-<div class="codehead"><span>Processi: ps e top</span></div>
+<div class="codehead"><span>Processi: ps e top</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">ps              # processi del terminale corrente
 ps aux          # tutti i processi (a=tutti, u=utente, x=senza tty)
 ps aux | grep nginx    # cerca un processo specifico
@@ -562,7 +583,7 @@ htop            # versione migliorata (da installare)
 # In top: M=ordina per memoria, P=CPU, k=termina, q=esci</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Dischi e memoria: df, du, free</span></div>
+<div class="codehead"><span>Dischi e memoria: df, du, free</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">df -h           # spazio disco leggibile (GB, MB)
 df -h /home     # solo /home
 
@@ -576,7 +597,7 @@ free -h -s 2    # aggiorna ogni 2 secondi</code></pre>
 <h2>Comandi kill e uptime</h2>
 <p>Ogni processo ha un <strong>PID</strong> (Process ID). <code class="inline">kill</code> invia segnali ai processi per terminarli.</p>
 <div class="example">
-<div class="codehead"><span>Terminare processi</span></div>
+<div class="codehead"><span>Terminare processi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">kill 1234          # SIGTERM (terminazione gentile)
 kill -9 1234       # SIGKILL (forzata, immediata)
 kill -l            # elenco di tutti i segnali
@@ -590,7 +611,7 @@ killall firefox          # tutti i processi &quot;firefox&quot;
 pkill -f &quot;python app&quot;   # cerca nel comando completo</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>uptime — tempo di attività</span></div>
+<div class="codehead"><span>uptime — tempo di attività</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">uptime
 # 10:30:15 up 5 days, 3:22, 2 users, load average: 0.15, 0.10, 0.09
 
@@ -603,7 +624,7 @@ last               # cronologia degli accessi</code></pre>
 <h2>Comandi di Rete</h2>
 <p>Bash include strumenti per verificare la connettività, scaricare file e connettersi a server remoti.</p>
 <div class="example">
-<div class="codehead"><span>ping, curl e wget</span></div>
+<div class="codehead"><span>ping, curl e wget</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># ping — verifica connettività
 ping -c 4 google.com     # invia 4 pacchetti ICMP
 
@@ -618,7 +639,7 @@ wget https://example.com/file.zip
 wget -c https://example.com/grande.iso   # riprende download</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>ssh, scp e rsync</span></div>
+<div class="codehead"><span>ssh, scp e rsync</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># ssh — connessione remota sicura
 ssh utente@server.com
 ssh -p 2222 utente@server.com         # porta personalizzata
@@ -636,7 +657,7 @@ rsync -avz --delete src/ dest/</code></pre>
 <h2>Compressione File</h2>
 <p>Bash offre diversi strumenti per comprimere e archiviare file: <code class="inline">zip</code>, <code class="inline">tar</code> e <code class="inline">gzip</code>.</p>
 <div class="example">
-<div class="codehead"><span>zip e unzip</span></div>
+<div class="codehead"><span>zip e unzip</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">zip archivio.zip file1.txt file2.txt    # comprime
 zip -r archivio.zip cartella/          # ricorsivo
 zip -9 archivio.zip file.txt           # massima compressione
@@ -646,7 +667,7 @@ unzip archivio.zip -d /dest/           # estrae in directory
 unzip -l archivio.zip                  # elenca il contenuto</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>tar — archivio e compressione</span></div>
+<div class="codehead"><span>tar — archivio e compressione</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Creare archivi
 tar -cvf archivio.tar cartella/          # solo archivio
 tar -czvf archivio.tar.gz cartella/      # + gzip
@@ -664,14 +685,14 @@ tar -tvf archivio.tar.gz</code></pre>
 <h2>Permessi File</h2>
 <p>Ogni file ha tre livelli di permessi: <strong>proprietario</strong>, <strong>gruppo</strong> e <strong>altri</strong>. Ogni livello ha tre bit: <strong>r</strong>ead (4), <strong>w</strong>rite (2), e<strong>x</strong>ecute (1).</p>
 <div class="example">
-<div class="codehead"><span>Leggere i permessi</span></div>
+<div class="codehead"><span>Leggere i permessi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">-rwxr-xr-- 1 mario devs 4096 Jun 12 10:00 script.sh
 # rwx = proprietario: legge, scrive, esegue
 # r-x = gruppo: legge, esegue
 # r-- = altri: solo legge</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>chmod — cambia permessi</span></div>
+<div class="codehead"><span>chmod — cambia permessi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Notazione ottale
 chmod 755 script.sh      # rwxr-xr-x
 chmod 644 file.txt       # rw-r--r--
@@ -684,7 +705,7 @@ chmod g-w file.txt       # rimuove scrittura dal gruppo
 chmod -R 755 cartella/   # ricorsivo</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>chown e chgrp</span></div>
+<div class="codehead"><span>chown e chgrp</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">chown mario file.txt             # cambia proprietario
 chown mario:devs file.txt        # proprietario e gruppo
 chown -R mario:devs cartella/    # ricorsivo
@@ -695,7 +716,7 @@ chgrp devs file.txt              # cambia solo il gruppo</code></pre>
 <h2>Script Bash</h2>
 <p>Uno script Bash è un file di testo con comandi eseguiti in sequenza, perfetto per automatizzare operazioni ripetitive.</p>
 <div class="example">
-<div class="codehead"><span>Struttura base di uno script</span></div>
+<div class="codehead"><span>Struttura base di uno script</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 # La prima riga (shebang) indica l&#x27;interprete
 
@@ -704,13 +725,13 @@ date
 whoami</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Eseguire lo script</span></div>
+<div class="codehead"><span>Eseguire lo script</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">chmod +x mio_script.sh    # rende eseguibile
 ./mio_script.sh           # esegue
 bash mio_script.sh        # alternativa</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Argomenti e codice di uscita</span></div>
+<div class="codehead"><span>Argomenti e codice di uscita</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 echo &quot;Nome script: $0&quot;
 echo &quot;Primo argomento: $1&quot;
@@ -725,7 +746,7 @@ exit 0                     # uscita con successo</code></pre>
 <h2>Variabili</h2>
 <p>Le variabili memorizzano valori. <strong>Attenzione:</strong> non ci devono essere spazi intorno al segno <code class="inline">=</code>.</p>
 <div class="example">
-<div class="codehead"><span>Definizione e uso</span></div>
+<div class="codehead"><span>Definizione e uso</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">NOME=&quot;Mario&quot;
 ETA=30
 
@@ -734,7 +755,7 @@ echo &quot;$ETA anni&quot;    # 30 anni
 echo &quot;${NOME}!&quot;     # Mario! (graffe per delimitare)</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Variabili speciali e sostituzione</span></div>
+<div class="codehead"><span>Variabili speciali e sostituzione</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">$HOME    # directory home          $USER   # utente corrente
 $PWD     # directory corrente       $RANDOM # numero casuale
 $$       # PID dello script
@@ -746,7 +767,7 @@ NUM_FILE=$(ls | wc -l)
 echo &quot;File nella directory: $NUM_FILE&quot;</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>readonly e unset</span></div>
+<div class="codehead"><span>readonly e unset</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">readonly VERSIONE=&quot;1.0&quot;    # non modificabile
 
 TEMP=&quot;valore&quot;
@@ -756,7 +777,7 @@ unset TEMP                # elimina la variabile</code></pre>
 <h2>Tipi di Dati</h2>
 <p>Bash tratta tutto come stringhe per default. Per i numeri interi si usa <code class="inline">declare -i</code> o l'aritmetica esplicita.</p>
 <div class="example">
-<div class="codehead"><span>Stringhe</span></div>
+<div class="codehead"><span>Stringhe</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">STR=&quot;Ciao, mondo&quot;
 echo ${#STR}              # lunghezza: 11
 echo ${STR:0:4}           # substring: Ciao
@@ -765,7 +786,7 @@ echo ${STR^^}             # maiuscolo: CIAO, MONDO
 echo ${STR,,}             # minuscolo: ciao, mondo</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Interi e aritmetica</span></div>
+<div class="codehead"><span>Interi e aritmetica</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">declare -i NUM=10
 echo $((5 + 3))      # 8
 echo $((100 / 7))    # 14 (divisione intera)
@@ -773,7 +794,7 @@ echo $((100 % 7))    # 2 (modulo)
 echo $((2 ** 8))     # 256 (potenza)</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Array e array associativi</span></div>
+<div class="codehead"><span>Array e array associativi</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">FRUTTI=(&quot;mela&quot; &quot;banana&quot; &quot;ciliegia&quot;)
 echo ${FRUTTI[0]}     # mela
 echo ${FRUTTI[@]}     # tutti gli elementi
@@ -796,7 +817,7 @@ echo ${CAPITALI[&quot;italia&quot;]}   # Roma</code></pre>
 <tr><td><code class="inline">-gt</code></td><td>maggiore</td><td><code class="inline">-n</code></td><td>stringa non vuota</td></tr>
 </table>
 <div class="example">
-<div class="codehead"><span>Operatori su file</span></div>
+<div class="codehead"><span>Operatori su file</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">[ -e percorso ]    # esiste
 [ -f percorso ]    # è un file regolare
 [ -d percorso ]    # è una directory
@@ -809,7 +830,7 @@ echo ${CAPITALI[&quot;italia&quot;]}   # Roma</code></pre>
 <h2>If / Else</h2>
 <p>I costrutti condizionali eseguono comandi diversi a seconda che una condizione sia vera o falsa.</p>
 <div class="example">
-<div class="codehead"><span>Struttura if / elif / else</span></div>
+<div class="codehead"><span>Struttura if / elif / else</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 ETA=$1
 
@@ -827,7 +848,7 @@ else
 fi</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Operatori logici</span></div>
+<div class="codehead"><span>Operatori logici</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># AND: entrambe le condizioni vere
 if [ &quot;$ETA&quot; -ge 18 ] &amp;&amp; [ &quot;$ETA&quot; -lt 65 ]; then
     echo &quot;Eta lavorativa&quot;
@@ -839,7 +860,7 @@ if [ &quot;$GIORNO&quot; = &quot;sabato&quot; ] || [ &quot;$GIORNO&quot; = &quot
 fi</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Case statement</span></div>
+<div class="codehead"><span>Case statement</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">case &quot;$FRUTTO&quot; in
     &quot;mela&quot;|&quot;pera&quot;)
         echo &quot;Frutto di stagione&quot;
@@ -856,7 +877,7 @@ esac</code></pre>
 <h2>Loop</h2>
 <p>I cicli ripetono blocchi di comandi. Bash offre <code class="inline">for</code>, <code class="inline">while</code> e <code class="inline">until</code>.</p>
 <div class="example">
-<div class="codehead"><span>Ciclo for</span></div>
+<div class="codehead"><span>Ciclo for</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Lista esplicita
 for FRUTTO in mela banana ciliegia; do
     echo &quot;Frutto: $FRUTTO&quot;
@@ -878,7 +899,7 @@ for file in *.txt; do
 done</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Cicli while e until</span></div>
+<div class="codehead"><span>Cicli while e until</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">CONTATORE=0
 while [ $CONTATORE -lt 5 ]; do
     echo &quot;Contatore: $CONTATORE&quot;
@@ -891,7 +912,7 @@ while IFS= read -r riga; do
 done &lt; file.txt</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>break e continue</span></div>
+<div class="codehead"><span>break e continue</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">for i in {1..10}; do
     [ $i -eq 5 ] &amp;&amp; continue   # salta il 5
     [ $i -eq 8 ] &amp;&amp; break      # esce all&#x27;8
@@ -902,7 +923,7 @@ done</code></pre>
 <h2>Funzioni</h2>
 <p>Le funzioni raggruppano comandi riutilizzabili. Restituiscono codici di uscita (0-255); per i dati si usa <code class="inline">echo</code> e la sostituzione di comando.</p>
 <div class="example">
-<div class="codehead"><span>Definizione e parametri</span></div>
+<div class="codehead"><span>Definizione e parametri</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Sintassi portabile
 saluta() {
     echo &quot;Ciao, $1!&quot;
@@ -918,7 +939,7 @@ TOTALE=$(somma 10 25)
 echo &quot;Somma: $TOTALE&quot;    # Somma: 35</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Variabili locali e funzione completa</span></div>
+<div class="codehead"><span>Variabili locali e funzione completa</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 
 log() {
@@ -943,13 +964,13 @@ verifica_file &quot;/etc/passwd&quot; &amp;&amp; log &quot;OK&quot; &quot;Tutto 
 <h2>Cron — Pianificazione</h2>
 <p><code class="inline">cron</code> esegue comandi automaticamente a intervalli pianificati, configurati tramite il <strong>crontab</strong>.</p>
 <div class="example">
-<div class="codehead"><span>Gestire il crontab</span></div>
+<div class="codehead"><span>Gestire il crontab</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">crontab -e     # apre l&#x27;editor del crontab
 crontab -l     # elenca i job configurati
 crontab -r     # rimuove tutti i job</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Formato del crontab</span></div>
+<div class="codehead"><span>Formato del crontab</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># minuto  ora  giorno  mese  giorno_settimana  comando
 # (0-59) (0-23) (1-31) (1-12)    (0-7, 0=dom)
 
@@ -960,7 +981,7 @@ crontab -r     # rimuove tutti i job</code></pre>
 @reboot      /scripts/startup.sh     # all&#x27;avvio del sistema</code></pre>
 </div>
 <div class="example">
-<div class="codehead"><span>Scorciatoie speciali</span></div>
+<div class="codehead"><span>Scorciatoie speciali</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">@hourly    # ogni ora       @daily     # ogni giorno
 @weekly    # ogni settimana @monthly   # ogni mese
 @yearly    # ogni anno      @reboot    # all&#x27;avvio</code></pre>
@@ -970,7 +991,7 @@ crontab -r     # rimuove tutti i job</code></pre>
 <p>Metti alla prova le tue conoscenze con questi esercizi pratici. Prova a risolverli prima di guardare la soluzione.</p>
 <div class="challenge-box"><span class="challenge-label">🎯 Esercizio 1 — Backup automatico</span><p>Scrivi uno script che faccia il backup di una directory, nomini l'archivio con la data e mantenga solo gli ultimi 7 backup.</p></div>
 <div class="example">
-<div class="codehead"><span>Soluzione 1</span></div>
+<div class="codehead"><span>Soluzione 1</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 SORGENTE=&quot;$1&quot;
 DEST_DIR=&quot;$HOME/backup&quot;
@@ -985,7 +1006,7 @@ echo &quot;Backup completato.&quot;</code></pre>
 </div>
 <div class="challenge-box"><span class="challenge-label">🎯 Esercizio 2 — Monitor disco</span><p>Scrivi uno script che avverta se un filesystem supera l'80% di utilizzo.</p></div>
 <div class="example">
-<div class="codehead"><span>Soluzione 2</span></div>
+<div class="codehead"><span>Soluzione 2</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 SOGLIA=80
 
@@ -998,7 +1019,7 @@ df -h | awk -v s=$SOGLIA &#x27;NR&gt;1 {
 </div>
 <div class="challenge-box"><span class="challenge-label">🎯 Esercizio 3 — Rinomina batch</span><p>Rinomina tutti i file .jpeg in .jpg in una directory.</p></div>
 <div class="example">
-<div class="codehead"><span>Soluzione 3</span></div>
+<div class="codehead"><span>Soluzione 3</span><button class="btn-try">Prova tu ▶</button></div>
 <pre class="codeview"><code class="language-bash">#!/bin/bash
 DIR=&quot;${1:-.}&quot;
 CONTATORE=0
@@ -1025,6 +1046,24 @@ echo &quot;Totale rinominati: $CONTATORE&quot;</code></pre>
   </div>
 </section>
 
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Prova tu — leggi e modifica il codice Bash</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Note</div>
+        <iframe id="ed-preview" title="Note Bash"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -1040,5 +1079,39 @@ echo &quot;Totale rinominati: $CONTATORE&quot;</code></pre>
 <script src="js/main.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+      mode: "shell", lineNumbers: true, lineWrapping: false,
+      tabSize: 2, indentUnit: 2, theme: 'default', readOnly: false
+    });
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6"><h3 style="margin:0 0 .6rem;color:#1e293b">🖥️ Comandi Bash</h3><p>I comandi Bash vengono eseguiti nel <b>terminale</b> del tuo sistema Linux o macOS (oppure su WSL in Windows). Non possono essere eseguiti nel browser.</p><p>Puoi <b>leggere e modificare</b> i comandi qui, poi incollarli nel tuo terminale.</p></body>';
+    }
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow='hidden';
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      cm.setValue(code);
+      setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
+      note();
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+    document.querySelectorAll('.example').forEach(function(ex){
+      var codeEl = ex.querySelector('.codeview code');
+      if (!codeEl) return;
+      var raw = codeEl.textContent;
+      var btn = ex.querySelector('.btn-try');
+      if (btn) btn.addEventListener('click', function(){ openEditor(raw); });
+    });
+  })();
+</script>
 </body>
 </html>
