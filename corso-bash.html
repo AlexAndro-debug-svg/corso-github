@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Bash — AlessandroSimone.it</title>
+  <meta name="description" content="Corso gratuito di Bash: comandi base, text processing, scripting, cron e automazione su Linux e macOS.">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Alessandro<span>Simone</span>.it</a>
+      <nav class="main-nav" id="main-nav">
+
+              <a href="corso-html.html">HTML</a>
+              <a href="corso-css.html">CSS</a>
+              <a href="corso-javascript.html">JAVASCRIPT</a>
+              <a href="corso-sql.html">SQL</a>
+              <a href="corso-mysql.html">MYSQL</a>
+              <a href="corso-python.html">PYTHON</a>
+              <a href="corso-java.html">JAVA</a>
+              <a href="corso-php.html">PHP</a>
+              <a href="corso-c.html">C</a>
+              <a href="corso-cpp.html">C++</a>
+              <a href="corso-csharp.html">C#</a>
+              <a href="corso-packet-tracer.html">PACKET TRACER</a>
+              <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+              <a href="corso-react.html">REACT</a>
+              <a href="corso-typescript.html">TYPESCRIPT</a>
+              <a href="corso-nodejs.html">NODE.JS</a>
+              <a href="corso-git.html">GIT &amp; GITHUB</a>
+              <a href="corso-data-science.html">DATA SCIENCE</a>
+              <a href="corso-bootstrap.html">BOOTSTRAP</a>
+              <a href="corso-go.html">GO</a>
+              <a href="corso-kotlin.html">KOTLIN</a>
+              <a href="corso-jquery.html">JQUERY</a>
+              <a href="corso-django.html">DJANGO</a>
+              <a href="corso-vue.html">VUE</a>
+              <a href="corso-angular.html">ANGULAR</a>
+              <a href="corso-mongodb.html">MONGODB</a>
+              <a href="corso-postgresql.html">POSTGRESQL</a>
+              <a href="corso-sass.html">SASS</a>
+              <a href="corso-numpy.html">NUMPY</a>
+              <a href="corso-pandas.html">PANDAS</a>
+              <a href="corso-scipy.html">SCIPY</a>
+              <a href="corso-dsa.html">DSA</a>
+              <a href="corso-rust.html">RUST</a>
+              <a href="corso-swift.html">SWIFT</a>
+              <a href="corso-bash.html" class="active">BASH</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <section class="hero" style="padding:2.4rem 0 1.6rem">
+    <div class="container">
+      <h1>Corso Bash</h1>
+      <p class="hero-sub">Impara a usare la shell Bash: comandi essenziali, text processing, scripting e automazione su Linux e macOS.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container course-wrap">
+      <aside class="course-side">
+        <nav class="course-nav">
+          <a href="#intro">Introduzione a Bash</a>
+          <a href="#get-started">Primi Passi</a>
+          <a href="#ls">Comando ls</a>
+          <a href="#cd">Comando cd</a>
+          <a href="#pwd">Comando pwd</a>
+          <a href="#echo">Comando echo</a>
+          <a href="#cat">Comando cat</a>
+          <a href="#cp">Comando cp</a>
+          <a href="#mv">Comando mv</a>
+          <a href="#rm">Comando rm</a>
+          <a href="#touch-mkdir">touch e mkdir</a>
+          <a href="#man-alias">man e alias</a>
+          <a href="#grep">Comando grep</a>
+          <a href="#awk">Comando awk</a>
+          <a href="#sed">Comando sed</a>
+          <a href="#cut-sort">cut, sort, head, tail</a>
+          <a href="#system-monitoring">Monitoraggio del Sistema</a>
+          <a href="#kill-uptime">kill e uptime</a>
+          <a href="#networking">Comandi di Rete</a>
+          <a href="#compression">Compressione File</a>
+          <a href="#permissions">Permessi File</a>
+          <a href="#scripting">Script Bash</a>
+          <a href="#variables">Variabili</a>
+          <a href="#data-types">Tipi di Dati</a>
+          <a href="#operators">Operatori</a>
+          <a href="#if-else">If / Else</a>
+          <a href="#loops">Loop</a>
+          <a href="#functions">Funzioni</a>
+          <a href="#cron">Cron — Pianificazione</a>
+          <a href="#esercizi">Esercizi</a>
+          <h4>Conclusione</h4>
+          <a href="#fine">E ora?</a>
+        </nav>
+      </aside>
+      <main class="course-main">
+        <article id="intro">
+<h2>Introduzione a Bash</h2>
+<p><strong>Bash</strong> (Bourne Again SHell) è l'interprete di comandi più diffuso nei sistemi Unix/Linux e macOS. Permette di eseguire comandi, automatizzare operazioni ripetitive e scrivere script potenti per la gestione del sistema.</p>
+<p>Bash è uno strumento fondamentale per:</p>
+<ul>
+  <li>Amministratori di sistema che automatizzano task quotidiani</li>
+  <li>Sviluppatori che gestiscono build, deploy e ambienti CI/CD</li>
+  <li>Data scientist che elaborano file di testo e dati</li>
+  <li>Chiunque voglia usare Linux/macOS in modo efficiente</li>
+</ul>
+<p>In questo corso imparerai i comandi fondamentali, il text processing, il monitoraggio del sistema, il networking, la gestione dei file e la scrittura di script Bash completi.</p>
+<h3>Versione di Bash</h3>
+<p>Verifica la versione installata:</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">bash --version</code></pre>
+</div>
+<p>Output tipico:</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)</code></pre>
+</div>
+        </article>
+        <article id="get-started">
+<h2>Primi Passi con Bash</h2>
+<p>Il <strong>terminale</strong> è l'interfaccia dove digiti i comandi Bash. Su Linux puoi aprirlo con <kbd>Ctrl+Alt+T</kbd>; su macOS si trova in Applicazioni → Utility → Terminale.</p>
+<h3>Il prompt</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">utente@hostname:~/cartella$ _</code></pre>
+</div>
+<p>Il simbolo <code>$</code> indica utente normale; <code>#</code> indica il superutente (root).</p>
+<h3>Primo comando</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo "Ciao, mondo!"</code></pre>
+</div>
+<p>Output:</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">Ciao, mondo!</code></pre>
+</div>
+<h3>Cronologia dei comandi</h3>
+<p>Usa le frecce ↑ ↓ per scorrere i comandi precedenti, o <code>history</code> per l'elenco completo.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">history | tail -10</code></pre>
+</div>
+<h3>Aiuto rapido</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ls --help
+man ls</code></pre>
+</div>
+        </article>
+        <article id="ls">
+<h2>Comando ls</h2>
+<p><code>ls</code> elenca il contenuto di una directory.</p>
+<h3>Sintassi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ls [opzioni] [percorso]</code></pre>
+</div>
+<h3>Utilizzo base</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ls          # directory corrente
+ls /etc     # directory specificata
+ls -l       # formato lungo (dettagliato)
+ls -a       # mostra file nascosti
+ls -la      # lungo + nascosti
+ls -lh      # dimensioni leggibili (KB, MB)
+ls -lt      # ordina per data di modifica
+ls -lS      # ordina per dimensione</code></pre>
+</div>
+<h3>Output del formato lungo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">-rw-r--r-- 1 user group  4096 Jun 12 10:00 file.txt
+drwxr-xr-x 2 user group  4096 Jun 12 09:00 cartella/</code></pre>
+</div>
+<p>Le colonne: permessi, link, proprietario, gruppo, dimensione, data, nome.</p>
+<h3>Altre opzioni</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ls -R       # ricorsivo (include sottocartelle)
+ls *.txt    # solo file .txt
+ls -1       # un file per riga</code></pre>
+</div>
+        </article>
+        <article id="cd">
+<h2>Comando cd</h2>
+<p><code>cd</code> (change directory) cambia la directory di lavoro corrente.</p>
+<h3>Utilizzo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cd /etc             # percorso assoluto
+cd documenti        # percorso relativo
+cd ..               # directory padre
+cd ../..            # due livelli su
+cd ~                # home dell'utente
+cd -                # directory precedente</code></pre>
+</div>
+<h3>Percorsi speciali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">~       # home directory (/home/utente)
+.       # directory corrente
+..      # directory padre
+/       # radice del filesystem</code></pre>
+</div>
+<h3>Tab completion</h3>
+<p>Premi <kbd>Tab</kbd> per completare automaticamente nomi di file e directory.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cd /et      # premi Tab → completa in /etc
+cd Doc      # premi Tab → completa in Documenti</code></pre>
+</div>
+        </article>
+        <article id="pwd">
+<h2>Comando pwd</h2>
+<p><code>pwd</code> (print working directory) mostra il percorso assoluto della directory corrente.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">pwd</code></pre>
+</div>
+<p>Output esempio:</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">/home/utente/documenti/progetto</code></pre>
+</div>
+<h3>Opzioni</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">pwd -L    # percorso logico (segue symlink, default)
+pwd -P    # percorso fisico (risolve symlink)</code></pre>
+</div>
+<h3>Negli script</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">DIR_CORRENTE=$(pwd)
+echo "Sei in: $DIR_CORRENTE"
+
+cd /tmp
+# ... operazioni ...
+cd "$DIR_CORRENTE"   # ritorna</code></pre>
+</div>
+        </article>
+        <article id="echo">
+<h2>Comando echo</h2>
+<p><code>echo</code> stampa testo o il valore di variabili sullo standard output.</p>
+<h3>Utilizzo base</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo "Ciao, mondo!"
+echo 'Testo con virgolette singole'
+echo Senza virgolette</code></pre>
+</div>
+<h3>Variabili</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">NOME="Mario"
+echo "Ciao, $NOME!"          # Ciao, Mario!
+echo "Home: $HOME"           # /home/utente
+echo "Shell: $SHELL"         # /bin/bash</code></pre>
+</div>
+<h3>Opzioni</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo -n "senza newline"      # non va a capo
+echo -e "riga1\nriga2"      # interpreta \n = nuova riga
+echo -e "tab\tspazio"       # \t = tabulazione</code></pre>
+</div>
+<h3>Redirect output</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo "Contenuto" > file.txt      # scrive (sovrascrive)
+echo "Altro" >> file.txt         # aggiunge in fondo
+echo "Errore" >&2                # scrive su stderr</code></pre>
+</div>
+        </article>
+        <article id="cat">
+<h2>Comando cat</h2>
+<p><code>cat</code> (concatenate) visualizza il contenuto di file, li concatena e può creare file semplici.</p>
+<h3>Visualizzare file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cat file.txt              # mostra contenuto
+cat file1.txt file2.txt   # mostra entrambi
+cat -n file.txt           # con numeri di riga
+cat -A file.txt           # mostra caratteri non stampabili</code></pre>
+</div>
+<h3>Creare un file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cat > nuovo.txt
+Scrivi qui il contenuto.
+Premi Ctrl+D per terminare.</code></pre>
+</div>
+<h3>Concatenare file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cat parte1.txt parte2.txt > completo.txt
+cat *.log > tutti_i_log.txt</code></pre>
+</div>
+<h3>Alternative per file lunghi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">less file.txt     # visualizza pagina per pagina (q per uscire)
+more file.txt     # simile a less
+head -20 file.txt # prime 20 righe
+tail -20 file.txt # ultime 20 righe</code></pre>
+</div>
+        </article>
+        <article id="cp">
+<h2>Comando cp</h2>
+<p><code>cp</code> copia file e directory.</p>
+<h3>Sintassi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cp [opzioni] sorgente destinazione</code></pre>
+</div>
+<h3>Copia file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cp file.txt copia.txt              # copia con nuovo nome
+cp file.txt /tmp/                  # copia in altra directory
+cp file1.txt file2.txt /backup/    # copia più file</code></pre>
+</div>
+<h3>Copia directory</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cp -r cartella/ backup/     # -r = ricorsivo (obbligatorio per dir)
+cp -r src/ /tmp/src_backup/</code></pre>
+</div>
+<h3>Opzioni utili</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cp -i file.txt dest.txt     # chiede conferma se dest esiste
+cp -u file.txt dest.txt     # copia solo se sorgente è più recente
+cp -v file.txt dest.txt     # verbose
+cp -p file.txt dest.txt     # preserva permessi e timestamp
+cp -a cartella/ backup/     # archivio: -r + -p + symlink</code></pre>
+</div>
+        </article>
+        <article id="mv">
+<h2>Comando mv</h2>
+<p><code>mv</code> sposta o rinomina file e directory.</p>
+<h3>Rinominare</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">mv vecchio.txt nuovo.txt
+mv vecchia_cartella/ nuova_cartella/</code></pre>
+</div>
+<h3>Spostare</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">mv file.txt /tmp/              # sposta in /tmp
+mv *.log /var/log/archivio/   # sposta tutti i .log
+mv file1.txt file2.txt /dest/ # sposta più file</code></pre>
+</div>
+<h3>Opzioni</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">mv -i src dest    # chiede conferma prima di sovrascrivere
+mv -n src dest    # non sovrascrive mai (no-clobber)
+mv -v src dest    # verbose</code></pre>
+</div>
+<h3>Rinomina batch con ciclo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Rinomina tutti i .txt in .md
+for f in *.txt; do
+    mv "$f" "${f%.txt}.md"
+done</code></pre>
+</div>
+        </article>
+        <article id="rm">
+<h2>Comando rm</h2>
+<p><code>rm</code> elimina file e directory. <strong>Attenzione:</strong> non c'è cestino — la cancellazione è permanente.</p>
+<h3>Eliminare file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">rm file.txt
+rm file1.txt file2.txt
+rm *.tmp          # elimina tutti i .tmp</code></pre>
+</div>
+<h3>Eliminare directory</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">rmdir cartella_vuota/          # solo se vuota
+rm -r cartella/                # ricorsivo
+rm -rf cartella/               # forza senza conferme</code></pre>
+</div>
+<h3>Opzioni di sicurezza</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">rm -i file.txt      # chiede conferma per ogni file
+rm -I *.txt        # chiede conferma una sola volta
+rm -v file.txt     # mostra cosa viene eliminato</code></pre>
+</div>
+<h3>Alternativa sicura</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Sposta nel cestino manuale invece di eliminare
+mkdir -p ~/cestino
+mv file_da_eliminare.txt ~/cestino/</code></pre>
+</div>
+        </article>
+        <article id="touch-mkdir">
+<h2>Comandi touch e mkdir</h2>
+<h3>touch — Creare file vuoti</h3>
+<p><code>touch</code> crea file vuoti o aggiorna il timestamp di file esistenti.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">touch file.txt              # crea file vuoto
+touch file1.txt file2.txt   # crea più file
+touch -t 202601010000 file.txt  # imposta timestamp specifico</code></pre>
+</div>
+<h3>mkdir — Creare directory</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">mkdir nuova_cartella
+mkdir -p percorso/lungo/da/creare   # crea tutti i livelli
+mkdir -m 755 cartella               # crea con permessi specifici</code></pre>
+</div>
+<h3>Struttura di un progetto</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">mkdir -p progetto/{src,tests,docs,assets}
+touch progetto/README.md
+touch progetto/src/main.sh
+ls -R progetto/</code></pre>
+</div>
+<h3>Espansione con graffe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Crea 36 directory anno/mese
+mkdir -p backup/{2024,2025,2026}/{01,02,03,04,05,06,07,08,09,10,11,12}</code></pre>
+</div>
+        </article>
+        <article id="man-alias">
+<h2>Comandi man e alias</h2>
+<h3>man — Il manuale di sistema</h3>
+<p><code>man</code> mostra la pagina di manuale di un comando.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">man ls          # manuale di ls
+man man         # manuale di man stesso
+man -k keyword  # cerca per parola chiave</code></pre>
+</div>
+<p>Navigazione: <kbd>Spazio</kbd>=avanti, <kbd>b</kbd>=indietro, <kbd>/parola</kbd>=cerca, <kbd>q</kbd>=esci.</p>
+<h3>alias — Scorciatoie personalizzate</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">alias ll='ls -lah'
+alias la='ls -la'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gs='git status'
+alias gp='git push'
+alias aggiorna='sudo apt update && sudo apt upgrade'</code></pre>
+</div>
+<h3>Rendere gli alias permanenti</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo "alias ll='ls -lah'" >> ~/.bashrc
+source ~/.bashrc    # ricarica la configurazione</code></pre>
+</div>
+<h3>Gestire gli alias</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">alias               # elenca tutti gli alias attivi
+unalias ll          # rimuove un alias
+type ll             # mostra cosa fa un comando/alias</code></pre>
+</div>
+        </article>
+        <article id="grep">
+<h2>Comando grep</h2>
+<p><code>grep</code> cerca pattern all'interno di file o input. È uno dei comandi più potenti di Bash.</p>
+<h3>Sintassi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">grep [opzioni] pattern [file...]</code></pre>
+</div>
+<h3>Utilizzo base</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">grep "errore" log.txt              # cerca "errore" in log.txt
+grep "root" /etc/passwd            # cerca utente root
+grep "TODO" *.py                   # cerca in tutti i .py</code></pre>
+</div>
+<h3>Opzioni fondamentali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">grep -i "errore" log.txt    # case-insensitive
+grep -r "TODO" ./src/       # ricorsivo nelle directory
+grep -n "errore" log.txt    # mostra numero di riga
+grep -c "errore" log.txt    # conta le righe
+grep -v "errore" log.txt    # INVERSO: righe senza match
+grep -l "TODO" *.py         # solo nomi dei file
+grep -w "log" file.txt      # solo parole intere</code></pre>
+</div>
+<h3>Espressioni regolari</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">grep "^#" script.sh          # righe che iniziano con #
+grep "\.py$" lista.txt       # righe che finiscono con .py
+grep -E "err(ore|or)" log.txt # pattern esteso
+grep -P "\d{3}-\d{4}" file.txt  # Perl regex</code></pre>
+</div>
+<h3>Con pipe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ps aux | grep python         # processi Python
+history | grep git           # comandi git usati
+cat /etc/passwd | grep -v "nologin"  # utenti con shell</code></pre>
+</div>
+        </article>
+        <article id="awk">
+<h2>Comando awk</h2>
+<p><code>awk</code> è un linguaggio di elaborazione di testo orientato ai campi (colonne). Perfetto per file CSV, log e output di comandi.</p>
+<h3>Sintassi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">awk 'pattern {azione}' file</code></pre>
+</div>
+<h3>Variabili speciali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># $0 = riga intera, $1 = primo campo, ecc.
+# NR = numero di riga, NF = numero di campi
+
+echo "Mario Rossi 42" | awk '{print $1}'    # Mario
+echo "Mario Rossi 42" | awk '{print $2}'    # Rossi
+echo "Mario Rossi 42" | awk '{print $NF}'   # 42 (ultimo campo)</code></pre>
+</div>
+<h3>Separator personalizzato</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">awk -F: '{print $1}' /etc/passwd        # utenti
+awk -F, '{print $1, $3}' dati.csv       # colonne 1 e 3 da CSV
+awk -F: '{print $1, $3}' /etc/passwd    # utente e UID</code></pre>
+</div>
+<h3>Filtri e condizioni</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">awk 'NR>1' file.csv               # salta intestazione
+awk '$3 > 100' vendite.txt        # righe dove col3 > 100
+awk '/errore/ {print NR, $0}' log.txt</code></pre>
+</div>
+<h3>Calcoli</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">awk '{sum += $1} END {print "Totale:", sum}' numeri.txt
+awk 'END {print "Righe:", NR}' file.txt
+ps aux | awk 'NR>1 {sum+=$3} END {print "CPU%:", sum}'</code></pre>
+</div>
+        </article>
+        <article id="sed">
+<h2>Comando sed</h2>
+<p><code>sed</code> (stream editor) elabora e trasforma testo riga per riga. Ideale per sostituzioni in massa.</p>
+<h3>Sostituzione</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sed 's/vecchio/nuovo/' file.txt        # prima occorrenza per riga
+sed 's/vecchio/nuovo/g' file.txt       # tutte le occorrenze
+sed 's/vecchio/nuovo/gi' file.txt      # case-insensitive
+sed -i 's/vecchio/nuovo/g' file.txt    # modifica il file direttamente</code></pre>
+</div>
+<h3>Backup automatico</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sed -i.bak 's/foo/bar/g' file.txt   # salva backup in file.txt.bak</code></pre>
+</div>
+<h3>Eliminare righe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sed '5d' file.txt            # elimina riga 5
+sed '1,3d' file.txt          # elimina righe 1-3
+sed '/^#/d' script.sh        # elimina commenti
+sed '/^$/d' file.txt         # elimina righe vuote</code></pre>
+</div>
+<h3>Stampa selettiva</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sed -n '10,20p' file.txt     # stampa solo righe 10-20
+sed -n '/errore/p' log.txt  # stampa righe con "errore"</code></pre>
+</div>
+<h3>Inserire testo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sed '1i\# Intestazione aggiunta' file.txt   # prima della riga 1
+sed '$a\# Fine file' file.txt              # alla fine</code></pre>
+</div>
+        </article>
+        <article id="cut-sort">
+<h2>Comandi cut, sort, head, tail</h2>
+<h3>cut — Estrae colonne</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">cut -d: -f1 /etc/passwd           # primo campo separato da :
+cut -d, -f2,4 dati.csv            # colonne 2 e 4 da CSV
+cut -c1-10 file.txt               # caratteri 1-10 di ogni riga</code></pre>
+</div>
+<h3>sort — Ordina righe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">sort file.txt               # ordine alfabetico
+sort -r file.txt            # ordine inverso
+sort -n numeri.txt          # ordine numerico
+sort -k2 tabella.txt        # ordina per seconda colonna
+sort -u file.txt            # rimuove duplicati
+sort -t: -k3 -n /etc/passwd # ordina per UID</code></pre>
+</div>
+<h3>head — Prime righe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">head file.txt         # prime 10 righe (default)
+head -n 20 file.txt   # prime 20 righe
+head -c 100 file.txt  # primi 100 byte</code></pre>
+</div>
+<h3>tail — Ultime righe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">tail file.txt          # ultime 10 righe
+tail -n 20 file.txt    # ultime 20 righe
+tail -f /var/log/syslog  # segue in tempo reale
+tail -f app.log | grep ERROR  # solo errori in live</code></pre>
+</div>
+<h3>Pipeline combinata</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ps aux | sort -k3 -rn | head -6 | awk '{print $1, $3"%", $11}'</code></pre>
+</div>
+        </article>
+        <article id="system-monitoring">
+<h2>Monitoraggio del Sistema</h2>
+<h3>ps — Processi attivi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ps              # processi del terminale corrente
+ps aux          # tutti i processi (a=tutti, u=utente, x=senza tty)
+ps aux | grep nginx    # cerca processo specifico
+ps -ef --forest        # albero dei processi</code></pre>
+</div>
+<h3>top — Monitor interattivo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">top             # monitor interattivo (q per uscire)
+top -u utente   # solo processi di un utente
+htop            # versione migliorata (da installare)</code></pre>
+</div>
+<p>Tasti utili in top: <kbd>M</kbd>=ordina per memoria, <kbd>P</kbd>=CPU, <kbd>k</kbd>=termina processo, <kbd>q</kbd>=esci.</p>
+<h3>df — Spazio disco</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">df              # spazio su tutti i filesystem
+df -h           # leggibile (GB, MB)
+df -h /home     # solo /home
+df -T           # mostra tipo filesystem</code></pre>
+</div>
+<h3>du — Spazio usato da file/dir</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">du cartella/          # dimensione ricorsiva
+du -h cartella/       # leggibile
+du -sh cartella/      # solo totale
+du -sh * | sort -h    # ordina per dimensione</code></pre>
+</div>
+<h3>free — Memoria RAM</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">free            # memoria in byte
+free -h         # leggibile (GB, MB)
+free -h -s 2    # aggiorna ogni 2 secondi</code></pre>
+</div>
+        </article>
+        <article id="kill-uptime">
+<h2>Comandi kill e uptime</h2>
+<h3>kill — Terminare processi</h3>
+<p>Ogni processo ha un PID (Process ID). <code>kill</code> invia segnali ai processi.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">kill 1234          # invia SIGTERM al PID 1234 (terminazione gentile)
+kill -9 1234       # SIGKILL (terminazione forzata, immediata)
+kill -15 1234      # SIGTERM (default)
+kill -l            # elenco di tutti i segnali</code></pre>
+</div>
+<h3>Trovare il PID</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">pidof nginx         # PID di nginx
+pgrep -u utente    # PID dei processi dell'utente
+ps aux | grep app  # cerca per nome</code></pre>
+</div>
+<h3>killall e pkill</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">killall firefox          # termina tutti i processi "firefox"
+pkill -u utente         # termina tutti i processi di un utente
+pkill -f "python app"   # cerca nel comando completo</code></pre>
+</div>
+<h3>uptime — Tempo di attività</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">uptime</code></pre>
+</div>
+<p>Output esempio:</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">10:30:15 up 5 days, 3:22, 2 users, load average: 0.15, 0.10, 0.09</code></pre>
+</div>
+<p>Il <em>load average</em> mostra il carico medio negli ultimi 1, 5 e 15 minuti. Un valore ≤ numero di CPU è normale.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">w                  # chi è connesso + uptime
+who                # utenti connessi
+last               # cronologia accessi</code></pre>
+</div>
+        </article>
+        <article id="networking">
+<h2>Comandi di Rete</h2>
+<h3>ping — Verifica connettività</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ping google.com          # invia pacchetti ICMP
+ping -c 4 google.com     # solo 4 pacchetti
+ping -i 2 server.it      # intervallo 2 secondi</code></pre>
+</div>
+<h3>curl — Trasferisce dati via URL</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">curl https://example.com              # scarica pagina
+curl -o file.html https://example.com # salva in file
+curl -I https://example.com           # solo header HTTP
+curl -X POST -d "dati" https://api.example.com
+curl -H "Authorization: Bearer TOKEN" https://api.example.com</code></pre>
+</div>
+<h3>wget — Scarica file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">wget https://example.com/file.zip          # scarica file
+wget -O nuovo_nome.zip https://example.com/file.zip
+wget -r https://example.com              # scarica sito ricorsivamente
+wget -c https://example.com/grande.iso   # riprende download interrotto</code></pre>
+</div>
+<h3>ssh — Connessione remota sicura</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ssh utente@server.com              # connessione SSH
+ssh -p 2222 utente@server.com      # porta personalizzata
+ssh -i ~/.ssh/chiave.pem utente@server.com
+ssh utente@server.com 'ls -la'    # esegue comando remoto</code></pre>
+</div>
+<h3>scp e rsync</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># scp — copia sicura via SSH
+scp file.txt utente@server.com:/home/utente/
+scp utente@server.com:/log/app.log ./
+
+# rsync — sincronizzazione efficiente
+rsync -avz cartella/ utente@server.com:/backup/
+rsync -avz --delete src/ dest/    # elimina file non più presenti</code></pre>
+</div>
+        </article>
+        <article id="compression">
+<h2>Compressione File</h2>
+<h3>zip e unzip</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">zip archivio.zip file1.txt file2.txt    # comprime
+zip -r archivio.zip cartella/          # ricorsivo
+zip -9 archivio.zip file.txt           # massima compressione
+unzip archivio.zip                     # estrae
+unzip archivio.zip -d /dest/           # estrae in directory
+unzip -l archivio.zip                  # elenca contenuto</code></pre>
+</div>
+<h3>tar — Archivio (con o senza compressione)</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Creare archivi
+tar -cvf archivio.tar cartella/          # solo archivio
+tar -czvf archivio.tar.gz cartella/      # + gzip
+tar -cjvf archivio.tar.bz2 cartella/    # + bzip2
+tar -cJvf archivio.tar.xz cartella/     # + xz (migliore)
+
+# Estrarre
+tar -xvf archivio.tar
+tar -xzvf archivio.tar.gz
+tar -xzvf archivio.tar.gz -C /destinazione/
+
+# Elencare contenuto
+tar -tvf archivio.tar.gz</code></pre>
+</div>
+<p>Mnemonico: <strong>c</strong>=create, <strong>x</strong>=extract, <strong>t</strong>=list, <strong>v</strong>=verbose, <strong>f</strong>=file, <strong>z</strong>=gzip.</p>
+<h3>gzip e gunzip</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">gzip file.txt          # comprime → file.txt.gz
+gzip -k file.txt       # mantiene l'originale
+gunzip file.txt.gz     # decomprime
+zcat file.txt.gz       # visualizza senza decomprimere</code></pre>
+</div>
+        </article>
+        <article id="permissions">
+<h2>Permessi File</h2>
+<p>Ogni file ha tre livelli di permessi: <strong>proprietario</strong>, <strong>gruppo</strong> e <strong>altri</strong>. Ogni livello ha tre bit: <strong>r</strong>ead (4), <strong>w</strong>rite (2), e<strong>x</strong>ecute (1).</p>
+<h3>Lettura dei permessi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">-rwxr-xr-- 1 mario devs 4096 Jun 12 10:00 script.sh
+# rwx = proprietario: legge, scrive, esegue
+# r-x = gruppo: legge, esegue
+# r-- = altri: solo legge</code></pre>
+</div>
+<h3>chmod — Cambia permessi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Notazione ottale
+chmod 755 script.sh      # rwxr-xr-x
+chmod 644 file.txt       # rw-r--r--
+chmod 600 chiave.pem     # rw------- (solo proprietario)
+
+# Notazione simbolica
+chmod +x script.sh       # aggiunge esecuzione a tutti
+chmod u+w file.txt       # aggiunge scrittura al proprietario
+chmod g-w file.txt       # rimuove scrittura dal gruppo
+chmod o-r file.txt       # rimuove lettura dagli altri
+chmod -R 755 cartella/   # ricorsivo</code></pre>
+</div>
+<h3>chown — Cambia proprietario</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">chown mario file.txt             # cambia proprietario
+chown mario:devs file.txt        # cambia proprietario e gruppo
+chown -R mario:devs cartella/    # ricorsivo</code></pre>
+</div>
+<h3>chgrp — Cambia gruppo</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">chgrp devs file.txt
+chgrp -R devs cartella/</code></pre>
+</div>
+        </article>
+        <article id="scripting">
+<h2>Script Bash</h2>
+<p>Uno script Bash è un file di testo con comandi eseguiti in sequenza. Permettono di automatizzare operazioni ripetitive.</p>
+<h3>Struttura base</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+# Questo è un commento
+# La prima riga (shebang) indica l'interprete
+
+echo "Il mio primo script!"
+date
+whoami</code></pre>
+</div>
+<h3>Rendere eseguibile</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">chmod +x mio_script.sh    # aggiunge permesso di esecuzione
+./mio_script.sh           # esegue
+bash mio_script.sh        # alternativa</code></pre>
+</div>
+<h3>Argomenti da riga di comando</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+echo "Nome script: $0"
+echo "Primo argomento: $1"
+echo "Secondo argomento: $2"
+echo "Tutti gli argomenti: $@"
+echo "Numero di argomenti: $#"
+
+# Esecuzione: ./script.sh pippo pluto
+# Output:
+# Nome script: ./script.sh
+# Primo argomento: pippo</code></pre>
+</div>
+<h3>Codice di uscita</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">ls file_inesistente.txt
+echo "Codice uscita: $?"   # 0 = successo, ≠0 = errore
+
+exit 0     # uscita con successo
+exit 1     # errore generico</code></pre>
+</div>
+        </article>
+        <article id="variables">
+<h2>Variabili in Bash</h2>
+<h3>Definizione e uso</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">NOME="Mario"
+ETA=30
+
+echo $NOME          # Mario
+echo "$ETA anni"    # 30 anni
+echo "${NOME}!"     # Mario!</code></pre>
+</div>
+<h3>Variabili speciali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">$HOME      # directory home
+$USER      # nome utente corrente
+$PATH      # percorsi degli eseguibili
+$PWD       # directory corrente
+$SHELL     # shell in uso
+$RANDOM    # numero casuale 0-32767
+$$         # PID dello script</code></pre>
+</div>
+<h3>Sostituzione di comando</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">DATA=$(date +%Y-%m-%d)
+echo "Oggi è: $DATA"
+
+NUM_FILE=$(ls | wc -l)
+echo "File nella directory: $NUM_FILE"</code></pre>
+</div>
+<h3>readonly e unset</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">readonly VERSIONE="1.0"
+# VERSIONE="2.0"   # errore!
+
+TEMP="valore"
+unset TEMP
+echo $TEMP          # stringa vuota</code></pre>
+</div>
+        </article>
+        <article id="data-types">
+<h2>Tipi di Dati in Bash</h2>
+<p>Bash tratta tutto come stringhe. Per numeri interi usa <code>declare -i</code> o aritmetica esplicita.</p>
+<h3>Stringhe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">STR="Ciao, mondo"
+echo ${#STR}              # lunghezza: 11
+echo ${STR:0:4}           # substring: Ciao
+echo ${STR/Ciao/Hello}    # sostituzione: Hello, mondo
+echo ${STR^^}             # maiuscolo: CIAO, MONDO
+echo ${STR,,}             # minuscolo: ciao, mondo</code></pre>
+</div>
+<h3>Interi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">declare -i NUM=10
+NUM=NUM+5
+echo $NUM        # 15
+
+((risultato = 10 * 3 + 2))
+echo $risultato  # 32
+
+echo $((100 / 7))    # 14 (divisione intera)
+echo $((100 % 7))    # 2 (modulo)</code></pre>
+</div>
+<h3>Array</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">FRUTTI=("mela" "banana" "ciliegia")
+echo ${FRUTTI[0]}     # mela
+echo ${FRUTTI[@]}     # tutti gli elementi
+echo ${#FRUTTI[@]}    # numero di elementi: 3
+
+FRUTTI+=("pera")      # aggiunge elemento
+
+for f in "${FRUTTI[@]}"; do
+    echo "  - $f"
+done</code></pre>
+</div>
+<h3>Array associativi</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">declare -A CAPITALI
+CAPITALI["italia"]="Roma"
+CAPITALI["francia"]="Parigi"
+echo ${CAPITALI["italia"]}   # Roma
+echo ${!CAPITALI[@]}         # chiavi</code></pre>
+</div>
+        </article>
+        <article id="operators">
+<h2>Operatori in Bash</h2>
+<h3>Operatori aritmetici</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">echo $((5 + 3))   # 8
+echo $((5 - 3))   # 2
+echo $((5 * 3))   # 15
+echo $((5 / 2))   # 2 (divisione intera)
+echo $((5 % 2))   # 1 (modulo)
+echo $((2 ** 8))  # 256 (potenza)</code></pre>
+</div>
+<h3>Confronto numeri (in [ ] e [[ ]])</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">[ $A -eq $B ]   # uguale (equal)
+[ $A -ne $B ]   # diverso (not equal)
+[ $A -lt $B ]   # minore (less than)
+[ $A -le $B ]   # minore o uguale
+[ $A -gt $B ]   # maggiore (greater than)
+[ $A -ge $B ]   # maggiore o uguale</code></pre>
+</div>
+<h3>Operatori su stringhe</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">[ "$A" = "$B" ]     # uguale
+[ "$A" != "$B" ]    # diverso
+[ -z "$A" ]         # stringa vuota
+[ -n "$A" ]         # stringa non vuota
+[[ "$A" == *"sub"* ]]  # contiene sottostringa</code></pre>
+</div>
+<h3>Operatori su file</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">[ -e percorso ]    # esiste
+[ -f percorso ]    # è un file regolare
+[ -d percorso ]    # è una directory
+[ -r percorso ]    # è leggibile
+[ -w percorso ]    # è scrivibile
+[ -x percorso ]    # è eseguibile
+[ -s percorso ]    # esiste e non è vuoto</code></pre>
+</div>
+        </article>
+        <article id="if-else">
+<h2>If / Else in Bash</h2>
+<h3>Struttura base</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">if [ condizione ]; then
+    # comandi se vera
+elif [ altra_condizione ]; then
+    # comandi se altra vera
+else
+    # comandi se false
+fi</code></pre>
+</div>
+<h3>Esempio pratico</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+ETA=$1
+
+if [ -z "$ETA" ]; then
+    echo "Uso: $0 <età>"
+    exit 1
+fi
+
+if [ "$ETA" -ge 18 ]; then
+    echo "Sei maggiorenne"
+elif [ "$ETA" -ge 13 ]; then
+    echo "Sei un adolescente"
+else
+    echo "Sei un bambino"
+fi</code></pre>
+</div>
+<h3>Operatori logici</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># AND
+if [ "$ETA" -ge 18 ] && [ "$ETA" -lt 65 ]; then
+    echo "Età lavorativa"
+fi
+
+# OR
+if [ "$GIORNO" = "sabato" ] || [ "$GIORNO" = "domenica" ]; then
+    echo "È weekend"
+fi
+
+# NOT
+if ! [ -f file.txt ]; then
+    echo "Il file non esiste"
+fi</code></pre>
+</div>
+<h3>Case statement</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">case "$FRUTTO" in
+    "mela"|"pera")
+        echo "Frutto di stagione"
+        ;;
+    "banana")
+        echo "Frutto esotico"
+        ;;
+    *)
+        echo "Frutto sconosciuto"
+        ;;
+esac</code></pre>
+</div>
+        </article>
+        <article id="loops">
+<h2>Loop in Bash</h2>
+<h3>for — Iterazione su lista</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Lista esplicita
+for FRUTTO in mela banana ciliegia; do
+    echo "Frutto: $FRUTTO"
+done
+
+# Range numerico
+for i in {1..10}; do
+    echo "Numero: $i"
+done
+
+# C-style
+for ((i=0; i<5; i++)); do
+    echo "i=$i"
+done
+
+# File in directory
+for file in *.txt; do
+    echo "Elaboro: $file"
+done</code></pre>
+</div>
+<h3>while — Ripeti mentre vero</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">CONTATORE=0
+while [ $CONTATORE -lt 5 ]; do
+    echo "Contatore: $CONTATORE"
+    ((CONTATORE++))
+done
+
+# Legge file riga per riga
+while IFS= read -r riga; do
+    echo "Riga: $riga"
+done < file.txt</code></pre>
+</div>
+<h3>until — Ripeti finché non vero</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">CONTATORE=0
+until [ $CONTATORE -ge 5 ]; do
+    echo "Contatore: $CONTATORE"
+    ((CONTATORE++))
+done</code></pre>
+</div>
+<h3>break e continue</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">for i in {1..10}; do
+    [ $i -eq 5 ] && continue   # salta il 5
+    [ $i -eq 8 ] && break      # esce all'8
+    echo $i
+done</code></pre>
+</div>
+        </article>
+        <article id="functions">
+<h2>Funzioni in Bash</h2>
+<h3>Definizione</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># Sintassi 1
+function saluta {
+    echo "Ciao, $1!"
+}
+
+# Sintassi 2 (più portabile)
+saluta() {
+    echo "Ciao, $1!"
+}
+
+saluta "Mario"    # Ciao, Mario!</code></pre>
+</div>
+<h3>Return value</h3>
+<p>Le funzioni Bash restituiscono solo codici di uscita (0-255). Per restituire dati usa <code>echo</code> e la sostituzione di comando.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">somma() {
+    local risultato=$(( $1 + $2 ))
+    echo $risultato
+}
+
+TOTALE=$(somma 10 25)
+echo "Somma: $TOTALE"    # Somma: 35</code></pre>
+</div>
+<h3>Variabili locali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">funzione_esempio() {
+    local VAR_LOCALE="solo qui"
+    GLOBALE="visibile ovunque"
+}
+
+funzione_esempio
+echo $GLOBALE        # visibile ovunque
+echo $VAR_LOCALE     # stringa vuota</code></pre>
+</div>
+<h3>Esempio completo — logger</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+
+log() {
+    local livello=$1
+    local messaggio=$2
+    echo "[$(date '+%H:%M:%S')] [$livello] $messaggio"
+}
+
+verifica_file() {
+    local percorso=$1
+    if [ ! -f "$percorso" ]; then
+        log "ERRORE" "File non trovato: $percorso"
+        return 1
+    fi
+    log "INFO" "File trovato: $percorso"
+    return 0
+}
+
+verifica_file "/etc/passwd" && log "OK" "Tutto bene"</code></pre>
+</div>
+        </article>
+        <article id="cron">
+<h2>Cron — Pianificazione dei Task</h2>
+<p><code>cron</code> esegue comandi automaticamente a intervalli pianificati tramite <strong>crontab</strong>.</p>
+<h3>Gestire il crontab</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">crontab -e     # apre l'editor del crontab
+crontab -l     # elenca i job configurati
+crontab -r     # rimuove tutti i job</code></pre>
+</div>
+<h3>Formato crontab</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash"># minuto  ora  giorno  mese  giorno_settimana  comando
+# (0-59) (0-23) (1-31) (1-12)    (0-7, 0=dom)
+
+0 9 * * 1-5  /home/user/backup.sh    # Lun-Ven alle 09:00
+30 2 * * *   /usr/bin/backup         # ogni giorno alle 02:30
+*/15 * * * * /scripts/check.sh       # ogni 15 minuti
+0 0 1 * *    /scripts/monthly.sh     # primo del mese a mezzanotte
+@reboot      /scripts/startup.sh     # all'avvio del sistema</code></pre>
+</div>
+<h3>Scorciatoie speciali</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">@reboot    # all'avvio
+@hourly    # ogni ora
+@daily     # ogni giorno
+@weekly    # ogni settimana
+@monthly   # ogni mese
+@yearly    # ogni anno</code></pre>
+</div>
+<h3>Script di backup con cron</h3>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+# /home/user/backup.sh
+
+DATA=$(date +%Y%m%d)
+DEST="/backup/db_$DATA.tar.gz"
+
+tar -czvf "$DEST" /var/www/html/
+echo "Backup completato: $DEST"</code></pre>
+</div>
+        </article>
+        <article id="esercizi">
+<h2>Esercizi Bash</h2>
+<p>Metti alla prova le tue conoscenze con questi esercizi pratici.</p>
+<h3>Esercizio 1 — Backup automatico</h3>
+<p>Scrivi uno script che faccia il backup di una directory, nomini l'archivio con la data e mantenga solo gli ultimi 7 backup.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+SORGENTE="$1"
+DEST_DIR="$HOME/backup"
+DATA=$(date +%Y%m%d_%H%M%S)
+
+mkdir -p "$DEST_DIR"
+tar -czvf "$DEST_DIR/backup_$DATA.tar.gz" "$SORGENTE"
+
+# Mantieni solo gli ultimi 7
+ls -t "$DEST_DIR"/backup_*.tar.gz | tail -n +8 | xargs rm -f
+echo "Backup completato."
+ls -lh "$DEST_DIR"/backup_*.tar.gz</code></pre>
+</div>
+<h3>Esercizio 2 — Analisi log</h3>
+<p>Dato un file di log, trova le 5 righe di errore più frequenti.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+LOG="$1"
+
+grep -i "error" "$LOG" | \
+    awk '{$1=$2=$3=""; print $0}' | \
+    sort | \
+    uniq -c | \
+    sort -rn | \
+    head -5</code></pre>
+</div>
+<h3>Esercizio 3 — Monitor disco</h3>
+<p>Avverti se un filesystem supera l'80% di utilizzo.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+SOGLIA=80
+
+df -h | awk 'NR>1 {
+    gsub(/%/, "", $5)
+    if ($5+0 > '"$SOGLIA"') {
+        print "AVVISO: " $6 " è al " $5 "% (" $3 "/" $2 ")"
+    }
+}'</code></pre>
+</div>
+<h3>Esercizio 4 — Rinomina batch</h3>
+<p>Rinomina tutti i file .jpeg in .jpg in una directory.</p>
+<div class="example">
+<pre class="language-bash"><code class="language-bash">#!/bin/bash
+DIR="${1:-.}"
+CONTATORE=0
+
+for file in "$DIR"/*.jpeg; do
+    [ -f "$file" ] || continue
+    nuovo="${file%.jpeg}.jpg"
+    mv "$file" "$nuovo"
+    echo "Rinominato: $(basename $file)"
+    ((CONTATORE++))
+done
+echo "Totale rinominati: $CONTATORE"</code></pre>
+</div>
+        </article>
+        <article id="fine">
+<h2>Conclusione</h2>
+<p>Hai completato il corso di Bash! Hai imparato a navigare il filesystem, elaborare testo, monitorare il sistema, gestire la rete, comprimere file, impostare i permessi e scrivere script completi con variabili, funzioni, cicli e pianificazione automatica con cron.</p>
+<p>Bash è uno strumento che cresce con l'esperienza: più script scrivi, più diventa naturale. Continua ad esplorare i <code>man</code> page e non smettere di automatizzare!</p>
+<h3>Prossimi passi</h3>
+<p>Continua il tuo percorso con uno di questi corsi:</p>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem">
+  <a href="corso-python.html" class="btn btn-primary">Corso Python</a>
+  <a href="corsi.html" class="btn btn-primary">Tutti i corsi</a>
+  <a href="prenota.html" class="btn btn-accent">Prenota una lezione</a>
+</div>
+
+        </article>
+      </main>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+        <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+      </div>
+      <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+      <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year"></span> AlessandroSimone.it &mdash; Tutti i diritti riservati</div>
+  </footer>
+
+  <script src="js/main.js?v=4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
