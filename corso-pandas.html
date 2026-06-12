@@ -50,6 +50,27 @@
     .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
     .codeview .token.class-name { color: #c4b5fd; }
     .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 998; }
+    body.editor-open { overflow: hidden; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1001; }
+    body.editor-open .course-nav { visibility: hidden; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
     .codeview .token.builtin { color: #fb923c; }
     .codeview .token.decorator { color: #f472b6; }
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
@@ -190,7 +211,7 @@
 <tr><td><code class="inline">DataFrame</code></td><td>2D</td><td>Tabella: insieme di Series che condividono lo stesso indice</td></tr>
 </table>
 <div class="example">
-<div class="codehead"><span>Il tuo primo DataFrame</span></div>
+<div class="codehead"><span>Il tuo primo DataFrame</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 dati = {
@@ -214,7 +235,7 @@ print(df.columns)   # Index([&#x27;nome&#x27;, &#x27;eta&#x27;, &#x27;citta&#x27
 <article class="lesson" id="install">
 <h2>Installazione e importazione</h2>
 <div class="example">
-<div class="codehead"><span>Installazione</span></div>
+<div class="codehead"><span>Installazione</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-bash"># Nel terminale
 pip install pandas
 
@@ -224,7 +245,7 @@ pip install pandas
 # Spesso si installano insieme
 pip install pandas numpy matplotlib</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Importazione e versione</span></div>
+<div class="codehead"><span>Importazione e versione</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 import numpy as np
 
@@ -240,7 +261,7 @@ print(s)</code></pre>
 <h2>Pandas Series</h2>
 <p>Una <strong>Series</strong> è un array 1D etichettato, capace di contenere qualsiasi tipo di dato. Ogni elemento ha un'<strong>etichetta</strong> (l'indice).</p>
 <div class="example">
-<div class="codehead"><span>Creare una Series</span></div>
+<div class="codehead"><span>Creare una Series</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 # Da lista — indice automatico 0,1,2...
@@ -260,7 +281,7 @@ print(voti[&quot;ita&quot;])    # 8
 prezzi = pd.Series({&quot;pane&quot;: 1.5, &quot;latte&quot;: 1.2, &quot;uova&quot;: 2.8})
 print(prezzi[&quot;latte&quot;]) # 1.2</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Operazioni sulle Series</span></div>
+<div class="codehead"><span>Operazioni sulle Series</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 s = pd.Series([10, 20, 30, 40, 50])
@@ -284,7 +305,7 @@ print(s.describe())   # statistiche riassuntive</code></pre>
 <h2>Pandas DataFrame</h2>
 <p>Il <strong>DataFrame</strong> è la struttura più usata: una tabella 2D con righe e colonne etichettate. Puoi pensarla come un dizionario di Series che condividono lo stesso indice.</p>
 <div class="example">
-<div class="codehead"><span>Creare DataFrame in vari modi</span></div>
+<div class="codehead"><span>Creare DataFrame in vari modi</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 # Da dizionario di liste
@@ -302,7 +323,7 @@ df2 = pd.DataFrame([
 
 print(df)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Ispezionare un DataFrame</span></div>
+<div class="codehead"><span>Ispezionare un DataFrame</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -318,7 +339,7 @@ print(df.describe())   # statistiche numeriche
 print(df.shape)        # (4, 3)
 print(df.dtypes)       # tipo di ogni colonna</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Accedere a righe e colonne</span></div>
+<div class="codehead"><span>Accedere a righe e colonne</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -346,7 +367,7 @@ print(df.iloc[0, 1])      # 28</code></pre>
 <h2>Leggere file CSV</h2>
 <p>Il formato <strong>CSV</strong> (Comma-Separated Values) è il più comune per i dataset. Pandas lo legge con una sola riga.</p>
 <div class="example">
-<div class="codehead"><span>read_csv e to_csv</span></div>
+<div class="codehead"><span>read_csv e to_csv</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 # Leggere un CSV
@@ -365,7 +386,7 @@ df = pd.read_csv(
 # Salvare un DataFrame come CSV
 df.to_csv(&quot;output.csv&quot;, index=False)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Esplorare un dataset appena letto</span></div>
+<div class="codehead"><span>Esplorare un dataset appena letto</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.read_csv(&quot;vendite.csv&quot;)
@@ -384,7 +405,7 @@ print(df[&quot;categoria&quot;].value_counts())  # conteggi</code></pre>
 <h2>Leggere file JSON</h2>
 <p>Pandas legge anche <strong>JSON</strong>, formato comune nelle API web. La struttura viene convertita automaticamente in DataFrame.</p>
 <div class="example">
-<div class="codehead"><span>read_json e to_json</span></div>
+<div class="codehead"><span>read_json e to_json</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 # Da file JSON
@@ -402,7 +423,7 @@ print(df)
 # Salvare come JSON
 df.to_json(&quot;output.json&quot;, orient=&quot;records&quot;, indent=2)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>JSON annidato con json_normalize</span></div>
+<div class="codehead"><span>JSON annidato con json_normalize</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 dati = [
@@ -422,7 +443,7 @@ print(df)
 <h2>Analizzare i dati</h2>
 <p>Pandas offre metodi rapidi per ottenere una panoramica statistica del tuo dataset.</p>
 <div class="example">
-<div class="codehead"><span>Metodi di analisi rapida</span></div>
+<div class="codehead"><span>Metodi di analisi rapida</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -441,7 +462,7 @@ print(df[&quot;venditore&quot;].value_counts())
 # Luca     2
 # Marco    1</code></pre>
 </div><div class="example">
-<div class="codehead"><span>apply, map e funzioni custom</span></div>
+<div class="codehead"><span>apply, map e funzioni custom</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -481,7 +502,7 @@ print(df)</code></pre>
 <h2>Celle vuote (valori mancanti)</h2>
 <p>I valori mancanti appaiono come <code class="inline">NaN</code> (Not a Number). Hai due strategie: rimuoverli o sostituirli.</p>
 <div class="example">
-<div class="codehead"><span>Trovare i valori mancanti</span></div>
+<div class="codehead"><span>Trovare i valori mancanti</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 import numpy as np
 
@@ -498,7 +519,7 @@ print(df.isnull().sum())    # conteggio per colonna
 # citta    1
 print(df.isnull().sum().sum())  # 3 totali</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Rimuovere vs Riempire</span></div>
+<div class="codehead"><span>Rimuovere vs Riempire</span><button class="btn-try">Provalo tu ▶</button></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
 <div style="min-width:0;background:#1e293b;display:flex;flex-direction:column">
 <div style="background:#0f172a;padding:.35rem .9rem;font-size:.72rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px">dropna() — rimuove</div>
@@ -546,7 +567,7 @@ print(df.ffill())</code></pre>
 <h2>Formato dei dati sbagliato</h2>
 <p>Spesso le date sono stringhe e i numeri sono testo. Convertirli al tipo corretto è essenziale per l'analisi.</p>
 <div class="example">
-<div class="codehead"><span>Convertire le date</span></div>
+<div class="codehead"><span>Convertire le date</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -564,7 +585,7 @@ df[&quot;mese&quot;] = df[&quot;data&quot;].dt.month
 df[&quot;giorno_settimana&quot;] = df[&quot;data&quot;].dt.day_name()
 print(df)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Convertire i tipi numerici</span></div>
+<div class="codehead"><span>Convertire i tipi numerici</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -587,7 +608,7 @@ print(df.dtypes)</code></pre>
 <h2>Dati errati</h2>
 <p>A volte i dati sono nel formato giusto ma contengono valori impossibili: un'età di 300 anni, un prezzo negativo, un refuso. Vanno corretti o rimossi.</p>
 <div class="example">
-<div class="codehead"><span>Correggere valori fuori range</span></div>
+<div class="codehead"><span>Correggere valori fuori range</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -607,7 +628,7 @@ df.loc[df[&quot;eta&quot;] &lt; 0, &quot;eta&quot;] = df[&quot;eta&quot;].median
 
 print(df)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>replace per correzioni multiple</span></div>
+<div class="codehead"><span>replace per correzioni multiple</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -630,7 +651,7 @@ print(df[&quot;citta&quot;].value_counts())
 <h2>Rimuovere i duplicati</h2>
 <p>Le righe duplicate falsano le statistiche. Pandas le individua e rimuove facilmente.</p>
 <div class="example">
-<div class="codehead"><span>Trovare e rimuovere duplicati</span></div>
+<div class="codehead"><span>Trovare e rimuovere duplicati</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -652,7 +673,7 @@ print(df.duplicated().sum())   # 2 duplicati
 df_pulito = df.drop_duplicates()
 print(df_pulito)</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Duplicati su colonne specifiche</span></div>
+<div class="codehead"><span>Duplicati su colonne specifiche</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -675,7 +696,7 @@ print(df_pulito)</code></pre>
 <h2>Selezione e filtro</h2>
 <p>Selezionare sottoinsiemi di dati è l'operazione più frequente in Pandas. Funziona in modo simile all'indicizzazione booleana di NumPy.</p>
 <div class="example">
-<div class="codehead"><span>Filtro con condizioni</span></div>
+<div class="codehead"><span>Filtro con condizioni</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -697,7 +718,7 @@ print(df[df[&quot;citta&quot;].isin([&quot;Roma&quot;, &quot;Napoli&quot;])])
 # query: sintassi più leggibile
 print(df.query(&quot;eta &gt; 30 and stipendio &gt; 40000&quot;))</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Ordinare i dati</span></div>
+<div class="codehead"><span>Ordinare i dati</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -724,7 +745,7 @@ print(df.nlargest(3, &quot;stipendio&quot;))</code></pre>
 <h2>GroupBy — raggruppare e aggregare</h2>
 <p><code class="inline">groupby()</code> applica lo schema <strong>split-apply-combine</strong>: divide i dati in gruppi, applica una funzione a ciascun gruppo, ricombina i risultati. È l'equivalente del <code class="inline">GROUP BY</code> di SQL.</p>
 <div class="example">
-<div class="codehead"><span>GroupBy di base</span></div>
+<div class="codehead"><span>GroupBy di base</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -746,7 +767,7 @@ print(df.groupby(&quot;regione&quot;)[&quot;vendite&quot;].mean())
 # Conteggio
 print(df.groupby(&quot;regione&quot;).size())</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Aggregazioni multiple con agg</span></div>
+<div class="codehead"><span>Aggregazioni multiple con agg</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -773,7 +794,7 @@ print(df.groupby(&quot;categoria&quot;).agg(
 <h2>Merge e Join</h2>
 <p>Spesso i dati sono divisi in più tabelle. <code class="inline">merge()</code> le unisce in base a una colonna comune, esattamente come i <strong>JOIN</strong> di SQL.</p>
 <div class="example">
-<div class="codehead"><span>merge tra due DataFrame</span></div>
+<div class="codehead"><span>merge tra due DataFrame</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 clienti = pd.DataFrame({
@@ -796,7 +817,7 @@ print(df)
 # 2           2   Luca        102      80
 # 3           3  Marco        104     120</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Tipi di join e concat</span></div>
+<div class="codehead"><span>Tipi di join e concat</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 a = pd.DataFrame({&quot;k&quot;: [1, 2, 3], &quot;x&quot;: [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]})
@@ -828,7 +849,7 @@ print(pd.concat([df1, df2], ignore_index=True))</code></pre>
 <h2>Correlazioni</h2>
 <p>Il metodo <code class="inline">corr()</code> calcola la <strong>correlazione</strong> tra le colonne numeriche: un valore tra -1 e 1 che misura quanto due variabili si muovono insieme.</p>
 <div class="example">
-<div class="codehead"><span>Matrice di correlazione</span></div>
+<div class="codehead"><span>Matrice di correlazione</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -859,7 +880,7 @@ print(df[&quot;ore_studio&quot;].corr(df[&quot;voto&quot;]))  # 0.98</code></pre
 <h2>Grafici con Pandas</h2>
 <p>Pandas integra <strong>Matplotlib</strong>: ogni DataFrame ha un metodo <code class="inline">.plot()</code> per visualizzare i dati con una sola riga.</p>
 <div class="example">
-<div class="codehead"><span>Grafici di base</span></div>
+<div class="codehead"><span>Grafici di base</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -877,7 +898,7 @@ plt.ylabel(&quot;Euro&quot;)
 plt.savefig(&quot;grafico.png&quot;)
 plt.show()</code></pre>
 </div><div class="example">
-<div class="codehead"><span>Tipi di grafico</span></div>
+<div class="codehead"><span>Tipi di grafico</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -912,7 +933,7 @@ plt.show()</code></pre>
 <span class="challenge-label">🏋️ Esercizio 1 — Analisi vendite</span>
 <p>Crea un DataFrame con le vendite di 5 venditori in 3 regioni. Trova: il totale vendite per regione, il venditore con più vendite, e la media vendite generale.</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<div class="codehead"><span>Soluzione Esercizio 1</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 df = pd.DataFrame({
@@ -936,7 +957,7 @@ print(f&quot;Media: {df[&#x27;vendite&#x27;].mean():.1f}&quot;)</code></pre>
 <span class="challenge-label">🏋️ Esercizio 2 — Pulizia dataset</span>
 <p>Dato un DataFrame con valori mancanti e duplicati, puliscilo: rimuovi i duplicati, riempi le età mancanti con la media e converti i nomi in formato corretto (prima lettera maiuscola).</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<div class="codehead"><span>Soluzione Esercizio 2</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 import numpy as np
 
@@ -962,7 +983,7 @@ print(df)</code></pre>
 <span class="challenge-label">🏋️ Esercizio 3 — Merge e analisi</span>
 <p>Hai due tabelle: clienti (id, nome) e ordini (id_cliente, totale). Uniscile e calcola la spesa totale di ogni cliente, ordinando dal più alto.</p>
 <div class="example">
-<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<div class="codehead"><span>Soluzione Esercizio 3</span><button class="btn-try">Provalo tu ▶</button></div>
 <pre class="codeview"><code class="language-python">import pandas as pd
 
 clienti = pd.DataFrame({
@@ -1025,11 +1046,90 @@ print(spesa)
     <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+
+<div id="editor" class="editor-overlay">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>&#x270F;&#xFE0F; Provalo tu &mdash; leggi e modifica il codice pandas</strong>
+      <div class="ed-actions">
+        <button id="ed-close" class="ed-btn ed-close">&times; Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">NOTE</div>
+        <iframe id="ed-preview" sandbox="allow-scripts"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
 </footer>
 
 <script src="js/main.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script>
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = null;
+
+    function note(){
+      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#e2e8f0;padding:1.4rem;line-height:1.6;background:#1e293b">'
+        + '<h3 style="margin:0 0 .6rem;color:#ffffff">&#x1F43C; Codice pandas</h3>'
+        + '<p>Il codice pandas viene eseguito in <b>Python</b>. Assicurati di avere pandas '
+        + 'installato con <code>pip install pandas</code>.</p>'
+        + '<p>Puoi <b>leggere e modificare</b> il codice qui con la sintassi colorata, '
+        + 'poi eseguirlo nel tuo ambiente Python, in un <b>Jupyter Notebook</b> o in <b>VS Code</b>.</p>'
+        + '<p style="color:#cbd5e1;font-size:.9rem">&#x1F4A1; Suggerimento: puoi provare il codice online '
+        + 'con <b>Google Colab</b> o <b>JupyterLite</b> senza installare nulla.</p>'
+        + '</body>';
+    }
+
+    function ensureCM(mode){
+      if (!cm && window.CodeMirror) {
+        try {
+          cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+            mode: mode || 'python', lineNumbers: true, lineWrapping: false,
+            tabSize: 4, indentUnit: 4, theme: 'default', readOnly: true
+          });
+        } catch(e){ cm = null; }
+      }
+    }
+
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code, mode){
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('editor-open');
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      ensureCM(mode);
+      if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
+      else { document.getElementById('ed-code').value = code; }
+      note();
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
+
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+
+    document.querySelectorAll('.example').forEach(function(ex){
+      var btn = ex.querySelector('.btn-try');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        var codeEl = ex.querySelector('code');
+        var code = codeEl ? codeEl.textContent : '';
+        var lang = codeEl && codeEl.className.indexOf('bash') !== -1 ? 'shell' : 'python';
+        openEditor(code, lang);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
