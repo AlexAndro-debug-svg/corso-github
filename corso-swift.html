@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Swift in italiano completo e gratuito — Optional, closures, struct, protocolli | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Swift completo in italiano: variabili, tipi, stringhe, collezioni, if/switch, funzioni, Optional, closures, enum, struct, classi, protocolli e gestione errori. Tutorial gratuito con esempi.">
+  <meta name="keywords" content="corso swift italiano, swift tutorial italiano, imparare swift, swift optional, swift closures, swift struct, swift protocolli, sviluppo ios, programmazione apple swift">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Swift in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Swift da zero in italiano: Optional, closures, struct, protocolli e gestione errori. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.builtin { color: #fb923c; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-swift.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-swift.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Swift in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Swift completo in italiano: Optional, closures, struct, protocolli e gestione errori. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Swift in italiano","description":"Corso Swift italiano completo e gratuito: variabili, tipi, collezioni, controllo di flusso, funzioni, Optional, closures, enum, struct, classi, protocolli e gestione errori.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-swift.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html" class="active">SWIFT</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Swift in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il linguaggio moderno di Apple per sviluppare app iOS e macOS: sicuro, veloce ed espressivo. Impara variabili, Optional, closures, struct, classi, protocolli e gestione degli errori. Con esempi pratici ed esercizi.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Swift Basics</h4>
+<a href="#intro">Introduzione</a>
+<a href="#install">Installazione</a>
+<a href="#sintassi">Sintassi base</a>
+<a href="#variabili">Variabili e tipi</a>
+<a href="#operatori">Operatori</a>
+<a href="#stringhe">Stringhe</a>
+<a href="#collezioni">Array, Set e Dizionari</a>
+<a href="#controllo">if / switch</a>
+<a href="#cicli">Cicli</a>
+<h4>Tipi e Funzioni</h4>
+<a href="#funzioni">Funzioni</a>
+<a href="#optional">Optional</a>
+<a href="#closures">Closures</a>
+<a href="#enum">Enum</a>
+<h4>Modello a oggetti</h4>
+<a href="#struct">Struct e Classi</a>
+<a href="#proprieta">Proprietà e metodi</a>
+<a href="#protocol">Protocolli</a>
+<h4>Robustezza</h4>
+<a href="#errori">Gestione errori</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+      <article class="lesson" id="intro">
+<h2>Introduzione a Swift</h2>
+<p><strong>Swift</strong> è il linguaggio di programmazione moderno sviluppato da <strong>Apple</strong> nel 2014 per costruire app per iOS, macOS, watchOS e tvOS. È potente, sicuro, espressivo e veloce, e ha sostituito Objective-C come linguaggio principale dell'ecosistema Apple.</p>
+<table class="ref">
+<tr><th>Caratteristica</th><th>Descrizione</th></tr>
+<tr><td><strong>Sicuro</strong></td><td>Optional e type safety eliminano molti crash a runtime</td></tr>
+<tr><td><strong>Veloce</strong></td><td>Compilato e ottimizzato, performance vicine al C</td></tr>
+<tr><td><strong>Moderno</strong></td><td>Sintassi pulita, inferenza di tipo, closures, generics</td></tr>
+<tr><td><strong>Open source</strong></td><td>Disponibile anche su Linux e Windows</td></tr>
+<tr><td><strong>SwiftUI</strong></td><td>Framework dichiarativo per costruire interfacce</td></tr>
+</table>
+<p>Con Swift puoi creare app per iPhone e iPad, applicazioni desktop per Mac, e persino servizi backend lato server.</p>
+<div class="note-box">💡 Questo corso copre i <strong>fondamenti del linguaggio Swift</strong>: la base indispensabile prima di affrontare SwiftUI e lo sviluppo di app iOS complete.</div>
+</article>
+<article class="lesson" id="install">
+<h2>Installazione e primi passi</h2>
+<p>Per programmare in Swift hai diverse opzioni a seconda del tuo sistema operativo.</p>
+<table class="ref">
+<tr><th>Piattaforma</th><th>Strumento</th></tr>
+<tr><td>macOS</td><td><strong>Xcode</strong> (gratuito su Mac App Store) — IDE completo</td></tr>
+<tr><td>iPad</td><td><strong>Swift Playgrounds</strong> — app per imparare interattivamente</td></tr>
+<tr><td>Linux / Windows</td><td><strong>Swift toolchain</strong> da swift.org</td></tr>
+<tr><td>Browser</td><td><strong>Swift Playground online</strong> — nessuna installazione</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Verifica installazione e REPL</span></div>
+<pre class="codeview"><code class="language-bash"># Verifica la versione installata
+swift --version
+
+# Avvia il REPL interattivo
+swift
+
+# Esegui un file .swift
+swift main.swift</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Il tuo primo programma Swift</span></div>
+<pre class="codeview"><code class="language-swift">// main.swift
+print(&quot;Ciao, mondo!&quot;)
+
+let nome = &quot;Alice&quot;
+print(&quot;Benvenuta, \(nome)!&quot;)    // interpolazione di stringa
+
+// Niente punto e virgola necessario a fine riga</code></pre>
+</div>
+<div class="note-box">💡 In Swift il <strong>punto e virgola</strong> a fine riga è opzionale. L'<strong>interpolazione</strong> con <code class="inline">\(...)</code> inserisce valori dentro le stringhe.</div>
+</article>
+<article class="lesson" id="sintassi">
+<h2>Sintassi base</h2>
+<div class="example">
+<div class="codehead"><span>Struttura e output</span></div>
+<pre class="codeview"><code class="language-swift">// Commento su una riga
+/* Commento
+   su più righe */
+
+// Output con print
+print(&quot;Riga 1&quot;)
+print(&quot;Riga 2&quot;)
+
+// print accetta più argomenti
+print(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)              // a b c
+print(&quot;x&quot;, &quot;y&quot;, separator: &quot;-&quot;)   // x-y
+print(&quot;senza a capo&quot;, terminator: &quot;&quot;)
+
+// Interpolazione di stringhe
+let eta = 25
+let pi = 3.14159
+print(&quot;Età: \(eta), Pi: \(pi)&quot;)
+print(&quot;Somma: \(2 + 3)&quot;)         // espressioni dentro \()</code></pre>
+</div>
+<div class="tip-box">🎯 Swift usa l'<strong>inferenza di tipo</strong>: spesso non devi specificare il tipo, il compilatore lo deduce dal valore. Ma il linguaggio resta fortemente tipizzato.</div>
+</article>
+<article class="lesson" id="variabili">
+<h2>Variabili e tipi di dato</h2>
+<p>Swift distingue tra <strong>costanti</strong> (<code class="inline">let</code>, immutabili) e <strong>variabili</strong> (<code class="inline">var</code>, modificabili). Si preferisce <code class="inline">let</code> quando il valore non cambia.</p>
+<div class="example">
+<div class="codehead"><span>let vs var</span></div>
+<pre class="codeview"><code class="language-swift">// Costante: non può essere riassegnata
+let nome = &quot;Alice&quot;
+// nome = &quot;Bob&quot;   // ERRORE!
+
+// Variabile: modificabile
+var eta = 25
+eta = 26          // OK
+
+// Tipo esplicito (annotazione)
+let pi: Double = 3.14159
+var contatore: Int = 0
+let attivo: Bool = true
+let lettera: Character = &quot;A&quot;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr>
+<tr><td><code class="inline">Int</code></td><td>Numeri interi</td><td><code class="inline">42</code>, <code class="inline">-7</code></td></tr>
+<tr><td><code class="inline">Double</code> / <code class="inline">Float</code></td><td>Virgola mobile</td><td><code class="inline">3.14</code></td></tr>
+<tr><td><code class="inline">Bool</code></td><td>Booleano</td><td><code class="inline">true</code>, <code class="inline">false</code></td></tr>
+<tr><td><code class="inline">String</code></td><td>Testo</td><td><code class="inline">"ciao"</code></td></tr>
+<tr><td><code class="inline">Character</code></td><td>Singolo carattere</td><td><code class="inline">"A"</code></td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Type casting (conversione)</span></div>
+<pre class="codeview"><code class="language-swift">let intero = 10
+let decimale = 3.5
+
+// Conversione esplicita obbligatoria
+let somma = Double(intero) + decimale   // 13.5
+let troncato = Int(decimale)            // 3
+
+// Stringa ↔ numero
+let testo = &quot;42&quot;
+let numero = Int(testo)        // Int? (Optional) → 42
+let str = String(intero)       // &quot;10&quot;
+
+print(somma, troncato, str)</code></pre>
+</div>
+<div class="warn-box">⚠️ Swift <strong>non converte automaticamente</strong> tra tipi numerici. Devi convertire esplicitamente: <code class="inline">Double(intero)</code>. Questo previene errori subdoli.</div>
+</article>
+<article class="lesson" id="operatori">
+<h2>Operatori</h2>
+<div class="example">
+<div class="codehead"><span>Aritmetici, confronto, logici</span></div>
+<pre class="codeview"><code class="language-swift">let a = 10
+let b = 3
+
+// Aritmetici
+print(a + b)    // 13
+print(a - b)    // 7
+print(a * b)    // 30
+print(a / b)    // 3  (divisione intera)
+print(a % b)    // 1  (resto)
+
+// Confronto (restituiscono Bool)
+print(a &gt; b)    // true
+print(a == b)   // false
+print(a != b)   // true
+
+// Logici
+let x = true, y = false
+print(x &amp;&amp; y)   // false (AND)
+print(x || y)   // true  (OR)
+print(!x)       // false (NOT)
+
+// Operatori composti
+var c = 5
+c += 3          // c = 8
+c *= 2          // c = 16</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Operatori di range</span></div>
+<pre class="codeview"><code class="language-swift">// Range chiuso: include entrambi gli estremi
+for i in 1...5 {
+    print(i)          // 1 2 3 4 5
+}
+
+// Range semi-aperto: esclude l&#x27;estremo destro
+for i in 0..&lt;3 {
+    print(i)          // 0 1 2
+}
+
+// Operatore ternario
+let eta = 20
+let stato = eta &gt;= 18 ? &quot;maggiorenne&quot; : &quot;minorenne&quot;
+print(stato)          // maggiorenne
+
+// Nil-coalescing: valore di default se nil
+let nome: String? = nil
+print(nome ?? &quot;Anonimo&quot;)   // Anonimo</code></pre>
+</div>
+</article>
+<article class="lesson" id="stringhe">
+<h2>Stringhe</h2>
+<div class="example">
+<div class="codehead"><span>Operazioni sulle stringhe</span></div>
+<pre class="codeview"><code class="language-swift">var saluto = &quot;Ciao&quot;
+saluto += &quot;, mondo!&quot;          // concatenazione
+print(saluto)                 // Ciao, mondo!
+
+let nome = &quot;Swift&quot;
+print(&quot;Linguaggio: \(nome)&quot;)  // interpolazione
+
+// Proprietà e metodi
+print(saluto.count)                  // numero caratteri
+print(saluto.uppercased())           // CIAO, MONDO!
+print(saluto.lowercased())
+print(saluto.hasPrefix(&quot;Ciao&quot;))      // true
+print(saluto.hasSuffix(&quot;!&quot;))         // true
+print(saluto.contains(&quot;mondo&quot;))      // true
+print(saluto.isEmpty)                // false
+
+// Sostituzione
+let nuovo = saluto.replacingOccurrences(
+    of: &quot;mondo&quot;, with: &quot;Swift&quot;)
+print(nuovo)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Stringhe multilinea e iterazione</span></div>
+<pre class="codeview"><code class="language-swift">// Stringa multilinea con \&quot;\&quot;\&quot;
+let poesia = &quot;&quot;&quot;
+    Riga uno
+    Riga due
+    Riga tre
+    &quot;&quot;&quot;
+print(poesia)
+
+// Iterare sui caratteri
+for carattere in &quot;Swift&quot; {
+    print(carattere, terminator: &quot; &quot;)  // S w i f t
+}
+print()
+
+// Dividere una stringa
+let csv = &quot;mela,pera,kiwi&quot;
+let frutti = csv.split(separator: &quot;,&quot;)
+print(frutti)   // [&quot;mela&quot;, &quot;pera&quot;, &quot;kiwi&quot;]</code></pre>
+</div>
+</article>
+<article class="lesson" id="collezioni">
+<h2>Array, Set e Dizionari</h2>
+<p>Swift offre tre tipi di collezione principali: <strong>Array</strong> (ordinato), <strong>Set</strong> (unico, non ordinato) e <strong>Dictionary</strong> (coppie chiave-valore).</p>
+<div class="example">
+<div class="codehead"><span>Array</span></div>
+<pre class="codeview"><code class="language-swift">// Array tipizzato
+var numeri = [1, 2, 3, 4, 5]
+var nomi: [String] = [&quot;Alice&quot;, &quot;Bob&quot;]
+
+// Accesso e modifica
+print(numeri[0])           // 1
+numeri.append(6)           // aggiungi in fondo
+numeri.insert(0, at: 0)    // inserisci all&#x27;inizio
+numeri.remove(at: 1)       // rimuovi per indice
+
+print(numeri.count)        // numero elementi
+print(numeri.isEmpty)      // false
+print(numeri.first ?? 0)   // primo (Optional)
+print(numeri.contains(3))  // true
+
+// Iterazione
+for n in numeri {
+    print(n, terminator: &quot; &quot;)
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Set e Dictionary</span></div>
+<pre class="codeview"><code class="language-swift">// Set: valori unici, nessun duplicato
+var colori: Set&lt;String&gt; = [&quot;rosso&quot;, &quot;verde&quot;, &quot;blu&quot;]
+colori.insert(&quot;rosso&quot;)     // ignorato (già presente)
+print(colori.count)        // 3
+print(colori.contains(&quot;verde&quot;))  // true
+
+// Operazioni insiemistiche
+let a: Set = [1, 2, 3]
+let b: Set = [2, 3, 4]
+print(a.union(b))          // [1, 2, 3, 4]
+print(a.intersection(b))   // [2, 3]
+
+// Dictionary: coppie chiave-valore
+var voti = [&quot;Alice&quot;: 9, &quot;Luca&quot;: 7]
+voti[&quot;Marco&quot;] = 8          // aggiungi
+print(voti[&quot;Alice&quot;] ?? 0)  // 9 (Optional)
+voti.removeValue(forKey: &quot;Luca&quot;)
+
+for (nome, voto) in voti {
+    print(&quot;\(nome): \(voto)&quot;)
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="controllo">
+<h2>Controllo di flusso: if e switch</h2>
+<div class="example">
+<div class="codehead"><span>if / else if / else</span></div>
+<pre class="codeview"><code class="language-swift">let temperatura = 22
+
+if temperatura &lt; 0 {
+    print(&quot;Gelido&quot;)
+} else if temperatura &lt; 15 {
+    print(&quot;Freddo&quot;)
+} else if temperatura &lt; 25 {
+    print(&quot;Mite&quot;)           // stampato
+} else {
+    print(&quot;Caldo&quot;)
+}
+
+// if let: unwrap sicuro di un Optional
+let input: String? = &quot;42&quot;
+if let valore = input {
+    print(&quot;Valore: \(valore)&quot;)
+} else {
+    print(&quot;Nessun valore&quot;)
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>switch — potente e flessibile</span></div>
+<pre class="codeview"><code class="language-swift">let voto = 8
+
+switch voto {
+case 10:
+    print(&quot;Eccellente&quot;)
+case 8, 9:                      // più valori
+    print(&quot;Ottimo&quot;)            // stampato
+case 6...7:                     // range
+    print(&quot;Sufficiente&quot;)
+case 1..&lt;6:
+    print(&quot;Insufficiente&quot;)
+default:
+    print(&quot;Voto non valido&quot;)
+}
+
+// switch con binding e where
+let punto = (2, 2)
+switch punto {
+case let (x, y) where x == y:
+    print(&quot;Sulla diagonale&quot;)   // stampato
+case (let x, 0):
+    print(&quot;Asse X a \(x)&quot;)
+default:
+    print(&quot;Altrove&quot;)
+}</code></pre>
+</div>
+<div class="note-box">💡 A differenza di altri linguaggi, lo <code class="inline">switch</code> di Swift non ha bisogno di <code class="inline">break</code> (niente fall-through automatico) e deve essere <strong>esaustivo</strong>: copri tutti i casi o usa <code class="inline">default</code>.</div>
+</article>
+<article class="lesson" id="cicli">
+<h2>Cicli: for e while</h2>
+<div class="example">
+<div class="codehead"><span>for-in</span></div>
+<pre class="codeview"><code class="language-swift">// Su un range
+for i in 1...3 {
+    print(&quot;Iterazione \(i)&quot;)
+}
+
+// Su un array
+let frutti = [&quot;mela&quot;, &quot;pera&quot;, &quot;kiwi&quot;]
+for frutto in frutti {
+    print(frutto)
+}
+
+// Con indice (enumerated)
+for (i, frutto) in frutti.enumerated() {
+    print(&quot;\(i): \(frutto)&quot;)
+}
+
+// Su un dizionario
+let voti = [&quot;Alice&quot;: 9, &quot;Luca&quot;: 7]
+for (nome, voto) in voti {
+    print(&quot;\(nome) = \(voto)&quot;)
+}
+
+// Ignorare la variabile con _
+for _ in 1...3 {
+    print(&quot;ripeti&quot;)
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>while, repeat-while, break/continue</span></div>
+<pre class="codeview"><code class="language-swift">// while: controlla prima di eseguire
+var contatore = 3
+while contatore &gt; 0 {
+    print(contatore)
+    contatore -= 1
+}
+
+// repeat-while: esegue almeno una volta
+var n = 0
+repeat {
+    print(&quot;almeno una volta&quot;)
+    n += 1
+} while n &lt; 1
+
+// break e continue
+for i in 1...10 {
+    if i == 3 { continue }   // salta il 3
+    if i == 6 { break }      // esci al 6
+    print(i)                 // 1 2 4 5
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="funzioni">
+<h2>Funzioni</h2>
+<p>Le funzioni in Swift si dichiarano con <code class="inline">func</code>. I parametri hanno <strong>etichette</strong> che rendono le chiamate molto leggibili.</p>
+<div class="example">
+<div class="codehead"><span>Definizione e chiamata</span></div>
+<pre class="codeview"><code class="language-swift">// Funzione semplice
+func saluta(nome: String) -&gt; String {
+    return &quot;Ciao, \(nome)!&quot;
+}
+print(saluta(nome: &quot;Alice&quot;))   // l&#x27;etichetta è obbligatoria
+
+// Più parametri
+func somma(_ a: Int, _ b: Int) -&gt; Int {
+    return a + b
+}
+print(somma(3, 7))   // _ rende l&#x27;etichetta non necessaria
+
+// Etichetta esterna diversa da interna
+func muovi(da partenza: String, a destinazione: String) {
+    print(&quot;Da \(partenza) a \(destinazione)&quot;)
+}
+muovi(da: &quot;Roma&quot;, a: &quot;Milano&quot;)
+
+// Valore di default
+func potenza(base: Int, esp: Int = 2) -&gt; Int {
+    var risultato = 1
+    for _ in 0..&lt;esp { risultato *= base }
+    return risultato
+}
+print(potenza(base: 3))        // 9 (esp default = 2)
+print(potenza(base: 2, esp: 4)) // 16</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Ritorno multiplo e parametri variadici</span></div>
+<pre class="codeview"><code class="language-swift">// Restituire una tupla
+func minMax(_ numeri: [Int]) -&gt; (min: Int, max: Int) {
+    var minimo = numeri[0], massimo = numeri[0]
+    for n in numeri {
+        if n &lt; minimo { minimo = n }
+        if n &gt; massimo { massimo = n }
+    }
+    return (minimo, massimo)
+}
+let r = minMax([4, 1, 9, 2])
+print(&quot;min: \(r.min), max: \(r.max)&quot;)   // min: 1, max: 9
+
+// Parametri variadici (numero variabile)
+func media(_ numeri: Double...) -&gt; Double {
+    let totale = numeri.reduce(0, +)
+    return totale / Double(numeri.count)
+}
+print(media(1, 2, 3, 4, 5))   // 3.0</code></pre>
+</div>
+</article>
+<article class="lesson" id="optional">
+<h2>Optional — il cuore della sicurezza di Swift</h2>
+<p>Un <strong>Optional</strong> è un tipo che può contenere un valore <em>oppure</em> <code class="inline">nil</code> (assenza di valore). Si dichiara con <code class="inline">?</code>. È il modo di Swift per gestire in sicurezza i valori mancanti, eliminando i crash da null pointer.</p>
+<div class="example">
+<div class="codehead"><span>Dichiarare e srotolare Optional</span></div>
+<pre class="codeview"><code class="language-swift">// Optional: può essere un valore o nil
+var nome: String? = &quot;Alice&quot;
+nome = nil                      // permesso
+
+// Unwrap NON sicuro (crash se nil!)
+// print(nome!)                 // pericoloso
+
+// if let: unwrap sicuro
+if let n = nome {
+    print(&quot;Nome: \(n)&quot;)
+} else {
+    print(&quot;Nessun nome&quot;)
+}
+
+// guard let: esci presto se nil
+func saluta(_ nome: String?) {
+    guard let n = nome else {
+        print(&quot;Nome mancante&quot;)
+        return
+    }
+    print(&quot;Ciao, \(n)!&quot;)
+}
+saluta(&quot;Bob&quot;)    // Ciao, Bob!
+saluta(nil)      // Nome mancante</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Nil-coalescing e optional chaining</span></div>
+<pre class="codeview"><code class="language-swift">// Nil-coalescing: valore di default
+let input: String? = nil
+let nome = input ?? &quot;Anonimo&quot;
+print(nome)                   // Anonimo
+
+// Optional chaining: accedi in sicurezza
+struct Indirizzo { var citta: String }
+struct Persona { var indirizzo: Indirizzo? }
+
+let p = Persona(indirizzo: Indirizzo(citta: &quot;Roma&quot;))
+let citta = p.indirizzo?.citta   // String? (nil se manca)
+print(citta ?? &quot;sconosciuta&quot;)    // Roma
+
+let p2 = Persona(indirizzo: nil)
+print(p2.indirizzo?.citta ?? &quot;sconosciuta&quot;)  // sconosciuta</code></pre>
+</div>
+<div class="tip-box">🎯 Gli Optional rendono <strong>esplicito</strong> nel codice quali valori possono mancare. Il compilatore ti obbliga a gestire il caso <code class="inline">nil</code>, prevenendo intere categorie di crash.</div>
+</article>
+<article class="lesson" id="closures">
+<h2>Closures</h2>
+<p>Le <strong>closures</strong> sono blocchi di codice autonomi che puoi passare e usare nel tuo codice, simili alle funzioni anonime (lambda) di altri linguaggi.</p>
+<div class="example">
+<div class="codehead"><span>Sintassi delle closures</span></div>
+<pre class="codeview"><code class="language-swift">// Closure assegnata a una variabile
+let saluta = { (nome: String) -&gt; String in
+    return &quot;Ciao, \(nome)!&quot;
+}
+print(saluta(&quot;Alice&quot;))
+
+// Closure come argomento (ordinamento)
+let numeri = [5, 2, 8, 1, 9]
+let ordinati = numeri.sorted(by: { (a, b) in a &lt; b })
+print(ordinati)   // [1, 2, 5, 8, 9]
+
+// Sintassi abbreviata con $0, $1
+let decrescente = numeri.sorted(by: { $0 &gt; $1 })
+print(decrescente)   // [9, 8, 5, 2, 1]</code></pre>
+</div><div class="example">
+<div class="codehead"><span>map, filter, reduce</span></div>
+<pre class="codeview"><code class="language-swift">let numeri = [1, 2, 3, 4, 5, 6]
+
+// map: trasforma ogni elemento
+let quadrati = numeri.map { $0 * $0 }
+print(quadrati)        // [1, 4, 9, 16, 25, 36]
+
+// filter: tiene gli elementi che soddisfano la condizione
+let pari = numeri.filter { $0 % 2 == 0 }
+print(pari)            // [2, 4, 6]
+
+// reduce: combina in un singolo valore
+let somma = numeri.reduce(0) { $0 + $1 }
+print(somma)           // 21
+
+// Concatenazione (functional style)
+let risultato = numeri
+    .filter { $0 % 2 == 0 }
+    .map { $0 * 10 }
+    .reduce(0, +)
+print(risultato)       // 120</code></pre>
+</div>
+</article>
+<article class="lesson" id="enum">
+<h2>Enum</h2>
+<p>Gli <strong>enum</strong> definiscono un tipo con un insieme finito di valori possibili. In Swift possono avere valori associati e metodi.</p>
+<div class="example">
+<div class="codehead"><span>Enum di base e con valori grezzi</span></div>
+<pre class="codeview"><code class="language-swift">// Enum semplice
+enum Direzione {
+    case nord, sud, est, ovest
+}
+let d = Direzione.nord
+switch d {
+case .nord: print(&quot;Vai a nord&quot;)
+case .sud:  print(&quot;Vai a sud&quot;)
+default:    print(&quot;Altra direzione&quot;)
+}
+
+// Enum con valori grezzi (raw values)
+enum Pianeta: Int {
+    case mercurio = 1, venere, terra, marte
+}
+print(Pianeta.terra.rawValue)        // 3
+let p = Pianeta(rawValue: 4)         // Optional → marte
+print(p ?? .terra)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Enum con valori associati</span></div>
+<pre class="codeview"><code class="language-swift">// Ogni caso può trasportare dati diversi
+enum Risultato {
+    case successo(String)
+    case errore(codice: Int, messaggio: String)
+}
+
+func elabora(_ r: Risultato) {
+    switch r {
+    case .successo(let msg):
+        print(&quot;OK: \(msg)&quot;)
+    case .errore(let codice, let messaggio):
+        print(&quot;Errore \(codice): \(messaggio)&quot;)
+    }
+}
+
+elabora(.successo(&quot;Dati salvati&quot;))
+elabora(.errore(codice: 404, messaggio: &quot;Non trovato&quot;))</code></pre>
+</div>
+</article>
+<article class="lesson" id="struct">
+<h2>Struct e Classi</h2>
+<p>Swift offre due modi per creare tipi custom: <strong>struct</strong> (value type, copiato) e <strong>class</strong> (reference type, condiviso per riferimento). In Swift si preferiscono spesso le struct.</p>
+<div class="example">
+<div class="codehead"><span>Struct (value type)</span></div>
+<pre class="codeview"><code class="language-swift">struct Punto {
+    var x: Double
+    var y: Double
+
+    // Metodo
+    func distanzaDallOrigine() -&gt; Double {
+        return (x * x + y * y).squareRoot()
+    }
+}
+
+var p1 = Punto(x: 3, y: 4)
+print(p1.distanzaDallOrigine())   // 5.0
+
+// Le struct sono COPIATE all&#x27;assegnazione
+var p2 = p1
+p2.x = 100
+print(p1.x)   // 3  (p1 non è cambiata!)
+print(p2.x)   // 100</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Class (reference type) ed ereditarietà</span></div>
+<pre class="codeview"><code class="language-swift">class Animale {
+    var nome: String
+    init(nome: String) {        // inizializzatore
+        self.nome = nome
+    }
+    func verso() -&gt; String {
+        return &quot;...&quot;
+    }
+}
+
+// Ereditarietà
+class Cane: Animale {
+    override func verso() -&gt; String {
+        return &quot;Bau!&quot;
+    }
+}
+
+let c = Cane(nome: &quot;Rex&quot;)
+print(&quot;\(c.nome): \(c.verso())&quot;)   // Rex: Bau!
+
+// Le classi sono CONDIVISE per riferimento
+let a1 = Animale(nome: &quot;Gatto&quot;)
+let a2 = a1
+a2.nome = &quot;Micio&quot;
+print(a1.nome)   // Micio (stesso oggetto!)</code></pre>
+</div>
+<table class="ref">
+<tr><th></th><th>Struct</th><th>Class</th></tr>
+<tr><td>Semantica</td><td>Value (copia)</td><td>Reference (condivisa)</td></tr>
+<tr><td>Ereditarietà</td><td>No</td><td>Sì</td></tr>
+<tr><td>Inizializzatore automatico</td><td>Sì (memberwise)</td><td>No</td></tr>
+</table>
+</article>
+<article class="lesson" id="proprieta">
+<h2>Proprietà e metodi</h2>
+<div class="example">
+<div class="codehead"><span>Computed property e property observer</span></div>
+<pre class="codeview"><code class="language-swift">struct Cerchio {
+    var raggio: Double
+
+    // Computed property: calcolata, non memorizzata
+    var area: Double {
+        return Double.pi * raggio * raggio
+    }
+
+    var diametro: Double {
+        get { raggio * 2 }
+        set { raggio = newValue / 2 }
+    }
+}
+
+var c = Cerchio(raggio: 5)
+print(c.area)        // 78.53...
+c.diametro = 20
+print(c.raggio)      // 10</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Metodi mutating e static</span></div>
+<pre class="codeview"><code class="language-swift">struct Contatore {
+    var valore = 0
+
+    // mutating: può modificare le proprietà di una struct
+    mutating func incrementa() {
+        valore += 1
+    }
+
+    // Metodo static (sul tipo, non sull&#x27;istanza)
+    static func crea() -&gt; Contatore {
+        return Contatore(valore: 0)
+    }
+}
+
+var cont = Contatore.crea()
+cont.incrementa()
+cont.incrementa()
+print(cont.valore)   // 2</code></pre>
+</div>
+</article>
+<article class="lesson" id="protocol">
+<h2>Protocolli</h2>
+<p>Un <strong>protocollo</strong> definisce un insieme di metodi e proprietà che un tipo deve implementare — simile alle interfacce di Java. È alla base della "Protocol-Oriented Programming", lo stile preferito in Swift.</p>
+<div class="example">
+<div class="codehead"><span>Definire e conformarsi a un protocollo</span></div>
+<pre class="codeview"><code class="language-swift">protocol Descrivibile {
+    var descrizione: String { get }
+    func saluta() -&gt; String
+}
+
+// Struct che si conforma al protocollo
+struct Persona: Descrivibile {
+    var nome: String
+    var descrizione: String {
+        return &quot;Persona di nome \(nome)&quot;
+    }
+    func saluta() -&gt; String {
+        return &quot;Ciao, sono \(nome)&quot;
+    }
+}
+
+let p = Persona(nome: &quot;Alice&quot;)
+print(p.descrizione)   // Persona di nome Alice
+print(p.saluta())      // Ciao, sono Alice
+
+// Polimorfismo tramite protocollo
+let elementi: [Descrivibile] = [
+    Persona(nome: &quot;Bob&quot;),
+    Persona(nome: &quot;Carol&quot;)
+]
+for e in elementi {
+    print(e.descrizione)
+}</code></pre>
+</div>
+<div class="note-box">💡 Protocolli comuni della libreria standard: <code class="inline">Equatable</code> (confronto con ==), <code class="inline">Comparable</code> (ordinamento), <code class="inline">Codable</code> (serializzazione JSON). Conformarsi a questi sblocca funzionalità potenti.</div>
+</article>
+<article class="lesson" id="errori">
+<h2>Gestione degli errori</h2>
+<p>Swift gestisce gli errori in modo esplicito con <code class="inline">throw</code>, <code class="inline">try</code> e <code class="inline">catch</code>. Le funzioni che possono fallire si marcano con <code class="inline">throws</code>.</p>
+<div class="example">
+<div class="codehead"><span>throw, try, catch</span></div>
+<pre class="codeview"><code class="language-swift">// Definisci gli errori con un enum
+enum ErroreBanca: Error {
+    case saldoInsufficiente(richiesto: Double)
+    case importoNegativo
+}
+
+func preleva(saldo: Double, importo: Double) throws -&gt; Double {
+    if importo &lt; 0 {
+        throw ErroreBanca.importoNegativo
+    }
+    if importo &gt; saldo {
+        throw ErroreBanca.saldoInsufficiente(richiesto: importo)
+    }
+    return saldo - importo
+}
+
+// Gestione con do-catch
+do {
+    let nuovo = try preleva(saldo: 100, importo: 150)
+    print(&quot;Nuovo saldo: \(nuovo)&quot;)
+} catch ErroreBanca.saldoInsufficiente(let richiesto) {
+    print(&quot;Saldo insufficiente per \(richiesto)€&quot;)
+} catch {
+    print(&quot;Errore: \(error)&quot;)
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>try? e try!</span></div>
+<pre class="codeview"><code class="language-swift">enum ErroreParsing: Error { case nonValido }
+
+func parseNumero(_ s: String) throws -&gt; Int {
+    guard let n = Int(s) else { throw ErroreParsing.nonValido }
+    return n
+}
+
+// try? → restituisce un Optional (nil se errore)
+let a = try? parseNumero(&quot;42&quot;)    // Optional(42)
+let b = try? parseNumero(&quot;abc&quot;)   // nil
+print(a ?? -1)   // 42
+print(b ?? -1)   // -1
+
+// try! → crash se fallisce (usare solo se sicuri)
+let c = try! parseNumero(&quot;100&quot;)
+print(c)         // 100</code></pre>
+</div>
+</article>
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 1 — FizzBuzz</span>
+<p>Stampa i numeri da 1 a 20. Per i multipli di 3 stampa "Fizz", per i multipli di 5 "Buzz", per i multipli di entrambi "FizzBuzz".</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<pre class="codeview"><code class="language-swift">for i in 1...20 {
+    switch (i % 3, i % 5) {
+    case (0, 0): print(&quot;FizzBuzz&quot;)
+    case (0, _): print(&quot;Fizz&quot;)
+    case (_, 0): print(&quot;Buzz&quot;)
+    default:     print(i)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 2 — Gestione Optional</span>
+<p>Scrivi una funzione che prenda un array di stringhe, le converta in <code class="inline">Int</code> ignorando quelle non valide, e restituisca la somma dei numeri validi.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<pre class="codeview"><code class="language-swift">func sommaValidi(_ stringhe: [String]) -&gt; Int {
+    return stringhe
+        .compactMap { Int($0) }   // ignora i nil
+        .reduce(0, +)
+}
+
+let input = [&quot;10&quot;, &quot;abc&quot;, &quot;20&quot;, &quot;x&quot;, &quot;5&quot;]
+print(sommaValidi(input))   // 35</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 3 — Struct e protocollo</span>
+<p>Crea un protocollo <code class="inline">Forma</code> con un metodo <code class="inline">area()</code>. Implementalo per <code class="inline">Cerchio</code> e <code class="inline">Rettangolo</code>, poi stampa l'area totale di un array di forme.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<pre class="codeview"><code class="language-swift">protocol Forma {
+    func area() -&gt; Double
+}
+
+struct Cerchio: Forma {
+    var raggio: Double
+    func area() -&gt; Double { Double.pi * raggio * raggio }
+}
+
+struct Rettangolo: Forma {
+    var base: Double, altezza: Double
+    func area() -&gt; Double { base * altezza }
+}
+
+let forme: [Forma] = [
+    Cerchio(raggio: 2),
+    Rettangolo(base: 3, altezza: 4)
+]
+let totale = forme.reduce(0) { $0 + $1.area() }
+print(&quot;Area totale: \(totale)&quot;)   // ~24.56</code></pre>
+</div>
+</div>
+</article>
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso sui fondamenti di Swift. Ora padroneggi la sintassi, i tipi, gli Optional, le closures, struct/classi, protocolli e la gestione degli errori — tutto ciò che serve per iniziare a sviluppare app iOS.</p>
+<div class="note-box">
+<strong>Cosa hai imparato:</strong>
+<ul>
+<li>Variabili (let/var), tipi e type casting esplicito</li>
+<li>Stringhe, Array, Set e Dictionary</li>
+<li>if, switch esaustivo, cicli for/while</li>
+<li>Funzioni con etichette, closures e map/filter/reduce</li>
+<li>Optional: il sistema di sicurezza di Swift</li>
+<li>Enum con valori associati, struct vs class, protocolli</li>
+<li>Gestione degli errori con throw/try/catch</li>
+</ul>
+</div>
+<p>Il passo successivo? Imparare <strong>SwiftUI</strong>, il framework dichiarativo di Apple per costruire interfacce, e pubblicare la tua prima app sull'App Store con Xcode.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+<a href="corso-kotlin.html" class="btn btn-primary">Vai al corso Kotlin →</a>
+<a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a>
+<a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+</article>
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
