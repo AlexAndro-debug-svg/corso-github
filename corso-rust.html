@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Rust in italiano completo e gratuito — ownership, borrowing, struct ed enum | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Rust completo in italiano: variabili, tipi, if/match, cicli, funzioni, ownership, borrowing, stringhe, Vec, HashMap, struct ed enum. Tutorial gratuito con esempi pratici.">
+  <meta name="keywords" content="corso rust italiano, rust tutorial italiano, imparare rust, rust ownership, rust borrowing, rust struct, rust enum, rust vec, rust hashmap, programmazione sistemi rust">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Rust in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Rust da zero in italiano: ownership, borrowing, struct, enum, Vec e HashMap. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.builtin { color: #fb923c; }
+    .codeview .token.macro { color: #f472b6; }
+    .codeview .token.lifetime { color: #fb923c; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-rust.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-rust.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Rust in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Rust completo in italiano: ownership, borrowing, struct, enum e strutture dati. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Rust in italiano","description":"Corso Rust italiano completo e gratuito: variabili, tipi, controllo di flusso, ownership, borrowing, stringhe, Vec, HashMap, struct ed enum.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-rust.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html" class="active">RUST</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Rust in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il linguaggio di sistemi più amato: memoria sicura senza garbage collector, performance paragonabile a C/C++. Impara ownership, borrowing, struct, enum e le principali strutture dati. Con esempi pratici ed esercizi.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>Rust Tutorial</h4>
+<a href="#intro">Introduzione</a>
+<a href="#install">Installazione</a>
+<a href="#sintassi">Sintassi base</a>
+<a href="#variabili">Variabili e tipi</a>
+<a href="#operatori">Operatori</a>
+<a href="#controllo">if / else / match</a>
+<a href="#cicli">Cicli</a>
+<a href="#funzioni">Funzioni</a>
+<a href="#stringhe">Stringhe</a>
+<a href="#ownership">Ownership</a>
+<a href="#borrowing">Borrowing e riferimenti</a>
+<h4>Strutture dati</h4>
+<a href="#arrays">Array e Vettori</a>
+<a href="#tuple">Tuple</a>
+<a href="#hashmap">HashMap</a>
+<a href="#struct">Struct</a>
+<a href="#enum">Enum</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+      <article class="lesson" id="intro">
+<h2>Introduzione a Rust</h2>
+<p><strong>Rust</strong> è un linguaggio di programmazione di sistemi progettato per garantire <strong>sicurezza della memoria</strong>, <strong>alta performance</strong> e <strong>concorrenza sicura</strong> — senza garbage collector. È stato votato il linguaggio più amato dagli sviluppatori per otto anni consecutivi sul sondaggio di Stack Overflow.</p>
+<table class="ref">
+<tr><th>Caratteristica</th><th>Descrizione</th></tr>
+<tr><td><strong>Sicurezza memoria</strong></td><td>Nessun null pointer, nessun dangling pointer, garantiti a compile-time</td></tr>
+<tr><td><strong>Performance</strong></td><td>Veloce come C/C++, zero overhead astrazioni</td></tr>
+<tr><td><strong>Ownership</strong></td><td>Sistema unico per la gestione della memoria senza GC</td></tr>
+<tr><td><strong>Concorrenza</strong></td><td>Thread sicuri garantiti dal compilatore</td></tr>
+<tr><td><strong>Ecosistema</strong></td><td>Cargo (gestore pacchetti), crates.io (repository)</td></tr>
+</table>
+<p>Rust è usato da Mozilla (Firefox), Microsoft (Windows), Amazon (AWS), Google, Meta e Linux Kernel per le parti critiche in termini di performance e sicurezza.</p>
+<div class="note-box">💡 Il punto di forza di Rust è che il compilatore ti impedisce di scrivere codice non sicuro <em>prima ancora che il programma giri</em>. Questo elimina intere categorie di bug comuni in C/C++.</div>
+</article>
+<article class="lesson" id="install">
+<h2>Installazione e primo progetto</h2>
+<div class="example">
+<div class="codehead"><span>Installazione di Rust (rustup)</span></div>
+<pre class="codeview"><code class="language-bash"># Installa rustup (gestore di versioni di Rust)
+curl --proto &#x27;=https&#x27; --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Verifica installazione
+rustc --version      # es. rustc 1.77.0
+cargo --version      # es. cargo 1.77.0</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Creare ed eseguire un progetto</span></div>
+<pre class="codeview"><code class="language-bash"># Crea un nuovo progetto con Cargo
+cargo new mio_progetto
+cd mio_progetto
+
+# Struttura creata:
+# mio_progetto/
+#   Cargo.toml       ← metadati e dipendenze
+#   src/
+#     main.rs        ← codice sorgente
+
+# Compila ed esegui
+cargo run
+
+# Solo compilazione
+cargo build
+
+# Build ottimizzata per produzione
+cargo build --release</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Il tuo primo programma Rust</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    println!(&quot;Ciao, mondo!&quot;);
+    println!(&quot;2 + 3 = {}&quot;, 2 + 3);
+}</code></pre>
+</div>
+<div class="note-box">💡 <code class="inline">println!</code> con il punto esclamativo è una <strong>macro</strong>, non una funzione. Le macro in Rust si riconoscono dal <code class="inline">!</code> finale.</div>
+</article>
+<article class="lesson" id="sintassi">
+<h2>Sintassi base</h2>
+<p>Rust ha una sintassi familiare per chi conosce C, C++ o Java, con alcune caratteristiche proprie.</p>
+<div class="example">
+<div class="codehead"><span>Struttura base di un programma</span></div>
+<pre class="codeview"><code class="language-rust">// Questo è un commento
+/* Commento
+   su più righe */
+
+fn main() {
+    // Il punto di ingresso è sempre main()
+    let x = 5;           // immutabile per default
+    let mut y = 10;      // mut = modificabile
+    y = 20;
+
+    println!(&quot;x = {x}&quot;);
+    println!(&quot;y = {y}&quot;);
+
+    // Blocchi: l&#x27;ultima espressione senza ; è il valore
+    let z = {
+        let a = 3;
+        a * 2           // nessun ;  →  valore del blocco = 6
+    };
+    println!(&quot;z = {z}&quot;);
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Output formattato</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let nome = &quot;Alice&quot;;
+    let eta = 30;
+    let pi = 3.14159;
+
+    println!(&quot;Nome: {nome}&quot;);
+    println!(&quot;Età: {eta}&quot;);
+    println!(&quot;Pi greco: {pi:.2}&quot;);       // 2 decimali
+    println!(&quot;{:&gt;10}&quot;, &quot;destra&quot;);        // allineato a destra
+    println!(&quot;{:0&gt;5}&quot;, 42);              // &quot;00042&quot;
+    println!(&quot;{:b}&quot;, 255);              // binario: 11111111
+    println!(&quot;{:x}&quot;, 255);              // esadecimale: ff
+}</code></pre>
+</div>
+<div class="warn-box">⚠️ In Rust le variabili sono <strong>immutabili per default</strong>. Devi aggiungere <code class="inline">mut</code> esplicitamente se vuoi modificarle. Questo ti protegge da modifiche accidentali.</div>
+</article>
+<article class="lesson" id="variabili">
+<h2>Variabili e tipi di dato</h2>
+<p>Rust è <strong>tipizzato staticamente</strong>: ogni variabile ha un tipo noto a compile-time. Spesso il compilatore lo inferisce automaticamente.</p>
+<table class="ref">
+<tr><th>Categoria</th><th>Tipo</th><th>Esempio</th></tr>
+<tr><td>Interi con segno</td><td><code class="inline">i8, i16, i32, i64, i128, isize</code></td><td><code class="inline">let x: i32 = -5;</code></td></tr>
+<tr><td>Interi senza segno</td><td><code class="inline">u8, u16, u32, u64, u128, usize</code></td><td><code class="inline">let n: u8 = 255;</code></td></tr>
+<tr><td>Virgola mobile</td><td><code class="inline">f32, f64</code></td><td><code class="inline">let pi: f64 = 3.14;</code></td></tr>
+<tr><td>Booleano</td><td><code class="inline">bool</code></td><td><code class="inline">let ok: bool = true;</code></td></tr>
+<tr><td>Carattere</td><td><code class="inline">char</code></td><td><code class="inline">let c: char = 'A';</code></td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Dichiarazione di variabili</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    // Inferenza di tipo
+    let x = 42;           // i32 (default)
+    let y = 3.14;         // f64 (default)
+    let attivo = true;    // bool
+    let lettera = &#x27;R&#x27;;    // char
+
+    // Tipo esplicito
+    let grande: i64 = 1_000_000_000;   // _ per leggibilità
+    let piccolo: u8 = 255;
+
+    // Costanti (MAIUSCOLO per convenzione)
+    const MAX_PUNTI: u32 = 100_000;
+
+    println!(&quot;{x} {y} {attivo} {lettera}&quot;);
+    println!(&quot;{grande} {piccolo} {MAX_PUNTI}&quot;);
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Shadowing: ridichiarare una variabile</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let x = 5;
+    let x = x + 1;          // shadowing: nuova variabile x
+    let x = x * 2;
+    println!(&quot;{x}&quot;);        // 12
+
+    // Lo shadowing permette anche di cambiare tipo
+    let spazio = &quot;   &quot;;
+    let spazio = spazio.len();  // ora è usize, non &amp;str
+    println!(&quot;{spazio}&quot;);   // 3
+}</code></pre>
+</div>
+<div class="tip-box">🎯 Il <strong>shadowing</strong> è diverso dal <code class="inline">mut</code>: con shadowing crei una nuova variabile (puoi anche cambiare tipo), con <code class="inline">mut</code> modifichi la stessa variabile (il tipo rimane fisso).</div>
+</article>
+<article class="lesson" id="operatori">
+<h2>Operatori</h2>
+<div class="example">
+<div class="codehead"><span>Operatori aritmetici e di confronto</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let a = 10;
+    let b = 3;
+
+    // Aritmetici
+    println!(&quot;{}&quot;, a + b);   // 13
+    println!(&quot;{}&quot;, a - b);   // 7
+    println!(&quot;{}&quot;, a * b);   // 30
+    println!(&quot;{}&quot;, a / b);   // 3  (divisione intera tra interi)
+    println!(&quot;{}&quot;, a % b);   // 1  (modulo)
+
+    let x: f64 = 10.0;
+    let y: f64 = 3.0;
+    println!(&quot;{:.2}&quot;, x / y); // 3.33
+
+    // Confronto (restituiscono bool)
+    println!(&quot;{}&quot;, a &gt; b);    // true
+    println!(&quot;{}&quot;, a == b);   // false
+    println!(&quot;{}&quot;, a != b);   // true
+    println!(&quot;{}&quot;, a &gt;= 10);  // true
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Operatori logici e bit a bit</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let vero = true;
+    let falso = false;
+
+    println!(&quot;{}&quot;, vero &amp;&amp; falso);   // false (AND)
+    println!(&quot;{}&quot;, vero || falso);   // true  (OR)
+    println!(&quot;{}&quot;, !vero);           // false (NOT)
+
+    // Operatori bit a bit
+    let a: u8 = 0b1100;   // 12
+    let b: u8 = 0b1010;   // 10
+    println!(&quot;{:b}&quot;, a &amp; b);   // 1000 (8)  AND
+    println!(&quot;{:b}&quot;, a | b);   // 1110 (14) OR
+    println!(&quot;{:b}&quot;, a ^ b);   // 0110 (6)  XOR
+    println!(&quot;{:b}&quot;, a &lt;&lt; 1);  // 11000 (24) shift sinistro
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="controllo">
+<h2>if / else / match</h2>
+<div class="example">
+<div class="codehead"><span>if e else</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let numero = 7;
+
+    if numero &lt; 5 {
+        println!(&quot;piccolo&quot;);
+    } else if numero &lt; 10 {
+        println!(&quot;medio&quot;);    // stampato
+    } else {
+        println!(&quot;grande&quot;);
+    }
+
+    // if come espressione (restituisce un valore)
+    let descrizione = if numero % 2 == 0 { &quot;pari&quot; } else { &quot;dispari&quot; };
+    println!(&quot;{numero} è {descrizione}&quot;);
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>match — la switch di Rust</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let voto = 8;
+
+    let giudizio = match voto {
+        10          =&gt; &quot;Eccellente&quot;,
+        8 | 9       =&gt; &quot;Ottimo&quot;,        // più pattern con |
+        6 | 7       =&gt; &quot;Sufficiente&quot;,
+        1..=5       =&gt; &quot;Insufficiente&quot;, // range inclusivo
+        _           =&gt; &quot;Voto non valido&quot; // default (wildcard)
+    };
+    println!(&quot;{giudizio}&quot;);
+
+    // match su tuples
+    let punto = (0, 1);
+    match punto {
+        (0, 0) =&gt; println!(&quot;Origine&quot;),
+        (x, 0) =&gt; println!(&quot;Sull&#x27;asse X: {x}&quot;),
+        (0, y) =&gt; println!(&quot;Sull&#x27;asse Y: {y}&quot;),
+        (x, y) =&gt; println!(&quot;({x}, {y})&quot;),
+    }
+}</code></pre>
+</div>
+<div class="note-box">💡 Il <code class="inline">match</code> di Rust è <strong>esaustivo</strong>: il compilatore ti obbliga a coprire tutti i casi. Questo elimina i bug da casi non gestiti.</div>
+</article>
+<article class="lesson" id="cicli">
+<h2>Cicli: loop, while, for</h2>
+<div class="example">
+<div class="codehead"><span>loop — ciclo infinito con break</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let mut contatore = 0;
+
+    let risultato = loop {
+        contatore += 1;
+        if contatore == 10 {
+            break contatore * 2;   // break restituisce un valore
+        }
+    };
+    println!(&quot;Risultato: {risultato}&quot;);   // 20
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>while e for</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    // while
+    let mut n = 3;
+    while n &gt; 0 {
+        println!(&quot;{n}...&quot;);
+        n -= 1;
+    }
+    println!(&quot;Via!&quot;);
+
+    // for su un range
+    for i in 1..=5 {
+        print!(&quot;{i} &quot;);       // 1 2 3 4 5
+    }
+    println!();
+
+    // for su una collezione
+    let frutti = [&quot;mela&quot;, &quot;pera&quot;, &quot;kiwi&quot;];
+    for frutto in &amp;frutti {
+        println!(&quot;{frutto}&quot;);
+    }
+
+    // con indice
+    for (i, frutto) in frutti.iter().enumerate() {
+        println!(&quot;{i}: {frutto}&quot;);
+    }
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="funzioni">
+<h2>Funzioni</h2>
+<p>In Rust le funzioni si dichiarano con <code class="inline">fn</code>. Il tipo dei parametri e del valore di ritorno è obbligatorio. L'ultima espressione senza punto e virgola è il valore di ritorno.</p>
+<div class="example">
+<div class="codehead"><span>Funzioni: parametri e ritorno</span></div>
+<pre class="codeview"><code class="language-rust">fn somma(a: i32, b: i32) -&gt; i32 {
+    a + b       // nessun &quot;return&quot; né &quot;;&quot; → valore di ritorno
+}
+
+fn saluta(nome: &amp;str) -&gt; String {
+    format!(&quot;Ciao, {nome}!&quot;)
+}
+
+fn minmax(v: &amp;[i32]) -&gt; (i32, i32) {
+    let mut min = v[0];
+    let mut max = v[0];
+    for &amp;n in v {
+        if n &lt; min { min = n; }
+        if n &gt; max { max = n; }
+    }
+    (min, max)    // restituisce una tupla
+}
+
+fn main() {
+    println!(&quot;{}&quot;, somma(3, 7));          // 10
+    println!(&quot;{}&quot;, saluta(&quot;Alice&quot;));      // Ciao, Alice!
+
+    let numeri = vec![4, 1, 9, 2, 7];
+    let (min, max) = minmax(&amp;numeri);
+    println!(&quot;min={min} max={max}&quot;);     // min=1 max=9
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Funzioni ricorsive</span></div>
+<pre class="codeview"><code class="language-rust">fn fattoriale(n: u64) -&gt; u64 {
+    if n &lt;= 1 { 1 } else { n * fattoriale(n - 1) }
+}
+
+fn fibonacci(n: u32) -&gt; u32 {
+    match n {
+        0 =&gt; 0,
+        1 =&gt; 1,
+        _ =&gt; fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fn main() {
+    println!(&quot;{}&quot;, fattoriale(10));   // 3628800
+    println!(&quot;{}&quot;, fibonacci(10));    // 55
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="stringhe">
+<h2>Stringhe</h2>
+<p>Rust ha due tipi di stringa: <code class="inline">&str</code> (slice di stringa, immutabile, borrowed) e <code class="inline">String</code> (stringa heap-allocated, modificabile, owned).</p>
+<div class="example">
+<div class="codehead"><span>&amp;str vs String</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    // &amp;str: letterale stringa, immutabile
+    let s1: &amp;str = &quot;Ciao, mondo!&quot;;
+
+    // String: allocata sull&#x27;heap, modificabile
+    let mut s2 = String::from(&quot;Ciao&quot;);
+    s2.push_str(&quot;, Rust!&quot;);    // appendi
+    s2.push(&#x27;!&#x27;);              // appendi un char
+
+    println!(&quot;{s1}&quot;);
+    println!(&quot;{s2}&quot;);
+
+    // Conversioni
+    let s3 = s1.to_string();       // &amp;str → String
+    let s4: &amp;str = &amp;s2;            // String → &amp;str (slicing)
+
+    // Concatenazione
+    let s5 = String::from(&quot;Hello, &quot;);
+    let s6 = String::from(&quot;world!&quot;);
+    let s7 = s5 + &amp;s6;             // s5 viene spostato (moved)
+    println!(&quot;{s7}&quot;);
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Metodi utili sulle stringhe</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let s = String::from(&quot;  Ciao, Rust!  &quot;);
+
+    println!(&quot;{}&quot;, s.trim());              // &quot;Ciao, Rust!&quot;
+    println!(&quot;{}&quot;, s.to_uppercase());
+    println!(&quot;{}&quot;, s.to_lowercase());
+    println!(&quot;{}&quot;, s.contains(&quot;Rust&quot;));    // true
+    println!(&quot;{}&quot;, s.replace(&quot;Rust&quot;, &quot;mondo&quot;));
+    println!(&quot;{}&quot;, s.len());               // lunghezza in byte
+
+    // Spezzare una stringa
+    let csv = &quot;alfa,beta,gamma&quot;;
+    let parti: Vec&lt;&amp;str&gt; = csv.split(&#x27;,&#x27;).collect();
+    println!(&quot;{:?}&quot;, parti);   // [&quot;alfa&quot;, &quot;beta&quot;, &quot;gamma&quot;]
+
+    // Unire un vettore in stringa
+    let unita = parti.join(&quot; - &quot;);
+    println!(&quot;{unita}&quot;);       // alfa - beta - gamma
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="ownership">
+<h2>Ownership (Proprietà)</h2>
+<p>L'<strong>ownership</strong> è il meccanismo centrale di Rust per gestire la memoria <strong>senza garbage collector</strong>. Ogni valore ha un unico proprietario; quando il proprietario esce dallo scope, la memoria viene liberata automaticamente.</p>
+<h3>Tre regole fondamentali</h3>
+<ol>
+<li>Ogni valore ha <strong>un solo proprietario</strong></li>
+<li>Quando il proprietario esce dallo scope, il valore viene <strong>eliminato</strong></li>
+<li>Può esserci <strong>solo un proprietario alla volta</strong></li>
+</ol>
+<div class="example">
+<div class="codehead"><span>Move: trasferimento di proprietà</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let s1 = String::from(&quot;ciao&quot;);
+    let s2 = s1;    // s1 viene SPOSTATO in s2
+
+    // println!(&quot;{s1}&quot;); // ERRORE: s1 non è più valido!
+    println!(&quot;{s2}&quot;);   // OK
+
+    // Clone: copia profonda esplicita
+    let s3 = String::from(&quot;mondo&quot;);
+    let s4 = s3.clone();   // copia indipendente
+    println!(&quot;{s3} {s4}&quot;); // entrambi validi
+
+    // I tipi scalari (i32, bool, f64...) si COPIANO automaticamente
+    let x = 5;
+    let y = x;             // copia, non move
+    println!(&quot;{x} {y}&quot;);   // entrambi validi
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Ownership nelle funzioni</span></div>
+<pre class="codeview"><code class="language-rust">fn prendi(s: String) {   // s diventa proprietario
+    println!(&quot;{s}&quot;);
+}                           // s viene eliminato qui
+
+fn restituisce(s: String) -&gt; String {
+    s                      // ritorna la proprietà al chiamante
+}
+
+fn main() {
+    let s1 = String::from(&quot;ciao&quot;);
+    prendi(s1);
+    // println!(&quot;{s1}&quot;); // ERRORE: s1 è stato spostato nella funzione
+
+    let s2 = String::from(&quot;mondo&quot;);
+    let s3 = restituisce(s2);
+    println!(&quot;{s3}&quot;);       // OK: la proprietà è tornata a s3
+}</code></pre>
+</div>
+<div class="note-box">💡 Spostare la proprietà ad ogni chiamata di funzione è scomodo. Per questo esiste il <strong>borrowing</strong>: puoi prestare un valore senza cederne la proprietà.</div>
+</article>
+<article class="lesson" id="borrowing">
+<h2>Borrowing e riferimenti</h2>
+<p>Il <strong>borrowing</strong> permette di usare un valore senza prenderne la proprietà, tramite i <strong>riferimenti</strong> (<code class="inline">&</code>). I riferimenti possono essere immutabili (molti contemporaneamente) o mutabili (uno solo alla volta).</p>
+<div class="example">
+<div class="codehead"><span>Riferimenti immutabili</span></div>
+<pre class="codeview"><code class="language-rust">fn lunghezza(s: &amp;String) -&gt; usize {
+    s.len()    // prendiamo in prestito s, non lo possediamo
+}
+
+fn main() {
+    let s = String::from(&quot;ciao mondo&quot;);
+
+    // Passiamo un riferimento: s rimane valida dopo la chiamata
+    let len = lunghezza(&amp;s);
+    println!(&quot;&#x27;{s}&#x27; ha {len} caratteri&quot;);
+
+    // Possiamo avere molti riferimenti immutabili contemporaneamente
+    let r1 = &amp;s;
+    let r2 = &amp;s;
+    println!(&quot;{r1} e {r2}&quot;);   // OK
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Riferimenti mutabili</span></div>
+<pre class="codeview"><code class="language-rust">fn aggiungi(s: &amp;mut String) {
+    s.push_str(&quot;, mondo&quot;);
+}
+
+fn main() {
+    let mut s = String::from(&quot;ciao&quot;);
+    aggiungi(&amp;mut s);
+    println!(&quot;{s}&quot;);     // ciao, mondo
+
+    // REGOLA: solo UN riferimento mutabile alla volta
+    let r1 = &amp;mut s;
+    // let r2 = &amp;mut s; // ERRORE: due riferimenti mutabili!
+    println!(&quot;{r1}&quot;);
+
+    // Non si possono mescolare immutabile e mutabile
+    let s2 = String::from(&quot;hello&quot;);
+    let r_imm = &amp;s2;
+    // let r_mut = &amp;mut s2; // ERRORE: già in prestito come immutabile
+    println!(&quot;{r_imm}&quot;);
+}</code></pre>
+</div>
+<table class="ref">
+<tr><th>Tipo di riferimento</th><th>Quanti contemporaneamente</th><th>Modifica</th></tr>
+<tr><td><code class="inline">&T</code> (immutabile)</td><td>Illimitati</td><td>No</td></tr>
+<tr><td><code class="inline">&mut T</code> (mutabile)</td><td>Uno solo</td><td>Sì</td></tr>
+</table>
+<div class="tip-box">🎯 Queste regole sui riferimenti, applicate a compile-time dal <strong>borrow checker</strong>, eliminano le race condition e i dangling pointer prima ancora che il programma venga eseguito.</div>
+</article>
+<article class="lesson" id="arrays">
+<h2>Array e Vettori</h2>
+<h3>Array — dimensione fissa</h3>
+<div class="example">
+<div class="codehead"><span>Array (lunghezza fissa, stack)</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    // Array: tipo [T; N], dimensione fissa nota a compile-time
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    let zeri = [0; 10];    // 10 zeri
+
+    println!(&quot;{}&quot;, arr[0]);         // 1
+    println!(&quot;{}&quot;, arr.len());      // 5
+    println!(&quot;{:?}&quot;, arr);          // [1, 2, 3, 4, 5]
+
+    // Iterazione
+    for n in arr {
+        print!(&quot;{n} &quot;);
+    }
+    println!();
+}</code></pre>
+</div>
+<h3>Vec — vettore dinamico</h3>
+<div class="example">
+<div class="codehead"><span>Vec&lt;T&gt; (lunghezza dinamica, heap)</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    // Vettore: cresce e si riduce dinamicamente
+    let mut v: Vec&lt;i32&gt; = Vec::new();
+    v.push(1);
+    v.push(2);
+    v.push(3);
+    println!(&quot;{:?}&quot;, v);    // [1, 2, 3]
+
+    // Macro vec! per creare con valori iniziali
+    let mut nomi = vec![&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;];
+    nomi.push(&quot;Diana&quot;);
+
+    println!(&quot;{}&quot;, v[0]);           // 1
+    println!(&quot;{}&quot;, v.len());        // 3
+    v.pop();                        // rimuove l&#x27;ultimo
+    println!(&quot;{:?}&quot;, v);            // [1, 2]
+
+    // Slicing
+    let slice = &amp;v[0..2];
+    println!(&quot;{:?}&quot;, slice);
+
+    // Iterazione
+    for n in &amp;v {
+        print!(&quot;{n} &quot;);
+    }
+}</code></pre>
+</div>
+<div class="note-box">💡 Usa <code class="inline">array</code> quando la dimensione è fissa e nota a compile-time (più efficiente, allocato in stack). Usa <code class="inline">Vec</code> quando la dimensione può variare a runtime.</div>
+</article>
+<article class="lesson" id="tuple">
+<h2>Tuple</h2>
+<p>Le <strong>tuple</strong> raggruppano valori di tipi diversi. Hanno dimensione fissa e si accede agli elementi tramite indice puntato (<code class="inline">.0</code>, <code class="inline">.1</code>, ...).</p>
+<div class="example">
+<div class="codehead"><span>Tuple: utilizzo e destructuring</span></div>
+<pre class="codeview"><code class="language-rust">fn main() {
+    let persona: (&amp;str, i32, f64) = (&quot;Alice&quot;, 30, 1.68);
+
+    // Accesso per indice
+    println!(&quot;Nome: {}&quot;, persona.0);   // Alice
+    println!(&quot;Età: {}&quot;,  persona.1);   // 30
+    println!(&quot;Alt: {}&quot;,  persona.2);   // 1.68
+
+    // Destructuring (scomposizione)
+    let (nome, eta, altezza) = persona;
+    println!(&quot;{nome} ha {eta} anni ed è alta {altezza}m&quot;);
+
+    // Funzione che restituisce più valori con tuple
+    fn dividi(a: i32, b: i32) -&gt; (i32, i32) {
+        (a / b, a % b)
+    }
+    let (quoziente, resto) = dividi(17, 5);
+    println!(&quot;{quoziente} resto {resto}&quot;);   // 3 resto 2
+
+    // Tupla vuota (unit type)
+    let vuota: () = ();
+    println!(&quot;{:?}&quot;, vuota);   // ()
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="hashmap">
+<h2>HashMap</h2>
+<p>La <code class="inline">HashMap&lt;K, V&gt;</code> memorizza coppie chiave-valore con accesso medio O(1). Va importata da <code class="inline">std::collections</code>.</p>
+<div class="example">
+<div class="codehead"><span>HashMap: operazioni di base</span></div>
+<pre class="codeview"><code class="language-rust">use std::collections::HashMap;
+
+fn main() {
+    let mut voti: HashMap&lt;String, i32&gt; = HashMap::new();
+
+    // Inserimento
+    voti.insert(String::from(&quot;Alice&quot;), 9);
+    voti.insert(String::from(&quot;Luca&quot;), 7);
+    voti.insert(String::from(&quot;Marco&quot;), 8);
+
+    // Lettura
+    if let Some(v) = voti.get(&quot;Alice&quot;) {
+        println!(&quot;Voto di Alice: {v}&quot;);   // 9
+    }
+
+    // Contiene la chiave?
+    println!(&quot;{}&quot;, voti.contains_key(&quot;Luca&quot;));   // true
+
+    // Iterazione
+    for (nome, voto) in &amp;voti {
+        println!(&quot;{nome}: {voto}&quot;);
+    }
+
+    // Rimuovi
+    voti.remove(&quot;Marco&quot;);
+    println!(&quot;{}&quot;, voti.len());   // 2
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>entry API — inserisci se non esiste</span></div>
+<pre class="codeview"><code class="language-rust">use std::collections::HashMap;
+
+fn main() {
+    let testo = &quot;ciao mondo ciao rust ciao&quot;;
+    let mut conteggi: HashMap&lt;&amp;str, u32&gt; = HashMap::new();
+
+    for parola in testo.split_whitespace() {
+        // entry: se la chiave esiste aggiorna, altrimenti inserisce 0
+        let contatore = conteggi.entry(parola).or_insert(0);
+        *contatore += 1;
+    }
+
+    println!(&quot;{:?}&quot;, conteggi);
+    // {&quot;ciao&quot;: 3, &quot;mondo&quot;: 1, &quot;rust&quot;: 1}
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="struct">
+<h2>Struct</h2>
+<p>Le <strong>struct</strong> sono tipi di dato custom che raggruppano campi correlati. Puoi implementare metodi tramite blocchi <code class="inline">impl</code>.</p>
+<div class="example">
+<div class="codehead"><span>Struct e metodi</span></div>
+<pre class="codeview"><code class="language-rust">#[derive(Debug)]
+struct Rettangolo {
+    larghezza: f64,
+    altezza: f64,
+}
+
+impl Rettangolo {
+    // Funzione associata (factory, senza self)
+    fn quadrato(lato: f64) -&gt; Rettangolo {
+        Rettangolo { larghezza: lato, altezza: lato }
+    }
+
+    // Metodo (con &amp;self)
+    fn area(&amp;self) -&gt; f64 {
+        self.larghezza * self.altezza
+    }
+
+    fn perimetro(&amp;self) -&gt; f64 {
+        2.0 * (self.larghezza + self.altezza)
+    }
+
+    fn e_quadrato(&amp;self) -&gt; bool {
+        self.larghezza == self.altezza
+    }
+}
+
+fn main() {
+    let r = Rettangolo { larghezza: 5.0, altezza: 3.0 };
+    println!(&quot;Area: {}&quot;, r.area());           // 15.0
+    println!(&quot;Perimetro: {}&quot;, r.perimetro()); // 16.0
+    println!(&quot;{:?}&quot;, r);                       // debug print
+
+    let q = Rettangolo::quadrato(4.0);
+    println!(&quot;È quadrato: {}&quot;, q.e_quadrato()); // true
+}</code></pre>
+</div>
+</article>
+<article class="lesson" id="enum">
+<h2>Enum</h2>
+<p>Gli <strong>enum</strong> di Rust sono molto più potenti di quelli di altri linguaggi: ogni variante può contenere dati. Combinati con <code class="inline">match</code>, gestiscono situazioni complesse in modo sicuro.</p>
+<div class="example">
+<div class="codehead"><span>Enum con dati e match</span></div>
+<pre class="codeview"><code class="language-rust">#[derive(Debug)]
+enum Forma {
+    Cerchio(f64),                    // contiene il raggio
+    Rettangolo(f64, f64),            // larghezza, altezza
+    Triangolo { base: f64, h: f64 }, // campi nominati
+}
+
+impl Forma {
+    fn area(&amp;self) -&gt; f64 {
+        match self {
+            Forma::Cerchio(r)               =&gt; std::f64::consts::PI * r * r,
+            Forma::Rettangolo(l, a)         =&gt; l * a,
+            Forma::Triangolo { base, h }    =&gt; 0.5 * base * h,
+        }
+    }
+}
+
+fn main() {
+    let forme = vec![
+        Forma::Cerchio(3.0),
+        Forma::Rettangolo(4.0, 5.0),
+        Forma::Triangolo { base: 6.0, h: 4.0 },
+    ];
+    for f in &amp;forme {
+        println!(&quot;{:?} → area {:.2}&quot;, f, f.area());
+    }
+}</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Option e Result: enum della libreria standard</span></div>
+<pre class="codeview"><code class="language-rust">fn divisione(a: f64, b: f64) -&gt; Option&lt;f64&gt; {
+    if b == 0.0 { None } else { Some(a / b) }
+}
+
+fn main() {
+    // Option&lt;T&gt;: Some(valore) oppure None
+    match divisione(10.0, 2.0) {
+        Some(r) =&gt; println!(&quot;Risultato: {r}&quot;),
+        None    =&gt; println!(&quot;Divisione per zero!&quot;),
+    }
+
+    // Metodi comodi su Option
+    let r = divisione(10.0, 0.0).unwrap_or(0.0);
+    println!(&quot;{r}&quot;);   // 0.0
+
+    // Result&lt;T, E&gt;: Ok(valore) oppure Err(errore)
+    let s = &quot;42&quot;;
+    match s.parse::&lt;i32&gt;() {
+        Ok(n)  =&gt; println!(&quot;Numero: {n}&quot;),
+        Err(e) =&gt; println!(&quot;Errore: {e}&quot;),
+    }
+}</code></pre>
+</div>
+<div class="note-box">💡 In Rust non esiste <code class="inline">null</code>. Invece di null pointer, si usa <code class="inline">Option&lt;T&gt;</code>: sei obbligato a gestire esplicitamente il caso "nessun valore", eliminando i NullPointerException a runtime.</div>
+</article>
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 1 — Calcolatore di media</span>
+<p>Scrivi una funzione che prenda un <code class="inline">Vec&lt;f64&gt;</code> e restituisca <code class="inline">Option&lt;f64&gt;</code> con la media, oppure <code class="inline">None</code> se il vettore è vuoto.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<pre class="codeview"><code class="language-rust">fn media(numeri: &amp;[f64]) -&gt; Option&lt;f64&gt; {
+    if numeri.is_empty() {
+        return None;
+    }
+    Some(numeri.iter().sum::&lt;f64&gt;() / numeri.len() as f64)
+}
+
+fn main() {
+    let v = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    match media(&amp;v) {
+        Some(m) =&gt; println!(&quot;Media: {m}&quot;),   // 3.0
+        None    =&gt; println!(&quot;Vettore vuoto&quot;),
+    }
+    println!(&quot;{:?}&quot;, media(&amp;vec![]));         // None
+}</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 2 — Contatore parole</span>
+<p>Usa una <code class="inline">HashMap</code> per contare quante volte ogni parola appare in una stringa. Stampa le parole in ordine di frequenza decrescente.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<pre class="codeview"><code class="language-rust">use std::collections::HashMap;
+
+fn conta_parole(testo: &amp;str) -&gt; Vec&lt;(&amp;str, usize)&gt; {
+    let mut mappa: HashMap&lt;&amp;str, usize&gt; = HashMap::new();
+    for parola in testo.split_whitespace() {
+        *mappa.entry(parola).or_insert(0) += 1;
+    }
+    let mut v: Vec&lt;_&gt; = mappa.into_iter().collect();
+    v.sort_by(|a, b| b.1.cmp(&amp;a.1));  // decrescente
+    v
+}
+
+fn main() {
+    let t = &quot;ciao mondo ciao rust ciao mondo&quot;;
+    for (parola, n) in conta_parole(t) {
+        println!(&quot;{parola}: {n}&quot;);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 3 — Struct Studente</span>
+<p>Crea una struct <code class="inline">Studente</code> con nome, età e voti (<code class="inline">Vec&lt;f64&gt;</code>). Implementa un metodo <code class="inline">media_voti</code> e un metodo <code class="inline">promosso</code> che restituisce true se la media è ≥ 6.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<pre class="codeview"><code class="language-rust">struct Studente {
+    nome: String,
+    eta: u8,
+    voti: Vec&lt;f64&gt;,
+}
+
+impl Studente {
+    fn new(nome: &amp;str, eta: u8, voti: Vec&lt;f64&gt;) -&gt; Self {
+        Studente { nome: nome.to_string(), eta, voti }
+    }
+
+    fn media_voti(&amp;self) -&gt; f64 {
+        if self.voti.is_empty() { return 0.0; }
+        self.voti.iter().sum::&lt;f64&gt;() / self.voti.len() as f64
+    }
+
+    fn promosso(&amp;self) -&gt; bool {
+        self.media_voti() &gt;= 6.0
+    }
+}
+
+fn main() {
+    let s = Studente::new(&quot;Alice&quot;, 17, vec![7.0, 8.0, 6.5, 9.0]);
+    println!(&quot;{}: media {:.1}, promosso: {}&quot;,
+        s.nome, s.media_voti(), s.promosso());
+}</code></pre>
+</div>
+</div>
+</article>
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso Rust. Ora conosci le basi del linguaggio più sicuro e performante dell'ecosistema moderno: sintassi, tipi, controllo di flusso, ownership, borrowing e le principali strutture dati.</p>
+<div class="note-box">
+<strong>Cosa hai imparato:</strong>
+<ul>
+<li>Variabili immutabili per default, shadowing, tipi scalari</li>
+<li>if/else, match esaustivo, cicli loop/while/for</li>
+<li>Funzioni, closures e riferimenti</li>
+<li>Ownership e borrow checker: memoria sicura senza GC</li>
+<li>Stringhe (&amp;str vs String), array, Vec, tuple, HashMap</li>
+<li>Struct con metodi, enum con dati, Option e Result</li>
+</ul>
+</div>
+<p>I prossimi passi in Rust: <strong>closures e iteratori</strong>, <strong>trait</strong>, <strong>generici</strong>, <strong>error handling</strong> avanzato, <strong>lifetimes</strong> e la programmazione <strong>asincrona</strong> con Tokio.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+<a href="corso-cpp.html" class="btn btn-primary">Vai al corso C++ →</a>
+<a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a>
+<a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+</article>
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
