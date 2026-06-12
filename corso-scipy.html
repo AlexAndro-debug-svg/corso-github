@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso SciPy in italiano completo e gratuito — ottimizzazione, statistica, grafi e interpolazione | AlessandroSimone.it</title>
+  <meta name="description" content="Corso SciPy completo in italiano: costanti, ottimizzatori, matrici sparse, grafi, dati spaziali, interpolazione e test statistici. Tutorial gratuito con esempi pratici.">
+  <meta name="keywords" content="corso scipy italiano, scipy tutorial italiano, imparare scipy, scipy optimize, scipy stats, scipy sparse, calcolo scientifico python, test statistici python">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso SciPy in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara SciPy da zero in italiano: ottimizzazione, matrici sparse, grafi, dati spaziali, interpolazione e test statistici. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.builtin { color: #fb923c; }
+    .codeview .token.decorator { color: #f472b6; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-scipy.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-scipy.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso SciPy in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial SciPy completo in italiano: ottimizzazione, statistica, grafi e interpolazione. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso SciPy in italiano","description":"Corso SciPy italiano completo e gratuito: costanti, ottimizzatori, matrici sparse, grafi, dati spaziali, interpolazione e test statistici.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-scipy.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html" class="active">SCIPY</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso SciPy in italiano</h1>
+    <p class="lead" style="margin-inline:auto">La libreria Python per il calcolo scientifico e tecnico: ottimizzazione, matrici sparse, algoritmi su grafi, dati spaziali, interpolazione e test statistici. Con esempi pratici ed esercizi.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+      <h4>SciPy Tutorial</h4>
+<a href="#intro">Introduzione</a>
+<a href="#install">Installazione</a>
+<a href="#constants">Costanti</a>
+<a href="#optimizers">Ottimizzatori</a>
+<a href="#sparse">Dati sparsi</a>
+<a href="#graphs">Grafi</a>
+<a href="#spatial">Dati spaziali</a>
+<a href="#matlab">Array Matlab</a>
+<a href="#interpolation">Interpolazione</a>
+<a href="#stats">Test di significatività</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+      <article class="lesson" id="intro">
+<h2>Introduzione a SciPy</h2>
+<p><strong>SciPy</strong> (Scientific Python) è una libreria open-source per il <strong>calcolo scientifico e tecnico</strong>. Costruita sopra NumPy, aggiunge moduli specializzati per ottimizzazione, algebra lineare, integrazione, interpolazione, statistica, elaborazione di segnali e molto altro.</p>
+<p>Se NumPy fornisce gli <em>array</em> e le operazioni di base, SciPy fornisce gli <em>algoritmi scientifici</em> pronti all'uso che ci lavorano sopra.</p>
+<table class="ref">
+<tr><th>Sottomodulo</th><th>A cosa serve</th></tr>
+<tr><td><code class="inline">scipy.constants</code></td><td>Costanti fisiche e matematiche</td></tr>
+<tr><td><code class="inline">scipy.optimize</code></td><td>Trovare radici e minimi di funzioni</td></tr>
+<tr><td><code class="inline">scipy.sparse</code></td><td>Matrici sparse (efficienti in memoria)</td></tr>
+<tr><td><code class="inline">scipy.sparse.csgraph</code></td><td>Algoritmi su grafi</td></tr>
+<tr><td><code class="inline">scipy.spatial</code></td><td>Distanze, triangolazioni, KD-Tree</td></tr>
+<tr><td><code class="inline">scipy.interpolate</code></td><td>Interpolazione di dati</td></tr>
+<tr><td><code class="inline">scipy.stats</code></td><td>Distribuzioni e test statistici</td></tr>
+<tr><td><code class="inline">scipy.io</code></td><td>Lettura/scrittura formati (Matlab, ...)</td></tr>
+<tr><td><code class="inline">scipy.linalg</code></td><td>Algebra lineare avanzata</td></tr>
+</table>
+<div class="note-box">💡 SciPy è scritto in gran parte in linguaggi compilati (C, C++, Fortran), quindi gli algoritmi sono velocissimi pur essendo richiamabili da Python.</div>
+</article>
+<article class="lesson" id="install">
+<h2>Installazione e importazione</h2>
+<div class="example">
+<div class="codehead"><span>Installazione</span></div>
+<pre class="codeview"><code class="language-bash"># Nel terminale
+pip install scipy
+
+# In un notebook Jupyter
+!pip install scipy
+
+# Spesso insieme a NumPy (richiesto)
+pip install numpy scipy</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Importazione e versione</span></div>
+<pre class="codeview"><code class="language-python">import scipy
+print(scipy.__version__)   # es. 1.13.0
+
+# I sottomoduli vanno importati esplicitamente
+from scipy import constants, optimize, stats
+import numpy as np
+
+print(constants.pi)        # 3.141592653589793</code></pre>
+</div>
+<div class="warn-box">⚠️ Importare solo <code class="inline">import scipy</code> non basta: i sottomoduli (come <code class="inline">scipy.optimize</code>) vanno importati esplicitamente con <code class="inline">from scipy import optimize</code>.</div>
+</article>
+<article class="lesson" id="constants">
+<h2>Costanti SciPy</h2>
+<p>Il modulo <code class="inline">scipy.constants</code> offre un grande catalogo di costanti fisiche e matematiche, oltre a fattori di conversione tra unità di misura.</p>
+<div class="example">
+<div class="codehead"><span>Costanti principali</span></div>
+<pre class="codeview"><code class="language-python">from scipy import constants
+
+print(constants.pi)          # 3.141592653589793
+print(constants.golden)      # 1.618033988749895 (sezione aurea)
+print(constants.c)           # 299792458.0 (velocità luce m/s)
+print(constants.h)           # costante di Planck
+print(constants.G)           # costante gravitazionale
+print(constants.e)           # carica elementare
+print(constants.Avogadro)    # 6.022e23</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Fattori di conversione (unità)</span></div>
+<pre class="codeview"><code class="language-python">from scipy import constants
+
+# Tempo (in secondi)
+print(constants.minute)   # 60.0
+print(constants.hour)     # 3600.0
+print(constants.day)      # 86400.0
+
+# Lunghezza (in metri)
+print(constants.inch)     # 0.0254
+print(constants.mile)     # 1609.344
+print(constants.kilo)     # 1000.0
+
+# Massa (in kg)
+print(constants.gram)     # 0.001
+print(constants.pound)    # 0.45359237
+
+# Categorie disponibili
+print(constants.unit(&quot;speed of light in vacuum&quot;))</code></pre>
+</div>
+<table class="ref">
+<tr><th>Categoria</th><th>Esempi</th></tr>
+<tr><td>Metrico</td><td><code class="inline">kilo</code>, <code class="inline">centi</code>, <code class="inline">milli</code></td></tr>
+<tr><td>Tempo</td><td><code class="inline">minute</code>, <code class="inline">hour</code>, <code class="inline">year</code></td></tr>
+<tr><td>Lunghezza</td><td><code class="inline">inch</code>, <code class="inline">foot</code>, <code class="inline">mile</code></td></tr>
+<tr><td>Massa</td><td><code class="inline">gram</code>, <code class="inline">pound</code>, <code class="inline">ounce</code></td></tr>
+<tr><td>Pressione</td><td><code class="inline">atm</code>, <code class="inline">bar</code>, <code class="inline">mmHg</code></td></tr>
+</table>
+</article>
+<article class="lesson" id="optimizers">
+<h2>Ottimizzatori (optimize)</h2>
+<p>Il modulo <code class="inline">scipy.optimize</code> offre algoritmi per <strong>trovare le radici</strong> di un'equazione e per <strong>minimizzare</strong> funzioni — operazioni centrali nel machine learning e nell'ingegneria.</p>
+<h3>Trovare le radici di un'equazione</h3>
+<div class="example">
+<div class="codehead"><span>root — risolvere f(x) = 0</span></div>
+<pre class="codeview"><code class="language-python">from scipy.optimize import root
+from math import cos
+
+# Risolvi  x + cos(x) = 0
+def equazione(x):
+    return x + cos(x)
+
+soluzione = root(equazione, 0)   # 0 = stima iniziale
+print(soluzione.x)        # [-0.73908513]
+print(soluzione.fun)      # ~0  (valore di f nella soluzione)</code></pre>
+</div>
+<h3>Minimizzare una funzione</h3>
+<div class="example">
+<div class="codehead"><span>minimize — trovare il minimo</span></div>
+<pre class="codeview"><code class="language-python">from scipy.optimize import minimize
+
+# Minimizza  f(x) = x^2 + x + 2
+def f(x):
+    return x**2 + x + 2
+
+ris = minimize(f, x0=0, method=&quot;BFGS&quot;)
+print(ris.x)         # [-0.5]  → punto di minimo
+print(ris.fun)       # 1.75    → valore minimo
+
+# Funzione a più variabili: f(x,y) = (x-1)^2 + (y-2.5)^2
+def g(v):
+    x, y = v
+    return (x-1)**2 + (y-2.5)**2
+
+ris2 = minimize(g, x0=[0, 0])
+print(ris2.x)        # [1.  2.5]</code></pre>
+</div>
+<table class="ref">
+<tr><th>Metodo</th><th>Quando usarlo</th></tr>
+<tr><td><code class="inline">BFGS</code></td><td>Funzioni lisce, derivabili (default)</td></tr>
+<tr><td><code class="inline">Nelder-Mead</code></td><td>Senza derivate, robusto</td></tr>
+<tr><td><code class="inline">Powell</code></td><td>Senza derivate, direzioni coniugate</td></tr>
+<tr><td><code class="inline">L-BFGS-B</code></td><td>Con vincoli (bounds) sulle variabili</td></tr>
+</table>
+</article>
+<article class="lesson" id="sparse">
+<h2>Dati sparsi (sparse)</h2>
+<p>Una <strong>matrice sparsa</strong> è una matrice in cui la maggior parte degli elementi è zero. Memorizzare solo gli elementi non-zero risparmia enormi quantità di memoria — fondamentale in NLP, sistemi di raccomandazione e reti.</p>
+<div class="example">
+<div class="codehead"><span>Creare matrici sparse</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.sparse import csr_matrix
+
+# Array con molti zeri
+arr = np.array([0, 0, 0, 1, 0, 0, 2, 0, 0, 3])
+
+# CSR = Compressed Sparse Row
+sparse = csr_matrix(arr)
+print(sparse)
+#   (0, 3)    1
+#   (0, 6)    2
+#   (0, 9)    3
+
+# Solo i valori non-zero memorizzati
+print(sparse.data)          # [1 2 3]
+print(sparse.count_nonzero())  # 3</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Operazioni su matrici sparse</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.sparse import csr_matrix
+
+m = np.array([[0, 0, 1],
+              [1, 0, 0],
+              [0, 2, 0]])
+s = csr_matrix(m)
+
+# Elimina gli zeri duplicati / memorizzati inutilmente
+s.eliminate_zeros()
+
+# Converti di nuovo in array denso
+print(s.toarray())
+
+# CSC = Compressed Sparse Column (efficiente per colonne)
+from scipy.sparse import csc_matrix
+sc = csc_matrix(m)
+
+# Somma, prodotto e altre operazioni funzionano come NumPy
+print(s.sum())   # 4</code></pre>
+</div>
+<table class="ref">
+<tr><th>Formato</th><th>Ottimizzato per</th></tr>
+<tr><td><code class="inline">csr_matrix</code></td><td>Operazioni per riga, prodotti matrice-vettore</td></tr>
+<tr><td><code class="inline">csc_matrix</code></td><td>Operazioni per colonna</td></tr>
+<tr><td><code class="inline">coo_matrix</code></td><td>Costruzione rapida da coordinate</td></tr>
+<tr><td><code class="inline">lil_matrix</code></td><td>Modifiche incrementali</td></tr>
+</table>
+</article>
+<article class="lesson" id="graphs">
+<h2>Grafi (csgraph)</h2>
+<p>Il modulo <code class="inline">scipy.sparse.csgraph</code> implementa algoritmi classici sui <strong>grafi</strong>, rappresentati come matrici di adiacenza sparse.</p>
+<div class="example">
+<div class="codehead"><span>Componenti connesse</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components
+
+# Matrice di adiacenza (grafo non orientato)
+arr = np.array([
+    [0, 1, 2],
+    [1, 0, 0],
+    [2, 0, 0]
+])
+grafo = csr_matrix(arr)
+
+n, etichette = connected_components(grafo)
+print(n)          # numero di componenti connesse
+print(etichette)  # a quale componente appartiene ogni nodo</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Cammino minimo (Dijkstra)</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import dijkstra, floyd_warshall
+
+# Grafo pesato
+arr = np.array([
+    [0, 1, 2],
+    [1, 0, 0],
+    [2, 0, 0]
+])
+grafo = csr_matrix(arr)
+
+# Dijkstra dal nodo 0
+dist, predecessori = dijkstra(
+    grafo, return_predecessors=True, indices=0
+)
+print(dist)   # distanza minima dal nodo 0 a ogni nodo
+
+# Floyd-Warshall: distanze tra tutte le coppie
+print(floyd_warshall(grafo, directed=False))</code></pre>
+</div>
+<table class="ref">
+<tr><th>Algoritmo</th><th>Funzione</th></tr>
+<tr><td>Componenti connesse</td><td><code class="inline">connected_components</code></td></tr>
+<tr><td>Cammino minimo (sorgente singola)</td><td><code class="inline">dijkstra</code>, <code class="inline">bellman_ford</code></td></tr>
+<tr><td>Cammini tra tutte le coppie</td><td><code class="inline">floyd_warshall</code></td></tr>
+<tr><td>Albero ricoprente minimo</td><td><code class="inline">minimum_spanning_tree</code></td></tr>
+</table>
+</article>
+<article class="lesson" id="spatial">
+<h2>Dati spaziali (spatial)</h2>
+<p>Il modulo <code class="inline">scipy.spatial</code> gestisce dati nello spazio: calcolo di distanze, triangolazioni, inviluppi convessi e ricerche di vicinato efficienti con i KD-Tree.</p>
+<div class="example">
+<div class="codehead"><span>Distanze tra punti</span></div>
+<pre class="codeview"><code class="language-python">from scipy.spatial.distance import euclidean, cityblock, cosine
+
+p1 = (1, 0, 0)
+p2 = (10, 2, 7)
+
+# Distanza euclidea (in linea d&#x27;aria)
+print(euclidean(p1, p2))   # 11.575...
+
+# Distanza Manhattan (a blocchi di città)
+print(cityblock(p1, p2))   # 18
+
+# Distanza coseno (similarità tra vettori)
+print(cosine([1, 0], [0, 1]))   # 1.0 (ortogonali)
+print(cosine([1, 1], [1, 1]))   # 0.0 (identici)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Triangolazione e Convex Hull</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.spatial import Delaunay, ConvexHull
+
+punti = np.array([
+    [0, 0], [0, 1], [1, 0],
+    [1, 1], [0.5, 0.5]
+])
+
+# Triangolazione di Delaunay
+tri = Delaunay(punti)
+print(tri.simplices)   # indici dei triangoli
+
+# Inviluppo convesso (perimetro esterno)
+hull = ConvexHull(punti)
+print(hull.vertices)   # punti sul bordo esterno
+print(hull.area)       # perimetro
+print(hull.volume)     # area racchiusa</code></pre>
+</div><div class="example">
+<div class="codehead"><span>KD-Tree: ricerca del vicino più prossimo</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.spatial import KDTree
+
+punti = np.array([[1, 1], [2, 2], [3, 3], [5, 5]])
+tree = KDTree(punti)
+
+# Trova il punto più vicino a (2.1, 2.1)
+dist, idx = tree.query([2.1, 2.1])
+print(f&quot;Vicino: {punti[idx]}, distanza: {dist:.3f}&quot;)
+
+# I 2 vicini più prossimi
+dist, idx = tree.query([2.1, 2.1], k=2)
+print(punti[idx])</code></pre>
+</div>
+</article>
+<article class="lesson" id="matlab">
+<h2>Array Matlab (io)</h2>
+<p>SciPy può leggere e scrivere file in formato <strong>Matlab</strong> (<code class="inline">.mat</code>), utile quando si collabora con chi usa Matlab o si riutilizzano dataset scientifici esistenti.</p>
+<div class="example">
+<div class="codehead"><span>Salvare e caricare file .mat</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy import io
+
+# Dati da salvare
+arr = np.arange(10)
+
+# Salva in formato Matlab
+io.savemat(&quot;dati.mat&quot;, {&quot;vettore&quot;: arr})
+
+# Carica un file .mat
+contenuto = io.loadmat(&quot;dati.mat&quot;)
+print(contenuto[&quot;vettore&quot;])   # [[0 1 2 3 4 5 6 7 8 9]]
+
+# I dati Matlab sono sempre 2D: usa squeeze per appiattire
+print(contenuto[&quot;vettore&quot;].squeeze())  # [0 1 ... 9]</code></pre>
+</div>
+<div class="note-box">💡 Matlab memorizza tutto come matrici 2D, quindi un vettore 1D salvato e ricaricato torna come matrice riga <code class="inline">(1, n)</code>. Usa <code class="inline">.squeeze()</code> o <code class="inline">squeeze_me=True</code> in <code class="inline">loadmat</code> per ottenere di nuovo un array 1D.</div>
+</article>
+<article class="lesson" id="interpolation">
+<h2>Interpolazione (interpolate)</h2>
+<p>L'<strong>interpolazione</strong> stima nuovi valori "in mezzo" a punti dati noti. È usata per ricostruire curve, riempire dati mancanti o aumentare la risoluzione di un campionamento.</p>
+<div class="example">
+<div class="codehead"><span>Interpolazione 1D</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.interpolate import interp1d
+
+# Punti noti
+x = np.arange(10)
+y = 2 * x + 1          # retta: y = 2x + 1
+
+# Crea la funzione interpolante
+f = interp1d(x, y)
+
+# Stima valori intermedi
+print(f(2.5))          # 6.0
+print(f([1.5, 4.5, 8.2]))  # valori interpolati
+
+# Interpolazione cubica (curva liscia)
+f_cubica = interp1d(x, y, kind=&quot;cubic&quot;)
+print(f_cubica(2.5))</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Interpolazione con spline e dati rumorosi</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.interpolate import UnivariateSpline
+
+# Dati con un po&#x27; di rumore
+x = np.linspace(0, 10, 20)
+y = np.sin(x) + np.random.normal(0, 0.1, 20)
+
+# Spline che leviga il rumore
+spline = UnivariateSpline(x, y, s=1)
+
+# Valuta su una griglia più fitta
+x_fine = np.linspace(0, 10, 200)
+y_smooth = spline(x_fine)
+print(y_smooth[:5])</code></pre>
+</div>
+<table class="ref">
+<tr><th>kind / metodo</th><th>Risultato</th></tr>
+<tr><td><code class="inline">linear</code></td><td>Segmenti retti tra i punti (default)</td></tr>
+<tr><td><code class="inline">nearest</code></td><td>Valore del punto più vicino</td></tr>
+<tr><td><code class="inline">cubic</code></td><td>Curva cubica liscia</td></tr>
+<tr><td><code class="inline">UnivariateSpline</code></td><td>Spline che leviga dati rumorosi</td></tr>
+</table>
+</article>
+<article class="lesson" id="stats">
+<h2>Test di significatività (stats)</h2>
+<p>Il modulo <code class="inline">scipy.stats</code> è una cassetta degli attrezzi statistica completa: distribuzioni di probabilità, statistica descrittiva e <strong>test di ipotesi</strong> per verificare se un risultato è statisticamente significativo.</p>
+<h3>Concetti chiave</h3>
+<ul>
+<li><strong>Ipotesi nulla (H₀)</strong>: l'ipotesi "non c'è effetto / nessuna differenza".</li>
+<li><strong>p-value</strong>: probabilità di osservare i dati se H₀ è vera. Se <code class="inline">p &lt; 0.05</code> si rifiuta H₀.</li>
+</ul>
+<div class="example">
+<div class="codehead"><span>T-test (confronto tra due gruppi)</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy import stats
+
+# Due gruppi di misurazioni
+gruppo_a = np.array([20, 22, 19, 24, 21, 23, 20])
+gruppo_b = np.array([28, 27, 30, 26, 29, 31, 28])
+
+# T-test indipendente
+t_stat, p_value = stats.ttest_ind(gruppo_a, gruppo_b)
+print(f&quot;t = {t_stat:.3f}&quot;)
+print(f&quot;p-value = {p_value:.5f}&quot;)
+
+if p_value &lt; 0.05:
+    print(&quot;Differenza SIGNIFICATIVA (rifiuto H0)&quot;)
+else:
+    print(&quot;Nessuna differenza significativa&quot;)</code></pre>
+</div><div class="example">
+<div class="codehead"><span>Statistica descrittiva e normalità</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy import stats
+
+dati = np.array([12, 15, 14, 10, 18, 20, 13, 16, 11, 17])
+
+# Statistiche descrittive
+print(stats.describe(dati))
+print(&quot;Media:&quot;, np.mean(dati))
+print(&quot;Moda:&quot;, stats.mode(dati, keepdims=True).mode)
+print(&quot;Asimmetria:&quot;, stats.skew(dati))
+print(&quot;Curtosi:&quot;, stats.kurtosis(dati))
+
+# Test di normalità (Shapiro-Wilk)
+stat, p = stats.shapiro(dati)
+print(f&quot;Normalità p-value: {p:.4f}&quot;)
+# p &gt; 0.05 → i dati possono essere normali</code></pre>
+</div>
+<table class="ref">
+<tr><th>Test</th><th>Domanda a cui risponde</th></tr>
+<tr><td><code class="inline">ttest_ind</code></td><td>Due gruppi hanno medie diverse?</td></tr>
+<tr><td><code class="inline">ttest_rel</code></td><td>Misure appaiate prima/dopo diverse?</td></tr>
+<tr><td><code class="inline">f_oneway</code> (ANOVA)</td><td>Tre o più gruppi differiscono?</td></tr>
+<tr><td><code class="inline">chi2_contingency</code></td><td>Due variabili categoriche sono associate?</td></tr>
+<tr><td><code class="inline">pearsonr</code></td><td>Due variabili sono correlate linearmente?</td></tr>
+<tr><td><code class="inline">shapiro</code></td><td>I dati seguono una distribuzione normale?</td></tr>
+</table>
+</article>
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 1 — Trovare il minimo</span>
+<p>Usa <code class="inline">scipy.optimize.minimize</code> per trovare il punto di minimo della funzione <code class="inline">f(x) = (x - 3)² + 5</code>. Verifica che il minimo sia in x = 3 con valore 5.</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 1</span></div>
+<pre class="codeview"><code class="language-python">from scipy.optimize import minimize
+
+def f(x):
+    return (x - 3)**2 + 5
+
+ris = minimize(f, x0=0)
+print(f&quot;Minimo in x = {ris.x[0]:.4f}&quot;)   # 3.0000
+print(f&quot;Valore minimo = {ris.fun:.4f}&quot;)  # 5.0000</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 2 — T-test</span>
+<p>Due classi hanno svolto lo stesso esame. Verifica con un t-test se i voti delle due classi sono significativamente diversi (soglia p &lt; 0.05).</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 2</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy import stats
+
+classe_a = np.array([6, 7, 5, 8, 7, 6, 7, 5])
+classe_b = np.array([8, 9, 7, 9, 8, 9, 8, 7])
+
+t, p = stats.ttest_ind(classe_a, classe_b)
+print(f&quot;p-value = {p:.5f}&quot;)
+
+if p &lt; 0.05:
+    print(&quot;Le due classi differiscono significativamente&quot;)
+else:
+    print(&quot;Nessuna differenza significativa&quot;)</code></pre>
+</div>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏋️ Esercizio 3 — Distanza e vicino più prossimo</span>
+<p>Dati 4 città su un piano cartesiano, costruisci un KD-Tree e trova quale città è più vicina al punto (3, 4).</p>
+<div class="example">
+<div class="codehead"><span>Soluzione Esercizio 3</span></div>
+<pre class="codeview"><code class="language-python">import numpy as np
+from scipy.spatial import KDTree
+
+citta = {&quot;Roma&quot;: [0,0], &quot;Milano&quot;: [2,5],
+         &quot;Napoli&quot;: [4,3], &quot;Torino&quot;: [1,6]}
+nomi = list(citta.keys())
+punti = np.array(list(citta.values()))
+
+tree = KDTree(punti)
+dist, idx = tree.query([3, 4])
+
+print(f&quot;Città più vicina: {nomi[idx]}&quot;)
+print(f&quot;Distanza: {dist:.3f}&quot;)</code></pre>
+</div>
+</div>
+</article>
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso SciPy e ora conosci gli strumenti per affrontare problemi scientifici reali in Python: ottimizzazione, algebra su matrici sparse, algoritmi su grafi, geometria computazionale, interpolazione e test statistici.</p>
+<div class="note-box">
+<strong>Cosa hai imparato:</strong>
+<ul>
+<li>Costanti fisiche e conversioni di unità</li>
+<li>Ottimizzazione: radici e minimi di funzioni</li>
+<li>Matrici sparse e algoritmi sui grafi</li>
+<li>Dati spaziali: distanze, Convex Hull, KD-Tree</li>
+<li>Interpolazione di dati e spline</li>
+<li>Test di significatività e statistica inferenziale</li>
+</ul>
+</div>
+<p>Insieme a <strong>NumPy</strong> e <strong>Pandas</strong>, SciPy completa il trio fondamentale del calcolo scientifico in Python. Il passo successivo? Mettere tutto in pratica nel corso completo di <strong>Data Science</strong>.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+<a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a>
+<a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a>
+<a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a>
+</div>
+</article>
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="font-size:1.2rem;font-weight:800;margin-bottom:.7rem">Alessandro<span style="color:var(--primary)">Simone</span>.it</div>
+        <p style="color:var(--muted);font-size:.93rem">Corsi di programmazione gratuiti in italiano. Impara a programmare da zero con guide pratiche ed esempi reali.</p>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Link rapidi</h4>
+        <a href="index.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Home</a>
+        <a href="corsi.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Corsi</a>
+        <a href="blog.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">Blog</a>
+        <a href="chi-sono.html" style="display:block;color:var(--muted);font-size:.93rem">Chi sono</a>
+      </div>
+      <div>
+        <h4 style="font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.8rem">Contatti</h4>
+        <a href="prenota.html" style="display:block;color:var(--muted);margin-bottom:.4rem;font-size:.93rem">📅 Prenota una lezione</a>
+        <a href="contatti.html" style="display:block;color:var(--muted);font-size:.93rem">✉️ Contattami</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AlessandroSimone.it — Tutti i diritti riservati</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
