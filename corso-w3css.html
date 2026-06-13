@@ -64,6 +64,8 @@
     .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
     .ed-close { background: #e2e8f0; color: #334155; }
     .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
     .code-editor { flex: 1; overflow: hidden; }
     .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
@@ -1207,6 +1209,7 @@ function invia() {
     <div class="editor-top">
       <strong id="editorTitle">Provalo tu</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo chiaro/scuro">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" onclick="closeEditor()">✕ Chiudi</button>
       </div>
     </div>
@@ -1235,8 +1238,24 @@ function invia() {
 <script>
 const overlay = document.getElementById('editorOverlay');
 let cm;
+// Preferenza tema editor: 'light' (bianco) o 'dark' (scuro), salvata tra le sessioni
+let edDark = localStorage.getItem('edTheme') === 'dark';
 
 function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+
+function applyTheme(){
+  const btn = document.getElementById('edThemeBtn');
+  const iframe = document.getElementById('ed-preview');
+  if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+  if(iframe) iframe.style.background = edDark ? '#1e293b' : '#fff';
+  if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+}
+
+function toggleTheme(){
+  edDark = !edDark;
+  localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+  applyTheme();
+}
 
 function openEditor(code, mode){
   document.getElementById('editorTitle').textContent = 'Provalo tu — W3.CSS';
@@ -1246,13 +1265,14 @@ function openEditor(code, mode){
 
   if(!cm){
     cm = CodeMirror.fromTextArea(document.getElementById('codeArea'),{
-      lineNumbers: true, theme: 'default', mode: mode || 'htmlmixed',
+      lineNumbers: true, theme: edDark ? 'material-darker' : 'default', mode: mode || 'htmlmixed',
       lineWrapping: true, tabSize: 2, autofocus: true
     });
     cm.on('change', updatePreview);
   }
   cm.setValue(code);
   cm.refresh();
+  applyTheme();
   setTimeout(updatePreview, 50);
 }
 
