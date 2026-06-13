@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
@@ -65,6 +66,8 @@
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
     .ed-btn:hover { background: var(--bg-soft); }
+    .ed-theme { background: #1e293b !important; color: #fff !important; border-color: #1e293b !important; }
+    .ed-theme:hover { background: #0f172a !important; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
     .editor-panes > div { min-width: 0; }
     .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
@@ -1025,13 +1028,14 @@ plt.show()
     <div class="editor-top">
       <strong>✏️ Provalo tu — leggi e modifica il codice Python</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Note</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Note sul codice Python"></iframe>
       </div>
     </div>
@@ -1056,6 +1060,13 @@ plt.show()
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="js/main.js?v=5"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
@@ -1063,18 +1074,29 @@ plt.show()
     var cm = null;
     function ensureCM(){
       if (!cm && window.CodeMirror){
-        try { cm = CodeMirror.fromTextArea(ta,{mode:'python',lineNumbers:true,lineWrapping:false,tabSize:4,indentUnit:4,theme:'default'}); }
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'python',lineNumbers:true,lineWrapping:false,tabSize:4,indentUnit:4,theme:edDark ? 'material-darker' : 'default'}); }
         catch(e){ cm=null; }
       }
       return cm;
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      note();
+    }
+    window._edApplyTheme = applyTheme;
     function note(){
-      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
-        +'<h3 style="margin:0 0 .6rem;color:#1e293b">\uD83D\uDCCA Codice Python per la Data Science</h3>'
+      var bodyStyle = edDark
+        ? 'font-family:Inter,system-ui,sans-serif;color:#f1f5f9;background:#1e293b;padding:1.4rem;line-height:1.6'
+        : 'font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6';
+      var aColor = edDark ? '#7dd3fc' : '#2563eb';
+      preview.srcdoc='<body style="' + bodyStyle + '">'
+        +'<h3 style="margin:0 0 .6rem;color:inherit">\uD83D\uDCCA Codice Python per la Data Science</h3>'
         +'<p>Questo codice usa Pandas, NumPy e Matplotlib. Per eseguirlo davvero (con grafici e tabelle) usa un notebook:</p>'
-        +'<ul><li><a href="https://colab.research.google.com" target="_blank">Google Colab</a> \u2014 notebook Python gratis nel browser, librerie gia\u0027 pronte</li>'
-        +'<li><a href="https://www.kaggle.com/code" target="_blank">Kaggle Notebooks</a> \u2014 notebook + migliaia di dataset reali</li>'
-        +'<li><a href="https://jupyter.org/try" target="_blank">Jupyter</a> \u2014 lo standard professionale dell\u0027analisi dati</li></ul>'
+        +'<ul><li><a style="color:'+aColor+'" href="https://colab.research.google.com" target="_blank">Google Colab</a> \u2014 notebook Python gratis nel browser, librerie gia\u0027 pronte</li>'
+        +'<li><a style="color:'+aColor+'" href="https://www.kaggle.com/code" target="_blank">Kaggle Notebooks</a> \u2014 notebook + migliaia di dataset reali</li>'
+        +'<li><a style="color:'+aColor+'" href="https://jupyter.org/try" target="_blank">Jupyter</a> \u2014 lo standard professionale dell\u0027analisi dati</li></ul>'
         +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
     }
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
@@ -1086,7 +1108,7 @@ plt.show()
       var editor=ensureCM();
       if(editor){ editor.setValue(code); }
       else { ta.value=code; }
-      note();
+      applyTheme();
       setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; document.removeEventListener('touchmove', preventTouch); }
