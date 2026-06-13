@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
@@ -64,6 +65,8 @@
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: 1px solid var(--border); background: #fff; padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font-size: .82rem; font-family: var(--font); color: var(--ink); transition: var(--transition); }
     .ed-btn:hover { background: var(--bg-soft); }
+    .ed-theme { background: #1e293b !important; color: #fff !important; border-color: #1e293b !important; }
+    .ed-theme:hover { background: #0f172a !important; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
     .editor-panes > div { min-width: 0; }
     .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
@@ -3093,13 +3096,14 @@ server.listen(3000, () => {
     <div class="editor-top">
       <strong>✏️ Provalo tu — leggi e modifica il codice Node.js</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Note</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Note sul codice Node.js"></iframe>
       </div>
     </div>
@@ -3124,6 +3128,13 @@ server.listen(3000, () => {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
 <script src="js/main.js?v=5"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
@@ -3131,18 +3142,29 @@ server.listen(3000, () => {
     var cm = null;
     function ensureCM(){
       if (!cm && window.CodeMirror){
-        try { cm = CodeMirror.fromTextArea(ta,{mode:'javascript',lineNumbers:true,lineWrapping:false,tabSize:2,indentUnit:2,theme:'default'}); }
+        try { cm = CodeMirror.fromTextArea(ta,{mode:'javascript',lineNumbers:true,lineWrapping:false,tabSize:2,indentUnit:2,theme:edDark ? 'material-darker' : 'default'}); }
         catch(e){ cm=null; }
       }
       return cm;
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      note();
+    }
+    window._edApplyTheme = applyTheme;
     function note(){
-      preview.srcdoc='<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
-        +'<h3 style="margin:0 0 .6rem;color:#1e293b">\u2699\ufe0f Codice Node.js</h3>'
+      var bodyStyle = edDark
+        ? 'font-family:Inter,system-ui,sans-serif;color:#f1f5f9;background:#1e293b;padding:1.4rem;line-height:1.6'
+        : 'font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6';
+      var aColor = edDark ? '#7dd3fc' : '#2563eb';
+      preview.srcdoc='<body style="' + bodyStyle + '">'
+        +'<h3 style="margin:0 0 .6rem;color:inherit">\u2699\ufe0f Codice Node.js</h3>'
         +'<p>Node.js gira sul server, non nel browser. Per eseguire questo codice:</p>'
-        +'<ul><li>Installa Node.js da <a href="https://nodejs.org" target="_blank">nodejs.org</a> e lancia <b>node file.js</b></li>'
-        +'<li><a href="https://stackblitz.com" target="_blank">StackBlitz</a> — ambiente Node.js completo nel browser</li>'
-        +'<li><a href="https://replit.com" target="_blank">Replit</a> — esegui Node.js online senza installare nulla</li></ul>'
+        +'<ul><li>Installa Node.js da <a style="color:' + aColor + '" href="https://nodejs.org" target="_blank">nodejs.org</a> e lancia <b>node file.js</b></li>'
+        +'<li><a style="color:' + aColor + '" href="https://stackblitz.com" target="_blank">StackBlitz</a> — ambiente Node.js completo nel browser</li>'
+        +'<li><a style="color:' + aColor + '" href="https://replit.com" target="_blank">Replit</a> — esegui Node.js online senza installare nulla</li></ul>'
         +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
     }
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
@@ -3154,7 +3176,7 @@ server.listen(3000, () => {
       var editor=ensureCM();
       if(editor){ editor.setValue(code); }
       else { ta.value=code; }
-      note();
+      applyTheme();
       setTimeout(function(){ var e=ensureCM(); if(e){e.refresh();e.focus();} },20);
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow=''; document.removeEventListener('touchmove', preventTouch); }
