@@ -1181,7 +1181,8 @@ function invia() {
   <li>🆚 Confronta con <strong>Bootstrap</strong> e <strong>Tailwind</strong> per scegliere il framework giusto</li>
 </ul>
 <div class="note-box">🎓 <strong>Corso completato!</strong> Ora hai tutti gli strumenti per costruire siti web moderni e responsive con W3.CSS. Metti in pratica le competenze con i progetti degli esercizi!</div>
-<p>Continua con altri corsi sul sito: <a href="corso-css.html" style="color:var(--primary)">CSS puro</a>, <a href="corso-bootstrap.html" style="color:var(--primary)">Bootstrap</a>, o <a href="corso-javascript.html" style="color:var(--primary)">JavaScript</a> per aggiungere interattività avanzata.</p>
+<p>Continua con altri corsi sul sito:</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-css.html" class="btn btn-primary">Vai al corso CSS →</a><a href="corso-bootstrap.html" class="btn btn-primary">Vai al corso Bootstrap →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
 </article>
 
     </main>
@@ -1189,13 +1190,15 @@ function invia() {
 </section>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</p>
-    <nav class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="sitemap.xml">Sitemap</a>
-    </nav>
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
   </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
 </footer>
 
 <!-- Overlay editor -->
