@@ -308,8 +308,9 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 
 /* ---------- CTA banner ---------- */
 .cta-banner { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color:#fff; border-radius: var(--radius); padding: 3rem 2rem; text-align:center; }
-.cta-banner h2 { font-size: 1.9rem; }
-.cta-banner p { opacity:.9; margin:.6rem auto 1.6rem; max-width: 480px; }
+.cta-banner h2 { font-size: 1.9rem; color:#fff; }
+.cta-banner p { color:#fff; opacity:1; margin:.6rem auto 1.6rem; max-width: 480px; }
+.cta-banner .btn-accent { color:#fff; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: rgba(255,255,255,.65); margin-top: 0; }
