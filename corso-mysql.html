@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <link rel="stylesheet" href="css/style.css?v=6">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
@@ -67,8 +68,10 @@
     .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
     .ed-run { background: #04AA6D; color: #fff; }
     .ed-run:hover { background: #038a59; }
-    .ed-close { background: #64748b; color: #fff; }
-    .ed-close:hover { background: #475569; }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
     .editor-panes > div { min-width: 0; }
     .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
@@ -1162,13 +1165,14 @@ LIMIT    n;</code></pre>
       <strong>✏️ Provalo tu — scrivi ed esegui SQL</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Risultato</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Risultato della query SQL"></iframe>
       </div>
     </div>
@@ -1195,14 +1199,31 @@ LIMIT    n;</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
 <script src="js/main.js?v=5"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: "text/x-sql", lineNumbers: true, lineWrapping: false,
-      tabSize: 2, indentUnit: 2, theme: 'default'
+      tabSize: 2, indentUnit: 2, theme: edDark ? 'material-darker' : 'default'
     });
+
+    var lastBody = '<p style="color:#64748b">Premi ▶ Esegui (in alto) per lanciare la query sul database di esempio.</p>';
+    function render(body){ lastBody = body; preview.srcdoc = page(body); }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      preview.srcdoc = page(lastBody);
+    }
+    window._edApplyTheme = applyTheme;
 
     var SEED =
       "CREATE TABLE classi (id INTEGER PRIMARY KEY, aula TEXT, classe TEXT);" +
@@ -1218,6 +1239,15 @@ LIMIT    n;</code></pre>
     var SQL = null, sqlLoading = false;
 
     function page(body){
+      if(edDark){
+        return '<body style="margin:0;font-family:Inter,system-ui,sans-serif;font-size:.9rem;'
+          + 'line-height:1.5;color:#f1f5f9;background:#1e293b;padding:1.1rem">'
+          + '<style>table{border-collapse:collapse;margin:.4rem 0 1rem;font-size:.88rem;width:auto}'
+          + 'th,td{border:1px solid #475569;padding:.35rem .7rem;text-align:left;color:#f1f5f9}'
+          + 'th{background:#334155;font-weight:700}caption{text-align:left;color:#94a3b8;'
+          + 'font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;padding:.2rem 0;font-weight:700}</style>'
+          + body + '</body>';
+      }
       return '<body style="margin:0;font-family:Inter,system-ui,sans-serif;font-size:.9rem;'
         + 'line-height:1.5;color:#1e293b;padding:1.1rem">'
         + '<style>table{border-collapse:collapse;margin:.4rem 0 1rem;font-size:.88rem;width:auto}'
@@ -1250,7 +1280,7 @@ LIMIT    n;</code></pre>
     async function ensureSql(){
       if (SQL) return SQL;
       sqlLoading = true;
-      preview.srcdoc = page('<p style="color:#2563eb">⏳ Avvio del motore SQL in corso… (solo la prima volta)</p>');
+      render('<p style="color:#2563eb">⏳ Avvio del motore SQL in corso… (solo la prima volta)</p>');
       SQL = await initSqlJs({ locateFile: function(f){ return 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/' + f; } });
       sqlLoading = false;
       return SQL;
@@ -1264,10 +1294,10 @@ LIMIT    n;</code></pre>
         var db = new S.Database();
         db.run(SEED);
         var res = db.exec(code);
-        preview.srcdoc = page(renderResult(res));
+        render(renderResult(res));
         db.close();
       } catch (e) {
-        preview.srcdoc = page('<p style="color:#dc2626"><b>Errore SQL:</b> ' + esc(e.message || e) + '</p>');
+        render('<p style="color:#dc2626"><b>Errore SQL:</b> ' + esc(e.message || e) + '</p>');
       }
     }
 
@@ -1279,7 +1309,8 @@ LIMIT    n;</code></pre>
       document.addEventListener('touchmove', preventTouch, {passive:false});
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      preview.srcdoc = page('<p style="color:#64748b">Premi ▶ Esegui (in alto) per lanciare la query sul database di esempio.</p>');
+      render('<p style="color:#64748b">Premi ▶ Esegui (in alto) per lanciare la query sul database di esempio.</p>');
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
