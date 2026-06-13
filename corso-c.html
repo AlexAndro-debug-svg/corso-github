@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <link rel="stylesheet" href="css/style.css?v=6">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
@@ -66,8 +67,10 @@
     .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
-    .ed-close { background: #64748b; color: #fff; }
-    .ed-close:hover { background: #475569; }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
     .editor-panes > div { min-width: 0; }
     .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
@@ -1710,13 +1713,14 @@ int main() {
     <div class="editor-top">
       <strong>✏️ Provalo tu — leggi e modifica il codice C</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Note</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Note sul codice C"></iframe>
       </div>
     </div>
@@ -1741,23 +1745,42 @@ int main() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
 <script src="js/main.js?v=5"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: "text/x-csrc", lineNumbers: true, lineWrapping: false,
-      tabSize: 4, indentUnit: 4, theme: 'default'
+      tabSize: 4, indentUnit: 4, theme: edDark ? 'material-darker' : 'default'
     });
 
     function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6">'
-        + '<h3 style="margin:0 0 .6rem;color:#1e293b">🔧 Codice C</h3>'
+      var bodyStyle = edDark
+        ? 'font-family:Inter,system-ui,sans-serif;color:#f1f5f9;background:#1e293b;padding:1.4rem;line-height:1.6'
+        : 'font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6';
+      var hColor = edDark ? '#f1f5f9' : '#1e293b';
+      var codeAttr = edDark ? ' style="background:#334155;color:#f1f5f9;padding:1px 5px;border-radius:4px"' : '';
+      preview.srcdoc = '<body style="' + bodyStyle + '">'
+        + '<h3 style="margin:0 0 .6rem;color:' + hColor + '">🔧 Codice C</h3>'
         + '<p>Il C va <b>compilato</b>: non si esegue nel browser. '
         + 'Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p>'
-        + '<p>Per eseguirlo: salva il file come <code>programma.c</code>, poi nel terminale digita '
-        + '<code>gcc programma.c -o programma</code> e <code>./programma</code>.</p></body>';
+        + '<p>Per eseguirlo: salva il file come <code' + codeAttr + '>programma.c</code>, poi nel terminale digita '
+        + '<code' + codeAttr + '>gcc programma.c -o programma</code> e <code' + codeAttr + '>./programma</code>.</p></body>';
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      note();
+    }
+    window._edApplyTheme = applyTheme;
 
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
@@ -1767,7 +1790,7 @@ int main() {
       document.addEventListener('touchmove', preventTouch, {passive:false});
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
-      note();
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
