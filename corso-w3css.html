@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso W3.CSS in italiano completo e gratuito — framework CSS, layout, componenti | AlessandroSimone.it</title>
+  <meta name="description" content="Corso W3.CSS completo in italiano: framework CSS leggero, colori, containers, card, pulsanti, tabelle, navigazione, modal, accordion, animazioni, dark mode. Tutorial gratuito con esempi pratici.">
+  <meta name="keywords" content="corso w3css italiano, w3css tutorial, framework css, w3css componenti, w3css layout, w3css responsive, imparare w3css">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso W3.CSS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara W3.CSS da zero in italiano: framework CSS leggero, componenti UI, layout responsive. Gratuito con esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 998; }
+    body.editor-open { overflow: hidden; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1001; }
+    body.editor-open .course-nav { visibility: hidden; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
+    .codeview .token.builtin { color: #fb923c; }
+    .codeview .token.attr-name { color: #34d399; }
+    .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.tag { color: #f472b6; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-w3css.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-w3css.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso W3.CSS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial W3.CSS completo in italiano: framework CSS, componenti, layout responsive. Gratuito con esempi pratici.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso W3.CSS in italiano","description":"Corso W3.CSS italiano completo e gratuito: framework CSS leggero, colori, containers, card, pulsanti, tabelle, navigazione, modal, accordion, animazioni, dark mode. Con esempi pratici.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-w3css.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html" class="active">W3.CSS</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso W3.CSS in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il framework CSS più leggero al mondo: nessuna dipendenza, nessun JavaScript obbligatorio. Impara a costruire layout responsive, navigazioni, modal, accordion, animazioni e dark mode con poche classi. Con esempi pratici e interattivi.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Basi</h4>
+<a href="#intro">Introduzione</a>
+<a href="#setup">Setup e inclusione</a>
+<a href="#colori">Colori</a>
+<a href="#containers">Containers</a>
+<h4>Testo & Stile</h4>
+<a href="#testo">Testo e Font</a>
+<a href="#padding-margin">Padding e Margin</a>
+<a href="#bordi">Bordi e Arrotondamento</a>
+<h4>Componenti UI</h4>
+<a href="#card">Card e Panel</a>
+<a href="#pulsanti">Pulsanti</a>
+<a href="#badge">Badge e Tag</a>
+<a href="#alert">Alert e Note</a>
+<a href="#tabelle">Tabelle</a>
+<a href="#immagini">Immagini</a>
+<h4>Navigazione</h4>
+<a href="#navbar">Navbar</a>
+<a href="#sidebar">Sidebar</a>
+<a href="#dropdown">Dropdown</a>
+<a href="#accordion">Accordion</a>
+<a href="#tabs">Tabs</a>
+<h4>Avanzato</h4>
+<a href="#modal">Modal</a>
+<a href="#grid">Grid e Responsive</a>
+<a href="#animazioni">Animazioni</a>
+<a href="#darkmode">Dark Mode</a>
+<a href="#progress">Progress Bar</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- ═══════════════════════════════════════════ 1. INTRO ═══ -->
+<article class="lesson" id="intro">
+<h2>Introduzione a W3.CSS</h2>
+<p><strong>W3.CSS</strong> è un framework CSS creato da W3Schools che permette di costruire siti web moderni e responsive <strong>senza JavaScript</strong> e senza dipendenze esterne. Il file pesa meno di 30 KB e include centinaia di classi pronte all'uso.</p>
+<table class="ref">
+<tr><th>Caratteristica</th><th>Descrizione</th></tr>
+<tr><td><strong>Leggero</strong></td><td>~28 KB, un singolo file CSS</td></tr>
+<tr><td><strong>No dipendenze</strong></td><td>Non richiede jQuery o altri framework</td></tr>
+<tr><td><strong>Responsive</strong></td><td>Layout mobile-first integrato</td></tr>
+<tr><td><strong>Cross-browser</strong></td><td>Funziona su tutti i browser moderni</td></tr>
+<tr><td><strong>Dark mode</strong></td><td>Tema scuro incluso</td></tr>
+</table>
+<p>Rispetto a <strong>Bootstrap</strong>, W3.CSS è più snello e non richiede JavaScript per la maggior parte dei componenti. È ideale per siti statici, portfolio e landing page.</p>
+<div class="note-box">💡 <strong>Nota:</strong> W3.CSS non sostituisce la conoscenza di CSS puro — è uno strumento per velocizzare il lavoro. Imparare prima il CSS di base rimane fondamentale.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 2. SETUP ═══ -->
+<article class="lesson" id="setup">
+<h2>Setup e inclusione</h2>
+<p>Per usare W3.CSS basta includere il file CSS nel <code class="inline">&lt;head&gt;</code> della pagina. Puoi usare il CDN di W3Schools o scaricare il file.</p>
+<h3>Via CDN (consigliato)</h3>
+<div class="example">
+<div class="codehead"><span>HTML — inclusione CDN</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+  &lt;title&gt;Il mio sito con W3.CSS&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class="w3-container w3-blue"&gt;
+  &lt;h1&gt;Benvenuto in W3.CSS!&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container"&gt;
+  &lt;p&gt;Il framework CSS più leggero del mondo.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<h3>Struttura base della pagina</h3>
+<p>Tutte le classi W3.CSS iniziano con il prefisso <code class="inline">w3-</code>. La classe fondamentale è <code class="inline">w3-container</code> che aggiunge padding orizzontale.</p>
+<table class="ref">
+<tr><th>Classe</th><th>Effetto</th></tr>
+<tr><td><code class="inline">w3-container</code></td><td>Padding left/right 16px</td></tr>
+<tr><td><code class="inline">w3-content</code></td><td>Container centrato max-width 980px</td></tr>
+<tr><td><code class="inline">w3-panel</code></td><td>Padding top/bottom 0.01em e 16px</td></tr>
+<tr><td><code class="inline">w3-main</code></td><td>Margine automatico per sidebar layout</td></tr>
+</table>
+<div class="tip-box">💡 <strong>Tip:</strong> Usa sempre il tag <code class="inline">&lt;meta name="viewport"&gt;</code> per garantire il comportamento responsive su mobile.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 3. COLORI ═══ -->
+<article class="lesson" id="colori">
+<h2>Colori</h2>
+<p>W3.CSS include un sistema di colori molto ricco: ogni colore ha una classe <strong>background</strong> e una <strong>text</strong>. I nomi seguono una convenzione semplice e intuitiva.</p>
+<h3>Classi di colore background</h3>
+<div class="example">
+<div class="codehead"><span>HTML — colori di sfondo</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-container w3-blue"&gt;
+  &lt;p&gt;w3-blue — sfondo blu&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-green"&gt;
+  &lt;p&gt;w3-green — sfondo verde&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-red"&gt;
+  &lt;p&gt;w3-red — sfondo rosso&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-orange"&gt;
+  &lt;p&gt;w3-orange — sfondo arancio&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-purple"&gt;
+  &lt;p&gt;w3-purple — sfondo viola&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-grey"&gt;
+  &lt;p&gt;w3-grey — sfondo grigio&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="w3-container w3-black w3-text-white"&gt;
+  &lt;p&gt;w3-black — sfondo nero&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<h3>Varianti chiaro e scuro</h3>
+<p>Ogni colore ha varianti aggiungendo <code class="inline">-light</code> o <code class="inline">-dark</code>: <code class="inline">w3-light-blue</code>, <code class="inline">w3-dark-grey</code>, ecc.</p>
+<h3>Colori del testo</h3>
+<div class="example">
+<div class="codehead"><span>HTML — colori del testo</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;p class="w3-text-blue"&gt;Testo blu con w3-text-blue&lt;/p&gt;
+&lt;p class="w3-text-green"&gt;Testo verde con w3-text-green&lt;/p&gt;
+&lt;p class="w3-text-red"&gt;Testo rosso con w3-text-red&lt;/p&gt;
+&lt;p class="w3-text-orange"&gt;Testo arancio con w3-text-orange&lt;/p&gt;
+
+&lt;!-- Combinare sfondo e testo --&gt;
+&lt;div class="w3-container w3-yellow w3-text-black"&gt;
+  &lt;p&gt;Sfondo giallo, testo nero&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="note-box">📋 <strong>Colori disponibili:</strong> red, pink, purple, deep-purple, indigo, blue, light-blue, cyan, aqua, teal, green, light-green, lime, sand, khaki, yellow, amber, orange, deep-orange, blue-grey, brown, grey, dark-grey, black, white, e molti altri.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 4. CONTAINERS ═══ -->
+<article class="lesson" id="containers">
+<h2>Containers</h2>
+<p>I container in W3.CSS gestiscono la struttura del layout. Permettono di centrare il contenuto e controllare la larghezza massima della pagina.</p>
+<div class="example">
+<div class="codehead"><span>HTML — containers e layout base</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Header a tutta larghezza --&gt;
+&lt;div class="w3-container w3-teal w3-padding-64"&gt;
+  &lt;h1&gt;Il mio sito&lt;/h1&gt;
+  &lt;p&gt;Header a tutta larghezza&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Contenuto centrato con larghezza massima --&gt;
+&lt;div class="w3-content w3-padding" style="max-width:800px"&gt;
+  &lt;h2&gt;Titolo della sezione&lt;/h2&gt;
+  &lt;p&gt;Questo testo è centrato e limitato a 800px di larghezza.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Panel con sfondo --&gt;
+&lt;div class="w3-panel w3-light-grey"&gt;
+  &lt;p&gt;Un panel con sfondo grigio chiaro e padding verticale.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Classe padding</th><th>Descrizione</th></tr>
+<tr><td><code class="inline">w3-padding</code></td><td>Padding 8px top/bottom, 16px left/right</td></tr>
+<tr><td><code class="inline">w3-padding-small</code></td><td>Padding 4px top/bottom, 8px left/right</td></tr>
+<tr><td><code class="inline">w3-padding-large</code></td><td>Padding 12px top/bottom, 24px left/right</td></tr>
+<tr><td><code class="inline">w3-padding-16</code></td><td>Padding 16px su tutti i lati</td></tr>
+<tr><td><code class="inline">w3-padding-32</code></td><td>Padding 32px su tutti i lati</td></tr>
+<tr><td><code class="inline">w3-padding-64</code></td><td>Padding 64px su tutti i lati</td></tr>
+</table>
+</article>
+
+<!-- ═══════════════════════════════════════════ 5. TESTO ═══ -->
+<article class="lesson" id="testo">
+<h2>Testo e Font</h2>
+<p>W3.CSS include classi per controllare dimensioni, allineamento e stile del testo senza scrivere CSS personalizzato.</p>
+<div class="example">
+<div class="codehead"><span>HTML — stili testo</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Dimensioni --&gt;
+&lt;p class="w3-tiny"&gt;Testo tiny (10px)&lt;/p&gt;
+&lt;p class="w3-small"&gt;Testo small (12px)&lt;/p&gt;
+&lt;p&gt;Testo normale (15px, default)&lt;/p&gt;
+&lt;p class="w3-large"&gt;Testo large (18px)&lt;/p&gt;
+&lt;p class="w3-xlarge"&gt;Testo xlarge (24px)&lt;/p&gt;
+&lt;p class="w3-xxlarge"&gt;Testo xxlarge (36px)&lt;/p&gt;
+&lt;p class="w3-xxxlarge"&gt;Testo xxxlarge (48px)&lt;/p&gt;
+&lt;p class="w3-jumbo"&gt;Testo jumbo (64px)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;!-- Allineamento --&gt;
+&lt;p class="w3-left-align"&gt;Allineato a sinistra&lt;/p&gt;
+&lt;p class="w3-center"&gt;Centrato&lt;/p&gt;
+&lt;p class="w3-right-align"&gt;Allineato a destra&lt;/p&gt;
+
+&lt;!-- Font monospace per codice --&gt;
+&lt;p class="w3-code"&gt;Testo in stile codice monospace&lt;/p&gt;</code></pre>
+</div>
+<h3>Font di Google</h3>
+<p>W3.CSS si integra facilmente con Google Fonts includendo il link nel <code class="inline">&lt;head&gt;</code> e usando la classe <code class="inline">w3-font-*</code>.</p>
+<div class="example">
+<div class="codehead"><span>HTML — Google Font</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"&gt;
+
+&lt;style&gt;
+  body { font-family: 'Roboto', sans-serif; }
+&lt;/style&gt;
+
+&lt;div class="w3-container"&gt;
+  &lt;h2&gt;Titolo con Roboto&lt;/h2&gt;
+  &lt;p&gt;Paragrafo con il font Roboto da Google Fonts.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 6. PADDING-MARGIN ═══ -->
+<article class="lesson" id="padding-margin">
+<h2>Padding e Margin</h2>
+<p>W3.CSS offre classi pronte per gestire spacing senza scrivere CSS. Le classi seguono uno schema numerico da 0 a 64.</p>
+<table class="ref">
+<tr><th>Classe margin</th><th>Valore</th></tr>
+<tr><td><code class="inline">w3-margin</code></td><td>16px tutti i lati</td></tr>
+<tr><td><code class="inline">w3-margin-top</code></td><td>16px solo sopra</td></tr>
+<tr><td><code class="inline">w3-margin-bottom</code></td><td>16px solo sotto</td></tr>
+<tr><td><code class="inline">w3-margin-left</code></td><td>16px solo sinistra</td></tr>
+<tr><td><code class="inline">w3-margin-right</code></td><td>16px solo destra</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>HTML — spacing con classi W3.CSS</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-container w3-blue w3-margin w3-padding-32"&gt;
+  &lt;p&gt;Questo div ha margin 16px e padding 32px&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container w3-green w3-margin-top w3-padding-16"&gt;
+  &lt;p&gt;Questo div ha margin solo in alto e padding 16px&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Centrare un elemento --&gt;
+&lt;div class="w3-container w3-orange w3-padding" style="width:50%; margin:auto"&gt;
+  &lt;p class="w3-center"&gt;Elemento centrato al 50%&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 7. BORDI ═══ -->
+<article class="lesson" id="bordi">
+<h2>Bordi e Arrotondamento</h2>
+<p>W3.CSS semplifica l'aggiunta di bordi e angoli arrotondati con classi dedicate.</p>
+<div class="example">
+<div class="codehead"><span>HTML — bordi e round</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-container w3-border w3-padding-16 w3-margin"&gt;
+  &lt;p&gt;w3-border — bordo grigio standard&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container w3-border w3-border-blue w3-padding-16 w3-margin"&gt;
+  &lt;p&gt;w3-border-blue — bordo colorato&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container w3-border w3-round-large w3-light-blue w3-padding-16 w3-margin"&gt;
+  &lt;p&gt;w3-round-large — angoli molto arrotondati&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container w3-border w3-round-xxlarge w3-teal w3-text-white w3-padding-16 w3-margin"&gt;
+  &lt;p&gt;w3-round-xxlarge — quasi circolare&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Ombra --&gt;
+&lt;div class="w3-container w3-card w3-padding-16 w3-margin"&gt;
+  &lt;p&gt;w3-card — aggiunge ombra box-shadow&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Classe</th><th>border-radius</th></tr>
+<tr><td><code class="inline">w3-round</code></td><td>4px</td></tr>
+<tr><td><code class="inline">w3-round-large</code></td><td>8px</td></tr>
+<tr><td><code class="inline">w3-round-xlarge</code></td><td>16px</td></tr>
+<tr><td><code class="inline">w3-round-xxlarge</code></td><td>32px</td></tr>
+<tr><td><code class="inline">w3-circle</code></td><td>50% (cerchio)</td></tr>
+</table>
+</article>
+
+<!-- ═══════════════════════════════════════════ 8. CARD ═══ -->
+<article class="lesson" id="card">
+<h2>Card e Panel</h2>
+<p>Le card sono uno dei componenti più usati nel web design moderno. W3.CSS le gestisce con pochissime classi.</p>
+<div class="example">
+<div class="codehead"><span>HTML — card base</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-card-4 w3-margin" style="width:300px"&gt;
+  &lt;img src="https://picsum.photos/300/200" alt="immagine" style="width:100%"&gt;
+  &lt;div class="w3-container w3-padding-16"&gt;
+    &lt;h3&gt;Titolo Card&lt;/h3&gt;
+    &lt;p&gt;Descrizione della card con w3-card-4 che aggiunge ombra più marcata.&lt;/p&gt;
+    &lt;button class="w3-button w3-blue w3-margin-top"&gt;Leggi di più&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<h3>Grid di card</h3>
+<div class="example">
+<div class="codehead"><span>HTML — tre card affiancate</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-row-padding w3-margin-top"&gt;
+
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-card w3-padding-16"&gt;
+      &lt;h4&gt;🎨 Design&lt;/h4&gt;
+      &lt;p&gt;Crea interfacce moderne con W3.CSS.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-card w3-padding-16"&gt;
+      &lt;h4&gt;⚡ Veloce&lt;/h4&gt;
+      &lt;p&gt;Nessuna dipendenza, carica istantaneamente.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-card w3-padding-16"&gt;
+      &lt;h4&gt;📱 Responsive&lt;/h4&gt;
+      &lt;p&gt;Ottimizzato per mobile già di default.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+</div>
+<div class="tip-box">💡 <strong>Tip:</strong> <code class="inline">w3-card</code> aggiunge box-shadow leggera, <code class="inline">w3-card-4</code> aggiunge ombra più marcata su 4 lati. Usa <code class="inline">w3-hover-shadow</code> per l'effetto on hover.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 9. PULSANTI ═══ -->
+<article class="lesson" id="pulsanti">
+<h2>Pulsanti</h2>
+<p>W3.CSS include stili completi per pulsanti: colori, dimensioni, effetti hover e varianti outline.</p>
+<div class="example">
+<div class="codehead"><span>HTML — pulsanti</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Pulsanti colorati --&gt;
+&lt;button class="w3-button w3-blue"&gt;Blu&lt;/button&gt;
+&lt;button class="w3-button w3-green"&gt;Verde&lt;/button&gt;
+&lt;button class="w3-button w3-red"&gt;Rosso&lt;/button&gt;
+&lt;button class="w3-button w3-orange"&gt;Arancio&lt;/button&gt;
+&lt;button class="w3-button w3-purple"&gt;Viola&lt;/button&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Dimensioni --&gt;
+&lt;button class="w3-button w3-teal w3-tiny"&gt;Tiny&lt;/button&gt;
+&lt;button class="w3-button w3-teal w3-small"&gt;Small&lt;/button&gt;
+&lt;button class="w3-button w3-teal"&gt;Normale&lt;/button&gt;
+&lt;button class="w3-button w3-teal w3-large"&gt;Large&lt;/button&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Bordo (outline) --&gt;
+&lt;button class="w3-button w3-border w3-border-blue w3-text-blue"&gt;Outline Blu&lt;/button&gt;
+&lt;button class="w3-button w3-border w3-border-red w3-text-red"&gt;Outline Rosso&lt;/button&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Disabilitato --&gt;
+&lt;button class="w3-button w3-grey" disabled&gt;Disabilitato&lt;/button&gt;
+
+&lt;!-- Larghezza piena --&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;button class="w3-button w3-block w3-green w3-margin-top"&gt;Pulsante a piena larghezza&lt;/button&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 10. BADGE ═══ -->
+<article class="lesson" id="badge">
+<h2>Badge e Tag</h2>
+<p>Badge e tag sono elementi inline utili per etichette, contatori di notifiche e categorie.</p>
+<div class="example">
+<div class="codehead"><span>HTML — badge e tag</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Badge (cerchio con numero) --&gt;
+&lt;h4&gt;
+  Messaggi
+  &lt;span class="w3-badge w3-red"&gt;5&lt;/span&gt;
+&lt;/h4&gt;
+
+&lt;button class="w3-button w3-blue"&gt;
+  Notifiche &lt;span class="w3-badge w3-red w3-right"&gt;3&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Tag (etichette rettangolari) --&gt;
+&lt;span class="w3-tag w3-blue"&gt;W3.CSS&lt;/span&gt;
+&lt;span class="w3-tag w3-green"&gt;Framework&lt;/span&gt;
+&lt;span class="w3-tag w3-red"&gt;Responsive&lt;/span&gt;
+&lt;span class="w3-tag w3-orange"&gt;CSS&lt;/span&gt;
+&lt;span class="w3-tag w3-purple w3-round-large"&gt;Tag arrotondato&lt;/span&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Tag come prezzo --&gt;
+&lt;span class="w3-tag w3-teal w3-xxlarge"&gt;€29&lt;/span&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 11. ALERT ═══ -->
+<article class="lesson" id="alert">
+<h2>Alert e Note</h2>
+<p>W3.CSS non ha una classe <code class="inline">w3-alert</code> dedicata, ma è facilissimo creare alert colorati combinando le classi di base. I panel con bordi laterali funzionano come note contestuali.</p>
+<div class="example">
+<div class="codehead"><span>HTML — alert e messaggi</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Alert successo --&gt;
+&lt;div class="w3-panel w3-green w3-display-container"&gt;
+  &lt;span onclick="this.parentElement.style.display='none'"
+        class="w3-button w3-large w3-display-topright"&gt;&amp;times;&lt;/span&gt;
+  &lt;h3&gt;✅ Successo!&lt;/h3&gt;
+  &lt;p&gt;L'operazione è stata completata con successo.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Alert errore --&gt;
+&lt;div class="w3-panel w3-red"&gt;
+  &lt;h3&gt;❌ Errore&lt;/h3&gt;
+  &lt;p&gt;Si è verificato un errore. Riprova più tardi.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Alert attenzione --&gt;
+&lt;div class="w3-panel w3-yellow"&gt;
+  &lt;h3&gt;⚠️ Attenzione&lt;/h3&gt;
+  &lt;p&gt;Controlla i dati inseriti prima di continuare.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Nota informativa --&gt;
+&lt;div class="w3-panel w3-blue"&gt;
+  &lt;h3&gt;ℹ️ Info&lt;/h3&gt;
+  &lt;p&gt;Puoi personalizzare questo componente con qualsiasi colore W3.CSS.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 12. TABELLE ═══ -->
+<article class="lesson" id="tabelle">
+<h2>Tabelle</h2>
+<p>Le tabelle W3.CSS sono già stilizzate con la classe <code class="inline">w3-table</code>. Classi aggiuntive gestiscono striping, hover e bordi.</p>
+<div class="example">
+<div class="codehead"><span>HTML — tabella completa</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;table class="w3-table-all w3-hoverable"&gt;
+  &lt;thead&gt;
+    &lt;tr class="w3-blue"&gt;
+      &lt;th&gt;Nome&lt;/th&gt;
+      &lt;th&gt;Cognome&lt;/th&gt;
+      &lt;th&gt;Ruolo&lt;/th&gt;
+      &lt;th&gt;Stipendio&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Marco&lt;/td&gt;&lt;td&gt;Rossi&lt;/td&gt;&lt;td&gt;Developer&lt;/td&gt;&lt;td&gt;€3.200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="w3-light-grey"&gt;
+      &lt;td&gt;Laura&lt;/td&gt;&lt;td&gt;Bianchi&lt;/td&gt;&lt;td&gt;Designer&lt;/td&gt;&lt;td&gt;€2.900&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Antonio&lt;/td&gt;&lt;td&gt;Verdi&lt;/td&gt;&lt;td&gt;Manager&lt;/td&gt;&lt;td&gt;€4.500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="w3-light-grey"&gt;
+      &lt;td&gt;Sofia&lt;/td&gt;&lt;td&gt;Ferrari&lt;/td&gt;&lt;td&gt;Tester&lt;/td&gt;&lt;td&gt;€2.600&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Classe</th><th>Effetto</th></tr>
+<tr><td><code class="inline">w3-table</code></td><td>Tabella base senza bordi</td></tr>
+<tr><td><code class="inline">w3-table-all</code></td><td>Tabella con tutti i bordi</td></tr>
+<tr><td><code class="inline">w3-striped</code></td><td>Righe alternate chiaro/scuro automatico</td></tr>
+<tr><td><code class="inline">w3-hoverable</code></td><td>Riga evidenziata su hover</td></tr>
+<tr><td><code class="inline">w3-bordered</code></td><td>Solo bordi orizzontali</td></tr>
+<tr><td><code class="inline">w3-centered</code></td><td>Testo centrato nelle celle</td></tr>
+</table>
+</article>
+
+<!-- ═══════════════════════════════════════════ 13. IMMAGINI ═══ -->
+<article class="lesson" id="immagini">
+<h2>Immagini</h2>
+<p>W3.CSS fornisce classi per rendere le immagini responsive, circolari e con effetti hover.</p>
+<div class="example">
+<div class="codehead"><span>HTML — immagini e effetti</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Immagine responsive (larghezza 100%) --&gt;
+&lt;img src="https://picsum.photos/400/200" class="w3-image" alt="responsive"&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Immagine circolare (avatar) --&gt;
+&lt;img src="https://picsum.photos/150/150" class="w3-circle" alt="avatar" style="width:150px"&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Immagine con bordo --&gt;
+&lt;img src="https://picsum.photos/200/150" class="w3-border w3-border-blue w3-padding" alt="bordo"&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- Immagine con caption --&gt;
+&lt;figure class="w3-card"&gt;
+  &lt;img src="https://picsum.photos/300/180" class="w3-image" alt="foto"&gt;
+  &lt;figcaption class="w3-container w3-padding-8 w3-center w3-grey"&gt;
+    Didascalia dell'immagine
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 14. NAVBAR ═══ -->
+<article class="lesson" id="navbar">
+<h2>Navbar</h2>
+<p>W3.CSS rende semplicissimo costruire una barra di navigazione orizzontale responsive con la classe <code class="inline">w3-bar</code>.</p>
+<div class="example">
+<div class="codehead"><span>HTML — navbar orizzontale</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-bar w3-black"&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-mobile"&gt;🏠 Home&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-mobile"&gt;Chi sono&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-mobile"&gt;Portfolio&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-mobile"&gt;Blog&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-right w3-mobile w3-blue"&gt;Contatti&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- Navbar con voce attiva --&gt;
+&lt;div class="w3-bar w3-teal w3-margin-top"&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-white w3-text-teal"&gt;Attivo&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;Pagina 2&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;Pagina 3&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button w3-hide-small"&gt;Solo Desktop&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="note-box">📋 <strong>w3-mobile:</strong> aggiunta a ogni <code class="inline">w3-bar-item</code>, fa sì che su mobile i link vadano a capo diventando verticali automaticamente.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 15. SIDEBAR ═══ -->
+<article class="lesson" id="sidebar">
+<h2>Sidebar</h2>
+<p>Una sidebar laterale è un pattern comune nei dashboard e nei siti di documentazione. Con W3.CSS si costruisce con <code class="inline">w3-sidebar</code> e JavaScript minimale.</p>
+<div class="example">
+<div class="codehead"><span>HTML — sidebar con toggle</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Sidebar --&gt;
+&lt;div id="mySidebar" class="w3-sidebar w3-bar-block w3-blue w3-card"
+     style="width:200px; display:none"&gt;
+  &lt;button onclick="chiudiSidebar()"
+          class="w3-bar-item w3-button w3-large"&gt;&amp;times; Chiudi&lt;/button&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;🏠 Home&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;📂 Progetti&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;📝 Blog&lt;/a&gt;
+  &lt;a href="#" class="w3-bar-item w3-button"&gt;✉️ Contatti&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- Contenuto principale --&gt;
+&lt;div id="main"&gt;
+  &lt;div class="w3-container"&gt;
+    &lt;button class="w3-button w3-blue w3-margin" onclick="apriSidebar()"&gt;
+      ☰ Menu
+    &lt;/button&gt;
+    &lt;h2&gt;Contenuto principale&lt;/h2&gt;
+    &lt;p&gt;Clicca il pulsante Menu per aprire la sidebar.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function apriSidebar() {
+  document.getElementById('mySidebar').style.display = 'block';
+  document.getElementById('main').style.marginLeft = '200px';
+}
+function chiudiSidebar() {
+  document.getElementById('mySidebar').style.display = 'none';
+  document.getElementById('main').style.marginLeft = '0';
+}
+&lt;/script&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 16. DROPDOWN ═══ -->
+<article class="lesson" id="dropdown">
+<h2>Dropdown</h2>
+<p>I dropdown in W3.CSS si realizzano con la classe <code class="inline">w3-dropdown-hover</code> o <code class="inline">w3-dropdown-click</code>.</p>
+<div class="example">
+<div class="codehead"><span>HTML — dropdown hover e click</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Dropdown on hover --&gt;
+&lt;div class="w3-dropdown-hover"&gt;
+  &lt;button class="w3-button w3-blue"&gt;Hover ▾&lt;/button&gt;
+  &lt;div class="w3-dropdown-content w3-bar-block w3-card"&gt;
+    &lt;a href="#" class="w3-bar-item w3-button"&gt;Opzione 1&lt;/a&gt;
+    &lt;a href="#" class="w3-bar-item w3-button"&gt;Opzione 2&lt;/a&gt;
+    &lt;a href="#" class="w3-bar-item w3-button"&gt;Opzione 3&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&nbsp;
+
+&lt;!-- Dropdown on click --&gt;
+&lt;div class="w3-dropdown-click"&gt;
+  &lt;button onclick="apriMenu(this)" class="w3-button w3-teal"&gt;Click ▾&lt;/button&gt;
+  &lt;div class="w3-dropdown-content w3-bar-block w3-card"&gt;
+    &lt;a href="#" class="w3-bar-item w3-button"&gt;🏠 Home&lt;/a&gt;
+    &lt;a href="#" class="w3-bar-item w3-button"&gt;📂 Progetti&lt;/a&gt;
+    &lt;a href="#" class="w3-bar-item w3-button w3-text-red"&gt;🚪 Esci&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function apriMenu(el) {
+  el.nextElementSibling.classList.toggle('w3-show');
+}
+&lt;/script&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 17. ACCORDION ═══ -->
+<article class="lesson" id="accordion">
+<h2>Accordion</h2>
+<p>Un accordion mostra e nasconde sezioni di contenuto. Con W3.CSS si realizza con pochissimo JavaScript.</p>
+<div class="example">
+<div class="codehead"><span>HTML — accordion</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;button onclick="toggle('sezione1')" class="w3-button w3-block w3-teal w3-left-align"&gt;
+  ▶ Cos'è W3.CSS?
+&lt;/button&gt;
+&lt;div id="sezione1" class="w3-hide w3-container w3-border"&gt;
+  &lt;p&gt;W3.CSS è un framework CSS moderno e gratuito sviluppato da W3Schools.
+  È leggero, responsive e non richiede dipendenze esterne.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;button onclick="toggle('sezione2')" class="w3-button w3-block w3-teal w3-left-align"&gt;
+  ▶ Come si installa?
+&lt;/button&gt;
+&lt;div id="sezione2" class="w3-hide w3-container w3-border"&gt;
+  &lt;p&gt;Basta aggiungere questa riga nel &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;:&lt;br&gt;
+  &lt;code&gt;&amp;lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;button onclick="toggle('sezione3')" class="w3-button w3-block w3-teal w3-left-align"&gt;
+  ▶ È gratuito?
+&lt;/button&gt;
+&lt;div id="sezione3" class="w3-hide w3-container w3-border"&gt;
+  &lt;p&gt;Sì, W3.CSS è completamente gratuito e open source, senza licenze commerciali.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggle(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('w3-hide');
+  el.classList.toggle('w3-show');
+}
+&lt;/script&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 18. TABS ═══ -->
+<article class="lesson" id="tabs">
+<h2>Tabs</h2>
+<p>Le tab permettono di organizzare contenuti in pannelli selezionabili. W3.CSS le gestisce con <code class="inline">w3-bar</code> e JavaScript leggero.</p>
+<div class="example">
+<div class="codehead"><span>HTML — tabs</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Barra tab --&gt;
+&lt;div class="w3-bar w3-teal"&gt;
+  &lt;button class="w3-bar-item w3-button tablink w3-dark-grey" onclick="apriTab('HTML')"&gt;HTML&lt;/button&gt;
+  &lt;button class="w3-bar-item w3-button tablink" onclick="apriTab('CSS')"&gt;CSS&lt;/button&gt;
+  &lt;button class="w3-bar-item w3-button tablink" onclick="apriTab('JS')"&gt;JavaScript&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Pannelli --&gt;
+&lt;div id="HTML" class="w3-container w3-border w3-padding"&gt;
+  &lt;h2&gt;HTML&lt;/h2&gt;
+  &lt;p&gt;HTML è il linguaggio di marcatura per le pagine web.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="CSS" class="w3-container w3-border w3-padding" style="display:none"&gt;
+  &lt;h2&gt;CSS&lt;/h2&gt;
+  &lt;p&gt;CSS gestisce lo stile e il layout delle pagine HTML.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="JS" class="w3-container w3-border w3-padding" style="display:none"&gt;
+  &lt;h2&gt;JavaScript&lt;/h2&gt;
+  &lt;p&gt;JavaScript rende le pagine web dinamiche e interattive.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function apriTab(nome) {
+  document.querySelectorAll('.w3-container').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.tablink').forEach(b => b.classList.remove('w3-dark-grey'));
+  document.getElementById(nome).style.display = 'block';
+  event.currentTarget.classList.add('w3-dark-grey');
+}
+&lt;/script&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 19. MODAL ═══ -->
+<article class="lesson" id="modal">
+<h2>Modal</h2>
+<p>Un modal è una finestra in sovrapposizione. W3.CSS fornisce la classe <code class="inline">w3-modal</code> con un overlay scuro e la classe <code class="inline">w3-modal-content</code> per il contenuto.</p>
+<div class="example">
+<div class="codehead"><span>HTML — modal completo</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Pulsante di apertura --&gt;
+&lt;button onclick="document.getElementById('mioModal').style.display='block'"
+        class="w3-button w3-blue w3-large"&gt;
+  Apri Modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div id="mioModal" class="w3-modal" onclick="this.style.display='none'"&gt;
+  &lt;div class="w3-modal-content w3-card w3-animate-top" onclick="event.stopPropagation()"&gt;
+    &lt;header class="w3-container w3-teal"&gt;
+      &lt;span onclick="document.getElementById('mioModal').style.display='none'"
+            class="w3-button w3-display-topright"&gt;&amp;times;&lt;/span&gt;
+      &lt;h2&gt;Titolo Modal&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;div class="w3-container w3-padding-32"&gt;
+      &lt;p&gt;Questo è il contenuto del modal. Puoi inserire testo, form, immagini, ecc.&lt;/p&gt;
+      &lt;button onclick="document.getElementById('mioModal').style.display='none'"
+              class="w3-button w3-red"&gt;Chiudi&lt;/button&gt;
+      &lt;button class="w3-button w3-green"&gt;Conferma&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="tip-box">💡 <strong>Tip:</strong> <code class="inline">w3-animate-top</code> fa entrare il modal dall'alto con un'animazione fluida. Prova anche <code class="inline">w3-animate-zoom</code> per un effetto zoom-in.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 20. GRID ═══ -->
+<article class="lesson" id="grid">
+<h2>Grid e Responsive</h2>
+<p>W3.CSS ha un sistema di griglia basato su frazioni: <code class="inline">w3-half</code>, <code class="inline">w3-third</code>, <code class="inline">w3-quarter</code>, ecc. Su mobile le colonne si impilano automaticamente.</p>
+<div class="example">
+<div class="codehead"><span>HTML — layout a colonne responsive</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- 2 colonne --&gt;
+&lt;div class="w3-row-padding"&gt;
+  &lt;div class="w3-half"&gt;
+    &lt;div class="w3-container w3-blue w3-padding"&gt;&lt;p&gt;Colonna 1/2&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-half"&gt;
+    &lt;div class="w3-container w3-teal w3-padding"&gt;&lt;p&gt;Colonna 2/2&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 3 colonne --&gt;
+&lt;div class="w3-row-padding w3-margin-top"&gt;
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-container w3-red w3-padding"&gt;&lt;p&gt;1/3&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-container w3-orange w3-padding"&gt;&lt;p&gt;2/3&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-third"&gt;
+    &lt;div class="w3-container w3-purple w3-padding"&gt;&lt;p&gt;3/3&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 4 colonne --&gt;
+&lt;div class="w3-row-padding w3-margin-top"&gt;
+  &lt;div class="w3-quarter"&gt;
+    &lt;div class="w3-container w3-green w3-padding"&gt;&lt;p&gt;1/4&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-quarter"&gt;
+    &lt;div class="w3-container w3-blue w3-padding"&gt;&lt;p&gt;2/4&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-quarter"&gt;
+    &lt;div class="w3-container w3-teal w3-padding"&gt;&lt;p&gt;3/4&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="w3-quarter"&gt;
+    &lt;div class="w3-container w3-pink w3-padding"&gt;&lt;p&gt;4/4&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Classe</th><th>Larghezza</th></tr>
+<tr><td><code class="inline">w3-half</code></td><td>50%</td></tr>
+<tr><td><code class="inline">w3-third</code></td><td>33.33%</td></tr>
+<tr><td><code class="inline">w3-twothird</code></td><td>66.66%</td></tr>
+<tr><td><code class="inline">w3-quarter</code></td><td>25%</td></tr>
+<tr><td><code class="inline">w3-threequarter</code></td><td>75%</td></tr>
+<tr><td><code class="inline">w3-col s1..s12</code></td><td>Griglia a 12 colonne (stile Bootstrap)</td></tr>
+</table>
+<h3>Classi responsive di visibilità</h3>
+<table class="ref">
+<tr><th>Classe</th><th>Comportamento</th></tr>
+<tr><td><code class="inline">w3-hide-small</code></td><td>Nasconde su schermi &lt;601px</td></tr>
+<tr><td><code class="inline">w3-hide-medium</code></td><td>Nasconde su schermi 601–992px</td></tr>
+<tr><td><code class="inline">w3-hide-large</code></td><td>Nasconde su schermi &gt;992px</td></tr>
+</table>
+</article>
+
+<!-- ═══════════════════════════════════════════ 21. ANIMAZIONI ═══ -->
+<article class="lesson" id="animazioni">
+<h2>Animazioni</h2>
+<p>W3.CSS include animazioni CSS predefinite che puoi applicare con una sola classe. Non serve scrivere <code class="inline">@keyframes</code>.</p>
+<div class="example">
+<div class="codehead"><span>HTML — animazioni W3.CSS</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Animazione all'apertura della pagina --&gt;
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-left"&gt;
+  &lt;p&gt;w3-animate-left — entra da sinistra&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-right"&gt;
+  &lt;p&gt;w3-animate-right — entra da destra&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-top"&gt;
+  &lt;p&gt;w3-animate-top — entra dall'alto&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-bottom"&gt;
+  &lt;p&gt;w3-animate-bottom — entra dal basso&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-zoom"&gt;
+  &lt;p&gt;w3-animate-zoom — effetto zoom-in&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-animate-fading"&gt;
+  &lt;p&gt;w3-animate-fading — dissolvenza continua&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<h3>Hover con transizioni</h3>
+<div class="example">
+<div class="codehead"><span>HTML — effetti hover</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-hover-shadow"&gt;
+  &lt;p&gt;w3-hover-shadow — ombra su hover&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-blue w3-padding-16 w3-margin w3-hover-green"&gt;
+  &lt;p&gt;w3-hover-green — cambia colore su hover&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-card w3-padding-16 w3-margin w3-hover-opacity"&gt;
+  &lt;p&gt;w3-hover-opacity — opacità ridotta su hover&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 22. DARK MODE ═══ -->
+<article class="lesson" id="darkmode">
+<h2>Dark Mode</h2>
+<p>W3.CSS supporta il tema scuro includendo il file <code class="inline">w3-theme-black.css</code> oppure usando le classi di colore scuro già incluse.</p>
+<div class="example">
+<div class="codehead"><span>HTML — dark mode con toggle</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;style&gt;
+  body { background: #fff; color: #333; transition: background 0.3s, color 0.3s; }
+  body.dark { background: #1a1a1a; color: #e0e0e0; }
+  body.dark .w3-card { background: #2d2d2d; color: #e0e0e0; }
+&lt;/style&gt;
+
+&lt;div class="w3-bar w3-black"&gt;
+  &lt;span class="w3-bar-item w3-large"&gt;🌙 Dark Mode Demo&lt;/span&gt;
+  &lt;button onclick="toggleDark()" class="w3-button w3-right w3-yellow"&gt;
+    ☀️/🌙 Toggle
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="w3-container w3-padding-32"&gt;
+  &lt;div class="w3-card w3-padding-16 w3-margin"&gt;
+    &lt;h2&gt;Titolo&lt;/h2&gt;
+    &lt;p&gt;Questo contenuto cambia aspetto con la dark mode.&lt;/p&gt;
+    &lt;button class="w3-button w3-blue"&gt;Pulsante&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleDark() {
+  document.body.classList.toggle('dark');
+}
+&lt;/script&gt;</code></pre>
+</div>
+<div class="note-box">💡 W3Schools offre anche temi precostruiti come <code class="inline">w3-theme-dark</code> scaricabili dal sito ufficiale, che cambiano automaticamente tutti i colori del tema.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 23. PROGRESS ═══ -->
+<article class="lesson" id="progress">
+<h2>Progress Bar</h2>
+<p>W3.CSS include classi per creare progress bar e loading bar eleganti senza JavaScript (solo CSS).</p>
+<div class="example">
+<div class="codehead"><span>HTML — progress bar</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;!-- Progress bar semplici --&gt;
+&lt;div class="w3-light-grey w3-round-xlarge"&gt;
+  &lt;div class="w3-container w3-blue w3-round-xlarge" style="width:75%"&gt;
+    &lt;p&gt;HTML — 75%&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+
+&lt;div class="w3-light-grey w3-round-xlarge"&gt;
+  &lt;div class="w3-container w3-green w3-round-xlarge" style="width:60%"&gt;
+    &lt;p&gt;CSS — 60%&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+
+&lt;div class="w3-light-grey w3-round-xlarge"&gt;
+  &lt;div class="w3-container w3-orange w3-round-xlarge" style="width:40%"&gt;
+    &lt;p&gt;JavaScript — 40%&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+
+&lt;!-- Loading bar animata --&gt;
+&lt;div class="w3-light-grey"&gt;
+  &lt;div class="w3-container w3-teal w3-center" style="width:100%;animation:w3-animate-fading 1s infinite"&gt;
+    &lt;p&gt;Caricamento...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Challenge</span>
+<p>Crea una pagina profilo con: progress bar per le competenze (HTML 90%, CSS 80%, JS 70%), una card con avatar circolare, e un pulsante che apre un modal con i dettagli di contatto. Usa solo W3.CSS!</p>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ ESERCIZI ═══ -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — Pagina portfolio</span>
+<p>Crea una landing page con: navbar nera con 4 voci + pulsante "Contatti" a destra, sezione hero con sfondo teal e testo centrato, 3 card affiancate con icona, titolo e descrizione, footer scuro. Usa solo classi W3.CSS.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — Dashboard</span>
+<p>Costruisci una dashboard con: sidebar blu laterale con menu a 5 voci, area main con 4 card statistiche affiancate (2+2), tabella con dati fittizi e hover, progress bar per 3 metriche. Aggiungi un toggle per aprire/chiudere la sidebar.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Form di contatto</span>
+<p>Crea un form di contatto con: input nome, email, messaggio con stile W3.CSS (<code class="inline">w3-input</code>, <code class="inline">w3-select</code>), validazione visiva con bordi rossi/verdi, alert di conferma che appare dopo l'invio, e un modal di ringraziamento.</p>
+</div>
+<div class="example">
+<div class="codehead"><span>HTML — form con W3.CSS</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+
+&lt;div class="w3-container w3-padding-32" style="max-width:500px; margin:auto"&gt;
+  &lt;h2&gt;Contattami&lt;/h2&gt;
+
+  &lt;label&gt;Nome&lt;/label&gt;
+  &lt;input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Il tuo nome"&gt;
+
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="email@esempio.it"&gt;
+
+  &lt;label&gt;Argomento&lt;/label&gt;
+  &lt;select class="w3-select w3-border w3-margin-bottom"&gt;
+    &lt;option value="" disabled selected&gt;Seleziona...&lt;/option&gt;
+    &lt;option&gt;Informazioni generali&lt;/option&gt;
+    &lt;option&gt;Supporto tecnico&lt;/option&gt;
+    &lt;option&gt;Collaborazione&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label&gt;Messaggio&lt;/label&gt;
+  &lt;textarea class="w3-input w3-border w3-margin-bottom" rows="4"
+    placeholder="Scrivi il tuo messaggio..."&gt;&lt;/textarea&gt;
+
+  &lt;button onclick="invia()" class="w3-button w3-block w3-blue w3-large"&gt;Invia ✉️&lt;/button&gt;
+
+  &lt;div id="conferma" class="w3-panel w3-green w3-margin-top" style="display:none"&gt;
+    &lt;h3&gt;✅ Messaggio inviato!&lt;/h3&gt;
+    &lt;p&gt;Ti risponderemo entro 24 ore.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function invia() {
+  document.getElementById('conferma').style.display = 'block';
+}
+&lt;/script&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ FINE ═══ -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Hai imparato le basi e i componenti principali di W3.CSS. Ecco i prossimi passi consigliati:</p>
+<ul>
+  <li>🔗 Documentazione ufficiale: <strong>w3schools.com/w3css</strong></li>
+  <li>🎨 Prova i <strong>temi colore</strong> (w3-theme-*) per personalizzare l'aspetto globale</li>
+  <li>📱 Studia le classi di <strong>visibilità responsive</strong> per ottimizzare il mobile</li>
+  <li>⚡ Combina W3.CSS con <strong>JavaScript vanilla</strong> per componenti avanzati</li>
+  <li>🆚 Confronta con <strong>Bootstrap</strong> e <strong>Tailwind</strong> per scegliere il framework giusto</li>
+</ul>
+<div class="note-box">🎓 <strong>Corso completato!</strong> Ora hai tutti gli strumenti per costruire siti web moderni e responsive con W3.CSS. Metti in pratica le competenze con i progetti degli esercizi!</div>
+<p>Continua con altri corsi sul sito: <a href="corso-css.html" style="color:var(--primary)">CSS puro</a>, <a href="corso-bootstrap.html" style="color:var(--primary)">Bootstrap</a>, o <a href="corso-javascript.html" style="color:var(--primary)">JavaScript</a> per aggiungere interattività avanzata.</p>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</p>
+    <nav class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Overlay editor -->
+<div class="editor-overlay" id="editorOverlay">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong id="editorTitle">Provalo tu</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-close" onclick="closeEditor()">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor">
+        <textarea id="codeArea"></textarea>
+      </div>
+      <div class="preview-wrap">
+        <div class="preview-label">Anteprima</div>
+        <iframe id="ed-preview" title="Anteprima"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="js/main.js?v=5"></script>
+<script>
+const overlay = document.getElementById('editorOverlay');
+let cm;
+
+function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+
+function openEditor(code, mode){
+  document.getElementById('editorTitle').textContent = 'Provalo tu — W3.CSS';
+  overlay.classList.add('open');
+  document.body.classList.add('editor-open');
+  document.addEventListener('touchmove', preventTouch, {passive:false});
+
+  if(!cm){
+    cm = CodeMirror.fromTextArea(document.getElementById('codeArea'),{
+      lineNumbers: true, theme: 'material-darker', mode: mode || 'htmlmixed',
+      lineWrapping: true, tabSize: 2, autofocus: true
+    });
+    cm.on('change', updatePreview);
+  }
+  cm.setValue(code);
+  cm.refresh();
+  setTimeout(updatePreview, 50);
+}
+
+function updatePreview(){
+  const iframe = document.getElementById('ed-preview');
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open(); doc.write(cm.getValue()); doc.close();
+}
+
+function closeEditor(){
+  overlay.classList.remove('open');
+  document.body.classList.remove('editor-open');
+  document.removeEventListener('touchmove', preventTouch);
+}
+
+document.querySelectorAll('.btn-try').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pre = btn.closest('.codehead').nextElementSibling;
+    const raw = pre ? pre.querySelector('code') : null;
+    if(!raw) return;
+    let code = raw.innerText || raw.textContent;
+    openEditor(code, 'htmlmixed');
+  });
+});
+</script>
+</body>
+</html>
