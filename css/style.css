@@ -101,11 +101,15 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .nav-menu a.active:not(.btn) { color: var(--primary); }
 
 /* ---------- Barra dei corsi (solo pagina corsi.html) ---------- */
-.course-nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 999; }
-.course-nav-inner { display: flex; align-items: center; gap: 1.4rem; height: 52px; overflow-x: auto; }
+.course-nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 999; display: flex; align-items: center; }
+.course-nav-inner { display: flex; align-items: center; gap: 1.4rem; height: 52px; overflow-x: auto; flex: 1; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
+.course-nav-inner::-webkit-scrollbar { display: none; }
 .course-nav a { font-size: .92rem; font-weight: 600; color: var(--muted); white-space: nowrap; transition: color var(--transition); }
 .course-nav a:hover, .course-nav a.active { color: var(--primary); }
 .course-nav a.active { font-weight: 700; }
+.nav-arrow { flex-shrink: 0; background: #fff; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); width: 32px; height: 52px; display: flex; align-items: center; justify-content: center; transition: color var(--transition); z-index: 1; }
+.nav-arrow:hover { color: var(--primary); }
+.nav-arrow.hidden { visibility: hidden; pointer-events: none; }
 /* Su mobile le tabelle larghe scorrono invece di essere tagliate dall'overflow-x:hidden */
 @media (max-width: 900px){
   .course-wrap table { display: block; width: 100%; overflow-x: auto; }

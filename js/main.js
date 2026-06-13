@@ -57,8 +57,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- Barra corsi: evidenzia e porta in vista il corso attivo --- */
+  /* --- Barra corsi: frecce laterali --- */
+  const courseNavWrap = document.querySelector('.course-nav');
   const courseNav = document.querySelector('.course-nav-inner');
+  if (courseNav && courseNavWrap) {
+    const btnL = document.createElement('button');
+    const btnR = document.createElement('button');
+    btnL.className = 'nav-arrow nav-arrow-left hidden';
+    btnR.className = 'nav-arrow nav-arrow-right';
+    btnL.innerHTML = '&#9664;';
+    btnR.innerHTML = '&#9654;';
+    courseNavWrap.insertBefore(btnL, courseNav);
+    courseNavWrap.appendChild(btnR);
+
+    const STEP = 300;
+    const updateArrows = () => {
+      btnL.classList.toggle('hidden', courseNav.scrollLeft <= 0);
+      btnR.classList.toggle('hidden', courseNav.scrollLeft + courseNav.clientWidth >= courseNav.scrollWidth - 2);
+    };
+    btnL.addEventListener('click', () => { courseNav.scrollLeft -= STEP; });
+    btnR.addEventListener('click', () => { courseNav.scrollLeft += STEP; });
+    courseNav.addEventListener('scroll', updateArrows);
+    window.addEventListener('load', updateArrows);
+    updateArrows();
+  }
+
+  /* --- Barra corsi: evidenzia e porta in vista il corso attivo --- */
   if (courseNav) {
     const page = location.pathname.split('/').pop() || 'index.html';
     let active = courseNav.querySelector('a.active');
