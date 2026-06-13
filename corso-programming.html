@@ -67,6 +67,8 @@
     .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
     .editor-top .ed-actions { display: flex; gap: .6rem; }
     .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-run { background: #04AA6D; color: #fff; }
+    .ed-run:hover { background: #038a59; }
     .ed-close { background: #e2e8f0; color: #334155; }
     .ed-close:hover { background: #cbd5e1; }
     .ed-theme { background: #1e293b; color: #fff; }
@@ -1051,6 +1053,7 @@ document.getElementById("out").textContent = out;
     <div class="editor-top">
       <strong id="editorTitle">Provalo tu</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-run" onclick="updatePreview()">▶ Esegui</button>
         <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" onclick="closeEditor()">✕ Chiudi</button>
       </div>
