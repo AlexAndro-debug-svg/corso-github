@@ -1246,7 +1246,7 @@ function openEditor(code, mode){
 
   if(!cm){
     cm = CodeMirror.fromTextArea(document.getElementById('codeArea'),{
-      lineNumbers: true, theme: 'material-darker', mode: mode || 'htmlmixed',
+      lineNumbers: true, theme: 'default', mode: mode || 'htmlmixed',
       lineWrapping: true, tabSize: 2, autofocus: true
     });
     cm.on('change', updatePreview);
