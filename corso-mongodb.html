@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <style>
     .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
     .course-wrap > main { min-width: 0; }
@@ -69,6 +70,8 @@
     .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
     .ed-close { background: #e2e8f0; color: #334155; }
     .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
     .code-editor { flex: 1; overflow: hidden; }
     .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
@@ -1435,13 +1438,14 @@ chart.setFilter({ citta: "Milano" })
     <div class="editor-top">
       <strong>✏️ Provalo tu — leggi e modifica il codice MongoDB</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Note</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Note MongoDB"></iframe>
       </div>
     </div>
@@ -1469,19 +1473,30 @@ chart.setFilter({ citta: "Milano" })
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
     var cm = null;
 
     function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#e2e8f0;padding:1.4rem;line-height:1.6">'
-        + '<h3 style="margin:0 0 .6rem;color:#ffffff">🌿 Comandi MongoDB</h3>'
+      var bodyStyle = edDark
+        ? 'font-family:Inter,system-ui,sans-serif;color:#f1f5f9;background:#1e293b;padding:1.4rem;line-height:1.6'
+        : 'font-family:Inter,system-ui,sans-serif;color:#334155;padding:1.4rem;line-height:1.6';
+      var sugColor = edDark ? '#cbd5e1' : '#64748b';
+      preview.srcdoc = '<body style="' + bodyStyle + '">'
+        + '<h3 style="margin:0 0 .6rem;color:inherit">🌿 Comandi MongoDB</h3>'
         + '<p>I comandi MongoDB vengono eseguiti nella <b>MongoDB Shell</b> (<code>mongosh</code>) '
         + 'oppure tramite il driver del tuo linguaggio (Node.js, Python, ecc.).</p>'
         + '<p>Puoi <b>leggere e modificare</b> i comandi qui con la sintassi colorata, '
         + 'poi copiarli in <b>mongosh</b> o in <b>MongoDB Compass</b> per eseguirli.</p>'
-        + '<p style="color:#cbd5e1;font-size:.9rem">💡 Suggerimento: puoi anche usare '
+        + '<p style="color:' + sugColor + ';font-size:.9rem">💡 Suggerimento: puoi anche usare '
         + '<b>MongoDB Atlas</b> (cloud gratuito) per testare le query online senza installare nulla.</p>'
         + '</body>';
     }
@@ -1491,11 +1506,18 @@ chart.setFilter({ citta: "Milano" })
         try {
           cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
             mode: mode || 'javascript', lineNumbers: true, lineWrapping: false,
-            tabSize: 2, indentUnit: 2, theme: 'default'
+            tabSize: 2, indentUnit: 2, theme: edDark ? 'material-darker' : 'default'
           });
         } catch(e){ cm = null; }
       }
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      note();
+    }
+    window._edApplyTheme = applyTheme;
 
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code, mode){
@@ -1506,7 +1528,7 @@ chart.setFilter({ citta: "Milano" })
       ensureCM(mode);
       if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
       else { document.getElementById('ed-code').value = code; }
-      note();
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
 
