@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Excel in italiano completo e gratuito — formule, funzioni, grafici, tabelle pivot | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Excel completo in italiano: celle e intervalli, formule, riferimenti relativi e assoluti, funzioni (SOMMA, MEDIA, SE, CERCA.VERT), formattazione, formattazione condizionale, grafici, tabelle e tabelle pivot. Tutorial gratuito con quiz.">
+  <meta name="keywords" content="corso excel italiano, excel tutorial, formule excel, funzioni excel, cerca.vert, tabella pivot, somma se, formattazione condizionale, grafici excel, excel per principianti">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Excel in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Excel da zero in italiano: formule, funzioni, grafici, tabelle pivot. Gratuito con quiz ed esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    /* Foglio di calcolo simulato */
+    .sheet { border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: .88rem; width: 100%; }
+    .sheet th, .sheet td { border: 1px solid #cbd5e1; padding: .4rem .6rem; text-align: center; }
+    .sheet thead th, .sheet .rowhead { background: #e8f0e9; color: #1e293b; font-weight: 700; }
+    .sheet td.val { background: #fff; text-align: right; font-family: 'Consolas',monospace; }
+    .sheet td.lbl { background: #fff; text-align: left; }
+    .sheet td.res { background: #dcfce7; font-weight: 700; text-align: right; font-family: 'Consolas',monospace; }
+    .sheet caption { caption-side: top; text-align: left; font-size: .78rem; color: var(--muted); margin-bottom: .3rem; }
+    /* Calcolatrice formule */
+    .calc { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; margin: 1rem 0; }
+    .calc label { font-weight: 600; font-size: .9rem; display:block; margin-bottom:.3rem; }
+    .calc input, .calc select { padding: .5rem .7rem; border: 1px solid var(--border); border-radius: 6px; font-family: 'Consolas',monospace; font-size: .95rem; }
+    .calc .riga { display: flex; flex-wrap: wrap; gap: .8rem; align-items: flex-end; margin-bottom: 1rem; }
+    .calc .out { background: #dcfce7; border: 1px solid #86efac; border-radius: 8px; padding: 1rem; font-size: 1.2rem; font-weight: 700; color: #166534; font-family: 'Consolas',monospace; }
+    /* Quiz */
+    .quiz { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin: 1rem 0; }
+    .quiz .domanda { font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+    .quiz .opzione { display: block; width: 100%; text-align: left; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: .7rem .9rem; margin-bottom: .5rem; cursor: pointer; font-family: var(--font); font-size: .95rem; transition: var(--transition); color: var(--ink); }
+    .quiz .opzione:hover { border-color: var(--primary); }
+    .quiz .opzione.giusta { background: #dcfce7; border-color: #16a34a; color: #166534; font-weight: 600; }
+    .quiz .opzione.sbagliata { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+    .quiz .opzione:disabled { cursor: default; }
+    .quiz .feedback { margin-top: .6rem; font-weight: 600; font-size: .92rem; }
+    .quiz .nav-quiz { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+    .quiz .punteggio { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.4rem; text-align: center; }
+    .quiz .punteggio .big { font-size: 2.4rem; font-weight: 800; color: #166534; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-excel.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-excel.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Excel in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Excel completo: formule, funzioni, grafici, tabelle pivot. Gratuito con quiz.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Excel in italiano","description":"Corso Excel italiano completo e gratuito: celle e intervalli, formule, riferimenti relativi e assoluti, funzioni (SOMMA, MEDIA, SE, CERCA.VERT), formattazione condizionale, grafici, tabelle e tabelle pivot. Con quiz ed esempi pratici.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-excel.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html">W3.CSS</a>
+    <a href="corso-angularjs.html">ANGULARJS</a>
+    <a href="corso-ai.html">AI</a>
+    <a href="corso-aws.html">AWS</a>
+    <a href="corso-programming.html">PROGRAMMAZIONE</a>
+    <a href="corso-excel.html" class="active">EXCEL</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Excel in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il foglio di calcolo più usato al mondo. Impara a gestire celle e intervalli, scrivere formule, usare le funzioni (SOMMA, MEDIA, SE, CERCA.VERT), applicare formattazione condizionale, creare grafici e tabelle pivot. Con calcolatrice di formule e quiz finale.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Fondamenti</h4>
+<a href="#intro">Introduzione</a>
+<a href="#celle">Celle e intervalli</a>
+<a href="#modifica">Modificare le celle</a>
+<a href="#riempimento">Riempimento automatico</a>
+<h4>Formule</h4>
+<a href="#formule">Formule</a>
+<a href="#operatori">Operatori e parentesi</a>
+<a href="#riferimenti">Riferimenti relativi/assoluti</a>
+<h4>Funzioni</h4>
+<a href="#funzioni">Funzioni base</a>
+<a href="#logiche">Funzioni logiche (SE)</a>
+<a href="#condizionali">SOMMA.SE e CONTA.SE</a>
+<a href="#cerca">CERCA.VERT</a>
+<a href="#testo">Funzioni di testo</a>
+<a href="#date">Date e ore</a>
+<h4>Visualizzazione</h4>
+<a href="#formattazione">Formattazione</a>
+<a href="#condizionale">Formattazione condizionale</a>
+<a href="#grafici">Grafici</a>
+<a href="#tabelle">Tabelle</a>
+<a href="#pivot">Tabelle pivot</a>
+<h4>Pratica</h4>
+<a href="#calcolatrice">Prova le formule</a>
+<a href="#quiz">Quiz interattivo</a>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- 1. INTRO -->
+<article class="lesson" id="intro">
+<h2>Introduzione a Excel</h2>
+<p><strong>Microsoft Excel</strong> è il programma di foglio di calcolo più diffuso al mondo. Organizza i dati in una griglia di <strong>celle</strong> (righe e colonne) e permette di calcolare, analizzare e visualizzare informazioni con formule, funzioni e grafici.</p>
+<table class="ref">
+<tr><th>Elemento</th><th>Descrizione</th></tr>
+<tr><td><strong>Cartella di lavoro</strong></td><td>Il file Excel (.xlsx), contiene uno o più fogli</td></tr>
+<tr><td><strong>Foglio di lavoro</strong></td><td>Una singola griglia di celle (scheda in basso)</td></tr>
+<tr><td><strong>Cella</strong></td><td>L'intersezione di una riga e una colonna (es. A1)</td></tr>
+<tr><td><strong>Colonna</strong></td><td>Identificata da lettere (A, B, C...)</td></tr>
+<tr><td><strong>Riga</strong></td><td>Identificata da numeri (1, 2, 3...)</td></tr>
+</table>
+<div class="note-box">📊 Una cella si identifica con la lettera della colonna seguita dal numero della riga: <strong>A1</strong>, <strong>B3</strong>, <strong>D10</strong>. Questo è il "riferimento" della cella.</div>
+</article>
+
+<!-- 2. CELLE -->
+<article class="lesson" id="celle">
+<h2>Celle e intervalli</h2>
+<p>Un <strong>intervallo</strong> (range) è un gruppo di celle. Si indica con la prima e l'ultima cella separate dai due punti.</p>
+<table class="ref">
+<tr><th>Notazione</th><th>Significato</th></tr>
+<tr><td><code class="inline">A1</code></td><td>La singola cella A1</td></tr>
+<tr><td><code class="inline">A1:A10</code></td><td>Dalla A1 alla A10 (una colonna)</td></tr>
+<tr><td><code class="inline">A1:C1</code></td><td>Dalla A1 alla C1 (una riga)</td></tr>
+<tr><td><code class="inline">A1:C10</code></td><td>Un blocco rettangolare di celle</td></tr>
+<tr><td><code class="inline">A:A</code></td><td>Tutta la colonna A</td></tr>
+</table>
+<table class="sheet">
+<caption>Esempio: foglio con un intervallo A1:B4</caption>
+<thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+<tbody>
+<tr><th class="rowhead">1</th><td class="lbl">Prodotto</td><td class="lbl">Prezzo</td></tr>
+<tr><th class="rowhead">2</th><td class="lbl">Penna</td><td class="val">1.50</td></tr>
+<tr><th class="rowhead">3</th><td class="lbl">Quaderno</td><td class="val">3.20</td></tr>
+<tr><th class="rowhead">4</th><td class="lbl">Zaino</td><td class="val">25.00</td></tr>
+</tbody>
+</table>
+</article>
+
+<!-- 3. MODIFICA -->
+<article class="lesson" id="modifica">
+<h2>Modificare le celle</h2>
+<p>Excel permette di inserire, modificare, spostare ed eliminare celle, righe e colonne con grande flessibilità.</p>
+<table class="ref">
+<tr><th>Operazione</th><th>Come</th></tr>
+<tr><td><strong>Inserire un valore</strong></td><td>Clicca la cella e digita</td></tr>
+<tr><td><strong>Modificare</strong></td><td>Doppio clic o tasto F2</td></tr>
+<tr><td><strong>Copiare/Incollare</strong></td><td>Ctrl+C / Ctrl+V</td></tr>
+<tr><td><strong>Spostare</strong></td><td>Trascina il bordo della selezione</td></tr>
+<tr><td><strong>Eliminare contenuto</strong></td><td>Tasto Canc</td></tr>
+<tr><td><strong>Annulla / Ripeti</strong></td><td>Ctrl+Z / Ctrl+Y</td></tr>
+</table>
+<div class="tip-box">💡 <strong>Ctrl+Z</strong> (annulla) è il tuo migliore amico in Excel: puoi annullare decine di operazioni in sequenza se sbagli.</div>
+</article>
+
+<!-- 4. RIEMPIMENTO -->
+<article class="lesson" id="riempimento">
+<h2>Riempimento automatico</h2>
+<p>Il <strong>quadratino di riempimento</strong> (in basso a destra della cella selezionata) permette di copiare valori o continuare serie automaticamente trascinando.</p>
+<table class="ref">
+<tr><th>Se scrivi...</th><th>...e trascini, ottieni</th></tr>
+<tr><td>1, 2</td><td>3, 4, 5, 6...</td></tr>
+<tr><td>Lun, Mar</td><td>Mer, Gio, Ven...</td></tr>
+<tr><td>Gen, Feb</td><td>Mar, Apr, Mag...</td></tr>
+<tr><td>5, 10</td><td>15, 20, 25... (passo 5)</td></tr>
+</table>
+<div class="note-box">⚡ Il riempimento automatico fa risparmiare tantissimo tempo: Excel riconosce le serie (numeri, giorni, mesi, date) e le continua da solo.</div>
+</article>
+
+<!-- 5. FORMULE -->
+<article class="lesson" id="formule">
+<h2>Formule</h2>
+<p>Una <strong>formula</strong> inizia sempre con il segno <strong>=</strong> e dice a Excel di calcolare qualcosa. Può contenere numeri, riferimenti a celle, operatori e funzioni.</p>
+<div class="example">
+<div class="codehead"><span>Excel — formule di base</span></div>
+<pre class="codeview"><code>=10 + 5            → 15
+=A1 + A2           somma i valori delle celle A1 e A2
+=B2 * C2           moltiplica B2 per C2
+=(A1 + A2) / 2     media di due celle
+=A1 * 1.22         aggiunge il 22% di IVA</code></pre>
+</div>
+<table class="sheet">
+<caption>Esempio: la cella C2 contiene la formula =A2*B2</caption>
+<thead><tr><th></th><th>A (Quantità)</th><th>B (Prezzo)</th><th>C (Totale)</th></tr></thead>
+<tbody>
+<tr><th class="rowhead">2</th><td class="val">3</td><td class="val">1.50</td><td class="res">4.50</td></tr>
+<tr><th class="rowhead">3</th><td class="val">2</td><td class="val">3.20</td><td class="res">6.40</td></tr>
+</tbody>
+</table>
+<div class="warn-box">⚠️ Se dimentichi il segno <strong>=</strong> all'inizio, Excel tratta ciò che scrivi come testo, non come formula da calcolare.</div>
+</article>
+
+<!-- 6. OPERATORI -->
+<article class="lesson" id="operatori">
+<h2>Operatori e parentesi</h2>
+<table class="ref">
+<tr><th>Operatore</th><th>Funzione</th><th>Esempio</th></tr>
+<tr><td><code class="inline">+</code></td><td>Addizione</td><td>=A1+B1</td></tr>
+<tr><td><code class="inline">-</code></td><td>Sottrazione</td><td>=A1-B1</td></tr>
+<tr><td><code class="inline">*</code></td><td>Moltiplicazione</td><td>=A1*B1</td></tr>
+<tr><td><code class="inline">/</code></td><td>Divisione</td><td>=A1/B1</td></tr>
+<tr><td><code class="inline">^</code></td><td>Potenza</td><td>=A1^2</td></tr>
+<tr><td><code class="inline">%</code></td><td>Percentuale</td><td>=A1*10%</td></tr>
+</table>
+<p>Excel segue l'<strong>ordine delle operazioni</strong> matematico (prima potenze, poi moltiplicazioni/divisioni, infine addizioni/sottrazioni). Usa le <strong>parentesi</strong> per cambiare l'ordine.</p>
+<div class="example">
+<div class="codehead"><span>Excel — le parentesi cambiano il risultato</span></div>
+<pre class="codeview"><code>=2 + 3 * 4         → 14   (prima 3*4=12, poi +2)
+=(2 + 3) * 4       → 20   (prima 2+3=5, poi *4)
+=10 / 2 + 3        → 8
+=10 / (2 + 3)      → 2</code></pre>
+</div>
+</article>
+
+<!-- 7. RIFERIMENTI -->
+<article class="lesson" id="riferimenti">
+<h2>Riferimenti relativi e assoluti</h2>
+<p>Quando copi una formula, i riferimenti alle celle si comportano in due modi:</p>
+<table class="ref">
+<tr><th>Tipo</th><th>Notazione</th><th>Comportamento copiando</th></tr>
+<tr><td><strong>Relativo</strong></td><td><code class="inline">A1</code></td><td>Si adatta (A1 → A2 → A3...)</td></tr>
+<tr><td><strong>Assoluto</strong></td><td><code class="inline">$A$1</code></td><td>Resta fisso su A1</td></tr>
+<tr><td><strong>Misto</strong></td><td><code class="inline">$A1</code> / <code class="inline">A$1</code></td><td>Fissa solo colonna o solo riga</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Excel — riferimento assoluto a un'aliquota fissa</span></div>
+<pre class="codeview"><code># In B1 c'è l'aliquota IVA: 0.22
+# Formula in C2, da copiare verso il basso:
+=A2 * (1 + $B$1)
+
+# Copiando in C3 diventa: =A3 * (1 + $B$1)
+# Il prezzo (A) cambia, l'aliquota ($B$1) resta fissa</code></pre>
+</div>
+<div class="tip-box">💡 Premi <strong>F4</strong> mentre scrivi un riferimento per aggiungere automaticamente i simboli <code class="inline">$</code> e passare tra relativo, assoluto e misto.</div>
+</article>
+
+<!-- 8. FUNZIONI BASE -->
+<article class="lesson" id="funzioni">
+<h2>Funzioni base</h2>
+<p>Le <strong>funzioni</strong> sono formule predefinite. Le più usate operano su un intervallo di celle.</p>
+<table class="ref">
+<tr><th>Funzione</th><th>Cosa fa</th><th>Esempio</th></tr>
+<tr><td><code class="inline">SOMMA</code></td><td>Somma i valori</td><td>=SOMMA(A1:A10)</td></tr>
+<tr><td><code class="inline">MEDIA</code></td><td>Media aritmetica</td><td>=MEDIA(A1:A10)</td></tr>
+<tr><td><code class="inline">CONTA.NUMERI</code></td><td>Conta le celle con numeri</td><td>=CONTA.NUMERI(A1:A10)</td></tr>
+<tr><td><code class="inline">CONTA.VALORI</code></td><td>Conta le celle non vuote</td><td>=CONTA.VALORI(A1:A10)</td></tr>
+<tr><td><code class="inline">MAX</code></td><td>Valore massimo</td><td>=MAX(A1:A10)</td></tr>
+<tr><td><code class="inline">MIN</code></td><td>Valore minimo</td><td>=MIN(A1:A10)</td></tr>
+<tr><td><code class="inline">ARROTONDA</code></td><td>Arrotonda a N decimali</td><td>=ARROTONDA(A1; 2)</td></tr>
+</table>
+<table class="sheet">
+<caption>Esempio: riepilogo vendite con funzioni</caption>
+<thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+<tbody>
+<tr><th class="rowhead">1</th><td class="lbl">Lunedì</td><td class="val">120</td></tr>
+<tr><th class="rowhead">2</th><td class="lbl">Martedì</td><td class="val">95</td></tr>
+<tr><th class="rowhead">3</th><td class="lbl">Mercoledì</td><td class="val">140</td></tr>
+<tr><th class="rowhead">4</th><td class="lbl">=SOMMA(B1:B3)</td><td class="res">355</td></tr>
+<tr><th class="rowhead">5</th><td class="lbl">=MEDIA(B1:B3)</td><td class="res">118.33</td></tr>
+<tr><th class="rowhead">6</th><td class="lbl">=MAX(B1:B3)</td><td class="res">140</td></tr>
+</tbody>
+</table>
+<div class="note-box">🌍 <strong>Nota lingua:</strong> in Excel italiano le funzioni hanno nomi tradotti (SOMMA, MEDIA, SE) e si usa il <strong>punto e virgola</strong> <code class="inline">;</code> come separatore. In Excel inglese sono SUM, AVERAGE, IF con la <strong>virgola</strong>.</div>
+</article>
+
+<!-- 9. LOGICHE -->
+<article class="lesson" id="logiche">
+<h2>Funzioni logiche: SE</h2>
+<p>La funzione <strong>SE</strong> (IF) prende una decisione: restituisce un valore se una condizione è vera, un altro se è falsa.</p>
+<div class="formula">=SE(condizione; valore_se_vero; valore_se_falso)</div>
+<div class="example">
+<div class="codehead"><span>Excel — funzione SE e SE annidati</span></div>
+<pre class="codeview"><code># Promosso o bocciato in base al voto in A2
+=SE(A2 &gt;= 6; "Promosso"; "Bocciato")
+
+# SE annidati per più fasce
+=SE(A2 &gt;= 9; "Ottimo";
+   SE(A2 &gt;= 6; "Sufficiente"; "Insufficiente"))
+
+# Combinare con E / O
+=SE(E(A2 &gt;= 6; B2 &gt;= 6); "Promosso"; "Rimandato")
+=SE(O(A2 &gt; 9; B2 &gt; 9); "Eccellenza"; "Normale")</code></pre>
+</div>
+<table class="sheet">
+<caption>Esempio: =SE(B2>=6; "Promosso"; "Bocciato")</caption>
+<thead><tr><th></th><th>A (Studente)</th><th>B (Voto)</th><th>C (Esito)</th></tr></thead>
+<tbody>
+<tr><th class="rowhead">2</th><td class="lbl">Alice</td><td class="val">8</td><td class="res">Promosso</td></tr>
+<tr><th class="rowhead">3</th><td class="lbl">Marco</td><td class="val">4</td><td class="res">Bocciato</td></tr>
+</tbody>
+</table>
+</article>
+
+<!-- 10. CONDIZIONALI -->
+<article class="lesson" id="condizionali">
+<h2>SOMMA.SE e CONTA.SE</h2>
+<p>Queste funzioni "condizionali" sommano o contano solo le celle che soddisfano un criterio.</p>
+<table class="ref">
+<tr><th>Funzione</th><th>Cosa fa</th></tr>
+<tr><td><code class="inline">CONTA.SE</code></td><td>Conta le celle che soddisfano un criterio</td></tr>
+<tr><td><code class="inline">SOMMA.SE</code></td><td>Somma le celle che soddisfano un criterio</td></tr>
+<tr><td><code class="inline">MEDIA.SE</code></td><td>Media delle celle che soddisfano un criterio</td></tr>
+<tr><td><code class="inline">SOMMA.PIÙ.SE</code></td><td>Somma con più criteri contemporaneamente</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Excel — funzioni condizionali</span></div>
+<pre class="codeview"><code># Conta quanti studenti hanno preso almeno 6
+=CONTA.SE(B2:B20; "&gt;=6")
+
+# Somma le vendite del prodotto "Penna"
+=SOMMA.SE(A2:A20; "Penna"; C2:C20)
+
+# Conta le celle uguali a "Roma"
+=CONTA.SE(D2:D20; "Roma")
+
+# Media dei voti maggiori di zero
+=MEDIA.SE(B2:B20; "&gt;0")</code></pre>
+</div>
+</article>
+
+<!-- 11. CERCA.VERT -->
+<article class="lesson" id="cerca">
+<h2>CERCA.VERT (VLOOKUP)</h2>
+<p><strong>CERCA.VERT</strong> è una delle funzioni più potenti: cerca un valore nella prima colonna di una tabella e restituisce un valore dalla stessa riga in un'altra colonna. Perfetta per "agganciare" dati tra tabelle.</p>
+<div class="formula">=CERCA.VERT(valore_cercato; tabella; n_colonna; FALSO)</div>
+<div class="example">
+<div class="codehead"><span>Excel — cercare il prezzo di un prodotto</span></div>
+<pre class="codeview"><code># Tabella prodotti in A2:C10 (Codice | Nome | Prezzo)
+# Cerca il prezzo del codice scritto in E2:
+=CERCA.VERT(E2; A2:C10; 3; FALSO)
+
+# 3 = restituisci il valore della 3ª colonna (Prezzo)
+# FALSO = corrispondenza esatta (consigliato quasi sempre)</code></pre>
+</div>
+<div class="tip-box">💡 L'ultimo argomento <strong>FALSO</strong> (corrispondenza esatta) è quasi sempre quello giusto. Con VERO la tabella deve essere ordinata e cerca la corrispondenza approssimata. Nelle versioni recenti esiste anche <code class="inline">CERCA.X</code> (XLOOKUP), più flessibile.</div>
+</article>
+
+<!-- 12. TESTO -->
+<article class="lesson" id="testo">
+<h2>Funzioni di testo</h2>
+<table class="ref">
+<tr><th>Funzione</th><th>Cosa fa</th><th>Esempio → risultato</th></tr>
+<tr><td><code class="inline">CONCAT</code> / <code class="inline">&amp;</code></td><td>Unisce testi</td><td>=A1&amp;" "&amp;B1</td></tr>
+<tr><td><code class="inline">MAIUSC</code></td><td>Tutto maiuscolo</td><td>="ciao" → CIAO</td></tr>
+<tr><td><code class="inline">MINUSC</code></td><td>Tutto minuscolo</td><td>="CIAO" → ciao</td></tr>
+<tr><td><code class="inline">LUNGHEZZA</code></td><td>Numero di caratteri</td><td>="Excel" → 5</td></tr>
+<tr><td><code class="inline">SINISTRA</code></td><td>Primi N caratteri</td><td>=SINISTRA("Excel";2) → Ex</td></tr>
+<tr><td><code class="inline">DESTRA</code></td><td>Ultimi N caratteri</td><td>=DESTRA("Excel";3) → cel</td></tr>
+<tr><td><code class="inline">STRINGA.ESTRAI</code></td><td>Estrae da una posizione</td><td>=STRINGA.ESTRAI("Excel";2;3) → xce</td></tr>
+<tr><td><code class="inline">ANNULLA.SPAZI</code></td><td>Rimuove spazi superflui</td><td>=ANNULLA.SPAZI(" ciao ") → ciao</td></tr>
+</table>
+</article>
+
+<!-- 13. DATE -->
+<article class="lesson" id="date">
+<h2>Date e ore</h2>
+<p>Excel gestisce le date come numeri seriali (il giorno 1 è il 1° gennaio 1900), così puoi fare calcoli con esse.</p>
+<table class="ref">
+<tr><th>Funzione</th><th>Cosa fa</th></tr>
+<tr><td><code class="inline">OGGI()</code></td><td>La data odierna</td></tr>
+<tr><td><code class="inline">ADESSO()</code></td><td>Data e ora correnti</td></tr>
+<tr><td><code class="inline">ANNO / MESE / GIORNO</code></td><td>Estrae parti di una data</td></tr>
+<tr><td><code class="inline">GIORNO.SETTIMANA</code></td><td>Numero del giorno della settimana</td></tr>
+<tr><td><code class="inline">DATA.DIFF</code></td><td>Differenza tra due date</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Excel — calcoli con le date</span></div>
+<pre class="codeview"><code># Quanti giorni mancano a una scadenza in A1?
+=A1 - OGGI()
+
+# Età a partire da una data di nascita in A1
+=ANNO(OGGI()) - ANNO(A1)
+
+# Aggiungere 30 giorni a una data
+=A1 + 30</code></pre>
+</div>
+</article>
+
+<!-- 14. FORMATTAZIONE -->
+<article class="lesson" id="formattazione">
+<h2>Formattazione</h2>
+<p>La formattazione cambia l'<em>aspetto</em> delle celle senza modificarne il valore: numeri, valute, percentuali, colori, bordi, allineamento.</p>
+<table class="ref">
+<tr><th>Formato</th><th>Esempio</th></tr>
+<tr><td><strong>Numero</strong></td><td>1234.5 → 1.234,50</td></tr>
+<tr><td><strong>Valuta</strong></td><td>1234.5 → € 1.234,50</td></tr>
+<tr><td><strong>Percentuale</strong></td><td>0.22 → 22%</td></tr>
+<tr><td><strong>Data</strong></td><td>45000 → 23/03/2023</td></tr>
+<tr><td><strong>Testo</strong></td><td>Forza il contenuto come testo</td></tr>
+</table>
+<div class="warn-box">⚠️ La formattazione non cambia il valore reale: una cella che mostra "22%" contiene comunque il numero 0,22. I calcoli usano sempre il valore reale, non quello visualizzato.</div>
+</article>
+
+<!-- 15. CONDIZIONALE -->
+<article class="lesson" id="condizionale">
+<h2>Formattazione condizionale</h2>
+<p>La <strong>formattazione condizionale</strong> colora automaticamente le celle in base al loro valore. Utilissima per evidenziare dati importanti a colpo d'occhio.</p>
+<ul>
+  <li>🔴 Evidenzia in rosso i valori sotto una soglia</li>
+  <li>🟢 Evidenzia in verde i migliori risultati</li>
+  <li>📊 Barre dei dati proporzionali al valore</li>
+  <li>🌡️ Scale di colore (mappe di calore)</li>
+  <li>🚦 Set di icone (semafori, frecce)</li>
+</ul>
+<table class="sheet">
+<caption>Esempio: rosso se &lt; 60, verde se &ge; 90</caption>
+<thead><tr><th></th><th>Studente</th><th>Voto</th></tr></thead>
+<tbody>
+<tr><th class="rowhead">1</th><td class="lbl">Alice</td><td class="res">95</td></tr>
+<tr><th class="rowhead">2</th><td class="lbl">Marco</td><td class="val" style="background:#fee2e2;color:#991b1b;font-weight:700">45</td></tr>
+<tr><th class="rowhead">3</th><td class="lbl">Sofia</td><td class="val">72</td></tr>
+</tbody>
+</table>
+</article>
+
+<!-- 16. GRAFICI -->
+<article class="lesson" id="grafici">
+<h2>Grafici</h2>
+<p>I <strong>grafici</strong> trasformano i numeri in immagini, rendendo i dati facili da capire. Excel offre molti tipi, ognuno adatto a uno scopo.</p>
+<table class="ref">
+<tr><th>Tipo</th><th>Quando usarlo</th></tr>
+<tr><td><strong>Istogramma / Barre</strong></td><td>Confrontare categorie</td></tr>
+<tr><td><strong>Linee</strong></td><td>Tendenze nel tempo</td></tr>
+<tr><td><strong>Torta</strong></td><td>Parti di un totale (percentuali)</td></tr>
+<tr><td><strong>Dispersione (XY)</strong></td><td>Relazione tra due variabili</td></tr>
+<tr><td><strong>Area</strong></td><td>Volumi cumulati nel tempo</td></tr>
+</table>
+<div class="note-box">📈 Per creare un grafico: seleziona i dati (incluse le intestazioni) → scheda <strong>Inserisci</strong> → scegli il tipo di grafico. Excel lo genera automaticamente e lo aggiorna se cambi i dati.</div>
+</article>
+
+<!-- 17. TABELLE -->
+<article class="lesson" id="tabelle">
+<h2>Tabelle</h2>
+<p>Convertire un intervallo in <strong>Tabella</strong> (Inserisci → Tabella, o Ctrl+T) aggiunge funzionalità potenti:</p>
+<ul>
+  <li>Filtri e ordinamento automatici sulle intestazioni</li>
+  <li>Righe alternate colorate per leggibilità</li>
+  <li>Riga del totale con funzioni rapide</li>
+  <li>Le formule usano i <strong>nomi delle colonne</strong> invece dei riferimenti</li>
+  <li>La tabella si espande automaticamente aggiungendo dati</li>
+</ul>
+<div class="example">
+<div class="codehead"><span>Excel — formula con riferimenti strutturati (tabella)</span></div>
+<pre class="codeview"><code># In una Tabella chiamata "Vendite":
+=SOMMA(Vendite[Totale])
+=MEDIA(Vendite[Prezzo])
+
+# Più leggibile di =SOMMA(C2:C100)!</code></pre>
+</div>
+</article>
+
+<!-- 18. PIVOT -->
+<article class="lesson" id="pivot">
+<h2>Tabelle pivot</h2>
+<p>Le <strong>tabelle pivot</strong> sono lo strumento più potente di Excel per analizzare grandi quantità di dati: riassumono, raggruppano e aggregano migliaia di righe in pochi clic, senza scrivere formule.</p>
+<p>Esempio: da un elenco di 1000 ordini, una pivot può rispondere in un attimo a "quanto ho venduto per ogni regione e per ogni mese?".</p>
+<table class="ref">
+<tr><th>Area pivot</th><th>Funzione</th></tr>
+<tr><td><strong>Righe</strong></td><td>Categorie da elencare verticalmente (es. Regione)</td></tr>
+<tr><td><strong>Colonne</strong></td><td>Categorie da elencare orizzontalmente (es. Mese)</td></tr>
+<tr><td><strong>Valori</strong></td><td>I numeri da aggregare (somma, media, conteggio)</td></tr>
+<tr><td><strong>Filtri</strong></td><td>Per filtrare l'intera tabella</td></tr>
+</table>
+<table class="sheet">
+<caption>Esempio: pivot delle vendite per regione</caption>
+<thead><tr><th>Regione</th><th>Somma vendite</th></tr></thead>
+<tbody>
+<tr><td class="lbl">Nord</td><td class="res">12.400</td></tr>
+<tr><td class="lbl">Centro</td><td class="res">8.900</td></tr>
+<tr><td class="lbl">Sud</td><td class="res">10.300</td></tr>
+<tr><td class="lbl"><strong>Totale</strong></td><td class="res">31.600</td></tr>
+</tbody>
+</table>
+<div class="note-box">🔄 Le pivot sono "dinamiche": trascini i campi nelle aree Righe/Colonne/Valori e l'analisi si ricostruisce all'istante. Per crearle: seleziona i dati → Inserisci → Tabella pivot.</div>
+</article>
+
+<!-- 19. CALCOLATRICE -->
+<article class="lesson" id="calcolatrice">
+<h2>Prova le formule</h2>
+<p>Inserisci dei numeri separati da virgola e prova le funzioni più comuni di Excel direttamente qui, per capire come si comportano.</p>
+<div class="calc">
+  <div class="riga">
+    <div style="flex:1;min-width:200px">
+      <label>Dati (numeri separati da virgola)</label>
+      <input type="text" id="calcDati" value="120, 95, 140, 60, 88" style="width:100%">
+    </div>
+    <div>
+      <label>Funzione</label>
+      <select id="calcFunz">
+        <option value="SOMMA">SOMMA</option>
+        <option value="MEDIA">MEDIA</option>
+        <option value="MAX">MAX</option>
+        <option value="MIN">MIN</option>
+        <option value="CONTA">CONTA.NUMERI</option>
+        <option value="CONTASE6">CONTA.SE (&ge; 60)</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="calcolaFormula()" style="height:fit-content">Calcola</button>
+  </div>
+  <div class="out" id="calcOut">=SOMMA(120; 95; 140; 60; 88) = 503</div>
+</div>
+</article>
+
+<!-- 20. QUIZ -->
+<article class="lesson" id="quiz">
+<h2>Quiz interattivo</h2>
+<p>Verifica quanto hai imparato su Excel. Clicca la risposta corretta e ricevi subito il feedback.</p>
+<div class="quiz" id="quizBox">
+  <div id="quizContenuto"></div>
+  <div class="nav-quiz">
+    <span id="quizProgresso" style="font-size:.85rem;color:var(--muted)"></span>
+    <button class="btn btn-primary btn-sm" id="quizAvanti" style="display:none">Prossima domanda →</button>
+  </div>
+</div>
+</article>
+
+<!-- ESERCIZI -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — Budget mensile</span>
+<p>Crea un foglio con le tue spese mensili (categoria e importo). Usa <code class="inline">SOMMA</code> per il totale, <code class="inline">MEDIA</code> per la spesa media e <code class="inline">MAX</code> per la spesa più alta. Aggiungi una colonna percentuale sul totale con riferimento assoluto.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — Registro voti</span>
+<p>Crea un registro con nomi e voti. Usa <code class="inline">SE</code> per mostrare "Promosso/Bocciato", <code class="inline">CONTA.SE</code> per contare i promossi e applica la formattazione condizionale per colorare di rosso i voti insufficienti.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Listino con CERCA.VERT</span>
+<p>Crea una tabella prodotti (codice, nome, prezzo). In un'altra area, digita un codice e usa <code class="inline">CERCA.VERT</code> per recuperare automaticamente nome e prezzo del prodotto corrispondente.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 4 — Analisi con pivot</span>
+<p>Inventa un elenco di 20 vendite (data, regione, prodotto, importo). Crea una tabella pivot che mostri il totale venduto per regione e un grafico a torta delle percentuali.</p>
+</div>
+</article>
+
+<!-- FINE -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso di Excel. Ora sai gestire celle, scrivere formule e funzioni, usare CERCA.VERT, creare grafici e tabelle pivot — competenze richiestissime in ogni ufficio.</p>
+<div class="note-box"><strong>Cosa hai imparato:</strong><ul>
+  <li>Celle, intervalli e modifica dei dati</li>
+  <li>Formule, operatori e ordine delle operazioni</li>
+  <li>Riferimenti relativi, assoluti e misti</li>
+  <li>Funzioni: SOMMA, MEDIA, MAX, MIN, SE, CONTA.SE, SOMMA.SE</li>
+  <li>CERCA.VERT, funzioni di testo e di data</li>
+  <li>Formattazione e formattazione condizionale</li>
+  <li>Grafici, tabelle e tabelle pivot</li>
+</ul></div>
+<p>Il passo successivo? Approfondisci l'<strong>analisi dei dati</strong> con strumenti più potenti come Python e pandas, oppure impara <strong>SQL</strong> per interrogare i database.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-pandas.html" class="btn btn-primary">Vai al corso pandas →</a><a href="corso-sql.html" class="btn btn-primary">Vai al corso SQL →</a><a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a></div>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script>
+// ---- Calcolatrice formule ----
+function calcolaFormula(){
+  const raw = document.getElementById('calcDati').value;
+  const funz = document.getElementById('calcFunz').value;
+  const nums = raw.split(',').map(s => parseFloat(s.trim())).filter(n => !isNaN(n));
+  const out = document.getElementById('calcOut');
+  if(nums.length === 0){ out.textContent = 'Inserisci almeno un numero valido.'; return; }
+  let ris, etichetta, args = nums.join('; ');
+  switch(funz){
+    case 'SOMMA':   ris = nums.reduce((s,n)=>s+n,0); etichetta = 'SOMMA'; break;
+    case 'MEDIA':   ris = (nums.reduce((s,n)=>s+n,0)/nums.length); ris = Math.round(ris*100)/100; etichetta = 'MEDIA'; break;
+    case 'MAX':     ris = Math.max(...nums); etichetta = 'MAX'; break;
+    case 'MIN':     ris = Math.min(...nums); etichetta = 'MIN'; break;
+    case 'CONTA':   ris = nums.length; etichetta = 'CONTA.NUMERI'; break;
+    case 'CONTASE6':ris = nums.filter(n=>n>=60).length; etichetta = 'CONTA.SE'; args = nums.join('; ') + '; ">=60"'; break;
+  }
+  out.textContent = '=' + etichetta + '(' + args + ') = ' + ris;
+}
+
+// ---- Quiz interattivo Excel ----
+const domande = [
+  { q: "Con cosa deve iniziare SEMPRE una formula in Excel?", opzioni: ["Con una lettera", "Con il segno =", "Con il segno +", "Con una parentesi"], giusta: 1, spiega: "Ogni formula inizia con il segno = che dice a Excel di calcolare." },
+  { q: "Cosa significa il riferimento $A$1 ?", opzioni: ["Riferimento relativo", "Una cella di valuta", "Riferimento assoluto (resta fisso copiando)", "Un errore"], giusta: 2, spiega: "I simboli $ rendono il riferimento assoluto: non cambia quando copi la formula." },
+  { q: "Quale funzione somma solo le celle che soddisfano un criterio?", opzioni: ["SOMMA", "SOMMA.SE", "CONTA.NUMERI", "MEDIA"], giusta: 1, spiega: "SOMMA.SE somma solo le celle che rispettano il criterio indicato." },
+  { q: "Cosa restituisce =SE(5>=6; \"Sì\"; \"No\") ?", opzioni: ["Sì", "No", "5", "Errore"], giusta: 1, spiega: "5>=6 è falso, quindi SE restituisce il terzo argomento: \"No\"." },
+  { q: "A cosa serve CERCA.VERT?", opzioni: ["A ordinare i dati", "A cercare un valore in una tabella e restituirne un altro dalla stessa riga", "A contare le celle", "A creare un grafico"], giusta: 1, spiega: "CERCA.VERT cerca nella prima colonna e restituisce un valore dalla stessa riga." },
+  { q: "Quale notazione indica l'intervallo dalla A1 alla A10?", opzioni: ["A1-A10", "A1;A10", "A1:A10", "A1.A10"], giusta: 2, spiega: "I due punti indicano un intervallo: A1:A10 sono tutte le celle dalla A1 alla A10." },
+  { q: "=2 + 3 * 4 quanto fa?", opzioni: ["20", "14", "24", "9"], giusta: 1, spiega: "La moltiplicazione viene prima: 3*4=12, poi +2 = 14." },
+  { q: "Qual è lo strumento migliore per riassumere migliaia di righe di dati?", opzioni: ["La formattazione condizionale", "Il grafico a torta", "La tabella pivot", "La funzione MAX"], giusta: 2, spiega: "Le tabelle pivot aggregano e riassumono grandi quantità di dati senza scrivere formule." }
+];
+
+let idx = 0, punteggio = 0, risposto = false;
+const cont = document.getElementById('quizContenuto');
+const prog = document.getElementById('quizProgresso');
+const btnAvanti = document.getElementById('quizAvanti');
+
+function mostraDomanda(){
+  risposto = false;
+  const d = domande[idx];
+  let html = '<div class="domanda">' + (idx+1) + '. ' + d.q + '</div>';
+  d.opzioni.forEach((o, i) => { html += '<button class="opzione" data-i="' + i + '">' + o + '</button>'; });
+  html += '<div class="feedback" id="quizFeedback"></div>';
+  cont.innerHTML = html;
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'none';
+  cont.querySelectorAll('.opzione').forEach(b => b.addEventListener('click', rispondi));
+}
+
+function rispondi(e){
+  if(risposto) return;
+  risposto = true;
+  const scelta = parseInt(e.target.dataset.i);
+  const d = domande[idx];
+  cont.querySelectorAll('.opzione').forEach((b, i) => {
+    b.disabled = true;
+    if(i === d.giusta) b.classList.add('giusta');
+    else if(i === scelta) b.classList.add('sbagliata');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if(scelta === d.giusta){ punteggio++; fb.style.color = '#16a34a'; fb.textContent = '✅ Corretto! ' + d.spiega; }
+  else { fb.style.color = '#dc2626'; fb.textContent = '❌ Sbagliato. ' + d.spiega; }
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'inline-block';
+  btnAvanti.textContent = (idx < domande.length - 1) ? 'Prossima domanda →' : 'Vedi risultato 🏁';
+}
+
+btnAvanti.addEventListener('click', () => {
+  idx++;
+  if(idx < domande.length) mostraDomanda(); else mostraRisultato();
+});
+
+function mostraRisultato(){
+  const perc = Math.round((punteggio / domande.length) * 100);
+  let msg = perc >= 70 ? '🎉 Ottimo! Padroneggi Excel!' : perc >= 50 ? '👍 Buon lavoro, ripassa e riprova!' : '📚 Continua a studiare: rivedi le lezioni!';
+  cont.innerHTML = '<div class="punteggio"><div class="big">' + punteggio + ' / ' + domande.length + '</div>' +
+    '<p style="margin:.4rem 0">Hai risposto correttamente al ' + perc + '% delle domande.</p>' +
+    '<p style="font-weight:600;color:#166534">' + msg + '</p>' +
+    '<button class="btn btn-primary btn-sm" id="quizRicomincia" style="margin-top:.6rem">↺ Ricomincia il quiz</button></div>';
+  prog.textContent = 'Quiz completato';
+  btnAvanti.style.display = 'none';
+  document.getElementById('quizRicomincia').addEventListener('click', () => { idx = 0; punteggio = 0; mostraDomanda(); });
+}
+
+mostraDomanda();
+</script>
+</body>
+</html>
