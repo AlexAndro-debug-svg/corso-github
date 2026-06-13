@@ -1119,8 +1119,7 @@ function openEditor(code, mode){
 
 function updatePreview(){
   const iframe = document.getElementById('ed-preview');
-  const doc = iframe.contentDocument || iframe.contentWindow.document;
-  doc.open(); doc.write(cm.getValue()); doc.close();
+  iframe.srcdoc = cm.getValue();
 }
 
 function closeEditor(){
