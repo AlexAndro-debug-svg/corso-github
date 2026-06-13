@@ -64,12 +64,14 @@
     .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
     .ed-close { background: #e2e8f0; color: #334155; }
     .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
     .code-editor { flex: 1; overflow: hidden; }
     .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
     .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
     .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    #ed-preview { flex: 1; border: none; background: #fff; }
     @media(max-width:700px){ .editor-panes { flex-direction: column; } }
     .codeview .token.builtin { color: #fb923c; }
     .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
@@ -757,13 +759,14 @@ return &lt;risultato&gt;{$libro/titolo}&lt;/risultato&gt;</code></pre>
     <div class="editor-top">
       <strong>&#x270F;&#xFE0F; Provalo tu &mdash; leggi e modifica il codice XML</strong>
       <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button id="ed-close" class="ed-btn ed-close">&times; Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">NOTE</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" sandbox="allow-scripts"></iframe>
       </div>
     </div>
@@ -778,24 +781,36 @@ return &lt;risultato&gt;{$libro/titolo}&lt;/risultato&gt;</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
     var cm = null;
 
     function note(){
-      preview.srcdoc = '<body style="font-family:Inter,system-ui,sans-serif;color:#e2e8f0;padding:1.4rem;line-height:1.6;background:#1e293b">'
-        + '<h3 style="margin:0 0 .6rem;color:#ffffff">&#x1F4C4; Codice XML</h3>'
+      var bodyStyle = edDark
+        ? 'font-family:Inter,system-ui,sans-serif;color:#f1f5f9;background:#1e293b;padding:1.4rem;line-height:1.6'
+        : 'font-family:Inter,system-ui,sans-serif;color:#334155;background:#fff;padding:1.4rem;line-height:1.6';
+      var sugColor = edDark ? '#cbd5e1' : '#64748b';
+      preview.srcdoc = '<body style="' + bodyStyle + '">'
+        + '<h3 style="margin:0 0 .6rem;color:inherit">&#x1F4C4; Codice XML</h3>'
         + '<p>XML &egrave; un formato di <b>dati testuali</b>: non viene eseguito, ma letto e validato. '
         + 'Puoi aprire un file <code>.xml</code> direttamente nel <b>browser</b> per vederne l&apos;albero, '
         + 'oppure elaborarlo con JavaScript (DOMParser), Python o un altro linguaggio.</p>'
         + '<p>Puoi <b>leggere e modificare</b> il codice qui con la sintassi colorata, '
         + 'poi salvarlo in un file e aprirlo o validarlo.</p>'
-        + '<p style="color:#cbd5e1;font-size:.9rem">&#x1F4A1; Suggerimento: per provare e validare XML online puoi usare '
+        + '<p style="color:' + sugColor + ';font-size:.9rem">&#x1F4A1; Suggerimento: per provare e validare XML online puoi usare '
         + '<b>xmlvalidation.com</b> o un editor come <b>VS Code</b> con l&apos;estensione XML. '
         + 'Per trasformazioni XSLT prova <b>xsltfiddle</b>.</p>'
         + '</body>';
@@ -806,11 +821,19 @@ return &lt;risultato&gt;{$libro/titolo}&lt;/risultato&gt;</code></pre>
         try {
           cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
             mode: mode || 'xml', lineNumbers: true, lineWrapping: false,
-            tabSize: 2, indentUnit: 2, theme: 'default', readOnly: true
+            tabSize: 2, indentUnit: 2, theme: edDark ? 'material-darker' : 'default', readOnly: true
           });
         } catch(e){ cm = null; }
       }
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      preview.style.background = edDark ? '#1e293b' : '#fff';
+      note();
+    }
+    window._edApplyTheme = applyTheme;
 
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code, mode){
@@ -821,7 +844,7 @@ return &lt;risultato&gt;{$libro/titolo}&lt;/risultato&gt;</code></pre>
       ensureCM(mode);
       if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
       else { document.getElementById('ed-code').value = code; }
-      note();
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
 
