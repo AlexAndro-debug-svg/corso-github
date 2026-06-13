@@ -1090,6 +1090,7 @@ function applyTheme(){
   if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
   if(iframe) iframe.style.background = edDark ? '#1e293b' : '#fff';
   if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+  if(cm) updatePreview();
 }
 
 function toggleTheme(){
@@ -1119,7 +1120,20 @@ function openEditor(code, mode){
 
 function updatePreview(){
   const iframe = document.getElementById('ed-preview');
-  iframe.srcdoc = cm.getValue();
+  let content = cm.getValue();
+  if(edDark){
+    const darkCss = '<style>html,body{background:#1e293b !important;color:#f1f5f9 !important;}'
+      + 'h1,h2,h3,h4,h5,h6,p,span,div,li,td,th,label,a,strong,em,pre,code,small,b{color:#f1f5f9 !important;}'
+      + 'a{color:#7dd3fc !important;}</style>';
+    if(/<\/head>/i.test(content)){
+      content = content.replace(/<\/head>/i, darkCss + '</head>');
+    } else if(/<body[^>]*>/i.test(content)){
+      content = content.replace(/(<body[^>]*>)/i, '$1' + darkCss);
+    } else {
+      content = darkCss + content;
+    }
+  }
+  iframe.srcdoc = content;
 }
 
 function closeEditor(){
