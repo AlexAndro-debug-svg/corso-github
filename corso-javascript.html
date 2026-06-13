@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
   <link rel="stylesheet" href="css/style.css?v=6">
   <style>
     /* ---- Layout corso ---- */
@@ -67,8 +68,10 @@
     .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
     .ed-run { background: #04AA6D; color: #fff; }
     .ed-run:hover { background: #038a59; }
-    .ed-close { background: #64748b; color: #fff; }
-    .ed-close:hover { background: #475569; }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
     .editor-panes > div { min-width: 0; }
     .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
@@ -1250,13 +1253,14 @@ console.log(adulti);  // Luca e Gio</pre></details>
       <strong>✏️ Provalo tu — scrivi e guarda il risultato</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">▶ Esegui</button>
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Risultato</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Anteprima del codice"></iframe>
       </div>
     </div>
@@ -1291,6 +1295,13 @@ console.log(adulti);  // Luca e Gio</pre></details>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 <script src="js/main.js?v=5"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
@@ -1304,7 +1315,7 @@ console.log(adulti);  // Luca e Gio</pre></details>
         try {
           cm = CodeMirror.fromTextArea(ta, {
             mode: "htmlmixed", lineNumbers: true, lineWrapping: false,
-            tabSize: 2, indentUnit: 2, theme: 'default'
+            tabSize: 2, indentUnit: 2, theme: edDark ? 'material-darker' : 'default'
           });
           cm.on('change', run);
         } catch (e) { cm = null; }
@@ -1314,8 +1325,25 @@ console.log(adulti);  // Luca e Gio</pre></details>
     function getCode(){ return cm ? cm.getValue() : ta.value; }
     function setCode(v){ if (cm) { cm.setValue(v); } else { ta.value = v; } }
 
+    function injectDarkStyles(html){
+      var css = '<style>html,body{background:#1e293b !important;color:#f1f5f9 !important;}'
+        + 'h1,h2,h3,h4,h5,h6,p,span,div,li,td,th,label,a,strong,em,pre,code,small,b{color:#f1f5f9 !important;}'
+        + 'a{color:#7dd3fc !important;}</style>';
+      if(/<\/head>/i.test(html)) return html.replace(/<\/head>/i, css + '</head>');
+      if(/<body[^>]*>/i.test(html)) return html.replace(/(<body[^>]*>)/i, '$1' + css);
+      return css + html;
+    }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      preview.style.background = edDark ? '#1e293b' : '#fff';
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      run();
+    }
+    window._edApplyTheme = applyTheme;
+
     function run(){
-      if (RUNNABLE) { preview.srcdoc = getCode(); }
+      if (RUNNABLE) { var _c = getCode(); if(edDark) _c = injectDarkStyles(_c); preview.srcdoc = _c; }
       else {
         preview.srcdoc = '<body style="font-family:sans-serif;color:#475569;padding:1.4rem;line-height:1.6">'
           + '<h3 style="margin:0 0 .6rem;color:#1e293b">▶ Anteprima non disponibile nel browser</h3>'
@@ -1333,7 +1361,7 @@ console.log(adulti);  // Luca e Gio</pre></details>
       ensureCM();
       setCode(code);
       setTimeout(function(){ if (cm) { cm.refresh(); cm.focus(); } }, 20);
-      run();
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
