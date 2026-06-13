@@ -66,12 +66,14 @@
     .ed-close:hover { background: #cbd5e1; }
     .ed-run { background: #04AA6D; color: #fff; }
     .ed-run:hover { background: #038a59; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
     .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
     .code-editor { flex: 1; overflow: hidden; }
     .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
     .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
     .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
-    #ed-preview { flex: 1; border: none; background: #1e293b; }
+    #ed-preview { flex: 1; border: none; background: #fff; }
     @media(max-width:700px){ .editor-panes { flex-direction: column; } }
     .codeview .token.builtin { color: #fb923c; }
     .codeview .token.decorator { color: #f472b6; }
@@ -924,13 +926,14 @@ print([fibonacci(i) for i in range(10)])
       <strong>&#x270F;&#xFE0F; Provalo tu &mdash; scrivi ed esegui Python (DSA)</strong>
       <div class="ed-actions">
         <button class="ed-btn ed-run" id="ed-run">&#x25B6; Esegui</button>
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
         <button class="ed-btn ed-close" id="ed-close">&times; Chiudi</button>
       </div>
     </div>
     <div class="editor-panes">
       <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
       <div class="preview-wrap">
-        <div class="preview-label">Risultato</div>
+        <div class="preview-label">Anteprima</div>
         <iframe id="ed-preview" title="Output del codice Python"></iframe>
       </div>
     </div>
@@ -943,25 +946,48 @@ print([fibonacci(i) for i in range(10)])
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
   (function(){
     var overlay = document.getElementById('editor');
     var preview = document.getElementById('ed-preview');
 
     var cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
       mode: 'python', lineNumbers: true, lineWrapping: false,
-      tabSize: 4, indentUnit: 4, theme: 'default'
+      tabSize: 4, indentUnit: 4, theme: edDark ? 'material-darker' : 'default'
     });
 
     var pyodide = null, pyLoading = false;
+    var lastBody = '<span style="color:#94a3b8">Premi ▶ Esegui (in alto) per lanciare il codice Python.</span>';
 
     function shell(body){
+      lastBody = body;
+      if(edDark){
+        return '<body style="margin:0;font-family:Consolas,Monaco,monospace;font-size:.9rem;'
+          + 'line-height:1.55;background:#1e293b;color:#e2e8f0;padding:1.1rem;white-space:pre-wrap">'
+          + body + '</body>';
+      }
       return '<body style="margin:0;font-family:Consolas,Monaco,monospace;font-size:.9rem;'
-        + 'line-height:1.55;background:#1e293b;color:#e2e8f0;padding:1.1rem;white-space:pre-wrap">'
+        + 'line-height:1.55;background:#fff;color:#1e293b;padding:1.1rem;white-space:pre-wrap">'
         + body + '</body>';
     }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      preview.style.background = edDark ? '#1e293b' : '#fff';
+      preview.srcdoc = shell(lastBody);
+    }
+    window._edApplyTheme = applyTheme;
     function escapeHtml(s){
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
@@ -1011,6 +1037,7 @@ print([fibonacci(i) for i in range(10)])
       cm.setValue(code);
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
       preview.srcdoc = shell('<span style="color:#94a3b8">Premi \u25B6 Esegui (in alto) per lanciare il codice Python.</span>');
+      applyTheme();
     }
     function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
 
