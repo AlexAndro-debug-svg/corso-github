@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso AWS in italiano completo e gratuito — cloud computing, EC2, S3, Lambda, sicurezza | AlessandroSimone.it</title>
+  <meta name="description" content="Corso AWS Cloud completo in italiano: cloud computing, EC2, S3, Lambda, containers, networking VPC, database RDS e DynamoDB, sicurezza IAM, monitoring, pricing e preparazione alla certificazione Cloud Practitioner. Tutorial gratuito con quiz.">
+  <meta name="keywords" content="corso aws italiano, aws tutorial, cloud computing, aws ec2, aws s3, aws lambda, aws iam, cloud practitioner, certificazione aws, amazon web services">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso AWS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara AWS da zero in italiano: cloud computing, EC2, S3, Lambda, sicurezza, networking. Gratuito con quiz per la certificazione Cloud Practitioner.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.property { color: #5eead4; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    /* Servizi grid */
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: .8rem; margin: 1rem 0 1.4rem; }
+    .svc { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: .9rem; text-align: center; }
+    .svc .ic { font-size: 1.6rem; }
+    .svc strong { display: block; font-size: .92rem; margin: .3rem 0 .15rem; color: var(--ink); }
+    .svc span { font-size: .78rem; color: var(--muted); }
+    /* Quiz */
+    .quiz { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin: 1rem 0; }
+    .quiz .domanda { font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+    .quiz .opzione { display: block; width: 100%; text-align: left; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: .7rem .9rem; margin-bottom: .5rem; cursor: pointer; font-family: var(--font); font-size: .95rem; transition: var(--transition); color: var(--ink); }
+    .quiz .opzione:hover { border-color: var(--primary); }
+    .quiz .opzione.giusta { background: #dcfce7; border-color: #16a34a; color: #166534; font-weight: 600; }
+    .quiz .opzione.sbagliata { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+    .quiz .opzione:disabled { cursor: default; }
+    .quiz .feedback { margin-top: .6rem; font-weight: 600; font-size: .92rem; }
+    .quiz .nav-quiz { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+    .quiz .punteggio { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.4rem; text-align: center; }
+    .quiz .punteggio .big { font-size: 2.4rem; font-weight: 800; color: #166534; }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-aws.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-aws.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso AWS in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial AWS Cloud completo: EC2, S3, Lambda, sicurezza, networking. Gratuito con quiz per Cloud Practitioner.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso AWS in italiano","description":"Corso AWS Cloud italiano completo e gratuito: cloud computing, EC2, S3, Lambda, containers, networking VPC, database, sicurezza IAM, monitoring, pricing e preparazione alla certificazione Cloud Practitioner.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-aws.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html">W3.CSS</a>
+    <a href="corso-angularjs.html">ANGULARJS</a>
+    <a href="corso-ai.html">AI</a>
+    <a href="corso-aws.html" class="active">AWS</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso AWS Cloud in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Amazon Web Services è la piattaforma cloud più usata al mondo. Impara cloud computing, EC2, S3, Lambda, containers, networking, database, sicurezza e pricing. Un percorso completo orientato alla certificazione <strong>AWS Certified Cloud Practitioner</strong>, con quiz finale.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Fondamenti</h4>
+<a href="#intro">Introduzione</a>
+<a href="#cloud">Cloud Computing</a>
+<a href="#vantaggi">Vantaggi e modelli</a>
+<a href="#infrastruttura">Infrastruttura globale</a>
+<h4>Compute</h4>
+<a href="#ec2">EC2</a>
+<a href="#scaling">Scaling e Load Balancing</a>
+<a href="#serverless">Serverless e Container</a>
+<h4>Integrazione</h4>
+<a href="#messaging">Messaging</a>
+<h4>Networking</h4>
+<a href="#networking">VPC e Networking</a>
+<h4>Storage & Database</h4>
+<a href="#storage">Storage (S3, EBS, EFS)</a>
+<a href="#database">Database</a>
+<h4>Dati & AI</h4>
+<a href="#aiml">AI/ML e Analytics</a>
+<h4>Sicurezza</h4>
+<a href="#sicurezza">Sicurezza e IAM</a>
+<a href="#monitoring">Monitoring e Governance</a>
+<h4>Costi & Migrazione</h4>
+<a href="#pricing">Pricing e Support</a>
+<a href="#migrazione">Migrazione e Well-Architected</a>
+<h4>Certificazione</h4>
+<a href="#quiz">Quiz interattivo</a>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- 1. INTRO -->
+<article class="lesson" id="intro">
+<h2>Introduzione ad AWS</h2>
+<p><strong>Amazon Web Services (AWS)</strong> è la piattaforma di cloud computing di Amazon, lanciata nel 2006. Offre oltre 200 servizi — server, storage, database, networking, machine learning — disponibili on-demand e pagati a consumo.</p>
+<table class="ref">
+<tr><th>Dato</th><th>Valore</th></tr>
+<tr><td><strong>Lancio</strong></td><td>2006 (S3 ed EC2)</td></tr>
+<tr><td><strong>Quota di mercato cloud</strong></td><td>~30-32% (leader mondiale)</td></tr>
+<tr><td><strong>Servizi</strong></td><td>Oltre 200</td></tr>
+<tr><td><strong>Modello</strong></td><td>Pay-as-you-go (paghi solo ciò che usi)</td></tr>
+</table>
+<div class="note-box">🎯 <strong>Obiettivo del corso:</strong> prepararti alla certificazione <strong>AWS Certified Cloud Practitioner (CLF-C02)</strong>, l'esame d'ingresso che valida la comprensione di base del cloud AWS.</div>
+</article>
+
+<!-- 2. CLOUD COMPUTING -->
+<article class="lesson" id="cloud">
+<h2>Cloud Computing</h2>
+<p>Il <strong>cloud computing</strong> è la fornitura di risorse informatiche (server, storage, database, software) tramite Internet, con pagamento a consumo, invece di possedere data center fisici.</p>
+<h3>I tre modelli di servizio</h3>
+<table class="ref">
+<tr><th>Modello</th><th>Cosa gestisci tu</th><th>Esempio AWS</th></tr>
+<tr><td><strong>IaaS</strong> (Infrastructure)</td><td>SO, applicazioni, dati</td><td>EC2</td></tr>
+<tr><td><strong>PaaS</strong> (Platform)</td><td>Solo applicazioni e dati</td><td>Elastic Beanstalk</td></tr>
+<tr><td><strong>SaaS</strong> (Software)</td><td>Niente, usi e basta</td><td>Amazon WorkMail</td></tr>
+</table>
+<h3>Modelli di deployment</h3>
+<ul>
+  <li><strong>Cloud pubblico:</strong> risorse condivise erogate da AWS via Internet</li>
+  <li><strong>Cloud privato:</strong> infrastruttura dedicata a una sola organizzazione</li>
+  <li><strong>Cloud ibrido:</strong> combinazione di cloud e data center on-premise</li>
+</ul>
+<div class="tip-box">💡 Pensa al cloud come all'elettricità: non costruisci una centrale, ti colleghi alla rete e paghi i kWh che consumi.</div>
+</article>
+
+<!-- 3. VANTAGGI -->
+<article class="lesson" id="vantaggi">
+<h2>Vantaggi del cloud</h2>
+<table class="ref">
+<tr><th>Vantaggio</th><th>Descrizione</th></tr>
+<tr><td><strong>Nessun investimento iniziale</strong></td><td>Da CapEx (acquisto hardware) a OpEx (spesa operativa)</td></tr>
+<tr><td><strong>Elasticità</strong></td><td>Scala su e giù in base alla domanda reale</td></tr>
+<tr><td><strong>Economia di scala</strong></td><td>Prezzi più bassi grazie ai volumi di AWS</td></tr>
+<tr><td><strong>Velocità e agilità</strong></td><td>Nuove risorse in minuti, non settimane</td></tr>
+<tr><td><strong>Portata globale</strong></td><td>Distribuisci l'app nel mondo in pochi clic</td></tr>
+<tr><td><strong>Affidabilità</strong></td><td>Ridondanza e alta disponibilità integrate</td></tr>
+</table>
+<div class="note-box">☁️ I <strong>6 vantaggi del cloud</strong> secondo AWS: 1) trasformare le spese, 2) beneficiare di economie di scala, 3) smettere di indovinare la capacità, 4) aumentare velocità e agilità, 5) non spendere per gestire data center, 6) diventare globali in minuti.</div>
+</article>
+
+<!-- 4. INFRASTRUTTURA -->
+<article class="lesson" id="infrastruttura">
+<h2>Infrastruttura globale</h2>
+<p>AWS gestisce data center in tutto il mondo, organizzati in modo gerarchico per garantire prestazioni e resilienza.</p>
+<table class="ref">
+<tr><th>Componente</th><th>Descrizione</th></tr>
+<tr><td><strong>Region</strong></td><td>Area geografica (es. eu-south-1 = Milano). Contiene più AZ.</td></tr>
+<tr><td><strong>Availability Zone (AZ)</strong></td><td>Uno o più data center isolati all'interno di una Region</td></tr>
+<tr><td><strong>Edge Location</strong></td><td>Punto di presenza per la CDN (CloudFront), vicino agli utenti</td></tr>
+</table>
+<div class="svc-grid">
+  <div class="svc"><div class="ic">🌍</div><strong>Region</strong><span>Milano, Francoforte, Virginia...</span></div>
+  <div class="svc"><div class="ic">🏢</div><strong>AZ</strong><span>Data center ridondanti</span></div>
+  <div class="svc"><div class="ic">📡</div><strong>Edge</strong><span>400+ punti di presenza</span></div>
+</div>
+<div class="warn-box">⚠️ <strong>Best practice:</strong> distribuisci sempre le risorse su <strong>più Availability Zone</strong>. Se un'AZ ha un guasto, l'applicazione resta online nelle altre.</div>
+</article>
+
+<!-- 5. EC2 -->
+<article class="lesson" id="ec2">
+<h2>Amazon EC2</h2>
+<p><strong>EC2 (Elastic Compute Cloud)</strong> fornisce server virtuali (chiamati <em>istanze</em>) nel cloud. È il servizio IaaS fondamentale: scegli sistema operativo, CPU, RAM e paghi a ore/secondi.</p>
+<h3>Tipi di istanza</h3>
+<table class="ref">
+<tr><th>Famiglia</th><th>Ottimizzata per</th></tr>
+<tr><td><strong>General Purpose</strong> (t, m)</td><td>Bilanciate, uso generico</td></tr>
+<tr><td><strong>Compute Optimized</strong> (c)</td><td>Calcolo intensivo (CPU)</td></tr>
+<tr><td><strong>Memory Optimized</strong> (r, x)</td><td>Grandi dataset in memoria</td></tr>
+<tr><td><strong>Storage Optimized</strong> (i, d)</td><td>Alto I/O su disco</td></tr>
+<tr><td><strong>Accelerated</strong> (p, g)</td><td>GPU, machine learning</td></tr>
+</table>
+<h3>Modelli di pricing EC2</h3>
+<table class="ref">
+<tr><th>Modello</th><th>Quando usarlo</th></tr>
+<tr><td><strong>On-Demand</strong></td><td>Carichi variabili e a breve termine</td></tr>
+<tr><td><strong>Reserved Instances</strong></td><td>Carichi stabili (sconto fino al 72%, impegno 1-3 anni)</td></tr>
+<tr><td><strong>Savings Plans</strong></td><td>Impegno di spesa flessibile</td></tr>
+<tr><td><strong>Spot Instances</strong></td><td>Capacità inutilizzata (sconto fino al 90%, interrompibile)</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>AWS CLI — avviare un'istanza EC2</span></div>
+<pre class="codeview"><code class="language-bash"># Avvia un'istanza EC2 t3.micro nella Region di Milano
+aws ec2 run-instances \
+  --image-id ami-0abcdef1234567890 \
+  --instance-type t3.micro \
+  --key-name la-mia-chiave \
+  --region eu-south-1 \
+  --count 1
+
+# Elenca le istanze in esecuzione
+aws ec2 describe-instances \
+  --filters "Name=instance-state-name,Values=running"</code></pre>
+</div>
+</article>
+
+<!-- 6. SCALING -->
+<article class="lesson" id="scaling">
+<h2>Scaling e Load Balancing</h2>
+<p>La <strong>scalabilità</strong> è il superpotere del cloud: aggiungere o rimuovere capacità automaticamente in base alla domanda.</p>
+<table class="ref">
+<tr><th>Concetto</th><th>Descrizione</th></tr>
+<tr><td><strong>Scaling verticale</strong></td><td>Istanza più potente (più CPU/RAM)</td></tr>
+<tr><td><strong>Scaling orizzontale</strong></td><td>Più istanze in parallelo (preferito nel cloud)</td></tr>
+<tr><td><strong>Auto Scaling</strong></td><td>Aggiunge/rimuove istanze automaticamente</td></tr>
+<tr><td><strong>Elastic Load Balancing (ELB)</strong></td><td>Distribuisce il traffico tra le istanze</td></tr>
+</table>
+<div class="note-box">⚖️ <strong>ELB + Auto Scaling</strong> lavorano insieme: il load balancer distribuisce le richieste, l'auto scaling aggiunge istanze quando il traffico cresce e le rimuove quando cala, ottimizzando costi e prestazioni.</div>
+<h3>Tipi di Load Balancer</h3>
+<ul>
+  <li><strong>Application Load Balancer (ALB):</strong> livello 7 (HTTP/HTTPS), routing intelligente</li>
+  <li><strong>Network Load Balancer (NLB):</strong> livello 4 (TCP/UDP), altissime prestazioni</li>
+  <li><strong>Gateway Load Balancer:</strong> per appliance di rete virtuali</li>
+</ul>
+</article>
+
+<!-- 7. SERVERLESS -->
+<article class="lesson" id="serverless">
+<h2>Serverless e Container</h2>
+<p>Con il <strong>serverless</strong> non gestisci server: scrivi il codice e AWS si occupa di tutto il resto, scalando automaticamente e facendoti pagare solo per l'esecuzione reale.</p>
+<h3>AWS Lambda</h3>
+<p><strong>Lambda</strong> esegue funzioni in risposta a eventi (una richiesta HTTP, un file caricato su S3, un messaggio). Paghi solo i millisecondi di esecuzione.</p>
+<div class="example">
+<div class="codehead"><span>AWS Lambda — funzione in Node.js</span></div>
+<pre class="codeview"><code class="language-javascript">// Funzione Lambda attivata da un evento (es. API Gateway)
+exports.handler = async (event) =&gt; {
+  const nome = event.queryStringParameters?.nome || 'Mondo';
+
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      messaggio: `Ciao, ${nome}! Eseguito su AWS Lambda.`,
+      timestamp: new Date().toISOString()
+    })
+  };
+};</code></pre>
+</div>
+<h3>Container su AWS</h3>
+<div class="svc-grid">
+  <div class="svc"><div class="ic">📦</div><strong>ECS</strong><span>Orchestrazione container AWS</span></div>
+  <div class="svc"><div class="ic">☸️</div><strong>EKS</strong><span>Kubernetes gestito</span></div>
+  <div class="svc"><div class="ic">⚡</div><strong>Fargate</strong><span>Container serverless</span></div>
+  <div class="svc"><div class="ic">🌱</div><strong>Beanstalk</strong><span>Deploy app gestito (PaaS)</span></div>
+</div>
+<table class="ref">
+<tr><th>Servizio</th><th>Uso</th></tr>
+<tr><td><strong>ECS</strong></td><td>Orchestrazione container nativa AWS</td></tr>
+<tr><td><strong>EKS</strong></td><td>Kubernetes gestito per chi conosce K8s</td></tr>
+<tr><td><strong>Fargate</strong></td><td>Esegui container senza gestire server</td></tr>
+<tr><td><strong>Elastic Beanstalk</strong></td><td>Carichi il codice, AWS gestisce infrastruttura e scaling</td></tr>
+</table>
+</article>
+
+<!-- 8. MESSAGING -->
+<article class="lesson" id="messaging">
+<h2>Messaging e integrazione</h2>
+<p>I servizi di messaging permettono ai componenti di un'applicazione di comunicare in modo <strong>disaccoppiato</strong> e asincrono, aumentando resilienza e scalabilità.</p>
+<table class="ref">
+<tr><th>Servizio</th><th>Modello</th><th>Uso tipico</th></tr>
+<tr><td><strong>SQS</strong></td><td>Coda di messaggi</td><td>Disaccoppiare produttori e consumatori</td></tr>
+<tr><td><strong>SNS</strong></td><td>Pub/Sub (notifiche)</td><td>Inviare un messaggio a molti destinatari</td></tr>
+<tr><td><strong>EventBridge</strong></td><td>Event bus</td><td>Architetture event-driven tra servizi</td></tr>
+</table>
+<div class="note-box">📨 <strong>SQS vs SNS:</strong> SQS è una <em>coda</em> (un messaggio → un consumatore che lo preleva). SNS è <em>pub/sub</em> (un messaggio → tutti gli iscritti lo ricevono). Spesso si combinano nel pattern "fan-out".</div>
+<div class="example">
+<div class="codehead"><span>AWS CLI — inviare un messaggio a una coda SQS</span></div>
+<pre class="codeview"><code class="language-bash">aws sqs send-message \
+  --queue-url https://sqs.eu-south-1.amazonaws.com/123456789/mia-coda \
+  --message-body "Nuovo ordine #4521 da elaborare"</code></pre>
+</div>
+</article>
+
+<!-- 9. NETWORKING -->
+<article class="lesson" id="networking">
+<h2>VPC e Networking</h2>
+<p>Una <strong>VPC (Virtual Private Cloud)</strong> è la tua rete privata isolata dentro AWS, dove lanci le risorse con pieno controllo su indirizzi IP, subnet e routing.</p>
+<table class="ref">
+<tr><th>Componente</th><th>Funzione</th></tr>
+<tr><td><strong>VPC</strong></td><td>Rete virtuale isolata</td></tr>
+<tr><td><strong>Subnet</strong></td><td>Sottorete (pubblica o privata) in una AZ</td></tr>
+<tr><td><strong>Internet Gateway</strong></td><td>Connette la VPC a Internet</td></tr>
+<tr><td><strong>NAT Gateway</strong></td><td>Permette alle subnet private di uscire su Internet</td></tr>
+<tr><td><strong>Security Group</strong></td><td>Firewall a livello di istanza (stateful)</td></tr>
+<tr><td><strong>Network ACL</strong></td><td>Firewall a livello di subnet (stateless)</td></tr>
+<tr><td><strong>CloudFront</strong></td><td>CDN: distribuisce contenuti dalle Edge Location</td></tr>
+<tr><td><strong>Route 53</strong></td><td>Servizio DNS gestito</td></tr>
+</table>
+<div class="tip-box">💡 <strong>Subnet pubblica</strong> = ha una rotta verso l'Internet Gateway (es. web server). <strong>Subnet privata</strong> = nessun accesso diretto da Internet (es. database).</div>
+</article>
+
+<!-- 10. STORAGE -->
+<article class="lesson" id="storage">
+<h2>Storage: S3, EBS, EFS</h2>
+<p>AWS offre diversi tipi di storage per esigenze diverse.</p>
+<table class="ref">
+<tr><th>Servizio</th><th>Tipo</th><th>Uso</th></tr>
+<tr><td><strong>S3</strong></td><td>Object storage</td><td>File, backup, siti statici, data lake</td></tr>
+<tr><td><strong>EBS</strong></td><td>Block storage</td><td>Dischi per le istanze EC2</td></tr>
+<tr><td><strong>EFS</strong></td><td>File storage</td><td>File system condiviso tra più istanze</td></tr>
+<tr><td><strong>Instance Store</strong></td><td>Block temporaneo</td><td>Storage effimero legato all'istanza</td></tr>
+</table>
+<h3>Amazon S3 in dettaglio</h3>
+<p><strong>S3 (Simple Storage Service)</strong> archivia oggetti in "bucket" con durabilità del <strong>99,999999999%</strong> (11 nove). Le classi di storage ottimizzano i costi in base alla frequenza d'accesso.</p>
+<table class="ref">
+<tr><th>Classe S3</th><th>Uso</th></tr>
+<tr><td><strong>Standard</strong></td><td>Dati ad accesso frequente</td></tr>
+<tr><td><strong>Intelligent-Tiering</strong></td><td>Sposta automaticamente i dati nella classe più economica</td></tr>
+<tr><td><strong>Standard-IA / One Zone-IA</strong></td><td>Accesso infrequente</td></tr>
+<tr><td><strong>Glacier / Deep Archive</strong></td><td>Archiviazione a lungo termine, economica</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>AWS CLI — operazioni su S3</span></div>
+<pre class="codeview"><code class="language-bash"># Crea un bucket
+aws s3 mb s3://il-mio-bucket-unico --region eu-south-1
+
+# Carica un file
+aws s3 cp ./foto.jpg s3://il-mio-bucket-unico/
+
+# Sincronizza una cartella intera
+aws s3 sync ./sito-web s3://il-mio-bucket-unico/
+
+# Elenca il contenuto
+aws s3 ls s3://il-mio-bucket-unico/</code></pre>
+</div>
+</article>
+
+<!-- 11. DATABASE -->
+<article class="lesson" id="database">
+<h2>Database su AWS</h2>
+<p>AWS offre database gestiti per ogni esigenza: relazionali, NoSQL, data warehouse e in-memory.</p>
+<table class="ref">
+<tr><th>Servizio</th><th>Tipo</th><th>Uso</th></tr>
+<tr><td><strong>RDS</strong></td><td>Relazionale</td><td>MySQL, PostgreSQL, Oracle, SQL Server gestiti</td></tr>
+<tr><td><strong>Aurora</strong></td><td>Relazionale</td><td>DB cloud-native compatibile MySQL/PostgreSQL</td></tr>
+<tr><td><strong>DynamoDB</strong></td><td>NoSQL</td><td>Chiave-valore, latenza in millisecondi, serverless</td></tr>
+<tr><td><strong>Redshift</strong></td><td>Data warehouse</td><td>Analisi su grandi volumi (OLAP)</td></tr>
+<tr><td><strong>ElastiCache</strong></td><td>In-memory</td><td>Cache Redis/Memcached</td></tr>
+<tr><td><strong>DMS</strong></td><td>Migrazione</td><td>Migrare database verso AWS</td></tr>
+</table>
+<div class="note-box">🗄️ <strong>RDS vs DynamoDB:</strong> scegli <strong>RDS</strong> per dati strutturati con relazioni e query SQL complesse; scegli <strong>DynamoDB</strong> per altissima scalabilità, schema flessibile e prestazioni costanti a qualsiasi volume.</div>
+</article>
+
+<!-- 12. AI/ML -->
+<article class="lesson" id="aiml">
+<h2>AI/ML e Analytics</h2>
+<p>AWS offre servizi di intelligenza artificiale "pronti all'uso" (non serve essere data scientist) e piattaforme complete per costruire modelli.</p>
+<table class="ref">
+<tr><th>Servizio</th><th>Funzione</th></tr>
+<tr><td><strong>SageMaker</strong></td><td>Piattaforma completa per costruire e addestrare modelli ML</td></tr>
+<tr><td><strong>Rekognition</strong></td><td>Analisi di immagini e video</td></tr>
+<tr><td><strong>Comprehend</strong></td><td>Analisi del linguaggio naturale (NLP)</td></tr>
+<tr><td><strong>Polly</strong></td><td>Sintesi vocale (text-to-speech)</td></tr>
+<tr><td><strong>Transcribe</strong></td><td>Trascrizione voce-testo</td></tr>
+<tr><td><strong>Bedrock</strong></td><td>AI generativa con modelli fondazionali</td></tr>
+</table>
+<h3>Analytics</h3>
+<ul>
+  <li><strong>Athena:</strong> query SQL direttamente su file in S3</li>
+  <li><strong>Kinesis:</strong> elaborazione di dati in streaming in tempo reale</li>
+  <li><strong>Glue:</strong> servizio ETL per preparare i dati</li>
+  <li><strong>QuickSight:</strong> dashboard e business intelligence</li>
+</ul>
+</article>
+
+<!-- 13. SICUREZZA -->
+<article class="lesson" id="sicurezza">
+<h2>Sicurezza e IAM</h2>
+<p>La sicurezza è la priorità numero uno di AWS. Si basa sul <strong>modello di responsabilità condivisa</strong>.</p>
+<table class="ref">
+<tr><th>Responsabilità</th><th>Di chi</th></tr>
+<tr><td><strong>Sicurezza DEL cloud</strong> (hardware, rete, data center)</td><td>AWS</td></tr>
+<tr><td><strong>Sicurezza NEL cloud</strong> (dati, configurazioni, accessi)</td><td>Cliente</td></tr>
+</table>
+<h3>IAM (Identity and Access Management)</h3>
+<p><strong>IAM</strong> gestisce chi può accedere a cosa. Si basa su utenti, gruppi, ruoli e policy.</p>
+<div class="example">
+<div class="codehead"><span>IAM — policy JSON che concede sola lettura su un bucket S3</span></div>
+<pre class="codeview"><code class="language-json">{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::il-mio-bucket",
+        "arn:aws:s3:::il-mio-bucket/*"
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+<div class="warn-box">⚠️ <strong>Principio del privilegio minimo:</strong> concedi sempre solo i permessi strettamente necessari. Non usare mai l'utente <em>root</em> per le attività quotidiane e attiva l'<strong>MFA</strong> (autenticazione a più fattori).</div>
+<h3>Altri servizi di sicurezza</h3>
+<div class="svc-grid">
+  <div class="svc"><div class="ic">🔐</div><strong>KMS</strong><span>Gestione chiavi di crittografia</span></div>
+  <div class="svc"><div class="ic">🛡️</div><strong>Shield</strong><span>Protezione DDoS</span></div>
+  <div class="svc"><div class="ic">🧱</div><strong>WAF</strong><span>Firewall applicativo web</span></div>
+  <div class="svc"><div class="ic">🔍</div><strong>GuardDuty</strong><span>Rilevamento minacce</span></div>
+</div>
+</article>
+
+<!-- 14. MONITORING -->
+<article class="lesson" id="monitoring">
+<h2>Monitoring e Governance</h2>
+<table class="ref">
+<tr><th>Servizio</th><th>Funzione</th></tr>
+<tr><td><strong>CloudWatch</strong></td><td>Metriche, log, allarmi e dashboard</td></tr>
+<tr><td><strong>CloudTrail</strong></td><td>Registra <em>chi ha fatto cosa</em> (audit delle API)</td></tr>
+<tr><td><strong>AWS Config</strong></td><td>Traccia le modifiche alle configurazioni</td></tr>
+<tr><td><strong>Organizations</strong></td><td>Gestione centralizzata di più account AWS</td></tr>
+<tr><td><strong>Trusted Advisor</strong></td><td>Consigli su costi, sicurezza, prestazioni</td></tr>
+<tr><td><strong>AWS Health</strong></td><td>Stato di salute dei servizi e delle risorse</td></tr>
+</table>
+<div class="note-box">📊 <strong>CloudWatch vs CloudTrail:</strong> CloudWatch monitora <em>le prestazioni</em> (CPU, memoria, traffico). CloudTrail registra <em>le azioni</em> (chi ha avviato un'istanza, chi ha modificato una policy). Entrambi sono essenziali.</div>
+</article>
+
+<!-- 15. PRICING -->
+<article class="lesson" id="pricing">
+<h2>Pricing e Support</h2>
+<p>AWS segue tre principi di prezzo: <strong>paga ciò che usi</strong>, <strong>paga meno usando di più</strong>, e <strong>risparmia impegnandoti</strong>.</p>
+<table class="ref">
+<tr><th>Strumento</th><th>Funzione</th></tr>
+<tr><td><strong>Free Tier</strong></td><td>Servizi gratuiti per 12 mesi o sempre (entro limiti)</td></tr>
+<tr><td><strong>Pricing Calculator</strong></td><td>Stima i costi prima di partire</td></tr>
+<tr><td><strong>Cost Explorer</strong></td><td>Analizza e visualizza la spesa</td></tr>
+<tr><td><strong>Budgets</strong></td><td>Imposta avvisi quando superi una soglia di spesa</td></tr>
+<tr><td><strong>Cost &amp; Usage Report</strong></td><td>Report dettagliato di costi e utilizzo</td></tr>
+</table>
+<h3>Piani di supporto</h3>
+<table class="ref">
+<tr><th>Piano</th><th>Per chi</th></tr>
+<tr><td><strong>Basic</strong></td><td>Gratuito, documentazione e forum</td></tr>
+<tr><td><strong>Developer</strong></td><td>Sviluppo e test</td></tr>
+<tr><td><strong>Business</strong></td><td>Carichi di produzione</td></tr>
+<tr><td><strong>Enterprise</strong></td><td>Carichi mission-critical, Technical Account Manager</td></tr>
+</table>
+<div class="tip-box">💡 <strong>Free Tier:</strong> include 750 ore/mese di EC2 t2/t3.micro, 5 GB di S3 e 25 GB di DynamoDB per i primi 12 mesi. Perfetto per imparare senza spendere.</div>
+</article>
+
+<!-- 16. MIGRAZIONE -->
+<article class="lesson" id="migrazione">
+<h2>Migrazione e Well-Architected</h2>
+<h3>Le 7 strategie di migrazione (7 R)</h3>
+<table class="ref">
+<tr><th>Strategia</th><th>Significato</th></tr>
+<tr><td><strong>Rehost</strong></td><td>"Lift and shift": sposti senza modifiche</td></tr>
+<tr><td><strong>Replatform</strong></td><td>Piccole ottimizzazioni durante lo spostamento</td></tr>
+<tr><td><strong>Refactor</strong></td><td>Riscrivi l'app per il cloud (es. serverless)</td></tr>
+<tr><td><strong>Repurchase</strong></td><td>Passi a una soluzione SaaS</td></tr>
+<tr><td><strong>Retain</strong></td><td>Mantieni on-premise (per ora)</td></tr>
+<tr><td><strong>Retire</strong></td><td>Dismetti ciò che non serve più</td></tr>
+<tr><td><strong>Relocate</strong></td><td>Sposti senza acquistare nuovo hardware</td></tr>
+</table>
+<h3>Well-Architected Framework</h3>
+<p>Le <strong>6 colonne</strong> per costruire bene sul cloud:</p>
+<ul>
+  <li>🏆 <strong>Operational Excellence</strong> — eccellenza operativa</li>
+  <li>🔒 <strong>Security</strong> — sicurezza</li>
+  <li>🛡️ <strong>Reliability</strong> — affidabilità</li>
+  <li>⚡ <strong>Performance Efficiency</strong> — efficienza prestazionale</li>
+  <li>💰 <strong>Cost Optimization</strong> — ottimizzazione dei costi</li>
+  <li>🌱 <strong>Sustainability</strong> — sostenibilità</li>
+</ul>
+<div class="note-box">🏗️ Il <strong>Cloud Adoption Framework (CAF)</strong> aiuta le organizzazioni a pianificare la migrazione al cloud organizzando il lavoro in 6 prospettive: Business, People, Governance, Platform, Security, Operations.</div>
+</article>
+
+<!-- 17. QUIZ -->
+<article class="lesson" id="quiz">
+<h2>Quiz interattivo</h2>
+<p>Metti alla prova le tue conoscenze con questo quiz in stile <strong>Cloud Practitioner</strong>. Clicca la risposta che ritieni corretta: scoprirai subito se hai indovinato.</p>
+<div class="quiz" id="quizBox">
+  <div id="quizContenuto"></div>
+  <div class="nav-quiz">
+    <span id="quizProgresso" style="font-size:.85rem;color:var(--muted)"></span>
+    <button class="btn btn-primary btn-sm" id="quizAvanti" style="display:none">Prossima domanda →</button>
+  </div>
+</div>
+</article>
+
+<!-- ESERCIZI -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — Crea un account Free Tier</span>
+<p>Registra un account AWS, attiva l'MFA sull'utente root e crea un utente IAM con permessi limitati. Esplora la console e individua le Region disponibili. (Resta entro il Free Tier per non avere costi.)</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — Sito statico su S3</span>
+<p>Crea un bucket S3, abilita lo "Static website hosting", carica una semplice pagina HTML e rendila pubblica con una bucket policy. Bonus: metti CloudFront davanti al bucket come CDN.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Progetta un'architettura</span>
+<p>Disegna su carta un'architettura a 3 livelli ad alta disponibilità: ALB + Auto Scaling Group di EC2 su 2 AZ + database RDS Multi-AZ. Indica subnet pubbliche/private e i Security Group.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 4 — Scegli il servizio giusto</span>
+<p>Per ognuno di questi scenari indica il servizio AWS più adatto: (a) backup a lungo termine economico, (b) API serverless, (c) cache in-memory, (d) coda per disaccoppiare microservizi, (e) CDN globale.</p>
+</div>
+</article>
+
+<!-- FINE -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso AWS Cloud. Ora conosci i servizi fondamentali e i concetti chiave per la certificazione Cloud Practitioner.</p>
+<div class="note-box"><strong>Cosa hai imparato:</strong><ul>
+  <li>Cloud computing: modelli IaaS/PaaS/SaaS e deployment</li>
+  <li>Infrastruttura globale: Region, AZ, Edge Location</li>
+  <li>Compute: EC2, scaling, ELB, Lambda, container</li>
+  <li>Storage e database: S3, EBS, EFS, RDS, DynamoDB</li>
+  <li>Networking: VPC, subnet, Security Group, CloudFront</li>
+  <li>Sicurezza: responsabilità condivisa, IAM, MFA</li>
+  <li>Monitoring: CloudWatch, CloudTrail, Trusted Advisor</li>
+  <li>Pricing, support, migrazione e Well-Architected Framework</li>
+</ul></div>
+<p>Il passo successivo? Crea un account <strong>Free Tier</strong>, mettiti alla prova con progetti reali e prenota l'esame <strong>AWS Certified Cloud Practitioner</strong>.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-cybersecurity.html" class="btn btn-primary">Vai al corso Cybersecurity →</a><a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script>
+// ---- Quiz interattivo AWS ----
+const domande = [
+  {
+    q: "Quale servizio AWS fornisce server virtuali (istanze) ridimensionabili nel cloud?",
+    opzioni: ["Amazon S3", "Amazon EC2", "Amazon RDS", "AWS Lambda"],
+    giusta: 1,
+    spiega: "Amazon EC2 (Elastic Compute Cloud) fornisce capacità di calcolo virtuale tramite istanze."
+  },
+  {
+    q: "Cosa rappresenta una 'Availability Zone' (AZ)?",
+    opzioni: ["Un singolo server fisico", "Una rete privata virtuale", "Uno o più data center isolati in una Region", "Un punto di presenza CDN"],
+    giusta: 2,
+    spiega: "Una AZ è composta da uno o più data center isolati e ridondanti all'interno di una Region."
+  },
+  {
+    q: "Quale servizio è di tipo 'object storage', ideale per file, backup e siti statici?",
+    opzioni: ["Amazon EBS", "Amazon EFS", "Amazon S3", "Instance Store"],
+    giusta: 2,
+    spiega: "Amazon S3 è lo storage a oggetti con durabilità di 11 nove (99,999999999%)."
+  },
+  {
+    q: "Nel modello di responsabilità condivisa, di chi è la sicurezza DEI dati e delle configurazioni?",
+    opzioni: ["Di AWS", "Del cliente", "Di entrambi in parti uguali", "Di nessuno, è automatica"],
+    giusta: 1,
+    spiega: "AWS protegge la sicurezza DEL cloud; il cliente è responsabile della sicurezza NEL cloud (dati, accessi, configurazioni)."
+  },
+  {
+    q: "Quale servizio esegue codice in risposta a eventi senza gestire server (serverless)?",
+    opzioni: ["AWS Lambda", "Amazon EC2", "Amazon ECS", "AWS Batch"],
+    giusta: 0,
+    spiega: "AWS Lambda esegue funzioni serverless: paghi solo i millisecondi di esecuzione."
+  },
+  {
+    q: "Quale modello di pricing EC2 offre lo sconto maggiore ma può essere interrotto da AWS?",
+    opzioni: ["On-Demand", "Reserved Instances", "Spot Instances", "Savings Plans"],
+    giusta: 2,
+    spiega: "Le Spot Instances usano capacità inutilizzata con sconti fino al 90%, ma possono essere interrotte."
+  },
+  {
+    q: "Quale servizio registra le chiamate API (chi ha fatto cosa) per l'audit?",
+    opzioni: ["Amazon CloudWatch", "AWS CloudTrail", "AWS Config", "Trusted Advisor"],
+    giusta: 1,
+    spiega: "CloudTrail registra le azioni e le chiamate API. CloudWatch invece monitora metriche e prestazioni."
+  },
+  {
+    q: "Quale database AWS è NoSQL, serverless e con latenza in millisecondi?",
+    opzioni: ["Amazon RDS", "Amazon Aurora", "Amazon Redshift", "Amazon DynamoDB"],
+    giusta: 3,
+    spiega: "DynamoDB è il database NoSQL chiave-valore di AWS, completamente gestito e serverless."
+  }
+];
+
+let idx = 0, punteggio = 0, risposto = false;
+const cont = document.getElementById('quizContenuto');
+const prog = document.getElementById('quizProgresso');
+const btnAvanti = document.getElementById('quizAvanti');
+
+function mostraDomanda(){
+  risposto = false;
+  const d = domande[idx];
+  let html = '<div class="domanda">' + (idx+1) + '. ' + d.q + '</div>';
+  d.opzioni.forEach((o, i) => {
+    html += '<button class="opzione" data-i="' + i + '">' + o + '</button>';
+  });
+  html += '<div class="feedback" id="quizFeedback"></div>';
+  cont.innerHTML = html;
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'none';
+  cont.querySelectorAll('.opzione').forEach(b => b.addEventListener('click', rispondi));
+}
+
+function rispondi(e){
+  if(risposto) return;
+  risposto = true;
+  const scelta = parseInt(e.target.dataset.i);
+  const d = domande[idx];
+  const bottoni = cont.querySelectorAll('.opzione');
+  bottoni.forEach((b, i) => {
+    b.disabled = true;
+    if(i === d.giusta) b.classList.add('giusta');
+    else if(i === scelta) b.classList.add('sbagliata');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if(scelta === d.giusta){
+    punteggio++;
+    fb.style.color = '#16a34a';
+    fb.textContent = '✅ Corretto! ' + d.spiega;
+  } else {
+    fb.style.color = '#dc2626';
+    fb.textContent = '❌ Sbagliato. ' + d.spiega;
+  }
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'inline-block';
+  btnAvanti.textContent = (idx < domande.length - 1) ? 'Prossima domanda →' : 'Vedi risultato 🏁';
+}
+
+btnAvanti.addEventListener('click', () => {
+  idx++;
+  if(idx < domande.length){
+    mostraDomanda();
+  } else {
+    mostraRisultato();
+  }
+});
+
+function mostraRisultato(){
+  const perc = Math.round((punteggio / domande.length) * 100);
+  let msg = perc >= 70 ? '🎉 Ottimo! Sei sulla buona strada per la certificazione!' :
+            perc >= 50 ? '👍 Buon inizio, ripassa le sezioni e riprova!' :
+                         '📚 Continua a studiare: rivedi le lezioni e ritenta!';
+  cont.innerHTML = '<div class="punteggio">' +
+    '<div class="big">' + punteggio + ' / ' + domande.length + '</div>' +
+    '<p style="margin:.4rem 0">Hai risposto correttamente al ' + perc + '% delle domande.</p>' +
+    '<p style="font-weight:600;color:#166534">' + msg + '</p>' +
+    '<button class="btn btn-primary btn-sm" id="quizRicomincia" style="margin-top:.6rem">↺ Ricomincia il quiz</button>' +
+    '</div>';
+  prog.textContent = 'Quiz completato';
+  btnAvanti.style.display = 'none';
+  document.getElementById('quizRicomincia').addEventListener('click', () => {
+    idx = 0; punteggio = 0; mostraDomanda();
+  });
+}
+
+mostraDomanda();
+</script>
+</body>
+</html>
