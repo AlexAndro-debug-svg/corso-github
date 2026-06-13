@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso AI e Machine Learning in italiano completo e gratuito — reti neurali, training, TensorFlow.js | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Intelligenza Artificiale e Machine Learning completo in italiano: reti neurali, percettroni, training e testing, regressione, clustering, deep learning, TensorFlow.js, brain.js, matematica e statistica. Tutorial gratuito con esempi interattivi.">
+  <meta name="keywords" content="corso ai italiano, machine learning italiano, intelligenza artificiale tutorial, reti neurali, deep learning, tensorflow js, percettrone, regressione lineare, clustering, brain.js">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso AI e Machine Learning in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara l'Intelligenza Artificiale da zero in italiano: machine learning, reti neurali, deep learning, TensorFlow.js. Gratuito con esempi interattivi.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .lesson .formula { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: .8rem 1.1rem; margin: 1rem 0; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; color: var(--ink); overflow-x: auto; }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.attr-name { color: #34d399; }
+    .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.tag { color: #f472b6; }
+    .codeview .token.builtin { color: #fb923c; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 998; }
+    body.editor-open { overflow: hidden; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1001; }
+    body.editor-open .course-nav { visibility: hidden; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #fff; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-ai.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-ai.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso AI e Machine Learning in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial AI e Machine Learning completo: reti neurali, deep learning, TensorFlow.js. Gratuito con esempi interattivi.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso AI e Machine Learning in italiano","description":"Corso di Intelligenza Artificiale e Machine Learning italiano completo e gratuito: reti neurali, percettroni, training e testing, regressione, clustering, deep learning, TensorFlow.js, brain.js, matematica e statistica. Con esempi interattivi.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-ai.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html">W3.CSS</a>
+    <a href="corso-angularjs.html">ANGULARJS</a>
+    <a href="corso-ai.html" class="active">AI</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso AI e Machine Learning in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Dall'intelligenza artificiale al machine learning: scopri come le macchine imparano dai dati. Reti neurali, percettroni, training e testing, regressione, clustering e deep learning — con la matematica e la statistica che li rendono possibili. Esempi interattivi in JavaScript con grafici, brain.js e TensorFlow.js.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Machine Learning</h4>
+<a href="#intro">Introduzione</a>
+<a href="#ai-ml">AI e ML</a>
+<a href="#linguaggi">Linguaggi e strumenti</a>
+<a href="#grafici">Grafici lineari</a>
+<a href="#scatter">Scatter plot</a>
+<a href="#percettrone">Percettroni</a>
+<a href="#training">Training</a>
+<a href="#testing">Testing</a>
+<a href="#apprendimento">Tipi di apprendimento</a>
+<a href="#terminologia">Terminologia</a>
+<a href="#clustering">Clustering</a>
+<a href="#regressione">Regressione</a>
+<a href="#deep">Deep Learning</a>
+<a href="#brainjs">Brain.js</a>
+<h4>TensorFlow.js</h4>
+<a href="#tensorflow">TensorFlow.js</a>
+<a href="#tensori">Tensori</a>
+<h4>Matematica</h4>
+<a href="#matematica">Algebra lineare</a>
+<a href="#vettori">Vettori e Matrici</a>
+<h4>Statistica</h4>
+<a href="#statistica">Statistica di base</a>
+<h4>Etica & Storia</h4>
+<a href="#etica">Etica dell'AI</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- ═══════════════════════════════════════════ 1. INTRO ═══ -->
+<article class="lesson" id="intro">
+<h2>Introduzione all'Intelligenza Artificiale</h2>
+<p>L'<strong>Intelligenza Artificiale</strong> (AI) è la disciplina che costruisce macchine capaci di svolgere compiti che normalmente richiedono l'intelligenza umana: riconoscere immagini, capire il linguaggio, prendere decisioni, giocare a scacchi.</p>
+<p>Il <strong>Machine Learning</strong> (ML, apprendimento automatico) è il sottoinsieme più importante dell'AI: invece di programmare regole esplicite, si forniscono <em>dati</em> alla macchina che <em>impara</em> da sola gli schemi.</p>
+<table class="ref">
+<tr><th>Concetto</th><th>Descrizione</th></tr>
+<tr><td><strong>AI</strong></td><td>Qualsiasi tecnica per simulare l'intelligenza umana</td></tr>
+<tr><td><strong>Machine Learning</strong></td><td>Algoritmi che imparano dai dati senza essere programmati esplicitamente</td></tr>
+<tr><td><strong>Deep Learning</strong></td><td>ML basato su reti neurali profonde a molti strati</td></tr>
+<tr><td><strong>Neural Network</strong></td><td>Modello ispirato ai neuroni del cervello</td></tr>
+</table>
+<div class="note-box">🧠 <strong>Gerarchia:</strong> Deep Learning ⊂ Machine Learning ⊂ Intelligenza Artificiale. Ogni livello è un sottoinsieme più specifico del precedente.</div>
+<h3>Una storia lunga decenni</h3>
+<p>Il termine "Intelligenza Artificiale" nasce nel <strong>1956</strong> alla conferenza di Dartmouth. Da allora l'AI ha attraversato periodi di entusiasmo e "inverni". La svolta è arrivata negli anni 2010 grazie a tre fattori: <strong>big data</strong>, <strong>potenza di calcolo</strong> (GPU) e <strong>nuovi algoritmi</strong> di deep learning.</p>
+</article>
+
+<!-- ═══════════════════════════════════════════ 2. AI e ML ═══ -->
+<article class="lesson" id="ai-ml">
+<h2>AI e Machine Learning</h2>
+<p>La differenza fondamentale tra programmazione tradizionale e machine learning sta nel <strong>flusso</strong>:</p>
+<table class="ref">
+<tr><th></th><th>Programmazione classica</th><th>Machine Learning</th></tr>
+<tr><td><strong>Input</strong></td><td>Dati + Regole</td><td>Dati + Risposte</td></tr>
+<tr><td><strong>Output</strong></td><td>Risposte</td><td>Regole (il modello)</td></tr>
+</table>
+<p>Nella programmazione classica scrivi tu le regole. Nel ML la macchina <em>scopre</em> le regole guardando esempi di input e output corretti.</p>
+<h3>Esempio concreto: filtro antispam</h3>
+<ul>
+  <li><strong>Classico:</strong> scrivi regole come "se contiene 'vinci soldi' → spam". Fragile e infinito.</li>
+  <li><strong>ML:</strong> mostri 10.000 email etichettate come spam/non-spam. Il modello impara da solo quali parole e schemi indicano spam.</li>
+</ul>
+<div class="tip-box">💡 Il ML eccelle quando le regole sono troppe, troppo complesse o cambiano nel tempo — come riconoscere un volto o tradurre una lingua.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 3. LINGUAGGI ═══ -->
+<article class="lesson" id="linguaggi">
+<h2>Linguaggi e strumenti</h2>
+<p>Il machine learning si può fare in molti linguaggi. <strong>Python</strong> è il più popolare grazie alle sue librerie, ma anche <strong>JavaScript</strong> permette di addestrare modelli direttamente nel browser.</p>
+<table class="ref">
+<tr><th>Strumento</th><th>Linguaggio</th><th>Uso</th></tr>
+<tr><td><strong>TensorFlow</strong></td><td>Python / JS</td><td>Deep learning, produzione</td></tr>
+<tr><td><strong>PyTorch</strong></td><td>Python</td><td>Ricerca, deep learning</td></tr>
+<tr><td><strong>scikit-learn</strong></td><td>Python</td><td>ML classico</td></tr>
+<tr><td><strong>TensorFlow.js</strong></td><td>JavaScript</td><td>ML nel browser</td></tr>
+<tr><td><strong>Brain.js</strong></td><td>JavaScript</td><td>Reti neurali semplici nel browser</td></tr>
+<tr><td><strong>Plotly.js / Chart.js</strong></td><td>JavaScript</td><td>Visualizzazione dati</td></tr>
+</table>
+<div class="note-box">🌐 In questo corso useremo <strong>JavaScript</strong> con Plotly.js, Brain.js e TensorFlow.js, così potrai eseguire ogni esempio direttamente nel browser cliccando "Provalo tu", senza installare nulla.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 4. GRAFICI LINEARI ═══ -->
+<article class="lesson" id="grafici">
+<h2>Grafici lineari</h2>
+<p>Visualizzare i dati è il primo passo del machine learning. Un <strong>grafico lineare</strong> mostra la relazione tra due variabili. Usiamo <strong>Plotly.js</strong>, una potente libreria di grafici.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — grafico lineare</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;Vendite mensili&lt;/h3&gt;
+&lt;div id="grafico"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const mesi  = ['Gen','Feb','Mar','Apr','Mag','Giu'];
+const vendite = [120, 145, 130, 180, 210, 250];
+
+const traccia = {
+  x: mesi,
+  y: vendite,
+  type: 'scatter',
+  mode: 'lines+markers',
+  line: { color: '#4f46e5', width: 3 },
+  marker: { size: 10 }
+};
+
+Plotly.newPlot('grafico', [traccia], {
+  title: 'Andamento vendite 2026',
+  xaxis: { title: 'Mese' },
+  yaxis: { title: 'Vendite (k€)' }
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<p>I grafici lineari sono perfetti per mostrare <strong>tendenze nel tempo</strong> e per visualizzare la retta che un modello di regressione "impara".</p>
+</article>
+
+<!-- ═══════════════════════════════════════════ 5. SCATTER PLOT ═══ -->
+<article class="lesson" id="scatter">
+<h2>Scatter plot</h2>
+<p>Lo <strong>scatter plot</strong> (grafico a dispersione) disegna un punto per ogni osservazione. È fondamentale nel ML per vedere come i dati si distribuiscono e se esistono raggruppamenti o correlazioni.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — scatter plot</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;Altezza vs Peso&lt;/h3&gt;
+&lt;div id="scatter"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Dati: altezza (cm) e peso (kg) di alcune persone
+const altezza = [150, 160, 165, 170, 175, 180, 185, 190];
+const peso    = [50,  58,  63,  68,  72,  80,  85,  92];
+
+const punti = {
+  x: altezza,
+  y: peso,
+  mode: 'markers',
+  type: 'scatter',
+  marker: { size: 14, color: '#0d9488', opacity: 0.8 }
+};
+
+Plotly.newPlot('scatter', [punti], {
+  title: 'Relazione altezza-peso',
+  xaxis: { title: 'Altezza (cm)' },
+  yaxis: { title: 'Peso (kg)' }
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Quando i punti formano una linea immaginaria crescente, c'è una <strong>correlazione positiva</strong>: al crescere di X cresce anche Y. È esattamente ciò che un modello di regressione cerca di catturare.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 6. PERCETTRONE ═══ -->
+<article class="lesson" id="percettrone">
+<h2>Percettroni</h2>
+<p>Il <strong>percettrone</strong> è il mattone fondamentale delle reti neurali, inventato nel 1958. Simula un singolo neurone: riceve input, li moltiplica per dei <em>pesi</em>, li somma e applica una <em>funzione di attivazione</em> per produrre l'output.</p>
+<div class="formula">output = attivazione( w₁·x₁ + w₂·x₂ + ... + wₙ·xₙ + bias )</div>
+<p>Durante il training, il percettrone <strong>aggiusta i pesi</strong> per ridurre gli errori. Vediamo un percettrone che impara la funzione logica AND da zero, in puro JavaScript:</p>
+<div class="example">
+<div class="codehead"><span>HTML + JS — percettrone che impara AND</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🧠 Percettrone: impara la funzione AND&lt;/h3&gt;
+&lt;pre id="output"&gt;&lt;/pre&gt;
+
+&lt;script&gt;
+// Dati di training: input [x1, x2] -> output atteso (AND logico)
+const dati = [
+  { in: [0,0], out: 0 },
+  { in: [0,1], out: 0 },
+  { in: [1,0], out: 0 },
+  { in: [1,1], out: 1 }
+];
+
+// Pesi iniziali casuali + bias
+let pesi = [Math.random(), Math.random()];
+let bias = Math.random();
+const lr = 0.1; // learning rate
+
+// Funzione di attivazione a gradino
+const attiva = x =&gt; x &gt;= 0 ? 1 : 0;
+
+const log = [];
+
+// Addestramento: 20 epoche
+for (let epoca = 0; epoca &lt; 20; epoca++) {
+  let errori = 0;
+  for (const d of dati) {
+    const somma = d.in[0]*pesi[0] + d.in[1]*pesi[1] + bias;
+    const pred  = attiva(somma);
+    const err   = d.out - pred;
+    if (err !== 0) errori++;
+    // Aggiorna pesi e bias
+    pesi[0] += lr * err * d.in[0];
+    pesi[1] += lr * err * d.in[1];
+    bias    += lr * err;
+  }
+  log.push('Epoca ' + (epoca+1) + ': errori = ' + errori);
+  if (errori === 0) { log.push('✅ Convergenza raggiunta!'); break; }
+}
+
+// Verifica finale
+log.push('\nRisultati dopo il training:');
+for (const d of dati) {
+  const somma = d.in[0]*pesi[0] + d.in[1]*pesi[1] + bias;
+  log.push(d.in[0] + ' AND ' + d.in[1] + ' = ' + attiva(somma));
+}
+
+document.getElementById('output').textContent = log.join('\n');
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔑 Il percettrone aggiorna i pesi con la regola: <code class="inline">peso += learning_rate × errore × input</code>. Ripetendo su tutti gli esempi per più "epoche", l'errore tende a zero.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 7. TRAINING ═══ -->
+<article class="lesson" id="training">
+<h2>Training (addestramento)</h2>
+<p>Il <strong>training</strong> è il processo con cui il modello impara dai dati. Si presenta ripetutamente al modello il dataset di addestramento e si aggiustano i parametri per minimizzare l'<strong>errore</strong> (funzione di costo o <em>loss</em>).</p>
+<table class="ref">
+<tr><th>Termine</th><th>Significato</th></tr>
+<tr><td><strong>Epoca</strong></td><td>Un passaggio completo su tutto il dataset</td></tr>
+<tr><td><strong>Loss (perdita)</strong></td><td>Misura quanto il modello sbaglia</td></tr>
+<tr><td><strong>Learning rate</strong></td><td>Quanto velocemente il modello aggiusta i pesi</td></tr>
+<tr><td><strong>Gradient descent</strong></td><td>Algoritmo che minimizza la loss passo dopo passo</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — la loss che scende durante il training</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;📉 Curva di apprendimento (loss)&lt;/h3&gt;
+&lt;div id="loss"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Simuliamo la loss che diminuisce a ogni epoca
+const epoche = [];
+const perdita = [];
+let loss = 1.0;
+for (let e = 1; e &lt;= 50; e++) {
+  epoche.push(e);
+  perdita.push(loss);
+  // La loss decresce esponenzialmente con un po' di rumore
+  loss = loss * 0.92 + (Math.random()-0.5) * 0.02;
+  if (loss &lt; 0) loss = 0.01;
+}
+
+Plotly.newPlot('loss', [{
+  x: epoche, y: perdita,
+  type: 'scatter', mode: 'lines',
+  line: { color: '#dc2626', width: 3 }
+}], {
+  title: 'La loss diminuisce mentre il modello impara',
+  xaxis: { title: 'Epoca' },
+  yaxis: { title: 'Loss (errore)' }
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<p>Una curva di loss che <strong>scende e si stabilizza</strong> indica che il modello sta imparando correttamente.</p>
+</article>
+
+<!-- ═══════════════════════════════════════════ 8. TESTING ═══ -->
+<article class="lesson" id="testing">
+<h2>Testing (validazione)</h2>
+<p>Dopo il training bisogna verificare quanto il modello generalizza su <strong>dati mai visti</strong>. Per questo si divide il dataset:</p>
+<table class="ref">
+<tr><th>Set</th><th>Percentuale tipica</th><th>Scopo</th></tr>
+<tr><td><strong>Training set</strong></td><td>70-80%</td><td>Il modello impara da questi dati</td></tr>
+<tr><td><strong>Validation set</strong></td><td>10-15%</td><td>Regolare gli iperparametri</td></tr>
+<tr><td><strong>Test set</strong></td><td>10-20%</td><td>Valutazione finale imparziale</td></tr>
+</table>
+<div class="warn-box">⚠️ <strong>Overfitting:</strong> quando il modello "memorizza" i dati di training invece di imparare schemi generali. Va benissimo sul training set ma fallisce sui dati nuovi. Si combatte con più dati, regolarizzazione e un buon test set.</div>
+<div class="note-box">📊 <strong>Underfitting</strong> è l'opposto: il modello è troppo semplice e sbaglia anche sul training. La soluzione è un modello più complesso o feature migliori.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 9. APPRENDIMENTO ═══ -->
+<article class="lesson" id="apprendimento">
+<h2>Tipi di apprendimento</h2>
+<p>Esistono tre grandi paradigmi di machine learning:</p>
+<table class="ref">
+<tr><th>Tipo</th><th>Dati</th><th>Esempio</th></tr>
+<tr><td><strong>Supervisionato</strong></td><td>Input + etichette corrette</td><td>Classificare email spam/non-spam</td></tr>
+<tr><td><strong>Non supervisionato</strong></td><td>Solo input, nessuna etichetta</td><td>Raggruppare clienti simili (clustering)</td></tr>
+<tr><td><strong>Per rinforzo</strong></td><td>Ricompense/penalità</td><td>Un'AI che impara a giocare</td></tr>
+</table>
+<h3>Apprendimento supervisionato</h3>
+<p>Il più comune. Si divide in due compiti:</p>
+<ul>
+  <li><strong>Classificazione:</strong> prevedere una categoria (spam/non-spam, gatto/cane)</li>
+  <li><strong>Regressione:</strong> prevedere un numero continuo (prezzo di una casa, temperatura)</li>
+</ul>
+<div class="tip-box">💡 Regola pratica: se la risposta è una <strong>etichetta</strong> → classificazione. Se è un <strong>numero</strong> → regressione.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 10. TERMINOLOGIA ═══ -->
+<article class="lesson" id="terminologia">
+<h2>Terminologia essenziale</h2>
+<table class="ref">
+<tr><th>Termine</th><th>Definizione</th></tr>
+<tr><td><strong>Feature</strong></td><td>Una caratteristica in input (es. altezza, età)</td></tr>
+<tr><td><strong>Label (etichetta)</strong></td><td>La risposta corretta che vogliamo prevedere</td></tr>
+<tr><td><strong>Model (modello)</strong></td><td>La funzione che mappa input → output</td></tr>
+<tr><td><strong>Weight (peso)</strong></td><td>Parametro che il modello impara</td></tr>
+<tr><td><strong>Bias</strong></td><td>Termine costante aggiunto alla somma pesata</td></tr>
+<tr><td><strong>Activation</strong></td><td>Funzione non lineare (ReLU, sigmoid, tanh)</td></tr>
+<tr><td><strong>Hyperparameter</strong></td><td>Impostazione scelta da te (learning rate, epoche)</td></tr>
+<tr><td><strong>Inference</strong></td><td>Usare il modello addestrato per fare previsioni</td></tr>
+</table>
+<h3>Funzioni di attivazione comuni</h3>
+<div class="formula">Sigmoid:  σ(x) = 1 / (1 + e⁻ˣ)        → output tra 0 e 1
+ReLU:     f(x) = max(0, x)            → la più usata nel deep learning
+Tanh:     tanh(x)                     → output tra -1 e 1</div>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — confronto funzioni di attivazione</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;Funzioni di attivazione&lt;/h3&gt;
+&lt;div id="att"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const x = [];
+const sigmoid = [], relu = [], tanh = [];
+for (let v = -6; v &lt;= 6; v += 0.2) {
+  x.push(v);
+  sigmoid.push(1 / (1 + Math.exp(-v)));
+  relu.push(Math.max(0, v));
+  tanh.push(Math.tanh(v));
+}
+
+Plotly.newPlot('att', [
+  { x, y: sigmoid, name: 'Sigmoid', line: { color:'#4f46e5' } },
+  { x, y: relu,    name: 'ReLU',    line: { color:'#0d9488' } },
+  { x, y: tanh,    name: 'Tanh',    line: { color:'#dc2626' } }
+], {
+  title: 'Confronto funzioni di attivazione',
+  xaxis: { title: 'input' },
+  yaxis: { title: 'output' }
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 11. CLUSTERING ═══ -->
+<article class="lesson" id="clustering">
+<h2>Clustering</h2>
+<p>Il <strong>clustering</strong> è apprendimento non supervisionato: raggruppa automaticamente i dati simili senza etichette. L'algoritmo più famoso è <strong>K-Means</strong>, che divide i dati in K gruppi.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — K-Means da zero</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🎯 K-Means: 3 cluster trovati automaticamente&lt;/h3&gt;
+&lt;div id="cluster"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Generiamo 3 gruppi di punti attorno a 3 centri
+function genGruppo(cx, cy, n) {
+  const pts = [];
+  for (let i = 0; i &lt; n; i++)
+    pts.push([cx + (Math.random()-0.5)*3, cy + (Math.random()-0.5)*3]);
+  return pts;
+}
+let punti = [...genGruppo(2,2,20), ...genGruppo(8,3,20), ...genGruppo(5,9,20)];
+
+// K-Means con K=3
+const K = 3;
+let centri = [punti[0], punti[20], punti[40]].map(p =&gt; [...p]);
+let assegnazioni = new Array(punti.length).fill(0);
+
+const dist = (a,b) =&gt; Math.hypot(a[0]-b[0], a[1]-b[1]);
+
+for (let iter = 0; iter &lt; 10; iter++) {
+  // Assegna ogni punto al centro più vicino
+  punti.forEach((p, i) =&gt; {
+    let best = 0, bd = Infinity;
+    centri.forEach((c, k) =&gt; { const d = dist(p,c); if (d &lt; bd) { bd = d; best = k; } });
+    assegnazioni[i] = best;
+  });
+  // Ricalcola i centri
+  for (let k = 0; k &lt; K; k++) {
+    const membri = punti.filter((_, i) =&gt; assegnazioni[i] === k);
+    if (membri.length) {
+      centri[k] = [
+        membri.reduce((s,p)=&gt;s+p[0],0)/membri.length,
+        membri.reduce((s,p)=&gt;s+p[1],0)/membri.length
+      ];
+    }
+  }
+}
+
+// Disegna i cluster
+const colori = ['#4f46e5','#0d9488','#dc2626'];
+const tracce = [];
+for (let k = 0; k &lt; K; k++) {
+  const membri = punti.filter((_, i) =&gt; assegnazioni[i] === k);
+  tracce.push({
+    x: membri.map(p=&gt;p[0]), y: membri.map(p=&gt;p[1]),
+    mode: 'markers', type: 'scatter', name: 'Cluster ' + (k+1),
+    marker: { size: 10, color: colori[k] }
+  });
+}
+// Centri
+tracce.push({
+  x: centri.map(c=&gt;c[0]), y: centri.map(c=&gt;c[1]),
+  mode: 'markers', type: 'scatter', name: 'Centri',
+  marker: { size: 22, color: 'black', symbol: 'x' }
+});
+
+Plotly.newPlot('cluster', tracce, { title: 'Clustering K-Means (K=3)' });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🎯 K-Means alterna due passi finché i centri si stabilizzano: (1) assegna ogni punto al centro più vicino, (2) sposta ogni centro nella media dei suoi punti.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 12. REGRESSIONE ═══ -->
+<article class="lesson" id="regressione">
+<h2>Regressione lineare</h2>
+<p>La <strong>regressione lineare</strong> trova la retta che meglio approssima i dati. È il "Hello World" del machine learning supervisionato. La retta ha forma <code class="inline">y = m·x + b</code> dove il modello impara la pendenza <code class="inline">m</code> e l'intercetta <code class="inline">b</code>.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — regressione lineare con gradient descent</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;📈 Regressione lineare appresa dai dati&lt;/h3&gt;
+&lt;div id="reg"&gt;&lt;/div&gt;
+&lt;p id="eq" style="font-family:monospace;font-size:1.1rem;color:#4f46e5"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+// Dati (con relazione lineare + rumore)
+const X = [1,2,3,4,5,6,7,8,9,10];
+const Y = [2.1,3.9,6.2,7.8,10.1,12.3,13.8,16.2,18.1,20.3];
+
+// Gradient descent per trovare m e b
+let m = 0, b = 0;
+const lr = 0.01, n = X.length;
+for (let it = 0; it &lt; 2000; it++) {
+  let dm = 0, db = 0;
+  for (let i = 0; i &lt; n; i++) {
+    const pred = m*X[i] + b;
+    const err  = pred - Y[i];
+    dm += (2/n) * err * X[i];
+    db += (2/n) * err;
+  }
+  m -= lr * dm;
+  b -= lr * db;
+}
+
+document.getElementById('eq').textContent =
+  'Retta appresa:  y = ' + m.toFixed(3) + ' x + ' + b.toFixed(3);
+
+// Punti reali + retta predetta
+const rettaX = [0, 11];
+const rettaY = rettaX.map(x =&gt; m*x + b);
+
+Plotly.newPlot('reg', [
+  { x: X, y: Y, mode:'markers', type:'scatter', name:'Dati reali',
+    marker:{ size:12, color:'#0d9488' } },
+  { x: rettaX, y: rettaY, mode:'lines', name:'Modello',
+    line:{ color:'#dc2626', width:3 } }
+], { title:'Regressione lineare', xaxis:{title:'X'}, yaxis:{title:'Y'} });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="formula">Loss (MSE) = (1/n) · Σ (yₚᵣₑᵥᵢₛₜₒ − yᵣₑₐₗₑ)²</div>
+<p>Il <strong>gradient descent</strong> calcola la derivata della loss rispetto a <code class="inline">m</code> e <code class="inline">b</code> e li aggiusta nella direzione che riduce l'errore.</p>
+</article>
+
+<!-- ═══════════════════════════════════════════ 13. DEEP LEARNING ═══ -->
+<article class="lesson" id="deep">
+<h2>Deep Learning</h2>
+<p>Il <strong>deep learning</strong> usa reti neurali con <strong>molti strati nascosti</strong> (da cui "profondo"). Ogni strato impara feature sempre più astratte: i primi strati riconoscono bordi, quelli successivi forme, e gli ultimi oggetti interi.</p>
+<table class="ref">
+<tr><th>Architettura</th><th>Uso principale</th></tr>
+<tr><td><strong>CNN</strong> (Convolutional)</td><td>Immagini e visione artificiale</td></tr>
+<tr><td><strong>RNN / LSTM</strong></td><td>Sequenze, testo, serie temporali</td></tr>
+<tr><td><strong>Transformer</strong></td><td>Linguaggio naturale (GPT, BERT)</td></tr>
+<tr><td><strong>GAN</strong></td><td>Generazione di immagini</td></tr>
+</table>
+<h3>Struttura di una rete neurale</h3>
+<ul>
+  <li><strong>Input layer:</strong> riceve i dati (es. pixel di un'immagine)</li>
+  <li><strong>Hidden layers:</strong> elaborano e trasformano le informazioni</li>
+  <li><strong>Output layer:</strong> produce la previsione finale</li>
+</ul>
+<div class="note-box">🤖 I <strong>Large Language Model</strong> come quelli alla base degli assistenti AI usano l'architettura <em>Transformer</em> con miliardi di parametri, addestrati su enormi quantità di testo.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 14. BRAIN.JS ═══ -->
+<article class="lesson" id="brainjs">
+<h2>Brain.js</h2>
+<p><strong>Brain.js</strong> è una libreria JavaScript che rende semplicissimo creare e addestrare reti neurali nel browser. Vediamo una rete che impara la funzione logica <strong>XOR</strong> — un problema che un singolo percettrone NON può risolvere, ma una rete con strato nascosto sì.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Brain.js — rete neurale impara XOR</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.23/dist/browser.js"&gt;&lt;/script&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; font-size: 1rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🧠 Brain.js: rete neurale impara XOR&lt;/h3&gt;
+&lt;pre id="out"&gt;Addestramento in corso...&lt;/pre&gt;
+
+&lt;script&gt;
+// Crea una rete neurale
+const net = new brain.NeuralNetwork({ hiddenLayers: [3] });
+
+// Dati di training: XOR logico
+const dati = [
+  { input: [0,0], output: [0] },
+  { input: [0,1], output: [1] },
+  { input: [1,0], output: [1] },
+  { input: [1,1], output: [0] }
+];
+
+// Addestra
+const stats = net.train(dati, { iterations: 2000, errorThresh: 0.005 });
+
+// Testa la rete
+let testo = 'Rete addestrata in ' + stats.iterations + ' iterazioni\n';
+testo += 'Errore finale: ' + stats.error.toFixed(5) + '\n\n';
+testo += 'Risultati XOR:\n';
+dati.forEach(d =&gt; {
+  const pred = net.run(d.input)[0];
+  testo += d.input[0] + ' XOR ' + d.input[1] +
+           ' = ' + pred.toFixed(3) +
+           ' (arrotondato: ' + Math.round(pred) + ')\n';
+});
+
+document.getElementById('out').textContent = testo;
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Lo strato nascosto <code class="inline">hiddenLayers: [3]</code> permette alla rete di apprendere relazioni <strong>non lineari</strong> come XOR. Senza di esso, sarebbe impossibile.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 15. TENSORFLOW.JS ═══ -->
+<article class="lesson" id="tensorflow">
+<h2>TensorFlow.js</h2>
+<p><strong>TensorFlow.js</strong> è la versione JavaScript di TensorFlow, la libreria di Google per il deep learning. Permette di addestrare ed eseguire modelli direttamente nel browser, sfruttando la GPU via WebGL.</p>
+<div class="example">
+<div class="codehead"><span>HTML + TensorFlow.js — addestra un modello a prevedere y = 2x − 1</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"&gt;&lt;/script&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; font-size: 1rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🔢 TensorFlow.js: impara la relazione y = 2x − 1&lt;/h3&gt;
+&lt;pre id="out"&gt;Addestramento in corso (attendi qualche secondo)...&lt;/pre&gt;
+
+&lt;script&gt;
+async function run() {
+  // Crea un modello con un singolo neurone
+  const model = tf.sequential();
+  model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
+  model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
+
+  // Dati: y = 2x - 1
+  const xs = tf.tensor2d([-1, 0, 1, 2, 3, 4], [6, 1]);
+  const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1]);
+
+  // Addestra per 200 epoche
+  await model.fit(xs, ys, { epochs: 200 });
+
+  // Previsione per x = 10 (atteso: 19)
+  const pred = model.predict(tf.tensor2d([10], [1, 1]));
+  const valore = (await pred.data())[0];
+
+  document.getElementById('out').textContent =
+    'Modello addestrato!\n\n' +
+    'Previsione per x = 10:\n' +
+    'y = ' + valore.toFixed(2) + '   (valore atteso: 19)\n\n' +
+    'Il modello ha imparato da solo che y ≈ 2x - 1';
+}
+run();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">⚙️ <code class="inline">tf.sequential()</code> crea un modello a strati. <code class="inline">model.fit()</code> esegue il training, <code class="inline">model.predict()</code> fa le previsioni. È lo stesso flusso di TensorFlow in Python.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 16. TENSORI ═══ -->
+<article class="lesson" id="tensori">
+<h2>Tensori</h2>
+<p>Un <strong>tensore</strong> è la struttura dati fondamentale del deep learning: un array multidimensionale. Scalari, vettori e matrici sono tutti tensori di diverso "rango".</p>
+<table class="ref">
+<tr><th>Rango</th><th>Nome</th><th>Esempio</th></tr>
+<tr><td>0</td><td>Scalare</td><td><code class="inline">5</code></td></tr>
+<tr><td>1</td><td>Vettore</td><td><code class="inline">[1, 2, 3]</code></td></tr>
+<tr><td>2</td><td>Matrice</td><td><code class="inline">[[1,2],[3,4]]</code></td></tr>
+<tr><td>3+</td><td>Tensore</td><td>Immagine RGB: [altezza, larghezza, 3]</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>HTML + TensorFlow.js — operazioni sui tensori</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"&gt;&lt;/script&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🧮 Operazioni sui tensori&lt;/h3&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+
+&lt;script&gt;
+async function run() {
+  const log = [];
+
+  // Vettore (tensore di rango 1)
+  const a = tf.tensor1d([1, 2, 3, 4]);
+  log.push('Vettore a = ' + a.arraySync());
+
+  // Operazioni elemento per elemento
+  log.push('a * 2 = ' + a.mul(2).arraySync());
+  log.push('a + 10 = ' + a.add(10).arraySync());
+
+  // Matrice (tensore di rango 2)
+  const m = tf.tensor2d([[1, 2], [3, 4]]);
+  log.push('\nMatrice m:');
+  log.push(JSON.stringify(m.arraySync()));
+
+  // Prodotto matriciale
+  const prod = m.matMul(m);
+  log.push('\nm × m:');
+  log.push(JSON.stringify(prod.arraySync()));
+
+  // Statistiche
+  log.push('\nSomma di a: ' + (await a.sum().data())[0]);
+  log.push('Media di a: ' + (await a.mean().data())[0]);
+
+  document.getElementById('out').textContent = log.join('\n');
+}
+run();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 17. MATEMATICA ═══ -->
+<article class="lesson" id="matematica">
+<h2>Algebra lineare per l'AI</h2>
+<p>La matematica del machine learning è soprattutto <strong>algebra lineare</strong>. Le reti neurali sono, in fondo, lunghe sequenze di moltiplicazioni tra matrici.</p>
+<h3>Funzioni lineari</h3>
+<div class="formula">y = m·x + b      (la retta: m = pendenza, b = intercetta)</div>
+<p>Una funzione lineare ha una pendenza costante. Le reti neurali combinano funzioni lineari con attivazioni non lineari per modellare relazioni complesse.</p>
+<div class="example">
+<div class="codehead"><span>HTML + Plotly.js — visualizzare la pendenza di una retta</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://cdn.plot.ly/plotly-2.27.0.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;Rette con pendenze diverse&lt;/h3&gt;
+&lt;div id="rette"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const x = [];
+for (let v = -5; v &lt;= 5; v += 0.5) x.push(v);
+
+function retta(m, b) { return x.map(v =&gt; m*v + b); }
+
+Plotly.newPlot('rette', [
+  { x, y: retta(1, 0),    name: 'y = x',       line:{color:'#4f46e5'} },
+  { x, y: retta(2, 1),    name: 'y = 2x + 1',  line:{color:'#0d9488'} },
+  { x, y: retta(-0.5, 2), name: 'y = -0.5x+2', line:{color:'#dc2626'} }
+], {
+  title: 'La pendenza (m) determina l\'inclinazione',
+  xaxis: { title: 'x', zeroline: true },
+  yaxis: { title: 'y', zeroline: true }
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 18. VETTORI ═══ -->
+<article class="lesson" id="vettori">
+<h2>Vettori e Matrici</h2>
+<p>Un <strong>vettore</strong> è una lista di numeri (una direzione nello spazio). Una <strong>matrice</strong> è una griglia di numeri. Le operazioni chiave nel ML sono il <em>prodotto scalare</em> e la <em>moltiplicazione tra matrici</em>.</p>
+<div class="formula">Prodotto scalare:  a · b = a₁b₁ + a₂b₂ + ... + aₙbₙ</div>
+<div class="example">
+<div class="codehead"><span>HTML + JS — vettori, prodotto scalare, matrici</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;🧮 Algebra dei vettori in JavaScript&lt;/h3&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+
+&lt;script&gt;
+const log = [];
+
+// Vettori
+const a = [1, 2, 3];
+const b = [4, 5, 6];
+
+// Somma vettoriale
+const somma = a.map((v, i) =&gt; v + b[i]);
+log.push('a + b = [' + somma + ']');
+
+// Prodotto scalare (dot product)
+const dot = a.reduce((s, v, i) =&gt; s + v * b[i], 0);
+log.push('a · b = ' + dot);
+
+// Norma (lunghezza) di un vettore
+const norma = Math.hypot(...a);
+log.push('|a| = ' + norma.toFixed(3));
+
+// Moltiplicazione matrice × vettore
+const M = [[1, 0], [0, 2], [1, 1]];  // 3×2
+const x = [3, 4];                    // 2
+const Mx = M.map(riga =&gt; riga.reduce((s, v, i) =&gt; s + v * x[i], 0));
+log.push('\nM × x = [' + Mx + ']');
+
+document.getElementById('out').textContent = log.join('\n');
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔢 In una rete neurale, l'output di uno strato è <code class="inline">attivazione(W · x + b)</code> dove W è la matrice dei pesi e x il vettore di input. Tutto si riduce a moltiplicazioni tra matrici.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 19. STATISTICA ═══ -->
+<article class="lesson" id="statistica">
+<h2>Statistica di base</h2>
+<p>La <strong>statistica</strong> descrive i dati e quantifica l'incertezza. Concetti come media, varianza e distribuzione sono indispensabili nel machine learning.</p>
+<table class="ref">
+<tr><th>Misura</th><th>Significato</th></tr>
+<tr><td><strong>Media</strong></td><td>Valore centrale (somma / conteggio)</td></tr>
+<tr><td><strong>Mediana</strong></td><td>Valore che divide i dati a metà</td></tr>
+<tr><td><strong>Varianza</strong></td><td>Quanto i dati si disperdono dalla media</td></tr>
+<tr><td><strong>Deviazione standard</strong></td><td>Radice della varianza (stessa unità dei dati)</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>HTML + JS — statistiche descrittive</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    pre  { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;📊 Statistiche descrittive&lt;/h3&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+
+&lt;script&gt;
+const dati = [4, 8, 15, 16, 23, 42, 8, 15, 16, 4];
+const n = dati.length;
+
+// Media
+const media = dati.reduce((s, v) =&gt; s + v, 0) / n;
+
+// Mediana
+const ord = [...dati].sort((a, b) =&gt; a - b);
+const mediana = n % 2 === 0
+  ? (ord[n/2 - 1] + ord[n/2]) / 2
+  : ord[(n-1)/2];
+
+// Varianza e deviazione standard
+const varianza = dati.reduce((s, v) =&gt; s + (v - media)**2, 0) / n;
+const devStd = Math.sqrt(varianza);
+
+// Moda
+const conteggi = {};
+dati.forEach(v =&gt; conteggi[v] = (conteggi[v] || 0) + 1);
+const moda = Object.keys(conteggi).reduce((a, b) =&gt;
+  conteggi[a] &gt; conteggi[b] ? a : b);
+
+document.getElementById('out').textContent =
+  'Dati: [' + dati + ']\n\n' +
+  'Media:               ' + media.toFixed(2) + '\n' +
+  'Mediana:             ' + mediana + '\n' +
+  'Moda:                ' + moda + '\n' +
+  'Varianza:            ' + varianza.toFixed(2) + '\n' +
+  'Deviazione standard: ' + devStd.toFixed(2);
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 La <strong>normalizzazione</strong> dei dati (sottrarre la media e dividere per la deviazione standard) è un passaggio quasi sempre necessario prima di addestrare un modello.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ 20. ETICA ═══ -->
+<article class="lesson" id="etica">
+<h2>Etica dell'Intelligenza Artificiale</h2>
+<p>L'AI è potente, ma solleva questioni etiche importanti che ogni sviluppatore deve conoscere.</p>
+<table class="ref">
+<tr><th>Tema</th><th>Descrizione</th></tr>
+<tr><td><strong>Bias (pregiudizio)</strong></td><td>Se i dati di training sono distorti, il modello eredita e amplifica i pregiudizi</td></tr>
+<tr><td><strong>Privacy</strong></td><td>I modelli possono memorizzare dati sensibili usati nell'addestramento</td></tr>
+<tr><td><strong>Trasparenza</strong></td><td>Le reti profonde sono "scatole nere" difficili da interpretare</td></tr>
+<tr><td><strong>Lavoro</strong></td><td>L'automazione trasforma e sostituisce alcune professioni</td></tr>
+<tr><td><strong>Responsabilità</strong></td><td>Chi è responsabile di una decisione presa da un'AI?</td></tr>
+</table>
+<div class="warn-box">⚠️ Un modello è buono solo quanto i dati con cui è stato addestrato. <strong>"Garbage in, garbage out"</strong>: dati di scarsa qualità o distorti producono modelli inaffidabili e ingiusti.</div>
+<div class="note-box">🌍 Sviluppare AI in modo responsabile significa curare la qualità dei dati, testare i bias, proteggere la privacy ed essere trasparenti sui limiti del modello.</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ ESERCIZI ═══ -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — Classificatore OR</span>
+<p>Modifica l'esempio del percettrone per fargli imparare la funzione logica <strong>OR</strong> invece di AND. Cambia gli output attesi nel dataset e verifica che converga. Poi prova con NAND.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — La tua regressione</span>
+<p>Usa l'esempio di regressione lineare con dati tuoi: inventa 10 coppie (ore di studio, voto). Addestra il modello e prevedi il voto per 7 ore di studio. Visualizza punti e retta con Plotly.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Rete neurale con Brain.js</span>
+<p>Con Brain.js crea una rete che, dati 3 input binari (es. caratteristiche di un animale), classifichi se è un "mammifero" o no. Inventa 6-8 esempi di training e testa la rete su un nuovo caso.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 4 — Statistiche su dati reali</span>
+<p>Prendi i voti dei tuoi ultimi 10 esami/verifiche, calcola media, mediana, varianza e deviazione standard con JavaScript, poi disegna un istogramma con Plotly.</p>
+</div>
+</article>
+
+<!-- ═══════════════════════════════════════════ FINE ═══ -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso di Intelligenza Artificiale e Machine Learning. Ora conosci i concetti fondamentali e hai addestrato veri modelli direttamente nel browser.</p>
+<div class="note-box"><strong>Cosa hai imparato:</strong><ul>
+  <li>Differenza tra AI, Machine Learning e Deep Learning</li>
+  <li>Percettroni e reti neurali da zero</li>
+  <li>Training, testing, overfitting e underfitting</li>
+  <li>Apprendimento supervisionato, non supervisionato e per rinforzo</li>
+  <li>Regressione lineare con gradient descent</li>
+  <li>Clustering K-Means</li>
+  <li>Reti neurali con Brain.js e TensorFlow.js</li>
+  <li>Algebra lineare, vettori, matrici, tensori e statistica</li>
+  <li>Etica e uso responsabile dell'AI</li>
+</ul></div>
+<p>Il passo successivo? Approfondisci il <strong>machine learning in Python</strong> con scikit-learn e TensorFlow, dove troverai un ecosistema ancora più ricco per progetti reali.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-python.html" class="btn btn-primary">Vai al corso Python →</a><a href="corso-datascience.html" class="btn btn-primary">Vai al corso Data Science →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a><a href="prenota.html" class="btn btn-accent">📅 Prenota una lezione</a></div>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<!-- Overlay editor -->
+<div class="editor-overlay" id="editorOverlay">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong id="editorTitle">Provalo tu</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
+        <button class="ed-btn ed-close" onclick="closeEditor()">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor">
+        <textarea id="codeArea"></textarea>
+      </div>
+      <div class="preview-wrap">
+        <div class="preview-label">Anteprima</div>
+        <iframe id="ed-preview" title="Anteprima"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="js/main.js?v=5"></script>
+<script>
+const overlay = document.getElementById('editorOverlay');
+let cm;
+let edDark = localStorage.getItem('edTheme') === 'dark';
+
+function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+
+function applyTheme(){
+  const btn = document.getElementById('edThemeBtn');
+  const iframe = document.getElementById('ed-preview');
+  if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+  if(iframe) iframe.style.background = edDark ? '#1e293b' : '#fff';
+  if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+}
+
+function toggleTheme(){
+  edDark = !edDark;
+  localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+  applyTheme();
+}
+
+function openEditor(code, mode){
+  document.getElementById('editorTitle').textContent = 'Provalo tu — AI & Machine Learning';
+  overlay.classList.add('open');
+  document.body.classList.add('editor-open');
+  document.addEventListener('touchmove', preventTouch, {passive:false});
+
+  if(!cm){
+    cm = CodeMirror.fromTextArea(document.getElementById('codeArea'),{
+      lineNumbers: true, theme: edDark ? 'material-darker' : 'default', mode: mode || 'htmlmixed',
+      lineWrapping: true, tabSize: 2, autofocus: true
+    });
+    cm.on('change', updatePreview);
+  }
+  cm.setValue(code);
+  cm.refresh();
+  applyTheme();
+  setTimeout(updatePreview, 50);
+}
+
+function updatePreview(){
+  const iframe = document.getElementById('ed-preview');
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open(); doc.write(cm.getValue()); doc.close();
+}
+
+function closeEditor(){
+  overlay.classList.remove('open');
+  document.body.classList.remove('editor-open');
+  document.removeEventListener('touchmove', preventTouch);
+}
+
+document.querySelectorAll('.btn-try').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pre = btn.closest('.codehead').nextElementSibling;
+    const raw = pre ? pre.querySelector('code') : null;
+    if(!raw) return;
+    let code = raw.innerText || raw.textContent;
+    openEditor(code, 'htmlmixed');
+  });
+});
+</script>
+</body>
+</html>
