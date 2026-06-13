@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Introduzione alla Programmazione in italiano completo e gratuito — concetti base, variabili, cicli, funzioni | AlessandroSimone.it</title>
+  <meta name="description" content="Corso di Introduzione alla Programmazione completo in italiano: variabili, costanti, condizioni, array, cicli, funzioni, ricorsione, scope, stringhe, tipi di dati, operatori, sistema binario ed esadecimale, algebra booleana. Tutorial gratuito con esempi interattivi.">
+  <meta name="keywords" content="corso programmazione italiano, introduzione programmazione, concetti programmazione, imparare a programmare, variabili cicli funzioni, sistema binario, algebra booleana, programmazione per principianti">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Introduzione alla Programmazione in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara i concetti fondamentali della programmazione da zero in italiano: variabili, cicli, funzioni, ricorsione, binario. Gratuito con esempi interattivi.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .lesson .formula { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: .8rem 1.1rem; margin: 1rem 0; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; color: var(--ink); overflow-x: auto; }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    .codeview .token { background: none !important; }
+    .codeview .token.comment { color: #94a3b8; font-style: italic; }
+    .codeview .token.keyword { color: #f472b6; }
+    .codeview .token.string { color: #93c5fd; }
+    .codeview .token.function { color: #5eead4; }
+    .codeview .token.number, .codeview .token.boolean { color: #fbbf24; }
+    .codeview .token.class-name { color: #c4b5fd; }
+    .codeview .token.operator, .codeview .token.punctuation { color: #94a3b8; }
+    .codeview .token.attr-name { color: #34d399; }
+    .codeview .token.attr-value { color: #93c5fd; }
+    .codeview .token.tag { color: #f472b6; }
+    .codeview .token.builtin { color: #fb923c; }
+    .btn-try { background: var(--edu); color: #fff; border: none; font-weight: 700; font-size: .8rem; padding: .4rem .9rem; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+    .btn-try:hover { background: #0b7c71; }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 998; }
+    body.editor-open { overflow: hidden; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1001; }
+    body.editor-open .course-nav { visibility: hidden; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; font-size: .85rem; font-weight: 700; padding: .38rem .9rem; border-radius: 6px; cursor: pointer; font-family: var(--font); transition: var(--transition); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
+    .editor-panes { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .code-editor { flex: 1; overflow: hidden; }
+    .code-editor .CodeMirror { height: 100%; font-size: .9rem; font-family: 'Consolas','Monaco',monospace; }
+    .preview-wrap { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+    .preview-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: .4rem .8rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    #ed-preview { flex: 1; border: none; background: #fff; }
+    @media(max-width:700px){ .editor-panes { flex-direction: column; } }
+    .challenge-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 1px solid #86efac; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #166534; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+  </style>
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-programming.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-programming.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Introduzione alla Programmazione in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Introduzione alla Programmazione completo: variabili, cicli, funzioni, binario. Gratuito con esempi interattivi.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Introduzione alla Programmazione in italiano","description":"Corso di Introduzione alla Programmazione italiano completo e gratuito: variabili, costanti, condizioni, array, cicli, funzioni, ricorsione, scope, stringhe, tipi di dati, operatori, sistema binario ed esadecimale, algebra booleana. Con esempi interattivi.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-programming.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html">W3.CSS</a>
+    <a href="corso-angularjs.html">ANGULARJS</a>
+    <a href="corso-ai.html">AI</a>
+    <a href="corso-aws.html">AWS</a>
+    <a href="corso-programming.html" class="active">PROGRAMMAZIONE</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Introduzione alla Programmazione</h1>
+    <p class="lead" style="margin-inline:auto">I concetti fondamentali validi in ogni linguaggio: variabili, condizioni, cicli, funzioni, ricorsione, tipi di dati, operatori, e come i computer rappresentano i numeri in binario ed esadecimale. La base solida prima di scegliere un linguaggio. Con esempi interattivi in JavaScript.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Concetti base</h4>
+<a href="#intro">Introduzione</a>
+<a href="#programmazione">Cos'è programmare</a>
+<a href="#variabili">Variabili</a>
+<a href="#costanti">Costanti</a>
+<a href="#tipi">Tipi di dati</a>
+<a href="#typecasting">Type Casting</a>
+<a href="#operatori">Operatori</a>
+<a href="#commenti">Commenti</a>
+<h4>Controllo di flusso</h4>
+<a href="#condizioni">Condizioni (if)</a>
+<a href="#cicli">Cicli (loop)</a>
+<a href="#array">Array</a>
+<a href="#stringhe">Stringhe</a>
+<h4>Funzioni</h4>
+<a href="#funzioni">Funzioni</a>
+<a href="#ricorsione">Ricorsione</a>
+<a href="#scope">Scope</a>
+<a href="#io">Input e Output</a>
+<h4>Come pensano i computer</h4>
+<a href="#bit">Bit e Byte</a>
+<a href="#binario">Numeri binari</a>
+<a href="#esadecimale">Esadecimale</a>
+<a href="#booleana">Algebra booleana</a>
+<h4>Esercizi</h4>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- 1. INTRO -->
+<article class="lesson" id="intro">
+<h2>Introduzione</h2>
+<p>Questo corso ti insegna i <strong>concetti fondamentali della programmazione</strong>, validi in qualsiasi linguaggio: Python, JavaScript, Java, C, e tutti gli altri. Imparare questi concetti una volta significa poterli applicare ovunque.</p>
+<p>Useremo <strong>JavaScript</strong> per gli esempi, perché gira direttamente nel browser e puoi eseguirlo subito cliccando "Provalo tu". Ma le idee — variabili, cicli, funzioni — sono universali.</p>
+<table class="ref">
+<tr><th>Cosa imparerai</th></tr>
+<tr><td>Come memorizzare e manipolare dati (variabili, tipi)</td></tr>
+<tr><td>Come prendere decisioni (condizioni)</td></tr>
+<tr><td>Come ripetere operazioni (cicli)</td></tr>
+<tr><td>Come organizzare il codice (funzioni, scope)</td></tr>
+<tr><td>Come i computer rappresentano i numeri (binario, esadecimale)</td></tr>
+</table>
+<div class="note-box">💡 Non serve installare nulla: ogni esempio è eseguibile nel browser. Clicca <strong>"Provalo tu ▶"</strong>, modifica il codice e guarda subito il risultato.</div>
+</article>
+
+<!-- 2. PROGRAMMAZIONE -->
+<article class="lesson" id="programmazione">
+<h2>Cos'è programmare</h2>
+<p><strong>Programmare</strong> significa scrivere una serie di istruzioni precise che il computer esegue una dopo l'altra. Un programma è come una <em>ricetta</em>: una sequenza di passi per ottenere un risultato.</p>
+<p>Il computer è velocissimo ma "stupido": fa <em>esattamente</em> ciò che gli dici, anche se è sbagliato. Il lavoro del programmatore è tradurre un problema in passi così chiari che una macchina possa eseguirli.</p>
+<h3>L'algoritmo: il cuore della programmazione</h3>
+<p>Un <strong>algoritmo</strong> è la sequenza di passi per risolvere un problema, indipendente dal linguaggio. Esempio — fare un tè:</p>
+<ol>
+  <li>Riempi il bollitore d'acqua</li>
+  <li>Accendi il bollitore</li>
+  <li>Aspetta che l'acqua bolla</li>
+  <li>Metti la bustina nella tazza</li>
+  <li>Versa l'acqua</li>
+</ol>
+<div class="example">
+<div class="codehead"><span>JS — il tuo primo programma</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+// Un programma esegue le istruzioni in ordine, dall'alto in basso
+document.write("&lt;h2&gt;Ciao, mondo!&lt;/h2&gt;");
+document.write("&lt;p&gt;Questo è il mio primo programma.&lt;/p&gt;");
+document.write("&lt;p&gt;2 + 2 fa " + (2 + 2) + "&lt;/p&gt;");
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 "Hello, World!" è tradizionalmente il primo programma che si scrive in ogni linguaggio: serve a verificare che tutto funzioni.</div>
+</article>
+
+<!-- 3. VARIABILI -->
+<article class="lesson" id="variabili">
+<h2>Variabili</h2>
+<p>Una <strong>variabile</strong> è un contenitore con un nome che memorizza un valore. Puoi pensarla come una scatola etichettata: l'etichetta è il nome, il contenuto è il valore (che può cambiare).</p>
+<div class="example">
+<div class="codehead"><span>JS — dichiarare e usare variabili</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+// Dichiarazione di variabili con 'let'
+let nome = "Marco";
+let eta = 25;
+let altezza = 1.78;
+
+// Le variabili possono cambiare valore
+eta = eta + 1;  // ora vale 26
+
+let testo = "";
+testo += "Nome: " + nome + "\n";
+testo += "Età: " + eta + "\n";
+testo += "Altezza: " + altezza + " m\n";
+
+document.getElementById("out").textContent = testo;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">📋 <strong>Regole per i nomi delle variabili:</strong> usa nomi descrittivi (<code class="inline">eta</code> meglio di <code class="inline">x</code>), niente spazi, non iniziare con un numero, attenzione a maiuscole/minuscole (<code class="inline">Nome</code> ≠ <code class="inline">nome</code>).</div>
+</article>
+
+<!-- 4. COSTANTI -->
+<article class="lesson" id="costanti">
+<h2>Costanti</h2>
+<p>Una <strong>costante</strong> è come una variabile, ma il suo valore <strong>non può cambiare</strong> dopo essere stato assegnato. Si usano per valori fissi: π, il numero massimo di tentativi, l'aliquota IVA.</p>
+<div class="example">
+<div class="codehead"><span>JS — costanti con const</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+const PI = 3.14159;
+const IVA = 0.22;
+
+let raggio = 5;
+let area = PI * raggio * raggio;
+
+let prezzoNetto = 100;
+let prezzoConIva = prezzoNetto * (1 + IVA);
+
+let out = "Area del cerchio (r=5): " + area.toFixed(2) + "\n";
+out += "Prezzo con IVA: " + prezzoConIva.toFixed(2) + " €\n\n";
+
+// Se provi a cambiare una costante ottieni un errore:
+try {
+  PI = 4;
+} catch (e) {
+  out += "Errore: non puoi modificare una costante!";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 <strong>Convenzione:</strong> i nomi delle costanti si scrivono spesso in MAIUSCOLO (<code class="inline">PI</code>, <code class="inline">MAX_TENTATIVI</code>) per distinguerle dalle variabili.</div>
+</article>
+
+<!-- 5. TIPI DI DATI -->
+<article class="lesson" id="tipi">
+<h2>Tipi di dati</h2>
+<p>Ogni valore in un programma ha un <strong>tipo</strong>, che ne determina la natura e le operazioni possibili.</p>
+<table class="ref">
+<tr><th>Tipo</th><th>Descrizione</th><th>Esempio</th></tr>
+<tr><td><strong>Intero (int)</strong></td><td>Numeri senza decimali</td><td><code class="inline">42</code>, <code class="inline">-7</code></td></tr>
+<tr><td><strong>Decimale (float)</strong></td><td>Numeri con virgola</td><td><code class="inline">3.14</code></td></tr>
+<tr><td><strong>Stringa (string)</strong></td><td>Testo</td><td><code class="inline">"ciao"</code></td></tr>
+<tr><td><strong>Booleano (bool)</strong></td><td>Vero o falso</td><td><code class="inline">true</code>, <code class="inline">false</code></td></tr>
+<tr><td><strong>Array</strong></td><td>Lista di valori</td><td><code class="inline">[1, 2, 3]</code></td></tr>
+<tr><td><strong>Null / undefined</strong></td><td>Assenza di valore</td><td><code class="inline">null</code></td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — scoprire il tipo con typeof</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let intero   = 42;
+let decimale = 3.14;
+let testo    = "programmazione";
+let vero     = true;
+let lista    = [1, 2, 3];
+
+let out = "";
+out += intero   + " → " + typeof intero   + "\n";
+out += decimale + " → " + typeof decimale + "\n";
+out += testo    + " → " + typeof testo    + "\n";
+out += vero     + " → " + typeof vero     + "\n";
+out += lista    + " → " + typeof lista    + " (array)\n";
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- 6. TYPE CASTING -->
+<article class="lesson" id="typecasting">
+<h2>Type Casting (conversione di tipo)</h2>
+<p>Il <strong>type casting</strong> è la conversione di un valore da un tipo a un altro. È fondamentale, ad esempio, quando leggi un numero da un campo di testo: arriva come stringa e devi convertirlo in numero per fare calcoli.</p>
+<div class="example">
+<div class="codehead"><span>JS — conversioni tra tipi</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+// Stringa → Numero
+let testo = "42";
+let numero = Number(testo);   // oppure parseInt(testo)
+out += testo + " + 8 (come stringhe) = " + (testo + 8) + "\n";
+out += numero + " + 8 (come numeri)  = " + (numero + 8) + "\n\n";
+
+// Numero → Stringa
+let n = 100;
+let s = String(n);
+out += "Tipo di String(100): " + typeof s + "\n\n";
+
+// Stringa → Decimale
+out += 'parseFloat("3.14") = ' + parseFloat("3.14") + "\n";
+
+// Booleano da numero
+out += "Boolean(0) = " + Boolean(0) + "\n";
+out += "Boolean(5) = " + Boolean(5) + "\n";
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="warn-box">⚠️ Un errore classico: <code class="inline">"5" + 3</code> dà <code class="inline">"53"</code> (concatenazione di stringhe), non <code class="inline">8</code>. Converti sempre in numero prima di fare calcoli!</div>
+</article>
+
+<!-- 7. OPERATORI -->
+<article class="lesson" id="operatori">
+<h2>Operatori</h2>
+<p>Gli <strong>operatori</strong> eseguono operazioni su valori e variabili.</p>
+<table class="ref">
+<tr><th>Categoria</th><th>Operatori</th></tr>
+<tr><td><strong>Aritmetici</strong></td><td><code class="inline">+ - * / %</code> (modulo) <code class="inline">**</code> (potenza)</td></tr>
+<tr><td><strong>Confronto</strong></td><td><code class="inline">== === != &lt; &gt; &lt;= &gt;=</code></td></tr>
+<tr><td><strong>Logici</strong></td><td><code class="inline">&amp;&amp;</code> (AND) <code class="inline">||</code> (OR) <code class="inline">!</code> (NOT)</td></tr>
+<tr><td><strong>Assegnazione</strong></td><td><code class="inline">= += -= *= /=</code></td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — operatori in azione</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let a = 17, b = 5;
+let out = "";
+
+out += "a = " + a + ", b = " + b + "\n\n";
+out += "Somma:        a + b = " + (a + b) + "\n";
+out += "Differenza:   a - b = " + (a - b) + "\n";
+out += "Prodotto:     a * b = " + (a * b) + "\n";
+out += "Divisione:    a / b = " + (a / b).toFixed(2) + "\n";
+out += "Resto (mod):  a % b = " + (a % b) + "\n";
+out += "Potenza:      a ** 2 = " + (a ** 2) + "\n\n";
+
+out += "Confronti:\n";
+out += "a > b?  " + (a > b) + "\n";
+out += "a == b? " + (a == b) + "\n\n";
+
+out += "Logici:\n";
+out += "(a > 10) && (b < 10) = " + ((a > 10) && (b < 10)) + "\n";
+out += "(a < 10) || (b < 10) = " + ((a < 10) || (b < 10)) + "\n";
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔑 L'operatore <strong>modulo</strong> <code class="inline">%</code> dà il resto della divisione. È utilissimo: <code class="inline">n % 2 == 0</code> verifica se un numero è pari.</div>
+</article>
+
+<!-- 8. COMMENTI -->
+<article class="lesson" id="commenti">
+<h2>Commenti</h2>
+<p>I <strong>commenti</strong> sono note nel codice ignorate dal computer ma lette dagli umani. Servono a spiegare <em>perché</em> il codice fa qualcosa, non solo cosa fa.</p>
+<div class="example">
+<div class="codehead"><span>JS — commenti su una riga e su più righe</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+// Questo è un commento su una sola riga
+
+/*
+  Questo è un commento
+  su più righe.
+  Utile per spiegazioni lunghe.
+*/
+
+let prezzo = 50;
+let sconto = 0.2;  // 20% di sconto applicato ai saldi
+
+// Calcola il prezzo finale dopo lo sconto
+let finale = prezzo * (1 - sconto);
+
+document.getElementById("out").textContent =
+  "Prezzo finale: " + finale + " €";
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Buon codice si commenta da solo con nomi chiari. Usa i commenti per spiegare le decisioni difficili, non per ripetere l'ovvio.</div>
+</article>
+
+<!-- 9. CONDIZIONI -->
+<article class="lesson" id="condizioni">
+<h2>Condizioni (if)</h2>
+<p>Le <strong>condizioni</strong> permettono al programma di prendere decisioni: esegui un blocco di codice <em>solo se</em> una condizione è vera.</p>
+<div class="formula">if (condizione) { ... } else if (altra) { ... } else { ... }</div>
+<div class="example">
+<div class="codehead"><span>JS — if / else if / else</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+function valuta(voto) {
+  if (voto &gt;= 90) {
+    return "Eccellente! 🏆";
+  } else if (voto &gt;= 60) {
+    return "Promosso ✅";
+  } else {
+    return "Bocciato ❌";
+  }
+}
+
+let voti = [95, 72, 45, 60, 88];
+for (let v of voti) {
+  out += "Voto " + v + " → " + valuta(v) + "\n";
+}
+
+// Operatore ternario: forma compatta di if/else
+let numero = 7;
+let parita = (numero % 2 === 0) ? "pari" : "dispari";
+out += "\n" + numero + " è " + parita;
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- 10. CICLI -->
+<article class="lesson" id="cicli">
+<h2>Cicli (loop)</h2>
+<p>I <strong>cicli</strong> ripetono un blocco di codice più volte, evitando di riscriverlo. Sono uno strumento potentissimo: con poche righe puoi elaborare migliaia di dati.</p>
+<table class="ref">
+<tr><th>Ciclo</th><th>Quando usarlo</th></tr>
+<tr><td><strong>for</strong></td><td>Quando sai quante volte ripetere</td></tr>
+<tr><td><strong>while</strong></td><td>Quando ripeti finché una condizione è vera</td></tr>
+<tr><td><strong>for...of</strong></td><td>Per scorrere gli elementi di un array</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — i tre tipi di ciclo</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+// Ciclo FOR: conta da 1 a 5
+out += "FOR: ";
+for (let i = 1; i &lt;= 5; i++) {
+  out += i + " ";
+}
+
+// Ciclo WHILE: dimezza finché &gt; 1
+out += "\n\nWHILE: ";
+let n = 100;
+while (n &gt; 1) {
+  out += n + " ";
+  n = Math.floor(n / 2);
+}
+
+// Ciclo FOR...OF: scorre un array
+out += "\n\nFOR...OF: ";
+let frutti = ["🍎", "🍌", "🍊", "🍇"];
+for (let f of frutti) {
+  out += f + " ";
+}
+
+// Tabellina del 7 con un ciclo
+out += "\n\nTabellina del 7:\n";
+for (let i = 1; i &lt;= 10; i++) {
+  out += "7 x " + i + " = " + (7 * i) + "\n";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="warn-box">⚠️ Attento ai <strong>cicli infiniti</strong>: se la condizione di un <code class="inline">while</code> non diventa mai falsa, il programma si blocca. Assicurati sempre che qualcosa cambi a ogni iterazione.</div>
+</article>
+
+<!-- 11. ARRAY -->
+<article class="lesson" id="array">
+<h2>Array</h2>
+<p>Un <strong>array</strong> è una lista ordinata di valori, accessibili tramite un <em>indice</em> numerico che parte da <strong>0</strong>.</p>
+<div class="example">
+<div class="codehead"><span>JS — creare e manipolare array</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+// Creazione
+let numeri = [10, 20, 30, 40, 50];
+
+// Accesso per indice (parte da 0!)
+out += "Primo elemento (indice 0): " + numeri[0] + "\n";
+out += "Terzo elemento (indice 2): " + numeri[2] + "\n";
+out += "Lunghezza array: " + numeri.length + "\n\n";
+
+// Aggiungere e rimuovere
+numeri.push(60);          // aggiunge in fondo
+numeri.unshift(5);        // aggiunge all'inizio
+out += "Dopo push e unshift: [" + numeri + "]\n\n";
+
+// Scorrere e calcolare la somma
+let somma = 0;
+for (let n of numeri) somma += n;
+out += "Somma di tutti: " + somma + "\n";
+out += "Media: " + (somma / numeri.length) + "\n\n";
+
+// Trovare il massimo
+out += "Massimo: " + Math.max(...numeri) + "\n";
+out += "Minimo: " + Math.min(...numeri);
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔢 <strong>L'indice parte da 0!</strong> In un array di 5 elementi, gli indici validi vanno da 0 a 4. Accedere a <code class="inline">numeri[5]</code> dà <code class="inline">undefined</code>.</div>
+</article>
+
+<!-- 12. STRINGHE -->
+<article class="lesson" id="stringhe">
+<h2>Stringhe</h2>
+<p>Una <strong>stringa</strong> è una sequenza di caratteri (testo). I linguaggi offrono molti metodi per manipolarle: cercare, sostituire, dividere, cambiare maiuscole/minuscole.</p>
+<div class="example">
+<div class="codehead"><span>JS — operazioni sulle stringhe</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let frase = "Imparare a Programmare";
+let out = "";
+
+out += "Stringa: \"" + frase + "\"\n\n";
+out += "Lunghezza: " + frase.length + " caratteri\n";
+out += "Maiuscolo: " + frase.toUpperCase() + "\n";
+out += "Minuscolo: " + frase.toLowerCase() + "\n";
+out += "Primo carattere: " + frase[0] + "\n";
+out += "Contiene 'Program'? " + frase.includes("Program") + "\n";
+out += "Sostituzione: " + frase.replace("Programmare", "Pensare") + "\n\n";
+
+// Dividere una stringa in parole
+let parole = frase.split(" ");
+out += "Parole: " + parole.length + " → [" + parole + "]\n\n";
+
+// Invertire una stringa
+let invertita = frase.split("").reverse().join("");
+out += "Invertita: " + invertita;
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- 13. FUNZIONI -->
+<article class="lesson" id="funzioni">
+<h2>Funzioni</h2>
+<p>Una <strong>funzione</strong> è un blocco di codice riutilizzabile con un nome. Riceve dati in ingresso (<em>parametri</em>), esegue operazioni e può restituire un risultato (<em>return</em>). Le funzioni evitano la ripetizione e organizzano il codice.</p>
+<div class="formula">function nome(parametri) { ... return risultato; }</div>
+<div class="example">
+<div class="codehead"><span>JS — definire e chiamare funzioni</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+// Funzione con due parametri che restituisce un valore
+function somma(a, b) {
+  return a + b;
+}
+
+// Funzione che calcola l'area di un rettangolo
+function areaRettangolo(base, altezza) {
+  return base * altezza;
+}
+
+// Funzione che dice se un numero è primo
+function isPrimo(n) {
+  if (n &lt; 2) return false;
+  for (let i = 2; i &lt;= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+out += "somma(3, 4) = " + somma(3, 4) + "\n";
+out += "areaRettangolo(5, 8) = " + areaRettangolo(5, 8) + "\n\n";
+
+out += "Numeri primi da 1 a 20: ";
+for (let i = 1; i &lt;= 20; i++) {
+  if (isPrimo(i)) out += i + " ";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Una buona funzione fa <strong>una cosa sola</strong> e la fa bene. Se una funzione diventa troppo lunga, probabilmente va divisa in più funzioni.</div>
+</article>
+
+<!-- 14. RICORSIONE -->
+<article class="lesson" id="ricorsione">
+<h2>Ricorsione</h2>
+<p>La <strong>ricorsione</strong> è quando una funzione <em>chiama se stessa</em>. È utile per problemi che si possono dividere in sotto-problemi più piccoli dello stesso tipo. Ogni funzione ricorsiva ha bisogno di un <strong>caso base</strong> che ferma la ricorsione.</p>
+<div class="example">
+<div class="codehead"><span>JS — fattoriale e Fibonacci ricorsivi</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+// Fattoriale: n! = n * (n-1) * ... * 1
+function fattoriale(n) {
+  if (n &lt;= 1) return 1;        // caso base
+  return n * fattoriale(n - 1); // chiamata ricorsiva
+}
+
+// Fibonacci: ogni numero è la somma dei due precedenti
+function fib(n) {
+  if (n &lt; 2) return n;          // casi base: fib(0)=0, fib(1)=1
+  return fib(n - 1) + fib(n - 2);
+}
+
+out += "Fattoriali:\n";
+for (let i = 1; i &lt;= 6; i++) {
+  out += i + "! = " + fattoriale(i) + "\n";
+}
+
+out += "\nSequenza di Fibonacci:\n";
+for (let i = 0; i &lt; 10; i++) {
+  out += fib(i) + " ";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="warn-box">⚠️ Senza un <strong>caso base</strong> corretto, la ricorsione non si ferma mai e il programma va in errore ("stack overflow"). È l'equivalente ricorsivo del ciclo infinito.</div>
+</article>
+
+<!-- 15. SCOPE -->
+<article class="lesson" id="scope">
+<h2>Scope (visibilità)</h2>
+<p>Lo <strong>scope</strong> è la regione del codice in cui una variabile è accessibile. Una variabile dichiarata dentro una funzione (<em>locale</em>) non esiste fuori da essa; una dichiarata fuori (<em>globale</em>) è visibile ovunque.</p>
+<div class="example">
+<div class="codehead"><span>JS — scope locale e globale</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "";
+
+let globale = "Sono visibile ovunque";  // scope globale
+
+function esempio() {
+  let locale = "Esisto solo qui dentro"; // scope locale
+  out += "Dentro la funzione:\n";
+  out += "  globale: " + globale + "\n";
+  out += "  locale:  " + locale + "\n";
+}
+
+esempio();
+
+out += "\nFuori dalla funzione:\n";
+out += "  globale: " + globale + "\n";
+
+// Provare ad accedere a 'locale' qui darebbe errore
+try {
+  out += "  locale: " + locale;
+} catch (e) {
+  out += "  locale: ERRORE - non è definita qui!";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔒 Limitare lo scope è una buona pratica: meno variabili globali = meno errori e codice più facile da capire e mantenere.</div>
+</article>
+
+<!-- 16. INPUT/OUTPUT -->
+<article class="lesson" id="io">
+<h2>Input e Output</h2>
+<p>Un programma comunica con l'esterno tramite <strong>input</strong> (dati che riceve) e <strong>output</strong> (risultati che produce). Vediamo un esempio interattivo con un campo di input.</p>
+<div class="example">
+<div class="codehead"><span>JS — input dell'utente e output</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    input { padding: 8px; font-size: 1rem; width: 200px; }
+    button { padding: 8px 16px; background: #4f46e5; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    #risultato { margin-top: 16px; font-size: 1.2rem; font-weight: bold; color: #0d9488; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h3&gt;Convertitore Celsius → Fahrenheit&lt;/h3&gt;
+&lt;input type="number" id="celsius" placeholder="Gradi Celsius" value="25"&gt;
+&lt;button onclick="converti()"&gt;Converti&lt;/button&gt;
+&lt;div id="risultato"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+function converti() {
+  // INPUT: legge il valore dal campo
+  let c = Number(document.getElementById("celsius").value);
+
+  // ELABORAZIONE: formula di conversione
+  let f = c * 9/5 + 32;
+
+  // OUTPUT: mostra il risultato
+  document.getElementById("risultato").textContent =
+    c + "°C = " + f + "°F";
+}
+converti();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">⌨️ Ogni programma segue lo schema <strong>Input → Elaborazione → Output</strong>: riceve dati, li elabora secondo un algoritmo, e produce un risultato.</div>
+</article>
+
+<!-- 17. BIT E BYTE -->
+<article class="lesson" id="bit">
+<h2>Bit e Byte</h2>
+<p>Al livello più basso, i computer conoscono solo due stati: <strong>0</strong> e <strong>1</strong> (acceso/spento). Un singolo 0 o 1 è un <strong>bit</strong>. Otto bit formano un <strong>byte</strong>.</p>
+<table class="ref">
+<tr><th>Unità</th><th>Valore</th></tr>
+<tr><td><strong>1 bit</strong></td><td>0 o 1</td></tr>
+<tr><td><strong>1 byte</strong></td><td>8 bit (256 combinazioni: 0-255)</td></tr>
+<tr><td><strong>1 KB (kilobyte)</strong></td><td>1.024 byte</td></tr>
+<tr><td><strong>1 MB (megabyte)</strong></td><td>1.024 KB</td></tr>
+<tr><td><strong>1 GB (gigabyte)</strong></td><td>1.024 MB</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — quante combinazioni con N bit?</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "Con N bit puoi rappresentare 2^N valori:\n\n";
+
+for (let bit = 1; bit &lt;= 8; bit++) {
+  let combinazioni = 2 ** bit;
+  out += bit + " bit → " + combinazioni + " combinazioni";
+  if (bit === 8) out += "  (un byte: 0-255)";
+  out += "\n";
+}
+
+out += "\nEsempio: con 1 byte (8 bit) puoi rappresentare\n";
+out += "un numero da 0 a 255, oppure un carattere (codice ASCII).";
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- 18. BINARIO -->
+<article class="lesson" id="binario">
+<h2>Numeri binari</h2>
+<p>Il <strong>sistema binario</strong> (base 2) usa solo le cifre 0 e 1. È il linguaggio nativo dei computer. Ogni posizione vale una potenza di 2.</p>
+<div class="formula">1011 (binario) = 1·8 + 0·4 + 1·2 + 1·1 = 8 + 2 + 1 = 11 (decimale)</div>
+<div class="example">
+<div class="codehead"><span>JS — convertire decimale ↔ binario</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "Decimale → Binario:\n\n";
+
+for (let n of [2, 5, 8, 10, 16, 42, 255]) {
+  // toString(2) converte in binario
+  let bin = n.toString(2);
+  out += n + " = " + bin.padStart(8, "0") + " (binario)\n";
+}
+
+out += "\nBinario → Decimale:\n\n";
+for (let b of ["0001", "0101", "1010", "1111", "11111111"]) {
+  // parseInt con base 2
+  let dec = parseInt(b, 2);
+  out += b + " = " + dec + " (decimale)\n";
+}
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Per convertire da decimale a binario a mano: dividi ripetutamente per 2 e leggi i resti dal basso verso l'alto.</div>
+</article>
+
+<!-- 19. ESADECIMALE -->
+<article class="lesson" id="esadecimale">
+<h2>Numeri esadecimali</h2>
+<p>Il sistema <strong>esadecimale</strong> (base 16) usa 16 simboli: 0-9 e A-F (dove A=10, B=11, ... F=15). È compatto e molto usato in informatica, per esempio nei <strong>colori</strong> (<code class="inline">#FF5733</code>) e negli indirizzi di memoria.</p>
+<table class="ref">
+<tr><th>Decimale</th><th>Binario</th><th>Esadecimale</th></tr>
+<tr><td>10</td><td>1010</td><td>A</td></tr>
+<tr><td>15</td><td>1111</td><td>F</td></tr>
+<tr><td>255</td><td>11111111</td><td>FF</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — esadecimale e colori RGB</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;div id="colore" style="margin-top:12px;padding:20px;color:#fff;font-weight:bold;border-radius:8px"&gt;&lt;/div&gt;
+&lt;script&gt;
+let out = "Decimale → Esadecimale:\n\n";
+for (let n of [10, 15, 16, 255, 4096]) {
+  out += n + " = " + n.toString(16).toUpperCase() + " (hex)\n";
+}
+
+// Un colore in esadecimale: #RRGGBB
+let r = 255, g = 87, b = 51;
+let hex = "#" +
+  r.toString(16).padStart(2,"0") +
+  g.toString(16).padStart(2,"0") +
+  b.toString(16).padStart(2,"0");
+
+out += "\nColore RGB(" + r + ", " + g + ", " + b + ")\n";
+out += "in esadecimale = " + hex.toUpperCase();
+
+let div = document.getElementById("colore");
+div.style.background = hex;
+div.textContent = "Questo è il colore " + hex.toUpperCase();
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</article>
+
+<!-- 20. ALGEBRA BOOLEANA -->
+<article class="lesson" id="booleana">
+<h2>Algebra booleana</h2>
+<p>L'<strong>algebra booleana</strong> lavora con due soli valori: <strong>vero</strong> (1) e <strong>falso</strong> (0). È il fondamento della logica dei computer. Le operazioni base sono <strong>AND</strong>, <strong>OR</strong> e <strong>NOT</strong>.</p>
+<table class="ref">
+<tr><th>A</th><th>B</th><th>A AND B</th><th>A OR B</th><th>NOT A</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>JS — tabelle di verità generate dal codice</span><button class="btn-try">Provalo tu ▶</button></div>
+<pre class="codeview"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;pre id="out"&gt;&lt;/pre&gt;
+&lt;script&gt;
+let out = "Tabella di verità completa:\n\n";
+out += "A  B | AND  OR  XOR | NOT A\n";
+out += "---------------------------\n";
+
+for (let a = 0; a &lt;= 1; a++) {
+  for (let b = 0; b &lt;= 1; b++) {
+    let and = a &amp;&amp; b;
+    let or  = a || b;
+    let xor = a ^ b;          // OR esclusivo
+    let notA = a ? 0 : 1;
+    out += a + "  " + b + " |  " + and + "    " + or +
+           "    " + xor + "  |   " + notA + "\n";
+  }
+}
+
+out += "\nAND: vero solo se ENTRAMBI veri\n";
+out += "OR:  vero se ALMENO UNO vero\n";
+out += "XOR: vero se DIVERSI tra loro\n";
+out += "NOT: inverte il valore";
+
+document.getElementById("out").textContent = out;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<div class="note-box">🔌 Questi operatori logici sono realizzati fisicamente nei processori da minuscoli circuiti chiamati <strong>porte logiche</strong> (logic gate). Milioni di esse compongono una CPU.</div>
+</article>
+
+<!-- ESERCIZI -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — FizzBuzz</span>
+<p>Scrivi un ciclo da 1 a 30 che stampi: "Fizz" se il numero è divisibile per 3, "Buzz" se divisibile per 5, "FizzBuzz" se divisibile per entrambi, altrimenti il numero stesso. (Usa l'operatore modulo <code class="inline">%</code>.)</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — Conta le vocali</span>
+<p>Scrivi una funzione che riceva una stringa e restituisca quante vocali contiene. Testala con "programmazione". (Suggerimento: scorri i caratteri con un ciclo e controlla con un if.)</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Massimo di un array</span>
+<p>Senza usare <code class="inline">Math.max</code>, scrivi una funzione che trovi il valore più grande in un array di numeri, usando un ciclo e una variabile che tiene traccia del massimo trovato finora.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 4 — Convertitore binario</span>
+<p>Scrivi una funzione che converta un numero decimale in binario <strong>senza</strong> usare <code class="inline">toString(2)</code>, applicando il metodo delle divisioni successive per 2.</p>
+</div>
+</article>
+
+<!-- FINE -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai imparato i concetti fondamentali della programmazione, validi in ogni linguaggio. Ora hai le basi per scegliere e imparare un linguaggio specifico molto più velocemente.</p>
+<div class="note-box"><strong>Cosa hai imparato:</strong><ul>
+  <li>Variabili, costanti e tipi di dati</li>
+  <li>Operatori e type casting</li>
+  <li>Condizioni e cicli (il controllo di flusso)</li>
+  <li>Array e stringhe</li>
+  <li>Funzioni, ricorsione e scope</li>
+  <li>Input/output e struttura di un programma</li>
+  <li>Bit, byte, numeri binari ed esadecimali</li>
+  <li>Algebra booleana e logica</li>
+</ul></div>
+<p>Il passo successivo? Scegli il tuo primo linguaggio. Consiglio <strong>Python</strong> (semplice e leggibile) o <strong>JavaScript</strong> (gira nel browser) per iniziare.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-python.html" class="btn btn-primary">Vai al corso Python →</a><a href="corso-javascript.html" class="btn btn-primary">Vai al corso JavaScript →</a><a href="corso-dsa.html" class="btn btn-primary">Vai al corso DSA →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a></div>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<!-- Overlay editor -->
+<div class="editor-overlay" id="editorOverlay">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong id="editorTitle">Provalo tu</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
+        <button class="ed-btn ed-close" onclick="closeEditor()">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor">
+        <textarea id="codeArea"></textarea>
+      </div>
+      <div class="preview-wrap">
+        <div class="preview-label">Anteprima</div>
+        <iframe id="ed-preview" title="Anteprima"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="js/main.js?v=5"></script>
+<script>
+const overlay = document.getElementById('editorOverlay');
+let cm;
+let edDark = localStorage.getItem('edTheme') === 'dark';
+
+function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+
+function applyTheme(){
+  const btn = document.getElementById('edThemeBtn');
+  const iframe = document.getElementById('ed-preview');
+  if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+  if(iframe) iframe.style.background = edDark ? '#1e293b' : '#fff';
+  if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+}
+
+function toggleTheme(){
+  edDark = !edDark;
+  localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+  applyTheme();
+}
+
+function openEditor(code, mode){
+  document.getElementById('editorTitle').textContent = 'Provalo tu — Programmazione';
+  overlay.classList.add('open');
+  document.body.classList.add('editor-open');
+  document.addEventListener('touchmove', preventTouch, {passive:false});
+
+  if(!cm){
+    cm = CodeMirror.fromTextArea(document.getElementById('codeArea'),{
+      lineNumbers: true, theme: edDark ? 'material-darker' : 'default', mode: mode || 'htmlmixed',
+      lineWrapping: true, tabSize: 2, autofocus: true
+    });
+    cm.on('change', updatePreview);
+  }
+  cm.setValue(code);
+  cm.refresh();
+  applyTheme();
+  setTimeout(updatePreview, 50);
+}
+
+function updatePreview(){
+  const iframe = document.getElementById('ed-preview');
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open(); doc.write(cm.getValue()); doc.close();
+}
+
+function closeEditor(){
+  overlay.classList.remove('open');
+  document.body.classList.remove('editor-open');
+  document.removeEventListener('touchmove', preventTouch);
+}
+
+document.querySelectorAll('.btn-try').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pre = btn.closest('.codehead').nextElementSibling;
+    const raw = pre ? pre.querySelector('code') : null;
+    if(!raw) return;
+    let code = raw.innerText || raw.textContent;
+    openEditor(code, 'htmlmixed');
+  });
+});
+</script>
+</body>
+</html>
