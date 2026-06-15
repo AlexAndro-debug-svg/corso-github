@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come si costruisce un algoritmo: dal problema al programma — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è un algoritmo e come si costruisce passo dopo passo? La guida per studenti: dal problema alla soluzione, con esempi semplici prima del codice.">
+  <meta name="keywords" content="come costruire un algoritmo, cos'è un algoritmo, dal problema all'algoritmo, algoritmo esempi scuola, problem solving informatica">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="canonical" href="https://alessandrosimone.it/articolo-come-costruire-algoritmo.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alessandrosimone.it/articolo-come-costruire-algoritmo.html">
+  <meta property="og:title" content="Come si costruisce un algoritmo: dal problema al programma — AlessandroSimone.it">
+  <meta property="og:description" content="Cos'è un algoritmo e come si costruisce passo dopo passo? La guida per studenti: dal problema alla soluzione, con esempi semplici prima del codice.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://alessandrosimone.it/articolo-come-costruire-algoritmo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Come si costruisce un algoritmo: dal problema al programma — AlessandroSimone.it">
+  <meta name="twitter:description" content="Cos'è un algoritmo e come si costruisce passo dopo passo? La guida per studenti: dal problema alla soluzione, con esempi semplici prima del codice.">
+  <meta name="twitter:image" content="https://alessandrosimone.it/articolo-come-costruire-algoritmo.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Come si costruisce un algoritmo: dal problema al programma",
+  "description": "Cos'è un algoritmo e come si costruisce passo dopo passo? La guida per studenti: dal problema alla soluzione, con esempi semplici prima del codice.",
+  "inLanguage": "it-IT",
+  "url": "https://alessandrosimone.it/articolo-come-costruire-algoritmo.html",
+  "author": {
+    "@type": "Person",
+    "name": "Alessandro Simone",
+    "url": "https://alessandrosimone.it"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AlessandroSimone.it",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alessandrosimone.it/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": "https://alessandrosimone.it/articolo-come-costruire-algoritmo.html"
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="corsi.html">Corsi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 8 min di lettura</span>
+    <h1>Come si costruisce un algoritmo: dal problema al programma</h1>
+    <p style="color:var(--muted)">📅 15 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Molti studenti pensano che programmare significhi "scrivere codice". In realtà la parte difficile viene prima: capire <strong>come</strong> risolvere il problema, passo dopo passo. Questo ragionamento ha un nome, si chiama algoritmo, ed è il vero cuore dell'informatica. In questa guida ti spiego cos'è un algoritmo, come si costruisce e perché conviene sempre ragionare prima di mettere le mani sulla tastiera.</p>
+
+    <h2>Cos'è un algoritmo?</h2>
+    <p>Un algoritmo è una sequenza di passi precisi e ordinati che porta dalla situazione di partenza alla soluzione di un problema. Detta così sembra una definizione da manuale, ma in verità tu segui algoritmi in continuazione, senza chiamarli così.</p>
+    <p>Pensa a una <strong>ricetta di cucina</strong>: prendi gli ingredienti, li lavori in un certo ordine, e ottieni un piatto. Oppure alle istruzioni per uscire di casa la mattina: sveglia, colazione, vestirsi, prendere le chiavi, uscire. Sono algoritmi: passi ordinati che, eseguiti correttamente, ti portano a un risultato. Un programma non è altro che un algoritmo scritto in un linguaggio che il computer capisce.</p>
+
+    <h2>Perché conviene ragionare prima di scrivere codice?</h2>
+    <p>Perché il computer fa <em>esattamente</em> quello che gli dici, non quello che intendevi. Se l'algoritmo nella tua testa è confuso, il codice sarà confuso, e passerai più tempo a correggere errori che a scrivere. Ragionare prima ti fa separare due problemi diversi: <strong>cosa</strong> deve fare il programma e <strong>come</strong> lo scrivo in un linguaggio.</p>
+    <p>Te lo dico da docente: gli studenti che si bloccano davanti al foglio bianco, nella maggior parte dei casi, non hanno un problema di codice. Hanno un problema di ragionamento: non hanno ancora chiaro l'algoritmo. Quando l'algoritmo è chiaro, tradurlo in codice diventa quasi automatico. Per questo a scuola, e in laboratorio, si parte sempre dal ragionamento.</p>
+
+    <h2>Come si analizza un problema? Input, elaborazione, output</h2>
+    <p>Per costruire un algoritmo, il primo passo è scomporre il problema in tre domande. È uno schema semplice ma potentissimo, che funziona per qualsiasi programma:</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+          </marker>
+        </defs>
+        <!-- Input -->
+        <rect x="10" y="35" width="150" height="60" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="85" y="60" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="700">INPUT</text>
+        <text x="85" y="80" text-anchor="middle" font-size="11" fill="#5a6479">Quali dati ho?</text>
+        <!-- Elaborazione -->
+        <rect x="205" y="35" width="150" height="60" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="280" y="60" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="700">ELABORAZIONE</text>
+        <text x="280" y="80" text-anchor="middle" font-size="11" fill="#5a6479">Cosa devo farci?</text>
+        <!-- Output -->
+        <rect x="400" y="35" width="150" height="60" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="475" y="60" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="700">OUTPUT</text>
+        <text x="475" y="80" text-anchor="middle" font-size="11" fill="#5a6479">Cosa voglio ottenere?</text>
+        <!-- Frecce -->
+        <line x1="160" y1="65" x2="205" y2="65" stroke="#4f46e5" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="355" y1="65" x2="400" y2="65" stroke="#4f46e5" stroke-width="2" marker-end="url(#arr)"/>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">Lo schema input-elaborazione-output: la base per analizzare qualsiasi problema.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Input</strong>: quali dati ho a disposizione in partenza? (Per la media dei voti: i voti.)</li>
+      <li><strong>Elaborazione</strong>: quali operazioni devo fare su quei dati? (Sommarli e dividere per quanti sono.)</li>
+      <li><strong>Output</strong>: qual è il risultato che voglio ottenere? (La media, e magari l'esito.)</li>
+    </ul>
+    <p>Rispondere a queste tre domande prima di scrivere è già metà del lavoro fatto. Hai trasformato un problema vago in qualcosa di concreto.</p>
+
+    <h2>In quanti modi si può rappresentare un algoritmo?</h2>
+    <p>Ecco un'idea che ti accompagnerà per tutto lo studio della programmazione: lo stesso algoritmo si può scrivere in tre modi diversi, dal più informale al più formale. Sono tre lingue per dire la stessa cosa.</p>
+    <p>Il primo modo è <strong>a parole</strong>, in italiano: "leggi i due voti, calcola la media, se è almeno 6 scrivi promosso, altrimenti rimandato". Si chiama pseudocodice quando lo si scrive in modo un po' più strutturato. È il modo più vicino a come pensiamo.</p>
+    <p>Il secondo modo è il <strong>diagramma di flusso</strong>, cioè lo schema visivo con le forme e le frecce. È utilissimo perché mostra a colpo d'occhio il percorso del ragionamento, soprattutto quando ci sono decisioni. Se vuoi vedere come funziona, ne ho parlato nel dettaglio nell'articolo su <a href="articolo-diagramma-di-flusso.html">cos'è un diagramma di flusso e come si legge</a>.</p>
+    <p>Il terzo modo è il <strong>codice</strong> vero e proprio, scritto in un linguaggio come Python. È la traduzione finale, quella che il computer esegue. Il bello è che se i primi due passaggi sono chiari, il codice viene quasi da sé.</p>
+
+    <h2>Un esempio completo: dalla parola al codice</h2>
+    <p>Prendiamo il classico problema della media di due voti e seguiamolo nei tre modi. A parole: "chiedo i due voti, li sommo e divido per due, poi controllo se la media raggiunge il sei e dico l'esito". Questo stesso ragionamento, disegnato come diagramma di flusso e poi tradotto in Python, lo trovi sviluppato passo passo nell'articolo dedicato. Qui ti mostro solo il punto d'arrivo, il codice, così vedi dove si va a parare:</p>
+    <pre><code># Input: leggo i due voti
+voto1 = float(input("Primo voto: "))
+voto2 = float(input("Secondo voto: "))
+
+# Elaborazione: calcolo la media
+media = (voto1 + voto2) / 2
+
+# Output: comunico il risultato e l'esito
+print("Media:", media)
+if media &gt;= 6:
+    print("Promosso")
+else:
+    print("Rimandato")</code></pre>
+    <p>Riconosci lo schema? Le prime due righe sono l'<strong>input</strong>, il calcolo è l'<strong>elaborazione</strong>, e le stampe sono l'<strong>output</strong>. Lo schema di prima è diventato un programma. Se vuoi provarci tu, c'è un <a href="esercizio-media-voti-python.html">esercizio guidato in cui costruisci questo programma passo passo</a>, scrivendo ed eseguendo il codice direttamente nel browser.</p>
+
+    <h2>Quali errori si fanno costruendo un algoritmo?</h2>
+    <p>Da docente, gli inciampi che vedo più spesso quando uno studente costruisce il suo primo algoritmo sono questi:</p>
+    <ul>
+      <li><strong>Saltare l'analisi e buttarsi sul codice</strong>: è la causa numero uno dei blocchi. Senza chiarire input, elaborazione e output, si scrive a tentoni.</li>
+      <li><strong>Passi ambigui o nell'ordine sbagliato</strong>: "calcola la media" prima di aver letto i voti non ha senso. L'ordine conta.</li>
+      <li><strong>Dimenticare i casi particolari</strong>: cosa succede se i dati non sono quelli attesi? Un buon algoritmo li prevede.</li>
+      <li><strong>Voler fare tutto in un colpo</strong>: meglio scomporre un problema grande in problemi piccoli, e risolverli uno alla volta.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Costruire un algoritmo significa ragionare sui passi che risolvono un problema, prima ancora di scrivere codice. Parti sempre dallo schema input-elaborazione-output, poi rappresenta il ragionamento prima a parole, poi come diagramma di flusso, e infine come codice. È il metodo che useremo in tutto il percorso. Il prossimo passo è imparare a leggere e disegnare i diagrammi di flusso, il primo strumento visivo per dare forma ai tuoi algoritmi.</p>
+
+    <h2>Domande frequenti</h2>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è un algoritmo in informatica?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Un algoritmo è una sequenza di passi precisi e ordinati che porta dalla situazione di partenza alla soluzione di un problema. Non è un concetto astratto: anche una ricetta di cucina o le istruzioni per uscire di casa sono algoritmi, cioè passi ordinati che eseguiti correttamente portano a un risultato. In informatica, un programma è semplicemente un algoritmo scritto in un linguaggio che il computer può eseguire, come Python. Imparare a costruire algoritmi è la vera base della programmazione, più ancora della conoscenza di un linguaggio specifico.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Come si costruisce un algoritmo passo dopo passo?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Il primo passo è analizzare il problema con lo schema input-elaborazione-output: quali dati ho a disposizione (input), quali operazioni devo farci (elaborazione) e quale risultato voglio ottenere (output). Una volta chiarite queste tre cose, si descrive la sequenza dei passi prima a parole, poi eventualmente con un diagramma di flusso, e infine la si traduce in codice. La regola d'oro è ragionare prima di scrivere: quasi tutti i blocchi davanti al foglio bianco nascono dall'aver saltato l'analisi e essersi buttati subito sul codice senza un'idea chiara.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Qual è la differenza tra algoritmo e programma?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">L'algoritmo è il ragionamento, cioè la sequenza di passi che risolve il problema, indipendente da qualsiasi linguaggio. Il programma è quello stesso algoritmo tradotto in un linguaggio di programmazione che il computer può eseguire, come Python, C o Java. In altre parole, l'algoritmo è il "cosa fare" e il programma è il "come dirlo al computer". Lo stesso algoritmo può diventare programmi diversi in linguaggi diversi: il ragionamento resta identico, cambia solo la sintassi con cui lo si scrive.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        In quanti modi si può rappresentare un algoritmo?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Principalmente in tre modi, dal più informale al più formale. Il primo è a parole, in linguaggio naturale o in pseudocodice, vicino a come pensiamo. Il secondo è il diagramma di flusso, una rappresentazione visiva con forme e frecce che mostra a colpo d'occhio il percorso del ragionamento, utile soprattutto quando ci sono decisioni. Il terzo è il codice vero e proprio, scritto in un linguaggio come Python ed eseguibile dal computer. Sono tre lingue per dire la stessa cosa: se i primi due passaggi sono chiari, scrivere il codice diventa molto più semplice.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Perché è importante studiare gli algoritmi prima di programmare?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Perché il computer esegue esattamente ciò che gli viene detto, non ciò che si intendeva. Se il ragionamento di partenza è confuso, il codice sarà confuso e si perderà più tempo a correggere errori che a scrivere. Studiare gli algoritmi insegna a separare due cose distinte: cosa deve fare il programma e come scriverlo in un linguaggio. Questa è la difficoltà vera della programmazione, molto più della sintassi. Quando l'algoritmo è chiaro, tradurlo in codice diventa quasi automatico, ed è proprio per questo che a scuola e in laboratorio si parte sempre dal ragionamento.</p>
+    </details>
+
+    <div class="cta-banner mt-4">
+      <h2>Continua il percorso</h2>
+      <p>Ora che sai cos'è un algoritmo, il passo successivo è imparare a disegnarlo: scopri come funziona il diagramma di flusso.</p>
+      <a href="articolo-diagramma-di-flusso.html" class="btn btn-accent btn-lg">Vai al diagramma di flusso →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
