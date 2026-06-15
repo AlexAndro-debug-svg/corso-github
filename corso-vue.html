@@ -2165,7 +2165,8 @@ createApp({
         + '</style>'
         + '</head><body>'
         + cm.getValue()
-        + '</body></html>';
+        + '<script src="js/search.js"></script>
+</body></html>';
       if(edDark) doc = injectDarkStyles(doc);
       preview.srcdoc = doc;
     }
@@ -2202,5 +2203,6 @@ createApp({
     });
   })();
 </script>
+<script src="js/search.js"></script>
 </body>
 </html>

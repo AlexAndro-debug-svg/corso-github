@@ -501,7 +501,8 @@ urlpatterns = [
 # <head><title>{% block title %}Sito{% endblock %}</title></head>
 # <body>
 #   {% block content %}{% endblock %}
-# </body>
+# <script src="js/search.js"></script>
+</body>
 # </html>
 </script></div>
 <h3>Variabili e filtri</h3>
@@ -716,7 +717,8 @@ def dettaglio_membro(request, id):
 #   <nav><a href="{% url 'home' %}">Home</a></nav>
 #   {% block content %}{% endblock %}
 #   <footer>&copy; 2024</footer>
-# </body>
+# <script src="js/search.js"></script>
+</body>
 # </html>
 </script></div>
 <h3>Template figlio</h3>
@@ -1793,7 +1795,8 @@ urlpatterns = [
         +'<li><a style="color:'+aColor+'" href="https://www.djangoproject.com/start/" target="_blank">djangoproject.com — Per iniziare</a></li></ul>'
         +'<h3 style="margin:1rem 0 .4rem;color:inherit">💻 In locale</h3>'
         +'<p><code>pip install django</code> → <code>django-admin startproject sito</code> → <code>python manage.py runserver</code>, poi apri <b>http://127.0.0.1:8000/</b></p>'
-        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p><script src="js/search.js"></script>
+</body>';
     }
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
@@ -1833,5 +1836,6 @@ urlpatterns = [
     });
   })();
 </script>
+<script src="js/search.js"></script>
 </body>
 </html>

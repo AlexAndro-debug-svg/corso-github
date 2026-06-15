@@ -1246,7 +1246,8 @@ LIMIT    n;</code></pre>
           + 'th,td{border:1px solid #475569;padding:.35rem .7rem;text-align:left;color:#f1f5f9}'
           + 'th{background:#334155;font-weight:700}caption{text-align:left;color:#94a3b8;'
           + 'font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;padding:.2rem 0;font-weight:700}</style>'
-          + body + '</body>';
+          + body + '<script src="js/search.js"></script>
+</body>';
       }
       return '<body style="margin:0;font-family:Inter,system-ui,sans-serif;font-size:.9rem;'
         + 'line-height:1.5;color:#1e293b;padding:1.1rem">'
@@ -1254,7 +1255,8 @@ LIMIT    n;</code></pre>
         + 'th,td{border:1px solid #cbd5e1;padding:.35rem .7rem;text-align:left}'
         + 'th{background:#f1f5f9;font-weight:700}caption{text-align:left;color:#64748b;'
         + 'font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;padding:.2rem 0;font-weight:700}</style>'
-        + body + '</body>';
+        + body + '<script src="js/search.js"></script>
+</body>';
     }
     function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
@@ -1344,5 +1346,6 @@ LIMIT    n;</code></pre>
     });
   })();
 </script>
+<script src="js/search.js"></script>
 </body>
 </html>

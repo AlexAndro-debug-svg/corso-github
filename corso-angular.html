@@ -853,6 +853,7 @@ export const appConfig: ApplicationConfig = {
 <div class="example"><div class="codehead"><span>Esempio di codice</span><button class="btn-try">▶ Provalo tu</button></div><pre class="codeview"><code class="language-markup"></code></pre><script type="text/plain" class="code">
 <body>
   <app-root></app-root>  <!-- il componente radice viene montato qui -->
+<script src="js/search.js"></script>
 </body>
 </script></div>
 <p>Con i componenti standalone, <code class="inline">bootstrapApplication()</code> ha sostituito il vecchio approccio basato su <code class="inline">NgModule</code> e <code class="inline">platformBrowserDynamic()</code>.</p>
@@ -1498,7 +1499,8 @@ bootstrapApplication(AppComponent, {
         +'<li><a style="color:'+aColor+'" href="https://angular.dev/cli" target="_blank">Angular CLI — riferimento comandi</a></li></ul>'
         +'<h3 style="margin:1rem 0 .4rem;color:inherit">💻 In locale</h3>'
         +'<p><code>npm install -g @angular/cli</code> &rarr; <code>ng new mia-app</code> &rarr; <code>ng serve</code>, poi apri <b>http://localhost:4200</b></p>'
-        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p></body>';
+        +'<p>Qui puoi <b>leggere e modificare</b> il codice con la sintassi colorata.</p><script src="js/search.js"></script>
+</body>';
     }
     function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
     function openEditor(code){
@@ -1538,5 +1540,6 @@ bootstrapApplication(AppComponent, {
     });
   })();
 </script>
+<script src="js/search.js"></script>
 </body>
 </html>
