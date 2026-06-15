@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il ciclo for in Python: come ripetere le istruzioni — AlessandroSimone.it</title>
+  <meta name="description" content="Come funziona il ciclo for in Python? Guida chiara con la funzione range, esempi scolastici sui voti e il diagramma di flusso tradotto in codice.">
+  <meta name="keywords" content="ciclo for Python, for in python, funzione range python, ciclo for esempi, iterazione python">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="canonical" href="https://alessandrosimone.it/articolo-cicli-for-python.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alessandrosimone.it/articolo-cicli-for-python.html">
+  <meta property="og:title" content="Il ciclo for in Python: come ripetere le istruzioni — AlessandroSimone.it">
+  <meta property="og:description" content="Come funziona il ciclo for in Python? Guida chiara con la funzione range, esempi scolastici sui voti e il diagramma di flusso tradotto in codice.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://alessandrosimone.it/articolo-cicli-for-python.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Il ciclo for in Python: come ripetere le istruzioni — AlessandroSimone.it">
+  <meta name="twitter:description" content="Come funziona il ciclo for in Python? Guida chiara con la funzione range, esempi scolastici sui voti e il diagramma di flusso tradotto in codice.">
+  <meta name="twitter:image" content="https://alessandrosimone.it/articolo-cicli-for-python.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Il ciclo for in Python: come ripetere le istruzioni",
+  "description": "Come funziona il ciclo for in Python? Guida chiara con la funzione range, esempi scolastici sui voti e il diagramma di flusso tradotto in codice.",
+  "inLanguage": "it-IT",
+  "url": "https://alessandrosimone.it/articolo-cicli-for-python.html",
+  "author": {
+    "@type": "Person",
+    "name": "Alessandro Simone",
+    "url": "https://alessandrosimone.it"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AlessandroSimone.it",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alessandrosimone.it/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": "https://alessandrosimone.it/articolo-cicli-for-python.html"
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="corsi.html">Corsi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 8 min di lettura</span>
+    <h1>Il ciclo for in Python: come ripetere le istruzioni</h1>
+    <p style="color:var(--muted)">📅 15 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Quando devi ripetere la stessa operazione molte volte, copiare e incollare il codice non è la soluzione: esiste il <strong>ciclo for</strong>. È uno degli strumenti più usati in assoluto in Python, e una volta capito ti cambia il modo di programmare. In questa guida vediamo come funziona, a cosa serve la funzione range, e come il for nasce in realtà da un'idea che hai già visto nei diagrammi di flusso.</p>
+
+    <h2>Cos'è il ciclo for?</h2>
+    <p>Il ciclo for serve a ripetere un blocco di istruzioni un certo numero di volte, oppure per ogni elemento di un insieme di dati. L'idea è semplice: invece di scrivere dieci volte la stessa riga, dici a Python "ripeti questa operazione per ogni elemento", e lui la esegue da solo.</p>
+    <p>Pensa a quando l'insegnante fa l'appello: scorre l'elenco e per ogni studente fa la stessa cosa, segna presente o assente. Non inventa un'azione diversa per ognuno: ripete lo stesso gesto su ogni nome della lista. Il for fa esattamente questo.</p>
+
+    <h2>Da dove nasce il ciclo for? Il diagramma di flusso</h2>
+    <p>Prima di vedere il codice, guardiamo il ragionamento. Il ciclo è una delle tre strutture di base della programmazione, e nei diagrammi di flusso si rappresenta come un percorso che torna su sé stesso finché una condizione resta vera. Eccolo disegnato.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="arrf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+          </marker>
+        </defs>
+        <!-- Inizio -->
+        <ellipse cx="160" cy="30" rx="55" ry="20" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="160" y="35" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Inizio</text>
+        <line x1="160" y1="50" x2="160" y2="76" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrf)"/>
+        <!-- Rombo condizione -->
+        <polygon points="160,80 270,140 160,200 50,140" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="160" y="136" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">Ci sono ancora</text>
+        <text x="160" y="152" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">elementi?</text>
+        <!-- Ramo sì: elaborazione -->
+        <line x1="160" y1="200" x2="160" y2="226" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrf)"/>
+        <text x="172" y="218" font-size="12" fill="#16a34a" font-weight="700">sì</text>
+        <rect x="70" y="228" width="180" height="46" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="160" y="256" text-anchor="middle" font-size="12" fill="#14532d" font-weight="600">Esegui le istruzioni</text>
+        <!-- Freccia di ritorno (il ciclo torna su sé stesso) -->
+        <line x1="70" y1="251" x2="30" y2="251" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="30" y1="251" x2="30" y2="140" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="30" y1="140" x2="48" y2="140" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrf)"/>
+        <text x="36" y="195" font-size="11" fill="#5a6479">ripeti</text>
+        <!-- Ramo no: fine -->
+        <line x1="270" y1="140" x2="320" y2="140" stroke="#4f46e5" stroke-width="2"/>
+        <text x="278" y="133" font-size="12" fill="#dc2626" font-weight="700">no</text>
+        <line x1="320" y1="140" x2="320" y2="330" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="320" y1="330" x2="218" y2="330" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrf)"/>
+        <ellipse cx="160" cy="330" rx="55" ry="20" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="160" y="335" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Fine</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">La struttura iterativa: finché ci sono elementi, si eseguono le istruzioni e si torna a controllare.</figcaption>
+    </figure>
+
+    <p>Segui le frecce: si controlla se ci sono ancora elementi; se sì, si eseguono le istruzioni e si <strong>torna indietro</strong> a controllare; quando non ce ne sono più, si esce e si va alla fine. Questo "tornare indietro" è il cuore del ciclo. Se vuoi ripassare i simboli e come si legge uno schema così, li ho spiegati nell'articolo su <a href="articolo-diagramma-di-flusso.html">cos'è un diagramma di flusso</a>.</p>
+
+    <h2>Come si scrive un ciclo for in Python?</h2>
+    <p>Quel diagramma, in Python, diventa pochissime righe. La forma base del for è questa:</p>
+    <pre><code># Per ogni elemento di un gruppo, fai qualcosa
+materie = ["Python", "SQL", "Reti"]
+for materia in materie:
+    print(materia)
+
+# Output:
+# Python
+# SQL
+# Reti</code></pre>
+    <p>Leggiamolo come si legge in italiano: "<strong>per ogni</strong> materia <strong>in</strong> materie, stampa la materia". La variabile <code>materia</code> assume a turno il valore di ogni elemento della lista, e il blocco indentato sotto viene eseguito una volta per ciascuno. Quando gli elementi finiscono, il ciclo si ferma da solo: è esattamente il ramo "no" del diagramma.</p>
+
+    <div class="note-box">💡 <strong>Attenzione all'indentazione.</strong> In Python le righe da ripetere vanno spostate a destra (di solito 4 spazi). Quell'indentazione non è estetica: è ciò che dice a Python quali righe stanno <em>dentro</em> il ciclo. Sbagliarla è l'errore numero uno dei principianti.</div>
+
+    <h2>A cosa serve la funzione range?</h2>
+    <p>Spesso non vuoi scorrere una lista, ma ripetere qualcosa un numero preciso di volte. Per questo c'è <code>range()</code>, che genera una sequenza di numeri:</p>
+    <pre><code># Ripeti 5 volte (da 0 a 4)
+for i in range(5):
+    print("Ripetizione numero", i)
+
+# Output:
+# Ripetizione numero 0
+# Ripetizione numero 1
+# Ripetizione numero 2
+# Ripetizione numero 3
+# Ripetizione numero 4</code></pre>
+    <p>Qui c'è la cosa che confonde di più all'inizio: <code>range(5)</code> produce i numeri da <strong>0 a 4</strong>, non da 1 a 5. Parte da zero e l'ultimo numero è <em>escluso</em>. Quindi sono comunque cinque valori (0, 1, 2, 3, 4), ma se ti aspetti che arrivi fino a 5 sbagli i conti. È il classico errore "off-by-one", cioè sbagliare di uno.</p>
+
+    <h2>Un esempio scolastico: la somma dei voti</h2>
+    <p>Mettiamo insieme tutto con un caso vero, di quelli che capitano davvero a scuola: calcolare la somma e la media dei voti di uno studente.</p>
+    <pre><code># I voti di uno studente
+voti = [7, 8, 6, 9, 5]
+
+# Sommo tutti i voti uno per uno
+somma = 0
+for voto in voti:
+    somma = somma + voto    # aggiungo il voto corrente alla somma
+
+# Calcolo la media
+media = somma / len(voti)
+
+print("Somma dei voti:", somma)   # 35
+print("Media:", media)            # 7.0</code></pre>
+    <p>Guarda cosa succede a ogni giro: la variabile <code>somma</code> parte da zero e, per ogni voto, gli si aggiunge il valore corrente. È il modo classico di "accumulare" un risultato dentro un ciclo. Questo schema, sommare gli elementi di un gruppo, lo ritroverai in decine di programmi diversi.</p>
+
+    <h2>Quali errori si fanno con il ciclo for?</h2>
+    <p>Da docente, gli inciampi più frequenti con il for sono sempre questi, e conoscerli ti evita ore di frustrazione:</p>
+    <ul>
+      <li><strong>Sbagliare l'indentazione</strong>: le righe dentro il ciclo devono essere spostate a destra. Se non lo sono, Python dà errore o esegue cose fuori dal ciclo.</li>
+      <li><strong>L'errore off-by-one con range</strong>: ricordati che <code>range(n)</code> arriva fino a n-1, non a n.</li>
+      <li><strong>Dimenticare di inizializzare la variabile</strong>: se usi <code>somma</code> nel ciclo, devi averla creata (<code>somma = 0</code>) prima, altrimenti Python non sa cos'è.</li>
+      <li><strong>Modificare la lista mentre la si scorre</strong>: aggiungere o togliere elementi durante il ciclo crea comportamenti imprevedibili. Meglio evitarlo.</li>
+    </ul>
+
+    <h2>In sintesi</h2>
+    <p>Il ciclo for serve a ripetere istruzioni, scorrendo gli elementi di una lista o usando <code>range()</code> per un numero preciso di volte. Nasce dalla struttura iterativa che hai visto nel diagramma di flusso, e in Python si scrive in modo quasi naturale, "per ogni elemento, fai qualcosa". Ricorda l'indentazione e che range parte da zero. Una volta padroneggiato il for, il passo successivo è capire quando conviene usarlo e quando invece serve un altro tipo di ciclo, il while: lo vedremo nel prossimo articolo.</p>
+
+    <h2>Domande frequenti</h2>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è il ciclo for in Python?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Il ciclo for è una struttura che ripete un blocco di istruzioni per ogni elemento di un insieme di dati, come una lista, oppure un numero preciso di volte usando range(). Invece di riscrivere la stessa riga molte volte, si dice a Python "per ogni elemento, fai questa operazione" e lui la esegue automaticamente su ciascuno. È uno degli strumenti più usati nella programmazione: scorrere una lista di voti, ripetere un calcolo, elaborare una serie di dati sono tutte operazioni che si fanno con un ciclo for. La sua forma in Python è molto leggibile e vicina al linguaggio naturale.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        A cosa serve la funzione range in Python?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">La funzione range genera una sequenza di numeri e si usa con il ciclo for quando si vuole ripetere qualcosa un numero preciso di volte. Ad esempio, for i in range(5) ripete il blocco cinque volte. L'aspetto che confonde di più i principianti è che range(5) produce i numeri da 0 a 4, non da 1 a 5: parte da zero e l'ultimo valore è escluso. Sono comunque cinque numeri, ma bisogna ricordarsene per non sbagliare i conti. Si può anche specificare un inizio diverso, ad esempio range(1, 6) per avere i numeri da 1 a 5.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Perché l'indentazione è importante nel ciclo for?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Perché in Python l'indentazione, cioè lo spostamento a destra delle righe (di solito quattro spazi), indica quali istruzioni stanno dentro il ciclo. A differenza di altri linguaggi che usano le parentesi graffe, Python usa proprio gli spazi per capire il blocco di codice da ripetere. Se l'indentazione è sbagliata, Python segnala un errore oppure esegue righe che pensavi fossero dentro il ciclo ma sono fuori, producendo risultati inattesi. Sbagliare l'indentazione è l'errore più comune di chi inizia, quindi vale la pena fare attenzione fin da subito a mantenerla coerente.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Qual è la differenza tra il ciclo for e il ciclo while?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Il ciclo for si usa quando si sa su quali elementi o quante volte ripetere: scorrere una lista o ripetere un'operazione con range(). Il ciclo while, invece, ripete finché una condizione resta vera, anche senza sapere in anticipo quante volte accadrà, ad esempio "continua a chiedere la password finché non è corretta". In pratica il for è la scelta naturale quando il numero di ripetizioni è noto, il while quando dipende da una condizione che cambia durante l'esecuzione. Entrambi nascono dalla stessa struttura iterativa dei diagrammi di flusso e si possono spesso convertire l'uno nell'altro.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Come si calcola la somma di una lista con il for?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Si crea una variabile che parte da zero e, dentro il ciclo for, le si aggiunge ogni elemento uno alla volta. Ad esempio, con i voti in una lista: si scrive somma = 0 prima del ciclo, poi for voto in voti: somma = somma + voto. A ogni giro la variabile somma accumula il valore corrente, e alla fine contiene il totale. Dividendo la somma per il numero di elementi, ottenuto con len(), si ricava la media. Questo schema dell'accumulatore, una variabile che cresce a ogni ripetizione, è uno dei più usati in programmazione e torna utile in moltissimi esercizi scolastici.</p>
+    </details>
+
+    <div class="cta-banner mt-4">
+      <h2>Esercitati sul ciclo for</h2>
+      <p>Il for si impara scrivendolo. Nei corsi gratuiti trovi l'editor per provare il codice nel browser, e tanti esempi da modificare.</p>
+      <a href="corsi.html" class="btn btn-accent btn-lg">Vai ai corsi →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
