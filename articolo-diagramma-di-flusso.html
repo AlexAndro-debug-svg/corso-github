@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cos'è un diagramma di flusso e come si legge — AlessandroSimone.it</title>
+  <meta name="description" content="Cos'è un diagramma di flusso, a cosa servono i simboli e come si legge passo passo. Un esempio pratico tradotto in codice Python per capire davvero.">
+  <meta name="keywords" content="diagramma di flusso, flow chart informatica, simboli diagramma di flusso, come si fa un diagramma di flusso, diagramma di flusso esempi">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="canonical" href="https://alessandrosimone.it/articolo-diagramma-di-flusso.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alessandrosimone.it/articolo-diagramma-di-flusso.html">
+  <meta property="og:title" content="Cos'è un diagramma di flusso e come si legge — AlessandroSimone.it">
+  <meta property="og:description" content="Cos'è un diagramma di flusso, a cosa servono i simboli e come si legge passo passo. Un esempio pratico tradotto in codice Python per capire davvero.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://alessandrosimone.it/articolo-diagramma-di-flusso.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cos'è un diagramma di flusso e come si legge — AlessandroSimone.it">
+  <meta name="twitter:description" content="Cos'è un diagramma di flusso, a cosa servono i simboli e come si legge passo passo. Un esempio pratico tradotto in codice Python per capire davvero.">
+  <meta name="twitter:image" content="https://alessandrosimone.it/articolo-diagramma-di-flusso.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cos'è un diagramma di flusso e come si legge",
+  "description": "Cos'è un diagramma di flusso, a cosa servono i simboli e come si legge passo passo. Un esempio pratico tradotto in codice Python per capire davvero.",
+  "inLanguage": "it-IT",
+  "url": "https://alessandrosimone.it/articolo-diagramma-di-flusso.html",
+  "author": {
+    "@type": "Person",
+    "name": "Alessandro Simone",
+    "url": "https://alessandrosimone.it"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AlessandroSimone.it",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alessandrosimone.it/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": "https://alessandrosimone.it/articolo-diagramma-di-flusso.html"
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="corsi.html">Corsi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 8 min di lettura</span>
+    <h1>Cos'è un diagramma di flusso e come si legge</h1>
+    <p style="color:var(--muted)">📅 15 giugno 2026 — di Alessandro Simone</p>
+
+    <p>Prima ancora di scrivere una riga di codice, un programmatore deve avere chiaro in testa <strong>cosa</strong> deve fare il programma. Il diagramma di flusso è lo strumento che serve proprio a questo: mettere nero su bianco il ragionamento, passo dopo passo, prima di tradurlo in un linguaggio come Python. In questa guida ti spiego cosa sono i simboli, come si legge un diagramma e, alla fine, vediamo insieme come lo stesso schema diventa codice vero.</p>
+
+    <h2>Cos'è un diagramma di flusso?</h2>
+    <p>Un diagramma di flusso è la <strong>rappresentazione visiva di un algoritmo</strong>, cioè dei passaggi necessari per risolvere un problema. Invece di descrivere a parole "prima fai questo, poi quello", lo disegni con delle forme collegate da frecce, che mostrano l'ordine in cui le operazioni vengono eseguite.</p>
+    <p>Il bello è che un diagramma di flusso non dipende dal linguaggio di programmazione: lo stesso schema può diventare Python, C o Java. È il ponte tra il "cosa voglio fare" e il "come lo scrivo", ed è il motivo per cui a scuola si parte da qui prima di toccare la tastiera.</p>
+
+    <h2>Quali sono i simboli del diagramma di flusso?</h2>
+    <p>Ogni forma ha un significato preciso, e usarla correttamente è metà del lavoro. Sono cinque i simboli che devi conoscere, e te li mostro uno per uno.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <!-- Ovale inizio/fine -->
+        <ellipse cx="120" cy="40" rx="80" ry="26" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="45" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="600">Inizio / Fine</text>
+        <text x="290" y="45" font-size="13" fill="#5a6479">Ovale: apre e chiude il diagramma</text>
+
+        <!-- Parallelogramma input/output -->
+        <polygon points="60,100 200,100 180,150 40,150" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="129" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="600">Input / Output</text>
+        <text x="230" y="129" font-size="13" fill="#5a6479">Parallelogramma: leggi o mostra dati</text>
+
+        <!-- Rettangolo elaborazione -->
+        <rect x="45" y="180" width="150" height="50" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="210" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="600">Elaborazione</text>
+        <text x="230" y="210" font-size="13" fill="#5a6479">Rettangolo: calcoli e operazioni</text>
+
+        <!-- Rombo decisione -->
+        <polygon points="120,255 200,295 120,335 40,295" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="300" text-anchor="middle" font-size="15" fill="#1e1b4b" font-weight="600">Decisione</text>
+        <text x="230" y="293" font-size="13" fill="#5a6479">Rombo: una domanda con risposta</text>
+        <text x="230" y="311" font-size="13" fill="#5a6479">sì / no (vero / falso)</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">I simboli fondamentali del diagramma di flusso. Le frecce collegano i blocchi e indicano l'ordine dei passaggi.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Ovale (inizio/fine)</strong>: segna dove comincia e dove termina l'algoritmo. Ogni diagramma ne ha sempre uno all'inizio e uno alla fine.</li>
+      <li><strong>Parallelogramma (input/output)</strong>: indica quando il programma riceve un dato dall'utente (input) o ne mostra uno (output).</li>
+      <li><strong>Rettangolo (elaborazione)</strong>: rappresenta un calcolo o un'operazione, come sommare due numeri o assegnare un valore.</li>
+      <li><strong>Rombo (decisione)</strong>: pone una domanda con risposta sì/no, e da qui il flusso si divide in due strade.</li>
+      <li><strong>Frecce</strong>: collegano i simboli e indicano la direzione in cui si procede.</li>
+    </ul>
+
+    <h2>Quali errori si fanno più spesso con i simboli?</h2>
+    <p>Da docente, gli scivoloni che vedo più di frequente sono sempre gli stessi, e conoscerli in anticipo ti fa risparmiare brutti voti.</p>
+    <ul>
+      <li><strong>Confondere il rombo con il rettangolo</strong>: il rombo serve <em>solo</em> per le decisioni, cioè quando c'è una domanda. Se stai facendo un calcolo, è un rettangolo.</li>
+      <li><strong>Dimenticare inizio e fine</strong>: un diagramma senza i due ovali è incompleto. Sono obbligatori.</li>
+      <li><strong>Frecce senza direzione</strong>: ogni freccia deve avere la punta che indica dove si va, altrimenti il flusso è ambiguo.</li>
+      <li><strong>Dal rombo esce una strada sola</strong>: una decisione ha sempre due uscite, il ramo "sì" e il ramo "no".</li>
+    </ul>
+
+    <h2>Come si legge un diagramma di flusso? Un esempio</h2>
+    <p>Mettiamo tutto insieme con un problema scolastico classico: <strong>calcolare la media di due voti e dire se lo studente è promosso</strong> (media maggiore o uguale a 6) o rimandato. Ecco l'algoritmo disegnato come diagramma di flusso.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 360 560" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+          </marker>
+        </defs>
+
+        <!-- Inizio -->
+        <ellipse cx="180" cy="30" rx="60" ry="22" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="180" y="35" text-anchor="middle" font-size="14" fill="#1e1b4b" font-weight="600">Inizio</text>
+        <line x1="180" y1="52" x2="180" y2="78" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <!-- Input -->
+        <polygon points="100,82 280,82 260,124 80,124" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="180" y="108" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Leggi voto1 e voto2</text>
+        <line x1="180" y1="124" x2="180" y2="150" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <!-- Elaborazione media -->
+        <rect x="75" y="152" width="210" height="46" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="180" y="180" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">media = (voto1 + voto2) / 2</text>
+        <line x1="180" y1="198" x2="180" y2="224" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <!-- Rombo decisione -->
+        <polygon points="180,228 290,298 180,368 70,298" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="180" y="295" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">media &gt;= 6 ?</text>
+        <text x="180" y="313" text-anchor="middle" font-size="12" fill="#5a6479">(vero o falso)</text>
+
+        <!-- Ramo SI (a sinistra) -->
+        <line x1="70" y1="298" x2="40" y2="298" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="40" y1="298" x2="40" y2="430" stroke="#4f46e5" stroke-width="2"/>
+        <text x="52" y="292" font-size="12" fill="#16a34a" font-weight="700">sì</text>
+        <line x1="40" y1="430" x2="78" y2="430" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+        <polygon points="80,408 230,408 210,452 60,452" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="145" y="434" text-anchor="middle" font-size="13" fill="#14532d" font-weight="600">Stampa "Promosso"</text>
+
+        <!-- Ramo NO (a destra) -->
+        <line x1="290" y1="298" x2="320" y2="298" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="320" y1="298" x2="320" y2="490" stroke="#4f46e5" stroke-width="2"/>
+        <text x="298" y="292" font-size="12" fill="#dc2626" font-weight="700">no</text>
+        <line x1="320" y1="490" x2="232" y2="490" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow)"/>
+        <polygon points="90,468 250,468 230,512 70,512" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+        <text x="160" y="494" text-anchor="middle" font-size="13" fill="#7f1d1d" font-weight="600">Stampa "Rimandato"</text>
+
+        <!-- Fine -->
+        <line x1="145" y1="452" x2="145" y2="525" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="160" y1="512" x2="160" y2="525" stroke="#4f46e5" stroke-width="2"/>
+        <ellipse cx="152" cy="540" rx="55" ry="20" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="152" y="545" text-anchor="middle" font-size="14" fill="#1e1b4b" font-weight="600">Fine</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">Diagramma di flusso dell'algoritmo: calcolo della media di due voti con esito promosso o rimandato.</figcaption>
+    </figure>
+
+    <p>Leggiamolo insieme, seguendo le frecce dall'alto. Si <strong>inizia</strong> dall'ovale. Si <strong>leggono</strong> i due voti (parallelogramma di input). Si <strong>calcola</strong> la media sommandoli e dividendo per due (rettangolo di elaborazione). Si arriva al <strong>rombo</strong>: la media è maggiore o uguale a 6? Se la risposta è "sì", si segue il ramo verde e si stampa "Promosso"; se è "no", si segue il ramo rosso e si stampa "Rimandato". In entrambi i casi si arriva alla <strong>fine</strong>. Tutto qui: hai appena letto un algoritmo completo.</p>
+
+    <h2>Come diventa codice Python?</h2>
+    <p>Ed ecco la parte che rende davvero utile tutto questo. Quel diagramma, una volta chiaro, si traduce quasi alla lettera in Python. Ogni simbolo che hai visto corrisponde a una riga di codice:</p>
+    <pre><code># Inizio del programma
+
+# Parallelogramma di input: leggo i due voti
+voto1 = float(input("Primo voto: "))
+voto2 = float(input("Secondo voto: "))
+
+# Rettangolo di elaborazione: calcolo la media
+media = (voto1 + voto2) / 2
+
+# Rombo di decisione: la media è almeno 6?
+if media &gt;= 6:
+    print("Promosso")     # ramo "sì"
+else:
+    print("Rimandato")    # ramo "no"
+
+# Fine del programma</code></pre>
+    <p>Guarda la corrispondenza: il parallelogramma è diventato <code>input()</code>, il rettangolo è diventato il calcolo della <code>media</code>, e il rombo è diventato il costrutto <code>if... else</code>, con i due rami che sono esattamente il "sì" e il "no" del diagramma. Questo è il motivo per cui imparare a ragionare con i diagrammi di flusso ti rende molto più facile scrivere codice: hai già lo schema, devi solo tradurlo.</p>
+
+    <h2>In sintesi</h2>
+    <p>Il diagramma di flusso è il modo più chiaro per progettare un algoritmo prima di programmarlo: cinque simboli (ovale, parallelogramma, rettangolo, rombo e frecce) bastano a descrivere qualsiasi ragionamento. Una volta che sai leggerlo, tradurlo in Python diventa quasi automatico, come hai visto con l'esempio della media. Il prossimo passo è scoprire le tre strutture di base, sequenza, selezione e ciclo, con cui si costruisce <em>qualunque</em> programma: le vedremo nel prossimo articolo.</p>
+
+    <h2>Domande frequenti</h2>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è un diagramma di flusso in informatica?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Un diagramma di flusso è la rappresentazione visiva di un algoritmo, cioè dei passaggi necessari per risolvere un problema. Invece di descrivere a parole le operazioni, si usano delle forme geometriche collegate da frecce che mostrano l'ordine di esecuzione. Il suo vantaggio è che non dipende dal linguaggio di programmazione: lo stesso diagramma può diventare Python, C o Java. Per questo a scuola si parte dai diagrammi di flusso prima di scrivere codice, perché aiutano a chiarire il ragionamento prima di tradurlo in un programma vero.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Quali sono i simboli principali di un diagramma di flusso?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">I simboli fondamentali sono cinque. L'ovale indica inizio e fine dell'algoritmo. Il parallelogramma rappresenta l'input e l'output, cioè quando si leggono o si mostrano dati. Il rettangolo indica un'elaborazione, come un calcolo o un'assegnazione. Il rombo rappresenta una decisione, una domanda con risposta sì o no da cui il flusso si divide in due strade. Le frecce, infine, collegano i simboli e indicano la direzione in cui si procede. Conoscere il significato preciso di ciascun simbolo è la base per disegnare e leggere correttamente qualsiasi diagramma.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        A cosa serve il rombo nel diagramma di flusso?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Il rombo rappresenta una decisione, cioè una domanda a cui si può rispondere solo sì o no (vero o falso). Da un rombo escono sempre due frecce, una per ciascuna risposta, e il flusso del programma prende una strada diversa a seconda del caso. Ad esempio, alla domanda "la media è maggiore o uguale a 6?" il ramo "sì" porta a stampare "Promosso" e il ramo "no" a stampare "Rimandato". Nel codice, il rombo corrisponde al costrutto if... else. Un errore comune è usare il rombo per operazioni che non sono domande: per i calcoli si usa invece il rettangolo.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Il diagramma di flusso si può tradurre in codice?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Sì, ed è proprio il suo scopo principale. Ogni simbolo del diagramma corrisponde a un elemento del codice: il parallelogramma di input diventa un'istruzione di lettura come input() in Python, il rettangolo diventa un calcolo o un'assegnazione, e il rombo diventa un costrutto if... else con i suoi due rami. Poiché il diagramma non dipende dal linguaggio, lo stesso schema può essere tradotto in Python, C o Java cambiando solo la sintassi. Progettare prima il diagramma e poi tradurlo è il modo più semplice per scrivere codice corretto, perché si separa il ragionamento dalla scrittura.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Perché a scuola si studiano i diagrammi di flusso prima di programmare?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Perché insegnano a ragionare prima di scrivere, ed è questa la difficoltà vera della programmazione. Disegnare un diagramma di flusso obbliga a scomporre il problema in passaggi chiari e ordinati, senza preoccuparsi della sintassi di un linguaggio. In questo modo lo studente impara a separare due cose distinte: il "cosa deve fare il programma" e il "come lo scrivo". Una volta che il ragionamento è chiaro sul diagramma, tradurlo in codice diventa molto più semplice e si commettono meno errori. È lo stesso metodo che si usa in laboratorio: prima lo schema, poi la tastiera.</p>
+    </details>
+
+    <div class="cta-banner mt-4">
+      <h2>Mettilo in pratica</h2>
+      <p>Ho preparato un esercizio guidato in cui trasformi questo stesso diagramma in un programma Python funzionante, passo dopo passo.</p>
+      <a href="esercizio-media-voti-python.html" class="btn btn-accent btn-lg">Vai all'esercizio →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
