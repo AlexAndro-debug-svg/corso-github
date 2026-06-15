@@ -52,6 +52,7 @@ var INDEX = [
   {t:'Corso Programmazione', d:'Corso Introduzione alla Programmazione — variabili, cicli, funzioni, logica',u:'corso-programming.html', cat:'Corso', tag:'programmazione base'},
   {t:'Corso Excel',       d:'Corso Excel — formule, funzioni, grafici, tabelle pivot, VLOOKUP',       u:'corso-excel.html',       cat:'Corso', tag:'office fogli calcolo'},
   {t:'Corso Word',        d:'Corso Word — formattazione, stili, sommario, tabelle, immagini, stampa unione',u:'corso-word.html',    cat:'Corso', tag:'office videoscrittura documenti testo'},
+  {t:'Corso PowerPoint',  d:'Corso PowerPoint — diapositive, temi, SmartArt, transizioni, animazioni, presentazioni',u:'corso-powerpoint.html', cat:'Corso', tag:'office presentazioni slide diapositive'},
   {t:'Corso AI e Machine Learning', d:'Corso AI — reti neurali, training, TensorFlow.js, classificatori',u:'corso-ai.html',      cat:'Corso', tag:'intelligenza artificiale ML'},
   {t:'Corso AngularJS',   d:'Corso AngularJS — direttive, controller, servizi, routing, $scope',      u:'corso-angularjs.html',   cat:'Corso', tag:'web frontend framework JavaScript'},
   {t:'Corso W3.CSS',      d:'Corso W3.CSS — framework CSS lightweight, layout, componenti',           u:'corso-w3css.html',       cat:'Corso', tag:'web css framework'},
