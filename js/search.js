@@ -116,9 +116,16 @@ var css = `
 #srch-btn:hover{border-color:#4f46e5;color:#4f46e5;background:#eef2ff;}
 #srch-btn svg{flex-shrink:0;}
 @media(max-width:860px){
-  #srch-btn .srch-label{display:none;}
-  #srch-btn{border:none;padding:.4rem;background:none;}
-  #srch-btn:hover{background:#eef2ff;}
+  #srch-btn{display:none;}
+}
+#srch-mbtn{
+  display:none;background:none;border:none;cursor:pointer;
+  color:#1e293b;padding:.35rem;border-radius:6px;
+  align-items:center;justify-content:center;
+}
+#srch-mbtn:hover{background:#eef2ff;}
+@media(max-width:860px){
+  #srch-mbtn{display:inline-flex;}
 }
 #srch-overlay{
   display:none;position:fixed;inset:0;z-index:9999;
@@ -204,7 +211,7 @@ var btnHTML = '<button id="srch-btn" aria-label="Cerca nel sito">'
   +'<span class="srch-label">Cerca</span></button>';
 
 /* ── Init ─────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
+function srchInit(){
   // Inietta CSS
   var style = document.createElement('style');
   style.textContent = css;
@@ -215,15 +222,31 @@ document.addEventListener('DOMContentLoaded', function(){
   tmp.innerHTML = overlayHTML;
   document.body.appendChild(tmp.firstElementChild);
 
-  // Inietta bottone nella navbar prima del nav-toggle
+  // Inietta bottone nel nav-menu (appare accanto agli altri link)
+  var navMenu = document.querySelector('.nav-menu');
   var navInner = document.querySelector('.nav-inner');
-  var navToggle = navInner && navInner.querySelector('.nav-toggle');
-  if(navInner){
+  if(navMenu || navInner){
     var btnWrap = document.createElement('div');
     btnWrap.innerHTML = btnHTML;
     var btn = btnWrap.firstElementChild;
-    if(navToggle) navInner.insertBefore(btn, navToggle);
-    else navInner.appendChild(btn);
+    if(navMenu){
+      // Inserisce prima dell'ultimo elemento (tipicamente il btn Prenota)
+      var last = navMenu.lastElementChild;
+      if(last) navMenu.insertBefore(btn, last);
+      else navMenu.appendChild(btn);
+    } else {
+      navInner.appendChild(btn);
+    }
+  }
+  // Bottone icona sempre visibile su mobile (fuori dal menu)
+  var navInner2 = document.querySelector('.nav-inner');
+  var navToggle = navInner2 && navInner2.querySelector('.nav-toggle');
+  if(navToggle){
+    var mBtn = document.createElement('button');
+    mBtn.id='srch-mbtn';
+    mBtn.setAttribute('aria-label','Cerca');
+    mBtn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+    navInner2.insertBefore(mBtn, navToggle);
   }
 
   var overlay  = document.getElementById('srch-overlay');
@@ -249,6 +272,8 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   searchBtn && searchBtn.addEventListener('click', open);
+  var mobileBtn = document.getElementById('srch-mbtn');
+  mobileBtn && mobileBtn.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
 
@@ -339,6 +364,12 @@ document.addEventListener('DOMContentLoaded', function(){
   function escHtml(s){
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
-});
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', srchInit);
+} else {
+  srchInit();
+}
 
 })();
