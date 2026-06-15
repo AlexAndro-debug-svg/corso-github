@@ -274,6 +274,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .article ul { padding-left: 1.4rem; }
 .article pre { background:#0f172a; color:#e2e8f0; padding:1.2rem; border-radius: var(--radius-sm); overflow-x:auto; margin-bottom: 1.2rem; }
 .article code { font-family:'Courier New',monospace; font-size:.92rem; }
+.article p a, .article li a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.article p a:hover, .article li a:hover { color: var(--accent); }
 
 /* ---------- Testimonial ---------- */
 .testi { background:#fff; border:1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); }
