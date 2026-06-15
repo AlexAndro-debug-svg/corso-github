@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Word in italiano completo e gratuito — formattazione, stili, tabelle, stampa unione | AlessandroSimone.it</title>
+  <meta name="description" content="Corso Word completo in italiano: interfaccia e barra multifunzione, formattazione del carattere e del paragrafo, elenchi, stili, titoli e sommario, layout di pagina, tabelle, immagini, intestazioni, controllo ortografico, trova e sostituisci, modelli e stampa unione. Tutorial gratuito con quiz.">
+  <meta name="keywords" content="corso word italiano, word tutorial, formattazione word, stili word, sommario word, stampa unione, tabelle word, intestazione piè di pagina, word per principianti">
+  <meta name="author" content="Alessandro Simone">
+  <meta property="og:title" content="Corso Word in italiano completo e gratuito | AlessandroSimone.it">
+  <meta property="og:description" content="Impara Word da zero in italiano: formattazione, stili, tabelle, sommario, stampa unione. Gratuito con quiz ed esempi pratici.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .course-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+    .course-wrap > main { min-width: 0; }
+    .course-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; font-size: .9rem; }
+    .course-side h4 { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 1.2rem 0 .4rem; }
+    .course-side h4:first-child { margin-top: 0; }
+    .course-side a { display: block; padding: .3rem .55rem; border-radius: 7px; color: var(--ink); transition: var(--transition); }
+    .course-side a:hover { background: var(--primary-light); color: var(--primary); }
+    .lesson { padding-bottom: 2.4rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); scroll-margin-top: 130px; }
+    .lesson:last-child { border-bottom: none; }
+    .lesson h2 { font-size: 1.55rem; color: var(--ink); margin-bottom: .8rem; }
+    .lesson h3 { font-size: 1.12rem; margin: 1.4rem 0 .5rem; color: var(--primary); }
+    .lesson p { margin-bottom: .9rem; color: #334155; }
+    .lesson ul, .lesson ol { margin: 0 0 1rem 1.3rem; color: #334155; }
+    .lesson li { margin-bottom: .35rem; }
+    .lesson code.inline { background: var(--primary-light); color: var(--primary-dark); padding: .12rem .4rem; border-radius: 5px; font-size: .9em; font-family: 'Consolas', monospace; }
+    .lesson table.ref { border-collapse: collapse; width: 100%; margin: .4rem 0 1.2rem; font-size: .9rem; }
+    .lesson table.ref th, .lesson table.ref td { border: 1px solid var(--border); padding: .45rem .7rem; text-align: left; }
+    .lesson table.ref th { background: var(--bg-soft); }
+    .note-box { background: var(--edu-light); border-left: 4px solid var(--edu); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .tip-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .warn-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: .85rem 1.1rem; border-radius: 8px; margin: 1rem 0; font-size: .94rem; }
+    .example { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0 1.4rem; }
+    .codehead { display: flex; justify-content: space-between; align-items: center; background: var(--bg-soft); padding: .5rem .9rem; border-bottom: 1px solid var(--border); }
+    .codehead span { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .codeview { margin: 0; background: #1e293b; padding: 1rem 1.1rem; overflow-x: auto; }
+    .codeview code { font-family: 'Consolas','Monaco',monospace; font-size: .85rem; line-height: 1.65; color: #e2e8f0; white-space: pre; }
+    /* Pagina documento simulata */
+    .docpage { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; box-shadow: 0 2px 12px rgba(15,23,42,.08); padding: 1.6rem 1.8rem; margin: 1rem 0 1.4rem; font-family: 'Georgia','Times New Roman',serif; color: #1e293b; line-height: 1.6; }
+    .docpage .doc-title { font-family: 'Georgia',serif; font-size: 1.4rem; font-weight: 700; margin-bottom: .2rem; color: #1e293b; }
+    .docpage .doc-sub { color: #64748b; font-size: .9rem; margin-bottom: 1rem; font-style: italic; }
+    .docpage p { margin: 0 0 .7rem; color: #1e293b; }
+    .docpage caption { caption-side: top; text-align: left; font-size: .78rem; color: var(--muted); margin-bottom: .3rem; font-family: var(--font); }
+    .ribbon { display: flex; flex-wrap: wrap; gap: .35rem; background: #f1f5f9; border: 1px solid var(--border); border-radius: 8px; padding: .55rem; margin: 1rem 0 1.4rem; }
+    .ribbon .rb { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: .4rem .7rem; font-size: .85rem; font-weight: 600; color: #334155; }
+    /* Strumento testo */
+    .calc { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; margin: 1rem 0; }
+    .calc label { font-weight: 600; font-size: .9rem; display:block; margin-bottom:.3rem; }
+    .calc input, .calc select, .calc textarea { padding: .5rem .7rem; border: 1px solid var(--border); border-radius: 6px; font-family: var(--font); font-size: .95rem; }
+    .calc textarea { width: 100%; resize: vertical; line-height: 1.5; }
+    .calc .riga { display: flex; flex-wrap: wrap; gap: .8rem; align-items: flex-end; margin-bottom: 1rem; }
+    .calc .out { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 1rem; font-size: 1.05rem; font-weight: 600; color: #3730a3; line-height: 1.5; }
+    /* Quiz */
+    .quiz { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; margin: 1rem 0; }
+    .quiz .domanda { font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+    .quiz .opzione { display: block; width: 100%; text-align: left; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: .7rem .9rem; margin-bottom: .5rem; cursor: pointer; font-family: var(--font); font-size: .95rem; transition: var(--transition); color: var(--ink); }
+    .quiz .opzione:hover { border-color: var(--primary); }
+    .quiz .opzione.giusta { background: #dcfce7; border-color: #16a34a; color: #166534; font-weight: 600; }
+    .quiz .opzione.sbagliata { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+    .quiz .opzione:disabled { cursor: default; }
+    .quiz .feedback { margin-top: .6rem; font-weight: 600; font-size: .92rem; }
+    .quiz .nav-quiz { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+    .quiz .punteggio { background: linear-gradient(135deg,#eef2ff,#e0e7ff); border: 1px solid #c7d2fe; border-radius: 12px; padding: 1.4rem; text-align: center; }
+    .quiz .punteggio .big { font-size: 2.4rem; font-weight: 800; color: #3730a3; }
+    .challenge-box { background: linear-gradient(135deg,#eef2ff,#e0e7ff); border: 1px solid #c7d2fe; border-radius: 12px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+    .challenge-label { display: inline-block; font-weight: 700; color: #3730a3; margin-bottom: .5rem; }
+    @media (max-width: 900px){ .course-wrap { grid-template-columns: 1fr; } .course-side { position: static; max-height: none; } }
+
+    .btn-try { background: #2b579a; color: #fff; border: none; border-radius: 6px; padding: .3rem .8rem; font-size: .78rem; font-weight: 700; cursor: pointer; font-family: var(--font); }
+    .btn-try:hover { filter: brightness(.92); }
+    .editor-overlay { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 1100; }
+    body.editor-open .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1200; }
+    .editor-overlay.open { display: flex; }
+    .editor-box { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-top { display: flex; justify-content: space-between; align-items: center; padding: .55rem 1.2rem; background: #f8fafc; border-bottom: 1px solid var(--border); }
+    .editor-top strong { font-family: var(--font-head); font-size: .95rem; color: var(--ink); }
+    .editor-top .ed-actions { display: flex; gap: .6rem; }
+    .ed-btn { border: none; border-radius: 6px; padding: .5rem 1.2rem; font-weight: 700; font-size: .88rem; cursor: pointer; font-family: var(--font); }
+    .ed-close { background: #e2e8f0; color: #334155; }
+    .ed-close:hover { background: #cbd5e1; }
+    .ed-run { background: #2b579a; color: #fff; }
+    .ed-run:hover { background: #1e3d6b; }
+    .ed-theme { background: #1e293b; color: #fff; }
+    .ed-theme:hover { background: #0f172a; }
+    .editor-panes { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+    .editor-panes > div { min-width: 0; }
+    .code-editor { overflow: hidden; border-right: 1px solid var(--border); }
+    .code-editor .CodeMirror { height: 100%; font-family: 'Consolas','Monaco',monospace; font-size: .95rem; line-height: 1.55; }
+    .preview-wrap { display: flex; flex-direction: column; }
+    .preview-label { background: var(--bg-soft); padding: .4rem .9rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .editor-panes iframe { flex: 1; border: none; width: 100%; background: #fff; }
+    @media(max-width:700px){ .editor-panes { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/corso-word.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/corso-word.html">
+  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corso Word in italiano completo e gratuito | AlessandroSimone.it">
+  <meta name="twitter:description" content="Tutorial Word completo: formattazione, stili, tabelle, sommario, stampa unione. Gratuito con quiz.">
+  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Corso Word in italiano","description":"Corso Word italiano completo e gratuito: interfaccia e barra multifunzione, formattazione del carattere e del paragrafo, elenchi, stili, titoli e sommario, layout di pagina, tabelle, immagini, intestazioni, controllo ortografico, trova e sostituisci, modelli e stampa unione. Con quiz ed esempi pratici.","url":"https://alexandro-debug-svg.github.io/corso-github/corso-word.html","inLanguage":"it-IT","isAccessibleForFree":true,"provider":{"@type":"Person","name":"Alessandro Simone","url":"https://alexandro-debug-svg.github.io/corso-github"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="corsi.html">Corsi</a><a href="blog.html">Blog</a><a href="contatti.html">Contatti</a><a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<div class="course-nav">
+  <div class="container course-nav-inner">
+    <a href="corso-html.html">HTML</a>
+    <a href="corso-css.html">CSS</a>
+    <a href="corso-javascript.html">JAVASCRIPT</a>
+    <a href="corso-sql.html">SQL</a>
+    <a href="corso-mysql.html">MYSQL</a>
+    <a href="corso-python.html">PYTHON</a>
+    <a href="corso-java.html">JAVA</a>
+    <a href="corso-php.html">PHP</a>
+    <a href="corso-c.html">C</a>
+    <a href="corso-cpp.html">C++</a>
+    <a href="corso-csharp.html">C#</a>
+    <a href="corso-packet-tracer.html">PACKET TRACER</a>
+    <a href="corso-cybersecurity.html">CYBERSECURITY</a>
+    <a href="corso-react.html">REACT</a>
+    <a href="corso-typescript.html">TYPESCRIPT</a>
+    <a href="corso-nodejs.html">NODE.JS</a>
+    <a href="corso-git.html">GIT &amp; GITHUB</a>
+    <a href="corso-datascience.html">DATA SCIENCE</a>
+    <a href="corso-bootstrap.html">BOOTSTRAP</a>
+    <a href="corso-go.html">GO</a>
+    <a href="corso-kotlin.html">KOTLIN</a>
+    <a href="corso-jquery.html">JQUERY</a>
+    <a href="corso-django.html">DJANGO</a>
+    <a href="corso-vue.html">VUE</a>
+    <a href="corso-angular.html">ANGULAR</a>
+    <a href="corso-mongodb.html">MONGODB</a>
+    <a href="corso-postgresql.html">POSTGRESQL</a>
+    <a href="corso-sass.html">SASS</a>
+    <a href="corso-numpy.html">NUMPY</a>
+    <a href="corso-pandas.html">PANDAS</a>
+    <a href="corso-scipy.html">SCIPY</a>
+    <a href="corso-dsa.html">DSA</a>
+    <a href="corso-rust.html">RUST</a>
+    <a href="corso-swift.html">SWIFT</a>
+    <a href="corso-bash.html">BASH</a>
+    <a href="corso-xml.html">XML</a>
+    <a href="corso-w3css.html">W3.CSS</a>
+    <a href="corso-angularjs.html">ANGULARJS</a>
+    <a href="corso-ai.html">AI</a>
+    <a href="corso-aws.html">AWS</a>
+    <a href="corso-programming.html">PROGRAMMAZIONE</a>
+    <a href="corso-excel.html">EXCEL</a>
+    <a href="corso-word.html" class="active">WORD</a>
+  </div>
+</div>
+
+<section class="hero" style="padding:2.4rem 0 1.6rem">
+  <div class="container center">
+    <span class="badge-pill"><span class="dot"></span> Corso gratuito</span>
+    <h1>Corso Word in italiano</h1>
+    <p class="lead" style="margin-inline:auto">Il programma di videoscrittura più usato al mondo. Impara a creare e formattare documenti professionali: formattazione del carattere e del paragrafo, elenchi, stili, titoli e sommario automatico, layout di pagina, tabelle, immagini, intestazioni, stampa unione e molto altro. Con strumento di testo interattivo e quiz finale.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="container course-wrap">
+    <aside class="course-side">
+<h4>Fondamenti</h4>
+<a href="#intro">Introduzione</a>
+<a href="#interfaccia">L'interfaccia</a>
+<a href="#documenti">Creare e salvare</a>
+<a href="#modifica">Modificare il testo</a>
+<h4>Formattazione</h4>
+<a href="#carattere">Formato carattere</a>
+<a href="#paragrafo">Formato paragrafo</a>
+<a href="#elenchi">Elenchi puntati e numerati</a>
+<a href="#stili">Stili</a>
+<h4>Struttura</h4>
+<a href="#titoli">Titoli e sommario</a>
+<a href="#layout">Layout di pagina</a>
+<a href="#tabelle">Tabelle</a>
+<a href="#immagini">Immagini e oggetti</a>
+<a href="#intestazioni">Intestazioni e piè di pagina</a>
+<h4>Strumenti</h4>
+<a href="#correzione">Controllo ortografico</a>
+<a href="#trova">Trova e sostituisci</a>
+<a href="#modelli">Modelli</a>
+<a href="#stampaunione">Stampa unione</a>
+<a href="#scorciatoie">Scorciatoie da tastiera</a>
+<h4>Pratica</h4>
+<a href="#strumento">Strumento testo</a>
+<a href="#quiz">Quiz interattivo</a>
+<a href="#esercizi">Esercizi pratici</a>
+<h4>Conclusione</h4>
+<a href="#fine">E ora?</a>
+    </aside>
+    <main>
+
+<!-- 1. INTRO -->
+<article class="lesson" id="intro">
+<h2>Introduzione a Word</h2>
+<p><strong>Microsoft Word</strong> è il programma di <strong>videoscrittura</strong> (word processor) più diffuso al mondo. Serve a creare, modificare e formattare documenti di testo: lettere, relazioni, tesi, curriculum, volantini e molto altro.</p>
+<table class="ref">
+<tr><th>Elemento</th><th>Descrizione</th></tr>
+<tr><td><strong>Documento</strong></td><td>Il file Word (.docx) che contiene il testo</td></tr>
+<tr><td><strong>Carattere</strong></td><td>Il singolo segno tipografico (lettera, numero, simbolo)</td></tr>
+<tr><td><strong>Paragrafo</strong></td><td>Un blocco di testo che termina con Invio</td></tr>
+<tr><td><strong>Stile</strong></td><td>Un insieme di formattazioni salvato con un nome</td></tr>
+<tr><td><strong>Barra multifunzione</strong></td><td>La fascia di comandi in alto (Ribbon)</td></tr>
+</table>
+<div class="note-box">📝 A differenza di un foglio di calcolo come Excel (organizzato in celle), Word lavora su un <strong>flusso di testo</strong> continuo che scorre da una pagina all'altra automaticamente.</div>
+</article>
+
+<!-- 2. INTERFACCIA -->
+<article class="lesson" id="interfaccia">
+<h2>L'interfaccia di Word</h2>
+<p>I comandi di Word sono organizzati nella <strong>barra multifunzione</strong> (Ribbon), divisa in <strong>schede</strong>. Ogni scheda raggruppa comandi per argomento.</p>
+<div class="ribbon">
+  <span class="rb">File</span><span class="rb">Home</span><span class="rb">Inserisci</span><span class="rb">Progettazione</span><span class="rb">Layout</span><span class="rb">Riferimenti</span><span class="rb">Lettere</span><span class="rb">Revisione</span><span class="rb">Visualizza</span>
+</div>
+<table class="ref">
+<tr><th>Scheda</th><th>Cosa contiene</th></tr>
+<tr><td><strong>Home</strong></td><td>Formattazione di carattere e paragrafo, stili, copia/incolla</td></tr>
+<tr><td><strong>Inserisci</strong></td><td>Tabelle, immagini, forme, intestazioni, numeri di pagina</td></tr>
+<tr><td><strong>Layout</strong></td><td>Margini, orientamento, colonne, interruzioni</td></tr>
+<tr><td><strong>Riferimenti</strong></td><td>Sommario, note a piè di pagina, citazioni, indice</td></tr>
+<tr><td><strong>Lettere</strong></td><td>Stampa unione (mail merge)</td></tr>
+<tr><td><strong>Revisione</strong></td><td>Controllo ortografico, commenti, revisioni</td></tr>
+</table>
+<div class="tip-box">💡 Premi <strong>Ctrl+F1</strong> per ridurre o espandere la barra multifunzione e guadagnare spazio sullo schermo.</div>
+</article>
+
+<!-- 3. DOCUMENTI -->
+<article class="lesson" id="documenti">
+<h2>Creare e salvare un documento</h2>
+<p>Un buon uso di Word parte dalla gestione dei file: creare, salvare nei formati giusti ed esportare.</p>
+<table class="ref">
+<tr><th>Operazione</th><th>Come</th></tr>
+<tr><td><strong>Nuovo documento</strong></td><td>Ctrl+N (o File → Nuovo)</td></tr>
+<tr><td><strong>Apri</strong></td><td>Ctrl+O</td></tr>
+<tr><td><strong>Salva</strong></td><td>Ctrl+S</td></tr>
+<tr><td><strong>Salva con nome</strong></td><td>F12</td></tr>
+<tr><td><strong>Stampa</strong></td><td>Ctrl+P</td></tr>
+</table>
+<table class="ref">
+<tr><th>Formato</th><th>Quando usarlo</th></tr>
+<tr><td><code class="inline">.docx</code></td><td>Formato standard di Word, modificabile</td></tr>
+<tr><td><code class="inline">.pdf</code></td><td>Per condividere un documento non modificabile</td></tr>
+<tr><td><code class="inline">.txt</code></td><td>Solo testo, senza formattazione</td></tr>
+<tr><td><code class="inline">.dotx</code></td><td>Modello (template) riutilizzabile</td></tr>
+</table>
+<div class="warn-box">⚠️ Salva spesso con <strong>Ctrl+S</strong>! Anche se Word ha il salvataggio automatico, prendere l'abitudine di salvare evita di perdere il lavoro.</div>
+</article>
+
+<!-- 4. MODIFICA -->
+<article class="lesson" id="modifica">
+<h2>Modificare il testo</h2>
+<p>Prima di formattare bisogna saper <strong>selezionare</strong> e spostare il testo. La selezione è la base di quasi ogni operazione in Word.</p>
+<table class="ref">
+<tr><th>Azione</th><th>Come</th></tr>
+<tr><td><strong>Selezionare una parola</strong></td><td>Doppio clic sulla parola</td></tr>
+<tr><td><strong>Selezionare un paragrafo</strong></td><td>Triplo clic nel paragrafo</td></tr>
+<tr><td><strong>Selezionare tutto</strong></td><td>Ctrl+A</td></tr>
+<tr><td><strong>Copia / Taglia / Incolla</strong></td><td>Ctrl+C / Ctrl+X / Ctrl+V</td></tr>
+<tr><td><strong>Annulla / Ripeti</strong></td><td>Ctrl+Z / Ctrl+Y</td></tr>
+<tr><td><strong>Incolla solo testo</strong></td><td>Ctrl+Maiusc+V</td></tr>
+</table>
+<div class="tip-box">💡 <strong>Incolla speciale</strong> (Ctrl+Maiusc+V) incolla il testo senza la formattazione originale: utilissimo quando copi da una pagina web ed eviti di importare colori e font indesiderati.</div>
+</article>
+
+<!-- 5. CARATTERE -->
+<article class="lesson" id="carattere">
+<h2>Formattazione del carattere</h2>
+<p>La formattazione del <strong>carattere</strong> riguarda l'aspetto delle singole lettere: tipo di font, dimensione, colore e stile (grassetto, corsivo, sottolineato).</p>
+<table class="ref">
+<tr><th>Formato</th><th>Scorciatoia</th></tr>
+<tr><td><strong>Grassetto</strong></td><td>Ctrl+G (Ctrl+B in inglese)</td></tr>
+<tr><td><em>Corsivo</em></td><td>Ctrl+I</td></tr>
+<tr><td><u>Sottolineato</u></td><td>Ctrl+S... → Ctrl+U</td></tr>
+<tr><td>Pedice (H₂O)</td><td>Ctrl+=</td></tr>
+<tr><td>Apice (x²)</td><td>Ctrl+Maiusc++</td></tr>
+<tr><td>Ingrandisci carattere</td><td>Ctrl+Maiusc+&gt;</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Word — formattazione del carattere (anteprima live)</span></div>
+<pre class="codeview"><code>&lt;h1&gt;Relazione di laboratorio&lt;/h1&gt;
+&lt;p&gt;Questo testo è &lt;b&gt;in grassetto&lt;/b&gt;, questo è
+&lt;i&gt;in corsivo&lt;/i&gt; e questo è &lt;u&gt;sottolineato&lt;/u&gt;.&lt;/p&gt;
+&lt;p&gt;La formula dell'acqua è H&lt;sub&gt;2&lt;/sub&gt;O e
+l'area è x&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+&lt;p style="color:#c00"&gt;Questo paragrafo è rosso.&lt;/p&gt;</code></pre>
+</div>
+<div class="note-box">🔤 Premi <strong>▶ Provalo tu</strong> sull'esempio qui sopra per aprire l'editor: modifica il testo e vedi subito come cambia la formattazione nell'anteprima, proprio come in Word.</div>
+</article>
+
+<!-- 6. PARAGRAFO -->
+<article class="lesson" id="paragrafo">
+<h2>Formattazione del paragrafo</h2>
+<p>La formattazione del <strong>paragrafo</strong> riguarda blocchi di testo interi: allineamento, rientri, interlinea e spaziatura.</p>
+<table class="ref">
+<tr><th>Allineamento</th><th>Scorciatoia</th></tr>
+<tr><td>A sinistra</td><td>Ctrl+T... → Ctrl+L</td></tr>
+<tr><td>Centrato</td><td>Ctrl+R (centra)</td></tr>
+<tr><td>A destra</td><td>Ctrl+D (allinea a destra)</td></tr>
+<tr><td>Giustificato</td><td>Ctrl+F (giustifica)</td></tr>
+</table>
+<table class="ref">
+<tr><th>Concetto</th><th>Significato</th></tr>
+<tr><td><strong>Rientro</strong></td><td>Distanza del testo dal margine (es. prima riga rientrata)</td></tr>
+<tr><td><strong>Interlinea</strong></td><td>Spazio verticale tra le righe (1, 1.5, 2)</td></tr>
+<tr><td><strong>Spaziatura</strong></td><td>Spazio prima/dopo il paragrafo</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Word — allineamento e interlinea (anteprima live)</span></div>
+<pre class="codeview"><code>&lt;p style="text-align:center"&gt;Titolo centrato&lt;/p&gt;
+&lt;p style="text-align:justify;line-height:2"&gt;
+Questo è un paragrafo giustificato con interlinea
+doppia: il testo si allinea sia a sinistra sia a
+destra, come in un documento formale o una tesi.
+&lt;/p&gt;
+&lt;p style="text-align:right"&gt;Firma a destra&lt;/p&gt;</code></pre>
+</div>
+<div class="tip-box">💡 Mostra i <strong>segni di paragrafo</strong> (¶) con Ctrl+Maiusc+8 per vedere dove finiscono i paragrafi e dove ci sono spazi: aiuta tantissimo a sistemare la formattazione.</div>
+</article>
+
+<!-- 7. ELENCHI -->
+<article class="lesson" id="elenchi">
+<h2>Elenchi puntati e numerati</h2>
+<p>Gli <strong>elenchi</strong> organizzano le informazioni in punti, rendendole più leggibili. Possono essere puntati (•) o numerati (1, 2, 3) e annidati su più livelli.</p>
+<div class="example">
+<div class="codehead"><span>Word — elenchi puntati e numerati (anteprima live)</span></div>
+<pre class="codeview"><code>&lt;p&gt;&lt;b&gt;Ingredienti:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Farina&lt;/li&gt;
+  &lt;li&gt;Uova&lt;/li&gt;
+  &lt;li&gt;Zucchero&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;b&gt;Procedimento:&lt;/b&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Mescola gli ingredienti&lt;/li&gt;
+  &lt;li&gt;Inforna a 180°C&lt;/li&gt;
+  &lt;li&gt;Lascia raffreddare&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+<div class="note-box">🔢 In Word un elenco numerato si aggiorna da solo: se inserisci o elimini una voce, tutti i numeri successivi si rinumerano automaticamente. Premi <strong>Tab</strong> per creare un sotto-livello.</div>
+</article>
+
+<!-- 8. STILI -->
+<article class="lesson" id="stili">
+<h2>Stili</h2>
+<p>Uno <strong>stile</strong> è un insieme di formattazioni (font, dimensione, colore, spaziatura) salvato con un nome. Applicando uno stile formatti il testo con un clic, e cambiando lo stile aggiorni tutto il documento in un colpo solo.</p>
+<table class="ref">
+<tr><th>Stile</th><th>Uso tipico</th></tr>
+<tr><td><strong>Normale</strong></td><td>Il testo del corpo del documento</td></tr>
+<tr><td><strong>Titolo 1</strong></td><td>I titoli dei capitoli principali</td></tr>
+<tr><td><strong>Titolo 2</strong></td><td>I sottotitoli/sezioni</td></tr>
+<tr><td><strong>Citazione</strong></td><td>Testo citato, in rilievo</td></tr>
+<tr><td><strong>Sottotitolo</strong></td><td>Sotto il titolo principale del documento</td></tr>
+</table>
+<div class="tip-box">💡 Usare gli stili è il segreto dei documenti professionali: invece di formattare a mano ogni titolo, applichi "Titolo 1" e tutti i titoli avranno lo stesso aspetto coerente. In più sono la base del sommario automatico.</div>
+</article>
+
+<!-- 9. TITOLI E SOMMARIO -->
+<article class="lesson" id="titoli">
+<h2>Titoli e sommario automatico</h2>
+<p>Se usi gli stili <strong>Titolo 1, Titolo 2, Titolo 3</strong> per i tuoi titoli, Word può generare un <strong>sommario</strong> (indice) automatico che si aggiorna da solo.</p>
+<table class="docpage" style="border-collapse:collapse;width:100%">
+<caption>Esempio: un sommario generato dai titoli del documento</caption>
+<tr><td style="padding:.2rem 0;border:none">1. Introduzione</td><td style="text-align:right;border:none">3</td></tr>
+<tr><td style="padding:.2rem 0 .2rem 1.5rem;border:none">1.1 Obiettivi</td><td style="text-align:right;border:none">4</td></tr>
+<tr><td style="padding:.2rem 0 .2rem 1.5rem;border:none">1.2 Metodo</td><td style="text-align:right;border:none">5</td></tr>
+<tr><td style="padding:.2rem 0;border:none">2. Sviluppo</td><td style="text-align:right;border:none">7</td></tr>
+<tr><td style="padding:.2rem 0;border:none">3. Conclusioni</td><td style="text-align:right;border:none">12</td></tr>
+</table>
+<div class="note-box">📑 Per inserire il sommario: scheda <strong>Riferimenti → Sommario</strong>. Quando aggiungi o sposti capitoli, clicca <strong>Aggiorna sommario</strong> e numeri di pagina e titoli si sistemano da soli.</div>
+</article>
+
+<!-- 10. LAYOUT -->
+<article class="lesson" id="layout">
+<h2>Layout di pagina</h2>
+<p>Il <strong>layout</strong> definisce la struttura fisica delle pagine: margini, orientamento, dimensione del foglio e colonne.</p>
+<table class="ref">
+<tr><th>Impostazione</th><th>Opzioni</th></tr>
+<tr><td><strong>Margini</strong></td><td>Normali, stretti, larghi, personalizzati</td></tr>
+<tr><td><strong>Orientamento</strong></td><td>Verticale (ritratto) o orizzontale (panorama)</td></tr>
+<tr><td><strong>Dimensione</strong></td><td>A4, Letter, A5...</td></tr>
+<tr><td><strong>Colonne</strong></td><td>1, 2, 3 colonne (come un giornale)</td></tr>
+<tr><td><strong>Interruzione di pagina</strong></td><td>Ctrl+Invio: forza l'inizio di una nuova pagina</td></tr>
+</table>
+<div class="warn-box">⚠️ Per andare a una nuova pagina <strong>non</strong> premere Invio tante volte! Usa l'<strong>interruzione di pagina</strong> (Ctrl+Invio): così se modifichi il testo prima, la pagina nuova resta al posto giusto.</div>
+</article>
+
+<!-- 11. TABELLE -->
+<article class="lesson" id="tabelle">
+<h2>Tabelle</h2>
+<p>Le <strong>tabelle</strong> organizzano dati in righe e colonne. In Word si inseriscono da <strong>Inserisci → Tabella</strong> e si possono formattare con stili predefiniti.</p>
+<div class="example">
+<div class="codehead"><span>Word — una tabella (anteprima live)</span></div>
+<pre class="codeview"><code>&lt;table border="1" cellpadding="6"&gt;
+  &lt;tr&gt;&lt;th&gt;Materia&lt;/th&gt;&lt;th&gt;Voto&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Italiano&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Informatica&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<table class="ref">
+<tr><th>Azione sulla tabella</th><th>Come</th></tr>
+<tr><td>Aggiungere una riga</td><td>Tab nell'ultima cella, o tasto destro → Inserisci</td></tr>
+<tr><td>Unire celle</td><td>Seleziona → tasto destro → Unisci celle</td></tr>
+<tr><td>Applicare uno stile</td><td>Scheda Progettazione tabella</td></tr>
+</table>
+</article>
+
+<!-- 12. IMMAGINI -->
+<article class="lesson" id="immagini">
+<h2>Immagini e oggetti</h2>
+<p>Da <strong>Inserisci</strong> puoi aggiungere immagini, forme, icone, SmartArt e grafici. L'aspetto più importante è il <strong>layout di disposizione</strong>, cioè come il testo scorre attorno all'immagine.</p>
+<table class="ref">
+<tr><th>Disposizione testo</th><th>Effetto</th></tr>
+<tr><td><strong>In linea con il testo</strong></td><td>L'immagine si comporta come un carattere</td></tr>
+<tr><td><strong>Incorniciato</strong></td><td>Il testo gira intorno all'immagine</td></tr>
+<tr><td><strong>Ravvicinato</strong></td><td>Il testo segue il contorno dell'immagine</td></tr>
+<tr><td><strong>Dietro al testo</strong></td><td>L'immagine fa da sfondo</td></tr>
+</table>
+<div class="tip-box">💡 Se un'immagine "salta" in modo imprevedibile quando scrivi, di solito è perché è impostata "In linea con il testo": cambia la disposizione in "Incorniciato" per posizionarla liberamente.</div>
+</article>
+
+<!-- 13. INTESTAZIONI -->
+<article class="lesson" id="intestazioni">
+<h2>Intestazioni, piè di pagina e numeri</h2>
+<p>L'<strong>intestazione</strong> (in alto) e il <strong>piè di pagina</strong> (in basso) si ripetono su tutte le pagine: perfetti per titolo del documento, autore, data e numeri di pagina.</p>
+<table class="ref">
+<tr><th>Elemento</th><th>Dove</th></tr>
+<tr><td><strong>Intestazione</strong></td><td>Inserisci → Intestazione</td></tr>
+<tr><td><strong>Piè di pagina</strong></td><td>Inserisci → Piè di pagina</td></tr>
+<tr><td><strong>Numero di pagina</strong></td><td>Inserisci → Numero di pagina</td></tr>
+<tr><td><strong>Data e ora</strong></td><td>Inserisci → Data e ora</td></tr>
+</table>
+<div class="note-box">📄 I numeri di pagina sono <strong>automatici</strong>: Word li aggiorna da solo aggiungendo o togliendo pagine. Puoi anche escludere la numerazione dalla prima pagina (utile per la copertina).</div>
+</article>
+
+<!-- 14. CORREZIONE -->
+<article class="lesson" id="correzione">
+<h2>Controllo ortografico e grammaticale</h2>
+<p>Word controlla automaticamente <strong>ortografia</strong> e <strong>grammatica</strong> mentre scrivi, sottolineando gli errori.</p>
+<table class="ref">
+<tr><th>Sottolineatura</th><th>Significato</th></tr>
+<tr><td style="color:#dc2626;text-decoration:wavy underline">rossa ondulata</td><td>Possibile errore di ortografia</td></tr>
+<tr><td style="color:#2563eb;text-decoration:wavy underline">blu ondulata</td><td>Possibile errore grammaticale o di stile</td></tr>
+</table>
+<table class="ref">
+<tr><th>Strumento</th><th>Come</th></tr>
+<tr><td><strong>Controllo ortografia</strong></td><td>Tasto F7</td></tr>
+<tr><td><strong>Sinonimi</strong></td><td>Tasto destro sulla parola → Sinonimi</td></tr>
+<tr><td><strong>Conteggio parole</strong></td><td>Revisione → Conteggio parole</td></tr>
+</table>
+<div class="warn-box">⚠️ Il controllo automatico non è infallibile: non riconosce un refuso che forma comunque una parola esistente (es. "case" al posto di "caso"). Rileggi sempre tu il testo!</div>
+</article>
+
+<!-- 15. TROVA E SOSTITUISCI -->
+<article class="lesson" id="trova">
+<h2>Trova e sostituisci</h2>
+<p>Lo strumento <strong>Trova e sostituisci</strong> cerca una parola in tutto il documento e può rimpiazzarla automaticamente, anche centinaia di volte in un istante.</p>
+<table class="ref">
+<tr><th>Comando</th><th>Scorciatoia</th></tr>
+<tr><td><strong>Trova</strong></td><td>Ctrl+Maiusc+T... → Ctrl+F (in italiano spesso Ctrl+Shift+F)</td></tr>
+<tr><td><strong>Sostituisci</strong></td><td>Ctrl+Maiusc+S... → Ctrl+H</td></tr>
+<tr><td><strong>Vai a</strong></td><td>Ctrl+Maiusc+G... → Ctrl+G</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Esempio d'uso — sostituzione di massa</span></div>
+<pre class="codeview"><code>Trova:        "azienda"
+Sostituisci:  "società"
+→ Sostituisci tutto
+
+Risultato: ogni "azienda" nel documento diventa
+"società" con un solo clic.</code></pre>
+</div>
+<div class="tip-box">💡 In <strong>Sostituisci tutto</strong> fai attenzione alle parole contenute in altre: sostituendo "are" potresti rovinare "mare", "fare", "pane"... Spunta "Solo parole intere" per evitarlo.</div>
+</article>
+
+<!-- 16. MODELLI -->
+<article class="lesson" id="modelli">
+<h2>Modelli (template)</h2>
+<p>Un <strong>modello</strong> è un documento di partenza già formattato che riutilizzi per creare nuovi documenti con lo stesso aspetto. Word ne offre tanti pronti: curriculum, lettere, fatture, volantini, relazioni.</p>
+<table class="ref">
+<tr><th>Vantaggio</th><th>Perché</th></tr>
+<tr><td>Coerenza</td><td>Tutti i documenti hanno lo stesso stile</td></tr>
+<tr><td>Velocità</td><td>Non ricominci da un foglio bianco</td></tr>
+<tr><td>Professionalità</td><td>Layout curati da designer</td></tr>
+</table>
+<div class="note-box">📋 Per usare un modello: <strong>File → Nuovo</strong> e scegli tra i modelli disponibili (anche online). Puoi anche salvare un tuo documento come modello (.dotx) per riusarlo.</div>
+</article>
+
+<!-- 17. STAMPA UNIONE -->
+<article class="lesson" id="stampaunione">
+<h2>Stampa unione (mail merge)</h2>
+<p>La <strong>stampa unione</strong> crea molti documenti personalizzati a partire da un unico modello e da un elenco di dati (per esempio un foglio Excel di contatti). È perfetta per inviare la stessa lettera a 100 persone, ciascuna con il proprio nome.</p>
+<table class="ref">
+<tr><th>Passo</th><th>Cosa fai</th></tr>
+<tr><td>1. Documento principale</td><td>Scrivi la lettera con i campi variabili</td></tr>
+<tr><td>2. Origine dati</td><td>Colleghi un elenco (Excel, rubrica...)</td></tr>
+<tr><td>3. Campi unione</td><td>Inserisci «Nome», «Cognome», «Città»...</td></tr>
+<tr><td>4. Unisci</td><td>Generi un documento per ogni riga di dati</td></tr>
+</table>
+<div class="example">
+<div class="codehead"><span>Word — lettera con campi unione</span></div>
+<pre class="codeview"><code>Gentile «Nome» «Cognome»,
+
+la informiamo che il corso si terrà
+a «Città» il giorno «Data».
+
+Cordiali saluti.
+
+→ Word genera una lettera per ogni
+  riga dell'elenco contatti.</code></pre>
+</div>
+<div class="note-box">✉️ La stampa unione si trova nella scheda <strong>Lettere</strong>. Collega spesso un foglio <strong>Excel</strong> come origine dati: ecco perché Word ed Excel lavorano benissimo insieme.</div>
+</article>
+
+<!-- 18. SCORCIATOIE -->
+<article class="lesson" id="scorciatoie">
+<h2>Scorciatoie da tastiera</h2>
+<p>Conoscere le scorciatoie velocizza enormemente il lavoro. Ecco le più utili in Word.</p>
+<table class="ref">
+<tr><th>Scorciatoia</th><th>Azione</th></tr>
+<tr><td><code class="inline">Ctrl+G</code></td><td>Grassetto</td></tr>
+<tr><td><code class="inline">Ctrl+I</code></td><td>Corsivo</td></tr>
+<tr><td><code class="inline">Ctrl+S</code></td><td>Salva</td></tr>
+<tr><td><code class="inline">Ctrl+Z</code> / <code class="inline">Ctrl+Y</code></td><td>Annulla / Ripeti</td></tr>
+<tr><td><code class="inline">Ctrl+A</code></td><td>Seleziona tutto</td></tr>
+<tr><td><code class="inline">Ctrl+C</code> / <code class="inline">Ctrl+V</code></td><td>Copia / Incolla</td></tr>
+<tr><td><code class="inline">Ctrl+Invio</code></td><td>Interruzione di pagina</td></tr>
+<tr><td><code class="inline">F7</code></td><td>Controllo ortografico</td></tr>
+<tr><td><code class="inline">Ctrl+Maiusc+8</code></td><td>Mostra/nascondi segni di paragrafo</td></tr>
+</table>
+<div class="tip-box">💡 Nelle versioni italiane di Word alcune scorciatoie cambiano lettera (G = Grassetto). Tieni il mouse su un comando della barra per vedere la scorciatoia esatta nel suggerimento.</div>
+</article>
+
+<!-- 19. STRUMENTO TESTO -->
+<article class="lesson" id="strumento">
+<h2>Strumento testo</h2>
+<p>Scrivi o incolla del testo e prova le operazioni più comuni che Word esegue: conteggio parole, conteggio caratteri e trasformazione del testo.</p>
+<div class="calc">
+  <div style="margin-bottom:1rem">
+    <label>Il tuo testo</label>
+    <textarea id="txtInput" rows="4" placeholder="Scrivi qui...">Microsoft Word è il programma di videoscrittura più usato al mondo.</textarea>
+  </div>
+  <div class="riga">
+    <div>
+      <label>Operazione</label>
+      <select id="txtOp">
+        <option value="parole">Conta parole</option>
+        <option value="caratteri">Conta caratteri</option>
+        <option value="caratteriNoSpazi">Conta caratteri (senza spazi)</option>
+        <option value="frasi">Conta frasi</option>
+        <option value="maiuscolo">MAIUSCOLO</option>
+        <option value="minuscolo">minuscolo</option>
+        <option value="capitalizza">Iniziali Maiuscole</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="elaboraTesto()" style="height:fit-content">Applica</button>
+  </div>
+  <div class="out" id="txtOut">7 parole</div>
+</div>
+</article>
+
+<!-- 20. QUIZ -->
+<article class="lesson" id="quiz">
+<h2>Quiz interattivo</h2>
+<p>Verifica quanto hai imparato su Word. Clicca la risposta corretta e ricevi subito il feedback.</p>
+<div class="quiz" id="quizBox">
+  <div id="quizContenuto"></div>
+  <div class="nav-quiz">
+    <span id="quizProgresso" style="font-size:.85rem;color:var(--muted)"></span>
+    <button class="btn btn-primary btn-sm" id="quizAvanti" style="display:none">Prossima domanda →</button>
+  </div>
+</div>
+</article>
+
+<!-- ESERCIZI -->
+<article class="lesson" id="esercizi">
+<h2>Esercizi pratici</h2>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 1 — Lettera formale</span>
+<p>Scrivi una lettera formale: intestazione con i tuoi dati allineati a destra, data, corpo del testo giustificato con interlinea 1.5 e firma. Usa il <code class="inline">grassetto</code> per l'oggetto.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 2 — Relazione con sommario</span>
+<p>Crea una relazione di almeno 3 capitoli usando gli stili <code class="inline">Titolo 1</code> e <code class="inline">Titolo 2</code>. Inserisci poi un <strong>sommario automatico</strong> all'inizio e i numeri di pagina nel piè di pagina.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 3 — Volantino su due colonne</span>
+<p>Realizza un volantino A4 in orientamento verticale su <strong>due colonne</strong>, con un titolo centrato, un'immagine con disposizione "Incorniciato" e un elenco puntato dei punti chiave.</p>
+</div>
+<div class="challenge-box">
+<span class="challenge-label">🏆 Esercizio 4 — Stampa unione</span>
+<p>Prepara un elenco di 5 persone (nome, cognome, città) e usa la <strong>stampa unione</strong> per generare 5 lettere di invito personalizzate a partire da un unico modello.</p>
+</div>
+</article>
+
+<!-- FINE -->
+<article class="lesson" id="fine">
+<h2>E ora?</h2>
+<p>Complimenti! Hai completato il corso di Word. Ora sai creare documenti professionali, formattare carattere e paragrafo, usare stili e sommario automatico, gestire tabelle e immagini e perfino la stampa unione — competenze utilissime a scuola, all'università e in ufficio.</p>
+<div class="note-box"><strong>Cosa hai imparato:</strong><ul>
+  <li>Interfaccia e barra multifunzione</li>
+  <li>Creare, salvare ed esportare documenti</li>
+  <li>Formattazione del carattere e del paragrafo</li>
+  <li>Elenchi, stili, titoli e sommario automatico</li>
+  <li>Layout di pagina, tabelle, immagini</li>
+  <li>Intestazioni, piè di pagina e numeri di pagina</li>
+  <li>Controllo ortografico, trova e sostituisci</li>
+  <li>Modelli e stampa unione</li>
+</ul></div>
+<p>Il passo successivo? Impara <strong>Excel</strong> per gestire numeri e tabelle, oppure scopri come automatizzare i documenti con i fogli di calcolo collegati alla stampa unione.</p>
+<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem"><a href="corso-excel.html" class="btn btn-primary">Vai al corso Excel →</a><a href="corso-html.html" class="btn btn-primary">Vai al corso HTML →</a><a href="corsi.html" class="btn btn-primary">Torna ai Corsi</a></div>
+</article>
+
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script>
+// ---- Strumento testo ----
+function elaboraTesto(){
+  const txt = document.getElementById('txtInput').value;
+  const op = document.getElementById('txtOp').value;
+  const out = document.getElementById('txtOut');
+  let ris;
+  switch(op){
+    case 'parole': {
+      const n = txt.trim().split(/\s+/).filter(Boolean).length;
+      ris = n + (n === 1 ? ' parola' : ' parole');
+      break;
+    }
+    case 'caratteri':
+      ris = txt.length + ' caratteri (spazi inclusi)';
+      break;
+    case 'caratteriNoSpazi':
+      ris = txt.replace(/\s/g, '').length + ' caratteri (senza spazi)';
+      break;
+    case 'frasi': {
+      const n = txt.split(/[.!?]+/).map(s => s.trim()).filter(Boolean).length;
+      ris = n + (n === 1 ? ' frase' : ' frasi');
+      break;
+    }
+    case 'maiuscolo':
+      ris = txt.toUpperCase();
+      break;
+    case 'minuscolo':
+      ris = txt.toLowerCase();
+      break;
+    case 'capitalizza':
+      ris = txt.toLowerCase().replace(/(^|\s)([a-zàèéìòù])/g, (m, sp, c) => sp + c.toUpperCase());
+      break;
+  }
+  out.textContent = ris;
+}
+
+// ---- Quiz interattivo Word ----
+const domande = [
+  { q: "A cosa serve principalmente Microsoft Word?", opzioni: ["Fare calcoli", "Creare e formattare documenti di testo", "Montare video", "Gestire database"], giusta: 1, spiega: "Word è un programma di videoscrittura: serve a creare e formattare documenti di testo." },
+  { q: "Quale scheda contiene i comandi di formattazione del carattere e del paragrafo?", opzioni: ["Inserisci", "Layout", "Home", "Revisione"], giusta: 2, spiega: "La scheda Home raggruppa la formattazione di carattere e paragrafo, gli stili e copia/incolla." },
+  { q: "Qual è il modo corretto per andare a una nuova pagina?", opzioni: ["Premere Invio molte volte", "Interruzione di pagina (Ctrl+Invio)", "Aggiungere spazi", "Ingrandire il font"], giusta: 1, spiega: "L'interruzione di pagina (Ctrl+Invio) mantiene la pagina nuova al posto giusto anche modificando il testo." },
+  { q: "A cosa serve usare gli Stili (es. Titolo 1)?", opzioni: ["Solo a colorare il testo", "A formattare in modo coerente e generare il sommario automatico", "A contare le parole", "A inserire immagini"], giusta: 1, spiega: "Gli stili danno formattazione coerente e sono la base del sommario automatico." },
+  { q: "Cosa fa la Stampa unione?", opzioni: ["Stampa più copie identiche", "Crea documenti personalizzati da un modello e un elenco di dati", "Unisce due file PDF", "Corregge gli errori"], giusta: 1, spiega: "La stampa unione genera un documento personalizzato per ogni riga di un elenco di dati." },
+  { q: "Quale scorciatoia salva il documento?", opzioni: ["Ctrl+P", "Ctrl+S", "Ctrl+A", "Ctrl+Z"], giusta: 1, spiega: "Ctrl+S salva il documento. Ricordati di farlo spesso!" },
+  { q: "La sottolineatura rossa ondulata sotto una parola indica...", opzioni: ["Un collegamento ipertestuale", "Un possibile errore di ortografia", "Testo importante", "Una nota a piè di pagina"], giusta: 1, spiega: "La linea rossa ondulata segnala un possibile errore di ortografia." },
+  { q: "Dove si inserisce il numero di pagina che si aggiorna da solo?", opzioni: ["Nel corpo del testo a mano", "Nell'intestazione o piè di pagina (Inserisci → Numero di pagina)", "In una tabella", "Nello stile Normale"], giusta: 1, spiega: "I numeri di pagina automatici si inseriscono in intestazione/piè di pagina e si aggiornano da soli." }
+];
+
+let idx = 0, punteggio = 0, risposto = false;
+const cont = document.getElementById('quizContenuto');
+const prog = document.getElementById('quizProgresso');
+const btnAvanti = document.getElementById('quizAvanti');
+
+function mostraDomanda(){
+  risposto = false;
+  const d = domande[idx];
+  let html = '<div class="domanda">' + (idx+1) + '. ' + d.q + '</div>';
+  d.opzioni.forEach((o, i) => { html += '<button class="opzione" data-i="' + i + '">' + o + '</button>'; });
+  html += '<div class="feedback" id="quizFeedback"></div>';
+  cont.innerHTML = html;
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'none';
+  cont.querySelectorAll('.opzione').forEach(b => b.addEventListener('click', rispondi));
+}
+
+function rispondi(e){
+  if(risposto) return;
+  risposto = true;
+  const scelta = parseInt(e.target.dataset.i);
+  const d = domande[idx];
+  cont.querySelectorAll('.opzione').forEach((b, i) => {
+    b.disabled = true;
+    if(i === d.giusta) b.classList.add('giusta');
+    else if(i === scelta) b.classList.add('sbagliata');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if(scelta === d.giusta){ punteggio++; fb.style.color = '#16a34a'; fb.textContent = '✅ Corretto! ' + d.spiega; }
+  else { fb.style.color = '#dc2626'; fb.textContent = '❌ Sbagliato. ' + d.spiega; }
+  prog.textContent = 'Domanda ' + (idx+1) + ' di ' + domande.length + ' — Punteggio: ' + punteggio;
+  btnAvanti.style.display = 'inline-block';
+  btnAvanti.textContent = (idx < domande.length - 1) ? 'Prossima domanda →' : 'Vedi risultato 🏁';
+}
+
+btnAvanti.addEventListener('click', () => {
+  idx++;
+  if(idx < domande.length) mostraDomanda(); else mostraRisultato();
+});
+
+function mostraRisultato(){
+  const perc = Math.round((punteggio / domande.length) * 100);
+  let msg = perc >= 70 ? '🎉 Ottimo! Padroneggi Word!' : perc >= 50 ? '👍 Buon lavoro, ripassa e riprova!' : '📚 Continua a studiare: rivedi le lezioni!';
+  cont.innerHTML = '<div class="punteggio"><div class="big">' + punteggio + ' / ' + domande.length + '</div>' +
+    '<p style="margin:.4rem 0">Hai risposto correttamente al ' + perc + '% delle domande.</p>' +
+    '<p style="font-weight:600;color:#3730a3">' + msg + '</p>' +
+    '<button class="btn btn-primary btn-sm" id="quizRicomincia" style="margin-top:.6rem">↺ Ricomincia il quiz</button></div>';
+  prog.textContent = 'Quiz completato';
+  btnAvanti.style.display = 'none';
+  document.getElementById('quizRicomincia').addEventListener('click', () => { idx = 0; punteggio = 0; mostraDomanda(); });
+}
+
+mostraDomanda();
+</script>
+
+<div class="editor-overlay" id="editor">
+  <div class="editor-box">
+    <div class="editor-top">
+      <strong>✏️ Provalo tu — scrivi e formatta come in Word</strong>
+      <div class="ed-actions">
+        <button class="ed-btn ed-run" id="ed-run" title="Aggiorna l'anteprima">▶ Esegui</button>
+        <button class="ed-btn ed-theme" id="edThemeBtn" onclick="toggleTheme()" title="Cambia sfondo">🌙 Sfondo scuro</button>
+        <button class="ed-btn ed-close" id="ed-close">✕ Chiudi</button>
+      </div>
+    </div>
+    <div class="editor-panes">
+      <div class="code-editor"><textarea id="ed-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+      <div class="preview-wrap">
+        <div class="preview-label">Anteprima</div>
+        <iframe id="ed-preview" title="Anteprima del documento Word"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script>
+  var edDark = localStorage.getItem('edTheme') === 'dark';
+  function toggleTheme(){
+    edDark = !edDark;
+    localStorage.setItem('edTheme', edDark ? 'dark' : 'light');
+    if(window._edApplyTheme) window._edApplyTheme();
+  }
+
+  (function(){
+    var overlay = document.getElementById('editor');
+    var preview = document.getElementById('ed-preview');
+    var cm = null;
+
+    function updatePreview(){
+      var content = cm ? cm.getValue() : document.getElementById('ed-code').value;
+      // La pagina del documento: foglio bianco al centro, come in Word
+      var pageBg = edDark ? '#0f172a' : '#e2e8f0';
+      var sheetBg = '#ffffff';
+      var doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'
+        + 'html,body{margin:0;padding:0;background:' + pageBg + ';}'
+        + 'body{padding:1.4rem;font-family:Georgia,"Times New Roman",serif;}'
+        + '.foglio{background:' + sheetBg + ';color:#1e293b;max-width:640px;margin:0 auto;'
+        + 'padding:2.4rem 2.8rem;box-shadow:0 4px 24px rgba(0,0,0,.25);border-radius:2px;line-height:1.6;}'
+        + 'h1{font-size:1.7rem;margin:0 0 .6rem;} h2{font-size:1.3rem;margin:1.2rem 0 .5rem;}'
+        + 'p{margin:0 0 .7rem;} ul,ol{margin:0 0 .7rem 1.4rem;} li{margin:.2rem 0;}'
+        + 'table{border-collapse:collapse;margin:.6rem 0;} td,th{border:1px solid #94a3b8;padding:.3rem .6rem;}'
+        + '</style></head><body><div class="foglio">' + content + '</div></body></html>';
+      preview.srcdoc = doc;
+    }
+
+    function ensureCM(){
+      if (!cm && window.CodeMirror) {
+        try {
+          cm = CodeMirror.fromTextArea(document.getElementById('ed-code'), {
+            lineNumbers: true, lineWrapping: true,
+            tabSize: 2, indentUnit: 2,
+            mode: 'xml', theme: edDark ? 'material-darker' : 'default'
+          });
+          cm.on('change', function(){ updatePreview(); });
+        } catch(e){ cm = null; }
+      }
+    }
+    function applyTheme(){
+      var btn = document.getElementById('edThemeBtn');
+      if(cm) cm.setOption('theme', edDark ? 'material-darker' : 'default');
+      if(btn) btn.innerHTML = edDark ? '☀️ Sfondo chiaro' : '🌙 Sfondo scuro';
+      updatePreview();
+    }
+    window._edApplyTheme = applyTheme;
+
+    function preventTouch(e){ if(!overlay.contains(e.target)) e.preventDefault(); }
+    function openEditor(code){
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('editor-open');
+      document.addEventListener('touchmove', preventTouch, {passive:false});
+      ensureCM();
+      if (cm) { cm.setValue(code); setTimeout(function(){ cm.refresh(); cm.focus(); }, 20); }
+      else { document.getElementById('ed-code').value = code; }
+      applyTheme();
+    }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('editor-open'); document.removeEventListener('touchmove', preventTouch); }
+
+    document.getElementById('ed-close').addEventListener('click', closeEditor);
+    document.getElementById('ed-run').addEventListener('click', updatePreview);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEditor(); });
+
+    document.querySelectorAll('.example').forEach(function(ex){
+      var head = ex.querySelector('.codehead');
+      var codeEl = ex.querySelector('.codeview code');
+      if (!head || !codeEl) { return; }
+      var raw = codeEl.textContent.replace(/\s+$/, '');
+      var btn = document.createElement('button');
+      btn.className = 'btn-try';
+      btn.textContent = '▶ Provalo tu';
+      btn.addEventListener('click', function(){ openEditor(raw); });
+      head.appendChild(btn);
+    });
+  })();
+</script>
+<script src="js/search.js"></script>
+</body>
+</html>
