@@ -2001,7 +2001,7 @@ a:hover {
       setTimeout(function(){ cm.refresh(); cm.focus(); }, 20);
       applyTheme();
     }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow = ''; document.removeEventListener('touchmove', preventTouch); }
 
     cm.on('change', run);
     document.getElementById('ed-run').addEventListener('click', run);
