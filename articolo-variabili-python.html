@@ -4,50 +4,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Variabili e tipi di dato in Python: la guida base — AlessandroSimone.it</title>
-  <meta name="description" content="Cosa sono le variabili e i tipi di dato in Python: int, float, str, bool. Come dichiararle e convertirle, con esempi semplici per chi inizia a programmare.">
-  <meta name="keywords" content="variabili python, tipi di dato python, int float str bool, input python, programmazione python scuola">
+  <title>Le variabili in Python: cosa sono e come si usano — AlessandroSimone.it</title>
+  <meta name="description" content="Cosa sono le variabili in Python e come si usano? Guida chiara con la metafora della scatola, i tipi di dato e gli errori da evitare, con esempi scolastici.">
+  <meta name="keywords" content="variabili Python, cos'è una variabile, tipi di dato Python, assegnazione variabili, variabili programmazione">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=6">
-  <link rel="canonical" href="https://alexandro-debug-svg.github.io/corso-github/articolo-variabili-python.html">
+  <link rel="canonical" href="https://alessandrosimone.it/articolo-variabili-python.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#4f46e5">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="AlessandroSimone.it">
-  <meta property="og:url" content="https://alexandro-debug-svg.github.io/corso-github/articolo-variabili-python.html">
-  <meta property="og:title" content="Variabili e tipi di dato in Python: la guida base — AlessandroSimone.it">
-  <meta property="og:description" content="Cosa sono le variabili e i tipi di dato in Python: int, float, str, bool. Come dichiararle e convertirle, con esempi semplici per chi inizia a programmare.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta property="og:url" content="https://alessandrosimone.it/articolo-variabili-python.html">
+  <meta property="og:title" content="Le variabili in Python: cosa sono e come si usano — AlessandroSimone.it">
+  <meta property="og:description" content="Cosa sono le variabili in Python e come si usano? Guida chiara con la metafora della scatola, i tipi di dato e gli errori da evitare, con esempi scolastici.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://alessandrosimone.it/articolo-variabili-python.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Variabili e tipi di dato in Python: la guida base — AlessandroSimone.it">
-  <meta name="twitter:description" content="Cosa sono le variabili e i tipi di dato in Python: int, float, str, bool. Come dichiararle e convertirle, con esempi semplici per chi inizia a programmare.">
-  <meta name="twitter:image" content="https://alexandro-debug-svg.github.io/corso-github/alessandro-home.jpg">
+  <meta name="twitter:title" content="Le variabili in Python: cosa sono e come si usano — AlessandroSimone.it">
+  <meta name="twitter:description" content="Cosa sono le variabili in Python e come si usano? Guida chiara con la metafora della scatola, i tipi di dato e gli errori da evitare, con esempi scolastici.">
+  <meta name="twitter:image" content="https://alessandrosimone.it/articolo-variabili-python.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Variabili e tipi di dato in Python",
-  "description": "Cosa sono le variabili e i tipi di dato in Python: int, float, str, bool. Come dichiararle e convertirle, con esempi semplici per chi inizia a programmare.",
+  "headline": "Le variabili in Python: cosa sono e come si usano",
+  "description": "Cosa sono le variabili in Python e come si usano? Guida chiara con la metafora della scatola, i tipi di dato e gli errori da evitare, con esempi scolastici.",
   "inLanguage": "it-IT",
-  "url": "https://alexandro-debug-svg.github.io/corso-github/articolo-variabili-python.html",
+  "url": "https://alessandrosimone.it/articolo-variabili-python.html",
   "author": {
     "@type": "Person",
     "name": "Alessandro Simone",
-    "url": "https://alexandro-debug-svg.github.io/corso-github"
+    "url": "https://alessandrosimone.it"
   },
   "publisher": {
     "@type": "Organization",
     "name": "AlessandroSimone.it",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://alexandro-debug-svg.github.io/corso-github/favicon.svg"
+      "url": "https://alessandrosimone.it/favicon.svg"
     }
   },
-  "mainEntityOfPage": "https://alexandro-debug-svg.github.io/corso-github/articolo-variabili-python.html"
+  "mainEntityOfPage": "https://alessandrosimone.it/articolo-variabili-python.html"
 }
   </script>
 </head>
@@ -73,63 +73,108 @@
 <section class="section">
   <article class="container article">
     <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
-    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 6 min di lettura</span>
-    <h1>Variabili e tipi di dato in Python</h1>
-    <p style="color:var(--muted)">📅 6 giugno 2026 — di Alessandro Simone</p>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 7 min di lettura</span>
+    <h1>Le variabili in Python: cosa sono e come si usano</h1>
+    <p style="color:var(--muted)">📅 15 giugno 2026 — di Alessandro Simone</p>
 
-    <p>Prima di scrivere qualsiasi programma serio, bisogna capire due concetti di base: le <strong>variabili</strong> e i <strong>tipi di dato</strong>. Sono il vero punto di partenza della programmazione in Python, e capirli bene fin dall'inizio ti eviterà tanti errori più avanti. Vediamoli insieme con esempi semplici e concreti.</p>
+    <p>Le variabili sono il primo mattone della programmazione: prima ancora dei cicli e delle decisioni, c'è bisogno di un posto dove mettere i dati. In Python sono semplici da usare, ma nascondono un paio di trappole che confondono quasi tutti all'inizio. In questa guida ti spiego cos'è una variabile, come si usa, quali tipi di dato esistono e quali errori evitare, con esempi presi dalla scuola.</p>
 
     <h2>Cos'è una variabile?</h2>
-    <p>Una variabile è come una <strong>scatola con un'etichetta</strong> in cui mettiamo un valore. L'etichetta è il nome della variabile, e il contenuto è il dato che vogliamo conservare. In Python si crea semplicemente assegnando un valore con il segno <code>=</code>:</p>
-    <pre><code>nome = "Alessandro"
-eta = 35
-altezza = 1.78</code></pre>
-    <p>Da quel momento, ogni volta che scrivi <code>nome</code>, Python sa che ti riferisci al valore "Alessandro". Puoi anche cambiarne il contenuto in qualsiasi momento: ecco perché si chiamano "variabili".</p>
+    <p>Una variabile è uno spazio in memoria dove il programma conserva un dato, dandogli un nome per ritrovarlo. L'immagine più efficace è quella di una <strong>scatola con un'etichetta</strong>: dentro la scatola metti un valore, e sull'etichetta scrivi il nome con cui richiamarla.</p>
+    <p>Per esempio, se scrivi <code>voto = 8</code>, stai creando una scatola etichettata "voto" e ci stai mettendo dentro il valore 8. Da quel momento, ogni volta che scrivi <code>voto</code> nel programma, Python va a guardare cosa c'è nella scatola e usa quel valore. Il vantaggio è enorme: non devi ricordarti il dato, ti basta ricordarti il nome.</p>
 
-    <h2>I tipi di dato fondamentali</h2>
-    <p>Ogni valore ha un "tipo", che dice a Python di che natura è il dato. I quattro tipi base da conoscere sono:</p>
+    <h2>Come si assegna un valore a una variabile?</h2>
+    <p>L'operazione si chiama <strong>assegnazione</strong> e si fa con il simbolo <code>=</code>. Attenzione, perché qui c'è il primo equivoco: in Python l'uguale non significa "è uguale a" come in matematica, significa "<strong>metti dentro</strong>". Si legge da destra verso sinistra: prendi il valore a destra e mettilo nella scatola a sinistra.</p>
+    <pre><code># Creo alcune variabili e assegno loro un valore
+nome = "Luca"        # nella scatola "nome" metto il testo Luca
+voto = 8             # nella scatola "voto" metto il numero 8
+media = 7.5          # nella scatola "media" metto il numero 7.5
+
+# Uso le variabili per costruire un messaggio
+print(nome, "ha preso", voto)   # Luca ha preso 8</code></pre>
+    <p>Una variabile può anche cambiare valore durante il programma: è proprio per questo che si chiama "variabile". Se più avanti scrivi <code>voto = 9</code>, la scatola "voto" perde l'8 e contiene 9. L'ultimo valore assegnato è quello che conta.</p>
+
+    <h2>Quali tipi di dato esistono in Python?</h2>
+    <p>Dentro una variabile puoi mettere tipi di dato diversi, e Python capisce da solo di che tipo si tratta in base a cosa scrivi. I quattro tipi base che incontri subito sono questi:</p>
     <ul>
-      <li><strong>int</strong> (intero): numeri senza virgola, come <code>35</code> o <code>-7</code>;</li>
-      <li><strong>float</strong> (decimale): numeri con la virgola, come <code>1.78</code> o <code>3.14</code>;</li>
-      <li><strong>str</strong> (stringa): testo, sempre tra virgolette, come <code>"ciao"</code>;</li>
-      <li><strong>bool</strong> (booleano): può valere solo <code>True</code> o <code>False</code>.</li>
+      <li><strong>Interi</strong> (int): numeri senza virgola, come <code>voto = 8</code> o <code>anno = 2026</code>.</li>
+      <li><strong>Decimali</strong> (float): numeri con la virgola (che in Python è un punto), come <code>media = 7.5</code>.</li>
+      <li><strong>Stringhe</strong> (str): testo, sempre tra virgolette, come <code>nome = "Luca"</code> o <code>materia = "Informatica"</code>.</li>
+      <li><strong>Booleani</strong> (bool): solo due valori possibili, <code>True</code> (vero) o <code>False</code> (falso), come <code>promosso = True</code>.</li>
     </ul>
-    <p>Puoi sempre scoprire il tipo di una variabile con la funzione <code>type()</code>:</p>
-    <pre><code>print(type(eta))       # &lt;class 'int'&gt;
-print(type(altezza))   # &lt;class 'float'&gt;
-print(type(nome))      # &lt;class 'str'&gt;</code></pre>
+    <pre><code># Un esempio con tutti e quattro i tipi
+nome = "Giulia"         # stringa
+voti_presi = 5          # intero
+media = 6.8             # decimale
+promossa = True         # booleano
 
-    <h2>Python "indovina" il tipo da solo</h2>
-    <p>A differenza di altri linguaggi come C o Java, in Python <strong>non devi dichiarare il tipo</strong> della variabile: lo capisce automaticamente dal valore che assegni. Se scrivi <code>x = 5</code>, Python sa che è un intero; se scrivi <code>x = "5"</code>, è una stringa. Questa comodità si chiama "tipizzazione dinamica" ed è uno dei motivi per cui Python è perfetto per chi inizia.</p>
+print(nome, "ha media", media, "- promossa:", promossa)
+# Giulia ha media 6.8 - promossa: True</code></pre>
+    <p>La distinzione tra le virgolette e i numeri è importante: <code>"8"</code> con le virgolette è il testo otto, mentre <code>8</code> senza virgolette è il numero otto. Sembra una sottigliezza, ma cambia tutto: sul testo non puoi fare calcoli, sul numero sì.</p>
 
-    <h2>Attenzione: numero o testo?</h2>
-    <p>Un errore classico riguarda la differenza tra il numero <code>5</code> e la stringa <code>"5"</code>. Sembrano uguali, ma si comportano in modo diverso:</p>
-    <pre><code>print(5 + 3)       # 8  (somma tra numeri)
-print("5" + "3")   # 53 (unione di due testi!)</code></pre>
-    <p>Con i numeri il <code>+</code> somma, con le stringhe il <code>+</code> "incolla" (concatena). Capire questa differenza ti salverà da tanti errori.</p>
+    <h2>Come si scelgono i nomi delle variabili?</h2>
+    <p>Il nome di una variabile lo scegli tu, ma ci sono regole da rispettare e buone abitudini da prendere. Le regole: il nome non può iniziare con un numero, non può contenere spazi, e non può essere una parola riservata di Python (come <code>print</code> o <code>if</code>). La buona abitudine, invece, è la più importante: <strong>usa nomi che dicono cosa contengono</strong>.</p>
+    <pre><code># Male: nomi che non dicono niente
+x = 8
+y = 7.5
 
-    <h2>Convertire i tipi (casting)</h2>
-    <p>Spesso serve trasformare un dato da un tipo a un altro. È utilissimo soprattutto con <code>input()</code>, che restituisce sempre una stringa:</p>
-    <pre><code>eta_testo = input("Quanti anni hai? ")   # restituisce una stringa
-eta = int(eta_testo)                      # la convertiamo in numero
-print("Tra 10 anni avrai", eta + 10, "anni")</code></pre>
-    <p>Le funzioni di conversione principali sono <code>int()</code>, <code>float()</code> e <code>str()</code>. Dimenticare di convertire l'input è probabilmente l'errore numero uno dei principianti: senza <code>int()</code>, <code>eta + 10</code> darebbe errore.</p>
+# Bene: nomi chiari, il codice si legge da solo
+voto_matematica = 8
+media_finale = 7.5</code></pre>
+    <p>Da docente te lo dico chiaro: un nome come <code>x</code> oggi ti sembra comodo, ma fra venti righe non ti ricorderai più cosa conteneva. Un nome come <code>media_finale</code> si spiega da solo. Scrivere codice leggibile è una delle differenze tra chi improvvisa e chi programma davvero.</p>
 
-    <h2>Come dare un nome alle variabili</h2>
-    <p>Scegliere buoni nomi rende il codice leggibile. Alcune regole e consigli:</p>
+    <h2>Quali errori si fanno con le variabili?</h2>
+    <p>Gli inciampi più frequenti che vedo con le variabili sono sempre questi, e conoscerli ti risparmia parecchia confusione:</p>
     <ul>
-      <li>usa nomi che descrivono il contenuto: <code>media_voti</code> è meglio di <code>m</code>;</li>
-      <li>niente spazi: usa l'underscore, come <code>nome_studente</code>;</li>
-      <li>non possono iniziare con un numero;</li>
-      <li>Python distingue maiuscole e minuscole: <code>Nome</code> e <code>nome</code> sono due variabili diverse.</li>
+      <li><strong>Confondere = con ==</strong>: un solo uguale assegna un valore (<code>voto = 8</code>), il doppio uguale serve a <em>confrontare</em> (<code>voto == 8</code> chiede "il voto è 8?"). È l'errore numero uno in assoluto.</li>
+      <li><strong>Usare una variabile non ancora creata</strong>: se scrivi <code>print(voto)</code> prima di aver assegnato un valore a <code>voto</code>, Python dà errore perché quella scatola non esiste ancora.</li>
+      <li><strong>Dimenticare le virgolette nelle stringhe</strong>: <code>nome = Luca</code> dà errore, perché Python pensa che Luca sia un'altra variabile. Il testo va sempre tra virgolette: <code>nome = "Luca"</code>.</li>
+      <li><strong>Nomi poco chiari</strong>: non è un errore che blocca il programma, ma rende il codice illeggibile e pieno di bug difficili da trovare.</li>
     </ul>
 
     <h2>In sintesi</h2>
-    <p>Le variabili sono scatole etichettate che conservano i dati, e ogni dato ha un tipo: int, float, str o bool. Ricorda che Python intuisce il tipo da solo, che il numero <code>5</code> è diverso dalla stringa <code>"5"</code> e che l'input va spesso convertito con <code>int()</code> o <code>float()</code>. Con queste basi solide, sei pronto per affrontare cicli, condizioni e tutto il resto.</p>
+    <p>Una variabile è una scatola etichettata che conserva un dato: con <code>=</code> ci metti dentro un valore, e con il suo nome lo richiami quando serve. Ricorda che l'uguale significa "metti dentro", non "è uguale a", che le stringhe vanno tra virgolette, e che i nomi chiari valgono oro. Le variabili sono il punto di partenza di ogni <a href="articolo-come-costruire-algoritmo.html">algoritmo</a>: una volta che sai conservare i dati, il passo successivo è imparare a scorrerli e a ripetere operazioni con il <a href="articolo-cicli-for-python.html">ciclo for</a>, e a raccoglierne tanti insieme con le <a href="articolo-liste-python.html">liste</a>.</p>
+
+    <h2>Domande frequenti</h2>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è una variabile in Python?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Una variabile è uno spazio in memoria dove il programma conserva un dato, identificato da un nome. L'immagine più efficace è quella di una scatola con un'etichetta: dentro metti un valore e sull'etichetta scrivi il nome con cui richiamarlo. Ad esempio, scrivendo voto = 8 si crea una scatola chiamata "voto" che contiene il numero 8, e da quel momento usando il nome voto si recupera quel valore. Il valore può cambiare durante il programma, ed è proprio per questo che si chiama variabile. Le variabili sono il primo mattone della programmazione, perché servono a conservare e riutilizzare i dati.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Qual è la differenza tra = e == in Python?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Un solo uguale (=) è l'operatore di assegnazione: serve a mettere un valore dentro una variabile, ad esempio voto = 8 significa "metti 8 nella scatola voto". Il doppio uguale (==) è l'operatore di confronto: serve a chiedere se due valori sono uguali, ad esempio voto == 8 significa "il voto è uguale a 8?" e restituisce vero o falso. È l'errore più comune di chi inizia: usare un solo uguale dove serve il doppio, o viceversa. La regola da ricordare è semplice: un uguale assegna, due uguali confrontano. Il confronto si usa soprattutto nelle condizioni, come dentro un if.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Quali sono i tipi di dato in Python?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">I quattro tipi di dato base che si incontrano subito sono: gli interi (int), cioè i numeri senza virgola come 8 o 2026; i decimali (float), numeri con la virgola scritta come punto, ad esempio 7.5; le stringhe (str), cioè il testo sempre racchiuso tra virgolette come "Luca"; e i booleani (bool), che possono valere solo True o False. Python riconosce automaticamente il tipo in base a come si scrive il valore, senza doverlo dichiarare. È importante distinguere il testo dai numeri: "8" tra virgolette è testo e non ci si possono fare calcoli, mentre 8 senza virgolette è un numero. Esistono anche tipi più complessi, come le liste, che raccolgono più valori insieme.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Come si sceglie il nome di una variabile?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Il nome lo sceglie chi programma, ma ci sono regole obbligatorie e buone abitudini. Le regole: il nome non può iniziare con un numero, non può contenere spazi e non può essere una parola riservata di Python come print o if. La buona abitudine più importante è usare nomi che descrivono il contenuto: media_finale è molto meglio di x, perché rende il codice leggibile e comprensibile anche a distanza di tempo. Un nome poco chiaro non blocca il programma, ma genera confusione ed errori difficili da individuare. Scrivere codice con nomi chiari è una delle abitudini che distinguono chi programma bene da chi improvvisa.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Una variabile può cambiare valore durante il programma?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Sì, ed è proprio questa la caratteristica che le dà il nome di "variabile". Quando si assegna un nuovo valore a una variabile già esistente, il valore precedente viene sostituito e conta solo l'ultimo assegnato. Ad esempio, se prima si scrive voto = 8 e poi voto = 9, la scatola voto conterrà 9. Questo è utilissimo nei programmi: si pensi a un contatore che cresce a ogni giro di un ciclo, o a una variabile che accumula una somma. Il valore cambia man mano che il programma procede, permettendo di tenere traccia di dati che evolvono durante l'esecuzione.</p>
+    </details>
 
     <div class="cta-banner mt-4">
-      <h2>Inizia a programmare in Python</h2>
-      <p>Nella sezione esercizi trovi tanti problemi su variabili, input e operazioni, con soluzioni.</p>
+      <h2>Esercitati con le variabili</h2>
+      <p>Le variabili si imparano usandole. Nei corsi gratuiti trovi l'editor per scrivere ed eseguire il codice nel browser e tanti esempi da modificare.</p>
       <a href="corsi.html" class="btn btn-accent btn-lg">Vai ai corsi →</a>
     </div>
   </article>
