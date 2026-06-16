@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le tre strutture: sequenza, selezione e ciclo — AlessandroSimone.it</title>
+  <meta name="description" content="Sequenza, selezione e iterazione: le tre strutture di base con cui si costruisce qualsiasi programma. Spiegate con diagrammi di flusso ed esempi in Python.">
+  <meta name="keywords" content="strutture di programmazione, sequenza selezione iterazione, programmazione strutturata, teorema di Böhm-Jacopini, strutture di controllo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="canonical" href="https://alessandrosimone.it/articolo-strutture-programmazione.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="AlessandroSimone.it">
+  <meta property="og:url" content="https://alessandrosimone.it/articolo-strutture-programmazione.html">
+  <meta property="og:title" content="Le tre strutture: sequenza, selezione e ciclo — AlessandroSimone.it">
+  <meta property="og:description" content="Sequenza, selezione e iterazione: le tre strutture di base con cui si costruisce qualsiasi programma. Spiegate con diagrammi di flusso ed esempi in Python.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://alessandrosimone.it/articolo-strutture-programmazione.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le tre strutture: sequenza, selezione e ciclo — AlessandroSimone.it">
+  <meta name="twitter:description" content="Sequenza, selezione e iterazione: le tre strutture di base con cui si costruisce qualsiasi programma. Spiegate con diagrammi di flusso ed esempi in Python.">
+  <meta name="twitter:image" content="https://alessandrosimone.it/articolo-strutture-programmazione.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Le tre strutture di base: sequenza, selezione e ciclo",
+  "description": "Sequenza, selezione e iterazione: le tre strutture di base con cui si costruisce qualsiasi programma. Spiegate con diagrammi di flusso ed esempi in Python.",
+  "inLanguage": "it-IT",
+  "url": "https://alessandrosimone.it/articolo-strutture-programmazione.html",
+  "author": {
+    "@type": "Person",
+    "name": "Alessandro Simone",
+    "url": "https://alessandrosimone.it"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AlessandroSimone.it",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://alessandrosimone.it/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": "https://alessandrosimone.it/articolo-strutture-programmazione.html"
+}
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">Alessandro<span>Simone</span>.it</a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="ripetizioni.html">Ripetizioni</a>
+      <a href="corsi.html">Corsi</a>
+      <a href="blog.html">Blog</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="esercizi.html">Area Riservata Studenti</a>
+      <a href="prenota.html" class="btn btn-accent btn-sm">📅 Prenota</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <article class="container article">
+    <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Programmazione · 8 min di lettura</span>
+    <h1>Le tre strutture di base: sequenza, selezione e ciclo</h1>
+    <p style="color:var(--muted)">📅 15 giugno 2026 — di Alessandro Simone</p>
+
+    <p>C'è una cosa che sorprende chi inizia a programmare: per quanto un programma possa sembrare complicato, è sempre costruito con soli <strong>tre tipi di mattoni</strong>. Si chiamano sequenza, selezione e iterazione, e sono le strutture di base della programmazione. Capirle bene significa avere in mano la grammatica con cui si scrive qualsiasi codice. In questa guida le vediamo una per una, ciascuna come diagramma di flusso e come codice Python.</p>
+
+    <h2>Cosa sono le strutture di base?</h2>
+    <p>Le strutture di base sono i tre modi fondamentali in cui si possono organizzare le istruzioni di un programma. Qualunque algoritmo, dal più semplice al più complesso, si costruisce combinando solo queste tre: eseguire istruzioni in ordine (sequenza), scegliere tra strade diverse (selezione), ripetere operazioni (iterazione).</p>
+    <p>Non è un'opinione, è un teorema. Due matematici, Böhm e Jacopini, hanno dimostrato negli anni Sessanta che <strong>queste tre strutture bastano</strong> a scrivere qualsiasi programma, per quanto complesso. È il fondamento di quella che si chiama programmazione strutturata. Per te, in pratica, significa una buona notizia: non devi imparare cento costrutti, te ne bastano tre.</p>
+
+    <h2>La sequenza: un'istruzione dopo l'altra</h2>
+    <p>La sequenza è la struttura più semplice: le istruzioni vengono eseguite una dopo l'altra, nell'ordine in cui sono scritte, dall'alto verso il basso. Nessuna scelta, nessuna ripetizione: solo passi in fila.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 240 290" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/></marker>
+        </defs>
+        <rect x="50" y="20" width="140" height="44" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="46" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Istruzione 1</text>
+        <line x1="120" y1="64" x2="120" y2="96" stroke="#4f46e5" stroke-width="2" marker-end="url(#a1)"/>
+        <rect x="50" y="98" width="140" height="44" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="124" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Istruzione 2</text>
+        <line x1="120" y1="142" x2="120" y2="174" stroke="#4f46e5" stroke-width="2" marker-end="url(#a1)"/>
+        <rect x="50" y="176" width="140" height="44" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="120" y="202" text-anchor="middle" font-size="13" fill="#1e1b4b" font-weight="600">Istruzione 3</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">La sequenza: i passi si eseguono in ordine, uno dopo l'altro.</figcaption>
+    </figure>
+
+    <p>In Python la sequenza è semplicemente scrivere le righe una sotto l'altra:</p>
+    <pre><code># Calcolo l'area di un rettangolo: tre passi in sequenza
+base = 5
+altezza = 3
+area = base * altezza
+print("Area:", area)   # Area: 15</code></pre>
+    <p>Python esegue queste righe nell'ordine esatto in cui sono scritte: prima assegna la base, poi l'altezza, poi calcola, poi stampa. Cambiare l'ordine, ad esempio calcolare l'area prima di aver definito la base, darebbe errore.</p>
+
+    <h2>La selezione: scegliere tra due strade</h2>
+    <p>La selezione serve quando il programma deve <strong>prendere una decisione</strong>: a seconda che una condizione sia vera o falsa, si esegue un blocco di istruzioni oppure un altro. Nel diagramma di flusso è il rombo; in Python è il costrutto <code>if... else</code>.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/></marker>
+        </defs>
+        <polygon points="180,20 290,80 180,140 70,80" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="180" y="78" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">Condizione</text>
+        <text x="180" y="94" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">vera?</text>
+        <!-- sì a sinistra -->
+        <line x1="70" y1="80" x2="40" y2="80" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="40" y1="80" x2="40" y2="190" stroke="#4f46e5" stroke-width="2" marker-end="url(#a2)"/>
+        <text x="50" y="74" font-size="12" fill="#16a34a" font-weight="700">sì</text>
+        <rect x="10" y="192" width="120" height="44" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="70" y="218" text-anchor="middle" font-size="12" fill="#14532d" font-weight="600">Blocco A</text>
+        <!-- no a destra -->
+        <line x1="290" y1="80" x2="320" y2="80" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="320" y1="80" x2="320" y2="190" stroke="#4f46e5" stroke-width="2" marker-end="url(#a2)"/>
+        <text x="298" y="74" font-size="12" fill="#dc2626" font-weight="700">no</text>
+        <rect x="232" y="192" width="120" height="44" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+        <text x="292" y="218" text-anchor="middle" font-size="12" fill="#7f1d1d" font-weight="600">Blocco B</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">La selezione: la condizione decide quale blocco eseguire.</figcaption>
+    </figure>
+
+    <pre><code># Decido se uno studente è promosso in base alla media
+media = 7
+
+if media &gt;= 6:
+    print("Promosso")     # blocco A: condizione vera
+else:
+    print("Rimandato")    # blocco B: condizione falsa</code></pre>
+    <p>Se la condizione <code>media &gt;= 6</code> è vera, Python esegue il primo blocco; altrimenti esegue quello dopo <code>else</code>. Solo uno dei due viene eseguito, mai entrambi. È esattamente il rombo del diagramma di flusso, lo stesso che abbiamo usato nell'esempio della media dei voti.</p>
+
+    <h2>L'iterazione: ripetere finché serve</h2>
+    <p>L'iterazione, cioè il ciclo, serve a <strong>ripetere</strong> un blocco di istruzioni più volte. Nel diagramma di flusso è quel percorso che torna su sé stesso finché una condizione resta vera; in Python si realizza con il <code>for</code> o con il <code>while</code>.</p>
+
+    <figure style="margin:24px 0;text-align:center;">
+      <svg viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+        <defs>
+          <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/></marker>
+        </defs>
+        <polygon points="170,20 280,75 170,130 60,75" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+        <text x="170" y="72" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">Condizione</text>
+        <text x="170" y="88" text-anchor="middle" font-size="12" fill="#1e1b4b" font-weight="600">vera?</text>
+        <line x1="170" y1="130" x2="170" y2="156" stroke="#4f46e5" stroke-width="2" marker-end="url(#a3)"/>
+        <text x="182" y="148" font-size="12" fill="#16a34a" font-weight="700">sì</text>
+        <rect x="90" y="158" width="160" height="44" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+        <text x="170" y="184" text-anchor="middle" font-size="12" fill="#14532d" font-weight="600">Ripeti le istruzioni</text>
+        <!-- ritorno -->
+        <line x1="90" y1="181" x2="40" y2="181" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="40" y1="181" x2="40" y2="75" stroke="#4f46e5" stroke-width="2"/>
+        <line x1="40" y1="75" x2="58" y2="75" stroke="#4f46e5" stroke-width="2" marker-end="url(#a3)"/>
+        <!-- no esce -->
+        <line x1="280" y1="75" x2="340" y2="75" stroke="#4f46e5" stroke-width="2" marker-end="url(#a3)"/>
+        <text x="288" y="68" font-size="12" fill="#dc2626" font-weight="700">no</text>
+        <text x="345" y="79" font-size="12" fill="#5a6479">esci</text>
+      </svg>
+      <figcaption style="font-size:.85rem;color:var(--muted);margin-top:8px;">L'iterazione: finché la condizione è vera si ripete, poi si esce.</figcaption>
+    </figure>
+
+    <pre><code># Stampo i voti di uno studente, uno per uno
+voti = [7, 8, 6, 9]
+
+for voto in voti:
+    print("Voto:", voto)   # questo blocco si ripete per ogni voto</code></pre>
+    <p>Il blocco dentro il for viene ripetuto per ogni elemento della lista. Ho dedicato una guida completa a questa struttura nell'articolo sul <a href="articolo-cicli-for-python.html">ciclo for in Python</a>, dove vedi anche la funzione range e gli errori più comuni.</p>
+
+    <h2>Come si combinano le tre strutture?</h2>
+    <p>Il bello arriva ora: le tre strutture si <strong>annidano</strong> una dentro l'altra, e da questa combinazione nasce qualsiasi programma. Puoi avere una selezione dentro un ciclo, o un ciclo dentro un ramo di una selezione. Ecco un esempio che le usa tutte e tre insieme:</p>
+    <pre><code># Conto quanti studenti sono promossi in una classe
+voti = [7, 4, 8, 5, 6]   # sequenza: preparo i dati
+promossi = 0             # sequenza: inizializzo il contatore
+
+for voto in voti:        # iterazione: scorro i voti
+    if voto &gt;= 6:        # selezione: controllo se è sufficiente
+        promossi = promossi + 1
+
+print("Promossi:", promossi)   # Promossi: 3</code></pre>
+    <p>Guarda la struttura: c'è la sequenza (le prime righe in ordine), dentro c'è un'iterazione (il for che scorre i voti), e dentro il ciclo c'è una selezione (l'if che controlla ogni voto). Tre mattoni semplici che, combinati, risolvono un problema reale. Questo è il senso della programmazione strutturata.</p>
+
+    <h2>In sintesi</h2>
+    <p>Qualsiasi programma si costruisce con tre sole strutture: la sequenza (istruzioni in ordine), la selezione (l'<code>if</code>, per decidere) e l'iterazione (il ciclo, per ripetere). Lo dice il teorema di Böhm-Jacopini, e lo confermi tu stesso ogni volta che scrivi codice. Le hai viste come diagrammi di flusso e come Python, e hai visto che si combinano tra loro. Da qui, il passo naturale è approfondire i due tipi di ciclo, il for e il while, per capire quando usare l'uno e quando l'altro.</p>
+
+    <h2>Domande frequenti</h2>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Quali sono le tre strutture di base della programmazione?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Le tre strutture di base sono la sequenza, la selezione e l'iterazione. La sequenza è l'esecuzione delle istruzioni una dopo l'altra, nell'ordine in cui sono scritte. La selezione è la scelta tra due strade in base a una condizione, e corrisponde al costrutto if... else. L'iterazione è la ripetizione di un blocco di istruzioni, realizzata con i cicli for o while. Secondo il teorema di Böhm-Jacopini, queste tre strutture bastano a costruire qualsiasi programma, per quanto complesso. È il fondamento della programmazione strutturata: non servono decine di costrutti diversi, ne bastano tre combinati tra loro.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è il teorema di Böhm-Jacopini?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">È un teorema dimostrato dai matematici Corrado Böhm e Giuseppe Jacopini negli anni Sessanta, secondo cui qualsiasi algoritmo può essere realizzato usando solo tre strutture di controllo: la sequenza, la selezione e l'iterazione. In altre parole, non occorrono salti arbitrari nel codice per scrivere un programma, per quanto complesso: bastano questi tre mattoni combinati e annidati tra loro. Questo teorema è il fondamento teorico della programmazione strutturata, l'approccio che rende il codice ordinato, leggibile e privo di salti caotici. Per chi studia, è la garanzia che imparare bene tre sole strutture è sufficiente per programmare qualsiasi cosa.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Qual è la differenza tra selezione e iterazione?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">La selezione serve a scegliere: in base a una condizione, il programma esegue un blocco di istruzioni oppure un altro, una sola volta. È il costrutto if... else, e nel diagramma di flusso è il rombo da cui escono i rami "sì" e "no". L'iterazione invece serve a ripetere: lo stesso blocco di istruzioni viene eseguito più volte, finché una condizione resta vera. Sono realizzate con i cicli for e while. La differenza chiave è che la selezione decide una volta quale strada prendere, mentre l'iterazione torna indietro e ripete. Spesso si combinano: ad esempio una selezione dentro un ciclo, per controllare ogni elemento mentre lo si scorre.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Cos'è la programmazione strutturata?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">La programmazione strutturata è un modo di scrivere programmi usando solo le tre strutture di base, sequenza, selezione e iterazione, evitando i salti arbitrari nel codice. Nasce dal teorema di Böhm-Jacopini e si è affermata perché rende il codice ordinato, leggibile e più facile da correggere. Prima della sua diffusione si usavano istruzioni di salto che rendevano i programmi caotici e difficili da seguire, il cosiddetto "codice spaghetti". Programmare in modo strutturato significa costruire l'algoritmo combinando e annidando i tre mattoni fondamentali, ed è l'approccio che si insegna a scuola e che useresti naturalmente scrivendo in Python.</p>
+    </details>
+    <details style="border-bottom:1px solid #e3e7ee;padding:14px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1e1b4b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Come si combinano le tre strutture in un programma?
+        <span style="font-size:22px;font-weight:400;">+</span>
+      </summary>
+      <p style="margin:10px 0 0;color:#333;line-height:1.55;">Le tre strutture si annidano una dentro l'altra, e da questa combinazione nasce qualsiasi programma. Si può avere una selezione dentro un ciclo, ad esempio per controllare ogni elemento mentre lo si scorre, oppure un ciclo dentro un ramo di una selezione. Un esempio tipico: per contare quanti studenti sono promossi, si prepara la lista dei voti (sequenza), si scorrono i voti uno per uno (iterazione) e per ciascuno si controlla se raggiunge la sufficienza (selezione). Tre mattoni semplici che, combinati, risolvono un problema reale. Imparare a riconoscere e combinare queste strutture è la vera abilità di base del programmatore.</p>
+    </details>
+
+    <div class="cta-banner mt-4">
+      <h2>Continua il percorso</h2>
+      <p>Hai visto che il ciclo è una delle tre strutture. Ora scopri i due modi di realizzarlo in Python e quando usare l'uno o l'altro.</p>
+      <a href="articolo-cicli-for-python.html" class="btn btn-accent btn-lg">Vai al ciclo for →</a>
+    </div>
+  </article>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">Alessandro<span>Simone</span>.it</div>
+      <p class="mt-1" style="font-size:.9rem">Docente di informatica nella scuola secondaria di II grado. Ripetizioni in presenza a Roma e materiale didattico gratuito.</p>
+    </div>
+    <div><h4>Naviga</h4><a href="chi-sono.html">Chi sono</a><a href="ripetizioni.html">Ripetizioni</a><a href="esercizi.html">Area Riservata Studenti</a><a href="blog.html">Blog</a></div>
+    <div><h4>Contatti</h4><a href="mailto:alessandrosimone.it@gmail.com">alessandrosimone.it@gmail.com</a><a href="prenota.html">Prenota una lezione</a><a href="contatti.html">Modulo contatti</a></div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js?v=5"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
