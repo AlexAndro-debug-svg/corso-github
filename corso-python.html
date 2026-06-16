@@ -2009,7 +2009,7 @@ print("Promossi:", promossi)</pre></details>
       preview.srcdoc = shell('<span style="color:#94a3b8">Premi ▶ Esegui (in alto) per lanciare il codice Python.</span>');
       applyTheme();
     }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow = ''; document.removeEventListener('touchmove', preventTouch); }
 
     document.getElementById('ed-run').addEventListener('click', run);
     document.getElementById('ed-close').addEventListener('click', closeEditor);
