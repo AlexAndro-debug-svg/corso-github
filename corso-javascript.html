@@ -1365,7 +1365,7 @@ console.log(adulti);  // Luca e Gio</pre></details>
       setTimeout(function(){ if (cm) { cm.refresh(); cm.focus(); } }, 20);
       applyTheme();
     }
-    function closeEditor(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    function closeEditor(){ overlay.classList.remove('open'); document.body.classList.remove('editor-open'); document.body.style.overflow = ''; document.removeEventListener('touchmove', preventTouch); }
 
     ta.addEventListener('input', run);
     document.getElementById('ed-run').addEventListener('click', run);
