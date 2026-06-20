@@ -58,6 +58,7 @@ var INDEX = [
   {t:'Corso W3.CSS',      d:'Corso W3.CSS — framework CSS lightweight, layout, componenti',           u:'corso-w3css.html',       cat:'Corso', tag:'web css framework'},
   {t:'Corso Cybersecurity', d:'Corso Cybersecurity — sicurezza informatica, crittografia, attacchi, difese',u:'corso-cybersecurity.html', cat:'Corso', tag:'sicurezza hacking rete'},
   {t:'Corso Cisco Packet Tracer', d:'Corso Packet Tracer — reti, router, switch, protocolli, VLAN',   u:'corso-packet-tracer.html',cat:'Corso', tag:'reti Cisco networking'},
+  {t:'Corso KNIME',             d:'Corso KNIME Analytics Platform — workflow, nodi, data science visuale senza codice, GroupBy, Joiner, Pivot, machine learning', u:'corso-knime.html', cat:'Corso', tag:'dati analisi data science no-code visuale'},
 
   /* Articoli */
   {t:'Algoritmi e diagrammi di flusso', d:'Cos\'è un algoritmo e come si rappresenta con un flowchart', u:'articolo-algoritmi-flowchart.html', cat:'Articolo', tag:'programmazione logica'},
