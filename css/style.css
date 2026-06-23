@@ -92,7 +92,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
   border-bottom: 1px solid var(--border);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.brand { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; letter-spacing: -.5px; }
+.brand { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; letter-spacing: -.5px; display: inline-flex; align-items: center; gap: .5rem; }
+.brand .brand-logo { height: 40px; width: auto; display: block; }
 .brand span { color: var(--primary); }
 .nav-menu { display: flex; align-items: center; gap: 1.6rem; }
 .nav-menu a { font-size: .95rem; font-weight: 500; color: var(--muted); transition: color var(--transition); }
@@ -320,7 +321,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; font-weight: 7
 .footer-grid h4 { color:#fff; font-size: 1rem; margin-bottom: 1rem; }
 .footer-grid a { display: block; color: rgba(255,255,255,.6); font-size: .9rem; padding: .25rem 0; transition: var(--transition); }
 .footer-grid a:hover { color: var(--accent); }
-.footer-brand { font-family: var(--font-head); font-weight:800; font-size:1.3rem; color:#fff; }
+.footer-brand { font-family: var(--font-head); font-weight:800; font-size:1.3rem; color:#fff; display: inline-flex; align-items: center; gap: .55rem; }
+.footer-brand .footer-logo { height: 46px; width: auto; display: block; }
 .footer-brand span { color: var(--accent); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 1.3rem 0; font-size: .82rem; text-align:center; }
 @media (max-width: 640px){ .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
