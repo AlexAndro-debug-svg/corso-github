@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* --- Filtri esercizi (pagina esercizi.html) --- */
+  /* --- Filtri esercizi (pagina area-studenti.html) --- */
   const chips = document.querySelectorAll('.filters .chip');
   const items = document.querySelectorAll('.ex-list .ex-item');
   if (chips.length && items.length) {

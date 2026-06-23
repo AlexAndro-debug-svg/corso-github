@@ -10,7 +10,7 @@ var INDEX = [
   {t:'Corsi di Informatica', d:'Tutti i corsi gratuiti in italiano disponibili sul sito',     u:'corsi.html',           cat:'Sito'},
   {t:'Blog & Guide',      d:'Articoli e guide di informatica e programmazione',               u:'blog.html',            cat:'Sito'},
   {t:'Contatti & FAQ',    d:'Come contattare Alessandro Simone e domande frequenti',          u:'contatti.html',        cat:'Sito'},
-  {t:'Area Riservata Studenti', d:'Materiale didattico per gli studenti di Alessandro',       u:'esercizi.html',        cat:'Sito'},
+  {t:'Area Riservata Studenti', d:'Materiale didattico per gli studenti di Alessandro',       u:'area-studenti.html',        cat:'Sito'},
   {t:'Prenota una lezione', d:'Prenota la tua prima lezione di ripetizione',                  u:'prenota.html',         cat:'Sito'},
 
   /* Corsi */
