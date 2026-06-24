@@ -61,10 +61,10 @@ var INDEX = [
   {t:'Corso KNIME',             d:'Corso KNIME Analytics Platform — workflow, nodi, data science visuale senza codice, GroupBy, Joiner, Pivot, machine learning', u:'corso-knime.html', cat:'Corso', tag:'dati analisi data science no-code visuale'},
 
   /* Articoli */
-  {t:'Algoritmi e diagrammi di flusso', d:'Cos\'è un algoritmo e come si rappresenta con un flowchart', u:'articolo-algoritmi-flowchart.html', cat:'Articolo', tag:'programmazione logica'},
+  {t:'Cos\'è un diagramma di flusso e come si legge', d:'Simboli, errori comuni e un esempio tradotto in codice Python', u:'articolo-diagramma-di-flusso.html', cat:'Articolo', tag:'programmazione logica algoritmi'},
   {t:'Come usare ChatGPT per studiare', d:'Guida su come usare ChatGPT per studiare senza barare',    u:'articolo-chatgpt-studiare.html',    cat:'Articolo', tag:'AI intelligenza artificiale studio'},
-  {t:'Il ciclo for in Python',          d:'Come funziona il ciclo for in Python con esempi pratici',  u:'articolo-ciclo-for.html',           cat:'Articolo', tag:'python programmazione'},
-  {t:'Le condizioni if in Python',      d:'Le istruzioni if, elif ed else in Python con esempi',      u:'articolo-condizioni-if.html',       cat:'Articolo', tag:'python programmazione'},
+  {t:'Il ciclo for in Python',          d:'Come funziona il for, range e il pattern dell\'accumulatore', u:'articolo-cicli-for-python.html',  cat:'Articolo', tag:'python programmazione'},
+  {t:'if, elif e else in Python',       d:'Come funzionano le condizioni in Python con esempi sui voti', u:'articolo-if-else-python.html',    cat:'Articolo', tag:'python programmazione'},
   {t:'La crittografia spiegata semplice', d:'Cos\'è la crittografia e a cosa serve nella sicurezza', u:'articolo-crittografia.html',        cat:'Articolo', tag:'sicurezza cybersecurity'},
   {t:'Debug: trovare e correggere i bug', d:'Come trovare e correggere gli errori nel codice',        u:'articolo-debug.html',               cat:'Articolo', tag:'programmazione errori'},
   {t:'Le funzioni in Python',           d:'Come definire e usare le funzioni in Python',              u:'articolo-funzioni-python.html',     cat:'Articolo', tag:'python programmazione'},
