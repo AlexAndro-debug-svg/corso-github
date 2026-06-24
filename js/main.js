@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- Evidenzia la voce di menu della pagina corrente --- */
   const here = location.pathname.split('/').pop() || 'index.html';
+  const isHome = (here === 'index.html');
   document.querySelectorAll('.nav-menu a').forEach(a => {
     const href = a.getAttribute('href');
-    if (href === here || (here === '' && href === 'index.html')) {
+    if (href === here || (isHome && (href === '/' || href === 'index.html'))) {
       if (!a.classList.contains('btn')) a.classList.add('active');
     }
   });
