@@ -23,9 +23,7 @@ const MANUTENZIONE = true;
     '<div style="max-width:520px">' +
       '<img src="/logo-alessandro-simone-trasparente.png" alt="Alessandro Simone" style="height:72px;margin-bottom:24px">' +
       '<h1 style="font-family:Poppins,sans-serif;font-size:2rem;color:#1e293b;margin:0 0 12px">Sito in manutenzione 🛠️</h1>' +
-      '<p style="color:#475569;font-size:1.05rem;line-height:1.6;margin:0 0 20px">Sto aggiornando il sito per offrirti contenuti migliori. Torno online a breve!</p>' +
-      '<p style="color:#475569;margin:0">Per informazioni o per prenotare una lezione scrivimi a<br>' +
-      '<a href="mailto:alessandrosimone.it@gmail.com" style="color:#4f46e5;font-weight:600">alessandrosimone.it@gmail.com</a></p>' +
+      '<p style="color:#475569;font-size:1.05rem;line-height:1.6;margin:0">Sto aggiornando il sito per offrirti contenuti migliori. Torno online a breve!</p>' +
     '</div>';
   document.body.appendChild(box);
   document.documentElement.style.overflow = 'hidden';
