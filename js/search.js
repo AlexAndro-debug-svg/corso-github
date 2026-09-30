@@ -6,7 +6,7 @@ var INDEX = [
   /* Pagine principali */
   {t:'Home',              d:'Pagina principale del sito',                                     u:'index.html',           cat:'Sito'},
   {t:'Chi sono',          d:'Chi è Alessandro Simone, docente di inclusione e informatica',         u:'index.html#chi-sono',        cat:'Sito'},
-  {t:'Corsi di Informatica', d:'Tutti i corsi gratuiti in italiano disponibili sul sito',     u:'corsi.html',           cat:'Sito'},
+  {t:'Lezioni di Informatica', d:'Tutte le lezioni gratuite in italiano disponibili sul sito',     u:'lezioni.html',           cat:'Sito'},
   {t:'Blog & Guide',      d:'Articoli e guide di informatica e programmazione',               u:'blog.html',            cat:'Sito'},
   {t:'Contatti',    d:'Come contattare Alessandro Simone via email',          u:'contatti.html',        cat:'Sito'},
 
@@ -194,7 +194,7 @@ var overlayHTML = '<div id="srch-overlay" role="dialog" aria-modal="true" aria-l
   +'<div id="srch-box">'
   +'<div id="srch-input-wrap">'
   +'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
-  +'<input id="srch-input" type="search" placeholder="Cerca corsi, articoli, pagine…" autocomplete="off" spellcheck="false">'
+  +'<input id="srch-input" type="search" placeholder="Cerca lezioni, articoli, pagine…" autocomplete="off" spellcheck="false">'
   +'<button id="srch-close" aria-label="Chiudi">✕</button>'
   +'</div>'
   +'<div id="srch-results"><p class="srch-hint">Digita per cercare nel sito…</p></div>'
