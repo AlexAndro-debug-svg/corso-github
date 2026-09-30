@@ -5,13 +5,10 @@
 var INDEX = [
   /* Pagine principali */
   {t:'Home',              d:'Pagina principale del sito',                                     u:'index.html',           cat:'Sito'},
-  {t:'Chi sono',          d:'Chi è Alessandro Simone, docente di informatica a Roma',         u:'chi-sono.html',        cat:'Sito'},
-  {t:'Ripetizioni di Informatica', d:'Lezioni private in presenza a Roma, individuali o in gruppo', u:'ripetizioni.html', cat:'Sito'},
+  {t:'Chi sono',          d:'Chi è Alessandro Simone, docente di inclusione e informatica',         u:'chi-sono.html',        cat:'Sito'},
   {t:'Corsi di Informatica', d:'Tutti i corsi gratuiti in italiano disponibili sul sito',     u:'corsi.html',           cat:'Sito'},
   {t:'Blog & Guide',      d:'Articoli e guide di informatica e programmazione',               u:'blog.html',            cat:'Sito'},
-  {t:'Contatti & FAQ',    d:'Come contattare Alessandro Simone e domande frequenti',          u:'contatti.html',        cat:'Sito'},
-  {t:'Area Riservata Studenti', d:'Materiale didattico per gli studenti di Alessandro',       u:'area-studenti.html',        cat:'Sito'},
-  {t:'Prenota una lezione', d:'Prenota la tua prima lezione di ripetizione',                  u:'prenota.html',         cat:'Sito'},
+  {t:'Contatti',    d:'Come contattare Alessandro Simone via email',          u:'contatti.html',        cat:'Sito'},
 
   /* Corsi */
   {t:'Corso HTML',        d:'Corso HTML completo in italiano — struttura, tag, form, tabelle',         u:'corso-html.html',        cat:'Corso', tag:'web markup linguaggio'},
@@ -233,10 +230,7 @@ function srchInit(){
     btnWrap.innerHTML = btnHTML;
     var btn = btnWrap.firstElementChild;
     if(navMenu){
-      // Inserisce prima dell'ultimo elemento (tipicamente il btn Prenota)
-      var last = navMenu.lastElementChild;
-      if(last) navMenu.insertBefore(btn, last);
-      else navMenu.appendChild(btn);
+      navMenu.appendChild(btn);
     } else {
       navInner.appendChild(btn);
     }
