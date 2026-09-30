@@ -7,7 +7,7 @@
    MANUTENZIONE = false → sito normale
    Per vedere il sito durante la manutenzione apri una pagina con ?anteprima
    (es. alessandrosimone.it/?anteprima); ?fine-anteprima per tornare alla schermata. */
-const MANUTENZIONE = true;
+const MANUTENZIONE = false;
 (function () {
   if (!MANUTENZIONE) return;
   try {
