@@ -24,6 +24,9 @@
     .photo-fallback { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; font-size: 5rem; color: rgba(255,255,255,.85); }
     .hero-photo.no-img .photo-fallback { display: flex; }
     @media (max-width: 860px){ .hero-photo { max-width: 320px; margin: 0 auto; } }
+    .cards-center { display: flex; flex-wrap: wrap; justify-content: center; }
+    .cards-center > .card { flex: 0 1 calc((100% - 3rem) / 3); }
+    @media (max-width: 860px){ .cards-center > .card { flex-basis: 100%; } }
   </style>
   <link rel="canonical" href="https://alessandrosimone.it/">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -133,7 +136,7 @@
 <section class="section soft" id="chi-sono" style="scroll-margin-top:80px">
   <div class="container">
     <h3 class="center" style="font-size:1.3rem;margin:0 0 1.2rem">Titoli</h3>
-    <div class="cards">
+    <div class="cards cards-center">
       <div class="card edu"><div class="ico-box">🎓</div><h3>Master in Informatica</h3><p>Formazione avanzata e specializzata nel campo dell'informatica.</p></div>
       <div class="card edu"><div class="ico-box">📊</div><h3>Master in Project Management</h3><p>Competenze nella gestione e organizzazione di progetti complessi.</p></div>
       <div class="card edu"><div class="ico-box">📜</div><h3>Abilitazione alla docenza di Informatica</h3><p>Abilitazione all'insegnamento dell'informatica nella scuola secondaria di II grado.</p></div>
