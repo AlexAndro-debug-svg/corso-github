@@ -5,7 +5,7 @@
 var INDEX = [
   /* Pagine principali */
   {t:'Home',              d:'Pagina principale del sito',                                     u:'index.html',           cat:'Sito'},
-  {t:'Chi sono',          d:'Chi è Alessandro Simone, docente di inclusione e informatica',         u:'chi-sono.html',        cat:'Sito'},
+  {t:'Chi sono',          d:'Chi è Alessandro Simone, docente di inclusione e informatica',         u:'index.html#chi-sono',        cat:'Sito'},
   {t:'Corsi di Informatica', d:'Tutti i corsi gratuiti in italiano disponibili sul sito',     u:'corsi.html',           cat:'Sito'},
   {t:'Blog & Guide',      d:'Articoli e guide di informatica e programmazione',               u:'blog.html',            cat:'Sito'},
   {t:'Contatti',    d:'Come contattare Alessandro Simone via email',          u:'contatti.html',        cat:'Sito'},
