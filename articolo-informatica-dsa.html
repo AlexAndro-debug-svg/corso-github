@@ -121,6 +121,8 @@
     .pdp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
     .pdp-col { background: #fff; border-color: #e0e7ff; margin: 0; }
     .pdp-col h3 { margin-top: .2rem !important; }
+    .pdp-wide { margin-top: 1rem; }
+    .norme { font-size: calc(.98rem * var(--rt-scale)) !important; color: #475569 !important; }
     .dsa-faq { border-bottom: 1px solid #e3e7ee; padding: 14px 0; }
     .dsa-faq summary { cursor: pointer; font-weight: 700; color: #1e1b4b; font-size: calc(1.1rem * var(--rt-scale)); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .dsa-faq summary::-webkit-details-marker { display: none; }
@@ -210,7 +212,7 @@
 <section class="section">
   <article class="container article article-dsa dsa-font dsa-bg">
     <a href="blog.html" style="color:var(--edu);font-weight:600;font-size:.9rem">← Torna al blog</a>
-    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Inclusione · 13 min di lettura (o da ascoltare)</span>
+    <span class="eyebrow mt-2" style="color:var(--edu);display:block">Inclusione · 15 min di lettura (o da ascoltare)</span>
     <h1>Informatica e DSA: strategie e strumenti compensativi per studiare programmazione</h1>
     <p style="color:var(--muted)">📅 8 novembre 2026 — di Alessandro Simone, docente di inclusione e di informatica</p>
 
@@ -261,7 +263,7 @@
     <p>I <strong>DSA</strong> (Disturbi Specifici dell'Apprendimento) sono disturbi del neurosviluppo che rendono più faticose alcune attività, come leggere, scrivere o fare calcoli. <strong>Non dipendono dall'intelligenza</strong> né dall'impegno.</p>
     <p>In Italia sono riconosciuti dalla <strong>Legge 170 del 2010</strong>, che ne indica quattro:</p>
     <ul class="dsa-types">
-      <li><span class="t-ico" aria-hidden="true">📖</span><strong>Dislessia</strong>: difficoltà nella lettura, che diventa più lenta e faticosa.</li>
+      <li><span class="t-ico" aria-hidden="true">📖</span><strong>Dislessia</strong>: difficoltà nella lettura, che diventa più lenta, faticosa e meno precisa.</li>
       <li><span class="t-ico" aria-hidden="true">✏️</span><strong>Disortografia</strong>: difficoltà nello scrivere le parole in modo corretto.</li>
       <li><span class="t-ico" aria-hidden="true">🖊️</span><strong>Disgrafia</strong>: difficoltà nella scrittura a mano, che può risultare lenta o poco leggibile.</li>
       <li><span class="t-ico" aria-hidden="true">🔢</span><strong>Discalculia</strong>: difficoltà con i numeri e i calcoli.</li>
@@ -273,7 +275,7 @@
       <ul>
         <li><strong>PDP (Piano Didattico Personalizzato)</strong>: il documento in cui la scuola, insieme alla famiglia, scrive gli strumenti e le misure pensati per te.</li>
         <li><strong>Strumenti compensativi</strong>: strumenti che ti aiutano a svolgere un compito in modo diverso, come la sintesi vocale o le mappe.</li>
-        <li><strong>Misure dispensative</strong>: attività da cui puoi essere esonerato o che puoi svolgere in modo adattato, come non leggere ad alta voce davanti alla classe o avere più tempo.</li>
+        <li><strong>Misure dispensative</strong>: ti permettono di non svolgere alcune attività che, per il disturbo, sono molto faticose e non ti aiutano a imparare (come leggere ad alta voce davanti alla classe), oppure di svolgerle in modo adattato, per esempio con più tempo.</li>
       </ul>
     </div>
 
@@ -289,7 +291,7 @@
     </ul>
 
     <figure class="dsa-figure" aria-labelledby="cap-car">
-      <div class="glyph-compare" role="img" aria-label="Confronto tra due caratteri. In un carattere comune la i maiuscola, la elle minuscola e il numero uno sono quasi uguali, come la o maiuscola e lo zero. In un carattere pensato per il codice ogni simbolo ha una forma diversa.">
+      <div class="glyph-compare" role="img" aria-label="Confronto tra due caratteri. In un carattere comune la i maiuscola e la elle minuscola sono quasi uguali, e la o maiuscola si confonde facilmente con lo zero. In un carattere pensato per il codice ogni simbolo ha una forma diversa.">
         <div class="gc-row">
           <div class="gc-title">❌ Carattere comune</div>
           <div class="gc-cells gc-common">
@@ -332,7 +334,8 @@
       <li><strong>colora le parentesi a coppie</strong>, così vedi subito quale parentesi chiude quale;</li>
       <li><strong>sistema i rientri</strong> (l'indentazione) in automatico.</li>
     </ul>
-    <p>Per iniziare con Python ti consiglio <strong>Thonny</strong>: è semplice, pensato per chi impara, e mostra il valore delle variabili passo dopo passo. Per andare oltre c'è <strong>Visual Studio Code</strong>. Li trovi entrambi nella sezione <a href="lezioni.html#software">Software utilizzati</a>. E se vuoi provare subito senza installare nulla, nelle <a href="lezioni.html">lezioni gratuite</a> c'è l'editor «Provalo tu».</p>
+    <p>Per iniziare con Python ti consiglio <strong>Thonny</strong>: è semplice e pensato per chi impara. Dal menu <strong>Visualizza → Variabili</strong> vedi il valore delle variabili, e con il pulsante <strong>Debug</strong> esegui il programma un passo alla volta. I suggerimenti mentre scrivi si chiedono con <strong>Ctrl + Spazio</strong>; per averli sempre, attivali in <strong>Strumenti → Opzioni → Editor</strong>.</p>
+    <p>Per andare oltre c'è <strong>Visual Studio Code</strong>, che i suggerimenti li mostra da solo. Li trovi entrambi nella sezione <a href="lezioni.html#software">Software utilizzati</a>. E se vuoi provare subito senza installare nulla, nelle <a href="lezioni.html">lezioni gratuite</a> c'è l'editor «Provalo tu».</p>
 
     <figure class="dsa-figure" aria-labelledby="cap-col">
       <div class="two-col">
@@ -352,7 +355,12 @@ for numero in range(1, 4):
 
     <h3>2. 🔤 Un carattere leggibile e più spazio</h3>
     <p>Il carattere giusto evita tante confusioni. Per il codice scegli un <strong>carattere monospaziato</strong> (tutte le lettere hanno la stessa larghezza) in cui ogni simbolo ha una forma diversa, come <strong>JetBrains Mono</strong> o <strong>Fira Code</strong>, entrambi gratuiti.</p>
-    <p>Poi aumenta la <strong>dimensione del testo</strong> e lo <strong>spazio tra le righe</strong>. In Visual Studio Code apri le impostazioni con <strong>Ctrl + ,</strong> (la virgola) oppure incolla queste righe nel file delle impostazioni:</p>
+    <p>Poi aumenta la <strong>dimensione del testo</strong> e lo <strong>spazio tra le righe</strong>. In Visual Studio Code puoi aprire le impostazioni con <strong>Ctrl + ,</strong> (la virgola; sul Mac <strong>Cmd + ,</strong>) e cercare le opzioni una per una. Oppure, più in fretta, puoi incollarle tutte insieme nel file <code>settings.json</code>:</p>
+    <ol>
+      <li>premi <strong>Ctrl + Maiusc + P</strong>;</li>
+      <li>scrivi <strong>Apri impostazioni utente (JSON)</strong> (in inglese «Open User Settings (JSON)») e premi Invio;</li>
+      <li>se il file è vuoto, incolla tutto il blocco qui sotto. Se contiene già altre righe, copia solo quelle tra le graffe <code>{ }</code>, incollale dentro le graffe che ci sono già e metti una virgola alla fine della riga che le precede.</li>
+    </ol>
     <pre class="code-dsa" aria-label="Impostazioni di Visual Studio Code per un codice più leggibile"><code><span class="l">{</span>
 <span class="l">  <span class="p">"editor.fontFamily"</span>: <span class="s">"JetBrains Mono"</span>,</span>
 <span class="l">  <span class="p">"editor.fontSize"</span>: <span class="n">18</span>,</span>
@@ -364,8 +372,8 @@ for numero in range(1, 4):
     <ul>
       <li><code>fontFamily</code>: il carattere da usare (va installato prima sul computer);</li>
       <li><code>fontSize</code>: la dimensione del testo, qui più grande del normale;</li>
-      <li><code>lineHeight</code>: lo spazio tra le righe;</li>
-      <li><code>fontLigatures</code>: con <code>false</code> i simboli restano separati, così <code>&gt;=</code> appare proprio come lo scrivi e non come un unico segno ≥;</li>
+      <li><code>lineHeight</code>: l'altezza di ogni riga; <code>1.8</code> vuol dire 1,8 volte la dimensione del testo, quindi più spazio tra una riga e l'altra;</li>
+      <li><code>fontLigatures</code>: con <code>false</code> i simboli restano separati, così <code>&gt;=</code> appare proprio come lo scrivi e non come un unico segno ≥ (di base è già così: la riga serve a non attivarle per sbaglio);</li>
       <li><code>renderWhitespace</code>: mostra gli spazi dei rientri come puntini, molto utile in Python;</li>
       <li><code>bracketPairColorization</code>: colora le parentesi a coppie (nelle versioni recenti è già attivo).</li>
     </ul>
@@ -405,7 +413,7 @@ for numero in range(1, 4):
           <div class="sc-item"><div class="sc-t">🧱 Creare una funzione</div><pre class="code-dsa no-ln"><code><span class="l"><span class="k">def</span> saluta(nome):</span>
 <span class="l">    <span class="f">print</span>(<span class="s">"Ciao"</span>, nome)</span></code></pre></div>
         </div>
-        <div class="sc-foot">⚠️ Ricorda: dopo <strong>if</strong>, <strong>else</strong>, <strong>for</strong>, <strong>while</strong> e <strong>def</strong> ci vogliono i due punti <strong>:</strong> e la riga sotto va spostata a destra di 4 spazi.</div>
+        <div class="sc-foot">⚠️ Ricorda: le righe che iniziano con <strong>if</strong>, <strong>else</strong>, <strong>for</strong>, <strong>while</strong> e <strong>def</strong> finiscono con i due punti <strong>:</strong>, e la riga sotto va spostata a destra di 4 spazi (l'editor lo fa da solo quando premi Invio).</div>
       </div>
       <figcaption id="cap-sch">Un esempio di scheda della sintassi Python. Puoi crearne una tua, con i colori e gli esempi che ti aiutano di più.</figcaption>
     </figure>
@@ -433,7 +441,7 @@ for numero in range(1, 4):
         <div><div class="panel-title">❌ Codice fitto</div><pre class="code-dsa no-ln"><code><span class="l">a=[<span class="n">6</span>,<span class="n">7</span>,<span class="n">5</span>,<span class="n">8</span>]</span>
 <span class="l">s=<span class="n">0</span></span>
 <span class="l"><span class="k">for</span> x <span class="k">in</span> a:s=s+x</span>
-<span class="l"><span class="f">print</span>(s/<span class="f">len</span>(a))</span></code></pre></div>
+<span class="l"><span class="f">print</span>(<span class="s">"Media:"</span>,s/<span class="f">len</span>(a))</span></code></pre></div>
         <div><div class="panel-title">✅ Codice arioso</div><pre class="code-dsa no-ln"><code><span class="l"><span class="c"># Calcolo la media dei voti</span></span>
 <span class="l">voti = [<span class="n">6</span>, <span class="n">7</span>, <span class="n">5</span>, <span class="n">8</span>]</span>
 <span class="l">somma = <span class="n">0</span></span>
@@ -452,7 +460,7 @@ for numero in range(1, 4):
 <span class="l">                ^</span>
 <span class="l"><mark class="em-err">SyntaxError: expected ':'</mark></span></code></pre>
     <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">📍</span><span><strong>line 3</strong> ti dice <strong>dove</strong> guardare: l'errore è alla riga 3. Il simbolo <code>^</code> indica il punto preciso.</span></li>
+      <li><span class="t-ico" aria-hidden="true">📍</span><span><strong>line 3</strong> ti dice <strong>dove</strong> guardare: l'errore è alla riga 3. Il simbolo <code>^</code> indica il punto preciso. Sul tuo computer, al posto di <code>voti.py</code>, vedrai il percorso completo del file: non serve leggerlo tutto, cerca solo la parola <strong>line</strong> e il numero che la segue.</span></li>
       <li><span class="t-ico" aria-hidden="true">🏷️</span><span><strong>SyntaxError: expected ':'</strong> ti dice <strong>cosa</strong> è successo: un errore di scrittura, perché Python si aspettava i due punti.</span></li>
       <li><span class="t-ico" aria-hidden="true">🔧</span><span><strong>La soluzione</strong>: aggiungere <code>:</code> alla fine della condizione, così: <code>if voto &gt;= 6:</code></span></li>
     </ul>
@@ -513,7 +521,8 @@ for numero in range(1, 4):
 
     <h2 id="pdp">Cosa si può prevedere nel PDP per l'informatica?</h2>
     <p>Questa parte è dedicata soprattutto a <strong>famiglie e docenti</strong>, ma è utile anche a te: sapere cosa si può chiedere ti aiuta a parlarne con la scuola.</p>
-    <p>Per gli studenti con DSA la scuola prepara il <strong>PDP</strong>, il Piano Didattico Personalizzato. Lo redige il consiglio di classe insieme alla famiglia, di norma entro il primo trimestre, e indica gli strumenti compensativi e le misure dispensative da usare in classe e nelle verifiche.</p>
+    <p>Per gli studenti con DSA la scuola prepara il <strong>PDP</strong>, il Piano Didattico Personalizzato. Il punto di partenza è la <strong>diagnosi</strong>, che la famiglia consegna alla scuola.</p>
+    <p>Il PDP lo scrive il consiglio di classe in accordo con la famiglia, <strong>entro i primi tre mesi</strong> dell'anno scolastico, oppure appena possibile se la diagnosi arriva durante l'anno. Indica gli strumenti compensativi, le misure dispensative e il modo di fare verifiche e valutazioni.</p>
     <p>Ecco alcuni esempi pensati per l'informatica. Sono <strong>idee da valutare insieme</strong>, non una lista da copiare: ogni PDP è personale.</p>
     <div class="pdp-grid">
       <div class="dsa-box pdp-col">
@@ -533,19 +542,22 @@ for numero in range(1, 4):
           <li>dispensa dal <strong>copiare codice lungo</strong> dalla lavagna, ricevendo gli esempi in formato digitale;</li>
           <li>dispensa dalla <strong>lettura ad alta voce</strong> davanti alla classe.</li>
         </ul>
-        <h3>📝 Verifica e valutazione</h3>
-        <ul>
-          <li>valutare <strong>il ragionamento più della forma</strong>: un piccolo errore di battitura non dovrebbe pesare come un errore di logica;</li>
-          <li><strong>verifiche programmate</strong> e consegne brevi, con una richiesta per volta;</li>
-          <li>possibilità di <strong>integrare lo scritto con l'orale</strong>.</li>
-        </ul>
       </div>
     </div>
-    <p>Gli strumenti compensativi previsti nel PDP si possono usare anche durante le prove dell'<strong>Esame di Stato</strong>.</p>
+    <div class="dsa-box pdp-col pdp-wide">
+      <h3>📝 Verifica e valutazione</h3>
+      <ul>
+        <li>valutare <strong>il ragionamento più della forma</strong>: un piccolo errore di battitura non dovrebbe pesare come un errore di logica;</li>
+        <li><strong>verifiche programmate</strong> e consegne brevi, con una richiesta per volta;</li>
+        <li>possibilità di <strong>integrare lo scritto con l'orale</strong>.</li>
+      </ul>
+    </div>
+    <p>All'<strong>esame di maturità</strong> (l'Esame di Stato) la commissione decide come svolgerai le prove sulla base del tuo PDP. Negli scritti puoi avere <strong>tempi più lunghi</strong> e usare gli strumenti compensativi del PDP che hai <strong>già usato nelle verifiche durante l'anno</strong>, o che la commissione ritiene utili, purché la prova resti valida. Per questo conviene usarli con regolarità, non solo all'ultimo momento.</p>
     <div class="dsa-box tip">
       <h2 class="box-title">👩‍🏫 Un consiglio per i docenti</h2>
       <p>Condividere gli esempi in formato digitale, scrivere consegne brevi con una richiesta per riga, mostrare il diagramma prima del codice e lasciare provare al computer: sono piccoli accorgimenti che aiutano gli studenti con DSA e, in realtà, <strong>tutta la classe</strong>.</p>
     </div>
+    <p class="norme">📜 Riferimenti normativi: Legge 8 ottobre 2010, n. 170; DM 12 luglio 2011, n. 5669 e Linee guida allegate; D.Lgs. 13 aprile 2017, n. 62, art. 20 (esame di Stato per gli studenti con DSA).</p>
 
     <h2 id="sintesi">In sintesi</h2>
 
@@ -591,7 +603,7 @@ for numero in range(1, 4):
       <figcaption id="cap-map">La mappa riassuntiva: tutti gli strumenti di questo articolo in un colpo d'occhio. Puoi salvarla o stamparla per ripassare.</figcaption>
     </figure>
     <p>Con un DSA puoi imparare a programmare, e anche bene. Il segreto è non combattere contro le difficoltà, ma <strong>aggirarle con gli strumenti giusti</strong>: un editor che colora e completa, un carattere leggibile, diagrammi e mappe, la sintesi vocale, una scheda della sintassi e l'AI usata come tutor.</p>
-    <p>Lavora <strong>un passo alla volta</strong>, prova spesso e ricorda che sbagliare fa parte del gioco: anche i programmatori esperti passano tanto tempo a correggere errori. Se le difficoltà sono tante, parlane con i tuoi docenti: il PDP serve proprio a questo.</p>
+    <p>Lavora <strong>un passo alla volta</strong>, prova spesso e ricorda che sbagliare fa parte del gioco: anche i programmatori esperti passano tanto tempo a correggere errori. Se le difficoltà sono tante, parlane con i tuoi docenti e con la tua famiglia: il PDP si può rivedere e migliorare. Se invece non hai una diagnosi ma pensi di avere un DSA, chiedete alla scuola e al vostro medico come fare una valutazione specialistica.</p>
 
     <h2 id="faq">Domande frequenti</h2>
     <details class="dsa-faq">
@@ -612,7 +624,7 @@ for numero in range(1, 4):
     </details>
     <details class="dsa-faq">
       <summary>Che differenza c'è tra strumenti compensativi e misure dispensative?<span aria-hidden="true">+</span></summary>
-      <p>Gli strumenti compensativi ti aiutano a svolgere un'attività in modo diverso, per esempio con la sintesi vocale o una mappa. Le misure dispensative ti esonerano da alcune attività o le adattano, per esempio non leggere ad alta voce in classe o avere più tempo.</p>
+      <p>Gli strumenti compensativi ti aiutano a svolgere un'attività in modo diverso, per esempio con la sintesi vocale o una mappa. Le misure dispensative ti evitano alcune attività che, per il disturbo, sono troppo faticose e non servono a imparare, oppure le adattano: per esempio non leggere ad alta voce in classe o avere più tempo.</p>
     </details>
 
     <div class="cta-banner mt-4 rt-skip">
@@ -686,10 +698,11 @@ for numero in range(1, 4):
 
   function build() {
     queue = [];
-    art.querySelectorAll('.article-body h2, .article-body h3, .article-body p, .article-body li, .article-body figcaption, .article-body .step-card > div, .article-body .prompt-box').forEach(function (el) {
-      if (el.closest('pre, details, .rt-skip, .reading-tools, .syntax-card')) return;
+    art.querySelectorAll('.article-body h2, .article-body h3, .article-body p, .article-body li, .article-body figcaption, .article-body .step-card > div, .article-body .prompt-box, .article-body .dsa-faq summary').forEach(function (el) {
+      if (el.closest('pre, .rt-skip, .reading-tools, .syntax-card')) return;
       if (el.matches('li') && el.closest('.toc')) return;
       var t = (el.innerText || el.textContent).replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '').replace(/\s+/g, ' ').trim();
+      if (el.matches('summary')) t = t.replace(/\s*\+$/, '');
       if (!t) return;
       var parts = t.match(/[^.!?;:]+[.!?;:]*\s*/g) || [t], buf = '';
       parts.forEach(function (p) {
@@ -707,6 +720,7 @@ for numero in range(1, 4):
     if (current && current !== el) current.classList.remove('rt-reading');
     current = el;
     if (!el) return;
+    var d = el.closest('details'); if (d && !d.open) d.open = true;
     el.classList.add('rt-reading');
     var r = el.getBoundingClientRect();
     if (r.top < 90 || r.bottom > window.innerHeight - 110) el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
