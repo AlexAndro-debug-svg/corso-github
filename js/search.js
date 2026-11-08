@@ -61,6 +61,7 @@ var INDEX = [
   {t:'Cos\'è un diagramma di flusso e come si legge', d:'Simboli, errori comuni e un esempio tradotto in codice Python', u:'articolo-diagramma-di-flusso.html', cat:'Articolo', tag:'programmazione logica algoritmi'},
   {t:'Come usare ChatGPT per studiare', d:'Guida su come usare ChatGPT per studiare senza barare',    u:'articolo-chatgpt-studiare.html',    cat:'Articolo', tag:'AI intelligenza artificiale studio'},
   {t:'Il ciclo for in Python',          d:'Come funziona il for, range e il pattern dell\'accumulatore', u:'articolo-cicli-for-python.html',  cat:'Articolo', tag:'python programmazione'},
+  {t:'Informatica e DSA: strategie e strumenti compensativi', d:'Come studiare programmazione con un DSA: strumenti compensativi, strategie e PDP', u:'articolo-informatica-dsa.html', cat:'Articolo', tag:'dsa dislessia disortografia disgrafia discalculia inclusione bes pdp strumenti compensativi misure dispensative'},
   {t:'if, elif e else in Python',       d:'Come funzionano le condizioni in Python con esempi sui voti', u:'articolo-if-else-python.html',    cat:'Articolo', tag:'python programmazione'},
   {t:'La crittografia spiegata semplice', d:'Cos\'è la crittografia e a cosa serve nella sicurezza', u:'articolo-crittografia.html',        cat:'Articolo', tag:'sicurezza cybersecurity'},
   {t:'Debug: trovare e correggere i bug', d:'Come trovare e correggere gli errori nel codice',        u:'articolo-debug.html',               cat:'Articolo', tag:'programmazione errori'},

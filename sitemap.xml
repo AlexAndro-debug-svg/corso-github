@@ -127,6 +127,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://alessandrosimone.it/articolo-informatica-dsa.html</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://alessandrosimone.it/articolo-if-else-python.html</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
