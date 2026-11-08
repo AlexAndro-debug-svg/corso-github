@@ -1583,17 +1583,24 @@ createApp({
   </ul>
   <input v-model="testo" placeholder="Modifica per triggerare updated">
   <p>{{ testo }}</p>
+  <p>🔄 updated eseguito: <strong id="aggiornamenti">0</strong> volte</p>
 </div>
 
 <script>
 const { createApp } = Vue
+let aggiornamenti = 0
 createApp({
   data() {
     return { testo: 'Ciao', logs: [] }
   },
   created() { this.logs.push('✅ created: dati inizializzati') },
   mounted() { this.logs.push('🟢 mounted: componente nel DOM') },
-  updated() { this.logs.push('🔄 updated: DOM aggiornato') }
+  updated() {
+    // Attenzione: qui NON modifichiamo i dati mostrati nel template
+    // (es. this.logs.push): Vue aggiornerebbe di nuovo il DOM in un ciclo infinito
+    aggiornamenti++
+    document.getElementById('aggiornamenti').textContent = aggiornamenti
+  }
 }).mount('#app')
 <\/script>
 </script></div>
@@ -2173,7 +2180,6 @@ createApp({
         + '</style>'
         + '</head><body>'
         + cm.getValue()
-        + '<scr'+'ipt src="js/search.js"></scr'+'ipt>'
         + '</body></html>';
       if(edDark) doc = injectDarkStyles(doc);
       preview.srcdoc = doc;
