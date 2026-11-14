@@ -146,7 +146,7 @@
 .g-card { background: var(--g-bg); border: 2px solid var(--g-bd); border-top: 6px solid var(--g); border-radius: 14px; padding: .8rem .9rem; }
 .g-card .g-ico { font-size: 1.8rem; display: block; line-height: 1.2; }
 .g-card .g-name { display: block; font-weight: 700; color: #1f2937; font-size: calc(1.02rem * var(--rt-scale)); line-height: 1.35; margin: .3rem 0 .5rem; }
-.g-card .g-doc { display: inline-block; background: #fff; border: 1px solid var(--g-bd); color: var(--g); font-weight: 700; border-radius: 999px; padding: .1rem .6rem; font-size: calc(.95rem * var(--rt-scale)); }
+.g-card .g-doc { display: inline-block; background: #fff; border: 1px solid var(--g-bd); color: var(--g); font-weight: 700; border-radius: 999px; padding: .1rem .6rem; font-size: calc(1rem * var(--rt-scale)); }
 .group-box { background: var(--g-bg); border: 2px solid var(--g-bd); border-left: 8px solid var(--g); border-radius: 16px; padding: .3rem 1.2rem .5rem; margin: 1.2rem 0; }
 .article-dsa .article-body .group-box h3 { margin-top: .9rem; color: var(--g); }
 .cmp-table { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border: 2px solid #e5e7eb; border-radius: 14px; overflow: hidden; font-size: calc(1rem * var(--rt-scale)); line-height: 1.5; }
@@ -161,6 +161,7 @@
 .cmp-card dl { margin: 0; }
 .cmp-card dt { font-weight: 700; color: #1e1b4b; margin-top: .55rem; }
 .cmp-card dd { margin: 0; color: #1f2937; line-height: 1.6; }
+.cmp-card :is(dt, dd) { font-size: calc(1.02rem * var(--rt-scale)); }
 .sigle-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
 .sigla { background: #fff; border: 2px solid #e0e7ff; border-radius: 14px; padding: .7rem .9rem; }
 .sigla b { display: block; font-size: calc(1.35rem * var(--rt-scale)); color: #3730a3; letter-spacing: .02em; }
@@ -168,20 +169,22 @@
 .myth { border: 2px solid #e5e7eb; border-radius: 14px; overflow: hidden; margin: .9rem 0; background: #fff; }
 .article-dsa .article-body .myth p { margin: 0; padding: .7rem 1rem; }
 .article-dsa .article-body .myth .m-false { background: #fef2f2; color: #7f1d1d; font-weight: 700; }
-.path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.path-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; }
 .path-col { background: var(--g-bg); border: 2px solid var(--g-bd); border-radius: 14px; padding: .8rem; }
 .path-col .pc-title { font-weight: 800; color: var(--g); margin-bottom: .6rem; font-size: calc(1.1rem * var(--rt-scale)); }
 .path-col ol { list-style: none; padding: 0 !important; margin: 0; counter-reset: pst; }
 .article-dsa .article-body .path-col li { counter-increment: pst; background: #fff; border: 1px solid var(--g-bd); border-radius: 10px; padding: .55rem .7rem .55rem 2.5rem; position: relative; margin: 0 0 1.5rem; font-size: calc(1rem * var(--rt-scale)); line-height: 1.5; }
-.path-col li::before { content: counter(pst); position: absolute; left: .55rem; top: .55rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--g); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: .85rem; }
-.path-col li:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -1.4rem; transform: translateX(-50%); color: var(--g); font-weight: 800; }
+.path-col li::before { content: counter(pst); position: absolute; left: .55rem; top: .55rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--g); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 1rem; }
+.path-col li:not(:last-child)::after { content: "↓"; content: "↓" / ""; position: absolute; left: 50%; bottom: -1.4rem; transform: translateX(-50%); color: var(--g); font-weight: 800; font-size: 1.2rem; line-height: 1; }
 .article-dsa .article-body .path-col li:last-child { margin-bottom: 0; }
 .article-dsa.dsa-bg :is(.cmp-table, .sigla, .myth, .path-col li) { background: #fffaf0; }
 .article-dsa.dsa-bg .cmp-table tbody th { background: #f8f1e3; }
 @media (max-width: 760px) {
-  .group-cards, .path-grid, .sigle-grid { grid-template-columns: minmax(0, 1fr); }
+  .group-cards, .sigle-grid { grid-template-columns: minmax(0, 1fr); }
   .cmp-table { display: none; }
   .cmp-cards { display: grid; gap: .8rem; }
 }
+.article-dsa.rt-big .cmp-table { display: none; }
+.article-dsa.rt-big .cmp-cards { display: grid; gap: .8rem; }
 @media (prefers-reduced-motion: reduce) { .article-dsa { transition: none; } }
   

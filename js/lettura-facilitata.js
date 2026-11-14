@@ -11,6 +11,7 @@
     art.classList.toggle('dsa-font', !!st.font);
     art.classList.toggle('dsa-bg', !!st.bg);
     art.style.setProperty('--rt-scale', st.scale);
+    art.classList.toggle('rt-big', st.scale > 1.05);
     $('rt-font').setAttribute('aria-pressed', st.font ? 'true' : 'false');
     $('rt-bg').setAttribute('aria-pressed', st.bg ? 'true' : 'false');
     $('rt-bigger').setAttribute('aria-disabled', st.scale >= MAX ? 'true' : 'false');
@@ -46,16 +47,26 @@
   }
   function build() {
     queue = [];
-    art.querySelectorAll('h1, .article-body h2, .article-body h3, .article-body p, .article-body li, .article-body figcaption, .article-body .step-card > div, .article-body .prompt-box, .article-body .dsa-faq summary, .article-body pre[aria-label]').forEach(function (el) {
+    art.querySelectorAll('h1, .article-body h2, .article-body h3, .article-body p, .article-body li, .article-body figcaption, .article-body .step-card > div, .article-body .prompt-box, .article-body .dsa-faq summary, .article-body pre[aria-label], .article-body .pc-title, .article-body .sigla, .article-body .cmp-table tbody tr, .article-body .cmp-card').forEach(function (el) {
       var isPre = el.matches('pre');
       if (el.closest('.rt-skip, .reading-tools, .syntax-card')) return;
       if (!isPre && el.closest('pre')) return;
       if (el.matches('li') && el.closest('.toc')) return;
+      if (el.matches('.cmp-table tr, .cmp-card') && !el.getClientRects().length) return;  /* solo la versione visibile */
       var t;
       if (isPre) {
         t = 'Riquadro di codice: ' + el.getAttribute('aria-label') + '.';
+      } else if (el.matches('.sigla')) {
+        t = clean(el.querySelector('b').textContent) + ': ' + clean(el.querySelector('span').textContent);
+      } else if (el.matches('.cmp-table tr')) {
+        var hs = el.closest('table').tHead.rows[0].cells;
+        t = Array.prototype.map.call(el.cells, function (c, i) { return i ? clean(hs[i].textContent) + ': ' + clean(c.textContent) : clean(c.textContent).replace(/\?$/, ''); }).join('. ') + '.';
+      } else if (el.matches('.cmp-card')) {
+        t = clean(el.querySelector('.cc-title').textContent) + '. ' + Array.prototype.map.call(el.querySelectorAll('dt'), function (dt) { return clean(dt.textContent).replace(/\?$/, '') + ': ' + clean(dt.nextElementSibling.textContent); }).join('. ') + '.';
       } else {
         t = clean(el.innerText || el.textContent);
+        if (el.matches('.pc-title')) t = 'Percorso: ' + t + '.';
+        if (el.matches('.path-col li')) t = 'Passo ' + (Array.prototype.indexOf.call(el.parentNode.children, el) + 1) + '. ' + t + '.';
         if (el.matches('summary')) t = t.replace(/\s*\+$/, '');
         if (el.matches('.steps-list > li')) t = 'Strategia ' + (Array.prototype.indexOf.call(el.parentNode.children, el) + 1) + '. ' + t;
         if (el.matches('.step-card > div')) t = 'Passo ' + el.parentNode.querySelector('.step-n').textContent + '. ' + t;
