@@ -145,6 +145,7 @@
 .group-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
 .g-card { background: var(--g-bg); border: 2px solid var(--g-bd); border-top: 6px solid var(--g); border-radius: 14px; padding: .8rem .9rem; }
 .g-card .g-ico { font-size: 1.8rem; display: block; line-height: 1.2; }
+.g-card .g-num { display: block; font-weight: 800; color: var(--g); font-size: calc(.95rem * var(--rt-scale)); margin-top: .2rem; }
 .g-card .g-name { display: block; font-weight: 700; color: #1f2937; font-size: calc(1.02rem * var(--rt-scale)); line-height: 1.35; margin: .3rem 0 .5rem; }
 .g-card .g-doc { display: inline-block; background: #fff; border: 1px solid var(--g-bd); color: var(--g); font-weight: 700; border-radius: 999px; padding: .1rem .6rem; font-size: calc(1rem * var(--rt-scale)); }
 .group-box { background: var(--g-bg); border: 2px solid var(--g-bd); border-left: 8px solid var(--g); border-radius: 16px; padding: .3rem 1.2rem .5rem; margin: 1.2rem 0; }

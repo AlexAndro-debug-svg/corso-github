@@ -32,7 +32,7 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var EMOJI = /\p{Extended_Pictographic}|[\u{FE0F}\u{200D}\u{20E3}]/gu;
 
-  function clean(t) { return t.replace(EMOJI, '').replace(/\s*→\s*/g, ', ').replace(/\s+/g, ' ').trim(); }
+  function clean(t) { return t.replace(EMOJI, '').replace(/\s*→\s*/g, ', ').replace(/\s*·\s*/g, ', ').replace(/\s+/g, ' ').trim(); }
   /* frasi brevi: alcune voci online si interrompono sui testi lunghi */
   function push(el, t) {
     var parts = [], buf = '';
@@ -65,7 +65,7 @@
         t = clean(el.querySelector('.cc-title').textContent) + '. ' + Array.prototype.map.call(el.querySelectorAll('dt'), function (dt) { return clean(dt.textContent).replace(/\?$/, '') + ': ' + clean(dt.nextElementSibling.textContent); }).join('. ') + '.';
       } else {
         t = clean(el.innerText || el.textContent);
-        if (el.matches('.pc-title')) t = 'Percorso: ' + t + '.';
+        if (el.matches('.pc-title')) t = (/^Percorso/i.test(t) ? t : 'Percorso: ' + t) + '.';
         if (el.matches('.path-col li')) t = 'Passo ' + (Array.prototype.indexOf.call(el.parentNode.children, el) + 1) + '. ' + t + '.';
         if (el.matches('summary')) t = t.replace(/\s*\+$/, '');
         if (el.matches('.steps-list > li')) t = 'Strategia ' + (Array.prototype.indexOf.call(el.parentNode.children, el) + 1) + '. ' + t;
