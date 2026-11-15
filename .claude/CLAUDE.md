@@ -50,6 +50,8 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
   sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
   Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
+  C'è un promemoria programmato per il 30/11/2026 alle 9:47 (ora di Roma): mostra le modifiche all'autore
+  **prima** di pubblicarle; dopo, togli questo punto.
 
 - **Si generano da script**: `_strumenti/articoli/build_*.py` (testo e figure) + `artlib.py`
   (funzioni comuni, CSS e JS condivisi, modello di pagina). Modifica il testo **nel generatore** e rigenera:
@@ -98,12 +100,17 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   `pkill -f "http[.]server"` (un pattern senza parentesi ucciderebbe anche la shell).
 - `python3 _strumenti/controllo_statico.py` — script interni e blocchi degli esempi.
 - `node _strumenti/audit.js http://localhost:8767 . /tmp/esito.json [pagine]` — prova di tutte le pagine
-  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 78 pagine, 1179/1179 «Provalo tu».
+  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 79 pagine, 1179/1179 «Provalo tu».
 - `node _strumenti/test_lettura.js http://localhost:8767 articolo-XXX.html` — strumenti di lettura facilitata.
 - Guarda anche le pagine a 390 px e a 1280 px con screenshot (niente scorrimento orizzontale).
 
 ## Cose da sapere
 
+- Intestazione di `blog.html` (scelta dall'autore il 15/11/2026): etichetta «Blog & Guide», titolo
+  «Articoli per studenti, famiglie e docenti», sottotitolo «Inclusività e Informatica al passo coi tempi.».
+  Per Google e condivisioni: `<title>` «Blog di informatica e inclusione a scuola — AlessandroSimone.it»,
+  descrizione «Guide gratuite di informatica e inclusione scolastica: Python, reti e algoritmi, ma anche PEI,
+  PDP, DSA e BES spiegati in modo semplice.» (uguali in `og:` e `twitter:`).
 - La home ha i titoli e le esperienze in schede; il footer di tutte le pagine dice
   «Docente di informatica felicemente prestato all'inclusione nella scuola secondaria di II grado a Roma.
   Lezioni, guide e materiali gratuiti.»
