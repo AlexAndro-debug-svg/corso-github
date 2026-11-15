@@ -111,6 +111,8 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   Per Google e condivisioni: `<title>` «Blog di informatica e inclusione a scuola — AlessandroSimone.it»,
   descrizione «Guide gratuite di informatica e inclusione scolastica: Python, reti e algoritmi, ma anche PEI,
   PDP, DSA e BES spiegati in modo semplice.» (uguali in `og:` e `twitter:`).
+  Nella home, scheda del blog in «Scegli il tuo percorso»: icona 📖, etichetta «Blog & Guide», stesso titolo e
+  sottotitolo del blog, «Vai al blog →». Scheda BES nel blog: icona 🧭 (niente ombrelli, i BES non sono un «ombrello»).
 - La home ha i titoli e le esperienze in schede; il footer di tutte le pagine dice
   «Docente di informatica felicemente prestato all'inclusione nella scuola secondaria di II grado a Roma.
   Lezioni, guide e materiali gratuiti.»
