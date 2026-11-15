@@ -1,0 +1,21 @@
+{
+  "name": "strumenti-alessandrosimone",
+  "private": true,
+  "description": "Strumenti di lavoro del sito (non pubblicati): copertine, prove nel browser",
+  "dependencies": {
+    "@fontsource/atkinson-hyperlegible": "^5.0.0",
+    "@fontsource/inter": "^5.0.0",
+    "@fontsource/jetbrains-mono": "^5.0.0",
+    "@fontsource/poppins": "^5.0.0",
+    "angular": "1.8.3",
+    "angular-animate": "1.8.3",
+    "angular-route": "1.8.3",
+    "bootstrap": "5.3.3",
+    "codemirror": "5.65.16",
+    "jquery": "3.7.1",
+    "playwright": "^1.50.0",
+    "prismjs": "1.29.0",
+    "sql.js": "1.10.3",
+    "vue": "^3.4.0"
+  }
+}

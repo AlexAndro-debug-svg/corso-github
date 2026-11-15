@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# strumenti di lavoro (dipendenze locali)
+_strumenti/node_modules/
+_strumenti/package-lock.json
