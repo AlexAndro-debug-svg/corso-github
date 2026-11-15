@@ -45,14 +45,18 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
 ## Serie «inclusione» a lettura facilitata
 
 Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
-`articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida).
+`articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida),
+`articolo-pei-spiegato-semplice.html` («Il PEI spiegato semplice», 15/11/2026, generatore `build_pei.py`).
+- **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
+  sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
+  Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
 
 - **Si generano da script**: `_strumenti/articoli/build_*.py` (testo e figure) + `artlib.py`
   (funzioni comuni, CSS e JS condivisi, modello di pagina). Modifica il testo **nel generatore** e rigenera:
   `python3 _strumenti/articoli/build_bes.py .` (dalla radice). Se correggi a mano l'HTML, riporta la
   modifica anche nel generatore, altrimenti si perde alla prossima rigenerazione.
 - Stili e script condivisi: `css/lettura-facilitata.css` e `js/lettura-facilitata.js` (scritti da `artlib.py`,
-  versione in `ASSET_V`, ora **3**: alzala quando li cambi). Contengono: sintesi vocale «Ascolta l'articolo»
+  versione in `ASSET_V`, ora **4**: alzala quando li cambi). Contengono: sintesi vocale «Ascolta l'articolo»
   (legge solo la versione visibile, salta `.rt-skip`, toglie emoji e frecce, frasi ≤160 caratteri),
   A−/A+ (con A+ la tabella diventa a schede), carattere Atkinson Hyperlegible, sfondo crema, memoria in localStorage.
 - Regole di scrittura (pensate per lettori con DSA, guida British Dyslexia Association):
@@ -66,7 +70,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   - Gruppo 3 · Altri BES (ADHD e altri disturbi, svantaggio; PDP se lo decide il consiglio di classe) — arancione, 🧩, classe `g3`
   - **I BES sono una voce a sé, dopo 104 e DSA, non un «ombrello»** (scelta dell'autore; c'è una sola nota
     che ricorda il senso ampio della direttiva del 2012).
-- Prossimi articoli (in quest'ordine): 2 «Il PEI spiegato semplice», 3 «Il PDP passo dopo passo»,
+- Prossimi articoli (in quest'ordine): 3 «Il PDP passo dopo passo»,
   5 «Tecnologie assistive per studiare», 6 «ADHD e programmazione», 4 «Legge 104 a scuola»,
   7 «Esame di maturità con DSA, BES o disabilità» (da pubblicare a marzo-aprile, quando esce l'ordinanza).
   Alternativa proposta: «Chi è il docente di sostegno e cosa fa alle superiori».
