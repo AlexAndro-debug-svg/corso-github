@@ -2,7 +2,7 @@
 """Libreria condivisa per gli articoli «lettura facilitata» di alessandrosimone.it."""
 import html, os, re
 
-ASSET_V = 3   # aumentare quando cambiano css/lettura-facilitata.css o js/lettura-facilitata.js
+ASSET_V = 4   # aumentare quando cambiano css/lettura-facilitata.css o js/lettura-facilitata.js
 
 KW = {'if','elif','else','for','while','in','def','return','and','or','not','True','False','None','import','from'}
 FN = {'print','input','int','len','range','float','str'}
@@ -246,6 +246,18 @@ CSS_TEXT = r'''    /* ---- Articolo pensato per lettori con DSA ---- */
     .article-dsa.rt-big .cmp-table { display: none; }
     .article-dsa.rt-big .cmp-cards { display: grid; gap: .8rem; }
     @media (prefers-reduced-motion: reduce) { .article-dsa { transition: none; } }
+    /* ---- Articolo PEI: avviso di aggiornamento e tre percorsi (colori neutri, non quelli dei gruppi) ---- */
+    .update-box { background: #fefce8; border-color: #facc15; }
+    .update-box p { margin: 0 0 .5rem; }
+    .update-box p:last-child { margin-bottom: 0; }
+    .perc-grid { display: grid; gap: .8rem; margin: 1.2rem 0; }
+    .perc { display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); gap: .8rem; align-items: start; background: #fff; border: 2px solid #c7d2fe; border-radius: 14px; padding: .9rem 1rem; }
+    .perc-l { width: 2.6rem; height: 2.6rem; border-radius: 12px; background: #1e1b4b; color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 1.3rem; }
+    .perc .perc-t { font-weight: 800; color: #1e1b4b; font-size: calc(1.12rem * var(--rt-scale)); margin-bottom: .2rem; }
+    .article-dsa .article-body .perc p { margin: .2rem 0 .4rem; }
+    .perc .perc-out { display: inline-block; background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3; font-weight: 700; border-radius: 999px; padding: .1rem .7rem; font-size: calc(1rem * var(--rt-scale)); }
+    .article-dsa.dsa-bg .perc { background: #fffaf0; }
+    .t-let { width: 1.9rem; height: 1.9rem; margin-top: .2rem; border-radius: 8px; background: #1e1b4b; color: #fff; font-weight: 800; font-size: 1.05rem; display: grid; place-items: center; line-height: 1; }
   '''
 
 JS_TEXT = r'''/* Strumenti di lettura: carattere, sfondo, dimensione e sintesi vocale */

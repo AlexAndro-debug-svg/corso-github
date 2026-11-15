@@ -166,6 +166,7 @@ BODY = f"""
       <p>Riguarda gli studenti con una <strong>disabilità certificata</strong> secondo la <strong>Legge 104 del 1992</strong>.</p>
       <p>Per loro la scuola prepara il <strong>PEI</strong>, il Piano Educativo Individualizzato, e alla classe viene assegnato un <strong>docente di sostegno</strong>.</p>
       <p>Il PEI lo elabora e lo approva il <strong>GLO</strong> (Gruppo di Lavoro Operativo per l'inclusione), presieduto dal dirigente scolastico. Ne fanno parte i docenti della classe, la famiglia, le figure professionali che seguono lo studente e un rappresentante dell'ASL. Alle superiori partecipa anche lo studente stesso.</p>
+      <p>Come si scrive il PEI, cosa contiene e quali percorsi prevede alle superiori lo spiego nella guida <a href="articolo-pei-spiegato-semplice.html">Il PEI spiegato semplice</a>.</p>
     </div>
 
     <div class="group-box g2">
@@ -227,7 +228,7 @@ BODY = f"""
       <li><span class="t-ico" aria-hidden="true">🧩</span><span><strong>altri BES</strong>, come l'ADHD o una difficoltà con l'italiano: PDP se lo decide il consiglio di classe, anche per un periodo limitato.</span></li>
     </ul>
     <p>Qualunque sia la situazione, l'obiettivo è lo stesso: permettere a ogni studente di imparare <strong>al meglio delle sue possibilità</strong>. E le idee che aiutano chi ha un bisogno in più finiscono quasi sempre per aiutare tutta la classe.</p>
-    <p class="norme rt-skip">Riferimenti normativi: Legge 5 febbraio 1992, n. 104 (art. 13, c. 6); Legge 8 ottobre 2010, n. 170; D.M. 12 luglio 2011, n. 5669 e Linee guida allegate; Direttiva ministeriale 27 dicembre 2012; Circolare ministeriale 6 marzo 2013, n. 8; Nota ministeriale 22 novembre 2013, prot. 2563; D.Lgs. 13 aprile 2017, n. 62, art. 20; D.Lgs. 13 aprile 2017, n. 66 (modificato dal D.Lgs. 96/2019); D.I. 29 dicembre 2020, n. 182, modificato dal D.M. 1 agosto 2023, n. 153 (modelli di PEI); D.Lgs. 3 maggio 2024, n. 62 (valutazione di base).</p>
+    <p class="norme rt-skip">Riferimenti normativi: Legge 5 febbraio 1992, n. 104 (art. 13, c. 6); Legge 8 ottobre 2010, n. 170; D.M. 12 luglio 2011, n. 5669 e Linee guida allegate; Direttiva ministeriale 27 dicembre 2012; Circolare ministeriale 6 marzo 2013, n. 8; Nota ministeriale 22 novembre 2013, prot. 2563; D.Lgs. 13 aprile 2017, n. 62, art. 20; D.Lgs. 13 aprile 2017, n. 66 (modificato dal D.Lgs. 96/2019); D.I. 29 dicembre 2020, n. 182, modificato dal D.I. 1 agosto 2023, n. 153 (modelli di PEI); D.Lgs. 3 maggio 2024, n. 62 (valutazione di base).</p>
 
     <h2 id="faq">Domande frequenti</h2>
 {FAQS}
@@ -244,7 +245,7 @@ BODY = f"""
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
         <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
-        <a href="articolo-chatgpt-studiare.html"><span aria-hidden="true">🤖</span><strong>Come usare ChatGPT per studiare meglio</strong></a>
+        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
       </div>
     </div>
 """
@@ -254,7 +255,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="BES, bisogni educativi speciali, differenza BES DSA, BES DSA disabilità, differenza PEI PDP, legge 104 scuola, docente di sostegno, PDP BES",
     og_alt="Il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
-    date_iso="2026-11-14", date_it="14 novembre 2026",
+    date_iso="2026-11-14", modified_iso="2026-11-15", date_it="14 novembre 2026",
     ld_keywords="BES, bisogni educativi speciali, DSA, disabilità, Legge 104, Legge 170, PEI, PDP, GLO, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
