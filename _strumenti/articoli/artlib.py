@@ -430,7 +430,7 @@ def page(m):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=10">
   <link rel="stylesheet" href="css/lettura-facilitata.css?v={ASSET_V}">
   <link rel="canonical" href="{m["url"]}">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -541,7 +541,7 @@ def page(m):
   <div class="footer-bottom">© <span id="year"></span> AlessandroSimone.it — Tutti i diritti riservati &nbsp;·&nbsp; <a href="cookie-policy.html" style="color:rgba(255,255,255,.5)">Cookie Policy</a></div>
 </footer>
 <script src="js/lettura-facilitata.js?v={ASSET_V}"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=10"></script>
 <script src="js/search.js"></script>
 <script src="js/cookie-consent.js"></script>
 </body>

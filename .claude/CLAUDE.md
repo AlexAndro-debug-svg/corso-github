@@ -28,7 +28,7 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
   `ripetizioni.html`, `prenota.html`, `area-studenti.html`, `esercizi.html` → home; `chi-sono.html` → `/#chi-sono`;
   `corsi.html` → `lezioni.html`; vecchi articoli → blog o articolo sostitutivo. Si riconoscono da `http-equiv="refresh"`.
 - In ogni pagina: Google Analytics `G-9X6ETTP6Y0` subito dopo `<head>`; in fondo
-  `js/main.js?v=9`, `js/search.js`, `js/cookie-consent.js`; stile `css/style.css?v=9`.
+  `js/main.js?v=10`, `js/search.js`, `js/cookie-consent.js`; stile `css/style.css?v=10`.
   Quando cambi un file JS/CSS già pubblicato, **alza il `?v=`** in tutte le pagine che lo usano.
 - `sitemap.xml` e `robots.txt` puntano a `https://alessandrosimone.it/`.
 
@@ -113,6 +113,10 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   PDP, DSA e BES spiegati in modo semplice.» (uguali in `og:` e `twitter:`).
   Nella home, scheda del blog in «Scegli il tuo percorso»: icona 📖, etichetta «Blog & Guide», stesso titolo e
   sottotitolo del blog, «Vai al blog →». Scheda BES nel blog: icona 🧭 (niente ombrelli, i BES non sono un «ombrello»).
+- Tasto «Torna su» (15/11/2026) su tutte le pagine: lo crea `js/main.js`, stile `.to-top` in fondo a `css/style.css`.
+  Computer (≥1024 px): a metà del lato destro; telefono e tablet: in basso a destra. Compare dopo 400 px di scorrimento,
+  porta in cima in ~0,4 s; si nasconde con il banner cookie (su telefono) e con l'editor «Provalo tu» aperto,
+  si alza sopra il lettore vocale degli articoli. Esclusi `landing.html` e `mockup.html` (vecchie pagine noindex, senza main.js).
 - La home ha i titoli e le esperienze in schede; il footer di tutte le pagine dice
   «Docente di informatica felicemente prestato all'inclusione nella scuola secondaria di II grado a Roma.
   Lezioni, guide e materiali gratuiti.»

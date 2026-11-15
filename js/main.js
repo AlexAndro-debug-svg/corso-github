@@ -142,3 +142,39 @@ document.addEventListener('DOMContentLoaded', () => {
   if (year) year.textContent = new Date().getFullYear();
 
 });
+
+/* --- Tasto «Torna su»: compare dopo un po' di scorrimento e riporta in cima in meno di mezzo secondo --- */
+(function () {
+  if (MANUTENZIONE || document.querySelector('.to-top')) return;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.title = 'Torna su';
+  btn.setAttribute('aria-label', "Torna all'inizio della pagina");
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.body.appendChild(btn);
+
+  const update = () => btn.classList.toggle('show', window.scrollY > 400);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+
+  btn.addEventListener('click', () => {
+    const start = window.scrollY;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const html = document.documentElement, prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    if (reduce || start < 1) { window.scrollTo(0, 0); html.style.scrollBehavior = prev; }
+    else {
+      const dur = 400, t0 = performance.now();
+      const step = now => {
+        const k = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, Math.round(start * Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step); else html.style.scrollBehavior = prev;
+      };
+      requestAnimationFrame(step);
+    }
+    /* chi usa la tastiera riparte dall'inizio della pagina */
+    const first = document.querySelector('.site-header a, a[href], button');
+    if (first) first.focus({ preventScroll: true });
+  });
+})();
