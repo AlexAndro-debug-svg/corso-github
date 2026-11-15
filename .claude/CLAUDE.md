@@ -107,7 +107,7 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
 ## Cose da sapere
 
 - Intestazione di `blog.html` (scelta dall'autore il 15/11/2026): etichetta «Blog & Guide», titolo
-  «Articoli per studenti, famiglie e docenti», sottotitolo «Inclusività e Informatica al passo coi tempi.».
+  «Articoli per studenti, famiglie e docenti», sottotitolo «Inclusività e Informatica al passo coi tempi» (senza punto; nella home il punto c'è).
   Per Google e condivisioni: `<title>` «Blog di informatica e inclusione a scuola — AlessandroSimone.it»,
   descrizione «Guide gratuite di informatica e inclusione scolastica: Python, reti e algoritmi, ma anche PEI,
   PDP, DSA e BES spiegati in modo semplice.» (uguali in `og:` e `twitter:`).
