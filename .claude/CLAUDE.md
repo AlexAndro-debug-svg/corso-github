@@ -62,6 +62,10 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   versione in `ASSET_V`, ora **4**: alzala quando li cambi). Contengono: sintesi vocale «Ascolta l'articolo»
   (legge solo la versione visibile, salta `.rt-skip`, toglie emoji e frecce, frasi ≤160 caratteri),
   A−/A+ (con A+ la tabella diventa a schede), carattere Atkinson Hyperlegible, sfondo crema, memoria in localStorage.
+- Componenti già pronti in `artlib.py` (riusali invece di crearne di nuovi): `group-box`/`g-card` (gruppi), `path-grid`/`path-col`
+  (percorsi a passi), `steps-list` (elenco numerato), `icon-list`, `sigle-grid`/`sigla` (schede brevi), `pdp-grid`/`pdp-col`
+  (due colonne), `myth` (falsi miti), `update-box` (avviso «regole in cambiamento»), `perc-grid`/`perc` + `perc-l`
+  (schede con lettera A/B/C, colori **neutri** per non confonderle con i gruppi), `t-let` (lettera al posto dell'icona).
 - Regole di scrittura (pensate per lettori con DSA, guida British Dyslexia Association):
   frasi brevi (≤ ~25 parole), un concetto per paragrafo, niente corsivi, grassetto per le parole chiave,
   termini e sigle spiegati alla prima occorrenza, «tu» al lettore, prima persona per Alessandro,
@@ -76,12 +80,25 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 - Prossimi articoli (in quest'ordine): 5 «Tecnologie assistive per studiare», 6 «ADHD e programmazione», 4 «Legge 104 a scuola»,
   7 «Esame di maturità con DSA, BES o disabilità» (da pubblicare a marzo-aprile, quando esce l'ordinanza).
   Alternativa proposta: «Chi è il docente di sostegno e cosa fa alle superiori».
+- Copertine della serie: stesso modello (titolo a sinistra, tre riquadri «Per chi / Chi lo scrive / Quando» a destra),
+  colore del gruppo principale (PEI viola, PDP verde acqua). Il modello più recente da copiare è `copertina-pdp-passo-dopo-passo.html`.
+- Collegamenti tra gli articoli della serie: BES ↔ PEI ↔ PDP ↔ Informatica e DSA (nel testo e nei «Leggi anche»).
+  Un nuovo articolo va collegato a quelli pertinenti e loro a lui, aggiornando `modified_iso` e `<lastmod>` nella sitemap.
 - Per ogni nuovo articolo: copertina 1200×630 (`node _strumenti/genera_copertina.js <modello> <uscita.jpg>`,
   modelli in `_strumenti/copertine/`), scheda **in cima** a `blog.html`, voce in `js/search.js`, `sitemap.xml`,
   link interni pertinenti e **link di ritorno** dagli articoli collegati, revisione indipendente
   (normativa, leggibilità DSA, italiano, SEO/codice, punto di vista del genitore) prima di pubblicare.
 - Normativa: verificala su fonti ufficiali; nome attuale dell'esame finale: «esame di maturità»
   (D.L. 127/2025, conv. L. 164/2025); riforma disabilità D.Lgs. 62/2024 («valutazione di base» INPS).
+  **Da questo ambiente** normattiva.it, gazzettaufficiale.it, istruzione.it e quasi tutti i siti non si aprono (anche con
+  l'agente web-fetch): funziona solo la ricerca web (estratti). Incrocia più fonti, dichiara all'autore che i testi
+  ufficiali non sono stati letti e affida la verifica puntuale alla revisione indipendente.
+- Errori già trovati in revisione, da non ripetere: rifiuto del percorso differenziato = lo studente è valutato con i
+  criteri della classe (non ha il diploma garantito; silenzio della famiglia = assenso, O.M. 90/2001 art. 15); l'attestato
+  di credito formativo non è un diploma; all'esame di maturità gli **altri BES** non hanno misure dispensative e usano
+  strumenti compensativi solo se previsti nel PDP e usati durante l'anno (per i DSA: più tempo e strumenti del PDP).
+- Frasi personali confermate dall'autore: «lavoro ogni giorno come docente di sostegno», «faccio parte dei consigli di
+  classe, dove i PDP si scrivono», «partecipo ai GLO», «ho insegnato informatica per anni». Non inventarne altre.
 
 ## Lezioni (`corso-*.html`): attenzione
 
@@ -122,4 +139,6 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   Lezioni, guide e materiali gratuiti.»
 - Problemi noti non ancora risolti (proposti all'autore, in attesa di risposta): il pulsante arancione dei
   riquadri finali (`.cta-banner .btn-accent`) ha testo bianco con contrasto 2,15:1 in tutto il sito
-  (corretto solo negli articoli della serie); molti articoli indicano un'immagine `og:image` che non esiste.
+  (corretto solo negli articoli della serie); molti articoli indicano un'immagine `og:image` che non esiste;
+  `landing.html` e `mockup.html` sono vecchie pagine sulle ripetizioni (noindex, non collegate): eliminarle o farne
+  reindirizzamenti, se l'autore è d'accordo.
