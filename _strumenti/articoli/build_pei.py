@@ -103,7 +103,7 @@ FIG_CAL = """
 # ------------------------------------------------------------------ FAQ
 FAQS = "\n".join([
     faq("Il PEI serve anche per i DSA o per gli altri BES?",
-        "No. Il PEI è il documento per gli studenti con disabilità certificata secondo la Legge 104. Per i DSA e per gli altri BES la scuola prepara il PDP, il Piano Didattico Personalizzato. Le differenze sono spiegate nella guida <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità 104, DSA e BES</a>."),
+        "No. Il PEI è il documento per gli studenti con disabilità certificata secondo la Legge 104. Per i DSA e per gli altri BES la scuola prepara il PDP, il Piano Didattico Personalizzato: lo spiego nella guida <a href=\"articolo-pdp-passo-dopo-passo.html\">Il PDP passo dopo passo</a>. Le differenze sono spiegate nella guida <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità 104, DSA e BES</a>."),
     faq("Lo studente può partecipare al GLO?",
         "Sì. Alle superiori lo studente partecipa al GLO. È il principio di autodeterminazione, cioè il diritto di decidere per sé: può dire cosa gli serve, cosa funziona e quali obiettivi vuole raggiungere. Se gli è difficile parlare in una riunione, può preparare prima qualche appunto, anche con l'aiuto di un docente o della famiglia."),
     faq("La famiglia può portare un esperto di fiducia?",
@@ -262,7 +262,7 @@ BODY = f"""
       <div class="rn-grid">
         <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
       </div>
     </div>
 """
@@ -272,7 +272,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="PEI, piano educativo individualizzato, cos'è il PEI, GLO, percorso differenziato, prove equipollenti, docente di sostegno, legge 104 scuola, decreto scuola 2026 PEI",
     og_alt="Il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
-    date_iso="2026-11-15", date_it="15 novembre 2026",
+    date_iso="2026-11-15", modified_iso="2026-11-17", date_it="15 novembre 2026",
     ld_keywords="PEI, Piano Educativo Individualizzato, GLO, Legge 104, disabilità, inclusione scolastica, percorso differenziato, prove equipollenti, docente di sostegno",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",

@@ -389,6 +389,7 @@ BODY = f'''
     <p>Questa parte è dedicata soprattutto a <strong>famiglie e docenti</strong>, ma è utile anche a te: sapere cosa si può chiedere ti aiuta a parlarne con la scuola.</p>
     <p>Per gli studenti con DSA la scuola prepara il <strong>PDP</strong>, il Piano Didattico Personalizzato. Il punto di partenza è la <strong>diagnosi</strong>, che la famiglia consegna alla scuola.</p>
     <p>Il PDP viene scritto dal consiglio di classe insieme alla famiglia. Va preparato <strong>entro i primi tre mesi</strong> dell'anno scolastico, oppure appena possibile se la diagnosi arriva durante l'anno. Nel PDP ci sono gli strumenti compensativi, le misure dispensative e il modo di fare verifiche e valutazioni.</p>
+    <p>Come si costruisce il PDP, un passo alla volta, lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a>.</p>
     <p>Ecco alcuni esempi pensati per l'informatica. Sono <strong>idee da valutare insieme</strong>, non una lista da copiare: ogni PDP è personale.</p>
     <div class="pdp-grid">
       <div class="dsa-box pdp-col">
@@ -451,7 +452,7 @@ BODY = f'''
       <div class="rn-grid">
         <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
         <a href="articolo-debug.html"><span aria-hidden="true">🐞</span><strong>Come trovare e correggere i bug</strong></a>
-        <a href="articolo-chatgpt-studiare.html"><span aria-hidden="true">🤖</span><strong>Come usare ChatGPT per studiare meglio</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
       </div>
     </div>
 '''
@@ -461,7 +462,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="informatica DSA, DSA programmazione, strumenti compensativi informatica, dislessia programmazione, PDP informatica, studiare informatica con DSA, misure dispensative informatica",
     og_alt="Il titolo «Informatica e DSA», un pezzo di puzzle con le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
-    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-14",
+    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-17",
     ld_keywords="DSA, dislessia, strumenti compensativi, misure dispensative, PDP, programmazione, informatica",
     hero_src="articolo-informatica-dsa.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Informatica e DSA», un pezzo di puzzle con dentro le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",

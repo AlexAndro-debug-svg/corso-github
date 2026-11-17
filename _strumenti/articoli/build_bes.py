@@ -174,6 +174,7 @@ BODY = f"""
       <p>Qui ci sono la <strong>dislessia</strong>, la <strong>disortografia</strong>, la <strong>disgrafia</strong> e la <strong>discalculia</strong>, riconosciute dalla <strong>Legge 170 del 2010</strong>.</p>
       <p>Con una diagnosi di DSA del Servizio sanitario nazionale o di specialisti accreditati dalla Regione, la scuola deve preparare il <strong>PDP</strong>, il Piano Didattico Personalizzato.</p>
       <p>Per i DSA <strong>non è previsto il docente di sostegno</strong>, a meno che non ci sia anche una disabilità certificata. Se hai un DSA e studi informatica, ho scritto per te la guida <a href="articolo-informatica-dsa.html">Informatica e DSA</a>.</p>
+      <p>Come si scrive il PDP e che cosa contiene lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a>.</p>
     </div>
 
     <div class="group-box g3">
@@ -244,7 +245,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
         <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
       </div>
     </div>
@@ -255,7 +256,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="BES, bisogni educativi speciali, differenza BES DSA, BES DSA disabilità, differenza PEI PDP, legge 104 scuola, docente di sostegno, PDP BES",
     og_alt="Il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
-    date_iso="2026-11-14", modified_iso="2026-11-15", date_it="14 novembre 2026",
+    date_iso="2026-11-14", modified_iso="2026-11-17", date_it="14 novembre 2026",
     ld_keywords="BES, bisogni educativi speciali, DSA, disabilità, Legge 104, Legge 170, PEI, PDP, GLO, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
