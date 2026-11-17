@@ -97,7 +97,9 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   criteri della classe (non ha il diploma garantito; silenzio della famiglia = assenso, O.M. 90/2001 art. 15); l'attestato
   di credito formativo non è un diploma; all'esame di maturità gli **altri BES** non hanno misure dispensative e usano
   strumenti compensativi solo se previsti nel PDP e usati durante l'anno (per i DSA: più tempo e strumenti del PDP).
-- Frasi personali confermate dall'autore: «lavoro ogni giorno come docente di sostegno», «faccio parte dei consigli di
+- Quando l'autore parla di sé negli articoli si definisce **«docente per l'inclusività»** (scelta del 17/11/2026).
+  Nelle spiegazioni di legge resta il nome ufficiale «docente di sostegno» (lo usano scuole, famiglie e Google).
+- Frasi personali confermate dall'autore: «lavoro ogni giorno come docente per l'inclusività», «faccio parte dei consigli di
   classe, dove i PDP si scrivono», «partecipo ai GLO», «ho insegnato informatica per anni». Non inventarne altre.
 
 ## Lezioni (`corso-*.html`): attenzione
