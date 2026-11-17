@@ -46,7 +46,8 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
 
 Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 `articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida),
-`articolo-pei-spiegato-semplice.html` («Il PEI spiegato semplice», 15/11/2026, generatore `build_pei.py`).
+`articolo-pei-spiegato-semplice.html` («Il PEI spiegato semplice», 15/11/2026, generatore `build_pei.py`),
+`articolo-pdp-passo-dopo-passo.html` («Il PDP passo dopo passo», 17/11/2026, generatore `build_pdp.py`).
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
   sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
   Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
@@ -72,8 +73,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   - Gruppo 3 · Altri BES (ADHD e altri disturbi, svantaggio; PDP se lo decide il consiglio di classe) — arancione, 🧩, classe `g3`
   - **I BES sono una voce a sé, dopo 104 e DSA, non un «ombrello»** (scelta dell'autore; c'è una sola nota
     che ricorda il senso ampio della direttiva del 2012).
-- Prossimi articoli (in quest'ordine): 3 «Il PDP passo dopo passo»,
-  5 «Tecnologie assistive per studiare», 6 «ADHD e programmazione», 4 «Legge 104 a scuola»,
+- Prossimi articoli (in quest'ordine): 5 «Tecnologie assistive per studiare», 6 «ADHD e programmazione», 4 «Legge 104 a scuola»,
   7 «Esame di maturità con DSA, BES o disabilità» (da pubblicare a marzo-aprile, quando esce l'ordinanza).
   Alternativa proposta: «Chi è il docente di sostegno e cosa fa alle superiori».
 - Per ogni nuovo articolo: copertina 1200×630 (`node _strumenti/genera_copertina.js <modello> <uscita.jpg>`,
@@ -100,7 +100,7 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   `pkill -f "http[.]server"` (un pattern senza parentesi ucciderebbe anche la shell).
 - `python3 _strumenti/controllo_statico.py` — script interni e blocchi degli esempi.
 - `node _strumenti/audit.js http://localhost:8767 . /tmp/esito.json [pagine]` — prova di tutte le pagine
-  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 79 pagine, 1179/1179 «Provalo tu».
+  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 80 pagine, 1179/1179 «Provalo tu».
 - `node _strumenti/test_lettura.js http://localhost:8767 articolo-XXX.html` — strumenti di lettura facilitata.
 - Guarda anche le pagine a 390 px e a 1280 px con screenshot (niente scorrimento orizzontale).
 
