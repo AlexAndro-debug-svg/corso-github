@@ -127,8 +127,14 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://alessandrosimone.it/articolo-tecnologie-assistive.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://alessandrosimone.it/articolo-pdp-passo-dopo-passo.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -140,13 +146,13 @@
   </url>
   <url>
     <loc>https://alessandrosimone.it/articolo-bes-dsa-disabilita.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alessandrosimone.it/articolo-informatica-dsa.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

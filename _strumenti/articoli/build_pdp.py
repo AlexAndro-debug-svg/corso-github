@@ -189,7 +189,7 @@ BODY = f"""
     <p>Gli <strong>strumenti compensativi</strong> sono come gli <strong>occhiali</strong> per chi vede poco. Non rendono il compito più facile da capire: tolgono l'ostacolo del disturbo.</p>
     <p>Le <strong>misure dispensative</strong> tolgono un'attività che, a causa del disturbo, costerebbe troppa fatica senza insegnare nulla di più.</p>
 {FIG_SM}
-    <p>Gli strumenti funzionano solo se si usano <strong>con regolarità</strong>, a lezione e a casa, non solo il giorno della verifica. Quali strumenti esistono e come si usano lo spiego nella guida <a href="articolo-informatica-dsa.html#strumenti">Informatica e DSA</a>.</p>
+    <p>Gli strumenti funzionano solo se si usano <strong>con regolarità</strong>, a lezione e a casa, non solo il giorno della verifica. Quali strumenti esistono e come si usano lo spiego nella guida <a href="articolo-informatica-dsa.html#strumenti">Informatica e DSA</a>. Come averli a scuola lo trovi in <a href="articolo-tecnologie-assistive.html#come-averle">Tecnologie assistive per studiare</a>.</p>
 
     <h2 id="verifiche">Verifiche e voti</h2>
     <p>Il PDP dice anche <strong>come</strong> si fanno le verifiche e <strong>come</strong> si valutano. Ecco alcune misure che si trovano spesso.</p>
@@ -279,7 +279,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="PDP, piano didattico personalizzato, PDP DSA, PDP BES, strumenti compensativi, misure dispensative, dispensa lingue straniere, legge 170, PDP cosa contiene",
     og_alt="Il titolo «Il PDP passo dopo passo» e tre riquadri: per chi, DSA e altri BES; chi lo scrive, consiglio di classe e famiglia; quando, per i DSA entro il primo trimestre.",
-    date_iso="2026-11-17", date_it="17 novembre 2026",
+    date_iso="2026-11-17", modified_iso="2026-11-18", date_it="17 novembre 2026",
     ld_keywords="PDP, Piano Didattico Personalizzato, DSA, BES, Legge 170, strumenti compensativi, misure dispensative, consiglio di classe, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Il PDP passo dopo passo» e tre riquadri: per chi, DSA e altri BES; chi lo scrive, consiglio di classe e famiglia; quando, per i DSA entro il primo trimestre.",

@@ -285,6 +285,7 @@ BODY = f'''
 
     <h2 id="strumenti">Quali strumenti compensativi aiutano in informatica?</h2>
     <p>Ecco gli strumenti che, secondo me, fanno davvero la differenza. <strong>Non servono tutti</strong>: scegli quelli che ti aiutano di più.</p>
+    <p>Quali tecnologie hai già gratis nel computer e come averne altre a scuola lo spiego nella guida <a href="articolo-tecnologie-assistive.html">Tecnologie assistive per studiare</a>.</p>
 
     <h3>1. Un editor di codice che lavora per te</h3>
     <p>Scrivere codice in un semplice blocco note è come scrivere un tema senza correttore. Un <strong>editor di codice</strong> ti aiuta in tanti modi:</p>
@@ -462,7 +463,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="informatica DSA, DSA programmazione, strumenti compensativi informatica, dislessia programmazione, PDP informatica, studiare informatica con DSA, misure dispensative informatica",
     og_alt="Il titolo «Informatica e DSA», un pezzo di puzzle con le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
-    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-17",
+    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-18",
     ld_keywords="DSA, dislessia, strumenti compensativi, misure dispensative, PDP, programmazione, informatica",
     hero_src="articolo-informatica-dsa.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Informatica e DSA», un pezzo di puzzle con dentro le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
