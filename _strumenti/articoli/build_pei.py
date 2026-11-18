@@ -230,7 +230,7 @@ BODY = f"""
     <h2 id="informatica">E in informatica, che cosa cambia?</h2>
     <p>Ho insegnato informatica per anni: ti mostro come i tre percorsi possono diventare obiettivi concreti in laboratorio. Sono <strong>solo esempi</strong>: ogni PEI è diverso, perché ogni studente è diverso.</p>
     <ul class="icon-list">
-      <li><span class="t-ico t-let" aria-hidden="true">A</span><span><strong>Percorso ordinario.</strong> Lo studente scrive gli stessi programmi della classe, per esempio con le <a href="articolo-if-else-python.html">condizioni if ed else in Python</a>. Può avere più tempo, la sintesi vocale o una tastiera adattata.</span></li>
+      <li><span class="t-ico t-let" aria-hidden="true">A</span><span><strong>Percorso ordinario.</strong> Lo studente scrive gli stessi programmi della classe, per esempio con le <a href="articolo-if-else-python.html">condizioni if ed else in Python</a>. Può avere più tempo, la sintesi vocale o una tastiera adattata: li trovi nella guida <a href="articolo-tecnologie-assistive.html">Tecnologie assistive per studiare</a>.</span></li>
       <li><span class="t-ico t-let" aria-hidden="true">B</span><span><strong>Percorso personalizzato.</strong> Gli obiettivi sono i contenuti essenziali della materia. La verifica è equipollente: per esempio, invece di scrivere il codice da zero, lo studente completa un programma o spiega un <a href="articolo-diagramma-di-flusso.html">diagramma di flusso</a>.</span></li>
       <li><span class="t-ico t-let" aria-hidden="true">C</span><span><strong>Percorso differenziato.</strong> Gli obiettivi riguardano competenze utili per la vita e per il lavoro. Per esempio: usare il computer in autonomia, salvare e ritrovare i file, scrivere una email, programmare con i blocchi colorati.</span></li>
     </ul>
@@ -272,7 +272,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="PEI, piano educativo individualizzato, cos'è il PEI, GLO, percorso differenziato, prove equipollenti, docente di sostegno, legge 104 scuola, decreto scuola 2026 PEI",
     og_alt="Il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
-    date_iso="2026-11-15", modified_iso="2026-11-17", date_it="15 novembre 2026",
+    date_iso="2026-11-15", modified_iso="2026-11-18", date_it="15 novembre 2026",
     ld_keywords="PEI, Piano Educativo Individualizzato, GLO, Legge 104, disabilità, inclusione scolastica, percorso differenziato, prove equipollenti, docente di sostegno",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
