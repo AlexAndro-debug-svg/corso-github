@@ -107,7 +107,13 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 - Quando l'autore parla di sé negli articoli si definisce **«docente per l'inclusività»** (scelta del 17/11/2026).
   Nelle spiegazioni di legge resta il nome ufficiale «docente di sostegno» (lo usano scuole, famiglie e Google).
 - Frasi personali confermate dall'autore: «lavoro ogni giorno come docente per l'inclusività», «faccio parte dei consigli di
-  classe, dove i PDP si scrivono», «partecipo ai GLO», «ho insegnato informatica per anni». Non inventarne altre.
+  classe, dove i PDP si scrivono», «partecipo ai GLO», «ho insegnato informatica per anni», «idee sbagliate… che sento
+  spesso», «leggo tutti i messaggi». Non inventarne altre.
+- **Varia la formulazione** di queste frasi fisse da un articolo all'altro (richiesta dell'autore del 19/11/2026),
+  senza cambiarne il senso. Esempi: per i falsi miti «Ecco alcune convinzioni diffuse, ma sbagliate», «Sgombriamo il campo
+  da qualche equivoco», «Alcune idee circolano spesso, ma non sono vere»; per i contatti «Rispondo a tutti i messaggi»,
+  «Ogni messaggio mi arriva e lo leggo con attenzione», «Mi fa piacere ricevere domande ed esperienze»; per la presentazione
+  alterna «docente per l'inclusività» con il ruolo nei consigli di classe o nei GLO. Gli articoli già pubblicati restano così.
 
 ## Lezioni (`corso-*.html`): attenzione
 
