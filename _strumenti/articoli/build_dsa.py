@@ -452,7 +452,7 @@ BODY = f'''
       <h2 class="box-title"><span aria-hidden="true">📖</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
-        <a href="articolo-debug.html"><span aria-hidden="true">🐞</span><strong>Come trovare e correggere i bug</strong></a>
+        <a href="articolo-adhd-programmazione.html"><span aria-hidden="true">⏲️</span><strong>ADHD e programmazione: strategie pratiche per studiare informatica</strong></a>
         <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
       </div>
     </div>
@@ -463,7 +463,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="informatica DSA, DSA programmazione, strumenti compensativi informatica, dislessia programmazione, PDP informatica, studiare informatica con DSA, misure dispensative informatica",
     og_alt="Il titolo «Informatica e DSA», un pezzo di puzzle con le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
-    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-18",
+    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-19",
     ld_keywords="DSA, dislessia, strumenti compensativi, misure dispensative, PDP, programmazione, informatica",
     hero_src="articolo-informatica-dsa.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Informatica e DSA», un pezzo di puzzle con dentro le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
