@@ -135,7 +135,7 @@ BODY = f"""
     </div>
     <p>Ecco qualche esempio. Sono solo idee: ogni studente è diverso.</p>
     <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">⏲️</span><span>Con l'<strong>ADHD</strong> (disturbo da deficit di attenzione e iperattività): un <strong>timer visivo</strong> che mostra il tempo che resta, un'agenda digitale per organizzare i compiti, cuffie che riducono i rumori.</span></li>
+      <li><span class="t-ico" aria-hidden="true">⏲️</span><span>Con l'<strong>ADHD</strong> (disturbo da deficit di attenzione e iperattività): un <strong>timer visivo</strong> che mostra il tempo che resta, un'agenda digitale per organizzare i compiti, cuffie che riducono i rumori. Altre strategie sono nella guida <a href="articolo-adhd-programmazione.html">ADHD e programmazione</a>.</span></li>
       <li><span class="t-ico" aria-hidden="true">🌍</span><span>Per chi <strong>sta imparando l'italiano</strong>: dizionari con immagini, la sintesi vocale per ascoltare come si pronunciano le parole, un traduttore per le consegne più difficili.</span></li>
     </ul>
 
@@ -220,7 +220,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="tecnologie assistive, ausili scuola, comunicatore CAA, sintesi vocale, lettore di schermo, strumenti compensativi, CTS comodato ausili, detrazione DSA",
     og_alt="Il titolo «Tecnologie assistive per studiare» e tre riquadri: per chi, disabilità, DSA e altri BES; quali, comunicatori e sintesi vocale; come averle, scuola, ASL o famiglia.",
-    date_iso="2026-11-18", date_it="18 novembre 2026",
+    date_iso="2026-11-18", modified_iso="2026-11-19", date_it="18 novembre 2026",
     ld_keywords="tecnologie assistive, ausili, CAA, comunicatore, sintesi vocale, lettore di schermo, strumenti compensativi, CTS, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Tecnologie assistive per studiare» e tre riquadri: per chi, disabilità, DSA e altri BES; quali, comunicatori e sintesi vocale; come averle, scuola, ASL o famiglia.",
