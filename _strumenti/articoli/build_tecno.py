@@ -148,7 +148,7 @@ BODY = f"""
     <h2 id="come-averle">Come averle a scuola: tre strade</h2>
     <p>Quando uno strumento non c'è già, le strade per averlo sono tre. Cambiano in base al tipo di strumento e a chi lo usa.</p>
 {FIG_VIE}
-    <p>Da dove cominciare? Parlane prima con il coordinatore di classe o con il docente di sostegno. Poi con il referente per l'inclusione, cioè il docente che coordina queste attività nella scuola.</p>
+    <p>Da dove cominciare? Parlane prima con il coordinatore di classe o con il <a href="articolo-docente-di-sostegno.html">docente di sostegno</a>. Poi con il referente per l'inclusione, cioè il docente che coordina queste attività nella scuola.</p>
     <p>Le regole del CTS cambiano da provincia a provincia. Chiedi alla scuola anche quanto tempo serve e che cosa succede se lo studente cambia scuola.</p>
     <p>Per gli ausili della ASL, il primo passo è parlarne con lo specialista che segue lo studente.</p>
 
@@ -220,7 +220,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="tecnologie assistive, ausili scuola, comunicatore CAA, sintesi vocale, lettore di schermo, strumenti compensativi, CTS comodato ausili, detrazione DSA",
     og_alt="Il titolo «Tecnologie assistive per studiare» e tre riquadri: per chi, disabilità, DSA e altri BES; quali, comunicatori e sintesi vocale; come averle, scuola, ASL o famiglia.",
-    date_iso="2026-11-18", modified_iso="2026-11-19", date_it="18 novembre 2026",
+    date_iso="2026-11-18", modified_iso="2026-11-20", date_it="18 novembre 2026",
     ld_keywords="tecnologie assistive, ausili, CAA, comunicatore, sintesi vocale, lettore di schermo, strumenti compensativi, CTS, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Tecnologie assistive per studiare» e tre riquadri: per chi, disabilità, DSA e altri BES; quali, comunicatori e sintesi vocale; come averle, scuola, ASL o famiglia.",

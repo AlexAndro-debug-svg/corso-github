@@ -49,10 +49,13 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 `articolo-pei-spiegato-semplice.html` («Il PEI spiegato semplice», 15/11/2026, generatore `build_pei.py`),
 `articolo-pdp-passo-dopo-passo.html` («Il PDP passo dopo passo», 17/11/2026, generatore `build_pdp.py`),
 `articolo-tecnologie-assistive.html` («Tecnologie assistive per studiare», 18/11/2026, generatore `build_tecno.py`),
-`articolo-adhd-programmazione.html` («ADHD e programmazione», 19/11/2026, generatore `build_adhd.py`).
+`articolo-adhd-programmazione.html` («ADHD e programmazione», 19/11/2026, generatore `build_adhd.py`),
+`articolo-docente-di-sostegno.html` («Chi è il docente di sostegno e cosa fa alle superiori», 20/11/2026, generatore `build_sostegno.py`).
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
   sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
   Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
+  Lo cita anche `articolo-docente-di-sostegno.html` (sezione «Quante ore», FAQ sulle ore, riferimenti): aggiorna anche quello.
+  Per trovare altri punti cerca «decreto-legge del 2026» e «170/2026» nei generatori `_strumenti/articoli/build_*.py`.
   C'è un promemoria programmato per il 30/11/2026 alle 9:47 (ora di Roma): mostra le modifiche all'autore
   **prima** di pubblicarle; dopo, togli questo punto.
 
@@ -81,10 +84,10 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
     che ricorda il senso ampio della direttiva del 2012).
 - Prossimi articoli (in quest'ordine): 4 «Legge 104 a scuola»,
   7 «Esame di maturità con DSA, BES o disabilità» (da pubblicare a marzo-aprile, quando esce l'ordinanza).
-  Alternativa proposta: «Chi è il docente di sostegno e cosa fa alle superiori».
+  «Legge 104 a scuola» rinviato a inizio gennaio 2027 (dopo la conversione del D.L. 170 e l'entrata in vigore piena del D.Lgs. 62/2024).
 - Copertine della serie: stesso modello (titolo a sinistra, tre riquadri «Per chi / Chi lo scrive / Quando» a destra),
   colore del gruppo principale (PEI viola, PDP verde acqua; arancione per il gruppo 3, come ADHD; indaco se riguarda tutti e tre i gruppi, come Tecnologie assistive). Il modello più recente da copiare è `copertina-pdp-passo-dopo-passo.html`.
-- Collegamenti tra gli articoli della serie: BES ↔ PEI ↔ PDP ↔ Informatica e DSA ↔ Tecnologie assistive ↔ ADHD e programmazione (nel testo e nei «Leggi anche»).
+- Collegamenti tra gli articoli della serie: BES ↔ PEI ↔ PDP ↔ Informatica e DSA ↔ Tecnologie assistive ↔ ADHD e programmazione ↔ Docente di sostegno (nel testo e nei «Leggi anche»).
   Un nuovo articolo va collegato a quelli pertinenti e loro a lui, aggiornando `modified_iso` e `<lastmod>` nella sitemap.
 - Per ogni nuovo articolo: copertina 1200×630 (`node _strumenti/genera_copertina.js <modello> <uscita.jpg>`,
   modelli in `_strumenti/copertine/`), scheda **in cima** a `blog.html`, voce in `js/search.js`, `sitemap.xml`,
@@ -101,7 +104,8 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   strumenti compensativi solo se previsti nel PDP e usati durante l'anno (per i DSA: più tempo e strumenti del PDP);
   il comodato degli ausili dei CTS è per la disabilità, su progetto della scuola legato al PEI (per i DSA il CTS fa consulenza);
   la detrazione 19% per i DSA vale anche per PC e tablet se il legame col disturbo risulta da diagnosi o prescrizione,
-  con pagamento tracciabile; alle superiori il cellulare in classe è vietato (Circ. MIM 3392/2025) salvo PEI o PDP;
+  con pagamento tracciabile; la conferma del docente su richiesta della famiglia vale solo per i supplenti (decide il
+  dirigente sentito il GLO, serve il sì del docente); alle superiori il cellulare in classe è vietato (Circ. MIM 3392/2025) salvo PEI o PDP;
   l'ADHD non rientra nella L. 170 (i tempi del PDP dei DSA non valgono); idee come «più tempo» valgono durante l'anno,
   non all'esame per gli altri BES; negli esempi Python con input di voti ricorda che si scrive 6.5 e non 6,5.
 - Quando l'autore parla di sé negli articoli si definisce **«docente per l'inclusività»** (scelta del 17/11/2026).
@@ -132,7 +136,7 @@ Dipendenze: `cd _strumenti && npm install` (cartella `node_modules` ignorata da 
   `pkill -f "http[.]server"` (un pattern senza parentesi ucciderebbe anche la shell).
 - `python3 _strumenti/controllo_statico.py` — script interni e blocchi degli esempi.
 - `node _strumenti/audit.js http://localhost:8767 . /tmp/esito.json [pagine]` — prova di tutte le pagine
-  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 82 pagine, 1179/1179 «Provalo tu».
+  (testo fuori posto, errori JS, ogni «Provalo tu»). Esito atteso oggi: 83 pagine, 1179/1179 «Provalo tu».
 - `node _strumenti/test_lettura.js http://localhost:8767 articolo-XXX.html` — strumenti di lettura facilitata.
 - Guarda anche le pagine a 390 px e a 1280 px con screenshot (niente scorrimento orizzontale).
 
