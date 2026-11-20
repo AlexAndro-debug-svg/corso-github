@@ -73,7 +73,8 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   (schede con lettera A/B/C, colori **neutri** per non confonderle con i gruppi), `t-let` (lettera al posto dell'icona).
 - **Eccezione di registro (20/11/2026)**: `articolo-docente-di-sostegno.html` è scritto, su richiesta dell'autore, in
   **registro professionale** per docenti, dirigenti e professionisti: lessico tecnico, forma impersonale, niente emoji,
-  niente riquadri colorati (resta solo l'indice), titolo «Il docente di sostegno nella scuola secondaria di secondo grado:
+  niente riquadri colorati (resta solo l'indice), niente icone nei pulsanti di lettura (regola di stile aggiunta dal
+  generatore solo a questa pagina), titolo «Il docente di sostegno nella scuola secondaria di secondo grado:
   ruolo, funzioni e responsabilità». Le leggi si citano sempre con numero e anno: «L. 104/92», «L. 170/2010»,
   «D.Lgs. 66/2017», «D.P.R. 122/2009», mai solo «104». Chiedi all'autore se applicare lo stesso registro agli altri articoli.
 - Regole di scrittura (pensate per lettori con DSA, guida British Dyslexia Association):

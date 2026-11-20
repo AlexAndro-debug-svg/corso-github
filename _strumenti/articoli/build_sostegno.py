@@ -170,5 +170,10 @@ META = dict(
 if __name__ == '__main__':
     root = sys.argv[1]
     write_shared(root)
-    open(os.path.join(root, f'{SLUG}.html'), 'w', encoding='utf-8').write(page(META))
+    html_out = page(META)
+    # Registro professionale: niente icone nei pulsanti di lettura (anche quelle aggiunte dallo script durante l'ascolto)
+    NO_ICONS = '  <style>.reading-tools .rt-btn span[aria-hidden="true"], .rt-player span[aria-hidden="true"] { display: none; }</style>\n</head>'
+    assert html_out.count('</head>') == 1
+    html_out = html_out.replace('</head>', NO_ICONS)
+    open(os.path.join(root, f'{SLUG}.html'), 'w', encoding='utf-8').write(html_out)
     print('SOSTEGNO: parole', words, '| minuti', MIN)
