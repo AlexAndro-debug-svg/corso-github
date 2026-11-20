@@ -127,6 +127,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://alessandrosimone.it/articolo-docente-di-sostegno.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://alessandrosimone.it/articolo-adhd-programmazione.html</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -146,13 +152,13 @@
   </url>
   <url>
     <loc>https://alessandrosimone.it/articolo-pei-spiegato-semplice.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alessandrosimone.it/articolo-bes-dsa-disabilita.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

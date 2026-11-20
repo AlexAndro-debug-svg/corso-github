@@ -169,7 +169,7 @@ BODY = f"""
     <p>Il PEI non lo scrive una persona sola. Lo elabora e lo approva il <strong>GLO</strong>, il <strong>Gruppo di Lavoro Operativo per l'inclusione</strong>.</p>
     <p>Il GLO è una squadra: ognuno porta quello che sa dello studente. Ecco chi ne fa parte.</p>
 {FIG_GLO}
-    <p>Il docente di sostegno di solito prepara una <strong>bozza</strong>, insieme ai colleghi. Ma il PEI è del GLO: la famiglia e lo studente possono proporre modifiche prima che venga approvato.</p>
+    <p>Il <a href="articolo-docente-di-sostegno.html">docente di sostegno</a> di solito prepara una <strong>bozza</strong>, insieme ai colleghi. Ma il PEI è del GLO: la famiglia e lo studente possono proporre modifiche prima che venga approvato.</p>
 
     <h2 id="dentro">Cosa c'è dentro il PEI</h2>
     <p>Il PEI parte da un'idea semplice: le difficoltà non dipendono solo dalla persona, ma anche dall'<strong>ambiente</strong> in cui vive e studia.</p>
@@ -272,7 +272,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="PEI, piano educativo individualizzato, cos'è il PEI, GLO, percorso differenziato, prove equipollenti, docente di sostegno, legge 104 scuola, decreto scuola 2026 PEI",
     og_alt="Il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
-    date_iso="2026-11-15", modified_iso="2026-11-18", date_it="15 novembre 2026",
+    date_iso="2026-11-15", modified_iso="2026-11-20", date_it="15 novembre 2026",
     ld_keywords="PEI, Piano Educativo Individualizzato, GLO, Legge 104, disabilità, inclusione scolastica, percorso differenziato, prove equipollenti, docente di sostegno",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",

@@ -203,7 +203,7 @@ BODY = f"""
     <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «BES, DSA e disabilità sono la stessa cosa».</p><p><strong>In realtà</strong> sono tre situazioni diverse, con leggi, documenti e aiuti diversi. Confonderle porta a chiedere aiuti sbagliati, o a non chiedere quelli giusti.</p></div>
     <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Con un DSA arriva l'insegnante di sostegno».</p><p><strong>In realtà</strong> il sostegno è previsto per la disabilità certificata. Con un DSA si lavora con il PDP. Il PDP prevede <a href="articolo-informatica-dsa.html#cosa-sono">strumenti compensativi</a>, come la sintesi vocale, e misure dispensative, come più tempo nelle verifiche.</p></div>
     <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Con il PDP si fa un programma più facile».</p><p><strong>In realtà</strong> il PDP non abbassa il traguardo. Con un DSA gli obiettivi restano quelli della classe: cambiano il modo di studiare e quello di fare le verifiche. Per altri BES, per esempio chi sta ancora imparando l'italiano, il PDP può alleggerire alcuni contenuti per un periodo, per riportare lo studente al passo con la classe.</p></div>
-    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Il docente di sostegno è l'insegnante personale dello studente».</p><p><strong>In realtà</strong> è un docente <strong>della classe</strong>: è contitolare, cioè ha le stesse responsabilità degli altri docenti verso tutti gli studenti. Cura in particolare il percorso previsto dal PEI, ma lavora con tutti e aiuta l'intera classe a diventare più inclusiva: è il lavoro che faccio ogni giorno.</p></div>
+    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Il docente di sostegno è l'insegnante personale dello studente».</p><p><strong>In realtà</strong> è un docente <strong>della classe</strong>: è contitolare, cioè ha le stesse responsabilità degli altri docenti verso tutti gli studenti. Cura in particolare il percorso previsto dal PEI, ma lavora con tutti e aiuta l'intera classe a diventare più inclusiva: è il lavoro che faccio ogni giorno. Lo racconto nella guida <a href="articolo-docente-di-sostegno.html">Chi è il docente di sostegno</a>.</p></div>
 
     <h2 id="percorsi">Come si arriva al PEI o al PDP?</h2>
     <p>Il punto di partenza è quasi sempre lo stesso: qualcuno nota una difficoltà. Può essere la famiglia, un docente o lo studente stesso. Poi le strade si dividono.</p>
@@ -256,7 +256,7 @@ META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
     keywords="BES, bisogni educativi speciali, differenza BES DSA, BES DSA disabilità, differenza PEI PDP, legge 104 scuola, docente di sostegno, PDP BES",
     og_alt="Il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
-    date_iso="2026-11-14", modified_iso="2026-11-19", date_it="14 novembre 2026",
+    date_iso="2026-11-14", modified_iso="2026-11-20", date_it="14 novembre 2026",
     ld_keywords="BES, bisogni educativi speciali, DSA, disabilità, Legge 104, Legge 170, PEI, PDP, GLO, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
     hero_alt="Copertina dell'articolo: il titolo «Disabilità 104, DSA e BES» e tre riquadri separati e numerati: 1 disabilità con il PEI, 2 DSA con il PDP, 3 altri BES con il PDP se serve.",
