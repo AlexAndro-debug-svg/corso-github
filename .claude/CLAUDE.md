@@ -50,7 +50,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 `articolo-pdp-passo-dopo-passo.html` («Il PDP passo dopo passo», 17/11/2026, generatore `build_pdp.py`),
 `articolo-tecnologie-assistive.html` («Tecnologie assistive per studiare», 18/11/2026, generatore `build_tecno.py`),
 `articolo-adhd-programmazione.html` («ADHD e programmazione», 19/11/2026, generatore `build_adhd.py`),
-`articolo-docente-di-sostegno.html` («Chi è il docente di sostegno e cosa fa alle superiori», 20/11/2026, generatore `build_sostegno.py`).
+`articolo-docente-di-sostegno.html` («Il docente di sostegno nella scuola secondaria di secondo grado: ruolo, funzioni e responsabilità», 20/11/2026, generatore `build_sostegno.py`, registro professionale).
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
   sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
   Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
@@ -71,6 +71,11 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   (percorsi a passi), `steps-list` (elenco numerato), `icon-list`, `sigle-grid`/`sigla` (schede brevi), `pdp-grid`/`pdp-col`
   (due colonne), `myth` (falsi miti), `update-box` (avviso «regole in cambiamento»), `perc-grid`/`perc` + `perc-l`
   (schede con lettera A/B/C, colori **neutri** per non confonderle con i gruppi), `t-let` (lettera al posto dell'icona).
+- **Eccezione di registro (20/11/2026)**: `articolo-docente-di-sostegno.html` è scritto, su richiesta dell'autore, in
+  **registro professionale** per docenti, dirigenti e professionisti: lessico tecnico, forma impersonale, niente emoji,
+  niente riquadri colorati (resta solo l'indice), titolo «Il docente di sostegno nella scuola secondaria di secondo grado:
+  ruolo, funzioni e responsabilità». Le leggi si citano sempre con numero e anno: «L. 104/92», «L. 170/2010»,
+  «D.Lgs. 66/2017», «D.P.R. 122/2009», mai solo «104». Chiedi all'autore se applicare lo stesso registro agli altri articoli.
 - Regole di scrittura (pensate per lettori con DSA, guida British Dyslexia Association):
   frasi brevi (≤ ~25 parole), un concetto per paragrafo, niente corsivi, grassetto per le parole chiave,
   termini e sigle spiegati alla prima occorrenza, «tu» al lettore, prima persona per Alessandro,
