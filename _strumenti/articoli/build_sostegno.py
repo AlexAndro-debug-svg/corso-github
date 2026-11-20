@@ -115,7 +115,7 @@ BODY = f"""
     </nav>
 
     <p>A scuola tutti ne parlano, ma pochi sanno davvero che cosa fa. Il <strong>docente di sostegno</strong> è una figura importante e spesso fraintesa.</p>
-    <p>È il mio lavoro di ogni giorno. Nei documenti ufficiali si chiama «docente di sostegno»; io preferisco dire <strong>docente per l'inclusività</strong> (<a href="/#chi-sono">chi sono</a>).</p>
+    <p>È il mio lavoro di ogni giorno. Nei documenti ufficiali si chiama «docente di sostegno». Nel mio istituto, il Giovanni XXIII di Roma, si chiama <strong>docente per l'inclusività</strong> (<a href="/#chi-sono">chi sono</a>).</p>
     <p>In questa guida ti spiego chi è e che cosa fa alle superiori. Ti dico anche come collaborare con lui, che tu sia studente, genitore o collega.</p>
 
     <h2 id="chi-e">Chi è il docente di sostegno</h2>

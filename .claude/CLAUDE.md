@@ -108,7 +108,9 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   dirigente sentito il GLO, serve il sì del docente); alle superiori il cellulare in classe è vietato (Circ. MIM 3392/2025) salvo PEI o PDP;
   l'ADHD non rientra nella L. 170 (i tempi del PDP dei DSA non valgono); idee come «più tempo» valgono durante l'anno,
   non all'esame per gli altri BES; negli esempi Python con input di voti ricorda che si scrive 6.5 e non 6,5.
-- Quando l'autore parla di sé negli articoli si definisce **«docente per l'inclusività»** (scelta del 17/11/2026).
+- Quando l'autore parla di sé negli articoli si definisce **«docente per l'inclusività»** (scelta del 17/11/2026):
+  non è una preferenza personale, è il nome che il docente di sostegno ha **al suo istituto, il Giovanni XXIII di Roma**.
+  Non scrivere «preferisco dire»; se serve spiegarlo, dì che nel suo istituto si chiama così.
   Nelle spiegazioni di legge resta il nome ufficiale «docente di sostegno» (lo usano scuole, famiglie e Google).
 - Frasi personali confermate dall'autore: «lavoro ogni giorno come docente per l'inclusività», «faccio parte dei consigli di
   classe, dove i PDP si scrivono», «partecipo ai GLO», «ho insegnato informatica per anni», «idee sbagliate… che sento
