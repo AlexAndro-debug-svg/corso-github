@@ -176,7 +176,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-docente-di-sostegno.html"><span aria-hidden="true">🏫</span><strong>Il docente di sostegno nella scuola secondaria di secondo grado</strong></a>
-        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
         <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
       </div>
     </div>

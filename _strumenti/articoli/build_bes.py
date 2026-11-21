@@ -174,7 +174,7 @@ BODY = f"""
       <p>Qui ci sono la <strong>dislessia</strong>, la <strong>disortografia</strong>, la <strong>disgrafia</strong> e la <strong>discalculia</strong>, riconosciute dalla <strong>Legge 170 del 2010</strong>.</p>
       <p>Con una diagnosi di DSA del Servizio sanitario nazionale o di specialisti accreditati dalla Regione, la scuola deve preparare il <strong>PDP</strong>, il Piano Didattico Personalizzato.</p>
       <p>Per i DSA <strong>non è previsto il docente di sostegno</strong>, a meno che non ci sia anche una disabilità certificata. Se hai un DSA e studi informatica, ho scritto per te la guida <a href="articolo-informatica-dsa.html">Informatica e DSA</a>.</p>
-      <p>Come si scrive il PDP e che cosa contiene lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a>.</p>
+      <p>Come si scrive il PDP e che cosa contiene lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a>.</p>
     </div>
 
     <div class="group-box g3">
@@ -245,7 +245,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
         <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
       </div>
     </div>

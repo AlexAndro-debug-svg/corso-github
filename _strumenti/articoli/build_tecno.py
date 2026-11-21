@@ -70,7 +70,7 @@ FAQS = "\n".join([
     faq("Le app di intelligenza artificiale sono tecnologie assistive?",
         "Possono aiutare molto: per esempio a riassumere, a spiegare un testo in modo più semplice o a ripassare. Per usarle a scuola, però, devono essere previste nel PDP o nel PEI. All'esame di maturità, di solito, non sono ammessi strumenti collegati a internet. Come usarle bene lo spiego nella guida <a href=\"articolo-chatgpt-studiare.html\">Come usare ChatGPT per studiare</a>."),
     faq("Posso usare questi strumenti all'esame di maturità?",
-        "Si possono usare gli strumenti previsti dal PEI o dal PDP e usati durante l'anno, anche nelle verifiche. Con un DSA si può avere anche più tempo. Per gli altri BES le regole sono più strette: le spiego nella guida <a href=\"articolo-pdp-passo-dopo-passo.html#verifiche\">Il PDP passo dopo passo</a>."),
+        "Si possono usare gli strumenti previsti dal PEI o dal PDP e usati durante l'anno, anche nelle verifiche. Con un DSA si può avere anche più tempo. Per gli altri BES le regole sono più strette: le spiego nella guida <a href=\"articolo-pdp-passo-dopo-passo.html#verifiche\">Il Piano Didattico Personalizzato (PDP)</a>."),
 ])
 
 # ------------------------------------------------------------------ CORPO
@@ -154,7 +154,7 @@ BODY = f"""
 
     <h2 id="pei-pdp">Scriverle nel PEI o nel PDP</h2>
     <p>Avere uno strumento non basta: bisogna poterlo <strong>usare a scuola</strong>. Per questo va scritto nel PEI, per la disabilità, o nel PDP, per i DSA e gli altri BES.</p>
-    <p>Chiedi che sia scritto in modo preciso: <strong>quale</strong> strumento, in <strong>quali materie</strong> e se vale anche <strong>nelle verifiche</strong>. Come si costruiscono questi documenti lo spiego nelle guide <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a> e <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a>.</p>
+    <p>Chiedi che sia scritto in modo preciso: <strong>quale</strong> strumento, in <strong>quali materie</strong> e se vale anche <strong>nelle verifiche</strong>. Come si costruiscono questi documenti lo spiego nelle guide <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a> e <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a>.</p>
     <p>Anche all'esame di maturità si possono usare gli strumenti previsti e già usati durante l'anno. Per questo conviene usarli con regolarità fin dalle prime classi.</p>
 
     <h2 id="consigli">Prima di scegliere: cinque consigli</h2>
@@ -209,7 +209,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
         <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
       </div>
     </div>

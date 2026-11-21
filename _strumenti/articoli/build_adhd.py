@@ -97,7 +97,7 @@ FAQS = "\n".join([
     faq("Devo dire ai compagni che ho l'ADHD?",
         "È una scelta solo tua e della tua famiglia. Le informazioni sulla tua salute sono riservate: i docenti non possono comunicarle ai compagni senza il consenso tuo e della tua famiglia."),
     faq("All'esame di maturità che cosa vale?",
-        "Se il consiglio di classe ha preparato un PDP, valgono le regole degli altri BES. All'esame non ci sono misure dispensative, cioè non sei esonerato da nessuna parte della prova, e non c'è tempo in più. Puoi usare gli strumenti compensativi, come una calcolatrice o una mappa, se sono nel PDP e li hai già usati durante l'anno. Se c'è anche un DSA valgono le regole dei DSA, che prevedono anche più tempo. Se c'è una disabilità certificata valgono le regole del PEI. Trovi i dettagli nella guida <a href=\"articolo-pdp-passo-dopo-passo.html#verifiche\">Il PDP passo dopo passo</a>."),
+        "Se il consiglio di classe ha preparato un PDP, valgono le regole degli altri BES. All'esame non ci sono misure dispensative, cioè non sei esonerato da nessuna parte della prova, e non c'è tempo in più. Puoi usare gli strumenti compensativi, come una calcolatrice o una mappa, se sono nel PDP e li hai già usati durante l'anno. Se c'è anche un DSA valgono le regole dei DSA, che prevedono anche più tempo. Se c'è una disabilità certificata valgono le regole del PEI. Trovi i dettagli nella guida <a href=\"articolo-pdp-passo-dopo-passo.html#verifiche\">Il Piano Didattico Personalizzato (PDP)</a>."),
 ])
 
 # ------------------------------------------------------------------ CORPO
@@ -148,7 +148,7 @@ BODY = f"""
     </div>
     <p>Ci sono due casi particolari. Se lo studente ha <strong>anche un DSA</strong>, il PDP è <strong>obbligatorio</strong>. Nei casi più gravi può essere riconosciuta una <strong>disabilità</strong>: allora la scuola prepara il <strong>PEI</strong> (Piano Educativo Individualizzato) e c'è il <a href="articolo-docente-di-sostegno.html">docente di sostegno</a>.</p>
     <p>Per chiedere il PDP, consegna la diagnosi in segreteria, facendola protocollare, e chiedi un incontro al coordinatore di classe. Alle superiori anche lo studente può partecipare e dire quali aiuti gli servono.</p>
-    <p>Come si costruiscono questi documenti lo spiego nelle guide <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a> e <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a>.</p>
+    <p>Come si costruiscono questi documenti lo spiego nelle guide <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a> e <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a>.</p>
 
     <h2 id="programmazione">ADHD e programmazione: che cosa aiuta</h2>
     <p>La programmazione ha alcune caratteristiche che possono aiutare molto chi ha l'ADHD. Ne ha anche altre che possono mettere in difficoltà.</p>
@@ -260,7 +260,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
         <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Tecnologie assistive per studiare: quali sono e come averle a scuola</strong></a>
       </div>
     </div>

@@ -390,7 +390,7 @@ BODY = f'''
     <p>Questa parte è dedicata soprattutto a <strong>famiglie e docenti</strong>, ma è utile anche a te: sapere cosa si può chiedere ti aiuta a parlarne con la scuola.</p>
     <p>Per gli studenti con DSA la scuola prepara il <strong>PDP</strong>, il Piano Didattico Personalizzato. Il punto di partenza è la <strong>diagnosi</strong>, che la famiglia consegna alla scuola.</p>
     <p>Il PDP viene scritto dal consiglio di classe insieme alla famiglia. Va preparato <strong>entro i primi tre mesi</strong> dell'anno scolastico, oppure appena possibile se la diagnosi arriva durante l'anno. Nel PDP ci sono gli strumenti compensativi, le misure dispensative e il modo di fare verifiche e valutazioni.</p>
-    <p>Come si costruisce il PDP, un passo alla volta, lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il PDP passo dopo passo</a>.</p>
+    <p>Come si costruisce il PDP, un passo alla volta, lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a>.</p>
     <p>Ecco alcuni esempi pensati per l'informatica. Sono <strong>idee da valutare insieme</strong>, non una lista da copiare: ogni PDP è personale.</p>
     <div class="pdp-grid">
       <div class="dsa-box pdp-col">
@@ -453,7 +453,7 @@ BODY = f'''
       <div class="rn-grid">
         <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
         <a href="articolo-adhd-programmazione.html"><span aria-hidden="true">⏲️</span><strong>ADHD e programmazione: strategie pratiche per studiare informatica</strong></a>
-        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
       </div>
     </div>
 '''
