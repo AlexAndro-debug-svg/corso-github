@@ -1,39 +1,16 @@
 #!/usr/bin/env python3
-"""Articolo: Informatica e DSA."""
+"""Articolo: Informatica e DSA (stile professionale, riscritto il 21/11/2026)."""
 import os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from artlib import *
 
-TITLE = "Informatica e DSA: strategie e strumenti compensativi per studiare programmazione"
-SEO_TITLE = "Informatica e DSA: strumenti compensativi per programmare — AlessandroSimone.it"
-DESC = "Hai un DSA, come la dislessia, e studi informatica? Strategie pratiche, strumenti compensativi e idee per il PDP: impara a programmare con meno fatica."
+TITLE = "Informatica e DSA: strategie e strumenti compensativi per l'apprendimento della programmazione"
+SEO_TITLE = "Informatica e DSA: strategie e strumenti compensativi — AlessandroSimone.it"
+DESC = "DSA e programmazione: criticità, strumenti compensativi, strategie di studio, un esempio guidato in Python e indicazioni per il PDP in ambito informatico."
 URL = "https://alessandrosimone.it/articolo-informatica-dsa.html"
 IMG = "https://alessandrosimone.it/articolo-informatica-dsa.jpg"
 
 # ------------------------------------------------------------------ FIGURE
-FIG_CARATTERI = '''
-    <figure class="dsa-figure" aria-labelledby="cap-car">
-      <div class="glyph-compare" role="img" aria-label="Confronto tra due tipi di carattere. In un tipo di carattere comune la i maiuscola e la elle minuscola sono quasi uguali, la o maiuscola si confonde con lo zero e le lettere r e n vicine sembrano una emme. In un tipo di carattere pensato per il codice ogni simbolo ha una forma diversa.">
-        <div class="gc-row">
-          <div class="gc-title">❌ Carattere comune</div>
-          <div class="gc-cells gc-common">
-            <div><span>I l 1</span><small>i maiuscola · elle · uno</small></div>
-            <div><span>O 0</span><small>o maiuscola · zero</small></div>
-            <div><span>rn m</span><small>r + n · emme</small></div>
-          </div>
-        </div>
-        <div class="gc-row">
-          <div class="gc-title">✅ Carattere per il codice</div>
-          <div class="gc-cells gc-code">
-            <div><span>I l 1</span><small>i maiuscola · elle · uno</small></div>
-            <div><span>O 0</span><small>o maiuscola · zero</small></div>
-            <div><span>rn m</span><small>r + n · emme</small></div>
-          </div>
-        </div>
-      </div>
-      <figcaption id="cap-car">Sopra, un tipo di carattere comune: la i maiuscola e la elle minuscola sono quasi identiche, e «rn» sembra una «m». Sotto, un tipo di carattere pensato per il codice: ogni simbolo ha una forma diversa.</figcaption>
-    </figure>'''
-
 SALUTO = '''# Saluto e conto fino a 3
 nome = input("Come ti chiami? ")
 print("Ciao", nome)
@@ -84,21 +61,35 @@ FIG_FLUSSO = '''
       <figcaption id="cap-flu">Il diagramma di flusso dell'esercizio: ovali per inizio e fine, parallelogrammi per leggere e scrivere i dati, rombo per la decisione.</figcaption>
     </figure>'''
 
+SCHEDA = '''# Scrivere sullo schermo
+print("Ciao")
+
+# Chiedere un dato
+nome = input("Nome? ")
+voto = int(input("Voto? "))
+
+# Decidere
+if voto >= 6:
+    print("Bene")
+else:
+    print("Ripassa")
+
+# Ripetere un numero stabilito di volte
+for i in range(5):
+    print(i)
+
+# Ripetere finché una condizione è vera
+while voto < 6:
+    voto = voto + 1
+
+# Definire una funzione
+def saluta(nome):
+    print("Ciao", nome)'''
+
 FIG_SCHEDA = f'''
     <figure class="dsa-figure" aria-labelledby="cap-sch">
-      <div class="syntax-card">
-        <div class="sc-head">🗂️ La mia scheda della sintassi Python</div>
-        <div class="sc-grid">
-          <div class="sc-item"><div class="sc-t">🖨️ Scrivere sullo schermo</div>{mini('print("Ciao")')}</div>
-          <div class="sc-item"><div class="sc-t">⌨️ Chiedere un dato</div>{mini('nome = input("Nome? ")' + chr(10) + 'voto = int(input("Voto? "))')}</div>
-          <div class="sc-item"><div class="sc-t">🔀 Decidere</div>{mini('if voto >= 6:' + chr(10) + '    print("Bene")' + chr(10) + 'else:' + chr(10) + '    print("Ripassa")')}</div>
-          <div class="sc-item"><div class="sc-t">🔁 Ripetere un certo numero di volte</div>{mini('for i in range(5):' + chr(10) + '    print(i)')}</div>
-          <div class="sc-item"><div class="sc-t">🔄 Ripetere finché…</div>{mini('while voto < 6:' + chr(10) + '    voto = voto + 1')}</div>
-          <div class="sc-item"><div class="sc-t">🧱 Creare una funzione</div>{mini('def saluta(nome):' + chr(10) + '    print("Ciao", nome)')}</div>
-        </div>
-        <div class="sc-foot">⚠️ Ricorda: le righe che iniziano con <strong>if</strong>, <strong>else</strong>, <strong>for</strong>, <strong>while</strong> e <strong>def</strong> finiscono con i due punti (<strong>:</strong>). La riga sotto va spostata a destra di 4 spazi: l'editor lo fa da solo quando premi Invio.</div>
-      </div>
-      <figcaption id="cap-sch">Un esempio di scheda della sintassi Python. Puoi crearne una tua, con i colori e gli esempi che ti aiutano di più.</figcaption>
+      {code(SCHEDA, label="Esempio di scheda personale della sintassi Python", numbers=False)}
+      <figcaption id="cap-sch">Un esempio di scheda personale della sintassi Python. Le righe che introducono un blocco (if, else, for, while, def) terminano con i due punti e la riga successiva è rientrata di quattro spazi.</figcaption>
     </figure>'''
 
 FITTO = '''a=[6,7,5,8]
@@ -119,54 +110,10 @@ print("Media:", media)'''
 FIG_ARIOSO = f'''
     <figure class="dsa-figure" aria-labelledby="cap-ari">
       <div class="two-col">
-        <div><div class="panel-title">❌ Codice fitto</div>{code(FITTO, numbers=False)}</div>
-        <div><div class="panel-title">✅ Codice arioso</div>{code(ARIOSO, numbers=False)}</div>
+        <div><div class="panel-title">Codice compatto</div>{code(FITTO, numbers=False)}</div>
+        <div><div class="panel-title">Codice leggibile</div>{code(ARIOSO, numbers=False)}</div>
       </div>
-      <figcaption id="cap-ari">I due programmi calcolano la stessa media. Il secondo, «Codice arioso», usa nomi chiari, righe vuote e un commento: si legge molto meglio.</figcaption>
-    </figure>'''
-
-MAP_NODES = [
-    (110, 70, "🖥️", "Editor", "con i colori", "#eef2ff", "#4f46e5"),
-    (360, 40, "🔤", "Carattere", "leggibile", "#f0fdfa", "#0d9488"),
-    (610, 70, "📐", "Diagrammi", "e mappe", "#fff7ed", "#ea580c"),
-    (640, 230, "🔊", "Sintesi", "vocale", "#fdf2f8", "#db2777"),
-    (560, 375, "🗂️", "Scheda della", "sintassi", "#ecfeff", "#0891b2"),
-    (160, 375, "🤖", "AI come", "tutor", "#f5f3ff", "#7c3aed"),
-    (80, 230, "📝", "PDP", "su misura", "#fefce8", "#ca8a04"),
-]
-def mindmap():
-    parts = []
-    for x, y, ico, a, b, fill, stroke in MAP_NODES:
-        parts.append(f'<line x1="360" y1="215" x2="{x}" y2="{y}" stroke="{stroke}" stroke-width="3" stroke-linecap="round" opacity=".55"/>')
-    parts.append('<circle cx="360" cy="215" r="82" fill="#4f46e5"/>')
-    parts.append('<text x="360" y="200" fill="#fff" font-size="21">Informatica</text>')
-    parts.append('<text x="360" y="226" fill="#fff" font-size="21">con un DSA</text>')
-    parts.append('<text x="360" y="252" fill="#e0e7ff" font-size="15" font-weight="400">i tuoi strumenti</text>')
-    for x, y, ico, a, b, fill, stroke in MAP_NODES:
-        parts.append(f'<rect x="{x-78}" y="{y-34}" width="156" height="68" rx="16" fill="{fill}" stroke="{stroke}" stroke-width="2.5"/>')
-        parts.append(f'<text x="{x}" y="{y-6}" fill="#1f2937" font-size="18">{ico} {a}</text>')
-        parts.append(f'<text x="{x}" y="{y+18}" fill="#1f2937" font-size="18">{b}</text>')
-    return '\n          '.join(parts)
-
-FIG_MAPPA = f'''
-    <figure class="dsa-figure" aria-labelledby="cap-map">
-      <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-t map-d" class="dsa-svg map-svg">
-        <title id="map-t">Mappa: gli strumenti per studiare informatica con un DSA</title>
-        <desc id="map-d">Al centro: informatica con un DSA. Intorno sette strumenti: editor con i colori, carattere leggibile, diagrammi e mappe, sintesi vocale, scheda della sintassi, intelligenza artificiale come tutor, PDP su misura.</desc>
-        <g font-family="Atkinson Hyperlegible, Verdana, Arial, sans-serif" font-weight="700" text-anchor="middle">
-          {mindmap()}
-        </g>
-      </svg>
-      <ul class="icon-list map-list rt-skip">
-        <li><span class="t-ico">🖥️</span><span><strong>Editor con i colori</strong></span></li>
-        <li><span class="t-ico">🔤</span><span><strong>Carattere leggibile</strong></span></li>
-        <li><span class="t-ico">📐</span><span><strong>Diagrammi e mappe</strong></span></li>
-        <li><span class="t-ico">🔊</span><span><strong>Sintesi vocale</strong></span></li>
-        <li><span class="t-ico">🗂️</span><span><strong>Scheda della sintassi</strong></span></li>
-        <li><span class="t-ico">🤖</span><span><strong>AI come tutor</strong></span></li>
-        <li><span class="t-ico">📝</span><span><strong>PDP su misura</strong></span></li>
-      </ul>
-      <figcaption id="cap-map">Il riepilogo: tutti gli strumenti di questo articolo a colpo d'occhio. Puoi stamparlo o fotografarlo per ripassare.</figcaption>
+      <figcaption id="cap-ari">I due programmi calcolano la stessa media. Il secondo usa nomi espliciti, righe vuote e un commento: si legge molto meglio.</figcaption>
     </figure>'''
 
 ERRORE = '''<pre class="code-dsa no-ln error-box" role="figure" aria-label="Esempio di messaggio di errore di Python"><code><span class="l">  File "voti.py", <mark class="em-line">line 3</mark></span>
@@ -203,253 +150,206 @@ def faq(q, a):
 
 # ------------------------------------------------------------------ FAQ
 FAQS = "\n".join([
-    faq("Con la dislessia si può diventare programmatori?", "Sì. La programmazione richiede soprattutto ragionamento e capacità di risolvere problemi. Con gli strumenti giusti la lettura del codice diventa molto meno faticosa, e nel lavoro di tutti i giorni editor e documentazione aiutano chiunque."),
-    faq("Nelle verifiche di informatica posso usare il computer?", "Dipende da cosa è scritto nel tuo PDP. Nelle verifiche di programmazione il computer, al posto di carta e penna, è uno strumento compensativo molto utile, soprattutto con la disgrafia. Chiedi ai tuoi docenti di valutarlo insieme a te e alla tua famiglia."),
-    faq("Quale linguaggio è più adatto per iniziare?", 'Python è spesso una buona scelta: usa poche parentesi e pochi simboli, e si legge quasi come l\'inglese. Puoi iniziare con il <a href="corso-python.html">corso gratuito di Python</a>. Per i primissimi passi esistono anche i linguaggi a blocchi come Scratch, in cui si programma trascinando blocchi colorati invece di scrivere.'),
-    faq("La discalculia è un ostacolo in informatica?", 'Non per forza. Programmare non significa fare calcoli a mente: i calcoli li fa il computer. Per argomenti come il <a href="articolo-sistema-binario.html">sistema binario</a> aiutano tabelle e schemi, che si possono prevedere nel PDP.'),
+    faq("La dislessia è compatibile con la professione di programmatore?", "Sì. La programmazione richiede soprattutto capacità di ragionamento e di risoluzione dei problemi. Con strumenti adeguati la lettura del codice risulta molto meno onerosa e, nella pratica professionale, editor e documentazione costituiscono un supporto per chiunque."),
+    faq("Nelle verifiche di informatica è possibile utilizzare il computer?", "Dipende da quanto previsto nel PDP. Nelle prove di programmazione l'uso del computer in luogo della scrittura a mano rappresenta uno strumento compensativo particolarmente efficace, specie in presenza di disgrafia; la decisione va condivisa con il consiglio di classe e la famiglia."),
+    faq("Quale linguaggio è più indicato per iniziare?", 'Python è spesso una scelta appropriata: impiega pochi simboli e una sintassi vicina al linguaggio naturale. È possibile iniziare con il <a href="corso-python.html">corso gratuito di Python</a>. Per i primissimi passi sono disponibili anche linguaggi a blocchi come Scratch, che sostituiscono la scrittura con il trascinamento di blocchi.'),
+    faq("La discalculia costituisce un ostacolo in informatica?", 'Non necessariamente: programmare non significa eseguire calcoli mentali, che sono demandati al calcolatore. Per argomenti come il <a href="articolo-sistema-binario.html">sistema binario</a> risultano utili tabelle e schemi, che possono essere previsti nel PDP.'),
 ])
 
 # ------------------------------------------------------------------ CORPO
 BODY = f'''
-    <div class="dsa-box tldr" id="in-breve">
-      <h2 class="box-title"><span aria-hidden="true">📌</span> L'articolo in 30 secondi</h2>
-      <ul>
-        <li>Avere un <strong>DSA non ti impedisce di programmare</strong>: in informatica contano soprattutto la logica e il ragionamento.</li>
-        <li>Le difficoltà più comuni sono <strong>leggere codice fitto</strong>, <strong>confondere caratteri simili</strong> e <strong>scrivere i comandi senza errori</strong>.</li>
-        <li>Gli <strong>strumenti compensativi giusti</strong> (editor con i colori, diagrammi, sintesi vocale, schede) riducono molto la fatica.</li>
-        <li>Molti strumenti si possono <strong>inserire nel PDP</strong> (il Piano Didattico Personalizzato) e usare anche nelle verifiche.</li>
-      </ul>
-    </div>
+    <p>Un DSA (Disturbo Specifico dell'Apprendimento) non preclude l'apprendimento della programmazione: in informatica contano soprattutto la logica, la capacità di scomporre i problemi e di costruire soluzioni. Le difficoltà riguardano piuttosto la lettura di un codice denso di simboli, la discriminazione di caratteri simili e la correttezza formale della scrittura.</p>
+    <p>Avendo insegnato informatica per anni, e lavorando oggi come docente per l'inclusività (<a href="/#chi-sono">chi sono</a>), propongo in questo contributo un'analisi delle criticità più frequenti, una rassegna degli strumenti compensativi, alcune strategie di studio, un esempio guidato e indicazioni per la predisposizione del PDP in ambito informatico.</p>
 
     <nav class="dsa-box toc rt-skip" aria-label="Indice dell'articolo">
-      <h2 class="box-title"><span aria-hidden="true">🧭</span> Indice</h2>
+      <h2 class="box-title">Indice</h2>
       <ol>
-        <li><a href="#cosa-sono">Cosa sono i DSA, in parole semplici</a></li>
-        <li><a href="#difficolta">Perché la programmazione può sembrare difficile?</a></li>
-        <li><a href="#buona-notizia">La buona notizia: l'informatica può diventare un punto di forza</a></li>
-        <li><a href="#strumenti">Quali strumenti compensativi aiutano in informatica?</a></li>
-        <li><a href="#strategie">Strategie di studio che funzionano</a></li>
-        <li><a href="#esempio">Un esempio guidato, passo dopo passo</a></li>
-        <li><a href="#pdp">Cosa si può prevedere nel PDP per l'informatica?</a></li>
-        <li><a href="#sintesi">In sintesi</a></li>
+        <li><a href="#cosa-sono">I DSA: inquadramento</a></li>
+        <li><a href="#difficolta">Le criticità della programmazione</a></li>
+        <li><a href="#buona-notizia">I punti di forza</a></li>
+        <li><a href="#strumenti">Gli strumenti compensativi</a></li>
+        <li><a href="#strategie">Strategie di studio</a></li>
+        <li><a href="#esempio">Un esempio guidato</a></li>
+        <li><a href="#pdp">Il PDP in ambito informatico</a></li>
+        <li><a href="#sintesi">Considerazioni conclusive</a></li>
         <li><a href="#faq">Domande frequenti</a></li>
       </ol>
     </nav>
 
-    <p>Se hai un DSA e studi informatica, forse ti è capitato di pensare: «Il codice è pieno di simboli, non fa per me». È un pensiero comune, ma <strong>non è vero</strong>.</p>
-    <p>Programmare non vuol dire leggere veloce o scrivere senza errori di ortografia. Vuol dire <strong>ragionare</strong>, <strong>dividere un problema in pezzi</strong> e <strong>trovare una soluzione</strong>. Per tutto il resto esistono strumenti che ti aiutano.</p>
-    <p>In questa guida ti spiego, un passo alla volta, quali difficoltà si incontrano più spesso, quali strumenti usare e come organizzare lo studio. Verso la fine c'è anche una parte per <strong>famiglie e docenti</strong>: spiega cosa si può prevedere nel PDP.</p>
-
-    <h2 id="cosa-sono">Cosa sono i DSA, in parole semplici</h2>
-    <p>I <strong>DSA</strong> (Disturbi Specifici dell'Apprendimento) sono disturbi del neurosviluppo, cioè legati a come si sviluppa il cervello. Rendono più faticose alcune attività, come leggere, scrivere o fare calcoli. <strong>Non dipendono dall'intelligenza</strong> né dall'impegno.</p>
-    <p>In Italia sono riconosciuti dalla <strong>Legge 170 del 2010</strong>, che ne indica quattro:</p>
-    <ul class="dsa-types">
-      <li><span class="t-ico" aria-hidden="true">📖</span><strong>Dislessia</strong>: difficoltà nella lettura, che diventa più lenta, faticosa e meno precisa.</li>
-      <li><span class="t-ico" aria-hidden="true">✏️</span><strong>Disortografia</strong>: difficoltà nello scrivere le parole in modo corretto.</li>
-      <li><span class="t-ico" aria-hidden="true">🖊️</span><strong>Disgrafia</strong>: difficoltà nella scrittura a mano, che può risultare lenta o poco leggibile.</li>
-      <li><span class="t-ico" aria-hidden="true">🔢</span><strong>Discalculia</strong>: difficoltà con i numeri e i calcoli.</li>
-    </ul>
-    <p>Spesso se ne presenta più di uno insieme, e ogni persona è diversa. Per questo gli strumenti vanno <strong>scelti su misura</strong>.</p>
-    <p>Che differenza c'è tra DSA, disabilità e <strong>BES</strong> (Bisogni Educativi Speciali)? Lo spiego nella guida <a href="articolo-bes-dsa-disabilita.html">Disabilità (L. 104/92), DSA e altri BES</a></p>
-
-    <div class="dsa-box glossary">
-      <h3 class="box-title"><span aria-hidden="true">📚</span> Tre parole da conoscere</h3>
-      <ul>
-        <li><strong>PDP (Piano Didattico Personalizzato)</strong>: il documento in cui la scuola, insieme alla famiglia, scrive gli strumenti e le misure pensati per te.</li>
-        <li><strong>Strumenti compensativi</strong>: ti aiutano a fare un compito in un altro modo, più facile per te. Per esempio la sintesi vocale, che legge al posto tuo, o le mappe.</li>
-        <li><strong>Misure dispensative</strong>: ti permettono di non fare alcune attività che per te sono molto faticose e non ti aiutano a imparare, come leggere ad alta voce davanti alla classe. Oppure ti permettono di farle in modo adattato, per esempio con più tempo.</li>
-      </ul>
-    </div>
-
-    <h2 id="difficolta">Perché la programmazione può sembrare difficile?</h2>
-    <p>Il codice è un testo particolare: è <strong>fitto</strong>, pieno di <strong>simboli</strong> e <strong>non perdona</strong> gli errori di battitura. Ecco gli ostacoli più comuni.</p>
-    <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">👀</span><span><strong>Leggere righe lunghe e piene di simboli</strong>: parentesi, due punti, virgolette. Con la dislessia la lettura è più lenta ed è facile perdere il segno.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🔤</span><span><strong>Confondere caratteri simili</strong>:<br><code>l</code> elle minuscola, <code>1</code> uno, <code>I</code> i maiuscola;<br><code>O</code> o maiuscola e <code>0</code> zero;<br><code>=</code> uguale e <code>==</code> doppio uguale.</span></li>
-      <li><span class="t-ico" aria-hidden="true">✏️</span><span><strong>Scrivere i comandi senza errori</strong>: basta scrivere <code>pirnt</code> invece di <code>print</code> e il programma non funziona. Con la disortografia capita più spesso.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🧠</span><span><strong>Ricordare tanti dettagli insieme</strong>: nomi delle variabili, ordine delle istruzioni, regole di scrittura. La memoria si affatica in fretta.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🖊️</span><span><strong>Scrivere codice a mano</strong>: nelle verifiche su carta, con la disgrafia, il codice diventa lento da scrivere e difficile da rileggere.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🔢</span><span><strong>Numeri e conversioni</strong>: le posizioni negli elenchi (in Python, le <a href="articolo-liste-python.html">liste</a>), che si contano partendo da zero, o il <a href="articolo-sistema-binario.html">sistema binario</a> possono creare confusione, soprattutto con la discalculia.</span></li>
-    </ul>
-{FIG_CARATTERI}
-
-    <h2 id="buona-notizia">La buona notizia: l'informatica può diventare un punto di forza</h2>
-    <p>Ora la parte più importante: la programmazione ha anche <strong>tanti lati che possono aiutarti</strong>.</p>
-    <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">🧩</span><span><strong>Conta il ragionamento</strong>: un programma è una sequenza di passi logici. Puoi essere bravissimo a ragionare anche se leggi lentamente.</span></li>
-      <li><span class="t-ico" aria-hidden="true">⚡</span><span><strong>Il computer ti risponde subito</strong>: scrivi, provi e vedi il risultato. Si impara provando, non solo leggendo.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🔍</span><span><strong>Non devi sapere tutto a memoria</strong>: gli editor completano i comandi, e anche i programmatori esperti consultano di continuo la documentazione, cioè le guide ufficiali del linguaggio.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🎨</span><span><strong>Si lavora molto con le immagini</strong>: diagrammi, schemi e colori fanno parte del lavoro di tutti i giorni.</span></li>
-    </ul>
-    <p>Un DSA non ti impedisce di diventare programmatore, perché programmare vuol dire soprattutto <strong>risolvere problemi</strong>: lo racconto nell'articolo su <a href="articolo-programmatore.html">cosa fa un programmatore</a>.</p>
-
-    <h2 id="strumenti">Quali strumenti compensativi aiutano in informatica?</h2>
-    <p>Ecco gli strumenti che, secondo me, fanno davvero la differenza. <strong>Non servono tutti</strong>: scegli quelli che ti aiutano di più.</p>
-    <p>Quali tecnologie hai già gratis nel computer e come averne altre a scuola lo spiego nella guida <a href="articolo-tecnologie-assistive.html">Le tecnologie assistive a scuola</a>.</p>
-
-    <h3>1. Un editor di codice che lavora per te</h3>
-    <p>Scrivere codice in un semplice blocco note è come scrivere un tema senza correttore. Un <strong>editor di codice</strong> ti aiuta in tanti modi:</p>
+    <h2 id="cosa-sono">I DSA: inquadramento</h2>
+    <p>I <strong>DSA</strong> sono disturbi del neurosviluppo che rendono più onerose specifiche abilità strumentali, indipendentemente dal livello intellettivo e dall'impegno. La <strong>L. 170/2010</strong> ne riconosce quattro:</p>
     <ul>
-      <li><strong>colora le parole</strong> in base al loro ruolo (comandi, testi, numeri), così le riconosci a colpo d'occhio;</li>
-      <li><strong>completa i comandi</strong> mentre scrivi: se digiti <code>pr</code>, ti propone <code>print</code> già scritto bene;</li>
-      <li><strong>sottolinea molti errori</strong> ancora prima che tu esegua il programma;</li>
-      <li><strong>colora le parentesi a coppie</strong>, così vedi subito quale parentesi chiude quale;</li>
-      <li><strong>sistema i rientri</strong> (l'indentazione) in automatico.</li>
+      <li><strong>dislessia</strong>: difficoltà nella lettura, che risulta più lenta, faticosa e meno accurata;</li>
+      <li><strong>disortografia</strong>: difficoltà nella correttezza ortografica della scrittura;</li>
+      <li><strong>disgrafia</strong>: difficoltà nella grafia, che può risultare lenta o poco leggibile;</li>
+      <li><strong>discalculia</strong>: difficoltà nell'elaborazione numerica e nel calcolo.</li>
     </ul>
-    <p>Per iniziare con Python ti consiglio <strong>Thonny</strong>: è semplice e pensato per chi impara.</p>
+    <p>I disturbi si presentano spesso in associazione e con profili individuali molto diversi: gli strumenti vanno dunque calibrati sul singolo studente. Le distinzioni tra DSA, disabilità e altri BES (Bisogni Educativi Speciali) sono illustrate in <a href="articolo-bes-dsa-disabilita.html">Disabilità (L. 104/92), DSA e altri BES</a>.</p>
+    <p>Tre nozioni ricorrono nel seguito: il <strong>PDP</strong> (Piano Didattico Personalizzato), documento con cui il consiglio di classe, con la famiglia, formalizza le misure per lo studente; gli <strong>strumenti compensativi</strong>, che sollevano da una prestazione resa difficoltosa dal disturbo senza facilitare il compito sul piano cognitivo; le <strong>misure dispensative</strong>, che esonerano da prestazioni particolarmente onerose e non formative o ne consentono lo svolgimento in forma adattata.</p>
+
+    <h2 id="difficolta">Le criticità della programmazione</h2>
+    <p>Il codice è un testo peculiare: denso, ricco di simboli e intollerante agli errori formali. Le criticità più frequenti sono:</p>
     <ul>
-      <li>dal menu <strong>Visualizza → Variabili</strong> vedi il valore delle variabili;</li>
-      <li>con il pulsante <strong>Debug</strong> esegui il programma un passo alla volta;</li>
-      <li>con <strong>Ctrl + Spazio</strong> chiedi i suggerimenti mentre scrivi. Per averli sempre, attivali in <strong>Strumenti → Opzioni → Editor</strong>.</li>
+      <li><strong>la lettura di righe lunghe e dense di simboli</strong> (parentesi, due punti, virgolette), con rallentamento e perdita del punto di lettura in presenza di dislessia;</li>
+      <li><strong>la discriminazione di caratteri simili</strong>: <code>l</code> (elle minuscola), <code>1</code> (uno) e <code>I</code> (i maiuscola); <code>O</code> (o maiuscola) e <code>0</code> (zero); <code>=</code> e <code>==</code>;</li>
+      <li><strong>la correttezza formale dei comandi</strong>: scrivere <code>pirnt</code> anziché <code>print</code> impedisce l'esecuzione, evenienza più frequente in presenza di disortografia;</li>
+      <li><strong>il carico sulla memoria di lavoro</strong>, dovuto alla gestione contestuale di nomi di variabili, sequenze di istruzioni e regole sintattiche;</li>
+      <li><strong>la scrittura del codice a mano</strong> nelle prove cartacee, lenta e difficilmente rileggibile in presenza di disgrafia;</li>
+      <li><strong>numeri e conversioni</strong>: l'indicizzazione da zero delle <a href="articolo-liste-python.html">liste</a> o il <a href="articolo-sistema-binario.html">sistema binario</a>, particolarmente critici in presenza di discalculia.</li>
     </ul>
-    <p>Per andare oltre c'è <strong>Visual Studio Code</strong>, che mostra i suggerimenti in automatico. Trovi Thonny e Visual Studio Code nella sezione <a href="lezioni.html#software">Software utilizzati</a>. E se vuoi provare subito senza installare nulla, nelle <a href="lezioni.html">lezioni gratuite</a> c'è l'editor «Provalo tu».</p>
+    <p>Anche la scelta del carattere tipografico incide: nei caratteri di uso comune la i maiuscola e la elle minuscola risultano quasi indistinguibili e la sequenza «rn» può essere letta come «m», mentre i caratteri progettati per il codice attribuiscono a ogni simbolo una forma distinta.</p>
+
+    <h2 id="buona-notizia">I punti di forza</h2>
+    <p>La programmazione presenta, al tempo stesso, caratteristiche favorevoli:</p>
+    <ul>
+      <li><strong>la centralità del ragionamento</strong>: un programma è una sequenza di passaggi logici, indipendente dalla velocità di lettura;</li>
+      <li><strong>il riscontro immediato</strong>: si scrive, si esegue e si osserva il risultato, apprendendo per sperimentazione;</li>
+      <li><strong>la non necessità della memorizzazione integrale</strong>: gli editor completano i comandi e la consultazione della documentazione è prassi anche tra i professionisti;</li>
+      <li><strong>il ruolo delle rappresentazioni visive</strong>: diagrammi, schemi e colori fanno parte del lavoro ordinario.</li>
+    </ul>
+    <p>Un DSA non preclude dunque la professione di programmatore, che consiste anzitutto nella risoluzione di problemi, come illustrato in <a href="articolo-programmatore.html">cosa fa un programmatore</a>.</p>
+
+    <h2 id="strumenti">Gli strumenti compensativi</h2>
+    <p>Gli strumenti seguenti risultano particolarmente efficaci; non sono tutti necessari e vanno selezionati in base al profilo dello studente. Le funzioni di accessibilità già disponibili nei sistemi operativi e le modalità per ottenere ulteriori ausili sono descritte in <a href="articolo-tecnologie-assistive.html">Le tecnologie assistive a scuola</a>.</p>
+
+    <h3>Un editor di codice</h3>
+    <p>Un editor di codice offre funzioni assenti in un semplice editor di testo:</p>
+    <ul>
+      <li>evidenzia la sintassi con colori diversi per comandi, stringhe e numeri;</li>
+      <li>completa automaticamente i comandi durante la digitazione;</li>
+      <li>segnala molti errori prima dell'esecuzione;</li>
+      <li>colora le parentesi a coppie, rendendo evidente la corrispondenza;</li>
+      <li>gestisce automaticamente l'indentazione.</li>
+    </ul>
+    <p>Per iniziare con Python è indicato <strong>Thonny</strong>, ambiente semplice e pensato per la didattica: il menu Visualizza → Variabili mostra il valore delle variabili, il pulsante Debug consente l'esecuzione passo passo e la combinazione Ctrl + Spazio attiva i suggerimenti, che possono essere resi permanenti da Strumenti → Opzioni → Editor.</p>
+    <p>A un livello più avanzato si colloca <strong>Visual Studio Code</strong>, che propone i suggerimenti in automatico. Entrambi sono indicati nella sezione <a href="lezioni.html#software">Software utilizzati</a>; per sperimentare senza installazioni è disponibile l'editor «Provalo tu» delle <a href="lezioni.html">lezioni gratuite</a>.</p>
 {FIG_COLORI}
 
-    <h3>2. Un carattere leggibile e più spazio</h3>
-    <p>Il carattere giusto evita tante confusioni. Per il codice scegli un <strong>carattere monospaziato</strong>, cioè con tutte le lettere della stessa larghezza. Meglio se ogni simbolo ha una forma diversa, come in <strong>JetBrains Mono</strong> o <strong>Fira Code</strong>: sono entrambi gratuiti.</p>
-    <p>Poi aumenta la <strong>dimensione del testo</strong> e lo <strong>spazio tra le righe</strong>. Se usi Visual Studio Code, apri qui sotto le istruzioni passo per passo.</p>
+    <h3>Carattere tipografico e spaziatura</h3>
+    <p>Per il codice è opportuno un <strong>carattere monospaziato</strong>, in cui ogni simbolo abbia una forma distinta, come <strong>JetBrains Mono</strong> o <strong>Fira Code</strong>, entrambi gratuiti. Giovano inoltre un corpo del testo maggiore e un'interlinea più ampia.</p>
     <details class="dsa-faq vscode-box">
-      <summary>Per chi usa Visual Studio Code: le impostazioni da copiare<span aria-hidden="true">+</span></summary>
-    <p>Puoi aprire le impostazioni con <strong>Ctrl + ,</strong> (la virgola; sul Mac <strong>Cmd + ,</strong>) e cercare le opzioni una per una. Oppure, più in fretta, puoi incollarle tutte insieme nel file <code>settings.json</code>:</p>
+      <summary>Impostazioni consigliate per Visual Studio Code<span aria-hidden="true">+</span></summary>
+    <p>Le impostazioni si aprono con <strong>Ctrl + ,</strong> (sul Mac <strong>Cmd + ,</strong>). In alternativa è possibile incollarle nel file <code>settings.json</code>:</p>
     <ol>
-      <li>premi <strong>Ctrl + Maiusc + P</strong>;</li>
-      <li>scrivi <strong>Apri impostazioni utente (JSON)</strong> e premi Invio. Se Visual Studio Code è in inglese, scrivi invece <strong>Open User Settings (JSON)</strong>;</li>
-      <li>se il file è vuoto, incolla tutto il blocco qui sotto. Se invece contiene già altre righe, copia solo le righe tra le parentesi graffe <code>{{ }}</code> e incollale subito prima della graffa di chiusura <code>}}</code>. Poi metti una virgola alla fine dell'ultima riga che c'era già.</li>
+      <li>premere <strong>Ctrl + Maiusc + P</strong>;</li>
+      <li>digitare <strong>Apri impostazioni utente (JSON)</strong>, oppure <strong>Open User Settings (JSON)</strong> se l'interfaccia è in inglese, e premere Invio;</li>
+      <li>se il file è vuoto, incollare l'intero blocco; se contiene già altre impostazioni, copiare soltanto le righe comprese tra le parentesi graffe <code>{{ }}</code>, inserirle prima della graffa di chiusura <code>}}</code> e aggiungere una virgola al termine dell'ultima riga preesistente.</li>
     </ol>
     {code(VSCODE, 'json', 'Impostazioni di Visual Studio Code per un codice più leggibile')}
     <ul>
-      <li><code>fontFamily</code>: il carattere da usare (va installato prima sul computer);</li>
-      <li><code>fontSize</code>: la dimensione del testo, qui più grande del normale;</li>
-      <li><code>lineHeight</code>: l'altezza di ogni riga. <code>1.8</code> vuol dire 1,8 volte la dimensione del testo, quindi più spazio tra una riga e l'altra;</li>
-      <li><code>fontLigatures</code>: con <code>false</code> i simboli restano separati, così <code>&gt;=</code> appare proprio come lo scrivi e non come un unico segno ≥ (le legature, cioè i simboli uniti in un unico segno, di base sono già disattivate: questa riga serve solo a non attivarle per sbaglio);</li>
-      <li><code>renderWhitespace</code>: mostra gli spazi dei rientri come puntini, molto utile in Python;</li>
-      <li><code>bracketPairColorization</code>: colora le parentesi a coppie (nelle versioni recenti è già attivo).</li>
+      <li><code>fontFamily</code>: il carattere da utilizzare, da installare preventivamente;</li>
+      <li><code>fontSize</code>: il corpo del testo, qui maggiorato;</li>
+      <li><code>lineHeight</code>: l'interlinea; il valore <code>1.8</code> corrisponde a 1,8 volte il corpo del testo;</li>
+      <li><code>fontLigatures</code>: con <code>false</code> i simboli restano distinti, sicché <code>&gt;=</code> non viene reso come un unico segno ≥ (le legature sono già disattivate per impostazione predefinita; la riga ne previene l'attivazione accidentale);</li>
+      <li><code>renderWhitespace</code>: visualizza gli spazi di indentazione come puntini, utile in Python;</li>
+      <li><code>bracketPairColorization</code>: colora le parentesi a coppie, opzione già attiva nelle versioni recenti.</li>
     </ul>
     </details>
-    <p>Conta anche il <strong>tema</strong>: c'è chi legge meglio su sfondo scuro e chi su sfondo chiaro o color crema. Prova temi diversi e scegli il tuo. Questa pagina, per esempio, usa <strong>Atkinson Hyperlegible</strong>, un carattere progettato per essere facile da leggere: puoi attivarlo o disattivarlo con il pulsante <strong>🔤 Carattere leggibile</strong> in alto.</p>
+    <p>Anche il tema cromatico incide sulla leggibilità: alcuni studenti leggono meglio su sfondo scuro, altri su sfondo chiaro o color crema. Questa pagina, ad esempio, consente di attivare il carattere Atkinson Hyperlegible e lo sfondo crema dalla barra di lettura in alto.</p>
 
-    <h3>3. Diagrammi di flusso e mappe</h3>
-    <p>Prima di scrivere il codice, <strong>disegna il ragionamento</strong>. Un <a href="articolo-diagramma-di-flusso.html">diagramma di flusso</a> trasforma il problema in forme e frecce, molto più facili da seguire di un testo. Con il diagramma pronto, scrivere il codice diventa quasi una traduzione: lo vedrai nell'<a href="#esempio">esempio guidato</a> più avanti.</p>
-    <p>Per approfondire: <a href="articolo-come-costruire-algoritmo.html">come si costruisce un algoritmo</a> e <a href="articolo-strutture-programmazione.html">le tre strutture di base</a> della programmazione.</p>
-    <p>Per ripassare la teoria aiuta una <strong>mappa concettuale</strong>: l'argomento al centro e le idee collegate intorno. Ne trovi una nella sezione <a href="#sintesi">In sintesi</a>.</p>
+    <h3>Diagrammi di flusso e mappe</h3>
+    <p>Prima della codifica è utile rappresentare graficamente il ragionamento. Il <a href="articolo-diagramma-di-flusso.html">diagramma di flusso</a> traduce il problema in forme e frecce, più agevoli da seguire di un testo; a diagramma completato, la scrittura del codice si configura quasi come una traduzione, come mostra l'<a href="#esempio">esempio guidato</a>. Per approfondire si vedano <a href="articolo-come-costruire-algoritmo.html">come si costruisce un algoritmo</a> e <a href="articolo-strutture-programmazione.html">le tre strutture di base</a> della programmazione.</p>
+    <p>Per lo studio della teoria risultano efficaci le <strong>mappe concettuali</strong>, con l'argomento al centro e i concetti collegati disposti intorno.</p>
 
-    <h3>4. La sintesi vocale</h3>
-    <p>La sintesi vocale legge il testo al posto tuo. In informatica è utile per:</p>
-    <ul>
-      <li>ascoltare la <strong>teoria</strong> e le <strong>consegne</strong> degli esercizi;</li>
-      <li>farti leggere i <strong>messaggi di errore</strong>, che a volte sono lunghi e in inglese.</li>
-    </ul>
-    <p>Sul computer, ad esempio, il browser Microsoft Edge ha la funzione «Leggi ad alta voce». Su smartphone e tablet la sintesi vocale si attiva dalle impostazioni di accessibilità. Anche questo articolo si può ascoltare: usa il pulsante <strong>🔊 Ascolta l'articolo</strong> in alto.</p>
+    <h3>La sintesi vocale</h3>
+    <p>La sintesi vocale è utile per l'ascolto della teoria e delle consegne e per la lettura dei messaggi di errore, spesso estesi e in lingua inglese. Sul computer, ad esempio, Microsoft Edge dispone della funzione «Leggi ad alta voce»; su smartphone e tablet la funzione si attiva dalle impostazioni di accessibilità. Anche questo articolo può essere ascoltato con il pulsante «Ascolta l'articolo».</p>
 
-    <h3>5. Una scheda personale della sintassi</h3>
-    <p>Imparare a memoria tutte le regole di scrittura (la <strong>sintassi</strong>) è faticoso e non serve: è più importante capire <strong>quando</strong> usare un'istruzione. Preparati una <strong>scheda</strong> con gli schemi che usi di più, scritta grande e con i colori.</p>
+    <h3>Una scheda personale della sintassi</h3>
+    <p>La memorizzazione integrale delle regole sintattiche è onerosa e poco utile: conta piuttosto comprendere quando impiegare ciascuna istruzione. Una <strong>scheda personale</strong> raccoglie gli schemi d'uso più frequenti.</p>
 {FIG_SCHEDA}
-    <p>Ogni schema della scheda ha una guida dedicata: per esempio <a href="articolo-cicli-for-python.html">il ciclo for in Python</a> e <a href="articolo-funzioni-python.html">le funzioni in Python</a>.</p>
-    <p>Se la scheda è prevista nel tuo PDP, puoi usarla anche durante le verifiche: <strong>concordalo con i tuoi docenti</strong>.</p>
+    <p>Ciascuno schema è approfondito in una guida dedicata, ad esempio <a href="articolo-cicli-for-python.html">il ciclo for in Python</a> e <a href="articolo-funzioni-python.html">le funzioni in Python</a>. Se prevista nel PDP, la scheda può essere utilizzata anche durante le verifiche.</p>
 
-    <h3>6. L'intelligenza artificiale come tutor, non come scorciatoia</h3>
-    <p>Strumenti come ChatGPT possono spiegarti un errore con parole semplici, riformulare una spiegazione difficile o farti domande per ripassare. Ecco una richiesta che puoi usare:</p>
-    <div class="prompt-box">💬 «Ho un DSA. Spiegami questo messaggio di errore di Python con frasi brevi e un esempio: [incolla qui l'errore]»</div>
-    <p>Usa l'AI per <strong>capire</strong>, non per copiare: un esercizio fatto dall'AI non ti insegna nulla, e le risposte vanno sempre controllate. Ne parlo nella guida <a href="articolo-chatgpt-studiare.html">come usare ChatGPT per studiare meglio</a>.</p>
+    <h3>L'intelligenza artificiale come tutor</h3>
+    <p>Strumenti come ChatGPT possono spiegare un errore con un linguaggio semplice, riformulare una spiegazione complessa o proporre domande di ripasso. Una richiesta efficace può essere: «Ho un DSA. Spiegami questo messaggio di errore di Python con frasi brevi e un esempio: [messaggio di errore]».</p>
+    <p>L'intelligenza artificiale va impiegata per comprendere, non per sostituirsi allo studente nello svolgimento, e le sue risposte richiedono sempre una verifica. Un approfondimento è in <a href="articolo-chatgpt-studiare.html">come usare ChatGPT per studiare meglio</a>.</p>
 
-    <h2 id="strategie">Strategie di studio che funzionano</h2>
-    <p>Gli strumenti aiutano, ma conta anche <strong>come</strong> studi. Ecco le strategie che funzionano meglio.</p>
-    <ol class="steps-list">
-      <li><strong>Un passo alla volta.</strong> Scrivi due o tre righe, esegui il programma e controlla che funzioni. Poi aggiungi il pezzo successivo. Così, se c'è un errore, sai subito dove cercarlo.</li>
-      <li><strong>Prima l'esempio, poi la regola.</strong> Parti da un programma che funziona e modificalo: cambia un numero, un testo, una condizione. Capire cosa succede è il modo più naturale per imparare.</li>
-      <li><strong>Dai nomi chiari alle variabili.</strong> <code>media_voti</code> si legge e si ricorda meglio di <code>mv</code>.</li>
-      <li><strong>Usa i commenti come promemoria.</strong> Una riga che inizia con <code>#</code> spiega a cosa serve il codice, e aiuta anche te quando lo rileggi dopo una settimana.</li>
-      <li><strong>Leggi il messaggio di errore con calma.</strong> Non devi capirlo tutto: guarda prima il <strong>numero dopo la parola line</strong>, poi l'<strong>ultima riga del messaggio</strong>, che dice il tipo di errore.</li>
-      <li><strong>Fai pause brevi e frequenti.</strong> Meglio 20-25 minuti di concentrazione e poi una pausa, piuttosto che due ore di fila con la testa che si annebbia.</li>
-      <li><strong>Spiega a voce quello che hai fatto.</strong> Raccontare il programma riga per riga, anche solo a te stesso, ti fa scoprire se l'hai capito davvero.</li>
+    <h2 id="strategie">Strategie di studio</h2>
+    <p>Oltre agli strumenti, incide in modo determinante il metodo di studio:</p>
+    <ol>
+      <li><strong>procedere per incrementi</strong>: scrivere poche righe, eseguirle e verificarle prima di proseguire, così da circoscrivere gli eventuali errori;</li>
+      <li><strong>partire dall'esempio</strong>: modificare un programma funzionante (un valore, un testo, una condizione) e osservarne gli effetti;</li>
+      <li><strong>adottare nomi espliciti</strong>: <code>media_voti</code> è più leggibile e memorizzabile di <code>mv</code>;</li>
+      <li><strong>utilizzare i commenti</strong>, introdotti da <code>#</code>, come promemoria della funzione del codice;</li>
+      <li><strong>leggere con metodo i messaggi di errore</strong>, individuando dapprima il numero di riga e poi l'ultima riga, che indica il tipo di errore;</li>
+      <li><strong>prevedere pause brevi e frequenti</strong>, ad esempio dopo 20-25 minuti di lavoro;</li>
+      <li><strong>verbalizzare il programma</strong>, spiegandolo riga per riga, per verificarne l'effettiva comprensione.</li>
     </ol>
 {FIG_ARIOSO}
-    <p>Vediamo meglio la strategia numero 5, «Leggi il messaggio di errore con calma». Ecco un messaggio di errore tipico di Python:</p>
+    <p>Per la lettura dei messaggi di errore, si consideri il seguente esempio:</p>
     {ERRORE}
-    <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">📍</span><span><strong>line 3</strong> ti dice <strong>dove</strong> guardare: l'errore è alla riga 3. Il simbolo <code>^</code> indica il punto preciso. Sul tuo computer, al posto di <code>voti.py</code>, vedrai il percorso completo del file: non serve leggerlo tutto, cerca solo la parola <strong>line</strong> e il numero che la segue.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🏷️</span><span><strong>SyntaxError: expected ':'</strong> ti dice <strong>cosa</strong> è successo: un errore di scrittura, perché Python si aspettava i due punti.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🔧</span><span><strong>La soluzione</strong> è aggiungere i due punti alla fine della condizione. La riga corretta è <code>if voto &gt;= 6:</code></span></li>
+    <ul>
+      <li><strong>line 3</strong> indica dove intervenire: l'errore si trova alla riga 3 e il simbolo <code>^</code> ne segnala il punto preciso; al posto di <code>voti.py</code> può comparire il percorso completo del file, che non è necessario leggere integralmente;</li>
+      <li><strong>SyntaxError: expected ':'</strong> indica che cosa è accaduto: un errore di sintassi, poiché Python attendeva i due punti;</li>
+      <li>la correzione consiste nell'aggiungere i due punti al termine della condizione: <code>if voto &gt;= 6:</code>.</li>
     </ul>
-    <p>Per scovare gli errori esiste un metodo preciso: lo spiego passo dopo passo nella guida su <a href="articolo-debug.html">come trovare e correggere i bug</a>.</p>
+    <p>Un metodo sistematico per l'individuazione degli errori è illustrato in <a href="articolo-debug.html">come trovare e correggere i bug</a>.</p>
 
-    <h2 id="esempio">Un esempio guidato, passo dopo passo</h2>
-    <p>Mettiamo insieme tutto con un esercizio classico: <strong>un programma che chiede un voto e dice se è sufficiente</strong>.</p>
-    <div class="step-card"><span class="step-n">1</span><div><strong>Capisco il problema.</strong> Cosa entra? Un voto. Cosa esce? La scritta «Sufficiente» oppure «Insufficiente».</div></div>
-    <div class="step-card"><span class="step-n">2</span><div><strong>Disegno il diagramma di flusso.</strong> Prima di scrivere codice, metto in fila i passi.</div></div>
+    <h2 id="esempio">Un esempio guidato</h2>
+    <p>L'esercizio proposto consiste in un programma che richiede un voto e indica se è sufficiente.</p>
+    <h3>1. Analisi del problema</h3>
+    <p>Il dato in ingresso è un voto; in uscita si attende la scritta «Sufficiente» oppure «Insufficiente».</p>
+    <h3>2. Diagramma di flusso</h3>
+    <p>Prima della codifica si rappresenta la sequenza dei passaggi.</p>
 {FIG_FLUSSO}
-    <div class="step-card"><span class="step-n">3</span><div><strong>Scrivo poche righe e provo.</strong> Per ora mi occupo solo di leggere il voto. Uso <code>int()</code> per trasformare in numero quello che scrivo con la tastiera. Se il programma stampa il numero che ho scritto, questa parte funziona.</div></div>
+    <h3>3. Prima porzione di codice</h3>
+    <p>Ci si limita alla lettura del voto, convertito in numero intero con <code>int()</code>. Se il programma stampa il valore inserito, questa parte è corretta.</p>
     {code(PASSO3, label='Passo 3: leggere il voto')}
-    <div class="step-card"><span class="step-n">4</span><div><strong>Aggiungo la decisione.</strong> Traduco il rombo del diagramma con <code>if</code> ed <code>else</code> e inserisco due commenti come promemoria. Attenzione: il simbolo <strong>≥</strong> del diagramma in Python si scrive con due caratteri, <code>&gt;=</code>.</div></div>
+    <h3>4. La struttura condizionale</h3>
+    <p>Il rombo del diagramma si traduce con <code>if</code> ed <code>else</code>, accompagnati da due commenti. Il simbolo ≥ del diagramma si scrive in Python con due caratteri: <code>&gt;=</code>.</p>
     {code(PASSO4, label='Passo 4: il programma completo')}
-    <div class="step-card"><span class="step-n">5</span><div><strong>Provo casi diversi.</strong> Inserisco 8, poi 6, poi 4. Il 6 è il caso più importante: è il confine tra sufficiente e insufficiente. Se tutti e tre danno il risultato giusto, il programma è pronto.</div></div>
-    <p>L'istruzione <code>if</code>/<code>else</code> è spiegata in dettaglio nell'articolo su <a href="articolo-if-else-python.html">if, elif ed else in Python</a>. <code>input()</code> e le variabili, invece, li trovi nell'articolo sulle <a href="articolo-variabili-python.html">variabili in Python</a>.</p>
-    <p>Per esercitarti con un programma simile, prova l'<a href="esercizio-media-voti-python.html">esercizio sulla media dei voti</a>. Ha l'editor integrato: puoi scrivere e provare il codice direttamente nella pagina.</p>
+    <h3>5. Prova con casi diversi</h3>
+    <p>Si inseriscono i valori 8, 6 e 4. Il valore 6 è il più significativo, in quanto costituisce il confine tra sufficienza e insufficienza; se tutti i casi producono il risultato atteso, il programma è corretto.</p>
+    <p>L'istruzione <code>if</code>/<code>else</code> è approfondita in <a href="articolo-if-else-python.html">if, elif ed else in Python</a>; <code>input()</code> e le variabili in <a href="articolo-variabili-python.html">le variabili in Python</a>. Per esercitarsi è disponibile l'<a href="esercizio-media-voti-python.html">esercizio sulla media dei voti</a>, con editor integrato.</p>
 
-    <h2 id="pdp">Cosa si può prevedere nel PDP per l'informatica?</h2>
-    <p>Questa parte è dedicata soprattutto a <strong>famiglie e docenti</strong>, ma è utile anche a te: sapere cosa si può chiedere ti aiuta a parlarne con la scuola.</p>
-    <p>Per gli studenti con DSA la scuola prepara il <strong>PDP</strong>, il Piano Didattico Personalizzato. Il punto di partenza è la <strong>diagnosi</strong>, che la famiglia consegna alla scuola.</p>
-    <p>Il PDP viene scritto dal consiglio di classe insieme alla famiglia. Va preparato <strong>entro i primi tre mesi</strong> dell'anno scolastico, oppure appena possibile se la diagnosi arriva durante l'anno. Nel PDP ci sono gli strumenti compensativi, le misure dispensative e il modo di fare verifiche e valutazioni.</p>
-    <p>Come si costruisce il PDP, un passo alla volta, lo spiego nella guida <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a>.</p>
-    <p>Ecco alcuni esempi pensati per l'informatica. Sono <strong>idee da valutare insieme</strong>, non una lista da copiare: ogni PDP è personale.</p>
-    <div class="pdp-grid">
-      <div class="dsa-box pdp-col">
-        <h3><span aria-hidden="true">✅</span> Strumenti compensativi</h3>
-        <ul>
-          <li>verifiche di programmazione <strong>al computer</strong>, con un editor, invece che scritte a mano;</li>
-          <li><strong>colori della sintassi</strong> e <strong>completamento automatico</strong> attivi durante le prove;</li>
-          <li><strong>scheda personale della sintassi</strong> o formulario;</li>
-          <li><strong>diagrammi di flusso e mappe</strong> durante verifiche e interrogazioni;</li>
-          <li><strong>sintesi vocale</strong> per leggere testi e consegne.</li>
-        </ul>
-      </div>
-      <div class="dsa-box pdp-col">
-        <h3><span aria-hidden="true">⏱️</span> Misure dispensative</h3>
-        <ul>
-          <li><strong>tempi più lunghi</strong> oppure <strong>meno esercizi</strong>, con gli stessi obiettivi della classe;</li>
-          <li>dispensa dal <strong>copiare codice lungo</strong> dalla lavagna, ricevendo gli esempi in formato digitale;</li>
-          <li>dispensa dalla <strong>lettura ad alta voce</strong> davanti alla classe.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="dsa-box pdp-col pdp-wide">
-      <h3><span aria-hidden="true">📝</span> Verifica e valutazione</h3>
-      <ul>
-        <li>valutare <strong>il ragionamento più della forma</strong>: un piccolo errore di battitura non dovrebbe pesare come un errore di logica;</li>
-        <li><strong>verifiche programmate</strong> e consegne brevi, con una richiesta per volta;</li>
-        <li>possibilità di <strong>integrare lo scritto con l'orale</strong>.</li>
-      </ul>
-    </div>
-    <p>All'<strong>esame di maturità</strong> (l'esame di Stato) la commissione decide come svolgerai le prove sulla base del tuo PDP. Negli scritti puoi avere <strong>tempi più lunghi</strong>. Puoi anche usare gli strumenti compensativi del PDP che hai <strong>già usato nelle verifiche durante l'anno</strong>, o altri che la commissione ritiene utili, purché non cambino quello che la prova deve verificare. Per questo conviene usarli con regolarità, non solo all'ultimo momento.</p>
-    <div class="dsa-box tip">
-      <h3 class="box-title"><span aria-hidden="true">👩‍🏫</span> Un consiglio per i docenti</h3>
-      <p>Alcuni piccoli accorgimenti aiutano gli studenti con DSA e, in realtà, <strong>tutta la classe</strong>:</p>
-      <ul>
-        <li>condividere gli esempi in formato digitale;</li>
-        <li>scrivere consegne brevi, con una richiesta per riga;</li>
-        <li>mostrare il diagramma prima del codice;</li>
-        <li>far provare subito il codice al computer.</li>
-      </ul>
-    </div>
-    <p class="norme rt-skip">Riferimenti normativi: Legge 8 ottobre 2010, n. 170; DM 12 luglio 2011, n. 5669 e Linee guida allegate; D.Lgs. 13 aprile 2017, n. 62, art. 20 (esame di Stato per gli studenti con DSA).</p>
+    <h2 id="pdp">Il PDP in ambito informatico</h2>
+    <p>Per gli studenti con DSA il <strong>PDP</strong> è obbligatorio a seguito della presentazione della diagnosi. È redatto dal consiglio di classe con la famiglia entro il primo trimestre dell'anno scolastico o, se la diagnosi è successiva, nel più breve tempo possibile, e contiene strumenti compensativi, misure dispensative e criteri di verifica e valutazione. Il quadro completo è in <a href="articolo-pdp-passo-dopo-passo.html">Il Piano Didattico Personalizzato (PDP)</a>.</p>
+    <p>Le misure seguenti, riferite all'informatica, sono esemplificative e vanno calibrate sul singolo studente.</p>
+    <h3>Strumenti compensativi</h3>
+    <ul>
+      <li>svolgimento delle prove di programmazione al computer, con un editor, anziché per iscritto;</li>
+      <li>evidenziazione della sintassi e completamento automatico attivi durante le prove;</li>
+      <li>scheda personale della sintassi o formulario;</li>
+      <li>diagrammi di flusso e mappe durante verifiche e interrogazioni;</li>
+      <li>sintesi vocale per la lettura di testi e consegne.</li>
+    </ul>
+    <h3>Misure dispensative</h3>
+    <ul>
+      <li>tempi più lunghi o riduzione quantitativa delle consegne, a parità di obiettivi;</li>
+      <li>dispensa dalla copiatura di codice esteso dalla lavagna, con fornitura degli esempi in formato digitale;</li>
+      <li>dispensa dalla lettura ad alta voce in classe.</li>
+    </ul>
+    <h3>Verifica e valutazione</h3>
+    <ul>
+      <li>valutazione centrata sul ragionamento più che sulla forma: un errore di digitazione non dovrebbe pesare quanto un errore logico;</li>
+      <li>verifiche programmate e consegne brevi, con una richiesta per volta;</li>
+      <li>possibilità di integrare la prova scritta con una prova orale.</li>
+    </ul>
+    <p>All'<strong>esame di maturità</strong> la commissione definisce le modalità di svolgimento delle prove sulla base del PDP (art. 20 del D.Lgs. 62/2017). Negli scritti possono essere concessi tempi più lunghi e possono essere utilizzati gli strumenti compensativi del PDP già impiegati nelle verifiche durante l'anno, o altri ritenuti funzionali dalla commissione, purché non ne risulti alterato l'oggetto della prova: di qui l'importanza di un uso regolare e non occasionale.</p>
+    <p>Alcuni accorgimenti didattici giovano agli studenti con DSA e, in generale, all'intera classe: la condivisione degli esempi in formato digitale, consegne brevi con una richiesta per riga, la presentazione del diagramma prima del codice e la sperimentazione immediata al computer.</p>
+    <p class="norme rt-skip">Riferimenti normativi: L. 170/2010; D.M. 5669/2011 e Linee guida allegate; D.Lgs. 62/2017, art. 20 (esame di maturità per gli studenti con DSA).</p>
 
-    <h2 id="sintesi">In sintesi</h2>
-{FIG_MAPPA}
-    <p>Con un DSA puoi imparare a programmare, e anche bene. Il segreto è non combattere contro le difficoltà, ma <strong>aggirarle con gli strumenti giusti</strong>, come quelli della mappa qui sopra.</p>
-    <p>Lavora <strong>un passo alla volta</strong>, prova spesso e ricorda che sbagliare fa parte del gioco: anche i programmatori esperti passano tanto tempo a correggere errori. Se le difficoltà sono tante, parlane con i tuoi docenti e con la tua famiglia: il PDP si può rivedere e migliorare. Se invece non hai una diagnosi ma pensi di avere un DSA, insieme alla tua famiglia potete chiedere alla scuola e al medico come fare una valutazione specialistica.</p>
+    <h2 id="sintesi">Considerazioni conclusive</h2>
+    <ul>
+      <li>Un DSA non preclude l'apprendimento della programmazione, fondata soprattutto sul ragionamento.</li>
+      <li>Le criticità riguardano la lettura del codice, la discriminazione di caratteri simili, la correttezza formale e la scrittura a mano.</li>
+      <li>Editor di codice, carattere tipografico adeguato, diagrammi, sintesi vocale, scheda della sintassi e uso consapevole dell'intelligenza artificiale riducono in misura significativa il carico.</li>
+      <li>Procedere per incrementi, partire dagli esempi e leggere con metodo i messaggi di errore sono strategie decisive.</li>
+      <li>Le misure vanno formalizzate nel PDP e impiegate con regolarità, anche in vista dell'esame di maturità.</li>
+    </ul>
+    <p>La chiave non consiste nel contrastare le difficoltà, ma nell'aggirarle con gli strumenti appropriati. Qualora le difficoltà persistano, il PDP può essere rivisto; in assenza di diagnosi, in caso di sospetto DSA, è opportuno che la famiglia si rivolga alla scuola e al medico per una valutazione specialistica.</p>
 
     <h2 id="faq">Domande frequenti</h2>
 {FAQS}
 
     <div class="cta-banner mt-4 rt-skip">
-      <h2>Prova subito, un passo alla volta</h2>
-      <p>Nelle lezioni gratuite trovi esempi da modificare e l'editor «Provalo tu» per vedere subito il risultato, senza installare nulla.</p>
+      <h2>Programmare un passo alla volta</h2>
+      <p>Le lezioni gratuite del sito propongono esempi brevi e modificabili, con l'editor «Provalo tu» integrato nel browser.</p>
       <a href="lezioni.html" class="btn btn-accent btn-lg">Vai alle lezioni gratuite →</a>
     </div>
-    <p class="rt-skip" style="margin-top:1.4rem">Hai un DSA e vuoi farmi una domanda o raccontarmi la tua esperienza? <a href="contatti.html">Scrivimi</a>: leggo tutti i messaggi.</p>
+    <p class="rt-skip" style="margin-top:1.4rem">Hai un DSA e vuoi farmi una domanda, o raccontarmi come studi informatica? <a href="contatti.html">Scrivimi</a>: leggo tutti i messaggi.</p>
 
     <div class="read-next rt-skip">
-      <h2 class="box-title"><span aria-hidden="true">📖</span> Leggi anche</h2>
+      <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-diagramma-di-flusso.html"><span aria-hidden="true">📐</span><strong>Cos'è un diagramma di flusso e come si legge</strong></a>
         <a href="articolo-adhd-programmazione.html"><span aria-hidden="true">⏲️</span><strong>ADHD e programmazione: strategie didattiche per l'apprendimento dell'informatica</strong></a>
@@ -461,11 +361,12 @@ BODY = f'''
 words, MIN = minutes(BODY)
 META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
-    keywords="informatica DSA, DSA programmazione, strumenti compensativi informatica, dislessia programmazione, PDP informatica, studiare informatica con DSA, misure dispensative informatica",
+    keywords="informatica DSA, DSA programmazione, L. 170/2010, strumenti compensativi informatica, dislessia programmazione, PDP informatica, studiare informatica con DSA, misure dispensative informatica",
     og_alt="Il titolo «Informatica e DSA», un pezzo di puzzle con le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
-    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-19",
+    date_iso="2026-11-08", date_it="8 novembre 2026", modified_iso="2026-11-21",
     ld_keywords="DSA, dislessia, strumenti compensativi, misure dispensative, PDP, programmazione, informatica",
     hero_src="articolo-informatica-dsa.jpg",
+    no_rt_note=True, no_tool_icons=True,   # stile professionale (dal 21/11/2026)
     hero_alt="Copertina dell'articolo: il titolo «Informatica e DSA», un pezzo di puzzle con dentro le parentesi graffe del codice e un breve programma Python che scrive «Ce la fai!».",
 )
 if __name__ == '__main__':

@@ -44,7 +44,7 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
 
 ## Serie «inclusione» a lettura facilitata
 
-Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
+Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA: strategie e strumenti compensativi per l'apprendimento della programmazione», riscritto in stile professionale il 21/11/2026; copertina originale con il puzzle),
 `articolo-bes-dsa-disabilita.html` («Disabilità certificata (L. 104/92), DSA e altri BES: distinzioni normative e strumenti di progettazione», articolo guida, riscritto in stile professionale il 21/11/2026),
 `articolo-pei-spiegato-semplice.html` («Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi nella secondaria di secondo grado», 15/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pei.py`),
 `articolo-pdp-passo-dopo-passo.html` («Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti per DSA e altri BES», 17/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pdp.py`),
@@ -86,11 +86,9 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
     e un'icona per scheda).
   - Restano: indice, domande frequenti, riferimenti normativi (`.norme rt-skip`), «Considerazioni conclusive» al posto di
     «In sintesi», copertina, revisione indipendente, link interni e di ritorno.
-  - **Riscrittura in corso (richiesta del 21/11/2026)**: l'autore ha chiesto di riscrivere nel nuovo stile, uno alla volta,
-    gli articoli precedenti. Fatti: Docente di sostegno, PEI, PDP, Tecnologie assistive, ADHD, BES. Da fare: Informatica e DSA
-    (l'autore ha autorizzato a riscriverli e pubblicarli senza chiedere conferma). Per ognuno: nuovo titolo professionale (slug invariato, stessi id delle sezioni
-    citate da altri articoli), copertina, scheda del blog, `search.js`, testo dei link negli altri generatori, `<lastmod>`.
-- Regole di scrittura degli articoli pubblicati **fino al 19/11/2026** (lettura facilitata, guida British Dyslexia Association):
+  - **Tutti e 7 gli articoli della serie sono ora in stile professionale** (riscrittura completata il 21/11/2026).
+    Le regole «a lettura facilitata» qui sotto restano solo come riferimento storico: non usarle per i nuovi articoli.
+- (Storico, non più in uso) Regole di scrittura «a lettura facilitata» usate fino al 20/11/2026 (guida British Dyslexia Association):
   frasi brevi (≤ ~25 parole), un concetto per paragrafo, niente corsivi, grassetto per le parole chiave,
   termini e sigle spiegati alla prima occorrenza, «tu» al lettore, prima persona per Alessandro,
   **niente aneddoti o dati inventati**. Struttura: riassunto «in 30 secondi», indice, sezioni con figure,
