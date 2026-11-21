@@ -117,7 +117,7 @@ BODY = f"""
       <li>memorizzazione di sequenze, elenchi e tabelline;</li>
       <li>svolgimento di più prove nella stessa giornata.</li>
     </ul>
-    <p>L'efficacia degli strumenti dipende dalla loro adozione sistematica, a scuola e a casa, e non dal loro impiego occasionale in sede di verifica. Una rassegna ragionata è disponibile in <a href="articolo-informatica-dsa.html#strumenti">Informatica e DSA</a>; le modalità per ottenerli sono descritte in <a href="articolo-tecnologie-assistive.html#come-averle">Tecnologie assistive per studiare</a>.</p>
+    <p>L'efficacia degli strumenti dipende dalla loro adozione sistematica, a scuola e a casa, e non dal loro impiego occasionale in sede di verifica. Una rassegna ragionata è disponibile in <a href="articolo-informatica-dsa.html#strumenti">Informatica e DSA</a>; le modalità per ottenerli sono descritte in <a href="articolo-tecnologie-assistive.html#come-averle">Le tecnologie assistive a scuola</a>.</p>
 
     <h2 id="verifiche">Verifica e valutazione</h2>
     <p>Il PDP definisce le modalità di verifica e i criteri di valutazione. Tra le misure più ricorrenti:</p>

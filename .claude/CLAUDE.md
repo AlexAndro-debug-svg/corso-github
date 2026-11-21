@@ -48,7 +48,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 `articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida),
 `articolo-pei-spiegato-semplice.html` («Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi nella secondaria di secondo grado», 15/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pei.py`),
 `articolo-pdp-passo-dopo-passo.html` («Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti per DSA e altri BES», 17/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pdp.py`),
-`articolo-tecnologie-assistive.html` («Tecnologie assistive per studiare», 18/11/2026, generatore `build_tecno.py`),
+`articolo-tecnologie-assistive.html` («Le tecnologie assistive a scuola: tipologie, modalità di accesso e integrazione nella progettazione didattica», 18/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_tecno.py`),
 `articolo-adhd-programmazione.html` («ADHD e programmazione», 19/11/2026, generatore `build_adhd.py`),
 `articolo-docente-di-sostegno.html` («Il docente di sostegno nella scuola secondaria di secondo grado: ruolo, funzioni e responsabilità», 20/11/2026, generatore `build_sostegno.py`, registro professionale).
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
@@ -87,7 +87,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   - Restano: indice, domande frequenti, riferimenti normativi (`.norme rt-skip`), «Considerazioni conclusive» al posto di
     «In sintesi», copertina, revisione indipendente, link interni e di ritorno.
   - **Riscrittura in corso (richiesta del 21/11/2026)**: l'autore ha chiesto di riscrivere nel nuovo stile, uno alla volta,
-    gli articoli precedenti. Fatti: Docente di sostegno, PEI, PDP. Da fare, in quest'ordine: Tecnologie assistive, ADHD
+    gli articoli precedenti. Fatti: Docente di sostegno, PEI, PDP, Tecnologie assistive. Da fare: ADHD
     (poi chiedere per BES e Informatica e DSA). Per ognuno: nuovo titolo professionale (slug invariato, stessi id delle sezioni
     citate da altri articoli), copertina, scheda del blog, `search.js`, testo dei link negli altri generatori, `<lastmod>`.
     Pubblica su main solo dopo il via esplicito dell'autore per ciascun articolo.

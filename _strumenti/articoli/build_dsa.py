@@ -285,7 +285,7 @@ BODY = f'''
 
     <h2 id="strumenti">Quali strumenti compensativi aiutano in informatica?</h2>
     <p>Ecco gli strumenti che, secondo me, fanno davvero la differenza. <strong>Non servono tutti</strong>: scegli quelli che ti aiutano di più.</p>
-    <p>Quali tecnologie hai già gratis nel computer e come averne altre a scuola lo spiego nella guida <a href="articolo-tecnologie-assistive.html">Tecnologie assistive per studiare</a>.</p>
+    <p>Quali tecnologie hai già gratis nel computer e come averne altre a scuola lo spiego nella guida <a href="articolo-tecnologie-assistive.html">Le tecnologie assistive a scuola</a>.</p>
 
     <h3>1. Un editor di codice che lavora per te</h3>
     <p>Scrivere codice in un semplice blocco note è come scrivere un tema senza correttore. Un <strong>editor di codice</strong> ti aiuta in tanti modi:</p>

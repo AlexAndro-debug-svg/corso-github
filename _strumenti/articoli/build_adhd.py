@@ -261,7 +261,7 @@ BODY = f"""
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
         <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
-        <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Tecnologie assistive per studiare: quali sono e come averle a scuola</strong></a>
+        <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Le tecnologie assistive a scuola: tipologie, accesso e integrazione didattica</strong></a>
       </div>
     </div>
 """
