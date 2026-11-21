@@ -46,14 +46,15 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
 
 Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
 `articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida),
-`articolo-pei-spiegato-semplice.html` («Il PEI spiegato semplice», 15/11/2026, generatore `build_pei.py`),
+`articolo-pei-spiegato-semplice.html` («Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi nella secondaria di secondo grado», 15/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pei.py`),
 `articolo-pdp-passo-dopo-passo.html` («Il PDP passo dopo passo», 17/11/2026, generatore `build_pdp.py`),
 `articolo-tecnologie-assistive.html` («Tecnologie assistive per studiare», 18/11/2026, generatore `build_tecno.py`),
 `articolo-adhd-programmazione.html` («ADHD e programmazione», 19/11/2026, generatore `build_adhd.py`),
 `articolo-docente-di-sostegno.html` («Il docente di sostegno nella scuola secondaria di secondo grado: ruolo, funzioni e responsabilità», 20/11/2026, generatore `build_sostegno.py`, registro professionale).
 - **Da fare dopo il 29/11/2026**: l'articolo PEI cita il D.L. 30 settembre 2026, n. 170 (scadenze del PEI, ore di
   sostegno «definite» dal PEI, GLO valido con una componente assente), in conversione con molti emendamenti.
-  Ricontrolla il testo della legge di conversione, aggiorna calendario, FAQ, riquadro «Regole in cambiamento» e `modified_iso`.
+  Ricontrolla il testo della legge di conversione e aggiorna in `build_pei.py` la sezione `#calendario` (paragrafo «Avvertenza»
+  ed elenco delle scadenze), le FAQ sulle ore, i riferimenti normativi, la data «Aggiornato al…» e `modified_iso`.
   Lo cita anche `articolo-docente-di-sostegno.html` (sezione «Quante ore», FAQ sulle ore, riferimenti): aggiorna anche quello.
   Per trovare altri punti cerca «decreto-legge del 2026» e «170/2026» nei generatori `_strumenti/articoli/build_*.py`.
   C'è un promemoria programmato per il 30/11/2026 alle 9:47 (ora di Roma): mostra le modifiche all'autore
@@ -85,8 +86,11 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
     e un'icona per scheda).
   - Restano: indice, domande frequenti, riferimenti normativi (`.norme rt-skip`), «Considerazioni conclusive» al posto di
     «In sintesi», copertina, revisione indipendente, link interni e di ritorno.
-  - Gli articoli pubblicati prima (BES, PEI, PDP, Tecnologie assistive, ADHD, Informatica e DSA) restano nello stile a
-    lettura facilitata descritto sotto, salvo diversa richiesta dell'autore.
+  - **Riscrittura in corso (richiesta del 21/11/2026)**: l'autore ha chiesto di riscrivere nel nuovo stile, uno alla volta,
+    gli articoli precedenti. Fatti: Docente di sostegno, PEI. Da fare, in quest'ordine: PDP, Tecnologie assistive, ADHD
+    (poi chiedere per BES e Informatica e DSA). Per ognuno: nuovo titolo professionale (slug invariato, stessi id delle sezioni
+    citate da altri articoli), copertina, scheda del blog, `search.js`, testo dei link negli altri generatori, `<lastmod>`.
+    Pubblica su main solo dopo il via esplicito dell'autore per ciascun articolo.
 - Regole di scrittura degli articoli pubblicati **fino al 19/11/2026** (lettura facilitata, guida British Dyslexia Association):
   frasi brevi (≤ ~25 parole), un concetto per paragrafo, niente corsivi, grassetto per le parole chiave,
   termini e sigle spiegati alla prima occorrenza, «tu» al lettore, prima persona per Alessandro,

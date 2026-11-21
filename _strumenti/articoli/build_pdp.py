@@ -164,7 +164,7 @@ BODY = f"""
       <p>Sono gli studenti con un bisogno educativo speciale che non è una disabilità e non è un DSA. Per esempio chi ha l'<strong>ADHD</strong> (disturbo da deficit di attenzione e iperattività) o chi sta ancora imparando l'italiano.</p>
       <p>In questi casi è il <strong>consiglio di classe</strong> a decidere se serve un PDP. Spesso il PDP vale <strong>per un periodo limitato</strong>.</p>
     </div>
-    <p>Per gli studenti con <strong>disabilità certificata</strong> (Legge 104), invece, la scuola prepara un altro documento, il <strong>PEI</strong> (Piano Educativo Individualizzato). Lo spiego nella guida <a href="articolo-pei-spiegato-semplice.html">Il PEI spiegato semplice</a>.</p>
+    <p>Per gli studenti con <strong>disabilità certificata</strong> (Legge 104), invece, la scuola prepara un altro documento, il <strong>PEI</strong> (Piano Educativo Individualizzato). Lo spiego nella guida <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a>.</p>
 
     <h2 id="chi-quando">Chi lo scrive e quando</h2>
     <p>Il PDP lo scrive il <strong>consiglio di classe</strong>, cioè tutti i docenti della classe. Di solito il coordinatore di classe raccoglie le proposte dei colleghi e prepara il testo.</p>
@@ -269,7 +269,7 @@ BODY = f"""
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
         <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
-        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
+        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
       </div>
     </div>
 """

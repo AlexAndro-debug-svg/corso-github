@@ -16,7 +16,7 @@ FAQS = "\n".join([
     faq("Il docente di sostegno è assegnato all'alunno o alla classe?",
         "Alla classe. L'art. 13, comma 6, della L. 104/92 stabilisce che i docenti di sostegno assumono la contitolarità delle sezioni e delle classi in cui operano. L'attenzione specifica allo studente con disabilità non ne fa un docente «dedicato»: la responsabilità educativa resta condivisa dall'intero consiglio di classe."),
     faq("Chi determina il numero di ore di sostegno?",
-        "Il fabbisogno è individuato dal GLO nel PEI, con adeguata motivazione; l'assegnazione dei posti spetta poi all'Ufficio scolastico regionale. Il D.L. 170/2026 ha modificato la formulazione, prevedendo che il PEI «definisca» le ore anziché limitarsi a proporle; il testo è tuttavia in corso di conversione e potrebbe subire modifiche. Il quadro è illustrato nell'articolo <a href=\"articolo-pei-spiegato-semplice.html#calendario\">Il PEI spiegato semplice</a>."),
+        "Il fabbisogno è individuato dal GLO nel PEI, con adeguata motivazione; l'assegnazione dei posti spetta poi all'Ufficio scolastico regionale. Il D.L. 170/2026 ha modificato la formulazione, prevedendo che il PEI «definisca» le ore anziché limitarsi a proporle; il testo è tuttavia in corso di conversione e potrebbe subire modifiche. Il quadro è illustrato nell'articolo <a href=\"articolo-pei-spiegato-semplice.html#calendario\">Il Piano Educativo Individualizzato (PEI)</a>."),
     faq("È possibile garantire la continuità del docente da un anno all'altro?",
         "Per i docenti a tempo determinato, sì, a determinate condizioni. L'art. 8 del D.L. 71/2024, attuato dal D.M. 32/2025 e prorogato dal D.L. 127/2025, consente alla famiglia di richiedere la conferma del supplente dell'anno precedente. La decisione spetta al dirigente scolastico, sentito il GLO, ed è subordinata all'assenso del docente e alla sua posizione utile in graduatoria. La richiesta va presentata entro i termini fissati dal Ministero (nel 2025, il 31 maggio). In caso di avvicendamento, il PEI conserva piena validità."),
     faq("Come si gestisce l'assenza del docente di sostegno?",
@@ -71,7 +71,7 @@ BODY = f"""
       <li><strong>Raccordo.</strong> Cura i rapporti con la famiglia, con i servizi sanitari e con le figure professionali che seguono lo studente.</li>
       <li><strong>Valutazione.</strong> Partecipa agli scrutini e alla valutazione di tutti gli studenti della classe.</li>
     </ul>
-    <p>Il PEI rappresenta il riferimento unitario di queste funzioni. Struttura, tempi e percorsi sono illustrati nell'articolo <a href="articolo-pei-spiegato-semplice.html">Il PEI spiegato semplice</a>.</p>
+    <p>Il PEI rappresenta il riferimento unitario di queste funzioni. Struttura, tempi e percorsi sono illustrati nell'articolo <a href="articolo-pei-spiegato-semplice.html">Il Piano Educativo Individualizzato (PEI)</a>.</p>
 
     <h2 id="ore">Risorse orarie e continuità</h2>
     <p>Le ore di sostegno non sono attribuite in misura uniforme, ma in funzione dei bisogni dello studente, e sono indicate nel PEI. Il D.L. 170/2026 ha previsto che il PEI «definisca» tali ore con adeguata motivazione; il provvedimento è tuttavia in corso di conversione in legge, con termine al 29 novembre 2026, e potrebbe essere modificato.</p>
@@ -149,7 +149,7 @@ BODY = f"""
     <div class="read-next rt-skip">
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
-        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
+        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
         <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
         <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Tecnologie assistive per studiare: quali sono e come averle a scuola</strong></a>
       </div>

@@ -1,258 +1,173 @@
 #!/usr/bin/env python3
-"""Articolo 2 della serie inclusione: il PEI spiegato semplice."""
+"""Articolo della serie inclusione: il PEI (stile professionale, riscritto il 21/11/2026)."""
 import os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from artlib import *
 
 SLUG = "articolo-pei-spiegato-semplice"
-TITLE = "Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona"
-SEO_TITLE = "Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona — AlessandroSimone.it"
-DESC = "Cos'è il PEI, chi lo scrive nel GLO, cosa contiene, i tre percorsi alle superiori e le scadenze 2026. Guida semplice per famiglie, studenti e docenti."
+TITLE = "Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi nella secondaria di secondo grado"
+SEO_TITLE = "Il PEI: elaborazione, contenuti e percorsi — AlessandroSimone.it"
+DESC = "Natura, elaborazione e contenuti del PEI, ruolo del GLO, modello nazionale, percorsi della secondaria di II grado e novità del D.L. 170/2026."
 URL = f"https://alessandrosimone.it/{SLUG}.html"
 IMG = f"https://alessandrosimone.it/{SLUG}.jpg"
 
-# ------------------------------------------------------------------ FIGURE
-GLO = [
-    ("Consiglio di classe", "Tutti i docenti della classe, compreso il docente di sostegno."),
-    ("Dirigente scolastico", "Presiede il GLO, oppure delega un docente a farlo."),
-    ("Famiglia", "I genitori, o chi ha la responsabilità dello studente, partecipano con gli stessi diritti degli altri."),
-    ("Studente", "Alle superiori partecipa anche lo studente: ha il diritto di decidere per sé (principio di autodeterminazione)."),
-    ("ASL", "Un rappresentante dell'Azienda sanitaria locale: viene dal gruppo di specialisti che ha valutato lo studente."),
-    ("Altre figure", "Chi lavora con lo studente a scuola, per esempio l'assistente all'autonomia e alla comunicazione."),
-    ("Un esperto della famiglia", "Al massimo uno, se il dirigente lo autorizza. Dà un parere, ma non decide."),
-]
-FIG_GLO = """
-    <figure class="dsa-figure" aria-labelledby="cap-glo">
-      <div class="sigle-grid">
-""" + '\n'.join(f'        <div class="sigla"><b>{a}</b><span>{b}</span></div>' for a, b in GLO) + """
-      </div>
-      <figcaption id="cap-glo">Chi fa parte del GLO, il gruppo che scrive e approva il PEI.</figcaption>
-    </figure>"""
-
-DIM = [
-    ("🗣️", "Relazione, interazione e socializzazione", "come lo studente sta con i compagni e con gli adulti."),
-    ("💬", "Comunicazione e linguaggio", "come capisce e come si esprime, anche con strumenti diversi dalla voce."),
-    ("🧭", "Autonomia e orientamento", "come si muove, si organizza e si prende cura di sé."),
-    ("🧠", "Cognitiva, neuropsicologica e dell'apprendimento", "come ragiona, ricorda, presta attenzione e impara."),
-]
-FIG_DIM = """
-    <ul class="icon-list">
-""" + '\n'.join(f'      <li><span class="t-ico" aria-hidden="true">{i}</span><span><strong>{a}</strong>: {b}</span></li>' for i, a, b in DIM) + """
-    </ul>"""
-
-SEZ = [
-    "<strong>Quadro informativo</strong>: lo studente descritto dalla famiglia o da lui stesso.",
-    "<strong>Elementi dal Profilo di funzionamento</strong>: punti di forza e bisogni, come li descrivono gli specialisti.",
-    "<strong>Raccordo con il Progetto individuale</strong>: il collegamento con il progetto di vita, se c'è.",
-    "<strong>Osservazioni sullo studente</strong>: cosa notano i docenti nelle quattro dimensioni.",
-    "<strong>Interventi per lo studente</strong>: obiettivi, strategie e strumenti per ogni dimensione.",
-    "<strong>Osservazioni sul contesto</strong>: le barriere e i facilitatori a scuola.",
-    "<strong>Interventi sul contesto</strong>: cosa cambia la scuola per essere più inclusiva.",
-    "<strong>Interventi sul percorso curricolare</strong>: materia per materia, obiettivi, verifiche e tipo di percorso.",
-    "<strong>Organizzazione del progetto di inclusione</strong>: orario, risorse e chi fa che cosa.",
-    "<strong>Certificazione delle competenze</strong>: alle superiori si compila alla fine del secondo anno.",
-    "<strong>Verifica finale</strong>: com'è andata e cosa serve per l'anno dopo.",
-    "<strong>PEI provvisorio</strong>: si prepara entro giugno per chi inizia il percorso, per esempio dopo una nuova certificazione.",
-]
-FIG_SEZ = """
-    <figure class="dsa-figure" aria-labelledby="cap-sez">
-      <ol class="steps-list">
-""" + '\n'.join(f'        <li>{x}</li>' for x in SEZ) + """
-      </ol>
-      <figcaption id="cap-sez">Le dodici sezioni del modello nazionale di PEI, spiegate in una riga ciascuna.</figcaption>
-    </figure>"""
-
-PERC = [
-    ("A", "Percorso ordinario", "Lo studente segue <strong>gli stessi obiettivi della classe</strong>. Può usare aiuti e strumenti diversi, ma il traguardo è lo stesso dei compagni.", "Diploma, se supera l'esame"),
-    ("B", "Percorso personalizzato, con prove equipollenti", "Gli obiettivi sono <strong>quelli essenziali della classe</strong>. Le verifiche sono <strong>equipollenti</strong>: possono cambiare i tempi, gli strumenti, il modo e anche i contenuti, ma devono dimostrare una preparazione equivalente.", "Diploma, se supera l'esame"),
-    ("C", "Percorso differenziato", "Gli obiettivi sono <strong>diversi da quelli della classe</strong>, pensati sulle possibilità dello studente. Serve il <strong>consenso della famiglia</strong>.", "Attestato di credito formativo"),
-]
-FIG_PERC = """
-    <figure class="dsa-figure" aria-labelledby="cap-perc">
-      <div class="perc-grid">
-""" + '\n'.join(
-    f'        <div class="perc"><span class="perc-l" aria-hidden="true">{l}</span><div><div class="perc-t"><span class="sr-only">Percorso {l}: </span>{t}</div><p>{d}</p><span class="perc-out">Alla fine: {o}</span></div></div>'
-    for l, t, d, o in PERC) + """
-      </div>
-      <figcaption id="cap-perc">I tre percorsi previsti alle superiori. Con i percorsi A e B si ottiene il diploma, se si supera l'esame di maturità. Con il percorso C si ottiene un attestato con le competenze raggiunte.</figcaption>
-    </figure>"""
-
-CAL = [
-    ("g1", "🤝", "Studente già iscritto nella scuola", [
-        "Durante l'anno il GLO controlla il PEI nelle verifiche intermedie",
-        "Entro giugno fa la verifica finale dell'anno che si chiude",
-        "Entro giugno approva il PEI definitivo per l'anno successivo, con le ore di sostegno",
-        "Nelle prime due settimane di ottobre può aggiornarlo, dopo aver conosciuto la nuova classe"]),
-    ("g1", "🤝", "Nuovo iscritto o prima certificazione", [
-        "La famiglia consegna alla scuola la certificazione",
-        "Entro giugno il GLO prepara il PEI provvisorio",
-        "Entro il 15 ottobre approva il PEI definitivo",
-        "Durante l'anno lo controlla nelle verifiche intermedie"]),
-]
-FIG_CAL = """
-    <figure class="dsa-figure" aria-labelledby="cap-cal">
-      <div class="path-grid">
-""" + '\n'.join(
-    f'        <div class="path-col {g}"><div class="pc-title"><span aria-hidden="true">{ico}</span> {name}</div><ol role="list">'
-    + ''.join(f'<li>{step}</li>' for step in steps) + '</ol></div>'
-    for g, ico, name, steps in CAL) + """
-      </div>
-      <figcaption id="cap-cal">Il calendario del PEI secondo il decreto-legge 170 del 2026, ancora da convertire in legge. Il primo riquadro vale per chi è già nella scuola, il secondo per chi arriva o è stato appena certificato.</figcaption>
-    </figure>"""
-
 # ------------------------------------------------------------------ FAQ
 FAQS = "\n".join([
-    faq("Il PEI serve anche per i DSA o per gli altri BES?",
-        "No. Il PEI è il documento per gli studenti con disabilità certificata secondo la Legge 104. Per i DSA e per gli altri BES la scuola prepara il PDP, il Piano Didattico Personalizzato: lo spiego nella guida <a href=\"articolo-pdp-passo-dopo-passo.html\">Il PDP passo dopo passo</a>. Le differenze sono spiegate nella guida <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità 104, DSA e BES</a>."),
-    faq("Lo studente può partecipare al GLO?",
-        "Sì. Alle superiori lo studente partecipa al GLO. È il principio di autodeterminazione, cioè il diritto di decidere per sé: può dire cosa gli serve, cosa funziona e quali obiettivi vuole raggiungere. Se gli è difficile parlare in una riunione, può preparare prima qualche appunto, anche con l'aiuto di un docente o della famiglia."),
-    faq("La famiglia può portare un esperto di fiducia?",
-        "Sì, ma al massimo uno. La famiglia lo chiede alla scuola e il dirigente scolastico autorizza la partecipazione. L'esperto può dare il suo parere, ma non vota e non decide."),
-    faq("Che cosa posso fare se non sono d'accordo con il PEI?",
-        "Dillo durante il GLO e chiedi che il tuo parere sia scritto nel verbale, cioè nel documento che riassume la riunione. Se il disaccordo resta, puoi chiedere un colloquio con il dirigente scolastico."),
-    faq("Che cosa succede se la famiglia rifiuta il percorso differenziato?",
-        "Se la famiglia dice di no per iscritto, lo studente viene valutato con gli stessi criteri dei compagni. Continua ad avere il sostegno, ma non ha la certezza di essere promosso. Se invece la famiglia non risponde entro la data fissata dalla scuola, la proposta vale come accettata. Prima di decidere, chiedi al consiglio di classe di spiegarti bene i motivi della proposta."),
-    faq("Il PEI si può cambiare durante l'anno?",
-        "Sì. Il PEI non è scritto una volta per tutte. Nelle verifiche intermedie il GLO controlla se gli obiettivi e gli aiuti funzionano e, se serve, li cambia."),
-    faq("Chi decide le ore di sostegno?",
-        "Le indica il GLO nel PEI, spiegando il motivo, in base ai bisogni dello studente e della classe. Con il decreto-legge del 2026 il PEI definisce le ore di sostegno, mentre prima conteneva solo una proposta. Poi è l'Ufficio scolastico regionale ad assegnare i docenti di sostegno alla scuola. Il testo del decreto può ancora cambiare con la conversione in legge."),
-    faq("Che cos'è il progetto di vita? Sostituisce il PEI?",
-        "No, non lo sostituisce. Il progetto di vita è previsto dalla riforma della disabilità, cioè il decreto legislativo 62 del 2024. Riguarda tutta la vita della persona, non solo la scuola. Il PEI ne diventa la parte scolastica: per questo nel modello c'è una sezione di raccordo con il progetto individuale. La riforma si sta applicando per gradi: chiedi al tuo Comune se riguarda già la tua zona."),
+    faq("Il PEI si applica anche agli studenti con DSA o con altri BES?",
+        "No. Il PEI è riservato agli studenti con disabilità certificata ai sensi della L. 104/92. Per gli studenti con DSA (L. 170/2010) e con altri BES (Direttiva ministeriale 27 dicembre 2012) lo strumento di riferimento è il PDP, illustrato nell'articolo <a href=\"articolo-pdp-passo-dopo-passo.html\">Il Piano Didattico Personalizzato (PDP)</a>. Le distinzioni sono approfondite in <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità 104, DSA e BES</a>."),
+    faq("Qual è il ruolo dello studente nel GLO?",
+        "Nella secondaria di secondo grado lo studente partecipa al GLO in attuazione del principio di autodeterminazione. Può esprimere esigenze, preferenze e obiettivi; è opportuno che la sua partecipazione sia preparata, anche con il supporto di un docente o della famiglia."),
+    faq("La famiglia può farsi affiancare da un esperto di fiducia?",
+        "Sì, nel limite di un esperto, previa autorizzazione del dirigente scolastico (art. 3, comma 6, del D.I. 182/2020). La sua partecipazione ha valore consultivo e non decisionale."),
+    faq("Come può la famiglia manifestare un dissenso sul PEI?",
+        "Il dissenso va espresso in sede di GLO, chiedendone la verbalizzazione. Qualora permanga, è possibile richiedere un incontro con il dirigente scolastico."),
+    faq("Che cosa comporta il diniego della famiglia al percorso differenziato?",
+        "In presenza di un diniego espresso per iscritto, lo studente è valutato secondo i criteri della classe (art. 15 dell'O.M. 90/2001): conserva il sostegno, ma non ha alcuna garanzia di ammissione alla classe successiva. Il silenzio della famiglia entro il termine fissato dalla scuola equivale ad assenso. È opportuno che il consiglio di classe illustri con chiarezza le ragioni della proposta."),
+    faq("Il PEI può essere modificato in corso d'anno?",
+        "Sì. Le verifiche intermedie hanno proprio la funzione di accertare l'efficacia di obiettivi, strategie e risorse e, ove necessario, di rimodularli."),
+    faq("Chi determina le ore di sostegno?",
+        "Il GLO le indica nel PEI con adeguata motivazione, in relazione ai bisogni dello studente e del contesto classe. Il D.L. 170/2026 ha previsto che il PEI «definisca» le ore, superando la precedente formula della «proposta»; l'assegnazione dei posti resta di competenza dell'Ufficio scolastico regionale. Il testo è in corso di conversione e potrebbe essere modificato."),
+    faq("Il progetto di vita sostituisce il PEI?",
+        "No. Il progetto di vita individuale, personalizzato e partecipato, introdotto dal D.Lgs. 62/2024, riguarda l'intero arco dell'esistenza della persona; il PEI ne costituisce la declinazione scolastica, come evidenzia la sezione di raccordo con il Progetto individuale prevista dal modello nazionale. La riforma è in fase di attuazione progressiva sul territorio."),
 ])
 
 # ------------------------------------------------------------------ CORPO
 BODY = f"""
-    <div class="dsa-box tldr" id="in-breve">
-      <h2 class="box-title"><span aria-hidden="true">📌</span> L'articolo in 30 secondi</h2>
-      <ul>
-        <li>Il <strong>PEI</strong> (Piano Educativo Individualizzato) è il documento della scuola per gli studenti con <strong>disabilità certificata</strong> (Legge 104).</li>
-        <li>Lo scrive e lo approva il <strong>GLO</strong>, un gruppo di lavoro. Ne fanno parte i docenti, la famiglia, gli specialisti e, alle superiori, <strong>lo studente stesso</strong>.</li>
-        <li>Dice <strong>quali obiettivi</strong> ha lo studente, <strong>quali aiuti</strong> riceve e che cosa cambia la scuola per togliere gli ostacoli.</li>
-        <li>Alle superiori ci sono <strong>tre percorsi</strong>: con i primi due si prende il <strong>diploma</strong>, con il terzo, il percorso differenziato, un <strong>attestato</strong>.</li>
-      </ul>
-    </div>
+    <p>Il <strong>PEI</strong> (Piano Educativo Individualizzato) è il documento con cui la scuola progetta il percorso degli studenti con <strong>disabilità certificata</strong> ai sensi della <strong>L. 104/92</strong>. Ne definisce obiettivi, strategie, strumenti e risorse e individua gli interventi necessari a rimuovere le barriere presenti nel contesto.</p>
+    <p>Partecipo ai GLO come docente per l'inclusività (<a href="/#chi-sono">chi sono</a>). In questo contributo ricostruisco il quadro normativo del PEI, le modalità della sua elaborazione, la struttura del modello nazionale e i percorsi previsti nella secondaria di secondo grado, alla luce delle novità introdotte nel 2026.</p>
 
     <nav class="dsa-box toc rt-skip" aria-label="Indice dell'articolo">
-      <h2 class="box-title"><span aria-hidden="true">🧭</span> Indice</h2>
+      <h2 class="box-title">Indice</h2>
       <ol>
-        <li><a href="#cos-e">Che cos'è il PEI e per chi è</a></li>
-        <li><a href="#glo">Chi lo scrive: il GLO</a></li>
-        <li><a href="#dentro">Cosa c'è dentro il PEI</a></li>
-        <li><a href="#modello">Per i docenti: il modello in dodici sezioni</a></li>
-        <li><a href="#percorsi">I tre percorsi alle superiori</a></li>
-        <li><a href="#calendario">Quando si scrive: il calendario e le novità del 2026</a></li>
-        <li><a href="#partecipare">Come partecipare al GLO</a></li>
-        <li><a href="#falsi-miti">Quattro falsi miti</a></li>
-        <li><a href="#informatica">E in informatica, che cosa cambia?</a></li>
-        <li><a href="#sintesi">In sintesi</a></li>
+        <li><a href="#cos-e">Natura e destinatari</a></li>
+        <li><a href="#glo">L'elaborazione: il GLO</a></li>
+        <li><a href="#dentro">L'impianto concettuale</a></li>
+        <li><a href="#modello">Il modello nazionale</a></li>
+        <li><a href="#percorsi">I percorsi nella secondaria di secondo grado</a></li>
+        <li><a href="#calendario">Tempi e scadenze: le novità del 2026</a></li>
+        <li><a href="#partecipare">Indicazioni per la partecipazione al GLO</a></li>
+        <li><a href="#falsi-miti">Alcuni fraintendimenti ricorrenti</a></li>
+        <li><a href="#informatica">Un esempio disciplinare: l'informatica</a></li>
+        <li><a href="#sintesi">Considerazioni conclusive</a></li>
         <li><a href="#faq">Domande frequenti</a></li>
       </ol>
     </nav>
 
-    <p>Se tuo figlio ha una disabilità certificata, o se sei uno studente con una certificazione, prima o poi senti parlare del <strong>PEI</strong>.</p>
-    <p>È un documento importante: decide <strong>come</strong> lo studente impara a scuola, <strong>con quali aiuti</strong> e <strong>verso quali traguardi</strong>.</p>
-    <p>Lavoro ogni giorno come <a href="/#chi-sono">docente per l'inclusività</a> e partecipo ai GLO, i gruppi che scrivono il PEI. In questa guida ti spiego il PEI passo dopo passo, senza dare nulla per scontato.</p>
-    <p>Ci sono anche due parti pensate per i colleghi docenti: il modello nazionale e i tre percorsi delle superiori. Se una sigla ti sfugge, trovi tutto nella guida <a href="articolo-bes-dsa-disabilita.html#sigle">Disabilità 104, DSA e BES</a>.</p>
+    <h2 id="cos-e">Natura e destinatari</h2>
+    <p>Il PEI è disciplinato dall'art. 7 del <strong>D.Lgs. 66/2017</strong>, come modificato dal D.Lgs. 96/2019, ed è redatto secondo i modelli nazionali adottati con il <strong>D.I. 182/2020</strong>, successivamente integrato dal D.I. 153/2023.</p>
+    <p>Destinatari sono esclusivamente gli studenti con disabilità certificata ai fini dell'inclusione scolastica. Per gli studenti con DSA (L. 170/2010) e con altri BES lo strumento di riferimento è invece il PDP (Piano Didattico Personalizzato).</p>
+    <p>Il PEI si fonda sulla certificazione e sul <strong>Profilo di funzionamento</strong>, documento redatto dall'unità di valutazione multidisciplinare che descrive punti di forza e bisogni dello studente. Nelle more della piena attuazione della riforma, in assenza del Profilo si fa riferimento alla Diagnosi funzionale.</p>
+    <p>Il documento è redatto ogni anno scolastico ed è soggetto a verifiche periodiche; nella secondaria di secondo grado accompagna lo studente fino all'esame di maturità.</p>
 
-    <h2 id="cos-e">Che cos'è il PEI e per chi è</h2>
-    <p><strong>PEI</strong> vuol dire <strong>Piano Educativo Individualizzato</strong>. «Individualizzato» significa costruito su misura per <strong>quello</strong> studente, non per una categoria.</p>
-    <p>Il PEI riguarda solo gli studenti con <strong>disabilità certificata</strong> ai fini dell'inclusione scolastica, secondo la <strong>Legge 104 del 1992</strong>. È il gruppo 1 della guida sulle differenze tra disabilità, DSA e BES.</p>
-    <div class="group-box g1">
-      <h3><span aria-hidden="true">🤝</span> Gruppo 1 · Disabilità certificata</h3>
-      <p>Con la certificazione la scuola prepara il <strong>PEI</strong> e alla classe viene assegnato un <strong>docente di sostegno</strong>. Per i <strong>DSA</strong> (Disturbi Specifici dell'Apprendimento) e per gli altri <strong>BES</strong> (Bisogni Educativi Speciali), invece, c'è il <strong>PDP</strong> (Piano Didattico Personalizzato).</p>
-    </div>
-    <p>Il PEI si basa sulla certificazione e sul <strong>Profilo di funzionamento</strong>. È il documento degli specialisti che descrive i punti di forza e i bisogni dello studente.</p>
-    <p>Molti studenti non hanno ancora il Profilo di funzionamento, perché la riforma è in corso. In questo caso si usa la <strong>Diagnosi funzionale</strong>, il documento che c'era prima.</p>
-    <p>Il PEI <strong>si scrive ogni anno</strong> e si controlla durante l'anno. Alle superiori accompagna lo studente fino all'esame di maturità.</p>
+    <h2 id="glo">L'elaborazione: il GLO</h2>
+    <p>Il PEI è elaborato e approvato dal <strong>GLO</strong> (Gruppo di Lavoro Operativo per l'inclusione), disciplinato dall'art. 15 della L. 104/92 e dall'art. 3 del D.I. 182/2020. Ne fanno parte:</p>
+    <ul>
+      <li>il <strong>consiglio di classe</strong>, compreso il <a href="articolo-docente-di-sostegno.html">docente di sostegno</a>;</li>
+      <li>il <strong>dirigente scolastico</strong>, che lo presiede o ne delega la presidenza;</li>
+      <li>i <strong>genitori</strong> o gli esercenti la responsabilità genitoriale, che vi partecipano a pieno titolo;</li>
+      <li>lo <strong>studente</strong>, nella secondaria di secondo grado, in attuazione del principio di autodeterminazione;</li>
+      <li>un rappresentante dell'<strong>unità di valutazione multidisciplinare</strong> dell'ASL (Azienda sanitaria locale);</li>
+      <li>le <strong>figure professionali</strong> interne ed esterne che operano con lo studente, come l'assistente all'autonomia e alla comunicazione;</li>
+      <li>non più di un <strong>esperto indicato dalla famiglia</strong>, su autorizzazione del dirigente, con funzione consultiva e non decisionale.</li>
+    </ul>
+    <p>La redazione della proposta è di norma curata dal docente di sostegno in collaborazione con i colleghi. Il documento, tuttavia, è del GLO: famiglia e studente possono proporre integrazioni e modifiche prima dell'approvazione.</p>
 
-    <h2 id="glo">Chi lo scrive: il GLO</h2>
-    <p>Il PEI non lo scrive una persona sola. Lo elabora e lo approva il <strong>GLO</strong>, il <strong>Gruppo di Lavoro Operativo per l'inclusione</strong>.</p>
-    <p>Il GLO è una squadra: ognuno porta quello che sa dello studente. Ecco chi ne fa parte.</p>
-{FIG_GLO}
-    <p>Il <a href="articolo-docente-di-sostegno.html">docente di sostegno</a> di solito prepara una <strong>bozza</strong>, insieme ai colleghi. Ma il PEI è del GLO: la famiglia e lo studente possono proporre modifiche prima che venga approvato.</p>
+    <h2 id="dentro">L'impianto concettuale</h2>
+    <p>Il PEI adotta la prospettiva bio-psico-sociale dell'<strong>ICF</strong> (Classificazione Internazionale del Funzionamento, della Disabilità e della Salute) dell'Organizzazione Mondiale della Sanità. Il funzionamento della persona è letto come esito dell'interazione tra condizioni di salute e fattori contestuali.</p>
+    <p>Ne discende la centralità dell'analisi del contesto, articolata in <strong>barriere</strong>, ossia i fattori che ostacolano la partecipazione, e <strong>facilitatori</strong>, ossia i fattori che la sostengono: dall'accessibilità degli spazi alle modalità di presentazione dei contenuti, fino al ruolo dei compagni.</p>
+    <p>L'osservazione dello studente si sviluppa lungo quattro <strong>dimensioni</strong>, per ciascuna delle quali il PEI individua obiettivi, strategie e strumenti:</p>
+    <ul>
+      <li>relazione, interazione e socializzazione;</li>
+      <li>comunicazione e linguaggio;</li>
+      <li>autonomia e orientamento;</li>
+      <li>dimensione cognitiva, neuropsicologica e dell'apprendimento.</li>
+    </ul>
+    <p>A questa analisi si affianca la progettazione del percorso curricolare, condotta disciplina per disciplina, con l'indicazione degli obiettivi, delle modalità di verifica e dei criteri di valutazione.</p>
 
-    <h2 id="dentro">Cosa c'è dentro il PEI</h2>
-    <p>Il PEI parte da un'idea semplice: le difficoltà non dipendono solo dalla persona, ma anche dall'<strong>ambiente</strong> in cui vive e studia.</p>
-    <p>Per questo il PEI guarda a due cose. Le <strong>barriere</strong> sono gli ostacoli, per esempio una scala senza ascensore o una spiegazione solo a voce. I <strong>facilitatori</strong> sono gli aiuti, per esempio un computer con la sintesi vocale o un compagno che fa da tutor.</p>
-    <p>Questo modo di vedere viene dall'<strong>ICF</strong> (Classificazione Internazionale del Funzionamento), creata dall'Organizzazione Mondiale della Sanità.</p>
-    <p>I docenti osservano lo studente in <strong>quattro dimensioni</strong>. Per ognuna il PEI indica gli <strong>obiettivi</strong>, le <strong>strategie</strong> e gli <strong>strumenti</strong>.</p>
-{FIG_DIM}
-    <p>Poi il PEI scende nel concreto: <strong>materia per materia</strong>, dice quali obiettivi ha lo studente, come si fanno le verifiche e come si valuta.</p>
-
-    <h2 id="modello">Per i docenti: il modello in dodici sezioni</h2>
-    <p>Il decreto interministeriale 182 del 2020 ha introdotto un <strong>modello nazionale di PEI</strong>, uguale in tutta Italia e diverso per ogni grado di scuola. Nel 2023 il modello è stato corretto.</p>
-    <p>Il modello delle superiori ha <strong>dodici sezioni</strong>. Le sezioni dalla 4 alla 7 sono il cuore del PEI: prima si osserva, poi si interviene, sia sullo studente sia sul contesto.</p>
-{FIG_SEZ}
-    <p>Un consiglio per i colleghi delle altre materie: la <strong>sezione 8</strong> riguarda proprio la vostra materia. Il contributo di ogni docente della classe è necessario, non solo quello del docente di sostegno.</p>
-
-    <h2 id="percorsi">I tre percorsi alle superiori</h2>
-    <p>Alle superiori il PEI indica anche il <strong>tipo di percorso</strong> dello studente. È una scelta importante, perché decide il titolo che si ottiene alla fine.</p>
-{FIG_PERC}
-    <p>Il percorso differenziato <strong>non è una bocciatura</strong> e non è un percorso «di serie B». È la scelta giusta quando gli obiettivi della classe non sono adatti allo studente.</p>
-    <p>L'attestato riporta le competenze raggiunte e permette di iscriversi ai corsi di formazione professionale. Attenzione però: <strong>non è un diploma</strong>. Non permette di iscriversi all'università né di partecipare ai concorsi che chiedono il diploma.</p>
-    <p>Per questo serve il <strong>consenso della famiglia</strong>. Il consiglio di classe propone il percorso C e fissa una data entro cui rispondere. Se la famiglia non risponde entro quella data, la proposta vale come accettata.</p>
-    <p>Se la famiglia dice di no per iscritto, lo studente viene <strong>valutato con gli stessi criteri dei compagni</strong>. Continua ad avere il sostegno, ma non ha la certezza di essere promosso.</p>
-    <p>Il percorso si può rivedere. Se il consiglio di classe accerta che lo studente ha raggiunto gli obiettivi della classe, può farlo passare a un percorso che porta al diploma. Non servono esami sugli anni precedenti.</p>
-
-    <h2 id="calendario">Quando si scrive: il calendario e le novità del 2026</h2>
-    <div class="dsa-box update-box" role="note">
-      <h3 class="box-title"><span aria-hidden="true">🔔</span> Regole in cambiamento</h3>
-      <p>Il <strong>decreto-legge 30 settembre 2026, n. 170</strong> ha cambiato le scadenze del PEI. È in vigore dal 1° ottobre 2026.</p>
-      <p>Però il Parlamento deve <strong>convertirlo in legge entro il 29 novembre 2026</strong>, e in quel passaggio può essere modificato.</p>
-      <p>Qui trovi le regole del testo del decreto, come le riportano le riviste per la scuola, aggiornate al 15 novembre 2026. Aggiornerò l'articolo quando il testo sarà definitivo.</p>
-    </div>
-    <p>Fino a settembre 2026 il PEI definitivo si approvava di norma <strong>entro il 31 ottobre</strong>. Con il decreto-legge le scadenze cambiano, e sono diverse per chi è già nella scuola e per chi arriva.</p>
-{FIG_CAL}
-    <p>Il decreto è arrivato a ottobre, con l'anno scolastico già iniziato. Per il PEI di quest'anno, chiedi alla scuola quale scadenza ha seguito.</p>
-    <p>Il decreto cambia anche le <strong>ore di sostegno</strong>: il PEI non contiene più solo una proposta, ma <strong>definisce le ore</strong>, spiegando il motivo. Poi è l'Ufficio scolastico regionale ad assegnare i docenti di sostegno alla scuola.</p>
-    <p>Inoltre il GLO può approvare il PEI anche se una delle parti, regolarmente invitata, non è presente. Lo scopo è evitare che un'assenza faccia saltare le scadenze. Le condizioni precise le chiarirà il testo definitivo.</p>
-    <p>Se non puoi partecipare a un GLO, avvisa subito la scuola. Chiedi un'altra data, oppure manda le tue osservazioni per iscritto.</p>
-    <p>Come si applicheranno queste regole nel dettaglio lo chiariranno la legge di conversione e le indicazioni del Ministero. Per le date precise, chiedi sempre alla scuola.</p>
-
-    <h2 id="partecipare">Come partecipare al GLO</h2>
-    <p>La riunione del GLO può mettere un po' a disagio: tante persone intorno a un tavolo, tante sigle. Prepararsi aiuta molto. Ecco alcuni consigli pratici.</p>
-    <ol class="steps-list">
-      <li><strong>Chiedi la bozza prima della riunione.</strong> Così puoi leggerla con calma e segnare i dubbi.</li>
-      <li><strong>Porta i documenti aggiornati.</strong> Per esempio nuove relazioni degli specialisti o dei terapisti.</li>
-      <li><strong>Racconta come va a casa.</strong> Che cosa piace allo studente, cosa lo stanca, cosa lo aiuta: sono informazioni che a scuola non sempre si vedono.</li>
-      <li><strong>Proponi obiettivi concreti.</strong> «Usare il computer da solo per scrivere un testo» è più utile di «migliorare l'autonomia».</li>
-      <li><strong>Dai spazio allo studente.</strong> Alle superiori può parlare per sé: preparate insieme due o tre cose da dire.</li>
-      <li><strong>Chiedi una copia del PEI approvato e del verbale</strong> della riunione, e annota le date delle verifiche.</li>
+    <h2 id="modello">Il modello nazionale</h2>
+    <p>Il D.I. 182/2020 ha introdotto modelli nazionali di PEI differenziati per grado di scuola. Il modello per la secondaria di secondo grado si articola in dodici sezioni:</p>
+    <ol>
+      <li><strong>Quadro informativo</strong>, con la descrizione dello studente a cura della famiglia o dello studente stesso;</li>
+      <li><strong>Elementi generali desunti dal Profilo di funzionamento</strong>;</li>
+      <li><strong>Raccordo con il Progetto individuale</strong>, ove redatto;</li>
+      <li><strong>Osservazioni sullo studente</strong> nelle quattro dimensioni;</li>
+      <li><strong>Interventi per lo studente</strong>: obiettivi, strategie e strumenti;</li>
+      <li><strong>Osservazioni sul contesto</strong>: barriere e facilitatori;</li>
+      <li><strong>Interventi sul contesto</strong> per un ambiente di apprendimento inclusivo;</li>
+      <li><strong>Interventi sul percorso curricolare</strong>, per discipline, con l'indicazione del tipo di percorso;</li>
+      <li><strong>Organizzazione generale del progetto di inclusione</strong> e utilizzo delle risorse;</li>
+      <li><strong>Certificazione delle competenze</strong>, al termine del secondo anno;</li>
+      <li><strong>Verifica finale</strong> e proposte per l'anno successivo;</li>
+      <li><strong>PEI provvisorio</strong>, per gli studenti al primo inserimento o di nuova certificazione.</li>
     </ol>
+    <p>Le sezioni dalla 4 alla 7 costituiscono il nucleo progettuale del documento. La sezione 8 chiama in causa direttamente i docenti curricolari: il loro contributo è essenziale e non delegabile al solo docente di sostegno.</p>
 
-    <h2 id="falsi-miti">Quattro falsi miti</h2>
-    <p>Ci sono alcune idee sbagliate sul PEI che sento spesso. Vediamole una per una.</p>
-    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Con il PEI si fa un programma più facile».</p><p><strong>In realtà</strong> dipende dal percorso. Con il percorso ordinario gli obiettivi sono quelli della classe. Il PEI cambia il modo, gli strumenti e gli aiuti, non per forza il traguardo.</p></div>
-    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Il PEI lo scrive il docente di sostegno da solo».</p><p><strong>In realtà</strong> lo elabora e lo approva il GLO: tutti i docenti della classe, la famiglia, gli specialisti e lo studente.</p></div>
-    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Con il PEI non si prende il diploma».</p><p><strong>In realtà</strong> con il percorso ordinario e con quello personalizzato si prende il diploma, uguale a quello dei compagni. Solo con il percorso differenziato si riceve un attestato.</p></div>
-    <div class="myth"><p class="m-false"><span aria-hidden="true">❌</span> Falso: «Una volta scritto, il PEI non si tocca più».</p><p><strong>In realtà</strong> il PEI si scrive ogni anno e si controlla durante l'anno. Se qualcosa non funziona, il GLO lo cambia.</p></div>
+    <h2 id="percorsi">I percorsi nella secondaria di secondo grado</h2>
+    <p>Nella secondaria di secondo grado il PEI indica il tipo di percorso seguito dallo studente, scelta che determina il titolo conseguibile al termine degli studi.</p>
+    <h3>Percorso ordinario</h3>
+    <p>Lo studente persegue gli stessi obiettivi della classe, con l'eventuale ausilio di strumenti e strategie specifiche. Consegue il diploma, previo superamento dell'esame di maturità.</p>
+    <h3>Percorso personalizzato con prove equipollenti</h3>
+    <p>Gli obiettivi sono riconducibili ai nuclei essenziali delle discipline. Le prove <strong>equipollenti</strong> possono differire per tempi, strumenti, modalità e anche contenuti, purché accertino una preparazione culturale e professionale equivalente. Anche in questo caso si consegue il diploma.</p>
+    <h3>Percorso differenziato</h3>
+    <p>Gli obiettivi sono diversi da quelli della classe e calibrati sulle potenzialità dello studente. Al termine si consegue un <strong>attestato di credito formativo</strong> (art. 20 del D.Lgs. 62/2017), che certifica le competenze acquisite e consente l'accesso ai percorsi di istruzione e formazione professionale, ma non equivale al diploma e non permette l'iscrizione all'università.</p>
+    <p>Il percorso differenziato richiede il <strong>consenso della famiglia</strong> (art. 15 dell'O.M. 90/2001). Il consiglio di classe formula la proposta fissando un termine per la risposta, decorso il quale il silenzio equivale ad assenso. In caso di diniego espresso, lo studente è valutato secondo i criteri della classe: conserva il sostegno, ma non ha garanzia di ammissione alla classe successiva.</p>
+    <p>Il percorso è rivedibile. Qualora il consiglio di classe accerti il raggiungimento di livelli di apprendimento corrispondenti agli obiettivi della classe, può disporre il passaggio a un percorso valido per il diploma, senza necessità di prove di idoneità relative agli anni precedenti.</p>
 
-    <h2 id="informatica">E in informatica, che cosa cambia?</h2>
-    <p>Ho insegnato informatica per anni: ti mostro come i tre percorsi possono diventare obiettivi concreti in laboratorio. Sono <strong>solo esempi</strong>: ogni PEI è diverso, perché ogni studente è diverso.</p>
-    <ul class="icon-list">
-      <li><span class="t-ico t-let" aria-hidden="true">A</span><span><strong>Percorso ordinario.</strong> Lo studente scrive gli stessi programmi della classe, per esempio con le <a href="articolo-if-else-python.html">condizioni if ed else in Python</a>. Può avere più tempo, la sintesi vocale o una tastiera adattata: li trovi nella guida <a href="articolo-tecnologie-assistive.html">Tecnologie assistive per studiare</a>.</span></li>
-      <li><span class="t-ico t-let" aria-hidden="true">B</span><span><strong>Percorso personalizzato.</strong> Gli obiettivi sono i contenuti essenziali della materia. La verifica è equipollente: per esempio, invece di scrivere il codice da zero, lo studente completa un programma o spiega un <a href="articolo-diagramma-di-flusso.html">diagramma di flusso</a>.</span></li>
-      <li><span class="t-ico t-let" aria-hidden="true">C</span><span><strong>Percorso differenziato.</strong> Gli obiettivi riguardano competenze utili per la vita e per il lavoro. Per esempio: usare il computer in autonomia, salvare e ritrovare i file, scrivere una email, programmare con i blocchi colorati.</span></li>
+    <h2 id="calendario">Tempi e scadenze: le novità del 2026</h2>
+    <p><strong>Avvertenza (aggiornata al 15 novembre 2026).</strong> Il D.L. 30 settembre 2026, n. 170, in vigore dal 1° ottobre 2026, ha modificato le scadenze del PEI. Il provvedimento deve essere convertito in legge entro il 29 novembre 2026 e il testo potrebbe essere modificato in sede di conversione; l'articolo sarà aggiornato non appena il quadro sarà definitivo.</p>
+    <p>Fino a settembre 2026 il PEI definitivo era approvato, di norma, entro il 31 ottobre. Secondo il testo del decreto, come riportato dalla stampa specializzata, le scadenze sono ora differenziate:</p>
+    <ul>
+      <li><strong>studenti già frequentanti</strong>: verifica finale e approvazione del PEI definitivo per l'anno successivo entro giugno, con possibilità di aggiornamento nelle prime due settimane di ottobre;</li>
+      <li><strong>nuovi iscritti o studenti di prima certificazione</strong>: PEI provvisorio entro giugno e PEI definitivo entro il 15 ottobre.</li>
     </ul>
-    <p>In tutti e tre i casi il laboratorio di informatica è un ottimo <strong>facilitatore</strong>. Si impara facendo, si vede subito il risultato e si può riprovare senza paura di sbagliare.</p>
+    <p>In entrambi i casi restano le verifiche intermedie nel corso dell'anno. Poiché il decreto è entrato in vigore ad anno scolastico avviato, per il PEI dell'anno in corso è opportuno verificare con la scuola quale scadenza sia stata applicata.</p>
+    <p>Il decreto interviene anche sulle <strong>ore di sostegno</strong>, che il PEI «definisce» con adeguata motivazione anziché limitarsi a proporle; l'assegnazione dei docenti resta di competenza dell'Ufficio scolastico regionale. È inoltre prevista la validità dell'approvazione del PEI anche in assenza di una componente regolarmente convocata, allo scopo di evitare che un'assenza comprometta il rispetto dei termini; le condizioni precise saranno definite dal testo convertito.</p>
+    <p>La famiglia impossibilitata a partecipare a una riunione del GLO dovrebbe darne tempestiva comunicazione alla scuola, chiedendo un rinvio o trasmettendo per iscritto le proprie osservazioni.</p>
 
-    <h2 id="sintesi">In sintesi</h2>
-    <ul class="icon-list">
-      <li><span class="t-ico" aria-hidden="true">🤝</span><span>Il <strong>PEI</strong> è il documento per gli studenti con <strong>disabilità certificata</strong> (Legge 104).</span></li>
-      <li><span class="t-ico" aria-hidden="true">👥</span><span>Lo elabora e lo approva il <strong>GLO</strong>, di cui fanno parte anche la <strong>famiglia</strong> e, alle superiori, lo <strong>studente</strong>.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🎯</span><span>Indica <strong>obiettivi</strong>, <strong>aiuti</strong> e <strong>cambiamenti</strong> della scuola, materia per materia.</span></li>
-      <li><span class="t-ico" aria-hidden="true">🎓</span><span>Alle superiori i percorsi A e B portano al <strong>diploma</strong>, se si supera l'esame. Il percorso C porta a un <strong>attestato</strong> e richiede il consenso della famiglia.</span></li>
-      <li><span class="t-ico" aria-hidden="true">📅</span><span>Si scrive <strong>ogni anno</strong> e si controlla durante l'anno. Le scadenze sono cambiate nel 2026 e potrebbero cambiare ancora.</span></li>
+    <h2 id="partecipare">Indicazioni per la partecipazione al GLO</h2>
+    <p>Una partecipazione preparata accresce la qualità del documento. Alcune indicazioni operative:</p>
+    <ul>
+      <li>richiedere la bozza del PEI con anticipo rispetto alla riunione;</li>
+      <li>disporre della documentazione specialistica aggiornata;</li>
+      <li>fornire elementi sul contesto extrascolastico: interessi, fattori di affaticamento, strategie efficaci;</li>
+      <li>formulare obiettivi osservabili e verificabili: «utilizzare il computer in autonomia per la stesura di un testo» è più utile di un generico «migliorare l'autonomia»;</li>
+      <li>valorizzare la voce dello studente, preparandone insieme l'intervento;</li>
+      <li>richiedere copia del PEI approvato e del verbale, annotando le date delle verifiche.</li>
     </ul>
-    <p>Un buon PEI non è un modulo da riempire: è un <strong>progetto condiviso</strong>. Funziona davvero quando scuola, famiglia e studente lo costruiscono insieme.</p>
-    <p class="norme rt-skip">Riferimenti normativi: Legge 5 febbraio 1992, n. 104 (artt. 12, 13 e 15); D.Lgs. 13 aprile 2017, n. 66, artt. 7 e 9 (modificato dal D.Lgs. 96/2019); D.I. 29 dicembre 2020, n. 182, modificato dal D.I. 1 agosto 2023, n. 153, con modelli di PEI e Linee guida; D.Lgs. 13 aprile 2017, n. 62, art. 20; D.M. 27 gennaio 2010, n. 9 (certificazione delle competenze); O.M. 21 maggio 2001, n. 90, art. 15; D.Lgs. 3 maggio 2024, n. 62 (progetto di vita); D.L. 30 settembre 2026, n. 170 (G.U. n. 227 del 30 settembre 2026), in corso di conversione in legge. Aggiornato al 15 novembre 2026.</p>
+
+    <h2 id="falsi-miti">Alcuni fraintendimenti ricorrenti</h2>
+    <p>Alcune convinzioni diffuse sul PEI non trovano riscontro nella normativa.</p>
+    <p><strong>«Il PEI comporta un programma ridotto».</strong> Dipende dal percorso: nel percorso ordinario gli obiettivi coincidono con quelli della classe, e il PEI interviene su modalità, strumenti e supporti.</p>
+    <p><strong>«Il PEI è redatto dal solo docente di sostegno».</strong> Il documento è elaborato e approvato collegialmente dal GLO, con il contributo di tutti i docenti, della famiglia, dei servizi e dello studente.</p>
+    <p><strong>«Con il PEI non si consegue il diploma».</strong> Il diploma si consegue sia nel percorso ordinario sia in quello personalizzato con prove equipollenti; solo il percorso differenziato si conclude con l'attestato di credito formativo.</p>
+    <p><strong>«Il PEI, una volta approvato, è immodificabile».</strong> È redatto annualmente e sottoposto a verifiche periodiche, che ne consentono la rimodulazione.</p>
+
+    <h2 id="informatica">Un esempio disciplinare: l'informatica</h2>
+    <p>Ho insegnato informatica per anni: un'esemplificazione disciplinare aiuta a cogliere la differenza tra i tre percorsi, ferma restando l'unicità di ogni progettazione.</p>
+    <ul>
+      <li><strong>Percorso ordinario</strong>: lo studente sviluppa gli stessi programmi della classe, ad esempio sulle <a href="articolo-if-else-python.html">strutture condizionali in Python</a>, con tempi aggiuntivi, sintesi vocale o periferiche adattate, come illustrato in <a href="articolo-tecnologie-assistive.html">Tecnologie assistive per studiare</a>.</li>
+      <li><strong>Percorso personalizzato</strong>: gli obiettivi si concentrano sui nuclei essenziali; una prova equipollente può consistere nel completamento di un programma dato o nell'analisi di un <a href="articolo-diagramma-di-flusso.html">diagramma di flusso</a>, anziché nella scrittura del codice ex novo.</li>
+      <li><strong>Percorso differenziato</strong>: gli obiettivi riguardano competenze funzionali all'autonomia e all'inserimento lavorativo, come l'uso autonomo del computer, la gestione dei file, la posta elettronica, la programmazione a blocchi.</li>
+    </ul>
+    <p>In tutti i casi il laboratorio di informatica si configura come un potente facilitatore: consente l'apprendimento attraverso l'esperienza, offre un riscontro immediato e rende l'errore parte naturale del processo.</p>
+
+    <h2 id="sintesi">Considerazioni conclusive</h2>
+    <ul>
+      <li>Il PEI è il documento di progettazione per gli studenti con disabilità certificata ai sensi della L. 104/92.</li>
+      <li>È elaborato e approvato dal GLO, di cui fanno parte anche la famiglia e, nella secondaria di secondo grado, lo studente.</li>
+      <li>Adotta la prospettiva ICF e definisce obiettivi, strategie, risorse e interventi sul contesto, disciplina per disciplina.</li>
+      <li>I percorsi ordinario e personalizzato conducono al diploma; il percorso differenziato, subordinato al consenso della famiglia, all'attestato di credito formativo.</li>
+      <li>È redatto annualmente e verificato in corso d'anno; le scadenze sono state modificate dal D.L. 170/2026, in corso di conversione.</li>
+    </ul>
+    <p>Un PEI efficace non è un adempimento formale, ma un progetto condiviso: la sua qualità dipende dalla capacità di scuola, famiglia, servizi e studente di costruirlo e verificarlo insieme.</p>
+    <p class="norme rt-skip">Riferimenti normativi: L. 104/92, artt. 12, 13 e 15; D.Lgs. 66/2017, art. 7, come modificato dal D.Lgs. 96/2019; D.I. 182/2020, modificato dal D.I. 153/2023, con modelli di PEI e Linee guida; D.Lgs. 62/2017, art. 20; O.M. 90/2001, art. 15; D.M. 9/2010 (certificazione delle competenze); D.Lgs. 62/2024 (progetto di vita); D.L. 170/2026 (G.U. n. 227 del 30 settembre 2026), in corso di conversione in legge. Aggiornato al 15 novembre 2026.</p>
 
     <h2 id="faq">Domande frequenti</h2>
 {FAQS}
 
     <div class="cta-banner mt-4 rt-skip">
-      <h2>Lezioni di informatica pensate per tutti</h2>
-      <p>Nelle lezioni gratuite trovi esempi da modificare e l'editor «Provalo tu» per vedere subito il risultato, senza installare nulla.</p>
+      <h2>Lezioni di informatica per una didattica inclusiva</h2>
+      <p>Le lezioni gratuite del sito propongono esempi brevi e modificabili, con l'editor «Provalo tu» integrato nel browser.</p>
       <a href="lezioni.html" class="btn btn-accent btn-lg">Vai alle lezioni gratuite →</a>
     </div>
     <p class="rt-skip" style="margin-top:1.4rem">Hai un dubbio sul PEI o sul GLO? Vuoi raccontarmi la tua esperienza? <a href="contatti.html">Scrivimi</a>: leggo tutti i messaggi.</p>
@@ -260,9 +175,9 @@ BODY = f"""
     <div class="read-next rt-skip">
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
-        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
-        <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
+        <a href="articolo-docente-di-sostegno.html"><span aria-hidden="true">🏫</span><strong>Il docente di sostegno nella scuola secondaria di secondo grado</strong></a>
         <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il PDP passo dopo passo: cos'è, chi lo scrive e cosa contiene</strong></a>
+        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
       </div>
     </div>
 """
@@ -270,12 +185,13 @@ BODY = f"""
 words, MIN = minutes(BODY, skip=('pre', 'svg', 'nav', 'details'))
 META = dict(
     title=TITLE, seo_title=SEO_TITLE, desc=DESC, url=URL, img=IMG, minutes=MIN, body=BODY,
-    keywords="PEI, piano educativo individualizzato, cos'è il PEI, GLO, percorso differenziato, prove equipollenti, docente di sostegno, legge 104 scuola, decreto scuola 2026 PEI",
-    og_alt="Il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
-    date_iso="2026-11-15", modified_iso="2026-11-20", date_it="15 novembre 2026",
-    ld_keywords="PEI, Piano Educativo Individualizzato, GLO, Legge 104, disabilità, inclusione scolastica, percorso differenziato, prove equipollenti, docente di sostegno",
+    keywords="PEI, piano educativo individualizzato, GLO, modello nazionale PEI, percorso differenziato, prove equipollenti, D.I. 182/2020, D.L. 170/2026 PEI, legge 104/92",
+    og_alt="Il titolo «Il PEI» con il sottotitolo «Elaborazione, contenuti e percorsi alle superiori» e tre riquadri: chi lo elabora, il GLO; impianto, prospettiva ICF; percorsi, tre opzioni alle superiori.",
+    date_iso="2026-11-15", modified_iso="2026-11-21", date_it="15 novembre 2026",
+    ld_keywords="PEI, Piano Educativo Individualizzato, GLO, L. 104/92, D.Lgs. 66/2017, D.I. 182/2020, ICF, percorso differenziato, prove equipollenti, inclusione scolastica",
     hero_src=f"{SLUG}.jpg",
-    hero_alt="Copertina dell'articolo: il titolo «Il PEI spiegato semplice» e tre riquadri: chi lo scrive, il GLO; che cosa contiene, obiettivi e aiuti; quando, ogni anno.",
+    hero_alt="Copertina dell'articolo: il titolo «Il PEI» con il sottotitolo «Elaborazione, contenuti e percorsi alle superiori» e tre riquadri: chi lo elabora, il GLO; impianto, prospettiva ICF; percorsi, tre opzioni alle superiori.",
+    no_rt_note=True, no_tool_icons=True,   # stile professionale (dal 21/11/2026)
 )
 
 if __name__ == '__main__':
