@@ -53,7 +53,7 @@ BODY = f"""
     </nav>
 
     <h2 id="chi-e">Status giuridico e contitolarità</h2>
-    <p>Il docente di sostegno è assegnato alle classi in cui è presente uno studente con <strong>disabilità certificata</strong> ai sensi della <strong>L. 104/92</strong>. Non è invece previsto per gli studenti con DSA (Disturbi Specifici dell'Apprendimento, L. 170/2010) né per gli altri BES (Bisogni Educativi Speciali, Direttiva ministeriale 27 dicembre 2012), salvo che non sussista anche una certificazione di disabilità. Le distinzioni sono approfondite nell'articolo <a href="articolo-bes-dsa-disabilita.html">Disabilità 104, DSA e BES</a>.</p>
+    <p>Il docente di sostegno è assegnato alle classi in cui è presente uno studente con <strong>disabilità certificata</strong> ai sensi della <strong>L. 104/92</strong>. Non è invece previsto per gli studenti con DSA (Disturbi Specifici dell'Apprendimento, L. 170/2010) né per gli altri BES (Bisogni Educativi Speciali, Direttiva ministeriale 27 dicembre 2012), salvo che non sussista anche una certificazione di disabilità. Le distinzioni sono approfondite nell'articolo <a href="articolo-bes-dsa-disabilita.html">Disabilità (L. 104/92), DSA e altri BES</a>.</p>
     <p>Il fondamento del ruolo è l'art. 13, comma 6, della L. 104/92, secondo cui i docenti di sostegno <strong>assumono la contitolarità</strong> delle classi in cui operano. Ne discendono la partecipazione a pieno titolo alla programmazione educativa e didattica e ai lavori del consiglio di classe, come ribadito dall'art. 315 del D.Lgs. 297/94.</p>
     <p>Sul piano valutativo, l'art. 4 del D.P.R. 122/2009, nella formulazione introdotta dal D.P.R. 135/2025, stabilisce che i docenti di sostegno partecipano alla valutazione <strong>di tutti gli studenti</strong> della classe. In sede di scrutinio, dunque, il loro voto concorre alle deliberazioni relative all'intero gruppo classe, non al solo studente con disabilità.</p>
 
@@ -150,7 +150,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
-        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
+        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità certificata (L. 104/92), DSA e altri BES: distinzioni normative</strong></a>
         <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Le tecnologie assistive a scuola: tipologie, accesso e integrazione didattica</strong></a>
       </div>
     </div>

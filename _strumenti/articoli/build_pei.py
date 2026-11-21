@@ -14,7 +14,7 @@ IMG = f"https://alessandrosimone.it/{SLUG}.jpg"
 # ------------------------------------------------------------------ FAQ
 FAQS = "\n".join([
     faq("Il PEI si applica anche agli studenti con DSA o con altri BES?",
-        "No. Il PEI è riservato agli studenti con disabilità certificata ai sensi della L. 104/92. Per gli studenti con DSA (L. 170/2010) e con altri BES (Direttiva ministeriale 27 dicembre 2012) lo strumento di riferimento è il PDP, illustrato nell'articolo <a href=\"articolo-pdp-passo-dopo-passo.html\">Il Piano Didattico Personalizzato (PDP)</a>. Le distinzioni sono approfondite in <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità 104, DSA e BES</a>."),
+        "No. Il PEI è riservato agli studenti con disabilità certificata ai sensi della L. 104/92. Per gli studenti con DSA (L. 170/2010) e con altri BES (Direttiva ministeriale 27 dicembre 2012) lo strumento di riferimento è il PDP, illustrato nell'articolo <a href=\"articolo-pdp-passo-dopo-passo.html\">Il Piano Didattico Personalizzato (PDP)</a>. Le distinzioni sono approfondite in <a href=\"articolo-bes-dsa-disabilita.html\">Disabilità (L. 104/92), DSA e altri BES</a>."),
     faq("Qual è il ruolo dello studente nel GLO?",
         "Nella secondaria di secondo grado lo studente partecipa al GLO in attuazione del principio di autodeterminazione. Può esprimere esigenze, preferenze e obiettivi; è opportuno che la sua partecipazione sia preparata, anche con il supporto di un docente o della famiglia."),
     faq("La famiglia può farsi affiancare da un esperto di fiducia?",
@@ -177,7 +177,7 @@ BODY = f"""
       <div class="rn-grid">
         <a href="articolo-docente-di-sostegno.html"><span aria-hidden="true">🏫</span><strong>Il docente di sostegno nella scuola secondaria di secondo grado</strong></a>
         <a href="articolo-pdp-passo-dopo-passo.html"><span aria-hidden="true">📝</span><strong>Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti</strong></a>
-        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
+        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità certificata (L. 104/92), DSA e altri BES: distinzioni normative</strong></a>
       </div>
     </div>
 """

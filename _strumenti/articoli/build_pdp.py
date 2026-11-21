@@ -196,7 +196,7 @@ BODY = f"""
       <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
         <a href="articolo-informatica-dsa.html"><span aria-hidden="true">📖</span><strong>Informatica e DSA: strategie e strumenti compensativi</strong></a>
-        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
+        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità certificata (L. 104/92), DSA e altri BES: distinzioni normative</strong></a>
         <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi</strong></a>
       </div>
     </div>

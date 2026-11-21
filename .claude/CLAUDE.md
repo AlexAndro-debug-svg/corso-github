@@ -45,7 +45,7 @@ Rispondi all'autore **in italiano**, in modo semplice e diretto.
 ## Serie «inclusione» a lettura facilitata
 
 Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
-`articolo-bes-dsa-disabilita.html` («Disabilità 104, DSA e BES: che differenza c'è?», articolo guida),
+`articolo-bes-dsa-disabilita.html` («Disabilità certificata (L. 104/92), DSA e altri BES: distinzioni normative e strumenti di progettazione», articolo guida, riscritto in stile professionale il 21/11/2026),
 `articolo-pei-spiegato-semplice.html` («Il Piano Educativo Individualizzato (PEI): elaborazione, contenuti e percorsi nella secondaria di secondo grado», 15/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pei.py`),
 `articolo-pdp-passo-dopo-passo.html` («Il Piano Didattico Personalizzato (PDP): destinatari, elaborazione e contenuti per DSA e altri BES», 17/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_pdp.py`),
 `articolo-tecnologie-assistive.html` («Le tecnologie assistive a scuola: tipologie, modalità di accesso e integrazione nella progettazione didattica», 18/11/2026, riscritto in stile professionale il 21/11/2026, generatore `build_tecno.py`),
@@ -87,7 +87,7 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   - Restano: indice, domande frequenti, riferimenti normativi (`.norme rt-skip`), «Considerazioni conclusive» al posto di
     «In sintesi», copertina, revisione indipendente, link interni e di ritorno.
   - **Riscrittura in corso (richiesta del 21/11/2026)**: l'autore ha chiesto di riscrivere nel nuovo stile, uno alla volta,
-    gli articoli precedenti. Fatti: Docente di sostegno, PEI, PDP, Tecnologie assistive, ADHD. Da fare: BES, Informatica e DSA
+    gli articoli precedenti. Fatti: Docente di sostegno, PEI, PDP, Tecnologie assistive, ADHD, BES. Da fare: Informatica e DSA
     (l'autore ha autorizzato a riscriverli e pubblicarli senza chiedere conferma). Per ognuno: nuovo titolo professionale (slug invariato, stessi id delle sezioni
     citate da altri articoli), copertina, scheda del blog, `search.js`, testo dei link negli altri generatori, `<lastmod>`.
 - Regole di scrittura degli articoli pubblicati **fino al 19/11/2026** (lettura facilitata, guida British Dyslexia Association):
