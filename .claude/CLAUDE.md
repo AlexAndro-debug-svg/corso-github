@@ -71,13 +71,23 @@ Articoli pubblicati: `articolo-informatica-dsa.html` («Informatica e DSA»),
   (percorsi a passi), `steps-list` (elenco numerato), `icon-list`, `sigle-grid`/`sigla` (schede brevi), `pdp-grid`/`pdp-col`
   (due colonne), `myth` (falsi miti), `update-box` (avviso «regole in cambiamento»), `perc-grid`/`perc` + `perc-l`
   (schede con lettera A/B/C, colori **neutri** per non confonderle con i gruppi), `t-let` (lettera al posto dell'icona).
-- **Eccezione di registro (20/11/2026)**: `articolo-docente-di-sostegno.html` è scritto, su richiesta dell'autore, in
-  **registro professionale** per docenti, dirigenti e professionisti: lessico tecnico, forma impersonale, niente emoji,
-  niente riquadri colorati (resta solo l'indice), niente icone nei pulsanti di lettura (regola di stile aggiunta dal
-  generatore solo a questa pagina), titolo «Il docente di sostegno nella scuola secondaria di secondo grado:
-  ruolo, funzioni e responsabilità». Le leggi si citano sempre con numero e anno: «L. 104/92», «L. 170/2010»,
-  «D.Lgs. 66/2017», «D.P.R. 122/2009», mai solo «104». Chiedi all'autore se applicare lo stesso registro agli altri articoli.
-- Regole di scrittura (pensate per lettori con DSA, guida British Dyslexia Association):
+- **STILE DEI NUOVI ARTICOLI (dal 21/11/2026, richiesta dell'autore): modello `build_sostegno.py`.**
+  - **Registro professionale** per docenti, dirigenti, professionisti e famiglie: lessico tecnico e ricercato, forma
+    impersonale, prima persona solo quando l'autore parla di sé. Le leggi si citano sempre con numero e anno:
+    «L. 104/92», «L. 170/2010», «D.Lgs. 66/2017», «D.P.R. 122/2009», «D.L. 170/2026», mai solo «104».
+  - **Niente emoji** nel testo, nei titoli e nell'indice; **niente riquadri colorati** (niente «in 30 secondi», gruppi,
+    myth, icon-list, pdp-grid, sigle-grid): sottotitoli, paragrafi ed elenchi semplici. Restano solo l'indice e il
+    riquadro finale del sito (`cta-banner`).
+  - In `META` metti `no_rt_note=True` (nessuna nota «Questa pagina è pensata per essere letta con meno fatica…»: si parte
+    subito con l'articolo) e `no_tool_icons=True` (pulsanti di lettura senza icone). Le opzioni sono in `artlib.page()`.
+  - **Finale colloquiale**: l'invito a scrivere torna informale, con «tu» (es. «Hai un dubbio su…? Vuoi raccontarmi…?
+    Scrivimi: rispondo a tutti i messaggi.», variando la formula); nei **«Leggi anche» le emoji ci sono** (📚 nel titolo
+    e un'icona per scheda).
+  - Restano: indice, domande frequenti, riferimenti normativi (`.norme rt-skip`), «Considerazioni conclusive» al posto di
+    «In sintesi», copertina, revisione indipendente, link interni e di ritorno.
+  - Gli articoli pubblicati prima (BES, PEI, PDP, Tecnologie assistive, ADHD, Informatica e DSA) restano nello stile a
+    lettura facilitata descritto sotto, salvo diversa richiesta dell'autore.
+- Regole di scrittura degli articoli pubblicati **fino al 19/11/2026** (lettura facilitata, guida British Dyslexia Association):
   frasi brevi (≤ ~25 parole), un concetto per paragrafo, niente corsivi, grassetto per le parole chiave,
   termini e sigle spiegati alla prima occorrenza, «tu» al lettore, prima persona per Alessandro,
   **niente aneddoti o dati inventati**. Struttura: riassunto «in 30 secondi», indice, sezioni con figure,

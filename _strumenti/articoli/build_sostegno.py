@@ -144,14 +144,14 @@ BODY = f"""
       <p>Le lezioni gratuite del sito propongono esempi brevi e modificabili, con l'editor «Provalo tu» integrato nel browser.</p>
       <a href="lezioni.html" class="btn btn-accent btn-lg">Vai alle lezioni gratuite →</a>
     </div>
-    <p class="rt-skip" style="margin-top:1.4rem">Per domande o per condividere esperienze professionali sul sostegno è possibile <a href="contatti.html">scrivermi</a>: ogni messaggio riceve risposta.</p>
+    <p class="rt-skip" style="margin-top:1.4rem">Hai un dubbio sul ruolo del docente di sostegno? Vuoi raccontarmi come funziona nella tua scuola? <a href="contatti.html">Scrivimi</a>: rispondo a tutti i messaggi.</p>
 
     <div class="read-next rt-skip">
-      <h2 class="box-title">Leggi anche</h2>
+      <h2 class="box-title"><span aria-hidden="true">📚</span> Leggi anche</h2>
       <div class="rn-grid">
-        <a href="articolo-pei-spiegato-semplice.html"><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
-        <a href="articolo-bes-dsa-disabilita.html"><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
-        <a href="articolo-tecnologie-assistive.html"><strong>Tecnologie assistive per studiare: quali sono e come averle a scuola</strong></a>
+        <a href="articolo-pei-spiegato-semplice.html"><span aria-hidden="true">🤝</span><strong>Il PEI spiegato semplice: cos'è, chi lo scrive e come funziona</strong></a>
+        <a href="articolo-bes-dsa-disabilita.html"><span aria-hidden="true">🧭</span><strong>Disabilità 104, DSA e BES: che differenza c'è?</strong></a>
+        <a href="articolo-tecnologie-assistive.html"><span aria-hidden="true">🛠️</span><strong>Tecnologie assistive per studiare: quali sono e come averle a scuola</strong></a>
       </div>
     </div>
 """
@@ -164,16 +164,12 @@ META = dict(
     date_iso="2026-11-20", date_it="20 novembre 2026",
     ld_keywords="docente di sostegno, insegnante di sostegno, Legge 104, disabilità, PEI, GLO, contitolarità, inclusione scolastica, scuola secondaria di secondo grado",
     hero_src=f"{SLUG}.jpg",
+    no_rt_note=True, no_tool_icons=True,   # stile professionale (dal 21/11/2026 vale per tutti i nuovi articoli)
     hero_alt="Copertina dell'articolo: il titolo «Il docente di sostegno» con il sottotitolo «Ruolo, funzioni e responsabilità alle superiori» e tre riquadri: status, contitolare della classe; funzioni, progettazione e didattica; interlocutori, colleghi, famiglie e servizi.",
 )
 
 if __name__ == '__main__':
     root = sys.argv[1]
     write_shared(root)
-    html_out = page(META)
-    # Registro professionale: niente icone nei pulsanti di lettura (anche quelle aggiunte dallo script durante l'ascolto)
-    NO_ICONS = '  <style>.reading-tools .rt-btn span[aria-hidden="true"], .rt-player span[aria-hidden="true"] { display: none; }</style>\n</head>'
-    assert html_out.count('</head>') == 1
-    html_out = html_out.replace('</head>', NO_ICONS)
-    open(os.path.join(root, f'{SLUG}.html'), 'w', encoding='utf-8').write(html_out)
+    open(os.path.join(root, f'{SLUG}.html'), 'w', encoding='utf-8').write(page(META))
     print('SOSTEGNO: parole', words, '| minuti', MIN)

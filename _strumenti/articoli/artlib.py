@@ -409,6 +409,9 @@ def write_shared(root):
     with open(os.path.join(root, 'js', 'lettura-facilitata.js'), 'w', encoding='utf-8') as f:
         f.write(JS_TEXT.strip() + '\n')
 
+NO_ICONS_CSS = '  <style>.reading-tools .rt-btn span[aria-hidden="true"], .rt-player span[aria-hidden="true"] {{ display: none; }}</style>\n'.replace("{{", "{").replace("}}", "}")
+RT_NOTE = '    <p class="rt-note">Questa pagina è pensata per essere letta con meno fatica: puoi ascoltarla, ingrandire il testo e scegliere carattere e sfondo. Le tue scelte restano salvate su questo dispositivo.</p>\n'
+
 def page(m):
     return f'''<!DOCTYPE html>
 <html lang="it">
@@ -432,7 +435,7 @@ def page(m):
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=10">
   <link rel="stylesheet" href="css/lettura-facilitata.css?v={ASSET_V}">
-  <link rel="canonical" href="{m["url"]}">
+{NO_ICONS_CSS if m.get("no_tool_icons") else ""}  <link rel="canonical" href="{m["url"]}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#4f46e5">
@@ -515,8 +518,7 @@ def page(m):
       <button type="button" class="rt-btn" id="rt-font" aria-pressed="true"><span aria-hidden="true">🔤</span> Carattere leggibile</button>
       <button type="button" class="rt-btn" id="rt-bg" aria-pressed="true"><span aria-hidden="true">🟨</span> Sfondo crema</button>
     </div>
-    <p class="rt-note">Questa pagina è pensata per essere letta con meno fatica: puoi ascoltarla, ingrandire il testo e scegliere carattere e sfondo. Le tue scelte restano salvate su questo dispositivo.</p>
-
+{"" if m.get("no_rt_note") else RT_NOTE}
     <div class="article-body">
 {m["body"]}
     </div>
